@@ -1,71 +1,49 @@
 import Image from "next/image";
 
-const photos = [
-  {
-    src: "https://images.unsplash.com/photo-1693004927824-f2623bbedc8b?w=900&q=85&fit=crop",
-    alt: "Skincare ritual",
-    objectPosition: "center top",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1707539160277-e39464517645?w=900&q=85&fit=crop",
-    alt: "Sukoon Black Seed Face Oil",
-    objectPosition: "center",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1633169621790-71e519cfb42d?w=900&q=85&fit=crop",
-    alt: "Dried botanicals",
-    objectPosition: "center",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=900&q=85&fit=crop",
-    alt: "Natural ingredients",
-    objectPosition: "center",
-  },
-];
-
 export function PhotoGallery() {
   return (
     <section
       style={{
         backgroundColor: "#FBF8F3",
         borderTop: "1px solid #E8E1D8",
-        padding: "clamp(3rem, 5vw, 4rem) clamp(2rem, 6vw, 5rem) clamp(4rem, 7vw, 6rem)",
+        padding: "clamp(3rem, 5vw, 4rem) clamp(1.5rem, 6vw, 5rem) clamp(4rem, 7vw, 6rem)",
       }}
     >
       <div style={{ maxWidth: "1320px", margin: "0 auto" }}>
-        <p
-          style={{
-            fontFamily: "var(--font-body)",
-            fontSize: "0.5625rem",
-            fontWeight: 500,
-            letterSpacing: "0.22em",
-            textTransform: "uppercase",
-            color: "#9BA584",
-            marginBottom: "2rem",
-          }}
-        >
+        <p style={{ fontFamily: "var(--font-body)", fontSize: "0.5625rem", fontWeight: 500, letterSpacing: "0.22em", textTransform: "uppercase", color: "#9BA584", marginBottom: "2rem" }}>
           The World of Sukoon
         </p>
 
-        {/* 2-col mosaic: left tall, right stacked 2 rows, bottom full-width */}
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gridTemplateRows: "340px 340px", gap: "0.75rem" }}>
-          {/* Large left — spans 2 rows */}
+        {/* Desktop: mosaic. Mobile: 2-col equal grid */}
+        <div className="hidden md:grid" style={{ gridTemplateColumns: "1fr 1fr", gridTemplateRows: "360px 360px", gap: "0.625rem" }}>
           <div style={{ gridRow: "1 / 3", position: "relative", overflow: "hidden", backgroundColor: "#EDE7DE" }}>
-            <Image src={photos[0].src} alt={photos[0].alt} fill priority sizes="50vw" style={{ objectFit: "cover", objectPosition: photos[0].objectPosition }} />
+            <Image src="https://images.unsplash.com/photo-1693004927824-f2623bbedc8b?w=900&q=85&fit=crop" alt="Skincare ritual" fill priority sizes="50vw" style={{ objectFit: "cover", objectPosition: "center top" }} />
           </div>
-          {/* Top right */}
           <div style={{ position: "relative", overflow: "hidden", backgroundColor: "#EDE7DE" }}>
-            <Image src={photos[1].src} alt={photos[1].alt} fill priority sizes="50vw" style={{ objectFit: "cover", objectPosition: photos[1].objectPosition }} />
+            <Image src="https://images.unsplash.com/photo-1707539160277-e39464517645?w=900&q=85&fit=crop" alt="Sukoon face oil" fill priority sizes="50vw" style={{ objectFit: "cover" }} />
           </div>
-          {/* Bottom right */}
           <div style={{ position: "relative", overflow: "hidden", backgroundColor: "#EDE7DE" }}>
-            <Image src={photos[2].src} alt={photos[2].alt} fill priority sizes="50vw" style={{ objectFit: "cover", objectPosition: photos[2].objectPosition }} />
+            <Image src="https://images.unsplash.com/photo-1633169621790-71e519cfb42d?w=900&q=85&fit=crop" alt="Dried botanicals" fill priority sizes="50vw" style={{ objectFit: "cover" }} />
           </div>
         </div>
 
-        {/* Bottom strip */}
-        <div style={{ position: "relative", height: "280px", overflow: "hidden", marginTop: "0.75rem", backgroundColor: "#EDE7DE" }}>
-          <Image src={photos[3].src} alt={photos[3].alt} fill priority sizes="100vw" style={{ objectFit: "cover", objectPosition: "center 40%" }} />
+        {/* Mobile: simple 2-col grid */}
+        <div className="grid grid-cols-2 md:hidden" style={{ gap: "0.5rem" }}>
+          {[
+            { src: "https://images.unsplash.com/photo-1693004927824-f2623bbedc8b?w=700&q=85&fit=crop", alt: "Skincare ritual", h: "200px" },
+            { src: "https://images.unsplash.com/photo-1707539160277-e39464517645?w=700&q=85&fit=crop", alt: "Face oil", h: "200px" },
+            { src: "https://images.unsplash.com/photo-1633169621790-71e519cfb42d?w=700&q=85&fit=crop", alt: "Botanicals", h: "200px" },
+            { src: "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=700&q=85&fit=crop", alt: "Natural ingredients", h: "200px" },
+          ].map((img) => (
+            <div key={img.src} style={{ position: "relative", height: img.h, overflow: "hidden", backgroundColor: "#EDE7DE" }}>
+              <Image src={img.src} alt={img.alt} fill sizes="50vw" style={{ objectFit: "cover" }} />
+            </div>
+          ))}
+        </div>
+
+        {/* Bottom strip — desktop only */}
+        <div className="hidden md:block" style={{ position: "relative", height: "300px", overflow: "hidden", marginTop: "0.625rem", backgroundColor: "#EDE7DE" }}>
+          <Image src="https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=1600&q=85&fit=crop" alt="Natural ingredients" fill priority sizes="100vw" style={{ objectFit: "cover", objectPosition: "center 40%" }} />
         </div>
       </div>
     </section>

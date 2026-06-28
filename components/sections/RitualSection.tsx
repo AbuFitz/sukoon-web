@@ -7,7 +7,7 @@ const steps = [
   },
   {
     time: "Evening",
-    instruction: "Apply after cleansing while skin is still slightly damp. Let it do its work overnight.",
+    instruction: "Apply after cleansing while skin is still slightly damp. Let it work overnight.",
   },
   {
     time: "Always",
@@ -18,77 +18,45 @@ const steps = [
 export function RitualSection() {
   return (
     <section
-      style={{
-        display: "grid",
-        gridTemplateColumns: "1fr 1fr",
-        minHeight: "600px",
-        backgroundColor: "#FBF8F3",
-        borderTop: "1px solid #E8E1D8",
-      }}
+      className="flex flex-col md:grid md:grid-cols-2"
+      style={{ backgroundColor: "#FBF8F3", borderTop: "1px solid #E8E1D8" }}
     >
-      {/* Left — ritual text */}
+      {/* Text */}
       <div
         style={{
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
-          padding: "clamp(4rem, 7vw, 7rem) clamp(3rem, 6vw, 6rem)",
+          padding: "clamp(3rem, 7vw, 7rem) clamp(2rem, 6vw, 6rem)",
+          order: 1,
         }}
       >
-        <p
-          style={{
-            fontFamily: "var(--font-body)",
-            fontSize: "0.5625rem",
-            fontWeight: 500,
-            letterSpacing: "0.22em",
-            textTransform: "uppercase",
-            color: "#9BA584",
-            marginBottom: "2rem",
-          }}
-        >
+        <p style={{ fontFamily: "var(--font-body)", fontSize: "0.5625rem", fontWeight: 500, letterSpacing: "0.22em", textTransform: "uppercase", color: "#9BA584", marginBottom: "2rem" }}>
           The Ritual
         </p>
 
         <h2
           style={{
             fontFamily: "var(--font-display)",
-            fontSize: "clamp(2rem, 3.5vw, 3.25rem)",
+            fontSize: "clamp(1.875rem, 4vw, 3.25rem)",
             fontWeight: 400,
             lineHeight: 1.15,
             letterSpacing: "-0.01em",
             color: "#2A2F1E",
-            marginBottom: "3rem",
+            marginBottom: "clamp(2rem, 5vw, 3rem)",
             maxWidth: "340px",
           }}
         >
           A quieter way to care for your skin.
         </h2>
 
-        <div style={{ display: "flex", flexDirection: "column", gap: "2.5rem" }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
           {steps.map((step) => (
             <div key={step.time}>
-              <p
-                style={{
-                  fontFamily: "var(--font-body)",
-                  fontSize: "0.625rem",
-                  fontWeight: 500,
-                  letterSpacing: "0.18em",
-                  textTransform: "uppercase",
-                  color: "#9BA584",
-                  marginBottom: "0.625rem",
-                }}
-              >
+              <p style={{ fontFamily: "var(--font-body)", fontSize: "0.5625rem", fontWeight: 500, letterSpacing: "0.18em", textTransform: "uppercase", color: "#9BA584", marginBottom: "0.5rem" }}>
                 {step.time}
               </p>
-              <p
-                style={{
-                  fontFamily: "var(--font-body)",
-                  fontSize: "0.875rem",
-                  lineHeight: 1.85,
-                  color: "#6B7451",
-                  maxWidth: "340px",
-                }}
-              >
+              <p style={{ fontFamily: "var(--font-body)", fontSize: "0.875rem", lineHeight: 1.85, color: "#6B7451", maxWidth: "320px" }}>
                 {step.instruction}
               </p>
             </div>
@@ -96,13 +64,13 @@ export function RitualSection() {
         </div>
       </div>
 
-      {/* Right — botanical image */}
-      <div style={{ position: "relative", minHeight: "520px" }}>
+      {/* Image */}
+      <div style={{ position: "relative", minHeight: "clamp(280px, 50vw, 640px)", order: 2 }}>
         <Image
           src="https://images.unsplash.com/photo-1633169621790-71e519cfb42d?w=1200&q=85&fit=crop"
           alt="Botanical ingredients"
           fill
-          sizes="50vw"
+          sizes="(max-width: 768px) 100vw, 50vw"
           style={{ objectFit: "cover", objectPosition: "center" }}
         />
       </div>
