@@ -17,21 +17,27 @@ export function EmailCapture() {
     <section
       id="waitlist"
       aria-label="Join the waitlist"
-      style={{ backgroundColor: "#434A33", position: "relative", overflow: "hidden" }}
+      style={{
+        backgroundColor: "#434A33",
+        padding: "clamp(6rem, 14vh, 12rem) clamp(2rem, 6vw, 5rem)",
+        position: "relative",
+        overflow: "hidden",
+      }}
     >
-      {/* Arabic سكون watermark */}
+      {/* Arabic watermark */}
       <div
         aria-hidden
         style={{
           position: "absolute",
-          right: "clamp(1rem, 4vw, 3rem)",
-          bottom: "-0.5rem",
+          right: "clamp(1rem, 5vw, 4rem)",
+          bottom: "-2rem",
           fontFamily: "var(--font-display)",
-          fontSize: "clamp(5rem, 12vw, 10rem)",
-          color: "rgba(251,248,243,0.06)",
+          fontSize: "clamp(8rem, 18vw, 18rem)",
+          color: "rgba(251,248,243,0.04)",
           lineHeight: 1,
           userSelect: "none",
           pointerEvents: "none",
+          letterSpacing: "-0.02em",
         }}
       >
         سكون
@@ -39,60 +45,70 @@ export function EmailCapture() {
 
       <div
         style={{
-          maxWidth: "1320px",
+          maxWidth: "680px",
           margin: "0 auto",
-          padding: "clamp(3rem, 6vw, 5rem) clamp(2rem, 6vw, 5rem)",
+          textAlign: "center",
           position: "relative",
           zIndex: 1,
         }}
       >
-        {/* Desktop: single row. Mobile: stacked */}
-        <div className="flex flex-col md:flex-row md:items-center" style={{ gap: "clamp(1.5rem, 4vw, 3rem)" }}>
-
-        {/* Headline */}
-        <h2
-          style={{
-            fontFamily: "var(--font-display)",
-            fontSize: "clamp(1.875rem, 3vw, 2.75rem)",
-            fontWeight: 600,
-            fontStyle: "italic",
-            letterSpacing: "-0.01em",
-            lineHeight: 1.1,
-            color: "#FBF8F3",
-            flexShrink: 0,
-          }}
-        >
-          Be the first to know.
-        </h2>
-
-        {/* Divider */}
-        <div
-          className="hidden md:block"
-          style={{ width: "1px", alignSelf: "stretch", minHeight: "3rem", backgroundColor: "rgba(251,248,243,0.15)", flexShrink: 0 }}
-          aria-hidden
-        />
-
-        {/* Description */}
         <p
           style={{
             fontFamily: "var(--font-body)",
-            fontSize: "0.9rem",
-            lineHeight: 1.7,
-            color: "rgba(251,248,243,0.55)",
-            maxWidth: "260px",
-            flexShrink: 0,
+            fontSize: "0.625rem",
+            letterSpacing: "0.22em",
+            textTransform: "uppercase",
+            color: "rgba(251,248,243,0.35)",
+            marginBottom: "1.75rem",
           }}
         >
-          Early access, launch-day offers and the stories behind our ingredients.
+          Launching Soon
         </p>
 
-        {/* Form */}
-        <form onSubmit={handleSubmit} noValidate aria-label="Waitlist signup" style={{ flex: 1, minWidth: 0 }}>
-          <div style={{ display: "flex", gap: "0.5rem" }}>
+        <h2
+          style={{
+            fontFamily: "var(--font-display)",
+            fontSize: "clamp(2.25rem, 5vw, 4.5rem)",
+            fontWeight: 300,
+            lineHeight: 1.1,
+            letterSpacing: "-0.015em",
+            color: "#FBF8F3",
+            marginBottom: "1.5rem",
+          }}
+        >
+          Be the first to<br />
+          experience Sukoon.
+        </h2>
+
+        <p
+          style={{
+            fontFamily: "var(--font-body)",
+            fontSize: "0.9375rem",
+            lineHeight: 1.8,
+            color: "rgba(251,248,243,0.45)",
+            marginBottom: "3rem",
+            maxWidth: "380px",
+            margin: "0 auto 3rem",
+          }}
+        >
+          Early access. Launch invitations. Behind-the-scenes stories.
+          The first release will be limited.
+        </p>
+
+        <form onSubmit={handleSubmit} noValidate aria-label="Waitlist signup">
+          <div
+            style={{
+              display: "flex",
+              gap: "0",
+              maxWidth: "440px",
+              margin: "0 auto",
+              border: "1px solid rgba(251,248,243,0.2)",
+            }}
+          >
             <input
               type="email"
               value={email}
-              onChange={(e) => { setEmail(e.target.value); setStatus("idle"); }}
+              onChange={e => { setEmail(e.target.value); setStatus("idle"); }}
               placeholder="your@email.com"
               aria-label="Email address"
               aria-invalid={status === "error"}
@@ -101,11 +117,10 @@ export function EmailCapture() {
                 flex: 1,
                 fontFamily: "var(--font-body)",
                 fontSize: "0.875rem",
-                color: "#2E3423",
-                backgroundColor: "#FBF8F3",
-                border: "1px solid transparent",
-                borderRadius: "3px",
-                padding: "0.75rem 1rem",
+                color: "#FBF8F3",
+                backgroundColor: "transparent",
+                border: "none",
+                padding: "1rem 1.25rem",
                 outline: "none",
                 minWidth: 0,
               }}
@@ -114,40 +129,47 @@ export function EmailCapture() {
               type="submit"
               style={{
                 fontFamily: "var(--font-body)",
-                fontSize: "0.6875rem",
+                fontSize: "0.625rem",
                 fontWeight: 600,
-                letterSpacing: "0.16em",
+                letterSpacing: "0.18em",
                 textTransform: "uppercase",
-                color: "#FBF8F3",
-                backgroundColor: "#2E3423",
+                color: "#434A33",
+                backgroundColor: "#FBF8F3",
                 border: "none",
-                borderRadius: "3px",
-                padding: "0.75rem 1.25rem",
+                padding: "1rem 1.5rem",
                 cursor: "pointer",
                 whiteSpace: "nowrap",
-                transition: "background 0.2s",
+                transition: "background 0.25s, color 0.25s",
+                flexShrink: 0,
               }}
-              onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.backgroundColor = "#1a1f14")}
-              onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.backgroundColor = "#2E3423")}
+              onMouseEnter={e => {
+                const el = e.currentTarget as HTMLElement;
+                el.style.backgroundColor = "#E8DFC9";
+              }}
+              onMouseLeave={e => {
+                const el = e.currentTarget as HTMLElement;
+                el.style.backgroundColor = "#FBF8F3";
+              }}
             >
-              Notify me
+              Notify Me
             </button>
           </div>
+
           {status === "error" && (
-            <p role="alert" style={{ fontFamily: "var(--font-body)", fontSize: "0.8rem", color: "#D4A88A", marginTop: "0.5rem" }}>
-              Please enter a valid email.
+            <p role="alert" style={{ fontFamily: "var(--font-body)", fontSize: "0.8rem", color: "rgba(251,248,243,0.5)", marginTop: "0.875rem" }}>
+              Please enter a valid email address.
             </p>
           )}
           {status === "success" && (
-            <p role="status" style={{ fontFamily: "var(--font-body)", fontSize: "0.8rem", color: "rgba(251,248,243,0.65)", marginTop: "0.5rem" }}>
-              You&rsquo;re on the list — we&rsquo;ll be in touch.
+            <p role="status" style={{ fontFamily: "var(--font-display)", fontSize: "1.0625rem", fontStyle: "italic", color: "rgba(251,248,243,0.65)", marginTop: "1rem" }}>
+              You&rsquo;re on the list. We&rsquo;ll be in touch.
             </p>
           )}
-          <p style={{ fontFamily: "var(--font-body)", fontSize: "0.6875rem", color: "rgba(251,248,243,0.3)", marginTop: "0.625rem" }}>
+
+          <p style={{ fontFamily: "var(--font-body)", fontSize: "0.6875rem", color: "rgba(251,248,243,0.22)", marginTop: "1.25rem", letterSpacing: "0.04em" }}>
             No spam. Unsubscribe anytime.
           </p>
         </form>
-        </div>{/* end flex row */}
       </div>
     </section>
   );
