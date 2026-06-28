@@ -1,29 +1,27 @@
-import { SiteNav } from "@/components/nav/SiteNav";
-import { EditorialHero } from "@/components/sections/EditorialHero";
-import { Philosophy } from "@/components/sections/Philosophy";
-import { Ingredients } from "@/components/sections/Ingredients";
-import { Ritual } from "@/components/sections/Ritual";
-import { ProductPreview } from "@/components/sections/ProductPreview";
-import { BrandValues } from "@/components/sections/BrandValues";
-import { Gallery } from "@/components/sections/Gallery";
-import { EmailCapture } from "@/components/sections/EmailCapture";
-import { MinimalFooter } from "@/components/sections/MinimalFooter";
+import { SiteNav }        from "@/components/nav/SiteNav";
+import { HeroSplit }       from "@/components/sections/HeroSplit";
+import { LifestyleSplit }  from "@/components/sections/LifestyleSplit";
+import { IngredientsGrid } from "@/components/sections/IngredientsGrid";
+import { RitualSection }   from "@/components/sections/RitualSection";
+import { ProductFeature }  from "@/components/sections/ProductFeature";
+import { PrinciplesStrip } from "@/components/sections/PrinciplesStrip";
+import { PhotoGallery }    from "@/components/sections/PhotoGallery";
+import { EmailCapture }    from "@/components/sections/EmailCapture";
 
 export default function Home() {
   return (
     <>
       <SiteNav />
       <main>
-        <EditorialHero />
-        <Philosophy />
-        <Ingredients />
-        <Ritual />
-        <ProductPreview />
-        <BrandValues />
-        <Gallery />
+        <HeroSplit />
+        <LifestyleSplit />
+        <IngredientsGrid />
+        <RitualSection />
+        <ProductFeature />
+        <PrinciplesStrip />
+        <PhotoGallery />
         <EmailCapture />
       </main>
-      <MinimalFooter />
     </>
   );
 }
