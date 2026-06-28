@@ -1,10 +1,11 @@
 import { Nav } from "@/components/nav/Nav";
-import { Opening } from "@/components/sections/Opening";
-import { Philosophy } from "@/components/sections/Philosophy";
-import { Collection } from "@/components/sections/Collection";
-import { Ingredients } from "@/components/sections/Ingredients";
-import { SkinStories } from "@/components/sections/SkinStories";
-import { Invitation } from "@/components/sections/Invitation";
+import { Hero } from "@/components/sections/Hero";
+import { Benefits } from "@/components/sections/Benefits";
+import { IngredientStory } from "@/components/sections/IngredientStory";
+import { HowToUse } from "@/components/sections/HowToUse";
+import { LifestyleSection } from "@/components/sections/LifestyleSection";
+import { TrustBadges } from "@/components/sections/TrustBadges";
+import { Newsletter } from "@/components/sections/Newsletter";
 import { Footer } from "@/components/sections/Footer";
 
 export default function Home() {
@@ -12,12 +13,13 @@ export default function Home() {
     <>
       <Nav />
       <main>
-        <Opening />
-        <Philosophy />
-        <Collection />
-        <Ingredients />
-        <SkinStories />
-        <Invitation />
+        <Hero />
+        <Benefits />
+        <IngredientStory />
+        <HowToUse />
+        <LifestyleSection />
+        <TrustBadges />
+        <Newsletter />
       </main>
       <Footer />
     </>

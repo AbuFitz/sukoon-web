@@ -5,7 +5,7 @@ import "./globals.css";
 const cormorant = Cormorant_Garamond({
   variable: "--font-cormorant",
   subsets: ["latin"],
-  weight: ["300", "400", "500"],
+  weight: ["400", "500", "600"],
   style: ["normal", "italic"],
   display: "swap",
 });
@@ -13,19 +13,19 @@ const cormorant = Cormorant_Garamond({
 const dmSans = DM_Sans({
   variable: "--font-dm-sans",
   subsets: ["latin"],
-  weight: ["300", "400", "500"],
+  weight: ["300", "400", "500", "600"],
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Sukoon — Skincare as a Ritual of Stillness",
+  title: "Sukoon — Black Seed Face Oil",
   description:
-    "Sukoon is a skincare ritual rooted in stillness. Thoughtfully formulated with pure ingredients to invite a slower, more intentional moment into your day.",
-  keywords: ["skincare", "ritual", "natural", "stillness", "sukoon"],
+    "A lightweight botanical face oil with black seed and argan. Nourishes, calms and supports a healthy glow. Made for everyday ritual.",
+  keywords: ["skincare", "face oil", "black seed oil", "natural", "sukoon"],
   openGraph: {
-    title: "Sukoon — Skincare as a Ritual of Stillness",
+    title: "Sukoon — Black Seed Face Oil",
     description:
-      "A slower, more intentional skincare ritual. Thoughtfully formulated with pure ingredients.",
+      "A lightweight botanical face oil with black seed and argan. Nourishes, calms and supports a healthy glow.",
     siteName: "Sukoon",
     type: "website",
   },
@@ -35,11 +35,8 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html
-      lang="en"
-      className={`${cormorant.variable} ${dmSans.variable} h-full`}
-    >
-      <body className="min-h-full flex flex-col">{children}</body>
+    <html lang="en" className={`${cormorant.variable} ${dmSans.variable} h-full`}>
+      <body className="min-h-full">{children}</body>
     </html>
   );
 }

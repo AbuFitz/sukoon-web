@@ -1,192 +1,157 @@
 "use client";
 
 import Link from "next/link";
-import { FadeIn } from "@/components/ui/FadeIn";
-/* Social icons as inline SVG — lucide-react v1.x doesn't bundle Instagram/Youtube */
-function IconInstagram({ size = 15 }: { size?: number }) {
+
+const shopLinks = [
+  { label: "Face Oil No. 01", href: "#shop" },
+  { label: "The Complete Ritual", href: "#shop" },
+  { label: "Join the Waitlist", href: "#waitlist" },
+];
+
+const learnLinks = [
+  { label: "Ingredients", href: "#ingredients" },
+  { label: "How to Use", href: "#story" },
+  { label: "Our Story", href: "#story" },
+  { label: "Journal", href: "#journal" },
+];
+
+const supportLinks = [
+  { label: "FAQ", href: "#" },
+  { label: "Shipping & Returns", href: "#" },
+  { label: "Contact", href: "#" },
+  { label: "Wholesale", href: "#" },
+];
+
+function SocialInstagram() {
   return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-      <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+      <rect x="2" y="2" width="20" height="20" rx="5"/>
       <circle cx="12" cy="12" r="4.5"/>
       <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/>
     </svg>
   );
 }
 
-function IconYoutube({ size = 15 }: { size?: number }) {
+function SocialTikTok() {
   return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-      <path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/>
-      <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="currentColor" stroke="none"/>
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+      <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/>
     </svg>
   );
 }
 
-const footerNav = [
-  {
-    heading: "Shop",
-    links: [
-      { label: "The Morning Oil", href: "#" },
-      { label: "The Still Toner", href: "#" },
-      { label: "The Slow Cream", href: "#" },
-      { label: "The Complete Ritual", href: "#" },
-    ],
-  },
-  {
-    heading: "Learn",
-    links: [
-      { label: "The Ritual", href: "#ritual" },
-      { label: "Ingredients", href: "#ingredients" },
-      { label: "Journal", href: "#" },
-      { label: "About Sukoon", href: "#" },
-    ],
-  },
-  {
-    heading: "Support",
-    links: [
-      { label: "How to Use", href: "#" },
-      { label: "Shipping", href: "#" },
-      { label: "Returns", href: "#" },
-      { label: "Contact", href: "#" },
-    ],
-  },
-];
-
 export function Footer() {
   return (
-    <footer
-      aria-label="Site footer"
-      style={{ backgroundColor: "#2B1F14" }}
-    >
-      {/* Main footer body */}
-      <div className="container-page pt-16 pb-12">
-        <div className="grid md:grid-cols-[1.6fr_1fr_1fr_1fr] gap-12 md:gap-8">
+    <footer style={{ backgroundColor: "#434A33" }} aria-label="Site footer">
 
-          {/* Brand column */}
-          <FadeIn direction="up">
-            <div>
-              <span
-                className="label block mb-6"
+      {/* Main */}
+      <div className="container pt-14 pb-10">
+        <div className="grid md:grid-cols-[1.4fr_1fr_1fr_1fr] gap-10 md:gap-6">
+
+          {/* Brand */}
+          <div>
+            <span
+              style={{
+                fontFamily: "var(--font-display)",
+                fontSize: "1.5rem",
+                fontStyle: "italic",
+                fontWeight: 600,
+                color: "#FBF8F3",
+                display: "block",
+                marginBottom: "0.875rem",
+              }}
+            >
+              Sukoon
+            </span>
+            <p
+              style={{
+                fontFamily: "var(--font-body)",
+                fontSize: "0.875rem",
+                lineHeight: 1.65,
+                color: "rgba(251,248,243,0.58)",
+                maxWidth: "200px",
+                marginBottom: "1.5rem",
+              }}
+            >
+              Natural skincare, made for everyday ritual.
+              Launching in the UK.
+            </p>
+
+            {/* Socials */}
+            <div className="flex gap-3">
+              {[
+                { label: "Instagram", icon: <SocialInstagram />, href: "https://instagram.com" },
+                { label: "TikTok",    icon: <SocialTikTok />,    href: "https://tiktok.com" },
+              ].map((s) => (
+                <a
+                  key={s.label}
+                  href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Sukoon on ${s.label}`}
+                  className="flex items-center justify-center w-9 h-9 rounded transition-colors duration-200"
+                  style={{
+                    border: "1px solid rgba(251,248,243,0.18)",
+                    color: "rgba(251,248,243,0.55)",
+                  }}
+                  onMouseEnter={(e) => {
+                    const el = e.currentTarget as HTMLElement;
+                    el.style.borderColor = "rgba(251,248,243,0.5)";
+                    el.style.color = "#FBF8F3";
+                  }}
+                  onMouseLeave={(e) => {
+                    const el = e.currentTarget as HTMLElement;
+                    el.style.borderColor = "rgba(251,248,243,0.18)";
+                    el.style.color = "rgba(251,248,243,0.55)";
+                  }}
+                >
+                  {s.icon}
+                </a>
+              ))}
+            </div>
+          </div>
+
+          {/* Nav columns */}
+          {[
+            { heading: "Shop", links: shopLinks },
+            { heading: "Learn", links: learnLinks },
+            { heading: "Support", links: supportLinks },
+          ].map((col) => (
+            <div key={col.heading}>
+              <p
                 style={{
                   fontFamily: "var(--font-body)",
-                  color: "#F8F3EC",
-                  fontSize: "1rem",
-                  letterSpacing: "0.26em",
+                  fontSize: "0.625rem",
+                  fontWeight: 500,
+                  letterSpacing: "0.18em",
+                  textTransform: "uppercase",
+                  color: "rgba(251,248,243,0.38)",
+                  marginBottom: "1.25rem",
                 }}
               >
-                Sukoon
-              </span>
-              <p
-                className="leading-[1.75] mb-8"
-                style={{
-                  fontFamily: "var(--font-display)",
-                  fontSize: "1.125rem",
-                  fontStyle: "italic",
-                  fontWeight: 300,
-                  color: "rgba(168, 153, 138, 0.75)",
-                  letterSpacing: "0.005em",
-                  maxWidth: "240px",
-                }}
-              >
-                Skincare as a ritual
-                <br />
-                of stillness.
+                {col.heading}
               </p>
-
-              {/* Social */}
-              <div className="flex gap-4">
-                <a
-                  href="https://instagram.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Sukoon on Instagram"
-                  className="w-9 h-9 rounded-sm flex items-center justify-center transition-colors duration-300"
-                  style={{
-                    border: "1px solid rgba(214, 201, 180, 0.15)",
-                    color: "rgba(168, 153, 138, 0.7)",
-                  }}
-                  onMouseEnter={(e) => {
-                    (e.currentTarget as HTMLElement).style.borderColor =
-                      "rgba(214, 201, 180, 0.4)";
-                    (e.currentTarget as HTMLElement).style.color = "#F8F3EC";
-                  }}
-                  onMouseLeave={(e) => {
-                    (e.currentTarget as HTMLElement).style.borderColor =
-                      "rgba(214, 201, 180, 0.15)";
-                    (e.currentTarget as HTMLElement).style.color =
-                      "rgba(168, 153, 138, 0.7)";
-                  }}
-                >
-                  <IconInstagram size={15} />
-                </a>
-                <a
-                  href="https://youtube.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Sukoon on YouTube"
-                  className="w-9 h-9 rounded-sm flex items-center justify-center transition-colors duration-300"
-                  style={{
-                    border: "1px solid rgba(214, 201, 180, 0.15)",
-                    color: "rgba(168, 153, 138, 0.7)",
-                  }}
-                  onMouseEnter={(e) => {
-                    (e.currentTarget as HTMLElement).style.borderColor =
-                      "rgba(214, 201, 180, 0.4)";
-                    (e.currentTarget as HTMLElement).style.color = "#F8F3EC";
-                  }}
-                  onMouseLeave={(e) => {
-                    (e.currentTarget as HTMLElement).style.borderColor =
-                      "rgba(214, 201, 180, 0.15)";
-                    (e.currentTarget as HTMLElement).style.color =
-                      "rgba(168, 153, 138, 0.7)";
-                  }}
-                >
-                  <IconYoutube size={15} />
-                </a>
-              </div>
+              <ul className="list-none flex flex-col gap-2.5">
+                {col.links.map((l) => (
+                  <li key={l.label}>
+                    <Link
+                      href={l.href}
+                      className="no-underline transition-colors duration-200"
+                      style={{
+                        fontFamily: "var(--font-body)",
+                        fontSize: "0.875rem",
+                        color: "rgba(251,248,243,0.58)",
+                        letterSpacing: "0.01em",
+                      }}
+                      onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.color = "#FBF8F3")}
+                      onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = "rgba(251,248,243,0.58)")}
+                    >
+                      {l.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
             </div>
-          </FadeIn>
-
-          {/* Navigation columns */}
-          {footerNav.map((col, i) => (
-            <FadeIn key={col.heading} delay={0.1 + i * 0.07} direction="up">
-              <div>
-                <span
-                  className="label block mb-5"
-                  style={{
-                    fontFamily: "var(--font-body)",
-                    color: "rgba(168, 153, 138, 0.5)",
-                    fontSize: "0.625rem",
-                  }}
-                >
-                  {col.heading}
-                </span>
-                <ul className="list-none flex flex-col gap-3">
-                  {col.links.map((link) => (
-                    <li key={link.label}>
-                      <Link
-                        href={link.href}
-                        className="text-sm transition-colors duration-300 no-underline"
-                        style={{
-                          fontFamily: "var(--font-body)",
-                          color: "rgba(214, 201, 180, 0.55)",
-                          letterSpacing: "0.01em",
-                        }}
-                        onMouseEnter={(e) => {
-                          (e.currentTarget as HTMLElement).style.color = "#F8F3EC";
-                        }}
-                        onMouseLeave={(e) => {
-                          (e.currentTarget as HTMLElement).style.color =
-                            "rgba(214, 201, 180, 0.55)";
-                        }}
-                      >
-                        {link.label}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </FadeIn>
           ))}
         </div>
       </div>
@@ -194,39 +159,33 @@ export function Footer() {
       {/* Legal bar */}
       <div
         className="border-t"
-        style={{ borderColor: "rgba(248, 243, 236, 0.08)" }}
+        style={{ borderColor: "rgba(251,248,243,0.1)" }}
       >
-        <div className="container-page py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
+        <div className="container py-4 flex flex-col sm:flex-row items-center justify-between gap-2">
           <p
             style={{
               fontFamily: "var(--font-body)",
-              fontSize: "0.6875rem",
-              color: "rgba(168, 153, 138, 0.45)",
-              letterSpacing: "0.06em",
+              fontSize: "0.75rem",
+              color: "rgba(251,248,243,0.35)",
+              letterSpacing: "0.04em",
             }}
           >
-            © {new Date().getFullYear()} Sukoon. All rights reserved.
+            © {new Date().getFullYear()} Sukoon Ltd. All rights reserved.
           </p>
-          <div className="flex gap-6">
+          <div className="flex gap-5">
             {["Privacy", "Terms", "Cookies"].map((item) => (
               <Link
                 key={item}
                 href="#"
-                className="no-underline transition-colors duration-300"
+                className="no-underline transition-colors duration-200"
                 style={{
                   fontFamily: "var(--font-body)",
-                  fontSize: "0.6875rem",
-                  color: "rgba(168, 153, 138, 0.45)",
-                  letterSpacing: "0.06em",
+                  fontSize: "0.75rem",
+                  color: "rgba(251,248,243,0.35)",
+                  letterSpacing: "0.04em",
                 }}
-                onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLElement).style.color =
-                    "rgba(248, 243, 236, 0.65)";
-                }}
-                onMouseLeave={(e) => {
-                  (e.currentTarget as HTMLElement).style.color =
-                    "rgba(168, 153, 138, 0.45)";
-                }}
+                onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.color = "rgba(251,248,243,0.65)")}
+                onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = "rgba(251,248,243,0.35)")}
               >
                 {item}
               </Link>
