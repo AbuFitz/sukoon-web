@@ -103,6 +103,7 @@ export function EmailCapture() {
               maxWidth: "440px",
               margin: "0 auto",
               border: "1px solid rgba(251,248,243,0.2)",
+              flexWrap: "wrap",
             }}
           >
             <input

@@ -56,7 +56,7 @@ export function RitualSection() {
               <p style={{ fontFamily: "var(--font-body)", fontSize: "0.5625rem", fontWeight: 500, letterSpacing: "0.18em", textTransform: "uppercase", color: "#9BA584", marginBottom: "0.5rem" }}>
                 {step.time}
               </p>
-              <p style={{ fontFamily: "var(--font-body)", fontSize: "0.875rem", lineHeight: 1.85, color: "#6B7451", maxWidth: "320px" }}>
+              <p style={{ fontFamily: "var(--font-body)", fontSize: "1rem", lineHeight: 1.85, color: "#6B7451", maxWidth: "320px" }}>
                 {step.instruction}
               </p>
             </div>

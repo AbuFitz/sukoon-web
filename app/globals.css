@@ -137,3 +137,9 @@ body {
 }
 .input::placeholder { color: #98A27E; }
 .input:focus { border-color: #6B7451; }
+
+/* ─── Mobile base resets ─── */
+@media (max-width: 767px) {
+  body { font-size: 16px; -webkit-text-size-adjust: 100%; }
+  img { max-width: 100%; }
+}
