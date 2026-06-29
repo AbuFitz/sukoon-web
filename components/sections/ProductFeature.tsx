@@ -5,7 +5,7 @@ const features = [
   "Zero synthetic fragrance or preservatives",
   "Lightweight — absorbs in under 60 seconds",
   "Suitable for all skin types, including sensitive",
-  "Ethically sourced. Small batch. UK-made.",
+  "Mindfully sourced. Small batch. UK-made.",
 ];
 
 export function ProductFeature() {
@@ -24,8 +24,8 @@ export function ProductFeature() {
         }}
       >
         <p style={{ fontFamily: "var(--font-body)", fontSize: "0.5625rem", fontWeight: 500, letterSpacing: "0.22em", textTransform: "uppercase", color: "rgba(251,248,243,0.3)", marginBottom: "2rem" }}>
-          The Product
-        </p>
+          THE SUKOON OIL
+</p>
 
         <h2
           style={{
@@ -48,8 +48,8 @@ export function ProductFeature() {
 
         <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "0.75rem" }}>
           {features.map((f) => (
-            <li key={f} style={{ fontFamily: "var(--font-body)", fontSize: "0.8125rem", color: "rgba(251,248,243,0.5)", lineHeight: 1.6, paddingLeft: "1.25rem", position: "relative" }}>
-              <span style={{ position: "absolute", left: 0, top: "0.6em", width: "4px", height: "1px", backgroundColor: "rgba(155,165,132,0.5)", display: "inline-block" }} />
+            <li key={f} style={{ fontFamily: "var(--font-body)", fontSize: "0.8125rem", color: "rgba(251,248,243,0.5)", lineHeight: 1.6, display: "flex", gap: "0.625rem", alignItems: "flex-start" }}>
+              <span style={{ color: "#9BA584", flexShrink: 0, marginTop: "0.1em" }}>✓</span>
               {f}
             </li>
           ))}
@@ -65,6 +65,12 @@ export function ProductFeature() {
           padding: "clamp(2rem, 5vw, 5rem)",
         }}
       >
+        <div style={{
+          border: "1px solid rgba(155,165,132,0.25)",
+          backgroundColor: "rgba(255,255,255,0.04)",
+          padding: "1.5rem",
+          display: "flex", alignItems: "center", justifyContent: "center",
+        }}>
         <div style={{ position: "relative", width: "clamp(140px, 20vw, 280px)", height: "clamp(220px, 32vw, 440px)" }}>
           <Image
             src="https://images.unsplash.com/photo-1707539160277-e39464517645?w=900&q=90&fit=crop"
@@ -74,6 +80,7 @@ export function ProductFeature() {
             sizes="(max-width: 768px) 40vw, 20vw"
             style={{ objectFit: "contain" }}
           />
+        </div>
         </div>
       </div>
     </section>

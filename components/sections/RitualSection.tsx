@@ -10,8 +10,8 @@ const steps = [
     instruction: "Apply after cleansing while skin is still slightly damp. Let it work overnight.",
   },
   {
-    time: "Always",
-    instruction: "A moment. Not a routine to complete. A pause you earn. The scent of black seed. The warmth of oil. The quiet before the day.",
+    time: "Weekly",
+    instruction: "A full-face treatment. Apply a few extra drops and leave on for 20 minutes. Rinse or leave overnight.",
   },
 ];
 

@@ -18,7 +18,7 @@ const principles = [
   { icon: <LeafIcon />, label: "Plant-Derived" },
   { icon: <HeartIcon />, label: "Cruelty Free" },
   { icon: <DropIcon />, label: "Non-Toxic" },
-  { icon: <SunIcon />, label: "Ethically Sourced" },
+  { icon: <SunIcon />, label: "Mindfully Sourced" },
   { icon: <ShieldIcon />, label: "Minimal Formula" },
 ];
 
