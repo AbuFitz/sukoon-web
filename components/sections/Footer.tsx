@@ -3,9 +3,9 @@
 import Link from "next/link";
 
 const shopLinks = [
-  { label: "The Daily Solace Fluid", href: "#shop" },
-  { label: "Travel Case Bundle", href: "#shop" },
-  { label: "Join the Waitlist", href: "#waitlist" },
+  { label: "The Daily Solace Fluid", href: "/shop" },
+  { label: "Travel Case Bundle", href: "/shop" },
+  { label: "Join the Waitlist", href: "/#waitlist" },
 ];
 
 const learnLinks = [

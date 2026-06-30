@@ -3,16 +3,11 @@
 import Image from "next/image";
 import { useEffect, useRef } from "react";
 import { Panel } from "./Panel";
+import { products } from "@/lib/products";
 
 const INK  = "#111110";
 const GREY = "#6E6E68";
 const LINE = "#E3E1DA";
-
-const results = [
-  { name: "The Daily Solace Fluid",                 price: "£35", src: "https://images.unsplash.com/photo-1707539160277-e39464517645?w=500&q=85&fit=crop" },
-  { name: "The Daily Solace Fluid — 15ml Trial",     price: "£20", src: "https://images.unsplash.com/photo-1693004927824-f2623bbedc8b?w=500&q=85&fit=crop" },
-  { name: "The Daily Solace Fluid + Travel Case",    price: "£42", src: "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=500&q=85&fit=crop" },
-];
 
 export function SearchOverlay({ open, onClose }: { open: boolean; onClose: () => void }) {
   const inputRef = useRef<HTMLInputElement>(null);
@@ -55,13 +50,13 @@ export function SearchOverlay({ open, onClose }: { open: boolean; onClose: () =>
         Products
       </p>
       <div className="grid grid-cols-2" style={{ gap: "1.25rem" }}>
-        {results.map((r) => (
-          <a key={r.name} href="#shop" onClick={onClose} style={{ textDecoration: "none", color: INK }}>
+        {products.map((p) => (
+          <a key={p.slug} href="/shop" onClick={onClose} style={{ textDecoration: "none", color: INK }}>
             <div style={{ position: "relative", aspectRatio: "1 / 1", backgroundColor: "#F1E9D7", marginBottom: "0.75rem", border: `1px solid ${LINE}` }}>
-              <Image src={r.src} alt={r.name} fill sizes="(max-width: 768px) 50vw, 200px" style={{ objectFit: "cover" }} />
+              <Image src={p.src} alt={p.name} fill sizes="(max-width: 768px) 50vw, 200px" style={{ objectFit: "cover" }} />
             </div>
-            <p style={{ fontFamily: "var(--font-body)", fontSize: "0.8125rem", fontWeight: 500, marginBottom: "0.25rem" }}>{r.name}</p>
-            <p style={{ fontFamily: "var(--font-body)", fontSize: "0.8125rem", color: GREY }}>{r.price}</p>
+            <p style={{ fontFamily: "var(--font-body)", fontSize: "0.8125rem", fontWeight: 500, marginBottom: "0.25rem" }}>{p.name}</p>
+            <p style={{ fontFamily: "var(--font-body)", fontSize: "0.8125rem", color: GREY }}>{p.price}</p>
           </a>
         ))}
       </div>

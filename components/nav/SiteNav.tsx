@@ -6,7 +6,7 @@ import { AccountPanel } from "./AccountPanel";
 import { BagPanel } from "./BagPanel";
 
 const links = [
-  { label: "Shop",        href: "#shop" },
+  { label: "Shop",        href: "/shop" },
   { label: "The Ritual",  href: "#ritual" },
   { label: "Ingredients", href: "#ingredients" },
   { label: "Journal",     href: "#" },

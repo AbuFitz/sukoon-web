@@ -23,7 +23,7 @@ export function BagPanel({ open, onClose }: { open: boolean; onClose: () => void
         <p style={{ fontFamily: "var(--font-body)", fontSize: "0.875rem", color: GREY, lineHeight: 1.6, maxWidth: "280px", marginBottom: "1.75rem" }}>
           The Daily Solace Fluid hasn&rsquo;t launched yet — join the waitlist to be first to shop.
         </p>
-        <a href="#waitlist" onClick={onClose} style={{
+        <a href="/#waitlist" onClick={onClose} style={{
           display: "inline-flex", alignItems: "center", justifyContent: "center",
           padding: "0.9375rem 2rem", textDecoration: "none",
           backgroundColor: INK, color: "#FFFFFF",

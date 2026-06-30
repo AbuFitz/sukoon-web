@@ -1,30 +1,7 @@
 "use client";
 
 import Image from "next/image";
-
-const products = [
-  {
-    name: "The Daily Solace Fluid",
-    size: "30ml",
-    price: "£35",
-    src: "https://images.unsplash.com/photo-1707539160277-e39464517645?w=700&q=85&fit=crop",
-    tag: "Best Seller",
-  },
-  {
-    name: "The Daily Solace Fluid",
-    size: "15ml Trial",
-    price: "£20",
-    src: "https://images.unsplash.com/photo-1693004927824-f2623bbedc8b?w=700&q=85&fit=crop",
-    tag: "New",
-  },
-  {
-    name: "The Daily Solace Fluid + Travel Case",
-    size: "30ml Bundle",
-    price: "£42",
-    src: "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=700&q=85&fit=crop",
-    tag: "Bundle",
-  },
-];
+import { products } from "@/lib/products";
 
 export function ProductRow() {
   return (
@@ -38,22 +15,34 @@ export function ProductRow() {
       }}
     >
       <div style={{ maxWidth: "1320px", margin: "0 auto" }}>
-        <div style={{ marginBottom: "clamp(2rem, 5vw, 3rem)" }}>
-          <p style={{ fontFamily: "var(--font-body)", fontSize: "0.5625rem", fontWeight: 500, letterSpacing: "0.2em", textTransform: "uppercase", color: "#6B7B5C", marginBottom: "1rem" }}>
-            Shop the Fluid
-          </p>
-          <h2 style={{
-            fontFamily: "var(--font-display)", fontSize: "clamp(1.875rem, 4.5vw, 3.25rem)",
-            fontWeight: 400, letterSpacing: "-0.015em", color: "#2C2A1F",
+        <div style={{
+          display: "flex", justifyContent: "space-between", alignItems: "flex-end", flexWrap: "wrap", gap: "1rem",
+          marginBottom: "clamp(2rem, 5vw, 3rem)",
+        }}>
+          <div>
+            <p style={{ fontFamily: "var(--font-body)", fontSize: "0.5625rem", fontWeight: 500, letterSpacing: "0.2em", textTransform: "uppercase", color: "#6B7B5C", marginBottom: "1rem" }}>
+              Shop the Fluid
+            </p>
+            <h2 style={{
+              fontFamily: "var(--font-display)", fontSize: "clamp(1.875rem, 4.5vw, 3.25rem)",
+              fontWeight: 400, letterSpacing: "-0.015em", color: "#2C2A1F",
+            }}>
+              One formula. Choose your start.
+            </h2>
+          </div>
+          <a href="/shop" style={{
+            fontFamily: "var(--font-body)", fontSize: "0.6875rem", fontWeight: 500,
+            letterSpacing: "0.1em", textTransform: "uppercase", color: "#2C2A1F", textDecoration: "underline",
+            textUnderlineOffset: "3px",
           }}>
-            One formula. Choose your start.
-          </h2>
+            View All
+          </a>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-3" style={{ gap: "clamp(1.5rem, 3vw, 2rem)" }}>
           {products.map((p) => (
-            <div key={p.size} style={{ display: "flex", flexDirection: "column" }}>
-              <div style={{ position: "relative", aspectRatio: "4 / 5", backgroundColor: "#E8D4AE", marginBottom: "1.25rem" }}>
+            <div key={p.slug} style={{ display: "flex", flexDirection: "column" }}>
+              <a href="/shop" style={{ position: "relative", aspectRatio: "4 / 5", backgroundColor: "#E8D4AE", marginBottom: "1.25rem", display: "block" }}>
                 <Image src={p.src} alt={p.name} fill sizes="(max-width: 768px) 100vw, 33vw" style={{ objectFit: "cover" }} />
                 <span style={{
                   position: "absolute", top: "0.875rem", left: "0.875rem",
@@ -63,7 +52,7 @@ export function ProductRow() {
                 }}>
                   {p.tag}
                 </span>
-              </div>
+              </a>
 
               <h3 style={{ fontFamily: "var(--font-body)", fontSize: "0.9375rem", fontWeight: 600, color: "#2C2A1F", marginBottom: "0.25rem" }}>
                 {p.name}
