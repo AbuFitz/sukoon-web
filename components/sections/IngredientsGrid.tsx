@@ -8,13 +8,13 @@ const ingredients = [
   {
     name: "Vitamin B3",
     latin: "Niacinamide · 14.9%",
-    description: "Strengthens the skin barrier, fades post-acne marks, and boosts microcirculation at the hairline root.",
+    description: "Supports the skin barrier, helps even the look of marks, and supports circulation at the hairline root.",
     bg: "#A9BA98", fg: "#2C2A1F", symbol: "٢",
   },
   {
     name: "Black Seed Oil",
     latin: "Nigella Sativa · 2%",
-    description: "Deodorized for daily wear. Destroys acne-causing bacteria and calms follicle inflammation at the scalp.",
+    description: "Deodorized for daily wear. Helps purify the skin and calms follicle tension at the scalp.",
     bg: "#3F4A36", fg: "#D9A356", symbol: "٣",
   },
   {

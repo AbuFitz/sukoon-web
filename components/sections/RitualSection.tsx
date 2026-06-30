@@ -18,8 +18,9 @@ const steps = [
 export function RitualSection() {
   return (
     <section
+      id="ritual"
       className="flex flex-col md:grid md:grid-cols-2"
-      style={{ backgroundColor: "#FBF8F3", borderTop: "1px solid #E8D4AE" }}
+      style={{ backgroundColor: "#FBF8F3", borderTop: "1px solid #E8D4AE", scrollMarginTop: "5rem" }}
     >
       {/* Text */}
       <div

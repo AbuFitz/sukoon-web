@@ -2,47 +2,38 @@
 
 import Link from "next/link";
 
+const INK   = "#434A33";
+const FAINT = "rgba(67,74,51,0.6)";
+const LINE  = "#DDD5C8";
+
 const shopLinks = [
   { label: "The Daily Solace Fluid", href: "/shop" },
   { label: "Travel Case Bundle", href: "/shop" },
-  { label: "Join the Waitlist", href: "/#waitlist" },
+  { label: "Your Bag", href: "#" },
 ];
 
-const learnLinks = [
+const companyLinks = [
+  { label: "Our Philosophy", href: "#story" },
   { label: "Ingredients", href: "#ingredients" },
-  { label: "How to Use", href: "#story" },
-  { label: "Our Story", href: "#story" },
-  { label: "Journal", href: "#journal" },
+  { label: "Journal", href: "#" },
 ];
 
 const supportLinks = [
-  { label: "FAQ", href: "#" },
+  { label: "FAQ", href: "#faq" },
   { label: "Shipping & Returns", href: "#" },
   { label: "Contact", href: "#" },
   { label: "Wholesale", href: "#" },
 ];
 
-function SocialInstagram() {
-  return (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-      <rect x="2" y="2" width="20" height="20" rx="5"/>
-      <circle cx="12" cy="12" r="4.5"/>
-      <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/>
-    </svg>
-  );
-}
-
-function SocialTikTok() {
-  return (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-      <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/>
-    </svg>
-  );
-}
+const followLinks = [
+  { label: "Instagram", href: "https://instagram.com" },
+  { label: "TikTok", href: "https://tiktok.com" },
+  { label: "Pinterest", href: "https://pinterest.com" },
+];
 
 export function Footer() {
   return (
-    <footer style={{ backgroundColor: "#3F4A36" }} aria-label="Site footer">
+    <footer style={{ backgroundColor: "#F6F1E8" }} aria-label="Site footer">
 
       {/* Main */}
       <div className="container pt-14 pb-10">
@@ -56,7 +47,7 @@ export function Footer() {
                 fontSize: "1.5rem",
                 fontStyle: "italic",
                 fontWeight: 600,
-                color: "#FBF8F3",
+                color: INK,
                 display: "block",
                 marginBottom: "0.875rem",
               }}
@@ -68,54 +59,22 @@ export function Footer() {
                 fontFamily: "var(--font-body)",
                 fontSize: "0.875rem",
                 lineHeight: 1.65,
-                color: "rgba(251,248,243,0.58)",
+                color: FAINT,
                 maxWidth: "200px",
                 marginBottom: "1.5rem",
               }}
             >
               Care for your face. Care for your hairline.
-              Launching in the UK.
+              Now shipping across the UK.
             </p>
-
-            {/* Socials */}
-            <div className="flex gap-3">
-              {[
-                { label: "Instagram", icon: <SocialInstagram />, href: "https://instagram.com" },
-                { label: "TikTok",    icon: <SocialTikTok />,    href: "https://tiktok.com" },
-              ].map((s) => (
-                <a
-                  key={s.label}
-                  href={s.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={`Sukoon on ${s.label}`}
-                  className="flex items-center justify-center w-9 h-9 rounded transition-colors duration-200"
-                  style={{
-                    border: "1px solid rgba(251,248,243,0.18)",
-                    color: "rgba(251,248,243,0.55)",
-                  }}
-                  onMouseEnter={(e) => {
-                    const el = e.currentTarget as HTMLElement;
-                    el.style.borderColor = "rgba(251,248,243,0.5)";
-                    el.style.color = "#FBF8F3";
-                  }}
-                  onMouseLeave={(e) => {
-                    const el = e.currentTarget as HTMLElement;
-                    el.style.borderColor = "rgba(251,248,243,0.18)";
-                    el.style.color = "rgba(251,248,243,0.55)";
-                  }}
-                >
-                  {s.icon}
-                </a>
-              ))}
-            </div>
           </div>
 
           {/* Nav columns */}
           {[
             { heading: "Shop", links: shopLinks },
-            { heading: "Learn", links: learnLinks },
+            { heading: "Company", links: companyLinks },
             { heading: "Support", links: supportLinks },
+            { heading: "Follow", links: followLinks },
           ].map((col) => (
             <div key={col.heading}>
               <p
@@ -125,7 +84,7 @@ export function Footer() {
                   fontWeight: 500,
                   letterSpacing: "0.18em",
                   textTransform: "uppercase",
-                  color: "rgba(251,248,243,0.38)",
+                  color: "rgba(67,74,51,0.45)",
                   marginBottom: "1.25rem",
                 }}
               >
@@ -140,11 +99,11 @@ export function Footer() {
                       style={{
                         fontFamily: "var(--font-body)",
                         fontSize: "0.875rem",
-                        color: "rgba(251,248,243,0.58)",
+                        color: FAINT,
                         letterSpacing: "0.01em",
                       }}
-                      onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.color = "#FBF8F3")}
-                      onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = "rgba(251,248,243,0.58)")}
+                      onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.color = INK)}
+                      onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = FAINT)}
                     >
                       {l.label}
                     </Link>
@@ -159,14 +118,14 @@ export function Footer() {
       {/* Legal bar */}
       <div
         className="border-t"
-        style={{ borderColor: "rgba(251,248,243,0.1)" }}
+        style={{ borderColor: LINE }}
       >
         <div className="container py-4 flex flex-col sm:flex-row items-center justify-between gap-2">
           <p
             style={{
               fontFamily: "var(--font-body)",
               fontSize: "0.75rem",
-              color: "rgba(251,248,243,0.35)",
+              color: "rgba(67,74,51,0.45)",
               letterSpacing: "0.04em",
             }}
           >
@@ -181,11 +140,11 @@ export function Footer() {
                 style={{
                   fontFamily: "var(--font-body)",
                   fontSize: "0.75rem",
-                  color: "rgba(251,248,243,0.35)",
+                  color: "rgba(67,74,51,0.45)",
                   letterSpacing: "0.04em",
                 }}
-                onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.color = "rgba(251,248,243,0.65)")}
-                onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = "rgba(251,248,243,0.35)")}
+                onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.color = INK)}
+                onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = "rgba(67,74,51,0.45)")}
               >
                 {item}
               </Link>

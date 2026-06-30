@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { SearchOverlay } from "./SearchOverlay";
 import { AccountPanel } from "./AccountPanel";
 import { BagPanel } from "./BagPanel";
+import { useCart } from "@/lib/cart-context";
 
 const links = [
   { label: "Shop",        href: "/shop" },
@@ -17,10 +18,19 @@ const GREY  = "#6E6E68";
 const LINEN = "#FBF8F3";
 const LINE  = "#E3E1DA";
 
-function IconBtn({ label, onClick, href, children }: { label: string; onClick?: () => void; href?: string; children: React.ReactNode }) {
-  const style: React.CSSProperties = { display: "flex", color: INK, background: "none", border: "none", padding: 0, cursor: "pointer" };
-  if (href) return <a href={href} aria-label={label} style={{ ...style, textDecoration: "none" }}>{children}</a>;
-  return <button aria-label={label} onClick={onClick} style={style}>{children}</button>;
+function IconBtn({ label, onClick, href, children, badge }: { label: string; onClick?: () => void; href?: string; children: React.ReactNode; badge?: number }) {
+  const style: React.CSSProperties = { position: "relative", display: "flex", color: INK, background: "none", border: "none", padding: 0, cursor: "pointer" };
+  const badgeEl = badge ? (
+    <span style={{
+      position: "absolute", top: -7, right: -8, minWidth: 15, height: 15, borderRadius: "50%",
+      backgroundColor: INK, color: "#FFFFFF", fontFamily: "var(--font-body)", fontSize: "0.5625rem",
+      fontWeight: 600, display: "flex", alignItems: "center", justifyContent: "center", padding: "0 3px",
+    }}>
+      {badge}
+    </span>
+  ) : null;
+  if (href) return <a href={href} aria-label={label} style={{ ...style, textDecoration: "none" }}>{children}{badgeEl}</a>;
+  return <button aria-label={label} onClick={onClick} style={style}>{children}{badgeEl}</button>;
 }
 
 function SearchIcon() {
@@ -92,6 +102,7 @@ export function SiteNav() {
   const [accountOpen, setAccountOpen] = useState(false);
   const [bagOpen, setBagOpen] = useState(false);
   const [solid, setSolid] = useState(false);
+  const { count } = useCart();
 
   useEffect(() => {
     const onScroll = () => setSolid(window.scrollY > 40);
@@ -108,7 +119,7 @@ export function SiteNav() {
   return (
     <>
       <header style={{
-        position: "fixed", top: 0, left: 0, right: 0, zIndex: 50,
+        position: "fixed", top: "2.25rem", left: 0, right: 0, zIndex: 50,
         backgroundColor: solid ? "rgba(251,248,243,0.96)" : "transparent",
         backdropFilter: solid ? "blur(10px)" : "none",
         borderBottom: `1px solid ${solid ? LINE : "transparent"}`,
@@ -151,12 +162,12 @@ export function SiteNav() {
             <span style={{ width: "1px", height: "16px", backgroundColor: LINE }} />
             <IconBtn label="Search" onClick={() => setSearchOpen(true)}><SearchIcon /></IconBtn>
             <IconBtn label="Account" onClick={() => setAccountOpen(true)}><AccountIcon /></IconBtn>
-            <IconBtn label="Bag" onClick={() => setBagOpen(true)}><BagIcon /></IconBtn>
+            <IconBtn label="Bag" onClick={() => setBagOpen(true)} badge={count}><BagIcon /></IconBtn>
           </div>
 
           <div className="flex md:hidden" style={{ justifySelf: "end", alignItems: "center", gap: "1.375rem" }}>
             <IconBtn label="Search" onClick={() => setSearchOpen(true)}><SearchIcon /></IconBtn>
-            <IconBtn label="Bag" onClick={() => setBagOpen(true)}><BagIcon /></IconBtn>
+            <IconBtn label="Bag" onClick={() => setBagOpen(true)} badge={count}><BagIcon /></IconBtn>
           </div>
         </div>
       </header>
@@ -225,7 +236,7 @@ export function SiteNav() {
               display: "flex", alignItems: "center", gap: "0.625rem", background: "none", border: "none", cursor: "pointer", color: LINEN,
               fontFamily: "var(--font-body)", fontSize: "0.8125rem", fontWeight: 500, letterSpacing: "0.04em", padding: 0,
             }}>
-              <BagIcon /> Bag
+              <BagIcon /> Bag{count > 0 ? ` (${count})` : ""}
             </button>
           </div>
 

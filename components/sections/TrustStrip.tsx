@@ -1,21 +1,21 @@
-function ShippingIcon() {
-  return <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round" aria-hidden><rect x="1" y="6" width="14" height="11"/><path d="M15 9h4l3 3v5h-7z"/><circle cx="6" cy="19" r="2"/><circle cx="18" cy="19" r="2"/></svg>;
+function LeafIcon() {
+  return <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M5 19c8-1 13-6 14-14-8 1-13 6-14 14z"/><path d="M5 19c2-4 5-8 9-11"/></svg>;
 }
-function LockIcon() {
-  return <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round" aria-hidden><rect x="4" y="11" width="16" height="9" rx="1"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>;
+function DropIcon() {
+  return <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M12 3c3 4.5 6 8 6 11.5a6 6 0 1 1-12 0C6 11 9 7.5 12 3z"/></svg>;
+}
+function FaceHairlineIcon() {
+  return <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round" aria-hidden><circle cx="12" cy="9" r="4.5"/><path d="M4.5 21c1.5-4 4-6 7.5-6s6 2 7.5 6"/></svg>;
 }
 function ShieldIcon() {
   return <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>;
 }
-function HeartIcon() {
-  return <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>;
-}
 
 const items = [
-  { icon: <ShippingIcon />, label: "Complimentary UK shipping" },
-  { icon: <LockIcon />,     label: "Secure checkout" },
-  { icon: <ShieldIcon />,   label: "UK Halal Certified" },
-  { icon: <HeartIcon />,    label: "Cruelty-free & vegan" },
+  { icon: <LeafIcon />,          label: "Natural & Botanical" },
+  { icon: <DropIcon />,          label: "Waterless Formula" },
+  { icon: <FaceHairlineIcon />,  label: "Face & Hairline" },
+  { icon: <ShieldIcon />,        label: "Ethical & Transparent" },
 ];
 
 export function TrustStrip() {

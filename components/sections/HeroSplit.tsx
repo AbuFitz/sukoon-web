@@ -32,7 +32,7 @@ export function HeroSplit() {
 
   return (
     <>
-      <section aria-label="Hero" className="flex flex-col md:grid md:grid-cols-2" style={{ position: "relative", minHeight: "100svh", backgroundColor: "#F7F1E4", overflow: "hidden" }}>
+      <section aria-label="Hero" className="flex flex-col md:grid md:grid-cols-2" style={{ position: "relative", minHeight: "100svh", paddingTop: "2.25rem", backgroundColor: "#F7F1E4", overflow: "hidden" }}>
 
         {/* Scroll cue */}
         <div className="hidden md:flex" style={{
@@ -107,7 +107,7 @@ export function HeroSplit() {
             opacity: shown ? 1 : 0, transform: shown ? "translateY(0)" : "translateY(18px)",
             transition: "opacity 0.9s ease 0.22s, transform 0.9s cubic-bezier(0.22,1,0.36,1) 0.22s",
           }}>
-            Skincare worth<br />slowing down for.
+            One oil, made<br />for both rituals.
           </h1>
 
           <p style={{
@@ -117,30 +117,45 @@ export function HeroSplit() {
             opacity: shown ? 1 : 0, transform: shown ? "translateY(0)" : "translateY(14px)",
             transition: "opacity 0.8s ease 0.34s, transform 0.8s cubic-bezier(0.22,1,0.36,1) 0.34s",
           }}>
-            One waterless oil. Engineered for both your skin and the hairline strain hijabs, under-caps, and tight styles leave behind.
+            A 100% waterless oil nectar, engineered for both your skin and the hairline strain hijabs, under-caps, and tight styles leave behind.
           </p>
 
           <div style={{
+            display: "flex", flexWrap: "wrap", alignItems: "center", gap: "1rem",
             opacity: shown ? 1 : 0, transform: shown ? "translateY(0)" : "translateY(10px)",
             transition: "opacity 0.8s ease 0.46s, transform 0.8s cubic-bezier(0.22,1,0.36,1) 0.46s",
+            marginBottom: "1.5rem",
           }}>
-            <a href="#waitlist" style={{
+            <a href="/shop" style={{
+              display: "inline-flex", alignItems: "center", gap: "0.625rem",
+              fontFamily: "var(--font-body)", fontSize: "0.6875rem", fontWeight: 500,
+              letterSpacing: "0.14em", textTransform: "uppercase",
+              color: "#F7F1E4", textDecoration: "none",
+              backgroundColor: "#2C2A1F", border: "1px solid #2C2A1F", borderRadius: "999px",
+              padding: "1rem 1.875rem",
+              transition: "background 0.3s ease",
+            }}
+              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.backgroundColor = "#3F4A36"; }}
+              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.backgroundColor = "#2C2A1F"; }}
+            >
+              Shop The Daily Solace Fluid
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" aria-hidden>
+                <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+              </svg>
+            </a>
+            <a href="#ritual" style={{
               display: "inline-flex", alignItems: "center", gap: "0.625rem",
               fontFamily: "var(--font-body)", fontSize: "0.6875rem", fontWeight: 500,
               letterSpacing: "0.14em", textTransform: "uppercase",
               color: "#2C2A1F", textDecoration: "none",
               border: "1px solid #2C2A1F", borderRadius: "999px",
               padding: "1rem 1.875rem",
-              marginBottom: "1.5rem",
               transition: "background 0.3s ease, color 0.3s ease, border-color 0.3s ease",
             }}
               onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.backgroundColor = "#2C2A1F"; el.style.color = "#F7F1E4"; }}
               onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.backgroundColor = "transparent"; el.style.color = "#2C2A1F"; }}
             >
-              Shop £35
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" aria-hidden>
-                <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
-              </svg>
+              Discover the ritual
             </a>
           </div>
 

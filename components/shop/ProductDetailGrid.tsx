@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import { products } from "@/lib/products";
+import { useCart } from "@/lib/cart-context";
 
 const INK  = "#2C2A1F";
 const SAGE = "#6B7B5C";
@@ -10,14 +11,23 @@ const LINE = "#E8D4AE";
 
 const highlights = [
   "80% Olive Squalane — lightweight, sinks in under 60 seconds",
-  "14.9% Niacinamide — strengthens barrier, fades marks",
-  "2% Black Seed Oil — calms follicle inflammation at the scalp",
+  "14.9% Niacinamide — supports barrier, helps even tone",
+  "2% Black Seed Oil — calms the scalp where tight styles cause friction",
   "One bottle, two rituals: face in the morning, hairline at night",
 ];
 
 export function ProductDetailGrid() {
   const [activeIdx, setActiveIdx] = useState(0);
+  const [qty, setQty] = useState(1);
+  const [justAdded, setJustAdded] = useState(false);
   const active = products[activeIdx];
+  const { addToBag } = useCart();
+
+  const handleAddToBag = () => {
+    addToBag(active.slug, qty);
+    setJustAdded(true);
+    setTimeout(() => setJustAdded(false), 1800);
+  };
 
   return (
     <section aria-label="Product detail" style={{
@@ -109,19 +119,43 @@ export function ProductDetailGrid() {
             })}
           </div>
 
-          <a href="/#waitlist" style={{
-            display: "flex", alignItems: "center", justifyContent: "center",
+          <p style={{
+            fontFamily: "var(--font-body)", fontSize: "0.6875rem", fontWeight: 600, color: INK,
+            letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: "0.875rem",
+          }}>
+            Quantity
+          </p>
+          <div style={{ display: "flex", alignItems: "center", border: `1.5px solid ${LINE}`, width: "fit-content", marginBottom: "1.5rem" }}>
+            <button
+              aria-label="Decrease quantity"
+              onClick={() => setQty(q => Math.max(1, q - 1))}
+              style={{ width: 42, height: 42, background: "none", border: "none", cursor: "pointer", color: INK, fontSize: "1rem" }}
+            >
+              −
+            </button>
+            <span style={{ width: 36, textAlign: "center", fontFamily: "var(--font-body)", fontSize: "0.9375rem", color: INK }}>{qty}</span>
+            <button
+              aria-label="Increase quantity"
+              onClick={() => setQty(q => q + 1)}
+              style={{ width: 42, height: 42, background: "none", border: "none", cursor: "pointer", color: INK, fontSize: "1rem" }}
+            >
+              +
+            </button>
+          </div>
+
+          <button onClick={handleAddToBag} style={{
+            display: "flex", alignItems: "center", justifyContent: "center", width: "100%",
             fontFamily: "var(--font-body)", fontSize: "0.6875rem", fontWeight: 500,
             letterSpacing: "0.14em", textTransform: "uppercase",
-            color: "#F7F1E4", textDecoration: "none",
-            backgroundColor: INK, padding: "1.0625rem", marginBottom: "2.25rem",
+            color: "#F7F1E4", border: "none", cursor: "pointer",
+            backgroundColor: justAdded ? "#3F4A36" : INK, padding: "1.0625rem", marginBottom: "2.25rem",
             transition: "background 0.25s",
           }}
-            onMouseEnter={e => { (e.currentTarget as HTMLElement).style.backgroundColor = "#3F4A36"; }}
-            onMouseLeave={e => { (e.currentTarget as HTMLElement).style.backgroundColor = INK; }}
+            onMouseEnter={e => { if (!justAdded) (e.currentTarget as HTMLElement).style.backgroundColor = "#3F4A36"; }}
+            onMouseLeave={e => { if (!justAdded) (e.currentTarget as HTMLElement).style.backgroundColor = INK; }}
           >
-            Notify Me When Live
-          </a>
+            {justAdded ? "Added to Bag" : "Add to Bag"}
+          </button>
 
           <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "0.75rem" }}>
             {highlights.map((h) => (

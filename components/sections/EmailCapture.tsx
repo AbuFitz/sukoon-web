@@ -16,96 +16,33 @@ export function EmailCapture() {
   return (
     <section
       id="waitlist"
-      aria-label="Join the waitlist"
+      aria-label="Join the circle"
       style={{
-        backgroundColor: "#3F4A36",
-        padding: "clamp(6rem, 14vh, 12rem) clamp(2rem, 6vw, 5rem)",
-        position: "relative",
-        overflow: "hidden",
+        backgroundColor: "#F7F1E4",
+        padding: "clamp(3rem, 7vw, 5rem) clamp(2rem, 6vw, 5rem)",
+        borderTop: "1px solid #E8D4AE",
       }}
     >
-      {/* Arabic watermark */}
-      <div
-        aria-hidden
-        style={{
-          position: "absolute",
-          right: "clamp(1rem, 5vw, 4rem)",
-          bottom: "-2rem",
-          fontFamily: "var(--font-display)",
-          fontSize: "clamp(8rem, 18vw, 18rem)",
-          color: "rgba(251,248,243,0.04)",
-          lineHeight: 1,
-          userSelect: "none",
-          pointerEvents: "none",
-          letterSpacing: "-0.02em",
-        }}
-      >
-        سكون
-      </div>
-
-      <div
-        style={{
-          maxWidth: "680px",
-          margin: "0 auto",
-          textAlign: "center",
-          position: "relative",
-          zIndex: 1,
-        }}
-      >
-        <p
-          style={{
-            fontFamily: "var(--font-body)",
-            fontSize: "0.625rem",
-            letterSpacing: "0.22em",
-            textTransform: "uppercase",
-            color: "rgba(251,248,243,0.35)",
-            marginBottom: "1.75rem",
-          }}
-        >
-          Launching Soon
+      <div style={{ maxWidth: "560px", margin: "0 auto", textAlign: "center" }}>
+        <p style={{
+          fontFamily: "var(--font-body)", fontSize: "0.5625rem", letterSpacing: "0.2em",
+          textTransform: "uppercase", color: "#6B7B5C", marginBottom: "1.25rem",
+        }}>
+          Stay Close to Sukoon
         </p>
 
-        <h2
-          style={{
-            fontFamily: "var(--font-display)",
-            fontSize: "clamp(2.25rem, 5vw, 4.5rem)",
-            fontWeight: 300,
-            lineHeight: 1.1,
-            letterSpacing: "-0.015em",
-            color: "#FBF8F3",
-            marginBottom: "1.5rem",
-          }}
-        >
-          Be the first to try<br />
-          The Daily Solace Fluid.
+        <h2 style={{
+          fontFamily: "var(--font-display)", fontSize: "clamp(1.625rem, 3.5vw, 2.25rem)",
+          fontWeight: 400, lineHeight: 1.2, letterSpacing: "-0.01em", color: "#2C2A1F", marginBottom: "1rem",
+        }}>
+          Receive rituals, ingredient notes,<br />and early access to future releases.
         </h2>
 
-        <p
-          style={{
-            fontFamily: "var(--font-body)",
-            fontSize: "0.9375rem",
-            lineHeight: 1.8,
-            color: "rgba(251,248,243,0.45)",
-            marginBottom: "3rem",
-            maxWidth: "380px",
-            margin: "0 auto 3rem",
-          }}
-        >
-          Launching at £35. Our first batch is limited to just 610 bottles —
-          join the waitlist to secure yours before they sell out.
-        </p>
-
-        <form onSubmit={handleSubmit} noValidate aria-label="Waitlist signup">
-          <div
-            style={{
-              display: "flex",
-              gap: "0",
-              maxWidth: "440px",
-              margin: "0 auto",
-              border: "1px solid rgba(251,248,243,0.2)",
-              flexWrap: "wrap",
-            }}
-          >
+        <form onSubmit={handleSubmit} noValidate aria-label="Email signup" style={{ marginTop: "1.75rem" }}>
+          <div style={{
+            display: "flex", gap: 0, maxWidth: "400px", margin: "0 auto",
+            border: "1px solid #2C2A1F", flexWrap: "wrap",
+          }}>
             <input
               type="email"
               value={email}
@@ -115,62 +52,46 @@ export function EmailCapture() {
               aria-invalid={status === "error"}
               required
               style={{
-                flex: 1,
-                fontFamily: "var(--font-body)",
-                fontSize: "0.875rem",
-                color: "#FBF8F3",
-                backgroundColor: "transparent",
-                border: "none",
-                padding: "1rem 1.25rem",
-                outline: "none",
-                minWidth: 0,
+                flex: 1, fontFamily: "var(--font-body)", fontSize: "0.8125rem", color: "#2C2A1F",
+                backgroundColor: "transparent", border: "none", padding: "0.875rem 1.125rem",
+                outline: "none", minWidth: 0,
               }}
             />
             <button
               type="submit"
               style={{
-                fontFamily: "var(--font-body)",
-                fontSize: "0.625rem",
-                fontWeight: 600,
-                letterSpacing: "0.18em",
-                textTransform: "uppercase",
-                color: "#3F4A36",
-                backgroundColor: "#FBF8F3",
-                border: "none",
-                padding: "1rem 1.5rem",
-                cursor: "pointer",
-                whiteSpace: "nowrap",
-                transition: "background 0.25s, color 0.25s",
-                flexShrink: 0,
+                fontFamily: "var(--font-body)", fontSize: "0.625rem", fontWeight: 600,
+                letterSpacing: "0.16em", textTransform: "uppercase",
+                color: "#F7F1E4", backgroundColor: "#2C2A1F", border: "none",
+                padding: "0.875rem 1.375rem", cursor: "pointer", whiteSpace: "nowrap",
+                transition: "background 0.25s", flexShrink: 0,
               }}
-              onMouseEnter={e => {
-                const el = e.currentTarget as HTMLElement;
-                el.style.backgroundColor = "#E8D4AE";
-              }}
-              onMouseLeave={e => {
-                const el = e.currentTarget as HTMLElement;
-                el.style.backgroundColor = "#FBF8F3";
-              }}
+              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.backgroundColor = "#3F4A36"; }}
+              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.backgroundColor = "#2C2A1F"; }}
             >
-              Notify Me
+              Join the Circle
             </button>
           </div>
 
           {status === "error" && (
-            <p role="alert" style={{ fontFamily: "var(--font-body)", fontSize: "0.8rem", color: "rgba(251,248,243,0.5)", marginTop: "0.875rem" }}>
+            <p role="alert" style={{ fontFamily: "var(--font-body)", fontSize: "0.75rem", color: "#6B7B5C", marginTop: "0.75rem" }}>
               Please enter a valid email address.
             </p>
           )}
           {status === "success" && (
-            <p role="status" style={{ fontFamily: "var(--font-display)", fontSize: "1.0625rem", fontStyle: "italic", color: "rgba(251,248,243,0.65)", marginTop: "1rem" }}>
-              You&rsquo;re on the list. We&rsquo;ll be in touch.
+            <p role="status" style={{ fontFamily: "var(--font-display)", fontSize: "1rem", fontStyle: "italic", color: "#3F4A36", marginTop: "0.875rem" }}>
+              You&rsquo;re in. Welcome to the circle.
             </p>
           )}
-
-          <p style={{ fontFamily: "var(--font-body)", fontSize: "0.6875rem", color: "rgba(251,248,243,0.22)", marginTop: "1.25rem", letterSpacing: "0.04em" }}>
-            No spam. Unsubscribe anytime.
-          </p>
         </form>
+
+        <a href="/shop" style={{
+          display: "inline-block", marginTop: "1.75rem",
+          fontFamily: "var(--font-body)", fontSize: "0.75rem", fontWeight: 500,
+          letterSpacing: "0.04em", color: "#2C2A1F", textDecoration: "underline",
+        }}>
+          Shop The Daily Solace Fluid
+        </a>
       </div>
     </section>
   );
