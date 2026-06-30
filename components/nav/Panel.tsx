@@ -1,7 +1,7 @@
 "use client";
 
-const INK  = "#2C2A1F";
-const LINE = "#DDD5C8";
+const INK  = "#111110";
+const LINE = "#E3E1DA";
 
 export function Panel({ open, onClose, title, children }: { open: boolean; onClose: () => void; title: string; children: React.ReactNode }) {
   return (
@@ -10,7 +10,7 @@ export function Panel({ open, onClose, title, children }: { open: boolean; onClo
         onClick={onClose}
         style={{
           position: "absolute", inset: 0,
-          backgroundColor: "rgba(44,42,31,0.4)",
+          backgroundColor: "rgba(17,17,16,0.45)",
           opacity: open ? 1 : 0,
           transition: "opacity 0.35s ease",
         }}
@@ -21,7 +21,7 @@ export function Panel({ open, onClose, title, children }: { open: boolean; onClo
           position: "fixed",
           backgroundColor: "#FFFFFF",
           display: "flex", flexDirection: "column",
-          boxShadow: "0 -10px 40px rgba(44,42,31,0.18)",
+          boxShadow: "0 -10px 40px rgba(17,17,16,0.16)",
         }}
       >
         <div style={{

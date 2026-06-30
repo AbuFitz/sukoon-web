@@ -12,10 +12,10 @@ const links = [
   { label: "Journal",     href: "#" },
 ];
 
-const INK   = "#2C2A1F";
-const SAGE  = "#6B7B5C";
+const INK   = "#111110";
+const GREY  = "#6E6E68";
 const LINEN = "#FBF8F3";
-const LINE  = "#DDD5C8";
+const LINE  = "#E3E1DA";
 
 function IconBtn({ label, onClick, href, children }: { label: string; onClick?: () => void; href?: string; children: React.ReactNode }) {
   const style: React.CSSProperties = { display: "flex", color: INK, background: "none", border: "none", padding: 0, cursor: "pointer" };
@@ -79,7 +79,7 @@ function NavLink({ label, href }: { label: string; href: string }) {
     >
       {label}
       <span style={{
-        position: "absolute", left: 0, bottom: 0, height: "1px", backgroundColor: SAGE,
+        position: "absolute", left: 0, bottom: 0, height: "1px", backgroundColor: INK,
         width: hover ? "100%" : "0%", transition: "width 0.3s cubic-bezier(0.22,1,0.36,1)",
       }} />
     </a>
@@ -109,7 +109,7 @@ export function SiteNav() {
     <>
       <header style={{
         position: "fixed", top: 0, left: 0, right: 0, zIndex: 50,
-        backgroundColor: solid ? "rgba(247,241,228,0.96)" : "transparent",
+        backgroundColor: solid ? "rgba(251,248,243,0.96)" : "transparent",
         backdropFilter: solid ? "blur(10px)" : "none",
         borderBottom: `1px solid ${solid ? LINE : "transparent"}`,
         transition: "background-color 0.4s ease, border-color 0.4s ease",
@@ -165,27 +165,27 @@ export function SiteNav() {
       <AccountPanel open={accountOpen} onClose={() => setAccountOpen(false)} />
       <BagPanel open={bagOpen} onClose={() => setBagOpen(false)} />
 
-      {/* Mobile full-screen panel */}
+      {/* Mobile full-screen panel — high-contrast black */}
       <div aria-hidden={!open} style={{
         position: "fixed", inset: 0, zIndex: 60,
         pointerEvents: open ? "auto" : "none",
-        backgroundColor: LINEN,
+        backgroundColor: INK,
         opacity: open ? 1 : 0,
         transition: "opacity 0.4s ease",
         display: "flex", flexDirection: "column",
       }}>
         <div style={{
-          height: "84px", display: "flex", alignItems: "center", justifyContent: "space-between",
-          padding: "0 clamp(1.5rem, 5vw, 3.5rem)", borderBottom: `1px solid ${LINE}`, flexShrink: 0,
+          height: "76px", display: "flex", alignItems: "center", justifyContent: "space-between",
+          padding: "0 clamp(1.5rem, 5vw, 3.5rem)", borderBottom: "1px solid rgba(255,255,255,0.14)", flexShrink: 0,
         }}>
           <span style={{
-            fontFamily: "var(--font-display)", fontSize: "1.5rem", letterSpacing: "0.16em",
-            textTransform: "uppercase", color: INK,
+            fontFamily: "var(--font-display)", fontSize: "1.375rem", letterSpacing: "0.16em",
+            textTransform: "uppercase", color: LINEN,
           }}>
             Sukoon
           </span>
           <button aria-label="Close menu" onClick={() => setOpen(false)} style={{
-            background: "none", border: "none", color: INK, cursor: "pointer", padding: 0, display: "flex",
+            background: "none", border: "none", color: LINEN, cursor: "pointer", padding: 0, display: "flex",
           }}>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" aria-hidden>
               <line x1="5" y1="5" x2="19" y2="19" /><line x1="19" y1="5" x2="5" y2="19" />
@@ -194,39 +194,35 @@ export function SiteNav() {
         </div>
 
         <div style={{ flex: 1, overflowY: "auto", display: "flex", flexDirection: "column" }}>
-          <nav style={{ padding: "1.5rem clamp(1.5rem, 5vw, 3.5rem) 0.5rem" }} aria-label="Mobile">
+          <nav style={{ padding: "2rem clamp(1.5rem, 5vw, 3.5rem) 0.5rem" }} aria-label="Mobile">
             {links.map((l, i) => (
               <a key={l.label} href={l.href} onClick={() => setOpen(false)} style={{
-                display: "flex", alignItems: "baseline", gap: "1rem",
-                fontFamily: "var(--font-display)", fontSize: "2.25rem", fontWeight: 400,
-                color: INK, textDecoration: "none", padding: "0.75rem 0",
-                borderBottom: `1px solid ${LINE}`,
+                display: "block",
+                fontFamily: "var(--font-display)", fontSize: "2.5rem", fontWeight: 400,
+                color: LINEN, textDecoration: "none", padding: "0.625rem 0",
                 opacity: open ? 1 : 0,
-                transform: open ? "translateY(0)" : "translateY(10px)",
-                transition: `opacity 0.45s ease ${open ? 0.1 + i * 0.06 : 0}s, transform 0.45s ease ${open ? 0.1 + i * 0.06 : 0}s`,
+                transform: open ? "translateY(0)" : "translateY(14px)",
+                transition: `opacity 0.5s ease ${open ? 0.08 + i * 0.05 : 0}s, transform 0.5s ease ${open ? 0.08 + i * 0.05 : 0}s`,
               }}>
-                <span style={{ fontFamily: "var(--font-body)", fontSize: "0.6875rem", color: SAGE }}>
-                  0{i + 1}
-                </span>
                 {l.label}
               </a>
             ))}
           </nav>
 
           <div style={{
-            padding: "1.5rem clamp(1.5rem, 5vw, 3.5rem)",
+            padding: "1.5rem clamp(1.5rem, 5vw, 3.5rem) 0",
             display: "flex", gap: "2rem",
             opacity: open ? 1 : 0,
-            transition: `opacity 0.5s ease ${open ? 0.4 : 0}s`,
+            transition: `opacity 0.5s ease ${open ? 0.36 : 0}s`,
           }}>
             <button onClick={() => { setOpen(false); setAccountOpen(true); }} style={{
-              display: "flex", alignItems: "center", gap: "0.625rem", background: "none", border: "none", cursor: "pointer", color: INK,
+              display: "flex", alignItems: "center", gap: "0.625rem", background: "none", border: "none", cursor: "pointer", color: LINEN,
               fontFamily: "var(--font-body)", fontSize: "0.8125rem", fontWeight: 500, letterSpacing: "0.04em", padding: 0,
             }}>
               <AccountIcon /> Account
             </button>
             <button onClick={() => { setOpen(false); setBagOpen(true); }} style={{
-              display: "flex", alignItems: "center", gap: "0.625rem", background: "none", border: "none", cursor: "pointer", color: INK,
+              display: "flex", alignItems: "center", gap: "0.625rem", background: "none", border: "none", cursor: "pointer", color: LINEN,
               fontFamily: "var(--font-body)", fontSize: "0.8125rem", fontWeight: 500, letterSpacing: "0.04em", padding: 0,
             }}>
               <BagIcon /> Bag
@@ -236,15 +232,15 @@ export function SiteNav() {
           <div style={{
             marginTop: "auto",
             padding: "1.5rem clamp(1.5rem, 5vw, 3.5rem) 2rem",
-            borderTop: `1px solid ${LINE}`,
+            borderTop: "1px solid rgba(255,255,255,0.14)",
             display: "flex", justifyContent: "space-between", alignItems: "center",
             opacity: open ? 1 : 0,
-            transition: `opacity 0.5s ease ${open ? 0.5 : 0}s`,
+            transition: `opacity 0.5s ease ${open ? 0.46 : 0}s`,
           }}>
-            <span style={{ fontFamily: "var(--font-body)", fontSize: "0.6875rem", letterSpacing: "0.06em", color: SAGE }}>
+            <span style={{ fontFamily: "var(--font-body)", fontSize: "0.6875rem", letterSpacing: "0.06em", color: "rgba(251,248,243,0.55)" }}>
               UK Halal Certified
             </span>
-            <span style={{ fontFamily: "var(--font-body)", fontSize: "0.6875rem", letterSpacing: "0.06em", color: SAGE }}>
+            <span style={{ fontFamily: "var(--font-body)", fontSize: "0.6875rem", letterSpacing: "0.06em", color: "rgba(251,248,243,0.55)" }}>
               Made in the UK
             </span>
           </div>
