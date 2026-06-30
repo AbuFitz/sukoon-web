@@ -24,6 +24,7 @@ export function HeroSplit() {
         position: "relative", minHeight: "100svh", paddingTop: "1.75rem",
         backgroundColor: "#F1E9D7", overflow: "hidden",
       }}>
+        {/* Background image */}
         <Image
           src={HERO_IMAGE}
           alt="The Daily Solace Fluid dropper bottle"
@@ -32,27 +33,53 @@ export function HeroSplit() {
           style={{ objectFit: "cover", objectPosition: "center" }}
         />
 
+        {/* Left-side gradient veil — ensures text legibility on any uploaded photo */}
+        <div style={{
+          position: "absolute", inset: 0, zIndex: 0,
+          background: "linear-gradient(to right, rgba(247,241,228,0.78) 0%, rgba(247,241,228,0.42) 45%, transparent 72%)",
+        }} />
+
+        {/* Scroll cue */}
+        <div className="hidden md:flex" style={{
+          position: "absolute", left: "clamp(2rem, 5vw, 5rem)", bottom: "2.5rem", zIndex: 2,
+          alignItems: "center", gap: "0.75rem",
+          opacity: shown ? 0.6 : 0, transition: "opacity 1s ease 1.1s",
+        }}>
+          <span style={{
+            writingMode: "vertical-rl", transform: "rotate(180deg)",
+            fontFamily: "var(--font-body)", fontSize: "0.625rem", fontWeight: 500,
+            letterSpacing: "0.22em", textTransform: "uppercase", color: "#6B7B5C",
+          }}>
+            Scroll to discover
+          </span>
+          <span style={{
+            display: "block", width: "1px", height: "2.5rem", backgroundColor: "#6B7B5C",
+            animation: "sukoon-scrollline 2.2s ease-in-out infinite",
+          }} />
+        </div>
+
+        {/* Text overlay */}
         <div ref={textRef} style={{
           position: "relative", zIndex: 1, height: "100%", minHeight: "100svh",
           display: "flex", flexDirection: "column", justifyContent: "center",
-          padding: "1.75rem clamp(2rem, 6vw, 6rem) 0",
-          maxWidth: "640px",
+          padding: "0 clamp(4rem, 7vw, 7rem) 4rem",
+          maxWidth: "700px",
         }}>
           <h1 style={{
             fontFamily: "var(--font-display)",
-            fontSize: "clamp(2.625rem, 5.5vw, 4.25rem)",
-            fontWeight: 400, letterSpacing: "-0.02em", lineHeight: 1.08,
+            fontSize: "clamp(3rem, 6vw, 5.25rem)",
+            fontWeight: 400, letterSpacing: "-0.02em", lineHeight: 1.06,
             color: "#2C2A1F",
             marginBottom: "clamp(1.25rem, 3vw, 1.75rem)",
             opacity: shown ? 1 : 0, transform: shown ? "translateY(0)" : "translateY(18px)",
             transition: "opacity 0.9s ease 0.1s, transform 0.9s cubic-bezier(0.22,1,0.36,1) 0.1s",
           }}>
-            Care for<br />your face.<br />Care for your<br />hairline.
+            Care for your face.<br />Care for your hairline.
           </h1>
 
           <p style={{
             fontFamily: "var(--font-body)", fontSize: "0.9375rem", lineHeight: 1.75,
-            color: "#454332", maxWidth: "340px",
+            color: "#454332", maxWidth: "360px",
             marginBottom: "clamp(1.75rem, 4vw, 2.25rem)",
             opacity: shown ? 1 : 0, transform: shown ? "translateY(0)" : "translateY(14px)",
             transition: "opacity 0.8s ease 0.22s, transform 0.8s cubic-bezier(0.22,1,0.36,1) 0.22s",
@@ -81,16 +108,29 @@ export function HeroSplit() {
 
             <a href="#ritual" style={{
               display: "flex", alignItems: "center", gap: "0.5rem", width: "fit-content",
-              fontFamily: "var(--font-body)", fontSize: "0.8125rem", fontWeight: 500,
-              color: "#2C2A1F", textDecoration: "underline", textUnderlineOffset: "3px",
+              fontFamily: "var(--font-body)", fontSize: "0.8125rem", fontWeight: 400,
+              color: "rgba(44,42,31,0.65)", textDecoration: "none",
               marginTop: "1.125rem",
-            }}>
+              transition: "opacity 0.2s ease",
+            }}
+              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.opacity = "1"; (e.currentTarget as HTMLElement).style.color = "#2C2A1F"; }}
+              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.opacity = "1"; (e.currentTarget as HTMLElement).style.color = "rgba(44,42,31,0.65)"; }}
+            >
               Learn more
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" aria-hidden>
-                <line x1="12" y1="5" x2="12" y2="19" /><polyline points="6 13 12 19 18 13" />
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" aria-hidden>
+                <polyline points="6 9 12 15 18 9" />
               </svg>
             </a>
           </div>
+
+          <p style={{
+            fontFamily: "var(--font-body)", fontSize: "0.6875rem", letterSpacing: "0.04em",
+            color: "#A9BA98", marginTop: "1.75rem",
+            opacity: shown ? 1 : 0,
+            transition: "opacity 0.8s ease 0.54s",
+          }}>
+            UK Halal Certified &middot; Formulated &amp; Made in the UK
+          </p>
         </div>
       </section>
 
