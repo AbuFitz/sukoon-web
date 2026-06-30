@@ -50,8 +50,24 @@ export function SearchOverlay({ open, onClose }: { open: boolean; onClose: () =>
         boxShadow: "0 30px 60px rgba(44,42,31,0.25)",
       }}>
         <div style={{
+          display: "flex", alignItems: "center", justifyContent: "space-between",
+          padding: "1.5rem clamp(1.25rem, 4vw, 2.5rem) 0",
+        }}>
+          <span style={{ fontFamily: "var(--font-body)", fontSize: "1.0625rem", fontWeight: 700, letterSpacing: "0.01em", color: INK }}>
+            Search
+          </span>
+          <button aria-label="Close search" onClick={onClose} style={{
+            background: "none", border: "none", color: INK, cursor: "pointer", padding: "0.25rem", display: "flex",
+          }}>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" aria-hidden>
+              <line x1="5" y1="5" x2="19" y2="19" /><line x1="19" y1="5" x2="5" y2="19" />
+            </svg>
+          </button>
+        </div>
+
+        <div style={{
           display: "flex", alignItems: "center", gap: "1rem",
-          padding: "1.5rem clamp(1.25rem, 4vw, 2.5rem)",
+          padding: "1.25rem clamp(1.25rem, 4vw, 2.5rem) 1.5rem",
           borderBottom: `1px solid ${LINE}`,
         }}>
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={SAGE} strokeWidth="1.6" strokeLinecap="round" aria-hidden>
@@ -67,13 +83,6 @@ export function SearchOverlay({ open, onClose }: { open: boolean; onClose: () =>
               background: "transparent",
             }}
           />
-          <button aria-label="Close search" onClick={onClose} style={{
-            background: "none", border: "none", color: INK, cursor: "pointer", padding: "0.25rem", display: "flex",
-          }}>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" aria-hidden>
-              <line x1="5" y1="5" x2="19" y2="19" /><line x1="19" y1="5" x2="5" y2="19" />
-            </svg>
-          </button>
         </div>
 
         <div style={{ padding: "1.75rem clamp(1.25rem, 4vw, 2.5rem) 2.25rem" }}>

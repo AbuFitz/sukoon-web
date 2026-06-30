@@ -28,7 +28,7 @@ export function Panel({ open, onClose, title, children }: { open: boolean; onClo
           display: "flex", alignItems: "center", justifyContent: "space-between",
           padding: "1.5rem clamp(1.25rem, 4vw, 2rem)", borderBottom: `1px solid ${LINE}`, flexShrink: 0,
         }}>
-          <span style={{ fontFamily: "var(--font-display)", fontSize: "1.375rem", color: INK }}>{title}</span>
+          <span style={{ fontFamily: "var(--font-body)", fontSize: "1.0625rem", fontWeight: 700, letterSpacing: "0.01em", color: INK }}>{title}</span>
           <button aria-label={`Close ${title}`} onClick={onClose} style={{
             background: "none", border: "none", color: INK, cursor: "pointer", padding: "0.25rem", display: "flex",
           }}>

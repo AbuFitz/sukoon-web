@@ -42,8 +42,9 @@ function AccountIcon() {
 function BagIcon() {
   return (
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-      <path d="M6 9h12l-1.1 11.2a1.5 1.5 0 0 1-1.5 1.3H8.6a1.5 1.5 0 0 1-1.5-1.3L6 9z" />
-      <path d="M9 9V7a3 3 0 0 1 6 0v2" />
+      <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z" />
+      <path d="M3 6h18" />
+      <path d="M16 10a4 4 0 0 1-8 0" />
     </svg>
   );
 }
@@ -119,12 +120,20 @@ export function SiteNav() {
           display: "grid", gridTemplateColumns: "1fr auto 1fr",
           alignItems: "center",
         }}>
-          {/* Left links */}
+          {/* Left links (desktop) / hamburger (mobile) */}
           <nav className="hidden md:flex" style={{ gap: "2.25rem" }} aria-label="Primary">
             <NavLink {...links[0]} />
             <NavLink {...links[1]} />
           </nav>
-          <div className="flex md:hidden" />
+          <div className="flex md:hidden" style={{ justifySelf: "start" }}>
+            <button
+              aria-label={open ? "Close menu" : "Open menu"}
+              onClick={() => setOpen(o => !o)}
+              style={{ background: "none", border: "none", color: INK, cursor: "pointer", padding: 0, display: "flex" }}
+            >
+              <HamburgerIcon open={open} />
+            </button>
+          </div>
 
           {/* Centered wordmark */}
           <a href="/" style={{
@@ -148,13 +157,6 @@ export function SiteNav() {
           <div className="flex md:hidden" style={{ justifySelf: "end", alignItems: "center", gap: "1.375rem" }}>
             <IconBtn label="Search" onClick={() => setSearchOpen(true)}><SearchIcon /></IconBtn>
             <IconBtn label="Bag" onClick={() => setBagOpen(true)}><BagIcon /></IconBtn>
-            <button
-              aria-label={open ? "Close menu" : "Open menu"}
-              onClick={() => setOpen(o => !o)}
-              style={{ background: "none", border: "none", color: INK, cursor: "pointer", padding: 0, display: "flex" }}
-            >
-              <HamburgerIcon open={open} />
-            </button>
           </div>
         </div>
       </header>
