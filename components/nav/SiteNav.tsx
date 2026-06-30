@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { SearchOverlay } from "./SearchOverlay";
 
 const links = [
   { label: "Shop",        href: "#shop" },
@@ -11,9 +12,30 @@ const links = [
 
 const INK   = "#2C2A1F";
 const SAGE  = "#6B7B5C";
-const CREAM = "#F7F1E4";
 const LINEN = "#FBF8F3";
 const LINE  = "#DDD5C8";
+
+function IconBtn({ label, onClick, href, children }: { label: string; onClick?: () => void; href?: string; children: React.ReactNode }) {
+  const style: React.CSSProperties = { display: "flex", color: INK, background: "none", border: "none", padding: 0, cursor: "pointer" };
+  if (href) return <a href={href} aria-label={label} style={{ ...style, textDecoration: "none" }}>{children}</a>;
+  return <button aria-label={label} onClick={onClick} style={style}>{children}</button>;
+}
+
+function SearchIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" aria-hidden>
+      <circle cx="11" cy="11" r="7" /><line x1="21" y1="21" x2="16.2" y2="16.2" />
+    </svg>
+  );
+}
+
+function AccountIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+      <circle cx="12" cy="8" r="3.5" /><path d="M4.5 20c1.5-4 4-6 7.5-6s6 2 7.5 6" />
+    </svg>
+  );
+}
 
 function BagIcon() {
   return (
@@ -63,6 +85,7 @@ function NavLink({ label, href }: { label: string; href: string }) {
 
 export function SiteNav() {
   const [open, setOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
   const [solid, setSolid] = useState(false);
 
   useEffect(() => {
@@ -73,9 +96,9 @@ export function SiteNav() {
   }, []);
 
   useEffect(() => {
-    document.body.style.overflow = open ? "hidden" : "";
+    document.body.style.overflow = (open || searchOpen) ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
-  }, [open]);
+  }, [open, searchOpen]);
 
   return (
     <>
@@ -109,19 +132,19 @@ export function SiteNav() {
             Sukoon
           </a>
 
-          {/* Right links + bag */}
+          {/* Right links + icons */}
           <div className="hidden md:flex" style={{ justifySelf: "end", alignItems: "center", gap: "2.25rem" }}>
             <NavLink {...links[2]} />
             <NavLink {...links[3]} />
-            <a href="#" aria-label="Bag" style={{ display: "flex", color: INK }}>
-              <BagIcon />
-            </a>
+            <span style={{ width: "1px", height: "16px", backgroundColor: LINE }} />
+            <IconBtn label="Search" onClick={() => setSearchOpen(true)}><SearchIcon /></IconBtn>
+            <IconBtn label="Account" href="#account"><AccountIcon /></IconBtn>
+            <IconBtn label="Bag" href="#"><BagIcon /></IconBtn>
           </div>
 
-          <div className="flex md:hidden" style={{ justifySelf: "end", alignItems: "center", gap: "1.25rem" }}>
-            <a href="#" aria-label="Bag" style={{ display: "flex", color: INK }}>
-              <BagIcon />
-            </a>
+          <div className="flex md:hidden" style={{ justifySelf: "end", alignItems: "center", gap: "1.125rem" }}>
+            <IconBtn label="Search" onClick={() => setSearchOpen(true)}><SearchIcon /></IconBtn>
+            <IconBtn label="Bag" href="#"><BagIcon /></IconBtn>
             <button
               aria-label={open ? "Close menu" : "Open menu"}
               onClick={() => setOpen(o => !o)}
@@ -132,6 +155,8 @@ export function SiteNav() {
           </div>
         </div>
       </header>
+
+      <SearchOverlay open={searchOpen} onClose={() => setSearchOpen(false)} />
 
       {/* Mobile full-screen panel */}
       <div aria-hidden={!open} style={{
@@ -144,7 +169,7 @@ export function SiteNav() {
       }}>
         <div style={{
           height: "84px", display: "flex", alignItems: "center", justifyContent: "space-between",
-          padding: "0 clamp(1.5rem, 5vw, 3.5rem)", borderBottom: `1px solid ${LINE}`,
+          padding: "0 clamp(1.5rem, 5vw, 3.5rem)", borderBottom: `1px solid ${LINE}`, flexShrink: 0,
         }}>
           <span style={{
             fontFamily: "var(--font-display)", fontSize: "1.5rem", letterSpacing: "0.16em",
@@ -155,42 +180,67 @@ export function SiteNav() {
           <button aria-label="Close menu" onClick={() => setOpen(false)} style={{
             background: "none", border: "none", color: INK, cursor: "pointer", padding: 0, display: "flex",
           }}>
-            <HamburgerIcon open={true} />
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" aria-hidden>
+              <line x1="5" y1="5" x2="19" y2="19" /><line x1="19" y1="5" x2="5" y2="19" />
+            </svg>
           </button>
         </div>
 
-        <nav style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "center", padding: "0 clamp(1.5rem, 5vw, 3.5rem)" }} aria-label="Mobile">
-          {links.map((l, i) => (
-            <a key={l.label} href={l.href} onClick={() => setOpen(false)} style={{
-              display: "flex", alignItems: "baseline", gap: "1rem",
-              fontFamily: "var(--font-display)", fontSize: "2.25rem", fontWeight: 400,
-              color: INK, textDecoration: "none", padding: "0.75rem 0",
-              borderBottom: i < links.length - 1 ? `1px solid ${LINE}` : "none",
-              opacity: open ? 1 : 0,
-              transform: open ? "translateY(0)" : "translateY(10px)",
-              transition: `opacity 0.45s ease ${open ? 0.12 + i * 0.06 : 0}s, transform 0.45s ease ${open ? 0.12 + i * 0.06 : 0}s`,
-            }}>
-              <span style={{ fontFamily: "var(--font-body)", fontSize: "0.6875rem", color: SAGE }}>
-                0{i + 1}
-              </span>
-              {l.label}
-            </a>
-          ))}
-        </nav>
+        <div style={{ flex: 1, overflowY: "auto", display: "flex", flexDirection: "column" }}>
+          <nav style={{ padding: "1.5rem clamp(1.5rem, 5vw, 3.5rem) 0.5rem" }} aria-label="Mobile">
+            {links.map((l, i) => (
+              <a key={l.label} href={l.href} onClick={() => setOpen(false)} style={{
+                display: "flex", alignItems: "baseline", gap: "1rem",
+                fontFamily: "var(--font-display)", fontSize: "2.25rem", fontWeight: 400,
+                color: INK, textDecoration: "none", padding: "0.75rem 0",
+                borderBottom: `1px solid ${LINE}`,
+                opacity: open ? 1 : 0,
+                transform: open ? "translateY(0)" : "translateY(10px)",
+                transition: `opacity 0.45s ease ${open ? 0.1 + i * 0.06 : 0}s, transform 0.45s ease ${open ? 0.1 + i * 0.06 : 0}s`,
+              }}>
+                <span style={{ fontFamily: "var(--font-body)", fontSize: "0.6875rem", color: SAGE }}>
+                  0{i + 1}
+                </span>
+                {l.label}
+              </a>
+            ))}
+          </nav>
 
-        <div style={{
-          padding: "1.75rem clamp(1.5rem, 5vw, 3.5rem) 2.25rem",
-          borderTop: `1px solid ${LINE}`,
-          display: "flex", justifyContent: "space-between", alignItems: "center",
-          opacity: open ? 1 : 0,
-          transition: `opacity 0.5s ease ${open ? 0.4 : 0}s`,
-        }}>
-          <span style={{ fontFamily: "var(--font-body)", fontSize: "0.6875rem", letterSpacing: "0.06em", color: SAGE }}>
-            UK Halal Certified
-          </span>
-          <span style={{ fontFamily: "var(--font-body)", fontSize: "0.6875rem", letterSpacing: "0.06em", color: SAGE }}>
-            Made in the UK
-          </span>
+          <div style={{
+            padding: "1.5rem clamp(1.5rem, 5vw, 3.5rem)",
+            display: "flex", gap: "2rem",
+            opacity: open ? 1 : 0,
+            transition: `opacity 0.5s ease ${open ? 0.4 : 0}s`,
+          }}>
+            <a href="#account" onClick={() => setOpen(false)} style={{
+              display: "flex", alignItems: "center", gap: "0.625rem", textDecoration: "none", color: INK,
+              fontFamily: "var(--font-body)", fontSize: "0.8125rem", fontWeight: 500, letterSpacing: "0.04em",
+            }}>
+              <AccountIcon /> Account
+            </a>
+            <a href="#" onClick={() => setOpen(false)} style={{
+              display: "flex", alignItems: "center", gap: "0.625rem", textDecoration: "none", color: INK,
+              fontFamily: "var(--font-body)", fontSize: "0.8125rem", fontWeight: 500, letterSpacing: "0.04em",
+            }}>
+              <BagIcon /> Bag
+            </a>
+          </div>
+
+          <div style={{
+            marginTop: "auto",
+            padding: "1.5rem clamp(1.5rem, 5vw, 3.5rem) 2rem",
+            borderTop: `1px solid ${LINE}`,
+            display: "flex", justifyContent: "space-between", alignItems: "center",
+            opacity: open ? 1 : 0,
+            transition: `opacity 0.5s ease ${open ? 0.5 : 0}s`,
+          }}>
+            <span style={{ fontFamily: "var(--font-body)", fontSize: "0.6875rem", letterSpacing: "0.06em", color: SAGE }}>
+              UK Halal Certified
+            </span>
+            <span style={{ fontFamily: "var(--font-body)", fontSize: "0.6875rem", letterSpacing: "0.06em", color: SAGE }}>
+              Made in the UK
+            </span>
+          </div>
         </div>
       </div>
     </>
