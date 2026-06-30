@@ -32,7 +32,7 @@ export function HeroSplit() {
 
   return (
     <>
-      <section aria-label="Hero" className="flex flex-col md:grid md:grid-cols-2" style={{ position: "relative", minHeight: "100svh", paddingTop: "97px", backgroundColor: "#F7F1E4", overflow: "hidden" }}>
+      <section aria-label="Hero" className="flex flex-col md:grid md:grid-cols-2" style={{ position: "relative", minHeight: "100svh", backgroundColor: "#F7F1E4", overflow: "hidden" }}>
 
         {/* Scroll cue */}
         <div className="hidden md:flex" style={{
