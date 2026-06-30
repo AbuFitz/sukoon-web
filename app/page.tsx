@@ -1,4 +1,3 @@
-import { PromoBar }        from "@/components/nav/PromoBar";
 import { SiteNav }        from "@/components/nav/SiteNav";
 import { HeroSplit }       from "@/components/sections/HeroSplit";
 import { CategoryTiles }   from "@/components/sections/CategoryTiles";
@@ -17,7 +16,6 @@ import { Footer }          from "@/components/sections/Footer";
 export default function Home() {
   return (
     <>
-      <PromoBar />
       <SiteNav />
       <main>
         <HeroSplit />
