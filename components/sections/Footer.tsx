@@ -3,8 +3,8 @@
 import Link from "next/link";
 
 const shopLinks = [
-  { label: "Face Oil No. 01", href: "#shop" },
-  { label: "The Complete Ritual", href: "#shop" },
+  { label: "The Daily Solace Fluid", href: "#shop" },
+  { label: "Travel Case Bundle", href: "#shop" },
   { label: "Join the Waitlist", href: "#waitlist" },
 ];
 
@@ -42,7 +42,7 @@ function SocialTikTok() {
 
 export function Footer() {
   return (
-    <footer style={{ backgroundColor: "#434A33" }} aria-label="Site footer">
+    <footer style={{ backgroundColor: "#3F4A36" }} aria-label="Site footer">
 
       {/* Main */}
       <div className="container pt-14 pb-10">
@@ -61,7 +61,7 @@ export function Footer() {
                 marginBottom: "0.875rem",
               }}
             >
-              Sukoon
+              Sukoon Skin
             </span>
             <p
               style={{
@@ -73,7 +73,7 @@ export function Footer() {
                 marginBottom: "1.5rem",
               }}
             >
-              Natural skincare, made for everyday ritual.
+              Care for your face. Care for your hairline.
               Launching in the UK.
             </p>
 
@@ -170,7 +170,7 @@ export function Footer() {
               letterSpacing: "0.04em",
             }}
           >
-            © {new Date().getFullYear()} Sukoon Ltd. All rights reserved.
+            © {new Date().getFullYear()} Sukoon Skin Ltd. All rights reserved.
           </p>
           <div className="flex gap-5">
             {["Privacy", "Terms", "Cookies"].map((item) => (

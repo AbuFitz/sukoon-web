@@ -1,104 +1,45 @@
-function LeafIcon() {
-  return (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/>
-      <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>
-    </svg>
-  );
+function ShippingIcon() {
+  return <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round" aria-hidden><rect x="1" y="6" width="14" height="11"/><path d="M15 9h4l3 3v5h-7z"/><circle cx="6" cy="19" r="2"/><circle cx="18" cy="19" r="2"/></svg>;
 }
-
-function VeganIcon() {
-  return (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2z"/>
-      <path d="M8 12s1.5 2 4 2 4-2 4-2"/>
-      <path d="M9 9h.01M15 9h.01"/>
-    </svg>
-  );
+function LockIcon() {
+  return <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round" aria-hidden><rect x="4" y="11" width="16" height="9" rx="1"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>;
 }
-
+function ShieldIcon() {
+  return <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>;
+}
 function HeartIcon() {
-  return (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
-    </svg>
-  );
+  return <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>;
 }
 
-function DropIcon() {
-  return (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>
-    </svg>
-  );
-}
-
-const badges = [
-  { icon: <LeafIcon />, label: "Plant-Derived" },
-  { icon: <VeganIcon />, label: "Vegan" },
-  { icon: <HeartIcon />, label: "Cruelty Free" },
-  { icon: <DropIcon />, label: "Non-Toxic" },
+const items = [
+  { icon: <ShippingIcon />, label: "Complimentary UK shipping" },
+  { icon: <LockIcon />,     label: "Secure checkout" },
+  { icon: <ShieldIcon />,   label: "UK Halal Certified" },
+  { icon: <HeartIcon />,    label: "Cruelty-free & vegan" },
 ];
 
 export function TrustStrip() {
   return (
-    <div
+    <section
+      aria-label="Trust signals"
       style={{
-        backgroundColor: "#F3EFE6",
-        borderTop: "1px solid #DDD5C8",
-        borderBottom: "1px solid #DDD5C8",
-        padding: "2.25rem clamp(2rem, 6vw, 5rem)",
+        backgroundColor: "#FBF8F3",
+        borderTop: "1px solid #E8D4AE",
+        padding: "clamp(2rem, 5vw, 3rem) clamp(1.5rem, 6vw, 5rem)",
       }}
     >
-      <div
-        style={{
-          maxWidth: "1320px",
-          margin: "0 auto",
-          display: "grid",
-          gridTemplateColumns: "repeat(4, 1fr)",
-          gap: "1rem",
-        }}
-      >
-        {badges.map((b) => (
-          <div
-            key={b.label}
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              gap: "0.75rem",
-            }}
-          >
-            <div
-              style={{
-                width: "3rem",
-                height: "3rem",
-                borderRadius: "50%",
-                border: "1px solid #C4BAB0",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                color: "#6B7451",
-              }}
-            >
-              {b.icon}
-            </div>
-            <p
-              style={{
-                fontFamily: "var(--font-body)",
-                fontSize: "0.625rem",
-                fontWeight: 500,
-                letterSpacing: "0.18em",
-                textTransform: "uppercase",
-                color: "#6B7451",
-                textAlign: "center",
-              }}
-            >
-              {b.label}
+      <div className="grid grid-cols-2 md:grid-cols-4" style={{
+        maxWidth: "1320px", margin: "0 auto", gap: "clamp(1.5rem, 4vw, 2rem)",
+      }}>
+        {items.map((it) => (
+          <div key={it.label} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "0.75rem", textAlign: "center" }}>
+            <span style={{ color: "#6B7B5C" }}>{it.icon}</span>
+            <p style={{ fontFamily: "var(--font-body)", fontSize: "0.75rem", color: "#2C2A1F", letterSpacing: "0.02em" }}>
+              {it.label}
             </p>
           </div>
         ))}
       </div>
-    </div>
+    </section>
   );
 }

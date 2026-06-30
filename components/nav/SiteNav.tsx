@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 
 const leftLinks = [
-  { label: "Shop",         href: "#" },
+  { label: "Shop",         href: "#shop" },
   { label: "Our Approach", href: "#story" },
   { label: "About",        href: "#" },
   { label: "Journal",      href: "#" },
@@ -15,6 +15,15 @@ function MenuIcon({ open }: { open: boolean }) {
       {open
         ? <><line x1="4" y1="4" x2="20" y2="20"/><line x1="20" y1="4" x2="4" y2="20"/></>
         : <><line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="14" x2="15" y2="14"/></>}
+    </svg>
+  );
+}
+
+function SearchIcon() {
+  return (
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+      <circle cx="11" cy="11" r="7"/>
+      <line x1="21" y1="21" x2="16.65" y2="16.65"/>
     </svg>
   );
 }
@@ -54,7 +63,7 @@ export function SiteNav() {
   return (
     <>
       <header style={{
-        position: "fixed", top: 0, left: 0, right: 0, zIndex: 50,
+        position: "fixed", top: "32px", left: 0, right: 0, zIndex: 50,
         transition: "background 0.4s, border-color 0.4s",
         backgroundColor: scrolled || open ? "rgba(251,248,243,0.95)" : "transparent",
         backdropFilter: scrolled || open ? "blur(16px)" : "none",
@@ -97,6 +106,11 @@ export function SiteNav() {
           </a>
 
           <div className="hidden md:flex justify-end items-center gap-6">
+            <button aria-label="Search" style={{ background: "none", border: "none", color: "#2A2F1E", opacity: 0.5, cursor: "pointer", padding: 0, display: "flex", transition: "opacity 0.2s" }}
+              onMouseEnter={e => ((e.currentTarget as HTMLElement).style.opacity = "1")}
+              onMouseLeave={e => ((e.currentTarget as HTMLElement).style.opacity = "0.5")}>
+              <SearchIcon />
+            </button>
             <a href="#" style={linkStyle}
               onMouseEnter={e => ((e.currentTarget as HTMLElement).style.opacity = "1")}
               onMouseLeave={e => ((e.currentTarget as HTMLElement).style.opacity = "0.5")}>
@@ -114,7 +128,7 @@ export function SiteNav() {
 
       {open && (
         <div style={{
-          position: "fixed", top: "60px", left: 0, right: 0, bottom: 0, zIndex: 49,
+          position: "fixed", top: "92px", left: 0, right: 0, bottom: 0, zIndex: 49,
           backgroundColor: "#FBF8F3",
           display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: "3rem",
         }}>
