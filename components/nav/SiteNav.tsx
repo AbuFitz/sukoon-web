@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { SearchOverlay } from "./SearchOverlay";
+import { AccountPanel } from "./AccountPanel";
+import { BagPanel } from "./BagPanel";
 
 const links = [
   { label: "Shop",        href: "#shop" },
@@ -40,8 +42,8 @@ function AccountIcon() {
 function BagIcon() {
   return (
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-      <path d="M7 8.5V7a5 5 0 0 1 10 0v1.5" />
-      <rect x="4" y="8.5" width="16" height="12" rx="2.5" />
+      <path d="M6 9h12l-1.1 11.2a1.5 1.5 0 0 1-1.5 1.3H8.6a1.5 1.5 0 0 1-1.5-1.3L6 9z" />
+      <path d="M9 9V7a3 3 0 0 1 6 0v2" />
     </svg>
   );
 }
@@ -86,6 +88,8 @@ function NavLink({ label, href }: { label: string; href: string }) {
 export function SiteNav() {
   const [open, setOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
+  const [accountOpen, setAccountOpen] = useState(false);
+  const [bagOpen, setBagOpen] = useState(false);
   const [solid, setSolid] = useState(false);
 
   useEffect(() => {
@@ -96,9 +100,9 @@ export function SiteNav() {
   }, []);
 
   useEffect(() => {
-    document.body.style.overflow = (open || searchOpen) ? "hidden" : "";
+    document.body.style.overflow = (open || searchOpen || accountOpen || bagOpen) ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
-  }, [open, searchOpen]);
+  }, [open, searchOpen, accountOpen, bagOpen]);
 
   return (
     <>
@@ -109,10 +113,9 @@ export function SiteNav() {
         borderBottom: `1px solid ${solid ? LINE : "transparent"}`,
         transition: "background-color 0.4s ease, border-color 0.4s ease",
       }}>
-        <div style={{
+        <div className="h-[76px] md:h-[84px]" style={{
           maxWidth: "1480px", margin: "0 auto",
-          padding: "0 clamp(1.5rem, 5vw, 3.5rem)",
-          height: "84px",
+          padding: "0 clamp(1.25rem, 5vw, 3.5rem)",
           display: "grid", gridTemplateColumns: "1fr auto 1fr",
           alignItems: "center",
         }}>
@@ -138,13 +141,13 @@ export function SiteNav() {
             <NavLink {...links[3]} />
             <span style={{ width: "1px", height: "16px", backgroundColor: LINE }} />
             <IconBtn label="Search" onClick={() => setSearchOpen(true)}><SearchIcon /></IconBtn>
-            <IconBtn label="Account" href="#account"><AccountIcon /></IconBtn>
-            <IconBtn label="Bag" href="#"><BagIcon /></IconBtn>
+            <IconBtn label="Account" onClick={() => setAccountOpen(true)}><AccountIcon /></IconBtn>
+            <IconBtn label="Bag" onClick={() => setBagOpen(true)}><BagIcon /></IconBtn>
           </div>
 
-          <div className="flex md:hidden" style={{ justifySelf: "end", alignItems: "center", gap: "1.125rem" }}>
+          <div className="flex md:hidden" style={{ justifySelf: "end", alignItems: "center", gap: "1.375rem" }}>
             <IconBtn label="Search" onClick={() => setSearchOpen(true)}><SearchIcon /></IconBtn>
-            <IconBtn label="Bag" href="#"><BagIcon /></IconBtn>
+            <IconBtn label="Bag" onClick={() => setBagOpen(true)}><BagIcon /></IconBtn>
             <button
               aria-label={open ? "Close menu" : "Open menu"}
               onClick={() => setOpen(o => !o)}
@@ -157,6 +160,8 @@ export function SiteNav() {
       </header>
 
       <SearchOverlay open={searchOpen} onClose={() => setSearchOpen(false)} />
+      <AccountPanel open={accountOpen} onClose={() => setAccountOpen(false)} />
+      <BagPanel open={bagOpen} onClose={() => setBagOpen(false)} />
 
       {/* Mobile full-screen panel */}
       <div aria-hidden={!open} style={{
@@ -212,18 +217,18 @@ export function SiteNav() {
             opacity: open ? 1 : 0,
             transition: `opacity 0.5s ease ${open ? 0.4 : 0}s`,
           }}>
-            <a href="#account" onClick={() => setOpen(false)} style={{
-              display: "flex", alignItems: "center", gap: "0.625rem", textDecoration: "none", color: INK,
-              fontFamily: "var(--font-body)", fontSize: "0.8125rem", fontWeight: 500, letterSpacing: "0.04em",
+            <button onClick={() => { setOpen(false); setAccountOpen(true); }} style={{
+              display: "flex", alignItems: "center", gap: "0.625rem", background: "none", border: "none", cursor: "pointer", color: INK,
+              fontFamily: "var(--font-body)", fontSize: "0.8125rem", fontWeight: 500, letterSpacing: "0.04em", padding: 0,
             }}>
               <AccountIcon /> Account
-            </a>
-            <a href="#" onClick={() => setOpen(false)} style={{
-              display: "flex", alignItems: "center", gap: "0.625rem", textDecoration: "none", color: INK,
-              fontFamily: "var(--font-body)", fontSize: "0.8125rem", fontWeight: 500, letterSpacing: "0.04em",
+            </button>
+            <button onClick={() => { setOpen(false); setBagOpen(true); }} style={{
+              display: "flex", alignItems: "center", gap: "0.625rem", background: "none", border: "none", cursor: "pointer", color: INK,
+              fontFamily: "var(--font-body)", fontSize: "0.8125rem", fontWeight: 500, letterSpacing: "0.04em", padding: 0,
             }}>
               <BagIcon /> Bag
-            </a>
+            </button>
           </div>
 
           <div style={{

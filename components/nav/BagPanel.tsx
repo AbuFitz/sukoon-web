@@ -1,0 +1,37 @@
+"use client";
+
+import { Panel } from "./Panel";
+
+const INK  = "#2C2A1F";
+const SAGE = "#6B7B5C";
+
+export function BagPanel({ open, onClose }: { open: boolean; onClose: () => void }) {
+  return (
+    <Panel open={open} onClose={onClose} title="Your Bag">
+      <div style={{
+        display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center",
+        padding: "2.5rem 0",
+      }}>
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke={SAGE} strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden style={{ marginBottom: "1.25rem" }}>
+          <path d="M6 9h12l-1.1 11.2a1.5 1.5 0 0 1-1.5 1.3H8.6a1.5 1.5 0 0 1-1.5-1.3L6 9z" />
+          <path d="M9 9V7a3 3 0 0 1 6 0v2" />
+        </svg>
+        <p style={{ fontFamily: "var(--font-display)", fontSize: "1.25rem", color: INK, marginBottom: "0.625rem" }}>
+          Your bag is empty
+        </p>
+        <p style={{ fontFamily: "var(--font-body)", fontSize: "0.875rem", color: SAGE, lineHeight: 1.6, maxWidth: "280px", marginBottom: "1.75rem" }}>
+          The Daily Solace Fluid hasn&rsquo;t launched yet — join the waitlist to be first to shop.
+        </p>
+        <a href="#waitlist" onClick={onClose} style={{
+          display: "inline-flex", alignItems: "center", justifyContent: "center",
+          padding: "0.9375rem 2rem", textDecoration: "none",
+          backgroundColor: INK, color: "#F7F1E4",
+          fontFamily: "var(--font-body)", fontSize: "0.75rem", fontWeight: 500,
+          letterSpacing: "0.12em", textTransform: "uppercase",
+        }}>
+          Join the Waitlist
+        </a>
+      </div>
+    </Panel>
+  );
+}
