@@ -1,4 +1,3 @@
-import { AnnouncementBar }  from "@/components/sections/AnnouncementBar";
 import { SiteNav }          from "@/components/nav/SiteNav";
 import { HeroSplit }        from "@/components/sections/HeroSplit";
 import { TrustStrip }       from "@/components/sections/TrustStrip";
@@ -15,7 +14,6 @@ import { Footer }           from "@/components/sections/Footer";
 export default function Home() {
   return (
     <>
-      <AnnouncementBar />
       <SiteNav />
       <main>
         <HeroSplit />

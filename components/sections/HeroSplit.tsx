@@ -3,20 +3,7 @@
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
-const badges = [
-  { label: "Plant-Derived", icon: "leaf" },
-  { label: "Vegan",         icon: "sprout" },
-  { label: "Cruelty-Free",  icon: "heart" },
-  { label: "Non-Toxic",     icon: "drop" },
-] as const;
-
-function BadgeIcon({ icon }: { icon: typeof badges[number]["icon"] }) {
-  const common = { width: 22, height: 22, viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: 1.5, strokeLinecap: "round" as const, strokeLinejoin: "round" as const, "aria-hidden": true };
-  if (icon === "leaf") return <svg {...common}><path d="M5 19c8-1 13-6 14-14-8 1-13 6-14 14z" /><path d="M5 19c2-4 5-8 9-11" /></svg>;
-  if (icon === "sprout") return <svg {...common}><path d="M12 21V11" /><path d="M12 11c0-4-3-6-7-6 0 4 3 6 7 6z" /><path d="M12 14c0-3.5 2.5-5.5 6-5.5 0 3.5-2.5 5.5-6 5.5z" /></svg>;
-  if (icon === "heart") return <svg {...common}><path d="M12 20s-7-4.4-9.3-9.1C1.4 7.7 3 4.5 6.2 4 8.4 3.7 10.5 4.8 12 7c1.5-2.2 3.6-3.3 5.8-3 3.2.5 4.8 3.7 3.5 6.9C19 15.6 12 20 12 20z" /></svg>;
-  return <svg {...common}><path d="M12 3c3 4.5 6 8 6 11.5a6 6 0 1 1-12 0C6 11 9 7.5 12 3z" /></svg>;
-}
+const HERO_IMAGE = "https://images.unsplash.com/photo-1707539160277-e39464517645?w=1800&q=90&fit=crop";
 
 function useReveal() {
   const ref = useRef<HTMLDivElement>(null);
@@ -32,29 +19,86 @@ export function HeroSplit() {
 
   return (
     <>
-      <section aria-label="Hero" className="flex flex-col md:grid md:grid-cols-2" style={{ position: "relative", minHeight: "100svh", paddingTop: "1.75rem", backgroundColor: "#F7F1E4", overflow: "hidden" }}>
+      {/* Desktop: full-bleed image with overlaid left-aligned text */}
+      <section aria-label="Hero" className="hidden md:block" style={{
+        position: "relative", minHeight: "100svh", paddingTop: "1.75rem",
+        backgroundColor: "#F1E9D7", overflow: "hidden",
+      }}>
+        <Image
+          src={HERO_IMAGE}
+          alt="The Daily Solace Fluid dropper bottle"
+          fill priority
+          sizes="100vw"
+          style={{ objectFit: "cover", objectPosition: "center" }}
+        />
 
-        {/* Scroll cue */}
-        <div className="hidden md:flex" style={{
-          position: "absolute", left: "1.5rem", bottom: "2.5rem", zIndex: 2,
-          alignItems: "center", gap: "0.75rem",
-          opacity: shown ? 0.6 : 0, transition: "opacity 1s ease 1.1s",
+        <div ref={textRef} style={{
+          position: "relative", zIndex: 1, height: "100%", minHeight: "100svh",
+          display: "flex", flexDirection: "column", justifyContent: "center",
+          padding: "1.75rem clamp(2rem, 6vw, 6rem) 0",
+          maxWidth: "640px",
         }}>
-          <span style={{
-            writingMode: "vertical-rl", transform: "rotate(180deg)",
-            fontFamily: "var(--font-body)", fontSize: "0.625rem", fontWeight: 500,
-            letterSpacing: "0.22em", textTransform: "uppercase", color: "#6B7B5C",
+          <h1 style={{
+            fontFamily: "var(--font-display)",
+            fontSize: "clamp(2.625rem, 5.5vw, 4.25rem)",
+            fontWeight: 400, letterSpacing: "-0.02em", lineHeight: 1.08,
+            color: "#2C2A1F",
+            marginBottom: "clamp(1.25rem, 3vw, 1.75rem)",
+            opacity: shown ? 1 : 0, transform: shown ? "translateY(0)" : "translateY(18px)",
+            transition: "opacity 0.9s ease 0.1s, transform 0.9s cubic-bezier(0.22,1,0.36,1) 0.1s",
           }}>
-            Scroll to discover
-          </span>
-          <span style={{
-            display: "block", width: "1px", height: "2.5rem", backgroundColor: "#6B7B5C",
-            animation: "sukoon-scrollline 2.2s ease-in-out infinite",
-          }} />
+            Care for<br />your face.<br />Care for your<br />hairline.
+          </h1>
+
+          <p style={{
+            fontFamily: "var(--font-body)", fontSize: "0.9375rem", lineHeight: 1.75,
+            color: "#454332", maxWidth: "340px",
+            marginBottom: "clamp(1.75rem, 4vw, 2.25rem)",
+            opacity: shown ? 1 : 0, transform: shown ? "translateY(0)" : "translateY(14px)",
+            transition: "opacity 0.8s ease 0.22s, transform 0.8s cubic-bezier(0.22,1,0.36,1) 0.22s",
+          }}>
+            A 100% waterless oil nectar, crafted to restore your skin, strengthen your barrier and protect your hairline.
+          </p>
+
+          <div style={{
+            opacity: shown ? 1 : 0, transform: shown ? "translateY(0)" : "translateY(10px)",
+            transition: "opacity 0.8s ease 0.34s, transform 0.8s cubic-bezier(0.22,1,0.36,1) 0.34s",
+          }}>
+            <a href="#ritual" style={{
+              display: "inline-flex", alignItems: "center",
+              fontFamily: "var(--font-body)", fontSize: "0.6875rem", fontWeight: 500,
+              letterSpacing: "0.14em", textTransform: "uppercase",
+              color: "#F7F1E4", textDecoration: "none",
+              backgroundColor: "#3F4A36", border: "1px solid #3F4A36",
+              padding: "0.9375rem 1.875rem",
+              transition: "background 0.3s ease",
+            }}
+              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.backgroundColor = "#2C2A1F"; }}
+              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.backgroundColor = "#3F4A36"; }}
+            >
+              Discover the Ritual
+            </a>
+
+            <a href="#ritual" style={{
+              display: "flex", alignItems: "center", gap: "0.5rem", width: "fit-content",
+              fontFamily: "var(--font-body)", fontSize: "0.8125rem", fontWeight: 500,
+              color: "#2C2A1F", textDecoration: "underline", textUnderlineOffset: "3px",
+              marginTop: "1.125rem",
+            }}>
+              Learn more
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" aria-hidden>
+                <line x1="12" y1="5" x2="12" y2="19" /><polyline points="6 13 12 19 18 13" />
+              </svg>
+            </a>
+          </div>
         </div>
+      </section>
+
+      {/* Mobile: existing stacked layout, unchanged */}
+      <section aria-label="Hero" className="flex flex-col md:hidden" style={{ position: "relative", minHeight: "100svh", paddingTop: "1.75rem", backgroundColor: "#F7F1E4", overflow: "hidden" }}>
 
         {/* Image */}
-        <div className="order-1 md:order-2" style={{
+        <div style={{
           position: "relative", minHeight: "clamp(380px, 90vw, 100svh)", flexShrink: 0,
           display: "flex", alignItems: "center", justifyContent: "center",
           backgroundColor: "#F1E9D7",
@@ -74,17 +118,17 @@ export function HeroSplit() {
             animation: shown ? "sukoon-float 7s ease-in-out 1.4s infinite" : "none",
           }}>
             <Image
-              src="https://images.unsplash.com/photo-1707539160277-e39464517645?w=1400&q=90&fit=crop"
+              src={HERO_IMAGE}
               alt="The Daily Solace Fluid dropper bottle resting on stone"
               fill priority
-              sizes="(max-width: 768px) 100vw, 50vw"
+              sizes="100vw"
               style={{ objectFit: "contain", objectPosition: "center" }}
             />
           </div>
         </div>
 
         {/* Text */}
-        <div ref={textRef} className="order-2 md:order-1" style={{
+        <div style={{
           display: "flex", flexDirection: "column", justifyContent: "center",
           padding: "clamp(2.5rem, 8vw, 6rem) clamp(1.75rem, 6vw, 6rem) clamp(3rem, 8vw, 5rem) clamp(2.75rem, 8vw, 6rem)",
         }}>
@@ -165,23 +209,27 @@ export function HeroSplit() {
             opacity: shown ? 1 : 0,
             transition: "opacity 0.8s ease 0.56s",
           }}>
-            UK Halal Certified · Formulated &amp; Made in the UK
+            UK Halal Certified &middot; Formulated &amp; Made in the UK
           </p>
         </div>
       </section>
 
-      {/* Trust badges */}
-      <section aria-label="Why Sukoon" style={{
+      {/* Trust badges (mobile-only carryover; desktop uses TrustStrip section below) */}
+      <section aria-label="Why Sukoon" className="md:hidden" style={{
         backgroundColor: "#FBF8F3", borderTop: "1px solid #E8D4AE", borderBottom: "1px solid #E8D4AE",
         padding: "clamp(1.75rem, 4vw, 2.5rem) clamp(1.5rem, 6vw, 5rem)",
       }}>
-        <div className="grid grid-cols-2 md:grid-cols-4" style={{ maxWidth: "1100px", margin: "0 auto", gap: "clamp(1.5rem, 3vw, 2rem)" }}>
-          {badges.map((b, i) => (
+        <div className="grid grid-cols-2" style={{ maxWidth: "1100px", margin: "0 auto", gap: "clamp(1.5rem, 3vw, 2rem)" }}>
+          {[
+            { label: "Plant-Derived" },
+            { label: "Vegan" },
+            { label: "Cruelty-Free" },
+            { label: "Non-Toxic" },
+          ].map((b) => (
             <div key={b.label} style={{
               display: "flex", flexDirection: "column", alignItems: "center", gap: "0.625rem", textAlign: "center",
               color: "#6B7B5C",
             }}>
-              <BadgeIcon icon={b.icon} />
               <span style={{
                 fontFamily: "var(--font-body)", fontSize: "0.6875rem", fontWeight: 500,
                 letterSpacing: "0.1em", textTransform: "uppercase", color: "#2C2A1F",
