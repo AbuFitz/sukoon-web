@@ -148,7 +148,7 @@ export function SiteNav() {
 
           {/* Centered wordmark */}
           <a href="/" style={{
-            justifySelf: "center", textDecoration: "none", color: INK,
+            justifySelf: "center", textDecoration: "none", color: "#3F4A36",
             fontFamily: "var(--font-display)", fontSize: "2rem", fontWeight: 400,
             letterSpacing: "0.16em", textTransform: "uppercase", lineHeight: 1,
           }}>
