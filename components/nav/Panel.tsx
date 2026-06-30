@@ -16,12 +16,13 @@ export function Panel({ open, onClose, title, children }: { open: boolean; onClo
         }}
       />
       <div
-        className={`max-h-[85vh] md:max-h-full md:w-[420px] md:rounded-none rounded-t-3xl md:inset-y-0 md:right-0 md:left-auto md:bottom-auto inset-x-0 bottom-0 transition-transform duration-[400ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${open ? "translate-y-0 md:translate-x-0" : "translate-y-full md:translate-y-0 md:translate-x-full"}`}
+        className={`w-[88vw] max-w-[420px] inset-y-0 right-0 transition-transform duration-[400ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${open ? "translate-x-0" : "translate-x-full"}`}
         style={{
           position: "fixed",
+          height: "100dvh",
           backgroundColor: "#FFFFFF",
           display: "flex", flexDirection: "column",
-          boxShadow: "0 -10px 40px rgba(17,17,16,0.16)",
+          boxShadow: "-10px 0 40px rgba(17,17,16,0.16)",
         }}
       >
         <div style={{

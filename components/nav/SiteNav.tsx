@@ -215,12 +215,12 @@ export function SiteNav() {
             opacity: open ? 1 : 0,
             transition: `opacity 0.5s ease ${open ? 0.36 : 0}s`,
           }}>
-            <button onClick={() => { setOpen(false); setAccountOpen(true); }} style={{
-              display: "flex", alignItems: "center", gap: "0.625rem", background: "none", border: "none", cursor: "pointer", color: LINEN,
-              fontFamily: "var(--font-body)", fontSize: "0.8125rem", fontWeight: 500, letterSpacing: "0.04em", padding: 0,
+            <a href="/account" onClick={() => setOpen(false)} style={{
+              display: "flex", alignItems: "center", gap: "0.625rem", color: LINEN, textDecoration: "none",
+              fontFamily: "var(--font-body)", fontSize: "0.8125rem", fontWeight: 500, letterSpacing: "0.04em",
             }}>
               <AccountIcon /> Account
-            </button>
+            </a>
             <button onClick={() => { setOpen(false); setBagOpen(true); }} style={{
               display: "flex", alignItems: "center", gap: "0.625rem", background: "none", border: "none", cursor: "pointer", color: LINEN,
               fontFamily: "var(--font-body)", fontSize: "0.8125rem", fontWeight: 500, letterSpacing: "0.04em", padding: 0,
