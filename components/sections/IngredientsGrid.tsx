@@ -1,27 +1,27 @@
 const ingredients = [
   {
-    name: "Black Seed",
-    latin: "Nigella Sativa",
-    description: "Revered for its ability to balance and nourish the skin. A powerful antioxidant that supports clarity and skin resilience.",
-    bg: "#2A2F1E", fg: "#9BA584", symbol: "١",
+    name: "Olive Squalane",
+    latin: "80% of formula",
+    description: "An ultra-lightweight botanical lipid that mimics skin's natural sebum. Sinks in under 60 seconds — never greasy.",
+    bg: "#E8D4AE", fg: "#3F4A36", symbol: "١",
   },
   {
-    name: "Argan Oil",
-    latin: "Argania Spinosa",
-    description: "Cold-pressed from Moroccan kernels. Rich in essential fatty acids and vitamin E to nourish, soften and restore elasticity.",
-    bg: "#BFA882", fg: "#3D2B14", symbol: "٢",
+    name: "Vitamin B3",
+    latin: "Niacinamide · 14.9%",
+    description: "Strengthens the skin barrier, fades post-acne marks, and boosts microcirculation at the hairline root.",
+    bg: "#A9BA98", fg: "#2C2A1F", symbol: "٢",
   },
   {
-    name: "Rosehip",
-    latin: "Rosa Canina",
-    description: "Wild-harvested and gently cold-pressed. Supports skin renewal and brightens the look of dull skin.",
-    bg: "#8C3D32", fg: "#F5E4DC", symbol: "٣",
+    name: "Black Seed Oil",
+    latin: "Nigella Sativa · 2%",
+    description: "Deodorized for daily wear. Destroys acne-causing bacteria and calms follicle inflammation at the scalp.",
+    bg: "#3F4A36", fg: "#D9A356", symbol: "٣",
   },
   {
-    name: "Chamomile",
-    latin: "Matricaria Chamomilla",
-    description: "Steam-distilled for calm and comfort. Helps soothe sensitivity and support even skin tone.",
-    bg: "#B5A96A", fg: "#2A2710", symbol: "٤",
+    name: "Vitamin E",
+    latin: "Tocopherol · 3%",
+    description: "Stabilizes the formula and deeply conditions a stressed scalp and skin barrier.",
+    bg: "#D9A356", fg: "#2C2A1F", symbol: "٤",
   },
 ];
 
@@ -34,14 +34,14 @@ export function IngredientsGrid() {
     }}>
       <div style={{ maxWidth: "1320px", margin: "0 auto" }}>
         <div style={{ marginBottom: "clamp(2rem, 5vw, 3.5rem)" }}>
-          <p style={{ fontFamily: "var(--font-body)", fontSize: "0.5625rem", fontWeight: 500, letterSpacing: "0.2em", textTransform: "uppercase", color: "#9BA584", marginBottom: "1rem" }}>
+          <p style={{ fontFamily: "var(--font-body)", fontSize: "0.5625rem", fontWeight: 500, letterSpacing: "0.2em", textTransform: "uppercase", color: "#6B7B5C", marginBottom: "1rem" }}>
             The Formula
           </p>
           <h2 style={{
             fontFamily: "var(--font-display)",
             fontSize: "clamp(1.875rem, 4.5vw, 3.25rem)",
             fontWeight: 400, letterSpacing: "-0.015em", lineHeight: 1.1,
-            color: "#2A2F1E",
+            color: "#2C2A1F",
           }}>
             Four ingredients.<br />Chosen with intention.
           </h2>
@@ -73,10 +73,10 @@ export function IngredientsGrid() {
                 </span>
               </div>
               <div style={{ padding: "1.25rem 1.25rem 1.75rem" }}>
-                <h3 style={{ fontFamily: "var(--font-body)", fontSize: "0.875rem", fontWeight: 600, color: "#2A2F1E", marginBottom: "0.625rem", letterSpacing: "0.01em" }}>
+                <h3 style={{ fontFamily: "var(--font-body)", fontSize: "0.875rem", fontWeight: 600, color: "#2C2A1F", marginBottom: "0.625rem", letterSpacing: "0.01em" }}>
                   {ing.name}
                 </h3>
-                <p style={{ fontFamily: "var(--font-body)", fontSize: "0.8125rem", lineHeight: 1.75, color: "#6B7451" }}>
+                <p style={{ fontFamily: "var(--font-body)", fontSize: "0.8125rem", lineHeight: 1.75, color: "#6B7B5C" }}>
                   {ing.description}
                 </p>
               </div>

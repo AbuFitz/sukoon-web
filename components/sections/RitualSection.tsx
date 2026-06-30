@@ -11,7 +11,7 @@ const steps = [
   },
   {
     time: "Weekly",
-    instruction: "A full-face treatment. Apply a few extra drops and leave on for 20 minutes. Rinse or leave overnight.",
+    instruction: "A hairline treatment. Apply along the part-line and massage gently into the roots to ease friction strain.",
   },
 ];
 
@@ -19,7 +19,7 @@ export function RitualSection() {
   return (
     <section
       className="flex flex-col md:grid md:grid-cols-2"
-      style={{ backgroundColor: "#FBF8F3", borderTop: "1px solid #E8E1D8" }}
+      style={{ backgroundColor: "#FBF8F3", borderTop: "1px solid #E8D4AE" }}
     >
       {/* Text */}
       <div
@@ -31,7 +31,7 @@ export function RitualSection() {
           order: 1,
         }}
       >
-        <p style={{ fontFamily: "var(--font-body)", fontSize: "0.5625rem", fontWeight: 500, letterSpacing: "0.22em", textTransform: "uppercase", color: "#9BA584", marginBottom: "2rem" }}>
+        <p style={{ fontFamily: "var(--font-body)", fontSize: "0.5625rem", fontWeight: 500, letterSpacing: "0.22em", textTransform: "uppercase", color: "#6B7B5C", marginBottom: "2rem" }}>
           The Ritual
         </p>
 
@@ -42,21 +42,21 @@ export function RitualSection() {
             fontWeight: 400,
             lineHeight: 1.15,
             letterSpacing: "-0.01em",
-            color: "#2A2F1E",
+            color: "#2C2A1F",
             marginBottom: "clamp(2rem, 5vw, 3rem)",
             maxWidth: "340px",
           }}
         >
-          A quieter way to care for your skin.
+          A quieter way to care for skin and hairline.
         </h2>
 
         <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
           {steps.map((step) => (
             <div key={step.time}>
-              <p style={{ fontFamily: "var(--font-body)", fontSize: "0.5625rem", fontWeight: 500, letterSpacing: "0.18em", textTransform: "uppercase", color: "#9BA584", marginBottom: "0.5rem" }}>
+              <p style={{ fontFamily: "var(--font-body)", fontSize: "0.5625rem", fontWeight: 500, letterSpacing: "0.18em", textTransform: "uppercase", color: "#6B7B5C", marginBottom: "0.5rem" }}>
                 {step.time}
               </p>
-              <p style={{ fontFamily: "var(--font-body)", fontSize: "1rem", lineHeight: 1.85, color: "#6B7451", maxWidth: "320px" }}>
+              <p style={{ fontFamily: "var(--font-body)", fontSize: "1rem", lineHeight: 1.85, color: "#6B7B5C", maxWidth: "320px" }}>
                 {step.instruction}
               </p>
             </div>

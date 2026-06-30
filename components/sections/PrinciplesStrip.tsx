@@ -18,8 +18,8 @@ const principles = [
   { icon: <LeafIcon />, label: "Plant-Derived" },
   { icon: <HeartIcon />, label: "Cruelty Free" },
   { icon: <DropIcon />, label: "Non-Toxic" },
-  { icon: <SunIcon />, label: "Mindfully Sourced" },
-  { icon: <ShieldIcon />, label: "Minimal Formula" },
+  { icon: <ShieldIcon />, label: "Halal Certified" },
+  { icon: <SunIcon />, label: "Made in the UK" },
 ];
 
 export function PrinciplesStrip() {
@@ -27,12 +27,12 @@ export function PrinciplesStrip() {
     <section
       style={{
         backgroundColor: "#FBF8F3",
-        borderTop: "1px solid #E8E1D8",
+        borderTop: "1px solid #E8D4AE",
         padding: "clamp(3.5rem, 7vw, 7rem) clamp(1.5rem, 6vw, 5rem)",
       }}
     >
       <div style={{ maxWidth: "1320px", margin: "0 auto" }}>
-        <p style={{ fontFamily: "var(--font-body)", fontSize: "0.5625rem", fontWeight: 500, letterSpacing: "0.22em", textTransform: "uppercase", color: "#9BA584", marginBottom: "1.5rem" }}>
+        <p style={{ fontFamily: "var(--font-body)", fontSize: "0.5625rem", fontWeight: 500, letterSpacing: "0.22em", textTransform: "uppercase", color: "#6B7B5C", marginBottom: "1.5rem" }}>
           What We Stand For
         </p>
 
@@ -42,7 +42,7 @@ export function PrinciplesStrip() {
             fontSize: "clamp(1.875rem, 4vw, 3.25rem)",
             fontWeight: 400,
             letterSpacing: "-0.015em",
-            color: "#2A2F1E",
+            color: "#2C2A1F",
             marginBottom: "clamp(2.5rem, 6vw, 4rem)",
           }}
         >
@@ -57,16 +57,16 @@ export function PrinciplesStrip() {
                   width: "2.5rem",
                   height: "2.5rem",
                   borderRadius: "50%",
-                  border: "1px solid #C4BAB0",
+                  border: "1px solid #DDD5C8",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  color: "#6B7451",
+                  color: "#6B7B5C",
                 }}
               >
                 {p.icon}
               </div>
-              <p style={{ fontFamily: "var(--font-body)", fontSize: "0.8125rem", color: "#2A2F1E", lineHeight: 1.4 }}>
+              <p style={{ fontFamily: "var(--font-body)", fontSize: "0.8125rem", color: "#2C2A1F", lineHeight: 1.4 }}>
                 {p.label}
               </p>
             </div>

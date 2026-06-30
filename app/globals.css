@@ -1,16 +1,21 @@
 @import "tailwindcss";
 
-/* ─── Sukoon Design Tokens ─── */
+/* ─── Sukoon Skin Design Tokens ─── */
 @theme {
-  /* Brand palette */
-  --color-cream:       #F6F1E8;
-  --color-olive:       #6B7451;
-  --color-olive-dark:  #434A33;
-  --color-olive-soft:  #98A27E;
+  /* Brand palette — sage + warm cream, pulled from product photography */
+  --color-cream:       #F7F1E4;
+  --color-sage:         #A9BA98;
+  --color-sage-deep:    #6B7B5C;
+  --color-sage-dark:    #3F4A36;
   --color-linen:       #FBF8F3;
   --color-stone:       #DDD5C8;
-  --color-sand:        #E8DFC9;
-  --color-bark:        #2C2416;
+  --color-sand:        #E8D4AE;
+  --color-amber:        #D9A356;
+  --color-bark:        #2C2A1F;
+  /* legacy aliases kept for compatibility */
+  --color-olive:       #6B7B5C;
+  --color-olive-dark:  #3F4A36;
+  --color-olive-soft:  #A9BA98;
 
   /* Fonts */
   --font-display: var(--font-cormorant), Georgia, serif;

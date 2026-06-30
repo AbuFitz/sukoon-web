@@ -18,7 +18,7 @@ export function EmailCapture() {
       id="waitlist"
       aria-label="Join the waitlist"
       style={{
-        backgroundColor: "#434A33",
+        backgroundColor: "#3F4A36",
         padding: "clamp(6rem, 14vh, 12rem) clamp(2rem, 6vw, 5rem)",
         position: "relative",
         overflow: "hidden",
@@ -76,8 +76,8 @@ export function EmailCapture() {
             marginBottom: "1.5rem",
           }}
         >
-          Be the first to<br />
-          experience Sukoon.
+          Be the first to try<br />
+          The Daily Solace Fluid.
         </h2>
 
         <p
@@ -91,8 +91,8 @@ export function EmailCapture() {
             margin: "0 auto 3rem",
           }}
         >
-          Early access. Launch invitations. Behind-the-scenes stories.
-          The first release will be limited.
+          Launching at £35. Our first batch is limited to just 610 bottles —
+          join the waitlist to secure yours before they sell out.
         </p>
 
         <form onSubmit={handleSubmit} noValidate aria-label="Waitlist signup">
@@ -134,7 +134,7 @@ export function EmailCapture() {
                 fontWeight: 600,
                 letterSpacing: "0.18em",
                 textTransform: "uppercase",
-                color: "#434A33",
+                color: "#3F4A36",
                 backgroundColor: "#FBF8F3",
                 border: "none",
                 padding: "1rem 1.5rem",
@@ -145,7 +145,7 @@ export function EmailCapture() {
               }}
               onMouseEnter={e => {
                 const el = e.currentTarget as HTMLElement;
-                el.style.backgroundColor = "#E8DFC9";
+                el.style.backgroundColor = "#E8D4AE";
               }}
               onMouseLeave={e => {
                 const el = e.currentTarget as HTMLElement;

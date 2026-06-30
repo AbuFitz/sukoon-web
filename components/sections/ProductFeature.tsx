@@ -1,18 +1,18 @@
 import Image from "next/image";
 
 const features = [
-  "Cold-pressed Nigella Sativa — 42% of formula",
-  "Zero synthetic fragrance or preservatives",
+  "100% anhydrous — no preservative-heavy water base",
+  "Dual-zone: treats both face and hairline",
   "Lightweight — absorbs in under 60 seconds",
-  "Suitable for all skin types, including sensitive",
-  "Mindfully sourced. Small batch. UK-made.",
+  "UK Halal Certified",
+  "Formulated & manufactured in the UK",
 ];
 
 export function ProductFeature() {
   return (
     <section
       className="flex flex-col md:grid md:grid-cols-2"
-      style={{ backgroundColor: "#3A4028", minHeight: "clamp(520px, 70vw, 700px)" }}
+      style={{ backgroundColor: "#3F4A36", minHeight: "clamp(520px, 70vw, 700px)" }}
     >
       {/* Text */}
       <div
@@ -23,8 +23,8 @@ export function ProductFeature() {
           padding: "clamp(3.5rem, 7vw, 7rem) clamp(2rem, 6vw, 6rem)",
         }}
       >
-        <p style={{ fontFamily: "var(--font-body)", fontSize: "0.5625rem", fontWeight: 500, letterSpacing: "0.22em", textTransform: "uppercase", color: "rgba(251,248,243,0.3)", marginBottom: "2rem" }}>
-          THE SUKOON OIL
+        <p style={{ fontFamily: "var(--font-body)", fontSize: "0.5625rem", fontWeight: 500, letterSpacing: "0.22em", textTransform: "uppercase", color: "rgba(247,241,228,0.3)", marginBottom: "2rem" }}>
+          THE FORMULA
 </p>
 
         <h2
@@ -34,22 +34,22 @@ export function ProductFeature() {
             fontWeight: 400,
             lineHeight: 1.1,
             letterSpacing: "-0.015em",
-            color: "#FBF8F3",
+            color: "#F7F1E4",
             marginBottom: "1.5rem",
             maxWidth: "360px",
           }}
         >
-          One oil. Everything it needs to be.
+          One bottle. Two zones. Zero water.
         </h2>
 
-        <p style={{ fontFamily: "var(--font-body)", fontSize: "0.9375rem", lineHeight: 1.8, color: "rgba(251,248,243,0.45)", maxWidth: "360px", marginBottom: "2.5rem" }}>
-          Formulated without compromise. Every ingredient earns its place.
+        <p style={{ fontFamily: "var(--font-body)", fontSize: "0.9375rem", lineHeight: 1.8, color: "rgba(247,241,228,0.45)", maxWidth: "360px", marginBottom: "2.5rem" }}>
+          Formulated without compromise. Every ingredient earns its place. £35 / 30ml.
         </p>
 
         <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "0.75rem" }}>
           {features.map((f) => (
-            <li key={f} style={{ fontFamily: "var(--font-body)", fontSize: "0.8125rem", color: "rgba(251,248,243,0.5)", lineHeight: 1.6, display: "flex", gap: "0.625rem", alignItems: "flex-start" }}>
-              <span style={{ color: "#9BA584", flexShrink: 0, marginTop: "0.1em" }}>✓</span>
+            <li key={f} style={{ fontFamily: "var(--font-body)", fontSize: "0.8125rem", color: "rgba(247,241,228,0.5)", lineHeight: 1.6, display: "flex", gap: "0.625rem", alignItems: "flex-start" }}>
+              <span style={{ color: "#A9BA98", flexShrink: 0, marginTop: "0.1em" }}>✓</span>
               {f}
             </li>
           ))}
@@ -66,7 +66,7 @@ export function ProductFeature() {
         }}
       >
         <div style={{
-          border: "1px solid rgba(155,165,132,0.25)",
+          border: "1px solid rgba(169,186,152,0.25)",
           backgroundColor: "rgba(255,255,255,0.04)",
           padding: "1.5rem",
           display: "flex", alignItems: "center", justifyContent: "center",
@@ -74,7 +74,7 @@ export function ProductFeature() {
         <div style={{ position: "relative", width: "clamp(140px, 20vw, 280px)", height: "clamp(220px, 32vw, 440px)" }}>
           <Image
             src="https://images.unsplash.com/photo-1707539160277-e39464517645?w=900&q=90&fit=crop"
-            alt="Sukoon Black Seed Face Oil"
+            alt="The Daily Solace Fluid dropper bottle"
             fill
             priority
             sizes="(max-width: 768px) 40vw, 20vw"

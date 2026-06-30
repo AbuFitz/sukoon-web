@@ -93,7 +93,7 @@ export function SiteNav() {
             display: "block",
             paddingLeft: "0.5em",
           }}>
-            Sukoon
+            Sukoon Skin
           </a>
 
           <div className="hidden md:flex justify-end items-center gap-6">
