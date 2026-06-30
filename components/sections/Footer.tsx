@@ -2,9 +2,11 @@
 
 import Link from "next/link";
 
-const INK   = "#434A33";
-const FAINT = "rgba(67,74,51,0.6)";
-const LINE  = "#DDD5C8";
+const BG     = "#3F4A36";
+const LINEN  = "#FBF8F3";
+const FAINT  = "rgba(251,248,243,0.6)";
+const HEAD   = "rgba(251,248,243,0.45)";
+const LINE   = "rgba(251,248,243,0.16)";
 
 const shopLinks = [
   { label: "The Daily Solace Fluid", href: "/shop" },
@@ -33,7 +35,7 @@ const followLinks = [
 
 export function Footer() {
   return (
-    <footer style={{ backgroundColor: "#F6F1E8" }} aria-label="Site footer">
+    <footer style={{ backgroundColor: BG }} aria-label="Site footer">
 
       {/* Main */}
       <div className="container pt-14 pb-10">
@@ -47,7 +49,7 @@ export function Footer() {
                 fontSize: "1.5rem",
                 fontStyle: "italic",
                 fontWeight: 600,
-                color: INK,
+                color: LINEN,
                 display: "block",
                 marginBottom: "0.875rem",
               }}
@@ -84,7 +86,7 @@ export function Footer() {
                   fontWeight: 500,
                   letterSpacing: "0.18em",
                   textTransform: "uppercase",
-                  color: "rgba(67,74,51,0.45)",
+                  color: HEAD,
                   marginBottom: "1.25rem",
                 }}
               >
@@ -102,7 +104,7 @@ export function Footer() {
                         color: FAINT,
                         letterSpacing: "0.01em",
                       }}
-                      onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.color = INK)}
+                      onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.color = LINEN)}
                       onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = FAINT)}
                     >
                       {l.label}
@@ -125,7 +127,7 @@ export function Footer() {
             style={{
               fontFamily: "var(--font-body)",
               fontSize: "0.75rem",
-              color: "rgba(67,74,51,0.45)",
+              color: HEAD,
               letterSpacing: "0.04em",
             }}
           >
@@ -140,11 +142,11 @@ export function Footer() {
                 style={{
                   fontFamily: "var(--font-body)",
                   fontSize: "0.75rem",
-                  color: "rgba(67,74,51,0.45)",
+                  color: HEAD,
                   letterSpacing: "0.04em",
                 }}
-                onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.color = INK)}
-                onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = "rgba(67,74,51,0.45)")}
+                onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.color = LINEN)}
+                onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = HEAD)}
               >
                 {item}
               </Link>

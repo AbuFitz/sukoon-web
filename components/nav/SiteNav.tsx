@@ -83,8 +83,8 @@ function NavLink({ label, href }: { label: string; href: string }) {
       onMouseLeave={() => setHover(false)}
       style={{
         position: "relative",
-        fontFamily: "var(--font-body)", fontSize: "0.8125rem", fontWeight: 500,
-        letterSpacing: "0.06em", color: INK, textDecoration: "none", paddingBottom: "4px",
+        fontFamily: "var(--font-body)", fontSize: "0.9375rem", fontWeight: 500,
+        letterSpacing: "0.04em", color: INK, textDecoration: "none", paddingBottom: "4px",
       }}
     >
       {label}
@@ -119,7 +119,7 @@ export function SiteNav() {
   return (
     <>
       <header style={{
-        position: "fixed", top: "2.25rem", left: 0, right: 0, zIndex: 50,
+        position: "fixed", top: "1.75rem", left: 0, right: 0, zIndex: 50,
         backgroundColor: solid ? "rgba(251,248,243,0.96)" : "transparent",
         backdropFilter: solid ? "blur(10px)" : "none",
         borderBottom: `1px solid ${solid ? LINE : "transparent"}`,
@@ -149,7 +149,7 @@ export function SiteNav() {
           {/* Centered wordmark */}
           <a href="/" style={{
             justifySelf: "center", textDecoration: "none", color: INK,
-            fontFamily: "var(--font-display)", fontSize: "1.5rem", fontWeight: 400,
+            fontFamily: "var(--font-display)", fontSize: "2rem", fontWeight: 400,
             letterSpacing: "0.16em", textTransform: "uppercase", lineHeight: 1,
           }}>
             Sukoon
@@ -190,7 +190,7 @@ export function SiteNav() {
           padding: "0 clamp(1.5rem, 5vw, 3.5rem)", borderBottom: "1px solid rgba(255,255,255,0.14)", flexShrink: 0,
         }}>
           <span style={{
-            fontFamily: "var(--font-display)", fontSize: "1.375rem", letterSpacing: "0.16em",
+            fontFamily: "var(--font-display)", fontSize: "1.75rem", letterSpacing: "0.16em",
             textTransform: "uppercase", color: LINEN,
           }}>
             Sukoon
