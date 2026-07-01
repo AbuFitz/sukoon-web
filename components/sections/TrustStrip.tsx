@@ -1,10 +1,10 @@
 import Image from "next/image";
 
 const items = [
-  { src: "/icons/icon-natural.svg",       label: "Natural & Botanical",   tagline: "Thoughtfully sourced ingredients." },
-  { src: "/icons/icon-waterless.svg",     label: "Waterless Formula",     tagline: "More actives, no fillers." },
-  { src: "/icons/icon-face-hairline.svg", label: "Face & Hairline Care",  tagline: "One ritual, dual benefit." },
-  { src: "/icons/icon-ethical.svg",       label: "Ethical & Transparent", tagline: "Honest by nature, always." },
+  { src: "/icons/icon-natural.svg",     label: "Natural",     tagline: "100% natural ingredients", showMobile: true  },
+  { src: "/icons/icon-ethical.svg",     label: "Ethical",     tagline: "Vegan & cruelty free",      showMobile: true  },
+  { src: "/icons/icon-pure.svg",        label: "Pure",        tagline: "No harmful chemicals",      showMobile: true  },
+  { src: "/icons/icon-sustainable.svg", label: "Sustainable", tagline: "Eco-friendly packaging",    showMobile: false },
 ];
 
 export function TrustStrip() {
@@ -49,26 +49,26 @@ export function TrustStrip() {
         ))}
       </div>
 
-      {/* Mobile: 2-column grid, no dividers */}
-      <div className="grid grid-cols-2 md:hidden" style={{ gap: "clamp(1.75rem, 6vw, 2.5rem)" }}>
-        {items.map((item) => (
-          <div key={item.label}>
+      {/* Mobile: 3-item row (Sustainable hidden), no dividers */}
+      <div className="flex md:hidden" style={{ gap: "clamp(1.25rem, 5vw, 2rem)" }}>
+        {items.filter(item => item.showMobile).map((item) => (
+          <div key={item.label} style={{ flex: 1 }}>
             <Image
               src={item.src}
               alt=""
-              width={30}
-              height={30}
+              width={28}
+              height={28}
               style={{ objectFit: "contain", display: "block" }}
             />
             <p style={{
-              fontFamily: "var(--font-body)", fontSize: "0.5625rem", fontWeight: 600,
+              fontFamily: "var(--font-body)", fontSize: "0.5rem", fontWeight: 600,
               letterSpacing: "0.12em", textTransform: "uppercase", color: "#2C2A1F",
-              marginTop: "0.875rem", marginBottom: "0.3rem",
+              marginTop: "0.75rem", marginBottom: "0.25rem",
             }}>
               {item.label}
             </p>
             <p style={{
-              fontFamily: "var(--font-body)", fontSize: "0.75rem",
+              fontFamily: "var(--font-body)", fontSize: "0.6875rem",
               color: "#6B7B5C", lineHeight: 1.5,
             }}>
               {item.tagline}
