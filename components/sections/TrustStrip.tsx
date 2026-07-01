@@ -1,21 +1,10 @@
-function LeafIcon() {
-  return <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M5 19c8-1 13-6 14-14-8 1-13 6-14 14z"/><path d="M5 19c2-4 5-8 9-11"/></svg>;
-}
-function DropIcon() {
-  return <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M12 3c3 4.5 6 8 6 11.5a6 6 0 1 1-12 0C6 11 9 7.5 12 3z"/></svg>;
-}
-function FaceHairlineIcon() {
-  return <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round" aria-hidden><circle cx="12" cy="9" r="4.5"/><path d="M4.5 21c1.5-4 4-6 7.5-6s6 2 7.5 6"/></svg>;
-}
-function ShieldIcon() {
-  return <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>;
-}
+import Image from "next/image";
 
 const items = [
-  { icon: <LeafIcon />,          label: "Natural & Botanical" },
-  { icon: <DropIcon />,          label: "Waterless Formula" },
-  { icon: <FaceHairlineIcon />,  label: "Face & Hairline" },
-  { icon: <ShieldIcon />,        label: "Ethical & Transparent" },
+  { src: "/icons/icon-natural.svg",       label: "Natural & Botanical",   tagline: "Thoughtfully sourced ingredients." },
+  { src: "/icons/icon-waterless.svg",     label: "Waterless Formula",     tagline: "More actives, no fillers." },
+  { src: "/icons/icon-face-hairline.svg", label: "Face & Hairline Care",  tagline: "One ritual, dual benefit." },
+  { src: "/icons/icon-ethical.svg",       label: "Ethical & Transparent", tagline: "Honest by nature, always." },
 ];
 
 export function TrustStrip() {
@@ -23,19 +12,66 @@ export function TrustStrip() {
     <section
       aria-label="Trust signals"
       style={{
-        backgroundColor: "#FBF8F3",
-        borderTop: "1px solid #E8D4AE",
-        padding: "clamp(2rem, 5vw, 3rem) clamp(1.5rem, 6vw, 5rem)",
+        backgroundColor: "#F7F1E4",
+        padding: "clamp(2.5rem, 5vw, 4rem) clamp(2rem, 7vw, 7rem)",
       }}
     >
-      <div className="grid grid-cols-2 md:grid-cols-4" style={{
-        maxWidth: "1320px", margin: "0 auto", gap: "clamp(1.5rem, 4vw, 2rem)",
-      }}>
-        {items.map((it) => (
-          <div key={it.label} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "0.75rem", textAlign: "center" }}>
-            <span style={{ color: "#6B7B5C" }}>{it.icon}</span>
-            <p style={{ fontFamily: "var(--font-body)", fontSize: "0.75rem", color: "#2C2A1F", letterSpacing: "0.02em" }}>
-              {it.label}
+      {/* Desktop: 4 columns with dividers */}
+      <div className="hidden md:flex" style={{ maxWidth: "1320px", margin: "0 auto", alignItems: "flex-start" }}>
+        {items.map((item, i) => (
+          <>
+            <div key={item.label} style={{ flex: 1, padding: "0 clamp(1.5rem, 3vw, 2.5rem)" }}>
+              <Image
+                src={item.src}
+                alt=""
+                width={36}
+                height={36}
+                style={{ objectFit: "contain", display: "block" }}
+              />
+              <p style={{
+                fontFamily: "var(--font-body)", fontSize: "0.625rem", fontWeight: 600,
+                letterSpacing: "0.12em", textTransform: "uppercase", color: "#2C2A1F",
+                marginTop: "1.125rem", marginBottom: "0.375rem",
+              }}>
+                {item.label}
+              </p>
+              <p style={{
+                fontFamily: "var(--font-body)", fontSize: "0.8125rem",
+                color: "#6B7B5C", lineHeight: 1.55,
+              }}>
+                {item.tagline}
+              </p>
+            </div>
+            {i < items.length - 1 && (
+              <div key={`div-${i}`} style={{ width: "1px", backgroundColor: "#E0D5C5", alignSelf: "stretch", flexShrink: 0 }} />
+            )}
+          </>
+        ))}
+      </div>
+
+      {/* Mobile: 2-column grid, no dividers */}
+      <div className="grid grid-cols-2 md:hidden" style={{ gap: "clamp(1.75rem, 6vw, 2.5rem)" }}>
+        {items.map((item) => (
+          <div key={item.label}>
+            <Image
+              src={item.src}
+              alt=""
+              width={30}
+              height={30}
+              style={{ objectFit: "contain", display: "block" }}
+            />
+            <p style={{
+              fontFamily: "var(--font-body)", fontSize: "0.5625rem", fontWeight: 600,
+              letterSpacing: "0.12em", textTransform: "uppercase", color: "#2C2A1F",
+              marginTop: "0.875rem", marginBottom: "0.3rem",
+            }}>
+              {item.label}
+            </p>
+            <p style={{
+              fontFamily: "var(--font-body)", fontSize: "0.75rem",
+              color: "#6B7B5C", lineHeight: 1.5,
+            }}>
+              {item.tagline}
             </p>
           </div>
         ))}

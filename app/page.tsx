@@ -17,9 +17,9 @@ export default function Home() {
       <SiteNav />
       <main>
         <HeroSplit />
+        <ProductPurchase />
         <TrustStrip />
         <LifestyleSplit />
-        <ProductPurchase />
         <IngredientsGrid />
         <RitualSection />
         <PhilosophyQuote />
