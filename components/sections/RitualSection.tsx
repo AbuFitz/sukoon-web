@@ -3,15 +3,15 @@ import Image from "next/image";
 const steps = [
   {
     time: "Morning",
-    instruction: "Two drops. Warm between palms. Press gently into skin. Absorb.",
+    instruction: "Two drops. Warm between your palms. Press into skin and let it disappear.",
   },
   {
     time: "Evening",
-    instruction: "Apply after cleansing while skin is still slightly damp. Let it work overnight.",
+    instruction: "After cleansing, skin still damp. This is the deep work — the barrier, the tone, the stillness.",
   },
   {
     time: "Weekly",
-    instruction: "A hairline treatment. Apply along the part-line and massage gently into the roots to ease friction strain.",
+    instruction: "Your hairline treatment. Along the part-line, into the roots. Go slowly. This is the part that needs the most care.",
   },
 ];
 
@@ -48,7 +48,7 @@ export function RitualSection() {
             maxWidth: "340px",
           }}
         >
-          A quieter way to care for skin and hairline.
+          A two-minute ritual.<br />A lifetime of less damage.
         </h2>
 
         <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>

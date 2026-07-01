@@ -12,11 +12,11 @@ const LINE = "#E8D4AE";
 const hero = products[0];
 
 const highlights = [
-  "80% Olive Squalane — lightweight, sinks in under 60 seconds",
-  "14.9% Niacinamide — supports the skin barrier, helps even tone",
-  "2% Black Seed Oil — calms the scalp where tight styles cause friction",
-  "One bottle, two rituals: face in the morning, hairline at night",
-  "100% waterless oil nectar — never greasy, on skin or scalp",
+  "80% Olive Squalane — sinks in under sixty seconds, never sits on skin",
+  "14.9% Niacinamide — strengthens your barrier, works your hairline too",
+  "2% Black Seed Oil — deodorized, calms inflammation at root and pore",
+  "Two rituals, one bottle — face each morning, hairline whenever it needs it",
+  "100% waterless — no filler, nothing greasy, nothing to overthink",
 ];
 
 export function ProductPurchase() {

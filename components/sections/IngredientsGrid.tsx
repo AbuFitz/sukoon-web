@@ -2,25 +2,25 @@ const ingredients = [
   {
     name: "Olive Squalane",
     latin: "80% of formula",
-    description: "An ultra-lightweight botanical lipid that mimics skin's natural sebum. Sinks in under 60 seconds — never greasy.",
+    description: "Skin already knows this molecule. A dry oil that disappears in under sixty seconds and never settles on the surface.",
     bg: "#E8D4AE", fg: "#3F4A36", symbol: "١",
   },
   {
     name: "Vitamin B3",
     latin: "Niacinamide · 14.9%",
-    description: "Supports the skin barrier, helps even the look of marks, and supports circulation at the hairline root.",
+    description: "Strengthens what friction weakens. The barrier on your face. The follicles along your hairline. Both.",
     bg: "#A9BA98", fg: "#2C2A1F", symbol: "٢",
   },
   {
     name: "Black Seed Oil",
     latin: "Nigella Sativa · 2%",
-    description: "Deodorized for daily wear. Helps purify the skin and calms follicle tension at the scalp.",
+    description: "Refined until the sharp scent is gone, the active is not. Purifies the skin. Settles inflammation at the root.",
     bg: "#3F4A36", fg: "#D9A356", symbol: "٣",
   },
   {
     name: "Vitamin E",
     latin: "Tocopherol · 3%",
-    description: "Stabilizes the formula and deeply conditions a stressed scalp and skin barrier.",
+    description: "Keeps every botanical oil in the bottle honest. Protects against oxidation. Quietly does the most.",
     bg: "#D9A356", fg: "#2C2A1F", symbol: "٤",
   },
 ];
@@ -43,7 +43,7 @@ export function IngredientsGrid() {
             fontWeight: 400, letterSpacing: "-0.015em", lineHeight: 1.1,
             color: "#2C2A1F",
           }}>
-            Four ingredients.<br />Chosen with intention.
+            Four ingredients.<br />Nothing extra.
           </h2>
         </div>
 

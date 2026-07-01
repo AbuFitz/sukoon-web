@@ -1,16 +1,16 @@
 const reviews = [
   {
-    quote: "The only product I've found that treats my hairline the way it treats my skin. My edges feel cared for, not just covered up.",
+    quote: "I've tried everything for my edges. This is the first thing I've used that felt like it was actually made for me.",
     name: "Amina K.",
     note: "Early tester, 6 weeks",
   },
   {
-    quote: "I was sceptical about one oil doing both jobs. It absorbs so quickly I forget it's there — and my under-cap irritation has genuinely calmed down.",
+    quote: "Sceptical about one oil doing both things. But it absorbs in seconds and the irritation under my under-cap has genuinely settled.",
     name: "Halima R.",
     note: "Early tester, 4 weeks",
   },
   {
-    quote: "Simple, unscented, and it just works into the routine. The evening ritual has become my favourite five minutes of the day.",
+    quote: "No scent, no fuss, nothing heavy. The evening step has quietly become my favourite part of the day.",
     name: "Sara M.",
     note: "Early tester, 8 weeks",
   },
@@ -28,13 +28,13 @@ export function Reviews() {
             fontFamily: "var(--font-body)", fontSize: "0.5625rem", fontWeight: 500,
             letterSpacing: "0.2em", textTransform: "uppercase", color: "#6B7B5C", marginBottom: "1rem",
           }}>
-            Early Tester Feedback
+            Early Circle
           </p>
           <h2 style={{
             fontFamily: "var(--font-display)", fontSize: "clamp(1.875rem, 4vw, 2.75rem)",
             fontWeight: 400, letterSpacing: "-0.01em", color: "#2C2A1F",
           }}>
-            What people are saying.
+            Words from the first hands to hold it.
           </h2>
         </div>
 

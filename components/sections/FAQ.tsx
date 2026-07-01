@@ -3,13 +3,13 @@
 import { useState } from "react";
 
 const faqs = [
-  { q: "How long does shipping take?", a: "UK orders ship within 1–2 business days and typically arrive within 3–5 business days. Free shipping is included on every order." },
-  { q: "What ingredients are in the formula?", a: "Olive Squalane, Niacinamide (Vitamin B3), Black Seed Oil, and Vitamin E — four ingredients, chosen with intention. No water, fragrance, or filler oils." },
-  { q: "Can I use it on my hairline as well as my face?", a: "Yes — it's engineered for both. Use a couple of drops on the face daily, and apply along the part-line weekly as a hairline treatment." },
-  { q: "Is it suitable for sensitive skin?", a: "The formula is fragrance-free and formulated to be gentle, but we always recommend a patch test 24 hours before first full use." },
-  { q: "Is it Halal certified?", a: "Yes, The Daily Solace Fluid is UK Halal Certified and formulated and made in the UK." },
-  { q: "What's your returns policy?", a: "Unopened products can be returned within 30 days of delivery for a full refund. Reach out to our support team to start a return." },
-  { q: "When will my order ship?", a: "All orders are processed and shipped from our UK facility within 1–2 business days of purchase." },
+  { q: "How long does shipping take?", a: "We pack and ship from the UK within 1–2 working days. You'll typically have it in 3–5 days. Free on every order, always." },
+  { q: "What ingredients are in the formula?", a: "Olive Squalane, Niacinamide (Vitamin B3), Black Seed Oil, and Vitamin E. Four ingredients. Nothing else. No water, no fragrance, no fillers." },
+  { q: "Can I use it on my hairline as well as my face?", a: "Yes — that's the whole point. A couple of drops on the face each morning. Along the part-line when your hairline needs it. One bottle, both cared for." },
+  { q: "Is it suitable for sensitive skin?", a: "The formula is fragrance-free and made to be gentle. We still recommend a patch test 24 hours before first full use — just to be sure." },
+  { q: "Is it Halal certified?", a: "Yes. UK Halal Certified, independently audited. Formulated and made in the UK." },
+  { q: "What's your returns policy?", a: "Unopened, within 30 days of delivery. Full refund. Just get in touch and we'll sort it." },
+  { q: "When will my order ship?", a: "Packed and shipped from the UK within 1–2 working days of your order." },
 ];
 
 export function FAQ() {
@@ -33,7 +33,7 @@ export function FAQ() {
             fontFamily: "var(--font-display)", fontSize: "clamp(1.875rem, 4vw, 2.75rem)",
             fontWeight: 400, letterSpacing: "-0.01em", color: "#2C2A1F",
           }}>
-            Questions, answered.
+            Honest answers.
           </h2>
         </div>
 

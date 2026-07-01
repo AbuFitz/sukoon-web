@@ -28,14 +28,14 @@ export function EmailCapture() {
           fontFamily: "var(--font-body)", fontSize: "0.5625rem", letterSpacing: "0.2em",
           textTransform: "uppercase", color: "#6B7B5C", marginBottom: "1.25rem",
         }}>
-          Stay Close to Sukoon
+          The Sukoon Circle
         </p>
 
         <h2 style={{
           fontFamily: "var(--font-display)", fontSize: "clamp(1.625rem, 3.5vw, 2.25rem)",
           fontWeight: 400, lineHeight: 1.2, letterSpacing: "-0.01em", color: "#2C2A1F", marginBottom: "1rem",
         }}>
-          Receive rituals, ingredient notes,<br />and early access to future releases.
+          Early access. Ritual notes.<br />Dispatches from the making of Sukoon.
         </h2>
 
         <form onSubmit={handleSubmit} noValidate aria-label="Email signup" style={{ marginTop: "1.75rem" }}>
@@ -80,7 +80,7 @@ export function EmailCapture() {
           )}
           {status === "success" && (
             <p role="status" style={{ fontFamily: "var(--font-display)", fontSize: "1rem", fontStyle: "italic", color: "#3F4A36", marginTop: "0.875rem" }}>
-              You&rsquo;re in. Welcome to the circle.
+              You&rsquo;re in. We&rsquo;ll be in touch.
             </p>
           )}
         </form>

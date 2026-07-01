@@ -57,7 +57,7 @@ export function HeroSplit() {
             opacity: shown ? 1 : 0, transform: shown ? "translateY(0)" : "translateY(14px)",
             transition: "opacity 0.8s ease 0.22s, transform 0.8s cubic-bezier(0.22,1,0.36,1) 0.22s",
           }}>
-            A 100% waterless oil nectar, crafted to restore your skin, strengthen your barrier and protect your hairline.
+            Sinks in under sixty seconds. Cares for the skin you show, and the hairline beneath the fabric.
           </p>
 
           <div style={{
@@ -139,7 +139,7 @@ export function HeroSplit() {
             opacity: shown ? 1 : 0, transform: shown ? "translateY(0)" : "translateY(14px)",
             transition: "opacity 0.8s ease 0.1s, transform 0.8s cubic-bezier(0.22,1,0.36,1) 0.1s",
           }}>
-            Care for your face. Care for your hairline.
+            Face first. Hairline too.
           </p>
 
           <h1 style={{
@@ -151,7 +151,7 @@ export function HeroSplit() {
             opacity: shown ? 1 : 0, transform: shown ? "translateY(0)" : "translateY(18px)",
             transition: "opacity 0.9s ease 0.22s, transform 0.9s cubic-bezier(0.22,1,0.36,1) 0.22s",
           }}>
-            One oil, made<br />for both rituals.
+            Two rituals,<br />one still oil.
           </h1>
 
           <p style={{
@@ -161,7 +161,7 @@ export function HeroSplit() {
             opacity: shown ? 1 : 0, transform: shown ? "translateY(0)" : "translateY(14px)",
             transition: "opacity 0.8s ease 0.34s, transform 0.8s cubic-bezier(0.22,1,0.36,1) 0.34s",
           }}>
-            A 100% waterless oil nectar, engineered for both your skin and the hairline strain hijabs, under-caps, and tight styles leave behind.
+            Made for the tension no one talks about — the daily friction that hijabs, under-caps, and tight styles press into the hairline, quietly, over time. The Daily Solace Fluid works on both.
           </p>
 
           <div style={{
@@ -209,7 +209,7 @@ export function HeroSplit() {
             opacity: shown ? 1 : 0,
             transition: "opacity 0.8s ease 0.56s",
           }}>
-            UK Halal Certified &middot; Formulated &amp; Made in the UK
+            UK Halal Certified · Made in the UK
           </p>
         </div>
       </section>
