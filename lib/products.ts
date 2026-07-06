@@ -15,8 +15,8 @@ export const products: Product[] = [
     size: "30ml",
     price: "£35",
     src: "https://images.unsplash.com/photo-1707539160277-e39464517645?w=900&q=85&fit=crop",
-    tag: "Best Seller",
-    description: "Our full-size waterless oil. One dropper for face, one for the hairline — engineered for both.",
+    tag: "",
+    description: "The full-size Daily Solace Fluid. Face in the morning, hairline whenever it needs it. One bottle, two rituals.",
   },
   {
     slug: "daily-solace-fluid-15ml-trial",

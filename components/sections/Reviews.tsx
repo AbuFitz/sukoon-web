@@ -24,12 +24,6 @@ export function Reviews() {
     }}>
       <div style={{ maxWidth: "1320px", margin: "0 auto" }}>
         <div style={{ textAlign: "center", marginBottom: "clamp(2.5rem, 6vw, 3.5rem)" }}>
-          <p style={{
-            fontFamily: "var(--font-body)", fontSize: "0.5625rem", fontWeight: 500,
-            letterSpacing: "0.2em", textTransform: "uppercase", color: "#6B7B5C", marginBottom: "1rem",
-          }}>
-            Early Circle
-          </p>
           <h2 style={{
             fontFamily: "var(--font-display)", fontSize: "clamp(1.875rem, 4vw, 2.75rem)",
             fontWeight: 400, letterSpacing: "-0.01em", color: "#2C2A1F",

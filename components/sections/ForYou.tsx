@@ -2,8 +2,8 @@
 
 const cards = [
   {
-    eyebrow: "For the hijab-wearer",
-    body: "Daily friction from tight styles, under-caps, and hijabs puts silent strain on the hairline. The thinning is real — and it's been ignored by every skincare brand until now.",
+    eyebrow: "For the tight-style wearer",
+    body: "Braids, weaves, ponytails, cornrows — daily tension at the hairline is cumulative and quiet. The thinning it causes has been documented for decades. The products for it have not.",
   },
   {
     eyebrow: "For the minimalist",
@@ -26,13 +26,6 @@ export function ForYou() {
     >
       <div style={{ maxWidth: "1320px", margin: "0 auto" }}>
         <div style={{ marginBottom: "clamp(2.5rem, 5vw, 4rem)" }}>
-          <p style={{
-            fontFamily: "var(--font-body)", fontSize: "0.5625rem", fontWeight: 500,
-            letterSpacing: "0.2em", textTransform: "uppercase",
-            color: "rgba(169,186,152,0.8)", marginBottom: "1rem",
-          }}>
-            Who it&rsquo;s for
-          </p>
           <h2 style={{
             fontFamily: "var(--font-display)",
             fontSize: "clamp(2rem, 4.5vw, 3.25rem)",

@@ -16,9 +16,6 @@ export function LifestyleSplit() {
         display: "flex", flexDirection: "column", justifyContent: "center",
         padding: "clamp(3rem, 8vw, 7rem) clamp(2rem, 7vw, 6rem)",
       }}>
-        <p style={{ fontFamily: "var(--font-body)", fontSize: "0.5625rem", fontWeight: 500, letterSpacing: "0.2em", textTransform: "uppercase", color: "#6B7B5C", marginBottom: "clamp(1.5rem, 4vw, 2rem)" }}>
-          The Problem
-        </p>
 
         <h2 style={{
           fontFamily: "var(--font-display)",
@@ -26,11 +23,11 @@ export function LifestyleSplit() {
           fontWeight: 400, lineHeight: 1.12, letterSpacing: "-0.01em",
           color: "#2C2A1F", marginBottom: "clamp(1.5rem, 4vw, 2rem)",
         }}>
-          Built for the ritual that starts beneath the fabric.
+          Built for the hairline that every other product forgot.
         </h2>
 
         <p style={{ fontFamily: "var(--font-body)", fontSize: "1rem", lineHeight: 1.85, color: "#6B7B5C", marginBottom: "1.25rem" }}>
-          Every serum on the shelf was made for your face alone. Nobody built one for the hairline strain that hijabs, under-caps, and tight styles press in quietly, every single day. So we did.
+          Every serum on the shelf was made for your face alone. Nobody built one for the hairline strain that tight styles, tension, and daily wear press in quietly, over years. So we did.
         </p>
 
         <p style={{ fontFamily: "var(--font-body)", fontSize: "1rem", lineHeight: 1.85, color: "#6B7B5C" }}>

@@ -32,9 +32,6 @@ export function RitualSection() {
           order: 1,
         }}
       >
-        <p style={{ fontFamily: "var(--font-body)", fontSize: "0.5625rem", fontWeight: 500, letterSpacing: "0.22em", textTransform: "uppercase", color: "#6B7B5C", marginBottom: "2rem" }}>
-          The Ritual
-        </p>
 
         <h2
           style={{

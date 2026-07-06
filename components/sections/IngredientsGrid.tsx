@@ -34,9 +34,6 @@ export function IngredientsGrid() {
     }}>
       <div style={{ maxWidth: "1320px", margin: "0 auto" }}>
         <div style={{ marginBottom: "clamp(2rem, 5vw, 3.5rem)" }}>
-          <p style={{ fontFamily: "var(--font-body)", fontSize: "0.5625rem", fontWeight: 500, letterSpacing: "0.2em", textTransform: "uppercase", color: "#6B7B5C", marginBottom: "1rem" }}>
-            The Formula
-          </p>
           <h2 style={{
             fontFamily: "var(--font-display)",
             fontSize: "clamp(1.875rem, 4.5vw, 3.25rem)",

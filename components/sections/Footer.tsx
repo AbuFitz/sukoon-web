@@ -28,10 +28,9 @@ const cols = [
   {
     heading: "Support",
     links: [
-      { label: "FAQ",                href: "/faq" },
-      { label: "Shipping & Returns", href: "#"    },
-      { label: "Contact",            href: "#"    },
-      { label: "Wholesale",          href: "#"    },
+      { label: "FAQ",                href: "/faq"      },
+      { label: "Shipping & Returns", href: "/shipping" },
+      { label: "Contact",            href: "/contact"  },
     ],
   },
   {
@@ -137,10 +136,10 @@ export function Footer() {
             © {new Date().getFullYear()} Sukoon Skin Ltd. All rights reserved.
           </p>
           <div style={{ display: "flex", gap: "1.5rem" }}>
-            {["Privacy", "Terms", "Cookies"].map((item) => (
+            {[{ label: "Privacy", href: "/privacy" }, { label: "Terms", href: "/terms" }, { label: "Cookies", href: "/cookies" }].map((item) => (
               <Link
-                key={item}
-                href="#"
+                key={item.label}
+                href={item.href}
                 style={{
                   fontFamily: "var(--font-body)",
                   fontSize: "0.6875rem",
@@ -152,7 +151,7 @@ export function Footer() {
                 onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.color = LINEN)}
                 onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = HEAD)}
               >
-                {item}
+                {item.label}
               </Link>
             ))}
           </div>

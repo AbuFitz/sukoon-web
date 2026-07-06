@@ -43,23 +43,9 @@ export function ProductPurchase() {
           maxWidth: "560px",
         }}>
           <Image src={hero.src} alt={hero.name} fill sizes="(max-width: 768px) 100vw, 50vw" style={{ objectFit: "cover" }} />
-          <span style={{
-            position: "absolute", top: "1rem", left: "1rem",
-            fontFamily: "var(--font-body)", fontSize: "0.5625rem", fontWeight: 500,
-            letterSpacing: "0.1em", textTransform: "uppercase",
-            color: INK, backgroundColor: "#F7F1E4", padding: "0.3rem 0.625rem",
-          }}>
-            {hero.tag}
-          </span>
         </div>
 
         <div>
-          <p style={{
-            fontFamily: "var(--font-body)", fontSize: "0.5625rem", fontWeight: 500,
-            letterSpacing: "0.2em", textTransform: "uppercase", color: SAGE, marginBottom: "1rem",
-          }}>
-            Shop
-          </p>
           <h2 style={{
             fontFamily: "var(--font-display)", fontSize: "clamp(1.625rem, 3.5vw, 2.25rem)",
             fontWeight: 400, letterSpacing: "-0.015em", color: INK, marginBottom: "0.625rem",
@@ -128,19 +114,6 @@ export function ProductPurchase() {
             >
               {justAdded ? "Added to Bag" : "Add to Bag"}
             </button>
-            <a href="/shop" onClick={() => addToBag(hero.slug, qty)} style={{
-              display: "flex", alignItems: "center", justifyContent: "center",
-              fontFamily: "var(--font-body)", fontSize: "0.6875rem", fontWeight: 500,
-              letterSpacing: "0.14em", textTransform: "uppercase",
-              color: INK, textDecoration: "none",
-              border: `1.5px solid ${INK}`, padding: "1.0625rem",
-              transition: "background 0.25s, color 0.25s",
-            }}
-              onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.backgroundColor = INK; el.style.color = "#F7F1E4"; }}
-              onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.backgroundColor = "transparent"; el.style.color = INK; }}
-            >
-              Buy Now
-            </a>
           </div>
 
           <p style={{ fontFamily: "var(--font-body)", fontSize: "0.6875rem", color: SAGE, letterSpacing: "0.02em" }}>

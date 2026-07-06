@@ -24,12 +24,6 @@ export function EmailCapture() {
       }}
     >
       <div style={{ maxWidth: "560px", margin: "0 auto", textAlign: "center" }}>
-        <p style={{
-          fontFamily: "var(--font-body)", fontSize: "0.5625rem", letterSpacing: "0.2em",
-          textTransform: "uppercase", color: "#6B7B5C", marginBottom: "1.25rem",
-        }}>
-          The Sukoon Circle
-        </p>
 
         <h2 style={{
           fontFamily: "var(--font-display)", fontSize: "clamp(1.625rem, 3.5vw, 2.25rem)",

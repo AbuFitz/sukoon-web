@@ -57,7 +57,7 @@ export function HeroSplit() {
             opacity: shown ? 1 : 0, transform: shown ? "translateY(0)" : "translateY(14px)",
             transition: "opacity 0.8s ease 0.22s, transform 0.8s cubic-bezier(0.22,1,0.36,1) 0.22s",
           }}>
-            Sinks in under sixty seconds. Cares for the skin you show, and the hairline beneath the fabric.
+            Sinks in under sixty seconds. One formula for your face — and the hairline that tight styles quietly strain.
           </p>
 
           <div style={{
@@ -161,7 +161,7 @@ export function HeroSplit() {
             opacity: shown ? 1 : 0, transform: shown ? "translateY(0)" : "translateY(14px)",
             transition: "opacity 0.8s ease 0.34s, transform 0.8s cubic-bezier(0.22,1,0.36,1) 0.34s",
           }}>
-            Made for the tension no one talks about — the daily friction that hijabs, under-caps, and tight styles press into the hairline, quietly, over time. The Daily Solace Fluid works on both.
+            Made for the tension no one talks about — the daily friction that tight styles press into the hairline, quietly, over time. The Daily Solace Fluid works on both.
           </p>
 
           <div style={{

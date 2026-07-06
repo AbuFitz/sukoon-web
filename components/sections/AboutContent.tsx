@@ -13,12 +13,6 @@ export function AboutContent() {
         borderBottom: "1px solid #E6DCC6",
       }}>
         <div style={{ maxWidth: "780px" }}>
-          <p style={{
-            fontFamily: "var(--font-body)", fontSize: "0.5625rem", fontWeight: 500,
-            letterSpacing: "0.2em", textTransform: "uppercase", color: "#6B7B5C", marginBottom: "1.5rem",
-          }}>
-            Our Story
-          </p>
           <h1 style={{
             fontFamily: "var(--font-display)", fontSize: "clamp(2.5rem, 6vw, 4.25rem)",
             fontWeight: 400, lineHeight: 1.08, letterSpacing: "-0.02em", color: "#2C2A1F",
@@ -41,7 +35,7 @@ export function AboutContent() {
         <div style={{ position: "relative", minHeight: "clamp(360px, 60vw, 680px)", backgroundColor: "#E8D4AE" }}>
           <Image
             src="https://images.unsplash.com/photo-1612817159949-195b6eb9e31a?w=1200&q=85&fit=crop"
-            alt="Woman in hijab, close portrait"
+            alt="Close portrait"
             fill sizes="(max-width: 768px) 100vw, 50vw"
             style={{ objectFit: "cover", objectPosition: "center top" }}
           />
@@ -50,24 +44,18 @@ export function AboutContent() {
           display: "flex", flexDirection: "column", justifyContent: "center",
           padding: "clamp(3rem, 8vw, 7rem) clamp(2rem, 7vw, 6rem)",
         }}>
-          <p style={{
-            fontFamily: "var(--font-body)", fontSize: "0.5625rem", fontWeight: 500,
-            letterSpacing: "0.2em", textTransform: "uppercase", color: "#6B7B5C", marginBottom: "1.5rem",
-          }}>
-            The gap
-          </p>
           <h2 style={{
             fontFamily: "var(--font-display)", fontSize: "clamp(1.75rem, 4vw, 2.75rem)",
             fontWeight: 400, lineHeight: 1.15, color: "#2C2A1F",
             marginBottom: "clamp(1.5rem, 4vw, 2rem)",
           }}>
-            Millions of women wearing hijabs are managing hairline thinning with products that were never made for them.
+            Millions of people are managing hairline thinning with products that were never made for them.
           </h2>
           <p style={{
             fontFamily: "var(--font-body)", fontSize: "1rem", lineHeight: 1.85, color: "#6B7B5C",
             marginBottom: "1.25rem",
           }}>
-            Traction alopecia — hairline thinning caused by daily friction and tension from tight styles, under-caps, and hijabs — is well-documented. The products addressing it are not. Most hairline treatments are thick, heavy, and scented for overnight use. Most face oils ignore the hairline entirely.
+            Traction alopecia — hairline thinning caused by daily friction and tension from tight styles, braids, weaves, and ponytails — is well-documented. The products addressing it are not. Most hairline treatments are thick, heavy, and scented for overnight use. Most face oils ignore the hairline entirely.
           </p>
           <p style={{
             fontFamily: "var(--font-body)", fontSize: "1rem", lineHeight: 1.85, color: "#6B7B5C",
@@ -83,12 +71,6 @@ export function AboutContent() {
         padding: "clamp(4rem, 9vw, 7rem) clamp(2rem, 7vw, 7rem)",
       }}>
         <div style={{ maxWidth: "780px", margin: "0 auto" }}>
-          <p style={{
-            fontFamily: "var(--font-body)", fontSize: "0.5625rem", fontWeight: 500,
-            letterSpacing: "0.2em", textTransform: "uppercase", color: "#A9BA98", marginBottom: "1.5rem",
-          }}>
-            The formula
-          </p>
           <h2 style={{
             fontFamily: "var(--font-display)", fontSize: "clamp(1.875rem, 4vw, 3rem)",
             fontWeight: 400, lineHeight: 1.15, letterSpacing: "-0.01em",
