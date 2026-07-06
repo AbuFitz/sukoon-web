@@ -20,7 +20,7 @@ const cols = [
   {
     heading: "Company",
     links: [
-      { label: "Our Philosophy", href: "#story"       },
+      { label: "Our Story",      href: "/about"       },
       { label: "Ingredients",    href: "#ingredients" },
       { label: "Journal",        href: "#"            },
     ],
@@ -28,7 +28,7 @@ const cols = [
   {
     heading: "Support",
     links: [
-      { label: "FAQ",                href: "#faq" },
+      { label: "FAQ",                href: "/faq" },
       { label: "Shipping & Returns", href: "#"    },
       { label: "Contact",            href: "#"    },
       { label: "Wholesale",          href: "#"    },
