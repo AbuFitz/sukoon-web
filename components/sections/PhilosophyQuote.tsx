@@ -1,65 +1,42 @@
-import Image from "next/image";
-
 export function PhilosophyQuote() {
   return (
     <section
       aria-label="Brand philosophy"
       style={{
-        position: "relative",
-        width: "100%",
-        height: "clamp(480px, 75vh, 900px)",
-        overflow: "hidden",
-        backgroundColor: "#1a1a18",
+        backgroundColor: "#F7F4EF",
+        padding: "clamp(6rem, 14vw, 14rem) clamp(1.5rem, 8vw, 8rem)",
+        borderTop: "1px solid #EDE7DC",
+        borderBottom: "1px solid #EDE7DC",
       }}
     >
-      {/* Background image */}
-      <Image
-        src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=2000&q=90&fit=crop"
-        alt=""
-        aria-hidden
-        fill
-        sizes="100vw"
-        style={{ objectFit: "cover", objectPosition: "center 40%" }}
-      />
-
-      {/* Dark overlay */}
-      <div style={{
-        position: "absolute", inset: 0,
-        backgroundColor: "rgba(15,14,12,0.62)",
-      }} />
-
-      {/* Content — centred */}
-      <div style={{
-        position: "absolute", inset: 0,
-        display: "flex", flexDirection: "column",
-        alignItems: "center", justifyContent: "center",
-        padding: "clamp(3rem, 8vw, 6rem) clamp(1.5rem, 8vw, 8rem)",
-        textAlign: "center",
-      }}>
+      <div style={{ maxWidth: "1080px", margin: "0 auto" }}>
         <p style={{
           fontFamily: "var(--font-body)", fontSize: "0.5625rem", fontWeight: 700,
           letterSpacing: "0.22em", textTransform: "uppercase", color: "#98A47D",
-          marginBottom: "2.5rem",
+          marginBottom: "3.5rem",
         }}>
           سكون — Stillness, in Arabic
         </p>
+
         <p style={{
           fontFamily: "var(--font-display)", fontWeight: 400,
-          fontSize: "clamp(2.25rem, 6vw, 5rem)", lineHeight: 1.1,
-          letterSpacing: "-0.03em", color: "#FFFFFF",
+          fontSize: "clamp(3rem, 7.5vw, 6.5rem)", lineHeight: 1.06,
+          letterSpacing: "-0.035em", color: "#2C2A1F",
           fontStyle: "italic",
-          marginBottom: "3rem",
-          maxWidth: "800px",
+          marginBottom: "4rem",
         }}>
-          &ldquo;Not another product.<br />A reason to slow down.&rdquo;
+          &ldquo;Not another<br />product. A reason<br />to slow down.&rdquo;
         </p>
-        <p style={{
-          fontFamily: "var(--font-body)", fontSize: "0.9375rem", lineHeight: 1.8,
-          color: "rgba(255,255,255,0.5)",
-          maxWidth: "420px",
-        }}>
-          Two drops. Sixty seconds. That&rsquo;s the ritual.
-        </p>
+
+        <div style={{ display: "flex", alignItems: "center", gap: "1.75rem" }}>
+          <div style={{ width: 48, height: 1, backgroundColor: "#98A47D", flexShrink: 0 }} />
+          <p style={{
+            fontFamily: "var(--font-body)", fontSize: "0.9375rem", lineHeight: 1.8,
+            color: "#8A8275", margin: 0,
+          }}>
+            Two drops. Sixty seconds. That&rsquo;s the ritual.
+          </p>
+        </div>
       </div>
     </section>
   );

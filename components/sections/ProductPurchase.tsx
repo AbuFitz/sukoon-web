@@ -23,11 +23,10 @@ export function ProductPurchase({ variantId }: { variantId?: string }) {
 
   return (
     <section id="product" style={{ backgroundColor: "#FFFFFF" }}>
-      <div style={{ display: "grid", gridTemplateColumns: "1fr", minHeight: "clamp(600px, 88vh, 1020px)" }}
-        className="md:grid-cols-[60fr_40fr]">
+      <div className="grid grid-cols-1 md:grid-cols-2" style={{ minHeight: "clamp(600px, 85vh, 1000px)" }}>
 
-        {/* Image — full bleed left, dominant */}
-        <div style={{ position: "relative", minHeight: "clamp(480px, 65vw, 900px)", backgroundColor: "#EDE7DC" }}>
+        {/* Image — full bleed left half */}
+        <div style={{ position: "relative", minHeight: "clamp(420px, 60vw, 860px)", backgroundColor: "#EDE7DC" }}>
           <Image
             src={hero.src}
             alt={hero.name}
