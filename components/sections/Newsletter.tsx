@@ -50,7 +50,7 @@ export function Newsletter() {
                 fontFamily: "var(--font-body)",
                 fontSize: "0.9375rem",
                 lineHeight: 1.68,
-                color: "#6B7451",
+                color: "#98A47D",
               }}
             >
               Join the waitlist for early access, launch pricing and an
@@ -74,7 +74,7 @@ export function Newsletter() {
                   fontWeight: 500,
                   letterSpacing: "0.12em",
                   textTransform: "uppercase",
-                  color: "#6B7451",
+                  color: "#98A47D",
                   display: "block",
                   marginBottom: "0.5rem",
                 }}
@@ -139,14 +139,14 @@ export function Newsletter() {
                 style={{
                   fontFamily: "var(--font-body)",
                   fontSize: "0.75rem",
-                  color: "#98A27E",
+                  color: "#98A47D",
                   marginTop: "0.875rem",
                 }}
               >
                 No spam. Unsubscribe anytime. See our{" "}
                 <a
                   href="#"
-                  style={{ color: "#6B7451", textDecoration: "underline" }}
+                  style={{ color: "#98A47D", textDecoration: "underline" }}
                 >
                   privacy policy
                 </a>

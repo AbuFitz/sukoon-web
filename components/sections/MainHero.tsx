@@ -45,7 +45,7 @@ export function MainHero() {
               fontSize: "0.5rem",
               letterSpacing: "0.2em",
               textTransform: "uppercase",
-              color: "#9BA584",
+              color: "#98A47D",
               writingMode: "vertical-rl",
               transform: "rotate(180deg)",
             }}
@@ -57,7 +57,7 @@ export function MainHero() {
             style={{
               width: "1px",
               height: "6px",
-              backgroundColor: "#9BA584",
+              backgroundColor: "#98A47D",
               animation: "none",
             }}
           />
@@ -71,7 +71,7 @@ export function MainHero() {
             fontWeight: 500,
             letterSpacing: "0.2em",
             textTransform: "uppercase",
-            color: "#9BA584",
+            color: "#98A47D",
             marginBottom: "1.375rem",
           }}
         >
@@ -92,7 +92,7 @@ export function MainHero() {
           <span style={{ color: "#1E2318", display: "block" }}>
             Rooted<br />in nature.
           </span>
-          <span style={{ color: "#6B7451", display: "block" }}>
+          <span style={{ color: "#98A47D", display: "block" }}>
             Guided by<br />purpose.
           </span>
         </h1>
@@ -103,7 +103,7 @@ export function MainHero() {
             fontFamily: "var(--font-body)",
             fontSize: "0.9375rem",
             lineHeight: 1.75,
-            color: "#6B7451",
+            color: "#98A47D",
             maxWidth: "320px",
             marginBottom: "2.5rem",
           }}
@@ -170,7 +170,7 @@ export function MainHero() {
             width: "clamp(300px, 46vw, 560px)",
             height: "clamp(300px, 46vw, 560px)",
             borderRadius: "50%",
-            backgroundColor: "#8F9872",
+            backgroundColor: "#98A47D",
             opacity: 0.22,
           }}
         />

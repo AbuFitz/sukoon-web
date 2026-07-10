@@ -58,7 +58,7 @@ export function HowToUse() {
                   fontFamily: "var(--font-body)",
                   fontSize: "0.9375rem",
                   lineHeight: 1.65,
-                  color: "#6B7451",
+                  color: "#98A47D",
                 }}
               >
                 Four steps. Thirty seconds.
@@ -110,7 +110,7 @@ export function HowToUse() {
                           fontFamily: "var(--font-body)",
                           fontSize: "0.9375rem",
                           lineHeight: 1.65,
-                          color: "#6B7451",
+                          color: "#98A47D",
                         }}
                       >
                         {s.body}

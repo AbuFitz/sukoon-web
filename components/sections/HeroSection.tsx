@@ -45,7 +45,7 @@ export function HeroSection() {
               fontSize: "0.5625rem",
               letterSpacing: "0.2em",
               textTransform: "uppercase",
-              color: "#98A27E",
+              color: "#98A47D",
               writingMode: "vertical-rl",
               transform: "rotate(180deg)",
             }}
@@ -63,7 +63,7 @@ export function HeroSection() {
             fontWeight: 500,
             letterSpacing: "0.2em",
             textTransform: "uppercase",
-            color: "#98A27E",
+            color: "#98A47D",
             marginBottom: "1.25rem",
           }}
         >
@@ -82,7 +82,7 @@ export function HeroSection() {
           }}
         >
           <span style={{ color: "#2E3423", display: "block" }}>Rooted<br />in nature.</span>
-          <span style={{ color: "#6B7451", display: "block" }}>Guided by<br />purpose.</span>
+          <span style={{ color: "#98A47D", display: "block" }}>Guided by<br />purpose.</span>
         </h1>
 
         {/* Subtext */}
@@ -91,7 +91,7 @@ export function HeroSection() {
             fontFamily: "var(--font-body)",
             fontSize: "0.9375rem",
             lineHeight: 1.7,
-            color: "#6B7451",
+            color: "#98A47D",
             maxWidth: "340px",
             marginBottom: "2.5rem",
           }}
@@ -158,7 +158,7 @@ export function HeroSection() {
             width: "clamp(280px, 45vw, 520px)",
             height: "clamp(280px, 45vw, 520px)",
             borderRadius: "50%",
-            backgroundColor: "#8A9467",
+            backgroundColor: "#98A47D",
             opacity: 0.18,
           }}
           aria-hidden
@@ -174,7 +174,7 @@ export function HeroSection() {
             width: "clamp(220px, 36vw, 420px)",
             height: "clamp(220px, 36vw, 420px)",
             borderRadius: "50%",
-            backgroundColor: "#8A9467",
+            backgroundColor: "#98A47D",
             opacity: 0.13,
           }}
           aria-hidden

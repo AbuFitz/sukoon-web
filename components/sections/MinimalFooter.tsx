@@ -48,7 +48,7 @@ export function MinimalFooter() {
                 fontSize: "0.6875rem",
                 letterSpacing: "0.1em",
                 textTransform: "uppercase",
-                color: "#98A27E",
+                color: "#98A47D",
                 textDecoration: "none",
                 transition: "color 0.2s",
               }}
@@ -85,7 +85,7 @@ export function MinimalFooter() {
               rel="noopener noreferrer"
               aria-label={`Sukoon on ${s.label}`}
               style={{ color: "#C4BAB0", transition: "color 0.2s", display: "flex" }}
-              onMouseEnter={e => ((e.currentTarget as HTMLElement).style.color = "#6B7451")}
+              onMouseEnter={e => ((e.currentTarget as HTMLElement).style.color = "#98A47D")}
               onMouseLeave={e => ((e.currentTarget as HTMLElement).style.color = "#C4BAB0")}
             >
               {s.icon}

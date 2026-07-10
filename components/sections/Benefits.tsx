@@ -67,7 +67,7 @@ export function Benefits() {
                     className="w-10 h-10 rounded-full flex items-center justify-center"
                     style={{ backgroundColor: "#E8DFC9" }}
                   >
-                    <Icon size={18} strokeWidth={1.75} color="#6B7451" />
+                    <Icon size={18} strokeWidth={1.75} color="#98A47D" />
                   </div>
 
                   <h3
@@ -87,7 +87,7 @@ export function Benefits() {
                       fontFamily: "var(--font-body)",
                       fontSize: "0.9rem",
                       lineHeight: 1.65,
-                      color: "#6B7451",
+                      color: "#98A47D",
                     }}
                   >
                     {b.body}

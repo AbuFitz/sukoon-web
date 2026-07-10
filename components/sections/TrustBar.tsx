@@ -69,7 +69,7 @@ export function TrustBar() {
               gap: "0.625rem",
             }}
           >
-            <div style={{ color: "#6B7451" }}>
+            <div style={{ color: "#98A47D" }}>
               <Icon />
             </div>
             <p
@@ -79,7 +79,7 @@ export function TrustBar() {
                 fontWeight: 500,
                 letterSpacing: "0.2em",
                 textTransform: "uppercase",
-                color: "#6B7451",
+                color: "#98A47D",
               }}
             >
               {label}

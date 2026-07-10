@@ -49,7 +49,7 @@ export function Ingredients() {
               fontSize: "0.625rem",
               letterSpacing: "0.22em",
               textTransform: "uppercase",
-              color: "#98A27E",
+              color: "#98A47D",
               marginBottom: "1.25rem",
             }}
           >
@@ -109,7 +109,7 @@ export function Ingredients() {
                   fontSize: "0.5625rem",
                   letterSpacing: "0.18em",
                   textTransform: "uppercase",
-                  color: "#98A27E",
+                  color: "#98A47D",
                   marginBottom: "0.375rem",
                 }}
               >
@@ -132,7 +132,7 @@ export function Ingredients() {
                   fontFamily: "var(--font-body)",
                   fontSize: "0.875rem",
                   lineHeight: 1.75,
-                  color: "#6B7451",
+                  color: "#98A47D",
                 }}
               >
                 {item.description}

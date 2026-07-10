@@ -70,7 +70,7 @@ export function ProductPreview() {
             <div style={{ display: "flex", flexDirection: "column", gap: "0.625rem" }}>
               {["Cold-pressed Nigella Sativa", "Lightweight — absorbs in minutes", "Fragrance-free formulation", "Frosted glass. Recyclable packaging"].map(f => (
                 <div key={f} style={{ display: "flex", alignItems: "center", gap: "0.875rem" }}>
-                  <div style={{ width: "4px", height: "4px", borderRadius: "50%", backgroundColor: "#6B7451", flexShrink: 0 }} />
+                  <div style={{ width: "4px", height: "4px", borderRadius: "50%", backgroundColor: "#98A47D", flexShrink: 0 }} />
                   <p style={{ fontFamily: "var(--font-body)", fontSize: "0.875rem", color: "rgba(251,248,243,0.45)", letterSpacing: "0.01em" }}>
                     {f}
                   </p>

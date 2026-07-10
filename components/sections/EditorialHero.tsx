@@ -44,7 +44,7 @@ export function EditorialHero() {
               fontSize: "0.5rem",
               letterSpacing: "0.22em",
               textTransform: "uppercase",
-              color: "#98A27E",
+              color: "#98A47D",
               writingMode: "vertical-rl",
               transform: "rotate(180deg)",
             }}
@@ -62,7 +62,7 @@ export function EditorialHero() {
             fontWeight: 400,
             letterSpacing: "0.22em",
             textTransform: "uppercase",
-            color: "#98A27E",
+            color: "#98A47D",
             marginBottom: "1.5rem",
           }}
         >
@@ -92,7 +92,7 @@ export function EditorialHero() {
             fontFamily: "var(--font-body)",
             fontSize: "0.9375rem",
             lineHeight: 1.75,
-            color: "#6B7451",
+            color: "#98A47D",
             maxWidth: "340px",
             marginBottom: "2.75rem",
           }}

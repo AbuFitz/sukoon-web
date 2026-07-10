@@ -65,7 +65,7 @@ export function Hero() {
                 fontFamily: "var(--font-body)",
                 fontSize: "clamp(0.9375rem, 1.3vw, 1.0625rem)",
                 lineHeight: 1.7,
-                color: "#6B7451",
+                color: "#98A47D",
                 maxWidth: "26rem",
                 marginBottom: "2rem",
               }}
@@ -126,7 +126,7 @@ export function Hero() {
               style={{
                 fontFamily: "var(--font-body)",
                 fontSize: "0.8125rem",
-                color: "#98A27E",
+                color: "#98A47D",
                 marginTop: "1rem",
                 letterSpacing: "0.01em",
               }}

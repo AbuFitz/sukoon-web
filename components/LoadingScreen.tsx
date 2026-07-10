@@ -26,17 +26,17 @@ export function LoadingScreen() {
     }}>
       <div style={{
         position: "relative",
-        width: "clamp(120px, 20vw, 200px)",
+        width: "clamp(220px, 55vw, 480px)",
         aspectRatio: "1 / 1",
         opacity: fading ? 0 : 1,
-        transform: fading ? "scale(0.95)" : "scale(1)",
-        transition: "opacity 0.4s ease, transform 0.4s ease",
+        transform: fading ? "scale(0.97)" : "scale(1)",
+        transition: "opacity 0.4s ease, transform 0.5s cubic-bezier(0.22,1,0.36,1)",
       }}>
         <Image
           src="/Sukoonlogo.png"
           alt="Sukoon"
           fill
-          sizes="200px"
+          sizes="(max-width: 640px) 55vw, 480px"
           style={{
             objectFit: "contain",
             filter: "brightness(0) invert(1)",

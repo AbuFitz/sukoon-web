@@ -47,7 +47,7 @@ body {
 ::selection { background-color: #DDD5C8; color: #2C2416; }
 
 :focus-visible {
-  outline: 2px solid #6B7451;
+  outline: 2px solid #98A47D;
   outline-offset: 2px;
   border-radius: 2px;
 }
@@ -78,7 +78,7 @@ body {
   font-weight: 500;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: #6B7451;
+  color: #98A47D;
 }
 
 /* ─── Buttons ─── */
@@ -100,9 +100,9 @@ body {
 }
 
 .btn-olive {
-  background-color: #6B7451;
+  background-color: #98A47D;
   color: #FBF8F3;
-  border: 1.5px solid #6B7451;
+  border: 1.5px solid #98A47D;
 }
 .btn-olive:hover { background-color: #434A33; border-color: #434A33; }
 
@@ -111,7 +111,7 @@ body {
   color: #434A33;
   border: 1.5px solid #DDD5C8;
 }
-.btn-outline:hover { border-color: #6B7451; background-color: #FBF8F3; }
+.btn-outline:hover { border-color: #98A47D; background-color: #FBF8F3; }
 
 .btn-outline-light {
   background-color: transparent;
@@ -140,8 +140,8 @@ body {
   transition: border-color 0.2s ease;
   outline: none;
 }
-.input::placeholder { color: #98A27E; }
-.input:focus { border-color: #6B7451; }
+.input::placeholder { color: #98A47D; }
+.input:focus { border-color: #98A47D; }
 
 /* ─── Mobile base resets ─── */
 @media (max-width: 767px) {

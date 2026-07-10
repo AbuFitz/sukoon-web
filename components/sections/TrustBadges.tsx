@@ -70,7 +70,7 @@ export function TrustBadges() {
                     className="flex flex-col gap-3 p-6 md:p-7"
                     style={{ backgroundColor: "#FBF8F3" }}
                   >
-                    <Icon size={20} strokeWidth={1.75} color="#6B7451" />
+                    <Icon size={20} strokeWidth={1.75} color="#98A47D" />
                     <h3
                       style={{
                         fontFamily: "var(--font-body)",
@@ -87,7 +87,7 @@ export function TrustBadges() {
                         fontFamily: "var(--font-body)",
                         fontSize: "0.8375rem",
                         lineHeight: 1.6,
-                        color: "#6B7451",
+                        color: "#98A47D",
                       }}
                     >
                       {b.body}

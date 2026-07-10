@@ -56,11 +56,11 @@ export function Nav() {
                 className="text-[0.8125rem] font-[400] no-underline transition-colors duration-200"
                 style={{
                   fontFamily: "var(--font-body)",
-                  color: "#6B7451",
+                  color: "#98A47D",
                   letterSpacing: "0.02em",
                 }}
                 onMouseEnter={(e) => ((e.target as HTMLElement).style.color = "#434A33")}
-                onMouseLeave={(e) => ((e.target as HTMLElement).style.color = "#6B7451")}
+                onMouseLeave={(e) => ((e.target as HTMLElement).style.color = "#98A47D")}
               >
                 {l.label}
               </Link>

@@ -27,7 +27,7 @@ export function Gallery() {
             fontSize: "0.625rem",
             letterSpacing: "0.22em",
             textTransform: "uppercase",
-            color: "#98A27E",
+            color: "#98A47D",
             marginBottom: "clamp(2rem, 4vh, 3.5rem)",
           }}
         >

@@ -59,7 +59,7 @@ export function BrandValues() {
       <div style={{ maxWidth: "1380px", margin: "0 auto" }}>
 
         <div style={{ marginBottom: "clamp(3rem, 6vh, 5rem)" }}>
-          <p style={{ fontFamily: "var(--font-body)", fontSize: "0.625rem", letterSpacing: "0.22em", textTransform: "uppercase", color: "#98A27E", marginBottom: "1.25rem" }}>
+          <p style={{ fontFamily: "var(--font-body)", fontSize: "0.625rem", letterSpacing: "0.22em", textTransform: "uppercase", color: "#98A47D", marginBottom: "1.25rem" }}>
             What We Stand For
           </p>
           <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(2rem, 3.5vw, 3rem)", fontWeight: 300, lineHeight: 1.15, letterSpacing: "-0.01em", color: "#2E3423", maxWidth: "420px" }}>
@@ -87,7 +87,7 @@ export function BrandValues() {
                 gap: "1.25rem",
               }}
             >
-              <div style={{ color: "#6B7451" }}>
+              <div style={{ color: "#98A47D" }}>
                 <Icon />
               </div>
               <h3
@@ -106,7 +106,7 @@ export function BrandValues() {
                   fontFamily: "var(--font-body)",
                   fontSize: "0.875rem",
                   lineHeight: 1.8,
-                  color: "#6B7451",
+                  color: "#98A47D",
                 }}
               >
                 {body}

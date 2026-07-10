@@ -67,7 +67,7 @@ export function IngredientStory() {
                   fontFamily: "var(--font-body)",
                   fontSize: "clamp(0.9375rem, 1.3vw, 1.0625rem)",
                   lineHeight: 1.72,
-                  color: "#6B7451",
+                  color: "#98A47D",
                   marginBottom: "1.5rem",
                 }}
               >
@@ -82,7 +82,7 @@ export function IngredientStory() {
                   fontFamily: "var(--font-body)",
                   fontSize: "clamp(0.9375rem, 1.3vw, 1.0625rem)",
                   lineHeight: 1.72,
-                  color: "#6B7451",
+                  color: "#98A47D",
                   marginBottom: "2.5rem",
                 }}
               >
@@ -108,7 +108,7 @@ export function IngredientStory() {
                         fontWeight: 500,
                         letterSpacing: "0.14em",
                         textTransform: "uppercase",
-                        color: "#98A27E",
+                        color: "#98A47D",
                         marginBottom: "0.375rem",
                       }}
                     >

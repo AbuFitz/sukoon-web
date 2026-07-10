@@ -35,7 +35,7 @@ export function Ritual() {
                 fontSize: "0.625rem",
                 letterSpacing: "0.22em",
                 textTransform: "uppercase",
-                color: "#98A27E",
+                color: "#98A47D",
                 marginBottom: "1.75rem",
               }}
             >
@@ -88,7 +88,7 @@ export function Ritual() {
                         fontFamily: "var(--font-body)",
                         fontSize: "0.875rem",
                         lineHeight: 1.8,
-                        color: "#6B7451",
+                        color: "#98A47D",
                         maxWidth: "300px",
                       }}
                     >

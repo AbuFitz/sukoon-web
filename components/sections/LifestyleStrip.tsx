@@ -27,7 +27,7 @@ export function LifestyleStrip() {
       {/* Text block */}
       <div
         style={{
-          backgroundColor: "#6B7451",
+          backgroundColor: "#98A47D",
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",

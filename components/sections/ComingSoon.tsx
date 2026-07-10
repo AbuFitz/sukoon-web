@@ -69,7 +69,7 @@ export function ComingSoon() {
               fontWeight: 400,
               letterSpacing: "0.2em",
               textTransform: "uppercase",
-              color: "#98A27E",
+              color: "#98A47D",
               marginTop: "0.6rem",
             }}
           >
@@ -103,7 +103,7 @@ export function ComingSoon() {
               fontFamily: "var(--font-body)",
               fontSize: "0.9rem",
               lineHeight: 1.75,
-              color: "#6B7451",
+              color: "#98A47D",
               marginBottom: "2.5rem",
               maxWidth: "340px",
             }}
@@ -122,7 +122,7 @@ export function ComingSoon() {
                 fontWeight: 500,
                 letterSpacing: "0.18em",
                 textTransform: "uppercase",
-                color: "#98A27E",
+                color: "#98A47D",
                 display: "block",
                 marginBottom: "0.625rem",
               }}
@@ -186,18 +186,18 @@ export function ComingSoon() {
                   height: "2rem",
                   borderRadius: "50%",
                   border: "1px solid #DDD5C8",
-                  color: "#98A27E",
+                  color: "#98A47D",
                   transition: "border-color 0.2s, color 0.2s",
                 }}
                 onMouseEnter={(e) => {
                   const el = e.currentTarget as HTMLElement;
-                  el.style.borderColor = "#6B7451";
+                  el.style.borderColor = "#98A47D";
                   el.style.color = "#2E3423";
                 }}
                 onMouseLeave={(e) => {
                   const el = e.currentTarget as HTMLElement;
                   el.style.borderColor = "#DDD5C8";
-                  el.style.color = "#98A27E";
+                  el.style.color = "#98A47D";
                 }}
               >
                 {s.icon}

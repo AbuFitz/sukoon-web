@@ -49,7 +49,7 @@ export function Philosophy() {
                 fontWeight: 400,
                 letterSpacing: "0.22em",
                 textTransform: "uppercase",
-                color: "#98A27E",
+                color: "#98A47D",
                 marginBottom: "1.75rem",
               }}
             >
@@ -86,7 +86,7 @@ export function Philosophy() {
                 fontFamily: "var(--font-body)",
                 fontSize: "0.9375rem",
                 lineHeight: 1.85,
-                color: "#6B7451",
+                color: "#98A47D",
                 maxWidth: "360px",
                 marginBottom: "1.5rem",
               }}
@@ -101,7 +101,7 @@ export function Philosophy() {
                 fontFamily: "var(--font-body)",
                 fontSize: "0.9375rem",
                 lineHeight: 1.85,
-                color: "#6B7451",
+                color: "#98A47D",
                 maxWidth: "360px",
               }}
             >
