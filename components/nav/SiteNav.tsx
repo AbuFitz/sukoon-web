@@ -7,24 +7,23 @@ import { BagPanel } from "./BagPanel";
 import { useCart } from "@/lib/cart-context";
 
 const links = [
-  { label: "Shop",       href: "/shop" },
-  { label: "Our Story",  href: "/about" },
-  { label: "Skin Quiz",  href: "#" },
-  { label: "Journal",    href: "#" },
+  { label: "Shop",        href: "/shop" },
+  { label: "Our Story",   href: "/about" },
+  { label: "Ingredients", href: "#ingredients" },
+  { label: "Journal",     href: "#" },
 ];
 
-const INK   = "#F7F1E4";
-const GREY  = "rgba(247,241,228,0.6)";
-const LINEN = "#F7F1E4";
-const LINE  = "rgba(247,241,228,0.2)";
-const NAV_BG = "#98A47D";
+const INK   = "#111110";
+const GREY  = "#6E6E68";
+const LINEN = "#FBF8F3";
+const LINE  = "#E3E1DA";
 
 function IconBtn({ label, onClick, href, children, badge }: { label: string; onClick?: () => void; href?: string; children: React.ReactNode; badge?: number }) {
   const style: React.CSSProperties = { position: "relative", display: "flex", color: INK, background: "none", border: "none", padding: 0, cursor: "pointer" };
   const badgeEl = badge ? (
     <span style={{
       position: "absolute", top: -7, right: -8, minWidth: 15, height: 15, borderRadius: "50%",
-      backgroundColor: "#2C2A1F", color: "#F7F1E4", fontFamily: "var(--font-body)", fontSize: "0.5625rem",
+      backgroundColor: INK, color: "#FFFFFF", fontFamily: "var(--font-body)", fontSize: "0.5625rem",
       fontWeight: 600, display: "flex", alignItems: "center", justifyContent: "center", padding: "0 3px",
     }}>
       {badge}
@@ -102,7 +101,15 @@ export function SiteNav() {
   const [searchOpen, setSearchOpen] = useState(false);
   const [accountOpen, setAccountOpen] = useState(false);
   const [bagOpen, setBagOpen] = useState(false);
+  const [solid, setSolid] = useState(false);
   const { count } = useCart();
+
+  useEffect(() => {
+    const onScroll = () => setSolid(window.scrollY > 40);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   useEffect(() => {
     document.body.style.overflow = (open || searchOpen || accountOpen || bagOpen) ? "hidden" : "";
@@ -113,8 +120,10 @@ export function SiteNav() {
     <>
       <header style={{
         position: "fixed", top: "1.75rem", left: 0, right: 0, zIndex: 50,
-        backgroundColor: NAV_BG,
-        borderBottom: `1px solid ${LINE}`,
+        backgroundColor: solid ? "rgba(251,248,243,0.96)" : "transparent",
+        backdropFilter: solid ? "blur(10px)" : "none",
+        borderBottom: `1px solid ${solid ? LINE : "transparent"}`,
+        transition: "background-color 0.4s ease, border-color 0.4s ease",
       }}>
         <div className="h-[76px] md:h-[84px]" style={{
           maxWidth: "1480px", margin: "0 auto",
@@ -122,7 +131,6 @@ export function SiteNav() {
           display: "grid", gridTemplateColumns: "1fr auto 1fr",
           alignItems: "center",
         }}>
-          {/* Left links (desktop) / hamburger (mobile) */}
           <nav className="hidden md:flex" style={{ gap: "2.25rem" }} aria-label="Primary">
             <NavLink {...links[0]} />
             <NavLink {...links[1]} />
@@ -137,16 +145,14 @@ export function SiteNav() {
             </button>
           </div>
 
-          {/* Centered wordmark */}
           <a href="/" style={{
-            justifySelf: "center", textDecoration: "none", color: "#F7F1E4",
+            justifySelf: "center", textDecoration: "none", color: "#2C2A1F",
             fontFamily: "var(--font-display)", fontSize: "clamp(1.875rem, 3vw, 2.75rem)", fontWeight: 400,
             letterSpacing: "0.18em", textTransform: "uppercase", lineHeight: 1,
           }}>
             Sukoon
           </a>
 
-          {/* Right links + icons */}
           <div className="hidden md:flex" style={{ justifySelf: "end", alignItems: "center", gap: "2.25rem" }}>
             <NavLink {...links[2]} />
             <NavLink {...links[3]} />
@@ -167,7 +173,6 @@ export function SiteNav() {
       <AccountPanel open={accountOpen} onClose={() => setAccountOpen(false)} />
       <BagPanel open={bagOpen} onClose={() => setBagOpen(false)} />
 
-      {/* Mobile full-screen panel — high-contrast black */}
       <div aria-hidden={!open} style={{
         position: "fixed", inset: 0, zIndex: 60,
         pointerEvents: open ? "auto" : "none",

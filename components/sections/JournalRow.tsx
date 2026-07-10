@@ -3,7 +3,7 @@ import Image from "next/image";
 const articles = [
   {
     category: "Science",
-    title: "Why hijabs and hairlines need their own science",
+    title: "Why tight styles and hairlines need their own science",
     src: "https://images.unsplash.com/photo-1517256064527-09c73fc73e38?w=700&q=85&fit=crop",
   },
   {

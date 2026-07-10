@@ -1,3 +1,4 @@
+import React from "react";
 import Image from "next/image";
 
 const items = [
@@ -19,8 +20,8 @@ export function TrustStrip() {
       {/* Desktop: 4 columns with dividers */}
       <div className="hidden md:flex" style={{ maxWidth: "1320px", margin: "0 auto", alignItems: "flex-start" }}>
         {items.map((item, i) => (
-          <>
-            <div key={item.label} style={{ flex: 1, padding: "0 clamp(1.5rem, 3vw, 2.5rem)" }}>
+          <React.Fragment key={item.label}>
+            <div style={{ flex: 1, padding: "0 clamp(1.5rem, 3vw, 2.5rem)" }}>
               <Image
                 src={item.src}
                 alt=""
@@ -43,9 +44,9 @@ export function TrustStrip() {
               </p>
             </div>
             {i < items.length - 1 && (
-              <div key={`div-${i}`} style={{ width: "1px", backgroundColor: "#E0D5C5", alignSelf: "stretch", flexShrink: 0 }} />
+              <div style={{ width: "1px", backgroundColor: "#E0D5C5", alignSelf: "stretch", flexShrink: 0 }} />
             )}
-          </>
+          </React.Fragment>
         ))}
       </div>
 
