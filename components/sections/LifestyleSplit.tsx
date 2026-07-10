@@ -1,70 +1,105 @@
+"use client";
+
 import Image from "next/image";
+import { useState } from "react";
 
 export function LifestyleSplit() {
+  const [hoverStory, setHoverStory] = useState(false);
+  const [hoverFormula, setHoverFormula] = useState(false);
+
   return (
-    <section id="story" style={{ backgroundColor: "#FFFFFF" }}>
-      <div className="grid grid-cols-1 md:grid-cols-2" style={{ minHeight: "clamp(500px, 70vh, 800px)" }}>
+    <section
+      id="story"
+      style={{
+        position: "relative",
+        width: "100%",
+        height: "clamp(540px, 88vh, 1000px)",
+        overflow: "hidden",
+        backgroundColor: "#1a1a18",
+      }}
+    >
+      {/* Full-bleed image — the whole section IS the image */}
+      <Image
+        src="https://images.unsplash.com/photo-1693004927824-f2623bbedc8b?w=2000&q=90&fit=crop"
+        alt="Woman applying The Daily Solace Fluid"
+        fill
+        sizes="100vw"
+        style={{ objectFit: "cover", objectPosition: "center 20%" }}
+      />
 
-        {/* Image — full bleed, no aspect ratio constraints */}
-        <div style={{ position: "relative", minHeight: "clamp(360px, 55vw, 700px)", backgroundColor: "#EDE7DC", order: 1 }}>
-          <Image
-            src="https://images.unsplash.com/photo-1693004927824-f2623bbedc8b?w=1400&q=90&fit=crop"
-            alt="Woman applying The Daily Solace Fluid"
-            fill
-            sizes="(max-width: 768px) 100vw, 50vw"
-            style={{ objectFit: "cover", objectPosition: "center top" }}
-          />
-        </div>
+      {/* Gradient — bottom-heavy so text reads */}
+      <div style={{
+        position: "absolute", inset: 0,
+        background: "linear-gradient(to top, rgba(15,14,12,0.88) 0%, rgba(15,14,12,0.3) 40%, rgba(15,14,12,0) 70%)",
+      }} />
 
-        {/* Text — right column, vertically centred */}
+      {/* Content — anchored to bottom edge */}
+      <div style={{
+        position: "absolute", inset: 0,
+        display: "flex", flexDirection: "column", justifyContent: "flex-end",
+        padding: "clamp(2rem, 5vw, 4rem) clamp(1.5rem, 6vw, 5rem)",
+      }}>
         <div style={{
-          display: "flex", flexDirection: "column", justifyContent: "center",
-          padding: "clamp(3.5rem, 7vw, 8rem) clamp(2.5rem, 6vw, 7rem)",
-          backgroundColor: "#F7F4EF",
-          order: 2,
+          maxWidth: "1320px", width: "100%", margin: "0 auto",
+          display: "flex", justifyContent: "space-between", alignItems: "flex-end",
+          flexWrap: "wrap", gap: "2rem",
         }}>
-          <p style={{
-            fontFamily: "var(--font-body)", fontSize: "0.5rem", fontWeight: 700,
-            letterSpacing: "0.22em", textTransform: "uppercase", color: "#98A47D",
-            marginBottom: "1.75rem",
-          }}>
-            The Science
-          </p>
-          <h2 style={{
-            fontFamily: "var(--font-display)",
-            fontSize: "clamp(2rem, 3.5vw, 3rem)",
-            fontWeight: 400, lineHeight: 1.1, letterSpacing: "-0.015em",
-            color: "#2C2A1F", marginBottom: "2rem",
-          }}>
-            Built for the hairline every other product forgot.
-          </h2>
-          <p style={{
-            fontFamily: "var(--font-body)", fontSize: "0.9375rem", lineHeight: 1.85,
-            color: "#6B6860", marginBottom: "1.375rem",
-          }}>
-            Every serum on the shelf was made for your face alone. Nobody built one for the hairline strain that tight styles, tension, and daily wear press in quietly — over years.
-          </p>
-          <p style={{
-            fontFamily: "var(--font-body)", fontSize: "0.9375rem", lineHeight: 1.85,
-            color: "#6B6860", marginBottom: "2.75rem",
-          }}>
-            100% waterless. Nothing greasy. Sixty seconds — and it&rsquo;s working.
-          </p>
-          <div style={{ display: "flex", gap: "2rem", flexWrap: "wrap" }}>
-            <a href="/about" style={{
-              fontFamily: "var(--font-body)", fontSize: "0.625rem", fontWeight: 700,
-              letterSpacing: "0.16em", textTransform: "uppercase",
-              color: "#2C2A1F", textDecoration: "none",
-              borderBottom: "1.5px solid #2C2A1F", paddingBottom: "3px",
+          {/* Left — headline */}
+          <div style={{ maxWidth: "560px" }}>
+            <p style={{
+              fontFamily: "var(--font-body)", fontSize: "0.5rem", fontWeight: 700,
+              letterSpacing: "0.22em", textTransform: "uppercase", color: "#98A47D",
+              marginBottom: "1.25rem",
             }}>
+              The Science
+            </p>
+            <h2 style={{
+              fontFamily: "var(--font-display)",
+              fontSize: "clamp(2rem, 4.5vw, 3.75rem)",
+              fontWeight: 400, lineHeight: 1.08, letterSpacing: "-0.02em",
+              color: "#FFFFFF", margin: "0 0 1.75rem",
+            }}>
+              Built for the hairline every other product forgot.
+            </h2>
+            <p style={{
+              fontFamily: "var(--font-body)", fontSize: "clamp(0.875rem, 1.4vw, 1rem)",
+              lineHeight: 1.75, color: "rgba(255,255,255,0.55)",
+              margin: 0, maxWidth: "440px",
+            }}>
+              100% waterless. Nothing greasy. Sixty seconds — and it&rsquo;s working.
+            </p>
+          </div>
+
+          {/* Right — links */}
+          <div style={{ display: "flex", flexDirection: "column", gap: "0.875rem", alignItems: "flex-end" }}>
+            <a
+              href="/about"
+              style={{
+                fontFamily: "var(--font-body)", fontSize: "0.5625rem", fontWeight: 700,
+                letterSpacing: "0.16em", textTransform: "uppercase",
+                color: hoverStory ? "#FFFFFF" : "rgba(255,255,255,0.55)",
+                textDecoration: "none", transition: "color 0.2s",
+                borderBottom: `1px solid ${hoverStory ? "rgba(255,255,255,0.6)" : "rgba(255,255,255,0.2)"}`,
+                paddingBottom: "2px",
+              }}
+              onMouseEnter={() => setHoverStory(true)}
+              onMouseLeave={() => setHoverStory(false)}
+            >
               Our Story
             </a>
-            <a href="#ingredients" style={{
-              fontFamily: "var(--font-body)", fontSize: "0.625rem", fontWeight: 700,
-              letterSpacing: "0.16em", textTransform: "uppercase",
-              color: "#98A47D", textDecoration: "none",
-              borderBottom: "1.5px solid #98A47D", paddingBottom: "3px",
-            }}>
+            <a
+              href="#ingredients"
+              style={{
+                fontFamily: "var(--font-body)", fontSize: "0.5625rem", fontWeight: 700,
+                letterSpacing: "0.16em", textTransform: "uppercase",
+                color: hoverFormula ? "#98A47D" : "rgba(152,164,125,0.7)",
+                textDecoration: "none", transition: "color 0.2s",
+                borderBottom: `1px solid ${hoverFormula ? "#98A47D" : "rgba(152,164,125,0.3)"}`,
+                paddingBottom: "2px",
+              }}
+              onMouseEnter={() => setHoverFormula(true)}
+              onMouseLeave={() => setHoverFormula(false)}
+            >
               The Formula
             </a>
           </div>
