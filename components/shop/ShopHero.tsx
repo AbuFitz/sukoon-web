@@ -1,37 +1,43 @@
+import Image from "next/image";
+
 export function ShopHero() {
   return (
     <section
       aria-label="Shop"
-      style={{
-        backgroundColor: "#FFFFFF",
-        padding: "clamp(8rem, 16vw, 10rem) clamp(1.5rem, 6vw, 5rem) clamp(3rem, 6vw, 4.5rem)",
-        borderBottom: "1px solid #E8E2D8",
-      }}
+      style={{ position: "relative", height: "clamp(380px, 55vw, 680px)", overflow: "hidden", backgroundColor: "#1a1a18" }}
     >
-      <div style={{ maxWidth: "1320px", margin: "0 auto" }}>
-        <div className="grid grid-cols-1 md:grid-cols-2" style={{ gap: "2rem", alignItems: "flex-end" }}>
-          <div>
-            <p style={{
-              fontFamily: "var(--font-body)", fontSize: "0.5625rem", fontWeight: 600,
-              letterSpacing: "0.22em", textTransform: "uppercase", color: "#98A47D",
-              marginBottom: "1.5rem",
-            }}>
-              The Collection
-            </p>
-            <h1 style={{
-              fontFamily: "var(--font-display)", fontSize: "clamp(2.5rem, 5.5vw, 4.5rem)",
-              fontWeight: 400, letterSpacing: "-0.025em", lineHeight: 1.05,
-              color: "#2C2A1F", margin: 0,
-            }}>
-              One oil.<br />Every ritual<br />it belongs in.
-            </h1>
-          </div>
-          <p className="hidden md:block" style={{
-            fontFamily: "var(--font-body)", fontSize: "1rem",
-            lineHeight: 1.8, color: "#6B6860", maxWidth: "380px", marginBottom: "0.5rem",
+      <Image
+        src="https://images.unsplash.com/photo-1707539160277-e39464517645?w=2000&q=90&fit=crop"
+        alt="The Daily Solace Collection"
+        fill priority
+        sizes="100vw"
+        style={{ objectFit: "cover", objectPosition: "center 35%" }}
+      />
+      <div style={{
+        position: "absolute", inset: 0,
+        background: "linear-gradient(to right, rgba(20,19,17,0.75) 0%, rgba(20,19,17,0.2) 70%, rgba(20,19,17,0) 100%)",
+      }} />
+      <div style={{
+        position: "absolute", inset: 0,
+        display: "flex", flexDirection: "column", justifyContent: "flex-end",
+        padding: "clamp(2rem, 5vw, 4rem) clamp(1.5rem, 6vw, 5rem)",
+        paddingTop: "8rem",
+      }}>
+        <div style={{ maxWidth: "1320px", margin: "0 auto", width: "100%" }}>
+          <p style={{
+            fontFamily: "var(--font-body)", fontSize: "0.5rem", fontWeight: 700,
+            letterSpacing: "0.22em", textTransform: "uppercase", color: "#98A47D",
+            marginBottom: "1rem",
           }}>
-            Waterless. Five ingredients. Engineered for skin and the hairline pressure tight styles leave behind.
+            The Collection
           </p>
+          <h1 style={{
+            fontFamily: "var(--font-display)", fontSize: "clamp(2.5rem, 5vw, 4.5rem)",
+            fontWeight: 400, letterSpacing: "-0.025em", lineHeight: 1.06,
+            color: "#FFFFFF", maxWidth: "640px",
+          }}>
+            One oil. Every ritual it belongs in.
+          </h1>
         </div>
       </div>
     </section>
