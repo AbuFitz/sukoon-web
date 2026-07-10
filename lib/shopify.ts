@@ -196,6 +196,21 @@ export async function getCart(cartId: string): Promise<ShopifyCart | null> {
   return data.cart;
 }
 
+// ─── Convenience: build handle→variantId map from all products ───────────────
+// Pages call this once on the server; variantIds flow down as props.
+// This means Shopify is the source of truth — no hardcoded handles in pages.
+
+export async function getVariantIdMap(): Promise<Record<string, string>> {
+  const prods = await getProducts();
+  const map: Record<string, string> = {};
+  for (const p of prods) {
+    if (p.variants.nodes[0]?.id) {
+      map[p.handle] = p.variants.nodes[0].id;
+    }
+  }
+  return map;
+}
+
 // ─── Price helper ─────────────────────────────────────────────────────────────
 
 export function formatPrice(amount: string, currencyCode: string): string {

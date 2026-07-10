@@ -7,7 +7,7 @@ const ingredients = [
   },
   {
     name: "Vitamin B3",
-    latin: "Niacinamide · 14.9%",
+    latin: "Myristyl Nicotinate · 14.9%",
     description: "Strengthens what friction weakens. The barrier on your face. The follicles along your hairline. Both.",
     bg: "#98A47D", fg: "#2C2A1F", symbol: "٢",
   },
@@ -22,6 +22,12 @@ const ingredients = [
     latin: "Tocopherol · 3%",
     description: "Keeps every botanical oil in the bottle honest. Protects against oxidation. Quietly does the most.",
     bg: "#D9A356", fg: "#2C2A1F", symbol: "٤",
+  },
+  {
+    name: "Vanilla Extract",
+    latin: "Vanilla Planifolia · 0.1%",
+    description: "A soft, comforting finish. Neutralises herbal undertones without synthetic fragrance. All-day wear, zero irritation.",
+    bg: "#F7F1E4", fg: "#2C2A1F", symbol: "٥",
   },
 ];
 
@@ -40,7 +46,7 @@ export function IngredientsGrid() {
             fontWeight: 400, letterSpacing: "-0.015em", lineHeight: 1.1,
             color: "#2C2A1F",
           }}>
-            Four ingredients.<br />Nothing extra.
+            Five ingredients.<br />Nothing extra.
           </h2>
         </div>
 

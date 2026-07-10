@@ -9,12 +9,14 @@ import { PhilosophyQuote } from "@/components/sections/PhilosophyQuote";
 import { ForYou }          from "@/components/sections/ForYou";
 import { EmailCapture }    from "@/components/sections/EmailCapture";
 import { Footer }          from "@/components/sections/Footer";
-import { getProductByHandle } from "@/lib/shopify";
+import { getVariantIdMap } from "@/lib/shopify";
+import { products }        from "@/lib/products";
 
 export default async function Home() {
-  // Fetch the first product's default variant ID from Shopify
-  const product = await getProductByHandle("the-daily-solace-fluid").catch(() => null);
-  const variantId = product?.variants.nodes[0]?.id;
+  // Shopify is source of truth — fetch all product handles at build/request time
+  const variantMap = await getVariantIdMap().catch(() => ({} as Record<string, string>));
+  const heroProduct = products[0];
+  const variantId = variantMap[heroProduct.slug];
 
   return (
     <>

@@ -5,21 +5,18 @@ import { IngredientsGrid }   from "@/components/sections/IngredientsGrid";
 import { TrustStrip }        from "@/components/sections/TrustStrip";
 import { EmailCapture }      from "@/components/sections/EmailCapture";
 import { Footer }            from "@/components/sections/Footer";
-import { getProductByHandle } from "@/lib/shopify";
-import { products }           from "@/lib/products";
+import { getVariantIdMap }   from "@/lib/shopify";
+import { products }          from "@/lib/products";
 
 export default async function ShopPage() {
-  // Fetch variantId for each product by handle in parallel
-  const shopifyProducts = await Promise.all(
-    products.map(p => getProductByHandle(p.slug).catch(() => null))
-  );
+  // Fetch all variant IDs from Shopify in one request; map by handle
+  const variantMap = await getVariantIdMap().catch(() => ({} as Record<string, string>));
 
+  // Build slug → variantId map for the product selector
   const variantIds: Record<string, string> = {};
-  shopifyProducts.forEach((sp, i) => {
-    if (sp?.variants.nodes[0]?.id) {
-      variantIds[products[i].slug] = sp.variants.nodes[0].id;
-    }
-  });
+  for (const p of products) {
+    if (variantMap[p.slug]) variantIds[p.slug] = variantMap[p.slug];
+  }
 
   return (
     <>
