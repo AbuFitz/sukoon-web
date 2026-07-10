@@ -55,7 +55,7 @@ export function Footer() {
       {/* Main columns */}
       <div style={{
         maxWidth: 1440, margin: "0 auto",
-        padding: "clamp(3.5rem, 7vw, 4.5rem) clamp(2rem, 5vw, 3.5rem) clamp(2.5rem, 5vw, 3.5rem)",
+        padding: "clamp(4.5rem, 8vw, 5.5rem) clamp(2.5rem, 5vw, 4rem) clamp(3rem, 5vw, 4rem)",
       }}>
         <div style={{
           display: "grid",
@@ -68,7 +68,7 @@ export function Footer() {
           <div>
             <a href="/" style={{
               fontFamily: "var(--font-display)",
-              fontSize: "clamp(1.5rem, 3vw, 2.25rem)",
+              fontSize: "clamp(1.75rem, 3vw, 2.5rem)",
               fontWeight: 400, letterSpacing: "0.18em", textTransform: "uppercase",
               color: LINEN, textDecoration: "none", lineHeight: 1,
               display: "block", marginBottom: "1.125rem",
@@ -105,7 +105,7 @@ export function Footer() {
                     <Link
                       href={l.href}
                       style={{
-                        fontFamily: "var(--font-body)", fontSize: "0.875rem",
+                        fontFamily: "var(--font-body)", fontSize: "0.9375rem", lineHeight: 1.9,
                         color: FAINT, textDecoration: "none",
                         transition: "color 0.18s ease",
                       }}

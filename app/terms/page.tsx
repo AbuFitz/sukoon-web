@@ -10,14 +10,14 @@ const PROSE = {
   fontFamily: "var(--font-body)",
   fontSize: "0.9375rem",
   lineHeight: 1.85,
-  color: "#98A47D",
+  color: "#64685f",
 };
 
 const H2 = {
   fontFamily: "var(--font-display)",
   fontSize: "clamp(1.375rem, 2.5vw, 1.75rem)",
   fontWeight: 400,
-  color: "#2C2A1F",
+  color: "#292b25",
   marginTop: "2.5rem",
   marginBottom: "0.875rem",
   lineHeight: 1.2,
@@ -27,14 +27,14 @@ export default function TermsPage() {
   return (
     <>
       <SiteNav />
-      <main style={{ paddingTop: "calc(1.75rem + 56px)", backgroundColor: "#FBF8F3", minHeight: "80vh" }}>
+      <main style={{ paddingTop: "calc(1.75rem + 84px)", backgroundColor: "#faf8f3", minHeight: "80vh" }}>
         <div style={{ maxWidth: "780px", margin: "0 auto", padding: "clamp(3rem, 7vw, 5rem) clamp(1.5rem, 5vw, 3rem)" }}>
           <h1 style={{
             fontFamily: "var(--font-display)", fontSize: "clamp(2rem, 4vw, 3rem)",
-            fontWeight: 400, letterSpacing: "-0.015em", color: "#2C2A1F",
+            fontWeight: 400, letterSpacing: "-0.015em", color: "#292b25",
             marginBottom: "0.5rem",
           }}>Terms &amp; Conditions</h1>
-          <p style={{ ...PROSE, color: "#98A47D", marginBottom: "2.5rem", fontSize: "0.8125rem" }}>
+          <p style={{ ...PROSE, color: "#64685f", marginBottom: "2.5rem", fontSize: "0.8125rem" }}>
             Last updated: July 2025
           </p>
 
@@ -47,7 +47,7 @@ export default function TermsPage() {
           <p style={PROSE}>Placing an order constitutes an offer to purchase. Your order is accepted when we send you a dispatch confirmation email. We reserve the right to cancel any order before dispatch, in which case a full refund will be issued promptly.</p>
 
           <h2 style={H2}>Delivery</h2>
-          <p style={PROSE}>We aim to dispatch all orders within 2–3 working days. Delivery times are estimates and not guaranteed. Risk passes to you on delivery. See our <a href="/shipping" style={{ color: "#2C2A1F", textUnderlineOffset: "3px" }}>Shipping & Returns</a> page for full details.</p>
+          <p style={PROSE}>We aim to dispatch all orders within 2–3 working days. Delivery times are estimates and not guaranteed. Risk passes to you on delivery. See our <a href="/shipping" style={{ color: "#292b25", textUnderlineOffset: "3px" }}>Shipping & Returns</a> page for full details.</p>
 
           <h2 style={H2}>Returns</h2>
           <p style={PROSE}>You have the right to cancel your order within 14 days of receiving it under the Consumer Contracts Regulations 2013. Returned items must be unused, in original packaging, and returned within 14 days of cancellation notice. Refunds are issued within 14 days of receiving the returned item. Return postage is your responsibility unless the item is faulty.</p>

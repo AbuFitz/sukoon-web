@@ -4,17 +4,17 @@ import { useState } from "react";
 import { SiteNav } from "@/components/nav/SiteNav";
 import { Footer } from "@/components/sections/Footer";
 
-const INK  = "#2C2A1F";
-const SAGE = "#98A47D";
-const LINE = "#E8D4AE";
-const LINEN = "#FBF8F3";
+const INK   = "#292b25";
+const SAGE  = "#64685f";
+const LINE  = "#dedfd8";
+const LINEN = "#faf8f3";
 
 const inputStyle = {
   width: "100%",
   fontFamily: "var(--font-body)",
   fontSize: "0.9375rem",
   color: INK,
-  backgroundColor: "#F7F1E4",
+  backgroundColor: "#FFFFFF",
   border: `1px solid ${LINE}`,
   padding: "0.875rem 1rem",
   outline: "none",
@@ -38,7 +38,7 @@ export default function ContactPage() {
   return (
     <>
       <SiteNav />
-      <main style={{ paddingTop: "calc(1.75rem + 56px)", backgroundColor: LINEN, minHeight: "80vh" }}>
+      <main style={{ paddingTop: "calc(1.75rem + 84px)", backgroundColor: LINEN, minHeight: "80vh" }}>
         <div style={{ maxWidth: "680px", margin: "0 auto", padding: "clamp(3rem, 7vw, 5rem) clamp(1.5rem, 5vw, 3rem)" }}>
           <h1 style={{
             fontFamily: "var(--font-display)", fontSize: "clamp(2rem, 4vw, 3rem)",
@@ -54,7 +54,7 @@ export default function ContactPage() {
 
           {sent ? (
             <div style={{
-              backgroundColor: "#F7F1E4", border: `1px solid ${LINE}`,
+              backgroundColor: "#FFFFFF", border: `1px solid ${LINE}`,
               padding: "2rem", textAlign: "center",
             }}>
               <p style={{ fontFamily: "var(--font-display)", fontSize: "1.5rem", fontWeight: 400, color: INK, marginBottom: "0.5rem" }}>

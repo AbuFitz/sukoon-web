@@ -8,14 +8,14 @@ export function AboutContent() {
 
       {/* Hero */}
       <div style={{
-        backgroundColor: "#F7F1E4",
+        backgroundColor: "#faf8f3",
         padding: "clamp(4rem, 9vw, 7rem) clamp(2rem, 7vw, 7rem) clamp(3rem, 7vw, 5rem)",
-        borderBottom: "1px solid #E6DCC6",
+        borderBottom: "1px solid #dedfd8",
       }}>
         <div style={{ maxWidth: "780px" }}>
           <h1 style={{
             fontFamily: "var(--font-display)", fontSize: "clamp(2.5rem, 6vw, 4.25rem)",
-            fontWeight: 400, lineHeight: 1.08, letterSpacing: "-0.02em", color: "#2C2A1F",
+            fontWeight: 400, lineHeight: 1.08, letterSpacing: "-0.02em", color: "#292b25",
             marginBottom: "clamp(1.5rem, 4vw, 2.25rem)",
           }}>
             The skincare industry built<br />everything for your face.<br />
@@ -23,7 +23,7 @@ export function AboutContent() {
           </h1>
           <p style={{
             fontFamily: "var(--font-body)", fontSize: "1rem", lineHeight: 1.85,
-            color: "#98A47D", maxWidth: "560px",
+            color: "#64685f", maxWidth: "560px",
           }}>
             سكون. In Arabic, it means stillness. The moment the day slows down, the noise drops away, and you return to yourself. That&rsquo;s the feeling we wanted to bottle — not just for your face, but for every part of your ritual that never had a product made for it.
           </p>
@@ -31,7 +31,7 @@ export function AboutContent() {
       </div>
 
       {/* Split: Image + The Problem */}
-      <div className="flex flex-col md:grid md:grid-cols-2" style={{ backgroundColor: "#FBF8F3" }}>
+      <div className="flex flex-col md:grid md:grid-cols-2" style={{ backgroundColor: "#FFFFFF" }}>
         <div style={{ position: "relative", minHeight: "clamp(360px, 60vw, 680px)", backgroundColor: "#E8D4AE" }}>
           <Image
             src="https://images.unsplash.com/photo-1612817159949-195b6eb9e31a?w=1200&q=85&fit=crop"
@@ -46,19 +46,19 @@ export function AboutContent() {
         }}>
           <h2 style={{
             fontFamily: "var(--font-display)", fontSize: "clamp(1.75rem, 4vw, 2.75rem)",
-            fontWeight: 400, lineHeight: 1.15, color: "#2C2A1F",
+            fontWeight: 400, lineHeight: 1.15, color: "#292b25",
             marginBottom: "clamp(1.5rem, 4vw, 2rem)",
           }}>
             Millions of people are managing hairline thinning with products that were never made for them.
           </h2>
           <p style={{
-            fontFamily: "var(--font-body)", fontSize: "1rem", lineHeight: 1.85, color: "#98A47D",
+            fontFamily: "var(--font-body)", fontSize: "1rem", lineHeight: 1.85, color: "#64685f",
             marginBottom: "1.25rem",
           }}>
             Traction alopecia — hairline thinning caused by daily friction and tension from tight styles, braids, weaves, and ponytails — is well-documented. The products addressing it are not. Most hairline treatments are thick, heavy, and scented for overnight use. Most face oils ignore the hairline entirely.
           </p>
           <p style={{
-            fontFamily: "var(--font-body)", fontSize: "1rem", lineHeight: 1.85, color: "#98A47D",
+            fontFamily: "var(--font-body)", fontSize: "1rem", lineHeight: 1.85, color: "#64685f",
           }}>
             The Daily Solace Fluid was built to exist in that gap. Lightweight enough for daily face use. Active enough to support the hairline. One formula. Two rituals.
           </p>
@@ -76,7 +76,7 @@ export function AboutContent() {
             fontWeight: 400, lineHeight: 1.15, letterSpacing: "-0.01em",
             color: "#F7F1E4", marginBottom: "clamp(1.5rem, 4vw, 2rem)",
           }}>
-            Four ingredients. Nothing extra.
+            Five ingredients. Nothing extra.
           </h2>
           <p style={{
             fontFamily: "var(--font-body)", fontSize: "1rem", lineHeight: 1.85,
@@ -88,19 +88,20 @@ export function AboutContent() {
             fontFamily: "var(--font-body)", fontSize: "1rem", lineHeight: 1.85,
             color: "rgba(251,248,243,0.65)", marginBottom: "2.5rem",
           }}>
-            100% waterless means 100% active. No water to dilute. No preservatives to compensate. Just four ingredients doing exactly what they were chosen to do.
+            Just five ingredients doing exactly what they were chosen to do. Nothing more, nothing less.
           </p>
-          <div className="grid grid-cols-2 md:grid-cols-4" style={{ gap: "clamp(1.5rem, 3vw, 2rem)" }}>
+          <div className="grid grid-cols-2 md:grid-cols-5" style={{ gap: "clamp(1.5rem, 3vw, 2rem)" }}>
             {[
               { name: "Olive Squalane", pct: "80%" },
               { name: "Niacinamide", pct: "14.9%" },
               { name: "Black Seed Oil", pct: "2%" },
               { name: "Vitamin E", pct: "3%" },
+              { name: "Vanilla Extract", pct: "0.1%" },
             ].map(ing => (
               <div key={ing.name}>
                 <p style={{
                   fontFamily: "var(--font-display)", fontSize: "2rem", fontWeight: 400,
-                  color: "#98A47D", lineHeight: 1, marginBottom: "0.5rem",
+                  color: "#64685f", lineHeight: 1, marginBottom: "0.5rem",
                 }}>{ing.pct}</p>
                 <p style={{
                   fontFamily: "var(--font-body)", fontSize: "0.8125rem",
@@ -114,7 +115,7 @@ export function AboutContent() {
 
       {/* Certifications */}
       <div style={{
-        backgroundColor: "#F7F1E4", borderBottom: "1px solid #E6DCC6",
+        backgroundColor: "#faf8f3", borderBottom: "1px solid #dedfd8",
         padding: "clamp(2.5rem, 5vw, 4rem) clamp(2rem, 7vw, 7rem)",
       }}>
         <div style={{ maxWidth: "1320px", margin: "0 auto" }}>
@@ -128,11 +129,11 @@ export function AboutContent() {
               <div key={c.label}>
                 <p style={{
                   fontFamily: "var(--font-body)", fontSize: "0.6875rem", fontWeight: 600,
-                  letterSpacing: "0.1em", textTransform: "uppercase", color: "#2C2A1F",
+                  letterSpacing: "0.1em", textTransform: "uppercase", color: "#292b25",
                   marginBottom: "0.375rem",
                 }}>{c.label}</p>
                 <p style={{
-                  fontFamily: "var(--font-body)", fontSize: "0.8125rem", color: "#98A47D",
+                  fontFamily: "var(--font-body)", fontSize: "0.8125rem", color: "#64685f",
                 }}>{c.sub}</p>
               </div>
             ))}
@@ -142,13 +143,13 @@ export function AboutContent() {
 
       {/* CTA */}
       <div style={{
-        backgroundColor: "#FBF8F3",
+        backgroundColor: "#FFFFFF",
         padding: "clamp(4rem, 8vw, 6rem) clamp(2rem, 7vw, 7rem)",
         textAlign: "center",
       }}>
         <h2 style={{
           fontFamily: "var(--font-display)", fontSize: "clamp(2rem, 4vw, 3rem)",
-          fontWeight: 400, letterSpacing: "-0.015em", color: "#2C2A1F",
+          fontWeight: 400, letterSpacing: "-0.015em", color: "#292b25",
           marginBottom: "2rem", lineHeight: 1.15,
         }}>
           One bottle.<br />Two rituals.
@@ -157,7 +158,7 @@ export function AboutContent() {
           display: "inline-flex", alignItems: "center", gap: "0.625rem",
           fontFamily: "var(--font-body)", fontSize: "0.6875rem", fontWeight: 500,
           letterSpacing: "0.14em", textTransform: "uppercase",
-          color: "#F7F1E4", backgroundColor: "#2C2A1F",
+          color: "#FFFFFF", backgroundColor: "#3F4A36",
           padding: "1rem 2rem", textDecoration: "none",
           transition: "background 0.3s ease",
         }}

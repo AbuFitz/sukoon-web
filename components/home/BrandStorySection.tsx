@@ -8,7 +8,7 @@ export function BrandStorySection() {
     <section aria-label="Our story" style={{ backgroundColor: "#f3efe7" }}>
       <div style={{
         display: "grid",
-        gridTemplateColumns: "0.82fr 1.18fr",
+        gridTemplateColumns: "0.9fr 1.1fr",
         minHeight: 620,
       }}
         className="grid-cols-1 md:grid-cols-[0.82fr_1.18fr]"

@@ -43,7 +43,7 @@ export function IngredientsSection() {
       id="ingredients"
       style={{
         backgroundColor: "#FFFFFF",
-        padding: "clamp(4.5rem, 9vw, 7rem) 0",
+        padding: "clamp(5.5rem, 10vw, 7.5rem) 0",
         borderTop: "1px solid #dedfd8",
       }}
     >
@@ -80,7 +80,7 @@ export function IngredientsSection() {
             <div
               key={ing.name}
               style={{
-                paddingInline: "1.75rem",
+                paddingInline: "2.25rem",
                 paddingLeft: i === 0 ? 0 : undefined,
                 paddingRight: i === ingredients.length - 1 ? 0 : undefined,
                 borderRight: i < ingredients.length - 1 ? "1px solid #dedfd8" : "none",

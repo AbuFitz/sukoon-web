@@ -28,7 +28,7 @@ export function NewsletterSection() {
       <div style={{
         display: "grid",
         gridTemplateColumns: "1fr 1.25fr",
-        minHeight: 390,
+        minHeight: 430,
       }}
         className="grid-cols-1 md:grid-cols-[1fr_1.25fr]"
       >
@@ -47,7 +47,7 @@ export function NewsletterSection() {
         {/* Content */}
         <div style={{
           display: "flex", flexDirection: "column", justifyContent: "center",
-          padding: "clamp(3rem, 7vw, 4.5rem) clamp(2.5rem, 6vw, 5rem)",
+          padding: "clamp(3.5rem, 7vw, 4.5rem) clamp(2.5rem, 6vw, 5.5rem)",
           order: 2,
         }}>
           <p style={{
@@ -100,7 +100,7 @@ export function NewsletterSection() {
                   aria-invalid={state === "error"}
                   required
                   style={{
-                    flex: 1, minHeight: 48,
+                    flex: 1, minHeight: 52,
                     padding: "0 1rem",
                     fontFamily: "var(--font-body)", fontSize: "0.9375rem",
                     color: "#292b25", backgroundColor: "#FFFFFF",
@@ -112,7 +112,7 @@ export function NewsletterSection() {
                   type="submit"
                   disabled={state === "loading"}
                   style={{
-                    minHeight: 48, padding: "0 1.625rem",
+                    minHeight: 52, padding: "0 1.625rem",
                     fontFamily: "var(--font-body)", fontSize: "0.75rem", fontWeight: 500,
                     letterSpacing: "0.08em", textTransform: "uppercase",
                     color: "#FFFFFF", backgroundColor: "#3F4A36",

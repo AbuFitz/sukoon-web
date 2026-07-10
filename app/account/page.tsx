@@ -1,27 +1,49 @@
+import { SiteNav } from "@/components/nav/SiteNav";
+import { Footer } from "@/components/sections/Footer";
 import { AccountForm } from "@/components/nav/AccountForm";
+import type { Metadata } from "next";
 
-const INK  = "#111110";
-const LINE = "#E3E1DA";
+export const metadata: Metadata = {
+  title: "Account — Sukoon",
+};
 
 export default function AccountPage() {
   return (
-    <div style={{ minHeight: "100dvh", backgroundColor: "#FFFFFF" }}>
-      <div style={{
-        display: "flex", alignItems: "center", justifyContent: "space-between",
-        padding: "1.5rem clamp(1.25rem, 5vw, 2rem)", borderBottom: `1px solid ${LINE}`,
-      }}>
-        <span style={{ fontFamily: "var(--font-body)", fontSize: "1.0625rem", fontWeight: 700, letterSpacing: "0.01em", color: INK }}>
-          Account
-        </span>
-        <a href="/" aria-label="Close" style={{ color: INK, display: "flex" }}>
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" aria-hidden>
-            <line x1="5" y1="5" x2="19" y2="19" /><line x1="19" y1="5" x2="5" y2="19" />
-          </svg>
-        </a>
-      </div>
-      <div style={{ padding: "1.75rem clamp(1.25rem, 5vw, 2rem) 2.25rem" }}>
-        <AccountForm />
-      </div>
-    </div>
+    <>
+      <SiteNav />
+      <main style={{ paddingTop: "calc(1.75rem + 84px)", backgroundColor: "#faf8f3", minHeight: "80vh" }}>
+        {/* Page header */}
+        <div style={{
+          borderBottom: "1px solid #dedfd8",
+          padding: "clamp(3rem, 7vw, 4.5rem) clamp(2rem, 7vw, 7rem) clamp(2rem, 5vw, 3rem)",
+          backgroundColor: "#FFFFFF",
+        }}>
+          <p style={{
+            fontFamily: "var(--font-body)", fontSize: "0.6875rem", fontWeight: 500,
+            letterSpacing: "0.2em", textTransform: "uppercase",
+            color: "#78836e", marginBottom: "0.875rem",
+          }}>
+            Your Account
+          </p>
+          <h1 style={{
+            fontFamily: "var(--font-display)", fontWeight: 400,
+            fontSize: "clamp(2.25rem, 4vw, 3.5rem)",
+            lineHeight: 0.98, letterSpacing: "-0.025em",
+            color: "#292b25", margin: 0,
+          }}>
+            Welcome back.
+          </h1>
+        </div>
+
+        {/* Account form */}
+        <div style={{
+          maxWidth: 480, margin: "0 auto",
+          padding: "clamp(3rem, 7vw, 5rem) clamp(1.5rem, 5vw, 2rem)",
+        }}>
+          <AccountForm />
+        </div>
+      </main>
+      <Footer />
+    </>
   );
 }

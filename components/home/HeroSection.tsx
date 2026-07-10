@@ -10,7 +10,7 @@ export function HeroSection() {
       style={{
         position: "relative",
         width: "100%",
-        height: "clamp(620px, 76vh, 860px)",
+        height: "clamp(680px, 80vh, 900px)",
         overflow: "hidden",
         backgroundColor: "#d8d3c8",
       }}
@@ -25,43 +25,41 @@ export function HeroSection() {
         unoptimized
       />
 
-      {/* Subtle left-to-right gradient for text legibility */}
+      {/* Subtle left-to-right gradient for text legibility only */}
       <div style={{
         position: "absolute", inset: 0,
-        background: "linear-gradient(90deg, rgba(27,30,25,0.28) 0%, rgba(27,30,25,0.08) 48%, rgba(27,30,25,0) 75%)",
+        background: "linear-gradient(90deg, rgba(27,30,25,0.32) 0%, rgba(27,30,25,0.1) 50%, rgba(27,30,25,0) 78%)",
       }} />
 
       {/* Content */}
       <div style={{
         position: "absolute", inset: 0, zIndex: 2,
-        maxWidth: "1440px", margin: "0 auto",
-        padding: "0 clamp(2rem, 5vw, 3.5rem)",
         display: "flex", alignItems: "center",
-        left: 0, right: 0,
+        padding: "0 clamp(2.625rem, 5.25vw, 5.25rem)",
       }}>
-        <div style={{ maxWidth: 590 }}>
+        <div style={{ maxWidth: 650 }}>
           <p style={{
             fontFamily: "var(--font-body)", fontSize: "0.6875rem", fontWeight: 500,
-            letterSpacing: "0.18em", textTransform: "uppercase",
-            color: "rgba(255,255,255,0.82)", marginBottom: "1.125rem",
+            letterSpacing: "0.2em", textTransform: "uppercase",
+            color: "rgba(255,255,255,0.78)", marginBottom: "1.25rem",
           }}>
             Care That Calms
           </p>
 
           <h1 style={{
             fontFamily: "var(--font-display)", fontWeight: 400,
-            fontSize: "clamp(3.25rem, 5vw, 4.875rem)",
+            fontSize: "clamp(3.375rem, 5.2vw, 5.125rem)",
             lineHeight: 0.98, letterSpacing: "-0.035em",
-            color: "#FFFFFF", margin: "0 0 1.375rem",
+            color: "#FFFFFF", margin: "0 0 1.5rem",
           }}>
             <span style={{ display: "block" }}>Care for your face.</span>
             <em style={{ display: "block", fontStyle: "italic" }}>Care for your hairline.</em>
           </h1>
 
           <p style={{
-            fontFamily: "var(--font-body)", fontSize: "clamp(0.9375rem, 1.3vw, 1.0625rem)",
-            lineHeight: 1.65, color: "rgba(255,255,255,0.72)",
-            margin: "0 0 2.25rem", maxWidth: 400,
+            fontFamily: "var(--font-body)", fontSize: "clamp(0.9375rem, 1.2vw, 1.0625rem)",
+            lineHeight: 1.65, color: "rgba(255,255,255,0.68)",
+            margin: "0 0 2.5rem", maxWidth: 420,
           }}>
             Skincare that protects where your skin meets your story.
           </p>
@@ -75,7 +73,7 @@ export function HeroSection() {
                 letterSpacing: "0.06em", textTransform: "uppercase",
                 color: "#FFFFFF", backgroundColor: "#3F4A36",
                 border: "1px solid #3F4A36",
-                height: 52, padding: "0 1.875rem",
+                height: 52, padding: "0 2rem",
                 textDecoration: "none",
                 transition: "background 180ms ease, border-color 180ms ease",
               }}
@@ -90,15 +88,15 @@ export function HeroSection() {
                 display: "inline-flex", alignItems: "center",
                 fontFamily: "var(--font-body)", fontSize: "0.8125rem", fontWeight: 500,
                 letterSpacing: "0.06em", textTransform: "uppercase",
-                color: "#FFFFFF", backgroundColor: "rgba(255,255,255,0.08)",
-                border: "1px solid rgba(255,255,255,0.65)",
-                height: 52, padding: "0 1.875rem",
+                color: "#FFFFFF",
+                border: "1px solid rgba(255,255,255,0.6)",
+                height: 52, padding: "0 2rem",
                 textDecoration: "none",
                 backdropFilter: "blur(3px)",
-                transition: "background 180ms ease, border-color 180ms ease",
+                transition: "border-color 180ms ease, background 180ms ease",
               }}
-              onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.backgroundColor = "rgba(255,255,255,0.15)"; }}
-              onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.backgroundColor = "rgba(255,255,255,0.08)"; }}
+              onMouseEnter={e => { const el = e.currentTarget as HTMLAnchorElement; el.style.borderColor = "rgba(255,255,255,0.9)"; el.style.backgroundColor = "rgba(255,255,255,0.1)"; }}
+              onMouseLeave={e => { const el = e.currentTarget as HTMLAnchorElement; el.style.borderColor = "rgba(255,255,255,0.6)"; el.style.backgroundColor = "transparent"; }}
             >
               Learn More
             </a>

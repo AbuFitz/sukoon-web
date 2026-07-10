@@ -64,13 +64,13 @@ export function BenefitsSection() {
               <div key={b.title}>
                 <div style={{ marginBottom: "0.75rem" }}>{benefitIcons[i]}</div>
                 <p style={{
-                  fontFamily: "var(--font-body)", fontSize: "0.875rem", fontWeight: 600,
+                  fontFamily: "var(--font-body)", fontSize: "1rem", fontWeight: 600,
                   color: "#292b25", margin: "0 0 0.375rem", lineHeight: 1.3,
                 }}>
                   {b.title}
                 </p>
                 <p style={{
-                  fontFamily: "var(--font-body)", fontSize: "0.8125rem", lineHeight: 1.65,
+                  fontFamily: "var(--font-body)", fontSize: "0.875rem", lineHeight: 1.65,
                   color: "#64685f", margin: 0,
                 }}>
                   {b.description}
