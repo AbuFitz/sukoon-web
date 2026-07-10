@@ -1,24 +1,19 @@
-"use client";
-
 import Image from "next/image";
 
 const cards = [
   {
     eyebrow: "For the tight-style wearer",
     headline: "Your hairline has been waiting for this.",
-    body: "Braids, weaves, ponytails, cornrows — daily tension at the hairline is cumulative and quiet. The thinning it causes is documented. The product for it wasn't until now.",
     image: "https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=800&q=85&fit=crop",
   },
   {
     eyebrow: "For the minimalist",
     headline: "One bottle. The whole ritual.",
-    body: "No ten-step routine. No separate hairline product. Sixty seconds and it's working. The Daily Solace Fluid is all you need.",
     image: "https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?w=800&q=85&fit=crop",
   },
   {
     eyebrow: "For the conscious buyer",
     headline: "Everything in it is there for a reason.",
-    body: "Five ingredients. UK Halal Certified. Made in Britain. Nothing in this formula is there by accident or to pad the label.",
     image: "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=800&q=85&fit=crop",
   },
 ];
@@ -54,21 +49,18 @@ export function ForYou() {
             letterSpacing: "0.16em", textTransform: "uppercase",
             color: "#FFFFFF", backgroundColor: "#2C2A1F",
             padding: "1rem 1.875rem", textDecoration: "none",
-            transition: "background 0.25s", flexShrink: 0,
-          }}
-            onMouseEnter={e => { (e.currentTarget as HTMLElement).style.backgroundColor = "#3F4A36"; }}
-            onMouseLeave={e => { (e.currentTarget as HTMLElement).style.backgroundColor = "#2C2A1F"; }}
-          >
+            flexShrink: 0,
+          }}>
             Shop Now
           </a>
         </div>
 
-        {/* Cards grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3" style={{ gap: "1px", backgroundColor: "#EDE7DC" }}>
+        {/* Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3" style={{ gap: "1.5rem" }}>
           {cards.map((c) => (
-            <div key={c.eyebrow} style={{ backgroundColor: "#FFFFFF", display: "flex", flexDirection: "column" }}>
-              {/* Card image */}
-              <div style={{ position: "relative", aspectRatio: "4/3", backgroundColor: "#EDE7DC", overflow: "hidden" }}>
+            <div key={c.eyebrow} style={{ display: "flex", flexDirection: "column" }}>
+              {/* Image — tall and dominant */}
+              <div style={{ position: "relative", aspectRatio: "3/4", backgroundColor: "#EDE7DC", overflow: "hidden" }}>
                 <Image
                   src={c.image}
                   alt={c.headline}
@@ -77,14 +69,12 @@ export function ForYou() {
                   style={{ objectFit: "cover", objectPosition: "center" }}
                 />
               </div>
-              {/* Card text */}
-              <div style={{
-                padding: "2rem clamp(1.5rem, 3vw, 2.25rem) clamp(2.5rem, 4vw, 3rem)",
-                flex: 1, display: "flex", flexDirection: "column", gap: "0.875rem",
-              }}>
+              {/* Caption below */}
+              <div style={{ padding: "1.5rem 0 0" }}>
                 <p style={{
                   fontFamily: "var(--font-body)", fontSize: "0.5rem", fontWeight: 700,
-                  letterSpacing: "0.16em", textTransform: "uppercase", color: "#98A47D", margin: 0,
+                  letterSpacing: "0.16em", textTransform: "uppercase", color: "#98A47D",
+                  margin: "0 0 0.625rem",
                 }}>
                   {c.eyebrow}
                 </p>
@@ -93,12 +83,6 @@ export function ForYou() {
                   fontWeight: 400, color: "#2C2A1F", margin: 0, lineHeight: 1.25,
                 }}>
                   {c.headline}
-                </p>
-                <p style={{
-                  fontFamily: "var(--font-body)", fontSize: "0.875rem",
-                  lineHeight: 1.8, color: "#6B6860", margin: 0,
-                }}>
-                  {c.body}
                 </p>
               </div>
             </div>

@@ -4,36 +4,36 @@ export function PhilosophyQuote() {
       aria-label="Brand philosophy"
       style={{
         backgroundColor: "#F7F4EF",
-        padding: "clamp(5rem, 11vw, 10rem) clamp(1.5rem, 6vw, 5rem)",
+        padding: "clamp(6rem, 14vw, 13rem) clamp(1.5rem, 8vw, 8rem)",
         borderTop: "1px solid #EDE7DC",
         borderBottom: "1px solid #EDE7DC",
+        textAlign: "center",
       }}
     >
-      <div style={{ maxWidth: "1080px", margin: "0 auto" }}>
+      <div style={{ maxWidth: "900px", margin: "0 auto" }}>
         <p style={{
           fontFamily: "var(--font-body)", fontSize: "0.5625rem", fontWeight: 700,
           letterSpacing: "0.22em", textTransform: "uppercase", color: "#98A47D",
-          marginBottom: "2.5rem",
+          marginBottom: "3rem",
         }}>
           سكون — Stillness, in Arabic
         </p>
         <p style={{
           fontFamily: "var(--font-display)", fontWeight: 400,
-          fontSize: "clamp(2.25rem, 5.5vw, 4.5rem)", lineHeight: 1.1,
-          letterSpacing: "-0.025em", color: "#2C2A1F",
-          marginBottom: "3rem",
+          fontSize: "clamp(2.5rem, 6.5vw, 5.5rem)", lineHeight: 1.08,
+          letterSpacing: "-0.03em", color: "#2C2A1F",
+          marginBottom: "4rem",
+          fontStyle: "italic",
         }}>
           &ldquo;Not another product.<br />A reason to slow down.&rdquo;
         </p>
-        <div style={{ display: "flex", alignItems: "center", gap: "1.5rem" }}>
-          <div style={{ width: 40, height: 1, backgroundColor: "#98A47D", flexShrink: 0 }} />
-          <p style={{
-            fontFamily: "var(--font-body)", fontSize: "0.875rem", lineHeight: 1.75,
-            color: "#8A8275",
-          }}>
-            Sukoon was built on one belief: the best skincare asks you to pause. Two drops. Sixty seconds. That&rsquo;s the ritual.
-          </p>
-        </div>
+        <p style={{
+          fontFamily: "var(--font-body)", fontSize: "0.9375rem", lineHeight: 1.85,
+          color: "#8A8275", maxWidth: "520px", margin: "0 auto",
+        }}>
+          Sukoon was built on one belief: the best skincare asks you to pause.
+          Two drops. Sixty seconds. That&rsquo;s the ritual.
+        </p>
       </div>
     </section>
   );

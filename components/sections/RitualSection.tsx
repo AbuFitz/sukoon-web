@@ -41,44 +41,44 @@ export function RitualSection() {
             How to Use
           </p>
           <h2 style={{
-            fontFamily: "var(--font-display)", fontSize: "clamp(1.875rem, 3vw, 2.625rem)",
-            fontWeight: 400, lineHeight: 1.1, letterSpacing: "-0.015em",
-            color: "#2C2A1F", marginBottom: "clamp(2.5rem, 5vw, 4rem)",
+            fontFamily: "var(--font-display)", fontSize: "clamp(2rem, 3.5vw, 2.875rem)",
+            fontWeight: 400, lineHeight: 1.08, letterSpacing: "-0.02em",
+            color: "#2C2A1F", marginBottom: "clamp(2.5rem, 5vw, 4.5rem)",
           }}>
-            A two-minute ritual.<br />A lifetime of less damage.
+            Two minutes.<br />A lifetime of less damage.
           </h2>
 
           <div>
             {steps.map((step, i) => (
               <div key={step.num} style={{
-                display: "grid", gridTemplateColumns: "3rem 1fr",
-                paddingTop: i > 0 ? "2.25rem" : "0",
-                paddingBottom: "2.25rem",
+                display: "grid", gridTemplateColumns: "3.5rem 1fr",
+                paddingTop: i > 0 ? "2.5rem" : "0",
+                paddingBottom: "2.5rem",
                 borderBottom: i < steps.length - 1 ? "1px solid #EDE7DC" : "none",
               }}>
                 <span style={{
-                  fontFamily: "var(--font-display)", fontSize: "0.875rem",
-                  color: "#D4CCC2", paddingTop: "3px",
+                  fontFamily: "var(--font-display)", fontSize: "1rem",
+                  color: "#D4CCC2", paddingTop: "2px", letterSpacing: "-0.01em",
                 }}>
                   {step.num}
                 </span>
                 <div>
                   <p style={{
                     fontFamily: "var(--font-body)", fontSize: "0.5rem", fontWeight: 700,
-                    letterSpacing: "0.16em", textTransform: "uppercase", color: "#2C2A1F",
-                    marginBottom: "0.625rem",
+                    letterSpacing: "0.18em", textTransform: "uppercase", color: "#2C2A1F",
+                    marginBottom: "0.75rem",
                   }}>
                     {step.time}
                   </p>
                   <p style={{
-                    fontFamily: "var(--font-body)", fontSize: "0.9375rem", lineHeight: 1.75,
-                    color: "#6B6860", marginBottom: "0.5rem",
+                    fontFamily: "var(--font-body)", fontSize: "0.9375rem", lineHeight: 1.8,
+                    color: "#6B6860", marginBottom: "0.625rem",
                   }}>
                     {step.instruction}
                   </p>
                   <p style={{
                     fontFamily: "var(--font-body)", fontSize: "0.6875rem",
-                    color: "#98A47D", letterSpacing: "0.02em",
+                    color: "#98A47D", letterSpacing: "0.04em",
                   }}>
                     {step.area}
                   </p>
@@ -88,8 +88,8 @@ export function RitualSection() {
           </div>
         </div>
 
-        {/* Right — image */}
-        <div style={{ position: "relative", minHeight: "clamp(320px, 50vw, 700px)", backgroundColor: "#EDE7DC", order: 2 }}>
+        {/* Right — image, full bleed */}
+        <div style={{ position: "relative", minHeight: "clamp(360px, 55vw, 750px)", backgroundColor: "#EDE7DC", order: 2 }}>
           <Image
             src="https://images.unsplash.com/photo-1633169621790-71e519cfb42d?w=1400&q=90&fit=crop"
             alt="Ritual application"
