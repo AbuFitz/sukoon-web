@@ -1,17 +1,37 @@
 "use client";
 
 import Image from "next/image";
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { homepageImages } from "@/lib/homepage";
 
+const GRAIN = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E")`;
+
 export function BrandStorySection() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start end", "end start"] });
+  const detailY = useTransform(scrollYProgress, [0, 1], [20, -20]);
+
   return (
-    <section aria-label="Our story" style={{ backgroundColor: "#f3efe7" }}>
+    <section
+      ref={sectionRef}
+      aria-label="Our story"
+      style={{ backgroundColor: "#f3efe7", position: "relative", overflow: "visible" }}
+    >
+      {/* Grain overlay */}
       <div style={{
-        display: "grid",
-        gridTemplateColumns: "0.9fr 1.1fr",
-        minHeight: 620,
-      }}
-        className="grid-cols-1 md:grid-cols-[0.82fr_1.18fr]"
+        position: "absolute", inset: 0, zIndex: 0,
+        backgroundImage: GRAIN, opacity: 0.022, pointerEvents: "none",
+      }} />
+
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "0.9fr 1.1fr",
+          minHeight: 620,
+          position: "relative", zIndex: 1,
+        }}
+        className="grid-cols-1 md:grid-cols-[0.9fr_1.1fr]"
       >
         {/* Text panel */}
         <div style={{
@@ -20,21 +40,14 @@ export function BrandStorySection() {
           order: 1,
         }}>
           <div style={{ maxWidth: 480 }}>
-            <p style={{
-              fontFamily: "var(--font-body)", fontSize: "0.6875rem", fontWeight: 500,
-              letterSpacing: "0.18em", textTransform: "uppercase",
-              color: "#78836e", marginBottom: "1.5rem",
-            }}>
-              Our Story
-            </p>
-
             <h2 style={{
               fontFamily: "var(--font-display)", fontWeight: 400,
               fontSize: "clamp(2.25rem, 3.5vw, 3.25rem)",
               lineHeight: 1.06, letterSpacing: "-0.025em",
               color: "#292b25", marginBottom: "1.875rem",
             }}>
-              Rooted in calm.<br />Made with intention.
+              Rooted in calm.<br />
+              <em style={{ fontStyle: "italic" }}>Made with intention.</em>
             </h2>
 
             <p style={{
@@ -68,16 +81,50 @@ export function BrandStorySection() {
           </div>
         </div>
 
-        {/* Image */}
-        <div style={{ position: "relative", minHeight: "clamp(400px, 55vw, 700px)", backgroundColor: "#ddd8cd", order: 2 }}>
+        {/* Image — bleeds slightly past right edge */}
+        <div
+          style={{
+            position: "relative",
+            minHeight: "clamp(400px, 55vw, 700px)",
+            backgroundColor: "#ddd8cd",
+            order: 2,
+            marginRight: "-5vw",
+          }}
+          className="mr-0 md:mr-[-5vw]"
+        >
           <Image
             src={homepageImages.story}
             alt="Sukoon brand story — calm, intentional skincare"
             fill
-            sizes="(min-width: 1024px) 58vw, 100vw"
+            sizes="(min-width: 1024px) 63vw, 100vw"
             style={{ objectFit: "cover", objectPosition: "center" }}
             unoptimized
           />
+
+          {/* Overlapping detail image — bottom left of image panel */}
+          <motion.div
+            style={{
+              position: "absolute",
+              left: -70,
+              bottom: -45,
+              width: 190,
+              zIndex: 4,
+              border: "10px solid #f3efe7",
+              boxShadow: "0 20px 45px rgba(40,45,36,0.1)",
+              overflow: "hidden",
+              aspectRatio: "4 / 5",
+              y: detailY,
+            }}
+          >
+            <Image
+              src={homepageImages.storyDetail}
+              alt=""
+              fill
+              sizes="190px"
+              style={{ objectFit: "cover" }}
+              unoptimized
+            />
+          </motion.div>
         </div>
       </div>
     </section>

@@ -1,20 +1,25 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { homepageImages } from "@/lib/homepage";
+
+const GRAIN = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E")`;
 
 type State = "idle" | "loading" | "success" | "error";
 
 export function NewsletterSection() {
   const [email, setEmail] = useState("");
   const [state, setState] = useState<State>("idle");
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start end", "end start"] });
+  const bottleY = useTransform(scrollYProgress, [0, 1], [20, -20]);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (!email.includes("@")) { setState("error"); return; }
     setState("loading");
-    // TODO: wire to email platform
     await new Promise(r => setTimeout(r, 600));
     setState("success");
     setEmail("");
@@ -22,18 +27,22 @@ export function NewsletterSection() {
 
   return (
     <section
+      ref={sectionRef}
       aria-label="Newsletter signup"
-      style={{ backgroundColor: "#ede9df" }}
+      style={{ backgroundColor: "#ede9df", position: "relative" }}
     >
+      {/* Grain */}
       <div style={{
-        display: "grid",
-        gridTemplateColumns: "1fr 1.25fr",
-        minHeight: 430,
-      }}
+        position: "absolute", inset: 0, zIndex: 0,
+        backgroundImage: GRAIN, opacity: 0.022, pointerEvents: "none",
+      }} />
+
+      <div
+        style={{ display: "grid", gridTemplateColumns: "1fr 1.25fr", minHeight: 430, position: "relative", zIndex: 1 }}
         className="grid-cols-1 md:grid-cols-[1fr_1.25fr]"
       >
-        {/* Image */}
-        <div style={{ position: "relative", minHeight: "clamp(280px, 35vw, 430px)", backgroundColor: "#d8d4c9", order: 1 }}>
+        {/* Image side */}
+        <div style={{ position: "relative", minHeight: "clamp(280px, 35vw, 430px)", backgroundColor: "#d8d4c9", order: 1, overflow: "visible" }}>
           <Image
             src={homepageImages.newsletter}
             alt="Sukoon skincare ritual"
@@ -42,39 +51,53 @@ export function NewsletterSection() {
             style={{ objectFit: "cover", objectPosition: "center" }}
             unoptimized
           />
+
+          {/* Bottle crossing into content panel */}
+          <motion.div
+            style={{
+              position: "absolute",
+              right: -80, bottom: 25,
+              width: 150, zIndex: 4,
+              filter: "drop-shadow(0 18px 24px rgba(35,40,30,0.12))",
+              y: bottleY,
+            }}
+          >
+            <Image
+              src={homepageImages.newsletterProductCutout}
+              alt=""
+              width={150}
+              height={375}
+              style={{ width: "100%", height: "auto" }}
+              unoptimized
+            />
+          </motion.div>
         </div>
 
-        {/* Content */}
+        {/* Content — extra left padding to accommodate bottle overlap */}
         <div style={{
           display: "flex", flexDirection: "column", justifyContent: "center",
           padding: "clamp(3.5rem, 7vw, 4.5rem) clamp(2.5rem, 6vw, 5.5rem)",
+          paddingLeft: "clamp(4.5rem, 8vw, 7rem)",
           order: 2,
         }}>
-          <p style={{
-            fontFamily: "var(--font-body)", fontSize: "0.6875rem", fontWeight: 500,
-            letterSpacing: "0.18em", textTransform: "uppercase",
-            color: "#78836e", marginBottom: "1.125rem",
-          }}>
-            Be Part of the Ritual
-          </p>
           <h2 style={{
             fontFamily: "var(--font-display)", fontWeight: 400,
             fontSize: "clamp(1.875rem, 3vw, 2.75rem)",
             lineHeight: 1.08, letterSpacing: "-0.02em",
-            color: "#292b25", margin: "0 0 0.875rem",
+            color: "#292b25", margin: "0 0 0.75rem",
           }}>
-            Join our community.<br />
-            <span style={{ fontSize: "clamp(1.5rem, 2.4vw, 2.25rem)", color: "#64685f" }}>
-              Get skincare insights and early access.
-            </span>
+            Join our community.
           </h2>
+          <p style={{
+            fontFamily: "var(--font-body)", fontSize: "0.9375rem", lineHeight: 1.65,
+            color: "#64685f", margin: "0 0 1.75rem",
+          }}>
+            Get skincare insights and early access.
+          </p>
 
           {state === "success" ? (
-            <div style={{ marginTop: "1.75rem" }}>
-              <p style={{
-                fontFamily: "var(--font-display)", fontSize: "1.5rem", fontStyle: "italic",
-                color: "#3F4A36", marginBottom: "0.5rem",
-              }}>
+            <div>
+              <p style={{ fontFamily: "var(--font-display)", fontSize: "1.5rem", fontStyle: "italic", color: "#3F4A36", marginBottom: "0.5rem" }}>
                 You&rsquo;re in.
               </p>
               <p style={{ fontFamily: "var(--font-body)", fontSize: "0.9375rem", color: "#64685f" }}>
@@ -82,7 +105,7 @@ export function NewsletterSection() {
               </p>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} noValidate style={{ marginTop: "1.75rem" }}>
+            <form onSubmit={handleSubmit} noValidate>
               <label htmlFor="nl-email" style={{
                 fontFamily: "var(--font-body)", fontSize: "0.75rem", fontWeight: 500,
                 letterSpacing: "0.08em", textTransform: "uppercase",
@@ -131,10 +154,7 @@ export function NewsletterSection() {
                   Please enter a valid email address.
                 </p>
               )}
-              <p style={{
-                fontFamily: "var(--font-body)", fontSize: "0.75rem",
-                color: "#9a9f95", marginTop: "0.875rem",
-              }}>
+              <p style={{ fontFamily: "var(--font-body)", fontSize: "0.75rem", color: "#9a9f95", marginTop: "0.875rem" }}>
                 We respect your privacy. Unsubscribe anytime.
               </p>
             </form>

@@ -1,97 +1,79 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Image from "next/image";
 
 export function LoadingScreen() {
-  const [visible, setVisible] = useState(false);
-  const [progress, setProgress] = useState(0);
-  const [fading, setFading] = useState(false);
+  const [phase, setPhase] = useState<"hidden" | "enter" | "line" | "exit">("hidden");
 
   useEffect(() => {
-    // Only show on the very first visit in this browser session
     if (sessionStorage.getItem("sukoon_loaded")) return;
     sessionStorage.setItem("sukoon_loaded", "1");
-    setVisible(true);
 
-    // Simulate loading progress
-    let p = 0;
-    const tick = setInterval(() => {
-      p += Math.random() * 18 + 4;
-      if (p >= 100) {
-        p = 100;
-        clearInterval(tick);
-        setTimeout(() => setFading(true), 200);
-        setTimeout(() => setVisible(false), 900);
-      }
-      setProgress(Math.min(p, 100));
-    }, 90);
+    // Sequence: enter → grow line → exit
+    setPhase("enter");
+    const t1 = setTimeout(() => setPhase("line"), 80);
+    const t2 = setTimeout(() => setPhase("exit"), 1100);
 
-    // Also fade out once window fully loads
+    const hide = () => setPhase("hidden");
+    const t3 = setTimeout(hide, 1700);
+
+    // Also dismiss on full window load
     const onLoad = () => {
-      clearInterval(tick);
-      setProgress(100);
-      setTimeout(() => setFading(true), 200);
-      setTimeout(() => setVisible(false), 900);
+      clearTimeout(t1); clearTimeout(t2); clearTimeout(t3);
+      setPhase("exit");
+      setTimeout(() => setPhase("hidden"), 600);
     };
     if (document.readyState === "complete") onLoad();
     else window.addEventListener("load", onLoad, { once: true });
 
-    return () => { clearInterval(tick); };
+    return () => { clearTimeout(t1); clearTimeout(t2); clearTimeout(t3); };
   }, []);
 
-  if (!visible) return null;
+  if (phase === "hidden") return null;
+
+  const isExiting = phase === "exit";
 
   return (
     <div style={{
       position: "fixed", inset: 0, zIndex: 9999,
-      backgroundColor: "#98A47D",
-      display: "flex", flexDirection: "column",
-      alignItems: "center", justifyContent: "center",
-      opacity: fading ? 0 : 1,
-      transition: "opacity 0.7s cubic-bezier(0.4,0,0.2,1)",
-      pointerEvents: fading ? "none" : "all",
+      backgroundColor: "#3F4A36",
+      display: "grid", placeItems: "center",
+      opacity: isExiting ? 0 : 1,
+      transform: isExiting ? "translateY(-8px)" : "translateY(0)",
+      transition: "opacity 0.6s cubic-bezier(0.4,0,0.2,1), transform 0.6s cubic-bezier(0.4,0,0.2,1)",
+      pointerEvents: isExiting ? "none" : "all",
     }}>
-      {/* Logo */}
-      <div style={{
-        position: "relative",
-        width: "clamp(200px, 50vw, 420px)",
-        aspectRatio: "1 / 1",
-        opacity: fading ? 0 : 1,
-        transform: fading ? "scale(0.97)" : "scale(1)",
-        transition: "opacity 0.5s ease, transform 0.6s cubic-bezier(0.22,1,0.36,1)",
-        marginBottom: "clamp(2rem, 6vw, 4rem)",
-      }}>
-        <Image
-          src="/Sukoonlogo.png"
-          alt="Sukoon — Beauty Rooted in Simplicity"
-          fill
-          sizes="(max-width: 640px) 50vw, 420px"
-          style={{
-            objectFit: "contain",
-            filter: "brightness(0) saturate(100%) invert(97%) sepia(10%) saturate(300%) hue-rotate(340deg) brightness(103%)",
-          }}
-          priority
-        />
-      </div>
-
-      {/* Progress bar */}
-      <div style={{
-        width: "clamp(120px, 28vw, 240px)",
-        height: "1.5px",
-        backgroundColor: "rgba(247,241,228,0.25)",
-        borderRadius: "1px",
-        overflow: "hidden",
-        opacity: fading ? 0 : 1,
-        transition: "opacity 0.4s ease",
-      }}>
+      <div style={{ textAlign: "center" }}>
+        {/* Wordmark */}
         <div style={{
-          height: "100%",
-          width: `${progress}%`,
-          backgroundColor: "#F7F1E4",
-          borderRadius: "1px",
-          transition: "width 0.15s ease",
-        }} />
+          fontFamily: "var(--font-display)", fontWeight: 400,
+          fontSize: "clamp(34px, 4vw, 58px)",
+          letterSpacing: "0.25em", textTransform: "uppercase",
+          color: "#f5f3ed",
+          opacity: isExiting ? 0 : 1,
+          transform: isExiting ? "translateY(-14px)" : "translateY(0)",
+          transition: "opacity 0.5s ease, transform 0.55s cubic-bezier(0.22,1,0.36,1)",
+        }}>
+          Sukoon
+        </div>
+
+        {/* Growing line */}
+        <div style={{
+          width: 150, height: 1,
+          margin: "22px auto 0",
+          backgroundColor: "rgba(245,243,237,0.2)",
+          overflow: "hidden",
+          opacity: isExiting ? 0 : 1,
+          transition: "opacity 0.4s ease",
+        }}>
+          <div style={{
+            height: "100%",
+            backgroundColor: "#f5f3ed",
+            transformOrigin: "left center",
+            transform: phase === "line" || phase === "exit" ? "scaleX(1)" : "scaleX(0)",
+            transition: phase === "line" ? "transform 0.95s cubic-bezier(0.22,1,0.36,1)" : "none",
+          }} />
+        </div>
       </div>
     </div>
   );

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 340" fill="none">
+  <path d="M 90 10 C 95 70 100 130 85 195 C 72 255 60 295 50 335" stroke="#3F4A36" stroke-width="1.8" stroke-linecap="round" opacity="0.45"/>
+  <!-- Leaf upper right -->
+  <path d="M 88 30 C 130 10 175 20 175 50 C 175 78 148 105 118 110 C 96 114 78 100 78 80 C 78 58 82 40 88 30 Z" fill="#3F4A36" opacity="0.1"/>
+  <path d="M 88 30 C 130 10 175 20 175 50 C 175 78 148 105 118 110 C 96 114 78 100 78 80 C 78 58 82 40 88 30 Z" stroke="#3F4A36" stroke-width="1.1" opacity="0.38"/>
+  <!-- Leaf mid right -->
+  <path d="M 84 130 C 126 112 168 125 165 154 C 162 180 136 202 108 204 C 88 206 72 194 72 174 C 72 153 78 140 84 130 Z" fill="#3F4A36" opacity="0.09"/>
+  <path d="M 84 130 C 126 112 168 125 165 154 C 162 180 136 202 108 204 C 88 206 72 194 72 174 C 72 153 78 140 84 130 Z" stroke="#3F4A36" stroke-width="1.1" opacity="0.35"/>
+  <!-- Leaf lower left -->
+  <path d="M 80 220 C 42 205 5 220 3 248 C 0 274 25 295 55 296 C 80 297 98 283 96 263 C 94 244 90 232 80 220 Z" fill="#3F4A36" opacity="0.09"/>
+  <path d="M 80 220 C 42 205 5 220 3 248 C 0 274 25 295 55 296 C 80 297 98 283 96 263 C 94 244 90 232 80 220 Z" stroke="#3F4A36" stroke-width="1.1" opacity="0.35"/>
+</svg>

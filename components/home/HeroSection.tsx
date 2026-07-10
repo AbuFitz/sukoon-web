@@ -1,11 +1,24 @@
 "use client";
 
 import Image from "next/image";
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { homepageImages } from "@/lib/homepage";
 
+const GRAIN = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E")`;
+
 export function HeroSection() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"],
+  });
+  const leafY = useTransform(scrollYProgress, [0, 1], [0, -40]);
+  const leafRotate = useTransform(scrollYProgress, [0, 1], [0, 1.5]);
+
   return (
     <section
+      ref={sectionRef}
       aria-label="Hero"
       style={{
         position: "relative",
@@ -25,10 +38,17 @@ export function HeroSection() {
         unoptimized
       />
 
-      {/* Subtle left-to-right gradient for text legibility only */}
       <div style={{
         position: "absolute", inset: 0,
-        background: "linear-gradient(90deg, rgba(27,30,25,0.32) 0%, rgba(27,30,25,0.1) 50%, rgba(27,30,25,0) 78%)",
+        background: "linear-gradient(90deg, rgba(27,30,25,0.36) 0%, rgba(27,30,25,0.12) 55%, rgba(27,30,25,0) 80%)",
+      }} />
+
+      {/* Grain */}
+      <div style={{
+        position: "absolute", inset: 0, zIndex: 1,
+        backgroundImage: GRAIN,
+        opacity: 0.028,
+        pointerEvents: "none",
       }} />
 
       {/* Content */}
@@ -38,14 +58,6 @@ export function HeroSection() {
         padding: "0 clamp(2.625rem, 5.25vw, 5.25rem)",
       }}>
         <div style={{ maxWidth: 650 }}>
-          <p style={{
-            fontFamily: "var(--font-body)", fontSize: "0.6875rem", fontWeight: 500,
-            letterSpacing: "0.2em", textTransform: "uppercase",
-            color: "rgba(255,255,255,0.78)", marginBottom: "1.25rem",
-          }}>
-            Care That Calms
-          </p>
-
           <h1 style={{
             fontFamily: "var(--font-display)", fontWeight: 400,
             fontSize: "clamp(3.375rem, 5.2vw, 5.125rem)",
@@ -59,7 +71,7 @@ export function HeroSection() {
           <p style={{
             fontFamily: "var(--font-body)", fontSize: "clamp(0.9375rem, 1.2vw, 1.0625rem)",
             lineHeight: 1.65, color: "rgba(255,255,255,0.68)",
-            margin: "0 0 2.5rem", maxWidth: 420,
+            margin: "0 0 2.5rem", maxWidth: 400,
           }}>
             Skincare that protects where your skin meets your story.
           </p>
@@ -103,6 +115,29 @@ export function HeroSection() {
           </div>
         </div>
       </div>
+
+      {/* Botanical foreground — parallax on scroll */}
+      <motion.div
+        style={{
+          position: "absolute",
+          right: -70,
+          bottom: -50,
+          width: "clamp(240px, 24vw, 440px)",
+          zIndex: 3,
+          pointerEvents: "none",
+          y: leafY,
+          rotate: leafRotate,
+        }}
+      >
+        <Image
+          src={homepageImages.heroLeaf}
+          alt=""
+          width={440}
+          height={660}
+          style={{ width: "100%", height: "auto", opacity: 0.88 }}
+          unoptimized
+        />
+      </motion.div>
     </section>
   );
 }

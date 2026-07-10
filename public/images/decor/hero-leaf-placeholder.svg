@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 720" fill="none">
+  <!-- Main stem -->
+  <path d="M 300 710 C 280 620 260 520 275 420 C 290 320 310 240 330 140 C 345 70 350 30 340 10" stroke="#3F4A36" stroke-width="2.5" stroke-linecap="round" opacity="0.7"/>
+  <!-- Leaf 1 - large, upper right -->
+  <path d="M 335 140 C 380 100 440 90 460 110 C 470 125 455 155 430 175 C 400 198 360 200 335 190 C 320 185 318 170 320 155 Z" fill="#3F4A36" opacity="0.18"/>
+  <path d="M 335 140 C 380 100 440 90 460 110 C 470 125 455 155 430 175 C 400 198 360 200 335 190 C 320 185 318 170 320 155 Z" stroke="#3F4A36" stroke-width="1.2" opacity="0.5"/>
+  <path d="M 335 140 C 355 160 370 175 340 190" stroke="#3F4A36" stroke-width="0.8" opacity="0.4" stroke-linecap="round"/>
+  <path d="M 350 148 C 375 152 400 155 415 165" stroke="#3F4A36" stroke-width="0.6" opacity="0.3" stroke-linecap="round"/>
+  <path d="M 360 155 C 385 162 405 170 420 180" stroke="#3F4A36" stroke-width="0.6" opacity="0.3" stroke-linecap="round"/>
+
+  <!-- Leaf 2 - mid right -->
+  <path d="M 325 230 C 370 195 430 190 448 210 C 456 225 440 252 415 270 C 385 290 345 292 325 282 C 310 276 308 260 312 245 Z" fill="#3F4A36" opacity="0.14"/>
+  <path d="M 325 230 C 370 195 430 190 448 210 C 456 225 440 252 415 270 C 385 290 345 292 325 282 C 310 276 308 260 312 245 Z" stroke="#3F4A36" stroke-width="1.2" opacity="0.45"/>
+  <path d="M 325 230 C 345 252 355 268 330 282" stroke="#3F4A36" stroke-width="0.8" opacity="0.35" stroke-linecap="round"/>
+
+  <!-- Leaf 3 - lower left -->
+  <path d="M 290 340 C 240 310 190 320 175 348 C 168 365 182 392 210 408 C 242 426 285 420 300 400 C 312 385 308 368 298 355 Z" fill="#3F4A36" opacity="0.15"/>
+  <path d="M 290 340 C 240 310 190 320 175 348 C 168 365 182 392 210 408 C 242 426 285 420 300 400 C 312 385 308 368 298 355 Z" stroke="#3F4A36" stroke-width="1.2" opacity="0.45"/>
+  <path d="M 290 340 C 265 366 250 385 298 400" stroke="#3F4A36" stroke-width="0.8" opacity="0.35" stroke-linecap="round"/>
+
+  <!-- Leaf 4 - mid-lower right -->
+  <path d="M 315 430 C 360 398 415 402 428 425 C 434 440 420 465 396 480 C 368 497 328 496 312 484 C 300 475 300 460 304 445 Z" fill="#3F4A36" opacity="0.12"/>
+  <path d="M 315 430 C 360 398 415 402 428 425 C 434 440 420 465 396 480 C 368 497 328 496 312 484 C 300 475 300 460 304 445 Z" stroke="#3F4A36" stroke-width="1.2" opacity="0.4"/>
+
+  <!-- Small bud at top -->
+  <ellipse cx="340" cy="18" rx="8" ry="12" fill="#3F4A36" opacity="0.25"/>
+  <ellipse cx="352" cy="25" rx="5" ry="8" fill="#3F4A36" opacity="0.18"/>
+</svg>

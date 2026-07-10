@@ -2,13 +2,19 @@
 // Swap any path here when final photography is ready. No other file needs touching.
 
 export const homepageImages = {
-  hero:        "/images/home/hero-placeholder.svg",
-  story:       "/images/home/story-placeholder.svg",
-  benefits:    "/images/home/benefits-placeholder.svg",
-  newsletter:  "/images/home/newsletter-placeholder.svg",
-  product30ml: "/images/products/daily-solace-30ml-placeholder.svg",
-  product15ml: "/images/products/daily-solace-15ml-placeholder.svg",
-  bundle:      "/images/products/solace-bundle-placeholder.svg",
+  hero:                   "/images/home/hero-placeholder.svg",
+  heroLeaf:               "/images/decor/hero-leaf-placeholder.svg",
+  story:                  "/images/home/story-placeholder.svg",
+  storyDetail:            "/images/home/story-detail-placeholder.svg",
+  benefits:               "/images/home/benefits-placeholder.svg",
+  newsletter:             "/images/home/newsletter-placeholder.svg",
+  ingredientsLeafTop:     "/images/decor/ingredients-leaf-top-placeholder.svg",
+  ingredientsLeafBottom:  "/images/decor/ingredients-leaf-bottom-placeholder.svg",
+  productCutout:          "/images/products/daily-solace-cutout-placeholder.svg",
+  newsletterProductCutout:"/images/products/daily-solace-cutout-placeholder.svg",
+  product30ml:            "/images/products/daily-solace-30ml-placeholder.svg",
+  product15ml:            "/images/products/daily-solace-15ml-placeholder.svg",
+  bundle:                 "/images/products/solace-bundle-placeholder.svg",
 } as const;
 
 // ─── Featured products config ─────────────────────────────────────────────────
