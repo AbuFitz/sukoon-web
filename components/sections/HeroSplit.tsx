@@ -134,7 +134,7 @@ export function HeroSplit() {
         }}>
           <p style={{
             fontFamily: "var(--font-body)", fontSize: "0.5625rem", fontWeight: 500,
-            letterSpacing: "0.2em", textTransform: "uppercase", color: "#6B7B5C",
+            letterSpacing: "0.2em", textTransform: "uppercase", color: "#98A47D",
             marginBottom: "clamp(1.5rem, 4vw, 2.5rem)", lineHeight: 1.8,
             opacity: shown ? 1 : 0, transform: shown ? "translateY(0)" : "translateY(14px)",
             transition: "opacity 0.8s ease 0.1s, transform 0.8s cubic-bezier(0.22,1,0.36,1) 0.1s",
@@ -156,7 +156,7 @@ export function HeroSplit() {
 
           <p style={{
             fontFamily: "var(--font-body)", fontSize: "0.9375rem", lineHeight: 1.8,
-            color: "#6B7B5C", maxWidth: "340px",
+            color: "#98A47D", maxWidth: "340px",
             marginBottom: "clamp(2rem, 6vw, 2.75rem)",
             opacity: shown ? 1 : 0, transform: shown ? "translateY(0)" : "translateY(14px)",
             transition: "opacity 0.8s ease 0.34s, transform 0.8s cubic-bezier(0.22,1,0.36,1) 0.34s",
@@ -205,7 +205,7 @@ export function HeroSplit() {
 
           <p style={{
             fontFamily: "var(--font-body)", fontSize: "0.6875rem", letterSpacing: "0.04em",
-            color: "#A9BA98",
+            color: "#98A47D",
             opacity: shown ? 1 : 0,
             transition: "opacity 0.8s ease 0.56s",
           }}>
@@ -228,7 +228,7 @@ export function HeroSplit() {
           ].map((b) => (
             <div key={b.label} style={{
               display: "flex", flexDirection: "column", alignItems: "center", gap: "0.625rem", textAlign: "center",
-              color: "#6B7B5C",
+              color: "#98A47D",
             }}>
               <span style={{
                 fontFamily: "var(--font-body)", fontSize: "0.6875rem", fontWeight: 500,

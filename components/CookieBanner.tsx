@@ -35,7 +35,7 @@ export function CookieBanner() {
         color: "rgba(251,248,243,0.7)", maxWidth: "680px", flex: "1 1 300px",
       }}>
         We use cookies to improve your experience and understand how our site is used.{" "}
-        <a href="/cookies" style={{ color: "#A9BA98", textDecoration: "underline", textUnderlineOffset: "2px" }}>
+        <a href="/cookies" style={{ color: "#98A47D", textDecoration: "underline", textUnderlineOffset: "2px" }}>
           Cookie Policy
         </a>
         .
@@ -64,7 +64,7 @@ export function CookieBanner() {
             color: "#2C2A1F", padding: "0.625rem 1.25rem", cursor: "pointer",
             transition: "background 0.2s",
           }}
-          onMouseEnter={e => { (e.currentTarget as HTMLElement).style.backgroundColor = "#A9BA98"; }}
+          onMouseEnter={e => { (e.currentTarget as HTMLElement).style.backgroundColor = "#98A47D"; }}
           onMouseLeave={e => { (e.currentTarget as HTMLElement).style.backgroundColor = "#F7F1E4"; }}
         >
           Accept

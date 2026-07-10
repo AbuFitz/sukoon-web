@@ -6,7 +6,7 @@ import { products } from "@/lib/products";
 import { useCart } from "@/lib/cart-context";
 
 const INK  = "#2C2A1F";
-const SAGE = "#6B7B5C";
+const SAGE = "#98A47D";
 const LINE = "#E8D4AE";
 
 const highlights = [

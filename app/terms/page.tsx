@@ -10,7 +10,7 @@ const PROSE = {
   fontFamily: "var(--font-body)",
   fontSize: "0.9375rem",
   lineHeight: 1.85,
-  color: "#6B7B5C",
+  color: "#98A47D",
 };
 
 const H2 = {
@@ -34,7 +34,7 @@ export default function TermsPage() {
             fontWeight: 400, letterSpacing: "-0.015em", color: "#2C2A1F",
             marginBottom: "0.5rem",
           }}>Terms &amp; Conditions</h1>
-          <p style={{ ...PROSE, color: "#A9BA98", marginBottom: "2.5rem", fontSize: "0.8125rem" }}>
+          <p style={{ ...PROSE, color: "#98A47D", marginBottom: "2.5rem", fontSize: "0.8125rem" }}>
             Last updated: July 2025
           </p>
 

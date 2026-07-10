@@ -25,7 +25,7 @@ export function FAQ() {
         <div style={{ textAlign: "center", marginBottom: "clamp(2.5rem, 6vw, 3.5rem)" }}>
           <p style={{
             fontFamily: "var(--font-body)", fontSize: "0.5625rem", fontWeight: 500,
-            letterSpacing: "0.2em", textTransform: "uppercase", color: "#6B7B5C", marginBottom: "1rem",
+            letterSpacing: "0.2em", textTransform: "uppercase", color: "#98A47D", marginBottom: "1rem",
           }}>
             FAQ
           </p>
@@ -54,7 +54,7 @@ export function FAQ() {
                 >
                   {item.q}
                   <span aria-hidden style={{
-                    flexShrink: 0, fontSize: "1.125rem", color: "#6B7B5C",
+                    flexShrink: 0, fontSize: "1.125rem", color: "#98A47D",
                     transform: open ? "rotate(45deg)" : "none", transition: "transform 0.25s ease",
                   }}>
                     +
@@ -66,7 +66,7 @@ export function FAQ() {
                 }}>
                   <p style={{
                     fontFamily: "var(--font-body)", fontSize: "0.875rem", lineHeight: 1.75,
-                    color: "#6B7B5C", paddingBottom: "1.25rem", maxWidth: "620px",
+                    color: "#98A47D", paddingBottom: "1.25rem", maxWidth: "620px",
                   }}>
                     {item.a}
                   </p>

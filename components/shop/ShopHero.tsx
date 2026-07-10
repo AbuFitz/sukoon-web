@@ -10,7 +10,7 @@ export function ShopHero() {
       <div style={{ maxWidth: "1320px", margin: "0 auto" }}>
         <p style={{
           fontFamily: "var(--font-body)", fontSize: "0.5625rem", fontWeight: 500,
-          letterSpacing: "0.2em", textTransform: "uppercase", color: "#6B7B5C",
+          letterSpacing: "0.2em", textTransform: "uppercase", color: "#98A47D",
           marginBottom: "1rem",
         }}>
           Shop
@@ -24,7 +24,7 @@ export function ShopHero() {
         </h1>
         <p style={{
           fontFamily: "var(--font-body)", fontSize: "0.9375rem", lineHeight: 1.8,
-          color: "#6B7B5C", maxWidth: "440px",
+          color: "#98A47D", maxWidth: "440px",
         }}>
           One waterless oil, three ways to start. Engineered for both your skin and the hairline strain hijabs, under-caps, and tight styles leave behind.
         </p>

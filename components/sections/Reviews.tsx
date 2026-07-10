@@ -49,7 +49,7 @@ export function Reviews() {
                 <p style={{ fontFamily: "var(--font-body)", fontSize: "0.8125rem", fontWeight: 600, color: "#2C2A1F" }}>
                   {r.name}
                 </p>
-                <p style={{ fontFamily: "var(--font-body)", fontSize: "0.6875rem", color: "#6B7B5C", letterSpacing: "0.02em" }}>
+                <p style={{ fontFamily: "var(--font-body)", fontSize: "0.6875rem", color: "#98A47D", letterSpacing: "0.02em" }}>
                   {r.note}
                 </p>
               </div>

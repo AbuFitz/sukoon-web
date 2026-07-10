@@ -5,7 +5,7 @@ import { SiteNav } from "@/components/nav/SiteNav";
 import { Footer } from "@/components/sections/Footer";
 
 const INK  = "#2C2A1F";
-const SAGE = "#6B7B5C";
+const SAGE = "#98A47D";
 const LINE = "#E8D4AE";
 const LINEN = "#FBF8F3";
 

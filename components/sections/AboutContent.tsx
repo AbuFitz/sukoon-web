@@ -23,7 +23,7 @@ export function AboutContent() {
           </h1>
           <p style={{
             fontFamily: "var(--font-body)", fontSize: "1rem", lineHeight: 1.85,
-            color: "#6B7B5C", maxWidth: "560px",
+            color: "#98A47D", maxWidth: "560px",
           }}>
             سكون. In Arabic, it means stillness. The moment the day slows down, the noise drops away, and you return to yourself. That&rsquo;s the feeling we wanted to bottle — not just for your face, but for every part of your ritual that never had a product made for it.
           </p>
@@ -52,13 +52,13 @@ export function AboutContent() {
             Millions of people are managing hairline thinning with products that were never made for them.
           </h2>
           <p style={{
-            fontFamily: "var(--font-body)", fontSize: "1rem", lineHeight: 1.85, color: "#6B7B5C",
+            fontFamily: "var(--font-body)", fontSize: "1rem", lineHeight: 1.85, color: "#98A47D",
             marginBottom: "1.25rem",
           }}>
             Traction alopecia — hairline thinning caused by daily friction and tension from tight styles, braids, weaves, and ponytails — is well-documented. The products addressing it are not. Most hairline treatments are thick, heavy, and scented for overnight use. Most face oils ignore the hairline entirely.
           </p>
           <p style={{
-            fontFamily: "var(--font-body)", fontSize: "1rem", lineHeight: 1.85, color: "#6B7B5C",
+            fontFamily: "var(--font-body)", fontSize: "1rem", lineHeight: 1.85, color: "#98A47D",
           }}>
             The Daily Solace Fluid was built to exist in that gap. Lightweight enough for daily face use. Active enough to support the hairline. One formula. Two rituals.
           </p>
@@ -100,7 +100,7 @@ export function AboutContent() {
               <div key={ing.name}>
                 <p style={{
                   fontFamily: "var(--font-display)", fontSize: "2rem", fontWeight: 400,
-                  color: "#A9BA98", lineHeight: 1, marginBottom: "0.5rem",
+                  color: "#98A47D", lineHeight: 1, marginBottom: "0.5rem",
                 }}>{ing.pct}</p>
                 <p style={{
                   fontFamily: "var(--font-body)", fontSize: "0.8125rem",
@@ -132,7 +132,7 @@ export function AboutContent() {
                   marginBottom: "0.375rem",
                 }}>{c.label}</p>
                 <p style={{
-                  fontFamily: "var(--font-body)", fontSize: "0.8125rem", color: "#6B7B5C",
+                  fontFamily: "var(--font-body)", fontSize: "0.8125rem", color: "#98A47D",
                 }}>{c.sub}</p>
               </div>
             ))}

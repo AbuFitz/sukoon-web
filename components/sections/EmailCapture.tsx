@@ -68,7 +68,7 @@ export function EmailCapture() {
           </div>
 
           {status === "error" && (
-            <p role="alert" style={{ fontFamily: "var(--font-body)", fontSize: "0.75rem", color: "#6B7B5C", marginTop: "0.75rem" }}>
+            <p role="alert" style={{ fontFamily: "var(--font-body)", fontSize: "0.75rem", color: "#98A47D", marginTop: "0.75rem" }}>
               Please enter a valid email address.
             </p>
           )}

@@ -37,7 +37,7 @@ export function TrustStrip() {
               </p>
               <p style={{
                 fontFamily: "var(--font-body)", fontSize: "0.8125rem",
-                color: "#6B7B5C", lineHeight: 1.55,
+                color: "#98A47D", lineHeight: 1.55,
               }}>
                 {item.tagline}
               </p>
@@ -69,7 +69,7 @@ export function TrustStrip() {
             </p>
             <p style={{
               fontFamily: "var(--font-body)", fontSize: "0.6875rem",
-              color: "#6B7B5C", lineHeight: 1.5,
+              color: "#98A47D", lineHeight: 1.5,
             }}>
               {item.tagline}
             </p>

@@ -26,11 +26,11 @@ export function LifestyleSplit() {
           Built for the hairline that every other product forgot.
         </h2>
 
-        <p style={{ fontFamily: "var(--font-body)", fontSize: "1rem", lineHeight: 1.85, color: "#6B7B5C", marginBottom: "1.25rem" }}>
+        <p style={{ fontFamily: "var(--font-body)", fontSize: "1rem", lineHeight: 1.85, color: "#98A47D", marginBottom: "1.25rem" }}>
           Every serum on the shelf was made for your face alone. Nobody built one for the hairline strain that tight styles, tension, and daily wear press in quietly, over years. So we did.
         </p>
 
-        <p style={{ fontFamily: "var(--font-body)", fontSize: "1rem", lineHeight: 1.85, color: "#6B7B5C" }}>
+        <p style={{ fontFamily: "var(--font-body)", fontSize: "1rem", lineHeight: 1.85, color: "#98A47D" }}>
           100% waterless. Nothing greasy. Nothing to overthink. Sixty seconds and it\'s gone — except it isn\'t, it\'s working.
         </p>
       </div>

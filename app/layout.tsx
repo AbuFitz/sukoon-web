@@ -3,6 +3,7 @@ import { Cormorant_Garamond, DM_Sans } from "next/font/google";
 import { CartProvider } from "@/lib/cart-context";
 import { AnnouncementBar } from "@/components/sections/AnnouncementBar";
 import { CookieBanner } from "@/components/CookieBanner";
+import { LoadingScreen } from "@/components/LoadingScreen";
 import "./globals.css";
 
 const cormorant = Cormorant_Garamond({
@@ -40,6 +41,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${cormorant.variable} ${dmSans.variable} h-full`}>
       <body className="min-h-full">
+        <LoadingScreen />
         <AnnouncementBar />
         <CartProvider>{children}</CartProvider>
         <CookieBanner />

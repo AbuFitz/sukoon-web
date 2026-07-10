@@ -11,7 +11,7 @@ export function PhilosophyQuote() {
       <div style={{ maxWidth: "780px", margin: "0 auto" }}>
         <span aria-hidden style={{
           display: "block", fontFamily: "var(--font-display)", fontSize: "3rem",
-          color: "#A9BA98", marginBottom: "1rem", lineHeight: 1,
+          color: "#98A47D", marginBottom: "1rem", lineHeight: 1,
         }}>
           &ldquo;
         </span>
@@ -24,7 +24,7 @@ export function PhilosophyQuote() {
         </p>
         <p style={{
           fontFamily: "var(--font-body)", fontSize: "0.6875rem", fontWeight: 500,
-          letterSpacing: "0.18em", textTransform: "uppercase", color: "#A9BA98",
+          letterSpacing: "0.18em", textTransform: "uppercase", color: "#98A47D",
         }}>
           سكون &mdash; Stillness, in Arabic. And in practice.
         </p>

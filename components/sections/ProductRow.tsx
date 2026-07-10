@@ -20,7 +20,7 @@ export function ProductRow() {
           marginBottom: "clamp(2rem, 5vw, 3rem)",
         }}>
           <div>
-            <p style={{ fontFamily: "var(--font-body)", fontSize: "0.5625rem", fontWeight: 500, letterSpacing: "0.2em", textTransform: "uppercase", color: "#6B7B5C", marginBottom: "1rem" }}>
+            <p style={{ fontFamily: "var(--font-body)", fontSize: "0.5625rem", fontWeight: 500, letterSpacing: "0.2em", textTransform: "uppercase", color: "#98A47D", marginBottom: "1rem" }}>
               Shop the Fluid
             </p>
             <h2 style={{
@@ -57,7 +57,7 @@ export function ProductRow() {
               <h3 style={{ fontFamily: "var(--font-body)", fontSize: "0.9375rem", fontWeight: 600, color: "#2C2A1F", marginBottom: "0.25rem" }}>
                 {p.name}
               </h3>
-              <p style={{ fontFamily: "var(--font-body)", fontSize: "0.8125rem", color: "#6B7B5C", marginBottom: "0.75rem" }}>
+              <p style={{ fontFamily: "var(--font-body)", fontSize: "0.8125rem", color: "#98A47D", marginBottom: "0.75rem" }}>
                 {p.size}
               </p>
               <p style={{ fontFamily: "var(--font-body)", fontSize: "0.9375rem", fontWeight: 600, color: "#2C2A1F", marginBottom: "1.25rem" }}>

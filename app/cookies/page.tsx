@@ -10,7 +10,7 @@ const PROSE = {
   fontFamily: "var(--font-body)",
   fontSize: "0.9375rem",
   lineHeight: 1.85,
-  color: "#6B7B5C",
+  color: "#98A47D",
 };
 
 const H2 = {
@@ -27,7 +27,7 @@ const TABLE_CELL = {
   fontFamily: "var(--font-body)",
   fontSize: "0.8125rem",
   lineHeight: 1.6,
-  color: "#6B7B5C",
+  color: "#98A47D",
   padding: "0.625rem 0.875rem",
   borderBottom: "1px solid #E8D4AE",
   verticalAlign: "top" as const,
@@ -44,7 +44,7 @@ export default function CookiesPage() {
             fontWeight: 400, letterSpacing: "-0.015em", color: "#2C2A1F",
             marginBottom: "0.5rem",
           }}>Cookie Policy</h1>
-          <p style={{ ...PROSE, color: "#A9BA98", marginBottom: "2.5rem", fontSize: "0.8125rem" }}>
+          <p style={{ ...PROSE, color: "#98A47D", marginBottom: "2.5rem", fontSize: "0.8125rem" }}>
             Last updated: July 2025
           </p>
 

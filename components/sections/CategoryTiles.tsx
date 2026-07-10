@@ -19,7 +19,7 @@ export function CategoryTiles() {
       }}
     >
       <div style={{ maxWidth: "1320px", margin: "0 auto" }}>
-        <p style={{ fontFamily: "var(--font-body)", fontSize: "0.5625rem", fontWeight: 500, letterSpacing: "0.2em", textTransform: "uppercase", color: "#6B7B5C", marginBottom: "clamp(1.5rem, 4vw, 2.5rem)" }}>
+        <p style={{ fontFamily: "var(--font-body)", fontSize: "0.5625rem", fontWeight: 500, letterSpacing: "0.2em", textTransform: "uppercase", color: "#98A47D", marginBottom: "clamp(1.5rem, 4vw, 2.5rem)" }}>
           Discover by Category
         </p>
 

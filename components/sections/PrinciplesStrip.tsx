@@ -32,7 +32,7 @@ export function PrinciplesStrip() {
       }}
     >
       <div style={{ maxWidth: "1320px", margin: "0 auto" }}>
-        <p style={{ fontFamily: "var(--font-body)", fontSize: "0.5625rem", fontWeight: 500, letterSpacing: "0.22em", textTransform: "uppercase", color: "#6B7B5C", marginBottom: "1.5rem" }}>
+        <p style={{ fontFamily: "var(--font-body)", fontSize: "0.5625rem", fontWeight: 500, letterSpacing: "0.22em", textTransform: "uppercase", color: "#98A47D", marginBottom: "1.5rem" }}>
           What We Stand For
         </p>
 
@@ -61,7 +61,7 @@ export function PrinciplesStrip() {
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  color: "#6B7B5C",
+                  color: "#98A47D",
                 }}
               >
                 {p.icon}

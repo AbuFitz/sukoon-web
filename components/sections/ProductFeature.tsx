@@ -49,7 +49,7 @@ export function ProductFeature() {
         <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "0.75rem" }}>
           {features.map((f) => (
             <li key={f} style={{ fontFamily: "var(--font-body)", fontSize: "0.8125rem", color: "rgba(247,241,228,0.5)", lineHeight: 1.6, display: "flex", gap: "0.625rem", alignItems: "flex-start" }}>
-              <span style={{ color: "#A9BA98", flexShrink: 0, marginTop: "0.1em" }}>✓</span>
+              <span style={{ color: "#98A47D", flexShrink: 0, marginTop: "0.1em" }}>✓</span>
               {f}
             </li>
           ))}

@@ -45,7 +45,7 @@ export function ForYou() {
               <p style={{
                 fontFamily: "var(--font-body)", fontSize: "0.5625rem", fontWeight: 600,
                 letterSpacing: "0.16em", textTransform: "uppercase",
-                color: "#A9BA98", marginBottom: "1.25rem",
+                color: "#98A47D", marginBottom: "1.25rem",
               }}>
                 {c.eyebrow}
               </p>
@@ -72,7 +72,7 @@ export function ForYou() {
             padding: "1rem 1.875rem",
             transition: "background 0.3s ease",
           }}
-            onMouseEnter={e => { (e.currentTarget as HTMLElement).style.backgroundColor = "#A9BA98"; }}
+            onMouseEnter={e => { (e.currentTarget as HTMLElement).style.backgroundColor = "#98A47D"; }}
             onMouseLeave={e => { (e.currentTarget as HTMLElement).style.backgroundColor = "#F7F1E4"; }}
           >
             Shop The Daily Solace Fluid

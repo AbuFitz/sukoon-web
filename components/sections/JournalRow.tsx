@@ -29,7 +29,7 @@ export function JournalRow() {
       }}
     >
       <div style={{ maxWidth: "1320px", margin: "0 auto" }}>
-        <p style={{ fontFamily: "var(--font-body)", fontSize: "0.5625rem", fontWeight: 500, letterSpacing: "0.2em", textTransform: "uppercase", color: "#6B7B5C", marginBottom: "1rem" }}>
+        <p style={{ fontFamily: "var(--font-body)", fontSize: "0.5625rem", fontWeight: 500, letterSpacing: "0.2em", textTransform: "uppercase", color: "#98A47D", marginBottom: "1rem" }}>
           The Journal
         </p>
         <h2 style={{
@@ -46,7 +46,7 @@ export function JournalRow() {
               <div style={{ position: "relative", aspectRatio: "4 / 3", backgroundColor: "#E8D4AE", marginBottom: "1.125rem" }}>
                 <Image src={a.src} alt={a.title} fill sizes="(max-width: 768px) 100vw, 33vw" style={{ objectFit: "cover" }} />
               </div>
-              <p style={{ fontFamily: "var(--font-body)", fontSize: "0.5625rem", fontWeight: 500, letterSpacing: "0.16em", textTransform: "uppercase", color: "#6B7B5C", marginBottom: "0.5rem" }}>
+              <p style={{ fontFamily: "var(--font-body)", fontSize: "0.5625rem", fontWeight: 500, letterSpacing: "0.16em", textTransform: "uppercase", color: "#98A47D", marginBottom: "0.5rem" }}>
                 {a.category}
               </p>
               <h3 style={{ fontFamily: "var(--font-display)", fontSize: "1.25rem", fontWeight: 400, lineHeight: 1.3, color: "#2C2A1F" }}>

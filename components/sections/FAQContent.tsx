@@ -54,7 +54,7 @@ export function FAQContent() {
         <div style={{ marginBottom: "clamp(3rem, 6vw, 4.5rem)" }}>
           <p style={{
             fontFamily: "var(--font-body)", fontSize: "0.5625rem", fontWeight: 500,
-            letterSpacing: "0.2em", textTransform: "uppercase", color: "#6B7B5C", marginBottom: "1rem",
+            letterSpacing: "0.2em", textTransform: "uppercase", color: "#98A47D", marginBottom: "1rem",
           }}>
             FAQ
           </p>
@@ -71,7 +71,7 @@ export function FAQContent() {
             <div key={sec.heading}>
               <p style={{
                 fontFamily: "var(--font-body)", fontSize: "0.5625rem", fontWeight: 600,
-                letterSpacing: "0.18em", textTransform: "uppercase", color: "#6B7B5C",
+                letterSpacing: "0.18em", textTransform: "uppercase", color: "#98A47D",
                 marginBottom: "1rem", paddingBottom: "0.75rem",
                 borderBottom: "1px solid #E8D4AE",
               }}>
@@ -94,7 +94,7 @@ export function FAQContent() {
                     >
                       {item.q}
                       <span aria-hidden style={{
-                        flexShrink: 0, fontSize: "1.125rem", color: "#6B7B5C",
+                        flexShrink: 0, fontSize: "1.125rem", color: "#98A47D",
                         display: "inline-block",
                         transform: open ? "rotate(45deg)" : "none", transition: "transform 0.25s ease",
                       }}>+</span>
@@ -105,7 +105,7 @@ export function FAQContent() {
                     }}>
                       <p style={{
                         fontFamily: "var(--font-body)", fontSize: "0.875rem", lineHeight: 1.8,
-                        color: "#6B7B5C", paddingBottom: "1.25rem", maxWidth: "660px",
+                        color: "#98A47D", paddingBottom: "1.25rem", maxWidth: "660px",
                       }}>
                         {item.a}
                       </p>
@@ -119,7 +119,7 @@ export function FAQContent() {
 
         <div style={{
           marginTop: "clamp(3rem, 6vw, 4.5rem)", padding: "clamp(1.75rem, 4vw, 2.5rem)",
-          backgroundColor: "#F0EAD8", borderLeft: "3px solid #A9BA98",
+          backgroundColor: "#F0EAD8", borderLeft: "3px solid #98A47D",
         }}>
           <p style={{ fontFamily: "var(--font-body)", fontSize: "0.875rem", lineHeight: 1.75, color: "#2C2A1F" }}>
             Didn&rsquo;t find what you were looking for?{" "}

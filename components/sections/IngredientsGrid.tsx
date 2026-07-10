@@ -9,7 +9,7 @@ const ingredients = [
     name: "Vitamin B3",
     latin: "Niacinamide · 14.9%",
     description: "Strengthens what friction weakens. The barrier on your face. The follicles along your hairline. Both.",
-    bg: "#A9BA98", fg: "#2C2A1F", symbol: "٢",
+    bg: "#98A47D", fg: "#2C2A1F", symbol: "٢",
   },
   {
     name: "Black Seed Oil",
@@ -73,7 +73,7 @@ export function IngredientsGrid() {
                 <h3 style={{ fontFamily: "var(--font-body)", fontSize: "0.875rem", fontWeight: 600, color: "#2C2A1F", marginBottom: "0.625rem", letterSpacing: "0.01em" }}>
                   {ing.name}
                 </h3>
-                <p style={{ fontFamily: "var(--font-body)", fontSize: "0.8125rem", lineHeight: 1.75, color: "#6B7B5C" }}>
+                <p style={{ fontFamily: "var(--font-body)", fontSize: "0.8125rem", lineHeight: 1.75, color: "#98A47D" }}>
                   {ing.description}
                 </p>
               </div>
