@@ -9,14 +9,19 @@ import { PhilosophyQuote } from "@/components/sections/PhilosophyQuote";
 import { ForYou }          from "@/components/sections/ForYou";
 import { EmailCapture }    from "@/components/sections/EmailCapture";
 import { Footer }          from "@/components/sections/Footer";
+import { getProductByHandle } from "@/lib/shopify";
 
-export default function Home() {
+export default async function Home() {
+  // Fetch the first product's default variant ID from Shopify
+  const product = await getProductByHandle("the-daily-solace-fluid").catch(() => null);
+  const variantId = product?.variants.nodes[0]?.id;
+
   return (
     <>
       <SiteNav />
       <main>
         <HeroSplit />
-        <ProductPurchase />
+        <ProductPurchase variantId={variantId} />
         <TrustStrip />
         <LifestyleSplit />
         <IngredientsGrid />

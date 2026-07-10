@@ -19,16 +19,19 @@ const highlights = [
   "100% waterless — no filler, nothing greasy, nothing to overthink",
 ];
 
-export function ProductPurchase() {
+export function ProductPurchase({ variantId }: { variantId?: string }) {
   const [qty, setQty] = useState(1);
   const [justAdded, setJustAdded] = useState(false);
-  const { addToBag } = useCart();
+  const { addToCart, loading } = useCart();
 
-  const handleAddToBag = () => {
-    addToBag(hero.slug, qty);
+  const handleAddToBag = async () => {
+    if (!variantId) return;
+    await addToCart(variantId, qty);
     setJustAdded(true);
     setTimeout(() => setJustAdded(false), 1800);
   };
+
+  const unavailable = !variantId;
 
   return (
     <section id="product" aria-label="Shop The Daily Solace Fluid" style={{
@@ -101,18 +104,20 @@ export function ProductPurchase() {
           <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem", marginBottom: "1.5rem" }}>
             <button
               onClick={handleAddToBag}
+              disabled={unavailable || loading || justAdded}
               style={{
                 display: "flex", alignItems: "center", justifyContent: "center",
                 fontFamily: "var(--font-body)", fontSize: "0.6875rem", fontWeight: 500,
                 letterSpacing: "0.14em", textTransform: "uppercase",
-                color: "#F7F1E4", border: "none", cursor: "pointer",
+                color: "#F7F1E4", border: "none", cursor: unavailable ? "not-allowed" : "pointer",
                 backgroundColor: justAdded ? "#3F4A36" : INK, padding: "1.0625rem",
                 transition: "background 0.25s",
+                opacity: unavailable ? 0.5 : 1,
               }}
-              onMouseEnter={e => { if (!justAdded) (e.currentTarget as HTMLElement).style.backgroundColor = "#3F4A36"; }}
+              onMouseEnter={e => { if (!justAdded && !unavailable) (e.currentTarget as HTMLElement).style.backgroundColor = "#3F4A36"; }}
               onMouseLeave={e => { if (!justAdded) (e.currentTarget as HTMLElement).style.backgroundColor = INK; }}
             >
-              {justAdded ? "Added to Bag" : "Add to Bag"}
+              {justAdded ? "Added to Bag" : loading ? "Adding…" : unavailable ? "Unavailable" : "Add to Bag"}
             </button>
           </div>
 

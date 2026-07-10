@@ -16,15 +16,18 @@ const highlights = [
   "One bottle, two rituals: face in the morning, hairline at night",
 ];
 
-export function ProductDetailGrid() {
+export function ProductDetailGrid({ variantIds = {} }: { variantIds?: Record<string, string> }) {
   const [activeIdx, setActiveIdx] = useState(0);
   const [qty, setQty] = useState(1);
   const [justAdded, setJustAdded] = useState(false);
   const active = products[activeIdx];
-  const { addToBag } = useCart();
+  const { addToCart, loading } = useCart();
 
-  const handleAddToBag = () => {
-    addToBag(active.slug, qty);
+  const activeVariantId = variantIds[active.slug];
+
+  const handleAddToBag = async () => {
+    if (!activeVariantId) return;
+    await addToCart(activeVariantId, qty);
     setJustAdded(true);
     setTimeout(() => setJustAdded(false), 1800);
   };
@@ -143,18 +146,21 @@ export function ProductDetailGrid() {
             </button>
           </div>
 
-          <button onClick={handleAddToBag} style={{
-            display: "flex", alignItems: "center", justifyContent: "center", width: "100%",
-            fontFamily: "var(--font-body)", fontSize: "0.6875rem", fontWeight: 500,
-            letterSpacing: "0.14em", textTransform: "uppercase",
-            color: "#F7F1E4", border: "none", cursor: "pointer",
-            backgroundColor: justAdded ? "#3F4A36" : INK, padding: "1.0625rem", marginBottom: "2.25rem",
-            transition: "background 0.25s",
-          }}
-            onMouseEnter={e => { if (!justAdded) (e.currentTarget as HTMLElement).style.backgroundColor = "#3F4A36"; }}
+          <button
+            onClick={handleAddToBag}
+            disabled={!activeVariantId || loading || justAdded}
+            style={{
+              display: "flex", alignItems: "center", justifyContent: "center", width: "100%",
+              fontFamily: "var(--font-body)", fontSize: "0.6875rem", fontWeight: 500,
+              letterSpacing: "0.14em", textTransform: "uppercase",
+              color: "#F7F1E4", border: "none", cursor: !activeVariantId ? "not-allowed" : "pointer",
+              backgroundColor: justAdded ? "#3F4A36" : INK, padding: "1.0625rem", marginBottom: "2.25rem",
+              transition: "background 0.25s", opacity: !activeVariantId ? 0.5 : 1,
+            }}
+            onMouseEnter={e => { if (!justAdded && activeVariantId) (e.currentTarget as HTMLElement).style.backgroundColor = "#3F4A36"; }}
             onMouseLeave={e => { if (!justAdded) (e.currentTarget as HTMLElement).style.backgroundColor = INK; }}
           >
-            {justAdded ? "Added to Bag" : "Add to Bag"}
+            {justAdded ? "Added to Bag" : loading ? "Adding…" : !activeVariantId ? "Unavailable" : "Add to Bag"}
           </button>
 
           <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "0.75rem" }}>

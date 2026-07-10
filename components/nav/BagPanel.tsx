@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { Panel } from "./Panel";
 import { useCart } from "@/lib/cart-context";
-import { products } from "@/lib/products";
+import { formatPrice } from "@/lib/shopify";
 
 const INK  = "#111110";
 const GREY = "#6E6E68";
@@ -32,9 +32,10 @@ function Stepper({ qty, onChange }: { qty: number; onChange: (qty: number) => vo
 }
 
 export function BagPanel({ open, onClose }: { open: boolean; onClose: () => void }) {
-  const { items, removeItem, updateQty, subtotal } = useCart();
+  const { cart, loading, removeFromCart, updateQty, checkoutUrl } = useCart();
+  const lines = cart?.lines.nodes ?? [];
 
-  if (items.length === 0) {
+  if (lines.length === 0) {
     return (
       <Panel open={open} onClose={onClose} title="Your Bag">
         <div style={{
@@ -66,30 +67,40 @@ export function BagPanel({ open, onClose }: { open: boolean; onClose: () => void
     );
   }
 
+  const subtotal = cart?.cost.subtotalAmount;
+
   return (
     <Panel open={open} onClose={onClose} title="Your Bag">
-      <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
-        {items.map((item) => {
-          const product = products.find(p => p.slug === item.slug);
-          if (!product) return null;
+      <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem", opacity: loading ? 0.6 : 1, transition: "opacity 0.2s" }}>
+        {lines.map((line) => {
+          const { merchandise } = line;
+          const price = formatPrice(merchandise.priceV2.amount, merchandise.priceV2.currencyCode);
+          const lineTotal = formatPrice(
+            String(parseFloat(merchandise.priceV2.amount) * line.quantity),
+            merchandise.priceV2.currencyCode,
+          );
           return (
-            <div key={item.slug} style={{ display: "flex", gap: "1rem" }}>
-              <div style={{ position: "relative", width: 72, height: 90, flexShrink: 0, backgroundColor: "#E8D4AE" }}>
-                <Image src={product.src} alt={product.name} fill sizes="72px" style={{ objectFit: "cover" }} />
-              </div>
+            <div key={line.id} style={{ display: "flex", gap: "1rem" }}>
+              {merchandise.image ? (
+                <div style={{ position: "relative", width: 72, height: 90, flexShrink: 0, backgroundColor: "#E8D4AE" }}>
+                  <Image src={merchandise.image.url} alt={merchandise.image.altText ?? merchandise.product.title} fill sizes="72px" style={{ objectFit: "cover" }} />
+                </div>
+              ) : (
+                <div style={{ width: 72, height: 90, flexShrink: 0, backgroundColor: "#E8D4AE" }} />
+              )}
               <div style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
                 <div>
                   <p style={{ fontFamily: "var(--font-body)", fontSize: "0.875rem", fontWeight: 600, color: INK, marginBottom: "0.2rem" }}>
-                    {product.name}
+                    {merchandise.product.title}
                   </p>
                   <p style={{ fontFamily: "var(--font-body)", fontSize: "0.75rem", color: GREY, marginBottom: "0.5rem" }}>
-                    {product.size} · {product.price}
+                    {merchandise.title !== "Default Title" ? `${merchandise.title} · ` : ""}{price} ea · {lineTotal}
                   </p>
                 </div>
                 <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-                  <Stepper qty={item.qty} onChange={(qty) => updateQty(item.slug, qty)} />
+                  <Stepper qty={line.quantity} onChange={(qty) => updateQty(line.id, qty)} />
                   <button
-                    onClick={() => removeItem(item.slug)}
+                    onClick={() => removeFromCart(line.id)}
                     style={{
                       background: "none", border: "none", cursor: "pointer", padding: 0,
                       fontFamily: "var(--font-body)", fontSize: "0.6875rem", color: GREY,
@@ -107,20 +118,23 @@ export function BagPanel({ open, onClose }: { open: boolean; onClose: () => void
         <div style={{ borderTop: `1px solid ${LINE}`, paddingTop: "1.25rem", marginTop: "0.25rem" }}>
           <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "1.25rem" }}>
             <span style={{ fontFamily: "var(--font-body)", fontSize: "0.875rem", fontWeight: 600, color: INK }}>Subtotal</span>
-            <span style={{ fontFamily: "var(--font-body)", fontSize: "0.875rem", fontWeight: 600, color: INK }}>£{subtotal.toFixed(2)}</span>
+            <span style={{ fontFamily: "var(--font-body)", fontSize: "0.875rem", fontWeight: 600, color: INK }}>
+              {subtotal ? formatPrice(subtotal.amount, subtotal.currencyCode) : "—"}
+            </span>
           </div>
-          <button
-            onClick={onClose}
+          <a
+            href={checkoutUrl ?? "#"}
             style={{
               display: "flex", alignItems: "center", justifyContent: "center", width: "100%",
               padding: "0.9375rem 2rem", border: "none", cursor: "pointer",
               backgroundColor: INK, color: "#FFFFFF",
               fontFamily: "var(--font-body)", fontSize: "0.75rem", fontWeight: 500,
-              letterSpacing: "0.12em", textTransform: "uppercase",
+              letterSpacing: "0.12em", textTransform: "uppercase", textDecoration: "none",
+              pointerEvents: checkoutUrl ? "auto" : "none",
             }}
           >
-            Checkout
-          </button>
+            {loading ? "Updating…" : "Checkout"}
+          </a>
           <p style={{ fontFamily: "var(--font-body)", fontSize: "0.6875rem", color: GREY, textAlign: "center", marginTop: "0.75rem" }}>
             Shipping &amp; taxes calculated at checkout
           </p>

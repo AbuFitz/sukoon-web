@@ -1,75 +1,96 @@
 "use client";
 
 import { createContext, useContext, useEffect, useState, useCallback, useMemo } from "react";
-import { products } from "@/lib/products";
-
-type CartItem = { slug: string; qty: number };
+import {
+  cartCreate, cartLinesAdd, cartLinesRemove, cartLinesUpdate, getCart,
+  type ShopifyCart,
+} from "@/lib/shopify";
 
 type CartContextValue = {
-  items: CartItem[];
-  addToBag: (slug: string, qty?: number) => void;
-  removeItem: (slug: string) => void;
-  updateQty: (slug: string, qty: number) => void;
+  cart: ShopifyCart | null;
   count: number;
-  subtotal: number;
+  loading: boolean;
+  addToCart: (variantId: string, qty?: number) => Promise<void>;
+  removeFromCart: (lineId: string) => Promise<void>;
+  updateQty: (lineId: string, qty: number) => Promise<void>;
+  checkoutUrl: string | null;
 };
 
 const CartContext = createContext<CartContextValue | null>(null);
-
-const STORAGE_KEY = "sukoon-cart";
-
-function parsePrice(price: string): number {
-  return Number(price.replace(/[^0-9.]/g, "")) || 0;
-}
+const CART_ID_KEY = "sukoon-shopify-cart-id";
 
 export function CartProvider({ children }: { children: React.ReactNode }) {
-  const [items, setItems] = useState<CartItem[]>([]);
-  const [hydrated, setHydrated] = useState(false);
+  const [cart, setCart] = useState<ShopifyCart | null>(null);
+  const [loading, setLoading] = useState(false);
 
+  // Rehydrate existing cart on mount
   useEffect(() => {
+    const storedId = localStorage.getItem(CART_ID_KEY);
+    if (!storedId) return;
+    getCart(storedId).then(c => {
+      if (c) setCart(c);
+      else localStorage.removeItem(CART_ID_KEY); // cart expired
+    }).catch(() => localStorage.removeItem(CART_ID_KEY));
+  }, []);
+
+  const addToCart = useCallback(async (variantId: string, qty = 1) => {
+    setLoading(true);
     try {
-      const raw = window.localStorage.getItem(STORAGE_KEY);
-      if (raw) setItems(JSON.parse(raw));
-    } catch {}
-    setHydrated(true);
-  }, []);
-
-  useEffect(() => {
-    if (!hydrated) return;
-    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
-  }, [items, hydrated]);
-
-  const addToBag = useCallback((slug: string, qty: number = 1) => {
-    setItems(prev => {
-      const existing = prev.find(i => i.slug === slug);
-      if (existing) {
-        return prev.map(i => i.slug === slug ? { ...i, qty: i.qty + qty } : i);
+      const cartId = localStorage.getItem(CART_ID_KEY);
+      let updated: ShopifyCart;
+      if (cartId) {
+        // Check if variant already in cart → update qty instead
+        const existing = cart?.lines.nodes.find(l => l.merchandise.id === variantId);
+        if (existing) {
+          updated = await cartLinesUpdate(cartId, existing.id, existing.quantity + qty);
+        } else {
+          updated = await cartLinesAdd(cartId, variantId, qty);
+        }
+      } else {
+        updated = await cartCreate(variantId, qty);
+        localStorage.setItem(CART_ID_KEY, updated.id);
       }
-      return [...prev, { slug, qty }];
-    });
+      setCart(updated);
+    } finally {
+      setLoading(false);
+    }
+  }, [cart]);
+
+  const removeFromCart = useCallback(async (lineId: string) => {
+    const cartId = localStorage.getItem(CART_ID_KEY);
+    if (!cartId) return;
+    setLoading(true);
+    try {
+      const updated = await cartLinesRemove(cartId, lineId);
+      setCart(updated);
+    } finally {
+      setLoading(false);
+    }
   }, []);
 
-  const removeItem = useCallback((slug: string) => {
-    setItems(prev => prev.filter(i => i.slug !== slug));
+  const updateQty = useCallback(async (lineId: string, qty: number) => {
+    const cartId = localStorage.getItem(CART_ID_KEY);
+    if (!cartId) return;
+    setLoading(true);
+    try {
+      if (qty <= 0) {
+        const updated = await cartLinesRemove(cartId, lineId);
+        setCart(updated);
+      } else {
+        const updated = await cartLinesUpdate(cartId, lineId, qty);
+        setCart(updated);
+      }
+    } finally {
+      setLoading(false);
+    }
   }, []);
 
-  const updateQty = useCallback((slug: string, qty: number) => {
-    setItems(prev => {
-      if (qty <= 0) return prev.filter(i => i.slug !== slug);
-      return prev.map(i => i.slug === slug ? { ...i, qty } : i);
-    });
-  }, []);
+  const count = useMemo(() => cart?.totalQuantity ?? 0, [cart]);
+  const checkoutUrl = cart?.checkoutUrl ?? null;
 
-  const count = useMemo(() => items.reduce((sum, i) => sum + i.qty, 0), [items]);
-
-  const subtotal = useMemo(() => {
-    return items.reduce((sum, i) => {
-      const product = products.find(p => p.slug === i.slug);
-      return sum + (product ? parsePrice(product.price) * i.qty : 0);
-    }, 0);
-  }, [items]);
-
-  const value = useMemo(() => ({ items, addToBag, removeItem, updateQty, count, subtotal }), [items, addToBag, removeItem, updateQty, count, subtotal]);
+  const value = useMemo(() => ({
+    cart, count, loading, addToCart, removeFromCart, updateQty, checkoutUrl,
+  }), [cart, count, loading, addToCart, removeFromCart, updateQty, checkoutUrl]);
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 }
