@@ -1,36 +1,46 @@
-import { SiteNav }         from "@/components/nav/SiteNav";
-import { HeroSplit }       from "@/components/sections/HeroSplit";
-import { TrustStrip }      from "@/components/sections/TrustStrip";
-import { LifestyleSplit }  from "@/components/sections/LifestyleSplit";
-import { ProductPurchase } from "@/components/sections/ProductPurchase";
-import { IngredientsGrid } from "@/components/sections/IngredientsGrid";
-import { RitualSection }   from "@/components/sections/RitualSection";
-import { PhilosophyQuote } from "@/components/sections/PhilosophyQuote";
-import { ForYou }          from "@/components/sections/ForYou";
-import { EmailCapture }    from "@/components/sections/EmailCapture";
-import { Footer }          from "@/components/sections/Footer";
-import { getVariantIdMap } from "@/lib/shopify";
-import { products }        from "@/lib/products";
+import { SiteNav }                from "@/components/nav/SiteNav";
+import { HeroSection }            from "@/components/home/HeroSection";
+import { FeaturedProductsSection } from "@/components/home/FeaturedProductsSection";
+import { BrandStorySection }      from "@/components/home/BrandStorySection";
+import { IngredientsSection }     from "@/components/home/IngredientsSection";
+import { BenefitsSection }        from "@/components/home/BenefitsSection";
+import { NewsletterSection }      from "@/components/home/NewsletterSection";
+import { Footer }                 from "@/components/sections/Footer";
+import { getProducts, formatPrice } from "@/lib/shopify";
+import { featuredProductHandles, productFallbackPrices, type FeaturedHandle } from "@/lib/homepage";
+import type { FeaturedProduct } from "@/components/home/FeaturedProductsSection";
 
-export default async function Home() {
-  // Shopify is source of truth — fetch all product handles at build/request time
-  const variantMap = await getVariantIdMap().catch(() => ({} as Record<string, string>));
-  const heroProduct = products[0];
-  const variantId = variantMap[heroProduct.slug];
+export default async function HomePage() {
+  // Fetch Shopify products; gracefully degrade if unavailable
+  const allProducts = await getProducts().catch(() => []);
+
+  const productByHandle = Object.fromEntries(allProducts.map(p => [p.handle, p]));
+
+  const featuredProducts: FeaturedProduct[] = featuredProductHandles.map(handle => {
+    const shopify = productByHandle[handle];
+    const variantId = shopify?.variants.nodes[0]?.id;
+    const price = shopify?.variants.nodes[0]?.priceV2
+      ? formatPrice(shopify.variants.nodes[0].priceV2.amount, shopify.variants.nodes[0].priceV2.currencyCode)
+      : productFallbackPrices[handle as FeaturedHandle];
+
+    return {
+      handle,
+      title: shopify?.title ?? handle,
+      price,
+      variantId,
+    };
+  });
 
   return (
     <>
       <SiteNav />
       <main>
-        <HeroSplit />
-        <ProductPurchase variantId={variantId} />
-        <TrustStrip />
-        <LifestyleSplit />
-        <IngredientsGrid />
-        <RitualSection />
-        <PhilosophyQuote />
-        <ForYou />
-        <EmailCapture />
+        <HeroSection />
+        <FeaturedProductsSection products={featuredProducts} />
+        <BrandStorySection />
+        <IngredientsSection />
+        <BenefitsSection />
+        <NewsletterSection />
       </main>
       <Footer />
     </>
