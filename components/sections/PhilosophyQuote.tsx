@@ -3,31 +3,36 @@ export function PhilosophyQuote() {
     <section
       aria-label="Brand philosophy"
       style={{
-        backgroundColor: "#3F4A36",
-        padding: "clamp(4rem, 10vw, 7rem) clamp(1.5rem, 6vw, 5rem)",
-        textAlign: "center",
+        backgroundColor: "#2C2A1F",
+        padding: "clamp(5rem, 12vw, 10rem) clamp(1.5rem, 6vw, 5rem)",
       }}
     >
-      <div style={{ maxWidth: "780px", margin: "0 auto" }}>
-        <span aria-hidden style={{
-          display: "block", fontFamily: "var(--font-display)", fontSize: "3rem",
-          color: "#98A47D", marginBottom: "1rem", lineHeight: 1,
-        }}>
-          &ldquo;
-        </span>
+      <div style={{ maxWidth: "920px", margin: "0 auto" }}>
         <p style={{
-          fontFamily: "var(--font-display)", fontWeight: 400, fontStyle: "italic",
-          fontSize: "clamp(1.625rem, 4vw, 2.75rem)", lineHeight: 1.35,
-          letterSpacing: "-0.01em", color: "#FBF8F3", marginBottom: "1.75rem",
+          fontFamily: "var(--font-body)", fontSize: "0.5625rem", fontWeight: 600,
+          letterSpacing: "0.22em", textTransform: "uppercase", color: "#98A47D",
+          marginBottom: "3rem",
         }}>
-          Not another product.<br />A reason to slow down.
+          سكون — Stillness, in Arabic
         </p>
         <p style={{
-          fontFamily: "var(--font-body)", fontSize: "0.6875rem", fontWeight: 500,
-          letterSpacing: "0.18em", textTransform: "uppercase", color: "#98A47D",
+          fontFamily: "var(--font-display)", fontWeight: 400,
+          fontSize: "clamp(2rem, 5.5vw, 4.25rem)", lineHeight: 1.12,
+          letterSpacing: "-0.02em", color: "#F7F1E4",
+          marginBottom: "3rem",
         }}>
-          سكون &mdash; Stillness, in Arabic. And in practice.
+          &ldquo;Not another product.<br />A reason to slow down.&rdquo;
         </p>
+        <div style={{ display: "flex", alignItems: "center", gap: "1.5rem" }}>
+          <div style={{ width: 32, height: 1, backgroundColor: "#98A47D" }} />
+          <p style={{
+            fontFamily: "var(--font-body)", fontSize: "0.8125rem", lineHeight: 1.6,
+            color: "rgba(247,241,228,0.5)", maxWidth: "440px",
+          }}>
+            Sukoon was built on one belief: that the best skincare asks you to pause.
+            Two drops. Sixty seconds. That&rsquo;s the whole ritual.
+          </p>
+        </div>
       </div>
     </section>
   );

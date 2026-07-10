@@ -1,241 +1,214 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 const HERO_IMAGE = "https://images.unsplash.com/photo-1707539160277-e39464517645?w=1800&q=90&fit=crop";
 
-function useReveal() {
-  const ref = useRef<HTMLDivElement>(null);
-  const [shown, setShown] = useState(false);
-  useEffect(() => {
-    setShown(true);
-  }, []);
-  return { ref, shown };
-}
+const stats = [
+  { value: "5", label: "Ingredients" },
+  { value: "80%", label: "Olive Squalane" },
+  { value: "100%", label: "Waterless" },
+  { value: "< 60s", label: "Absorbs" },
+];
 
 export function HeroSplit() {
-  const { ref: textRef, shown } = useReveal();
+  const [shown, setShown] = useState(false);
+  useEffect(() => { setShown(true); }, []);
 
   return (
     <>
-      {/* Desktop: full-bleed image with overlaid left-aligned text */}
-      <section aria-label="Hero" className="hidden md:block" style={{
-        position: "relative", minHeight: "100svh", paddingTop: "1.75rem",
-        backgroundColor: "#F1E9D7", overflow: "hidden",
+      {/* ── Desktop ── */}
+      <section aria-label="Hero" className="hidden md:flex" style={{
+        minHeight: "100svh", backgroundColor: "#FFFFFF",
+        flexDirection: "column", paddingTop: "1.75rem",
       }}>
-        <Image
-          src={HERO_IMAGE}
-          alt="The Daily Solace Fluid dropper bottle"
-          fill priority
-          sizes="100vw"
-          style={{ objectFit: "cover", objectPosition: "center" }}
-        />
-
-        <div ref={textRef} style={{
-          position: "relative", zIndex: 1, height: "100%", minHeight: "100svh",
-          display: "flex", flexDirection: "column", justifyContent: "center",
-          padding: "1.75rem clamp(2rem, 6vw, 6rem) 0",
-          maxWidth: "640px",
-        }}>
-          <h1 style={{
-            fontFamily: "var(--font-display)",
-            fontSize: "clamp(2.625rem, 5.5vw, 4.25rem)",
-            fontWeight: 400, letterSpacing: "-0.02em", lineHeight: 1.08,
-            color: "#2C2A1F",
-            marginBottom: "clamp(1.25rem, 3vw, 1.75rem)",
-            opacity: shown ? 1 : 0, transform: shown ? "translateY(0)" : "translateY(18px)",
-            transition: "opacity 0.9s ease 0.1s, transform 0.9s cubic-bezier(0.22,1,0.36,1) 0.1s",
-          }}>
-            Care for<br />your face.<br />Care for your<br />hairline.
-          </h1>
-
-          <p style={{
-            fontFamily: "var(--font-body)", fontSize: "0.9375rem", lineHeight: 1.75,
-            color: "#454332", maxWidth: "340px",
-            marginBottom: "clamp(1.75rem, 4vw, 2.25rem)",
-            opacity: shown ? 1 : 0, transform: shown ? "translateY(0)" : "translateY(14px)",
-            transition: "opacity 0.8s ease 0.22s, transform 0.8s cubic-bezier(0.22,1,0.36,1) 0.22s",
-          }}>
-            Sinks in under sixty seconds. One formula for your face — and the hairline that tight styles quietly strain.
-          </p>
-
-          <div style={{
-            opacity: shown ? 1 : 0, transform: shown ? "translateY(0)" : "translateY(10px)",
-            transition: "opacity 0.8s ease 0.34s, transform 0.8s cubic-bezier(0.22,1,0.36,1) 0.34s",
-          }}>
-            <a href="#ritual" style={{
-              display: "inline-flex", alignItems: "center",
-              fontFamily: "var(--font-body)", fontSize: "0.6875rem", fontWeight: 500,
-              letterSpacing: "0.14em", textTransform: "uppercase",
-              color: "#F7F1E4", textDecoration: "none",
-              backgroundColor: "#3F4A36", border: "1px solid #3F4A36",
-              padding: "0.9375rem 1.875rem",
-              transition: "background 0.3s ease",
-            }}
-              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.backgroundColor = "#2C2A1F"; }}
-              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.backgroundColor = "#3F4A36"; }}
-            >
-              Discover the Ritual
-            </a>
-
-            <a href="#ritual" style={{
-              display: "flex", alignItems: "center", gap: "0.5rem", width: "fit-content",
-              fontFamily: "var(--font-body)", fontSize: "0.8125rem", fontWeight: 500,
-              color: "#2C2A1F", textDecoration: "underline", textUnderlineOffset: "3px",
-              marginTop: "1.125rem",
-            }}>
-              Learn more
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" aria-hidden>
-                <line x1="12" y1="5" x2="12" y2="19" /><polyline points="6 13 12 19 18 13" />
-              </svg>
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* Mobile: existing stacked layout, unchanged */}
-      <section aria-label="Hero" className="flex flex-col md:hidden" style={{ position: "relative", minHeight: "100svh", paddingTop: "1.75rem", backgroundColor: "#F7F1E4", overflow: "hidden" }}>
-
-        {/* Image */}
         <div style={{
-          position: "relative", minHeight: "clamp(380px, 90vw, 100svh)", flexShrink: 0,
-          display: "flex", alignItems: "center", justifyContent: "center",
-          backgroundColor: "#F1E9D7",
+          flex: 1, display: "grid", gridTemplateColumns: "1fr 1fr",
+          maxWidth: "100%",
         }}>
+          {/* Left — text */}
           <div style={{
-            position: "absolute", width: "min(62vw, 520px)", aspectRatio: "1 / 1", borderRadius: "50%",
-            background: "radial-gradient(circle at 35% 30%, #DCE3CC, #C7D2AE 70%)",
-            opacity: shown ? 1 : 0,
-            transform: shown ? "scale(1)" : "scale(0.85)",
-            transition: "opacity 1.1s ease, transform 1.1s cubic-bezier(0.22,1,0.36,1)",
-          }} />
-          <div style={{
-            position: "relative", width: "min(72vw, 560px)", aspectRatio: "3 / 4",
-            opacity: shown ? 1 : 0,
-            transform: shown ? "translateY(0)" : "translateY(28px)",
-            transition: "opacity 1.2s ease 0.2s, transform 1.2s cubic-bezier(0.22,1,0.36,1) 0.2s",
-            animation: shown ? "sukoon-float 7s ease-in-out 1.4s infinite" : "none",
+            display: "flex", flexDirection: "column", justifyContent: "flex-end",
+            padding: "clamp(3rem,6vw,6rem) clamp(2.5rem,6vw,6rem) clamp(3rem,5vw,5rem)",
           }}>
+            <div style={{
+              opacity: shown ? 1 : 0, transform: shown ? "none" : "translateY(24px)",
+              transition: "opacity 1s ease 0.1s, transform 1s cubic-bezier(0.22,1,0.36,1) 0.1s",
+            }}>
+              <p style={{
+                fontFamily: "var(--font-body)", fontSize: "0.5625rem", fontWeight: 600,
+                letterSpacing: "0.22em", textTransform: "uppercase", color: "#98A47D",
+                marginBottom: "2rem",
+              }}>
+                The Daily Solace Fluid
+              </p>
+              <h1 style={{
+                fontFamily: "var(--font-display)",
+                fontSize: "clamp(3rem, 5.5vw, 5rem)",
+                fontWeight: 400, letterSpacing: "-0.025em", lineHeight: 1.04,
+                color: "#2C2A1F", marginBottom: "clamp(1.75rem, 3vw, 2.5rem)",
+              }}>
+                Care for your face.<br />Care for your<br />hairline.
+              </h1>
+              <p style={{
+                fontFamily: "var(--font-body)", fontSize: "1rem", lineHeight: 1.8,
+                color: "#6B6860", maxWidth: "380px", marginBottom: "clamp(2.5rem, 5vw, 3.5rem)",
+              }}>
+                One waterless oil. Sinks in under sixty seconds. Built for your skin — and for the hairline that tight styles quietly strain.
+              </p>
+              <div style={{ display: "flex", alignItems: "center", gap: "1.5rem" }}>
+                <a href="/shop" style={{
+                  display: "inline-flex", alignItems: "center", gap: "0.5rem",
+                  fontFamily: "var(--font-body)", fontSize: "0.625rem", fontWeight: 600,
+                  letterSpacing: "0.16em", textTransform: "uppercase",
+                  color: "#FFFFFF", backgroundColor: "#2C2A1F",
+                  padding: "1rem 2rem", textDecoration: "none", border: "1px solid #2C2A1F",
+                  transition: "background 0.3s, border-color 0.3s",
+                }}
+                  onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.backgroundColor = "#98A47D"; el.style.borderColor = "#98A47D"; }}
+                  onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.backgroundColor = "#2C2A1F"; el.style.borderColor = "#2C2A1F"; }}
+                >
+                  Shop Now
+                </a>
+                <a href="#ritual" style={{
+                  fontFamily: "var(--font-body)", fontSize: "0.8125rem",
+                  color: "#2C2A1F", textDecoration: "none",
+                  borderBottom: "1px solid #2C2A1F", paddingBottom: "2px",
+                  transition: "color 0.2s, border-color 0.2s",
+                }}
+                  onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.color = "#98A47D"; el.style.borderColor = "#98A47D"; }}
+                  onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.color = "#2C2A1F"; el.style.borderColor = "#2C2A1F"; }}
+                >
+                  Discover the ritual
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* Right — image, full height */}
+          <div style={{ position: "relative", overflow: "hidden", backgroundColor: "#F0E9DA" }}>
             <Image
               src={HERO_IMAGE}
-              alt="The Daily Solace Fluid dropper bottle resting on stone"
+              alt="The Daily Solace Fluid"
               fill priority
-              sizes="100vw"
-              style={{ objectFit: "contain", objectPosition: "center" }}
+              sizes="50vw"
+              style={{ objectFit: "cover", objectPosition: "center" }}
             />
           </div>
         </div>
 
-        {/* Text */}
+        {/* Stat strip */}
         <div style={{
-          display: "flex", flexDirection: "column", justifyContent: "center",
-          padding: "clamp(2.5rem, 8vw, 6rem) clamp(1.75rem, 6vw, 6rem) clamp(3rem, 8vw, 5rem) clamp(2.75rem, 8vw, 6rem)",
+          borderTop: "1px solid #E8E2D8",
+          display: "grid", gridTemplateColumns: "repeat(4, 1fr)",
+          opacity: shown ? 1 : 0,
+          transition: "opacity 1s ease 0.5s",
         }}>
-          <p style={{
-            fontFamily: "var(--font-body)", fontSize: "0.5625rem", fontWeight: 500,
-            letterSpacing: "0.2em", textTransform: "uppercase", color: "#98A47D",
-            marginBottom: "clamp(1.5rem, 4vw, 2.5rem)", lineHeight: 1.8,
-            opacity: shown ? 1 : 0, transform: shown ? "translateY(0)" : "translateY(14px)",
-            transition: "opacity 0.8s ease 0.1s, transform 0.8s cubic-bezier(0.22,1,0.36,1) 0.1s",
-          }}>
-            Face first. Hairline too.
-          </p>
-
-          <h1 style={{
-            fontFamily: "var(--font-display)",
-            fontSize: "clamp(2.625rem, 7vw, 5rem)",
-            fontWeight: 400, letterSpacing: "-0.025em", lineHeight: 1.06,
-            color: "#2C2A1F",
-            marginBottom: "clamp(1.25rem, 3vw, 1.75rem)",
-            opacity: shown ? 1 : 0, transform: shown ? "translateY(0)" : "translateY(18px)",
-            transition: "opacity 0.9s ease 0.22s, transform 0.9s cubic-bezier(0.22,1,0.36,1) 0.22s",
-          }}>
-            Two rituals,<br />one still oil.
-          </h1>
-
-          <p style={{
-            fontFamily: "var(--font-body)", fontSize: "0.9375rem", lineHeight: 1.8,
-            color: "#98A47D", maxWidth: "340px",
-            marginBottom: "clamp(2rem, 6vw, 2.75rem)",
-            opacity: shown ? 1 : 0, transform: shown ? "translateY(0)" : "translateY(14px)",
-            transition: "opacity 0.8s ease 0.34s, transform 0.8s cubic-bezier(0.22,1,0.36,1) 0.34s",
-          }}>
-            Made for the tension no one talks about — the daily friction that tight styles press into the hairline, quietly, over time. The Daily Solace Fluid works on both.
-          </p>
-
-          <div style={{
-            display: "flex", flexWrap: "wrap", alignItems: "center", gap: "1rem",
-            opacity: shown ? 1 : 0, transform: shown ? "translateY(0)" : "translateY(10px)",
-            transition: "opacity 0.8s ease 0.46s, transform 0.8s cubic-bezier(0.22,1,0.36,1) 0.46s",
-            marginBottom: "1.5rem",
-          }}>
-            <a href="/shop" style={{
-              display: "inline-flex", alignItems: "center", gap: "0.625rem",
-              fontFamily: "var(--font-body)", fontSize: "0.6875rem", fontWeight: 500,
-              letterSpacing: "0.14em", textTransform: "uppercase",
-              color: "#F7F1E4", textDecoration: "none",
-              backgroundColor: "#2C2A1F", border: "1px solid #2C2A1F", borderRadius: "999px",
-              padding: "1rem 1.875rem",
-              transition: "background 0.3s ease",
-            }}
-              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.backgroundColor = "#3F4A36"; }}
-              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.backgroundColor = "#2C2A1F"; }}
-            >
-              Shop The Daily Solace Fluid
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" aria-hidden>
-                <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
-              </svg>
-            </a>
-            <a href="#ritual" style={{
-              display: "inline-flex", alignItems: "center", gap: "0.625rem",
-              fontFamily: "var(--font-body)", fontSize: "0.6875rem", fontWeight: 500,
-              letterSpacing: "0.14em", textTransform: "uppercase",
-              color: "#2C2A1F", textDecoration: "none",
-              border: "1px solid #2C2A1F", borderRadius: "999px",
-              padding: "1rem 1.875rem",
-              transition: "background 0.3s ease, color 0.3s ease, border-color 0.3s ease",
-            }}
-              onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.backgroundColor = "#2C2A1F"; el.style.color = "#F7F1E4"; }}
-              onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.backgroundColor = "transparent"; el.style.color = "#2C2A1F"; }}
-            >
-              Discover the ritual
-            </a>
-          </div>
-
-          <p style={{
-            fontFamily: "var(--font-body)", fontSize: "0.6875rem", letterSpacing: "0.04em",
-            color: "#98A47D",
-            opacity: shown ? 1 : 0,
-            transition: "opacity 0.8s ease 0.56s",
-          }}>
-            UK Halal Certified · Made in the UK
-          </p>
+          {stats.map((s, i) => (
+            <div key={s.label} style={{
+              padding: "1.25rem clamp(1.5rem, 3vw, 3rem)",
+              display: "flex", alignItems: "center", gap: "1rem",
+              borderRight: i < stats.length - 1 ? "1px solid #E8E2D8" : "none",
+            }}>
+              <span style={{
+                fontFamily: "var(--font-display)", fontSize: "clamp(1.25rem, 2.5vw, 1.875rem)",
+                fontWeight: 400, color: "#2C2A1F", lineHeight: 1,
+              }}>
+                {s.value}
+              </span>
+              <span style={{
+                fontFamily: "var(--font-body)", fontSize: "0.625rem", fontWeight: 500,
+                letterSpacing: "0.12em", textTransform: "uppercase", color: "#98A47D",
+              }}>
+                {s.label}
+              </span>
+            </div>
+          ))}
         </div>
       </section>
 
-      {/* Trust badges (mobile-only carryover; desktop uses TrustStrip section below) */}
-      <section aria-label="Why Sukoon" className="md:hidden" style={{
-        backgroundColor: "#FBF8F3", borderTop: "1px solid #E8D4AE", borderBottom: "1px solid #E8D4AE",
-        padding: "clamp(1.75rem, 4vw, 2.5rem) clamp(1.5rem, 6vw, 5rem)",
+      {/* ── Mobile ── */}
+      <section aria-label="Hero" className="flex flex-col md:hidden" style={{
+        backgroundColor: "#FFFFFF", paddingTop: "1.75rem",
       }}>
-        <div className="grid grid-cols-2" style={{ maxWidth: "1100px", margin: "0 auto", gap: "clamp(1.5rem, 3vw, 2rem)" }}>
-          {[
-            { label: "Plant-Derived" },
-            { label: "Vegan" },
-            { label: "Cruelty-Free" },
-            { label: "Non-Toxic" },
-          ].map((b) => (
-            <div key={b.label} style={{
-              display: "flex", flexDirection: "column", alignItems: "center", gap: "0.625rem", textAlign: "center",
-              color: "#98A47D",
+        {/* Image — full width, portrait */}
+        <div style={{ position: "relative", aspectRatio: "3 / 4", backgroundColor: "#F0E9DA" }}>
+          <Image
+            src={HERO_IMAGE}
+            alt="The Daily Solace Fluid"
+            fill priority
+            sizes="100vw"
+            style={{ objectFit: "cover", objectPosition: "center top" }}
+          />
+        </div>
+
+        {/* Text block */}
+        <div style={{
+          padding: "clamp(2rem, 7vw, 3rem) clamp(1.5rem, 6vw, 2.5rem)",
+          borderBottom: "1px solid #E8E2D8",
+        }}>
+          <p style={{
+            fontFamily: "var(--font-body)", fontSize: "0.5rem", fontWeight: 600,
+            letterSpacing: "0.22em", textTransform: "uppercase", color: "#98A47D",
+            marginBottom: "1.25rem",
+          }}>
+            The Daily Solace Fluid
+          </p>
+          <h1 style={{
+            fontFamily: "var(--font-display)",
+            fontSize: "clamp(2.5rem, 9vw, 3.5rem)",
+            fontWeight: 400, letterSpacing: "-0.025em", lineHeight: 1.06,
+            color: "#2C2A1F", marginBottom: "1.25rem",
+          }}>
+            Care for your face. Care for your hairline.
+          </h1>
+          <p style={{
+            fontFamily: "var(--font-body)", fontSize: "0.9375rem", lineHeight: 1.8,
+            color: "#6B6860", marginBottom: "2rem",
+          }}>
+            One waterless oil. Sinks in under sixty seconds. Built for skin — and the hairline tight styles quietly strain.
+          </p>
+          <a href="/shop" style={{
+            display: "flex", alignItems: "center", justifyContent: "center",
+            fontFamily: "var(--font-body)", fontSize: "0.625rem", fontWeight: 600,
+            letterSpacing: "0.16em", textTransform: "uppercase",
+            color: "#FFFFFF", backgroundColor: "#2C2A1F",
+            padding: "1.0625rem", textDecoration: "none",
+            marginBottom: "1rem",
+          }}>
+            Shop Now
+          </a>
+          <a href="#ritual" style={{
+            display: "flex", alignItems: "center", justifyContent: "center",
+            fontFamily: "var(--font-body)", fontSize: "0.8125rem",
+            color: "#2C2A1F", textDecoration: "none",
+            border: "1px solid #E8E2D8", padding: "1.0625rem",
+          }}>
+            Discover the ritual
+          </a>
+        </div>
+
+        {/* Mobile stats — 2×2 grid */}
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr" }}>
+          {stats.map((s, i) => (
+            <div key={s.label} style={{
+              padding: "1.375rem 1.25rem",
+              borderRight: i % 2 === 0 ? "1px solid #E8E2D8" : "none",
+              borderBottom: i < 2 ? "1px solid #E8E2D8" : "none",
             }}>
-              <span style={{
-                fontFamily: "var(--font-body)", fontSize: "0.6875rem", fontWeight: 500,
-                letterSpacing: "0.1em", textTransform: "uppercase", color: "#2C2A1F",
+              <p style={{
+                fontFamily: "var(--font-display)", fontSize: "1.75rem",
+                fontWeight: 400, color: "#2C2A1F", lineHeight: 1, marginBottom: "0.25rem",
               }}>
-                {b.label}
-              </span>
+                {s.value}
+              </p>
+              <p style={{
+                fontFamily: "var(--font-body)", fontSize: "0.5625rem", fontWeight: 500,
+                letterSpacing: "0.12em", textTransform: "uppercase", color: "#98A47D",
+              }}>
+                {s.label}
+              </p>
             </div>
           ))}
         </div>
@@ -245,12 +218,6 @@ export function HeroSplit() {
         @keyframes sukoon-float {
           0%, 100% { transform: translateY(0); }
           50% { transform: translateY(-10px); }
-        }
-        @keyframes sukoon-scrollline {
-          0% { transform: scaleY(0); transform-origin: top; opacity: 0; }
-          40% { transform: scaleY(1); transform-origin: top; opacity: 1; }
-          60% { transform: scaleY(1); transform-origin: bottom; opacity: 1; }
-          100% { transform: scaleY(0); transform-origin: bottom; opacity: 0; }
         }
       `}</style>
     </>
