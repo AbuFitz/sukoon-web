@@ -1,4 +1,49 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 432" preserveAspectRatio="xMidYMid slice">
-  <rect width="400" height="432" fill="#f0ece3"/>
-  <text x="200" y="216" text-anchor="middle" font-family="Georgia,serif" font-size="12" fill="#b0a89e" letter-spacing="2">30ml</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 432" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <linearGradient id="bottleGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#c8c3b8"/>
+      <stop offset="40%" stop-color="#e2ddd2"/>
+      <stop offset="100%" stop-color="#cac5ba"/>
+    </linearGradient>
+    <linearGradient id="labelGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#ede8dd"/>
+      <stop offset="100%" stop-color="#e4dfd4"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="432" fill="#f5f1e9"/>
+
+  <!-- Bottle shadow -->
+  <ellipse cx="200" cy="408" rx="58" ry="12" fill="#b8b2a8" opacity="0.22"/>
+
+  <!-- Bottle body -->
+  <rect x="152" y="145" width="96" height="248" rx="8" fill="url(#bottleGrad)" stroke="#b8b2a6" stroke-width="1.2"/>
+
+  <!-- Shoulder -->
+  <path d="M152 145 C152 118 165 105 200 100 C235 105 248 118 248 145Z" fill="#d4cfc5" stroke="#b8b2a6" stroke-width="1.2"/>
+
+  <!-- Neck -->
+  <rect x="183" y="52" width="34" height="52" rx="4" fill="#cac5bb" stroke="#b8b2a6" stroke-width="1.2"/>
+
+  <!-- Cap -->
+  <rect x="178" y="36" width="44" height="20" rx="4" fill="#5a6852" stroke="#4a5844" stroke-width="1"/>
+  <rect x="182" y="38" width="36" height="16" rx="3" fill="#6a7862"/>
+
+  <!-- Label area -->
+  <rect x="160" y="185" width="80" height="112" rx="3" fill="url(#labelGrad)" stroke="#cac5ba" stroke-width="0.8"/>
+
+  <!-- Label content — abstract lines -->
+  <text x="200" y="215" text-anchor="middle" font-family="Georgia,serif" font-size="7" fill="#8a8478" letter-spacing="3" opacity="0.9">SUKOON</text>
+  <line x1="172" y1="222" x2="228" y2="222" stroke="#cac5ba" stroke-width="0.7" opacity="0.8"/>
+  <text x="200" y="236" text-anchor="middle" font-family="Georgia,serif" font-size="5.5" fill="#9a9490" letter-spacing="2" opacity="0.8">DAILY SOLACE</text>
+  <text x="200" y="248" text-anchor="middle" font-family="Georgia,serif" font-size="5" fill="#9a9490" letter-spacing="1.5" opacity="0.7">FLUID</text>
+  <line x1="176" y1="256" x2="224" y2="256" stroke="#cac5ba" stroke-width="0.5" opacity="0.6"/>
+  <text x="200" y="270" text-anchor="middle" font-family="Georgia,serif" font-size="5" fill="#aaa49a" letter-spacing="1" opacity="0.7">30 ml · 1 fl oz</text>
+  <line x1="176" y1="278" x2="224" y2="278" stroke="#cac5ba" stroke-width="0.5" opacity="0.5"/>
+
+  <!-- Highlight streak -->
+  <rect x="156" y="152" width="9" height="160" rx="4.5" fill="white" opacity="0.2"/>
+  <rect x="167" y="148" width="4" height="60" rx="2" fill="white" opacity="0.1"/>
+
+  <!-- Subtle texture line on right -->
+  <rect x="237" y="152" width="4" height="130" rx="2" fill="#a8a298" opacity="0.12"/>
 </svg>

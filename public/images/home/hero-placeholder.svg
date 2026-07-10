@@ -1,11 +1,57 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 860" preserveAspectRatio="xMidYMid slice">
-  <rect width="1440" height="860" fill="#e8e3d8"/>
-  <rect x="0" y="0" width="1440" height="860" fill="url(#g)"/>
   <defs>
-    <linearGradient id="g" x1="0" x2="1" y1="0" y2="1">
-      <stop offset="0%" stop-color="#d4cfc5"/>
-      <stop offset="100%" stop-color="#ede8de"/>
+    <linearGradient id="sky" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#c8c2b4"/>
+      <stop offset="60%" stop-color="#d6d0c4"/>
+      <stop offset="100%" stop-color="#e2ddd2"/>
     </linearGradient>
+    <linearGradient id="fg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#b8b2a4" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#a8a296" stop-opacity="0.6"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="38%" cy="45%" r="42%">
+      <stop offset="0%" stop-color="#e8e2d6" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#c4bfb4" stop-opacity="0"/>
+    </radialGradient>
   </defs>
-  <text x="720" y="430" text-anchor="middle" font-family="Georgia,serif" font-size="18" fill="#a09890" letter-spacing="4">HERO IMAGE</text>
+  <!-- Background wash -->
+  <rect width="1440" height="860" fill="url(#sky)"/>
+  <rect width="1440" height="860" fill="url(#glow)"/>
+
+  <!-- Distant horizon band -->
+  <rect x="0" y="560" width="1440" height="300" fill="#b8b3a8" opacity="0.3"/>
+
+  <!-- Large botanical stem — right side -->
+  <g opacity="0.18" stroke="#5a5448" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M1060 860 C1070 780 1050 700 1090 620 C1130 540 1110 460 1100 380 C1090 300 1120 220 1100 140" stroke-width="2.5"/>
+    <!-- leaves right -->
+    <path d="M1090 620 C1130 590 1180 580 1200 555 C1175 575 1130 600 1090 620Z" stroke-width="1.5" fill="#7a7468" fill-opacity="0.35"/>
+    <path d="M1100 520 C1060 490 1020 500 1000 478 C1025 492 1065 505 1100 520Z" stroke-width="1.5" fill="#7a7468" fill-opacity="0.35"/>
+    <path d="M1095 420 C1145 390 1185 385 1210 360 C1180 380 1145 398 1095 420Z" stroke-width="1.5" fill="#7a7468" fill-opacity="0.35"/>
+    <path d="M1100 320 C1055 295 1020 300 1000 278 C1025 292 1060 308 1100 320Z" stroke-width="1.5" fill="#7a7468" fill-opacity="0.35"/>
+    <path d="M1100 240 C1145 210 1182 208 1205 184 C1178 203 1143 218 1100 240Z" stroke-width="1.5" fill="#7a7468" fill-opacity="0.35"/>
+  </g>
+
+  <!-- Second subtle stem — far right -->
+  <g opacity="0.1" stroke="#5a5448" fill="none" stroke-linecap="round">
+    <path d="M1280 860 C1290 790 1268 710 1310 640 C1348 574 1330 490 1318 410" stroke-width="2"/>
+    <path d="M1310 640 C1350 614 1392 608 1416 585" stroke-width="1.2"/>
+    <path d="M1315 530 C1278 508 1248 514 1228 492" stroke-width="1.2"/>
+  </g>
+
+  <!-- Foreground tonal wash -->
+  <rect x="0" y="680" width="1440" height="180" fill="url(#fg)"/>
+
+  <!-- Left edge botanical sprig -->
+  <g opacity="0.12" stroke="#4a4840" fill="#6a6860" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M0 700 C40 660 30 600 60 540" stroke-width="2" fill="none"/>
+    <ellipse cx="42" cy="620" rx="28" ry="14" transform="rotate(-20 42 620)" fill-opacity="0.5"/>
+    <ellipse cx="55" cy="568" rx="24" ry="11" transform="rotate(15 55 568)" fill-opacity="0.5"/>
+  </g>
+
+  <!-- Subtle texture dots -->
+  <g opacity="0.04">
+    <circle cx="400" cy="200" r="180" fill="#988e82"/>
+    <circle cx="900" cy="600" r="220" fill="#988e82"/>
+  </g>
 </svg>

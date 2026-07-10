@@ -1,14 +1,54 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 380" fill="none">
-  <path d="M 200 370 C 200 310 210 250 225 185 C 240 120 255 70 260 20" stroke="#3F4A36" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
-  <!-- Upper right leaf -->
-  <path d="M 258 22 C 295 -5 338 0 338 25 C 338 52 310 80 278 88 C 255 94 238 82 234 62 C 230 44 242 28 258 22 Z" fill="#3F4A36" opacity="0.16"/>
-  <path d="M 258 22 C 295 -5 338 0 338 25 C 338 52 310 80 278 88 C 255 94 238 82 234 62 C 230 44 242 28 258 22 Z" stroke="#3F4A36" stroke-width="1.3" opacity="0.5"/>
-  <path d="M 258 22 C 268 48 272 68 238 82" stroke="#3F4A36" stroke-width="0.8" opacity="0.35" stroke-linecap="round"/>
-  <!-- Mid leaf -->
-  <path d="M 252 110 C 290 90 330 98 330 124 C 330 148 305 172 278 176 C 256 180 238 168 236 150 C 234 132 242 116 252 110 Z" fill="#3F4A36" opacity="0.13"/>
-  <path d="M 252 110 C 290 90 330 98 330 124 C 330 148 305 172 278 176 C 256 180 238 168 236 150 C 234 132 242 116 252 110 Z" stroke="#3F4A36" stroke-width="1.2" opacity="0.45"/>
-  <!-- Lower leaf, facing left -->
-  <path d="M 232 210 C 195 188 155 198 145 222 C 138 240 152 265 178 274 C 206 284 240 275 248 258 C 255 244 250 226 238 216 Z" fill="#3F4A36" opacity="0.14"/>
-  <path d="M 232 210 C 195 188 155 198 145 222 C 138 240 152 265 178 274 C 206 284 240 275 248 258 C 255 244 250 226 238 216 Z" stroke="#3F4A36" stroke-width="1.2" opacity="0.45"/>
-  <path d="M 232 210 C 212 236 200 255 248 258" stroke="#3F4A36" stroke-width="0.8" opacity="0.3" stroke-linecap="round"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 415" fill="none" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <!-- Botanical branch — top-right corner decoration -->
+  <!-- Dark sage line-art, semi-transparent, for white/light backgrounds -->
+  <g stroke="#3a4434" stroke-linecap="round" stroke-linejoin="round" opacity="0.72">
+
+    <!-- Main stem — runs diagonally from top-right corner downward -->
+    <path d="M320 8 C295 55 285 110 268 165 C255 210 240 255 228 310 C218 355 210 390 205 415" stroke-width="2"/>
+
+    <!-- Branch cluster 1 — upper right -->
+    <path d="M295 48 C315 34 330 22 338 10" stroke-width="1.4"/>
+    <path d="M295 48 C318 52 334 48 342 38" stroke-width="1.4"/>
+    <!-- leaf on branch 1a -->
+    <path d="M295 48 C308 28 322 16 338 10 C328 18 314 32 295 48Z" fill="#4a5844" fill-opacity="0.38" stroke-width="0"/>
+    <path d="M295 48 C312 46 330 42 342 38 C328 44 312 48 295 48Z" fill="#4a5844" fill-opacity="0.32" stroke-width="0"/>
+
+    <!-- Branch cluster 2 -->
+    <path d="M282 85 C260 72 248 62 244 50" stroke-width="1.3"/>
+    <path d="M244 50 C248 62 258 72 282 85" fill="#4a5844" fill-opacity="0.34" stroke-width="0"/>
+
+    <!-- Branch cluster 3 -->
+    <path d="M274 118 C296 106 314 98 325 88" stroke-width="1.3"/>
+    <path d="M274 118 C296 108 314 102 325 88" fill="#4a5844" fill-opacity="0.3" stroke-width="0"/>
+
+    <!-- Branch cluster 4 — left side -->
+    <path d="M264 155 C240 140 225 128 218 114" stroke-width="1.3"/>
+    <path d="M218 114 C224 128 238 140 264 155" fill="#4a5844" fill-opacity="0.3" stroke-width="0"/>
+
+    <!-- Branch cluster 5 -->
+    <path d="M256 196 C278 182 296 172 308 160" stroke-width="1.2"/>
+    <path d="M256 196 C278 185 296 176 308 160" fill="#4a5844" fill-opacity="0.28" stroke-width="0"/>
+
+    <!-- Branch cluster 6 -->
+    <path d="M246 238 C225 222 212 210 205 196" stroke-width="1.2"/>
+    <path d="M205 196 C212 210 222 222 246 238" fill="#4a5844" fill-opacity="0.26" stroke-width="0"/>
+
+    <!-- Branch cluster 7 -->
+    <path d="M238 278 C258 264 275 252 285 240" stroke-width="1.1"/>
+    <path d="M238 278 C258 266 275 255 285 240" fill="#4a5844" fill-opacity="0.24" stroke-width="0"/>
+
+    <!-- Branch cluster 8 -->
+    <path d="M228 320 C210 305 198 293 192 280" stroke-width="1.1"/>
+    <path d="M192 280 C198 293 208 305 228 320" fill="#4a5844" fill-opacity="0.22" stroke-width="0"/>
+
+    <!-- Branch cluster 9 -->
+    <path d="M218 362 C236 348 252 338 260 326" stroke-width="1"/>
+    <path d="M218 362 C236 350 252 340 260 326" fill="#4a5844" fill-opacity="0.2" stroke-width="0"/>
+
+    <!-- Tiny seed/berry details on some branches -->
+    <circle cx="338" cy="10" r="3" fill="#4a5844" fill-opacity="0.5" stroke-width="0"/>
+    <circle cx="342" cy="38" r="2.5" fill="#4a5844" fill-opacity="0.45" stroke-width="0"/>
+    <circle cx="244" cy="50" r="2" fill="#4a5844" fill-opacity="0.4" stroke-width="0"/>
+    <circle cx="218" cy="114" r="2" fill="#4a5844" fill-opacity="0.38" stroke-width="0"/>
+  </g>
 </svg>

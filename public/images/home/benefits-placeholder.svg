@@ -1,4 +1,58 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 620" preserveAspectRatio="xMidYMid slice">
-  <rect width="700" height="620" fill="#ddd8cc"/>
-  <text x="350" y="310" text-anchor="middle" font-family="Georgia,serif" font-size="14" fill="#9a948a" letter-spacing="3">BENEFITS IMAGE</text>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0.6" y2="1">
+      <stop offset="0%" stop-color="#c8c4ba"/>
+      <stop offset="100%" stop-color="#d8d3c9"/>
+    </linearGradient>
+    <radialGradient id="skin" cx="48%" cy="42%" r="48%">
+      <stop offset="0%" stop-color="#ddd8ce" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#c0bbb1" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="700" height="620" fill="url(#bg)"/>
+  <rect width="700" height="620" fill="url(#skin)"/>
+
+  <!-- Soft background oval — face/skin suggestion -->
+  <ellipse cx="350" cy="280" rx="200" ry="240" fill="#d4cfc5" opacity="0.28"/>
+
+  <!-- Hand silhouette applying product — simplified -->
+  <g opacity="0.42" fill="#b8b0a4" stroke="none">
+    <!-- Palm -->
+    <ellipse cx="350" cy="370" rx="72" ry="52" fill="#c0bab2"/>
+    <!-- Fingers suggestion -->
+    <rect x="296" y="320" width="22" height="70" rx="11" fill="#beb8b0"/>
+    <rect x="322" y="308" width="22" height="80" rx="11" fill="#beb8b0"/>
+    <rect x="348" y="305" width="22" height="82" rx="11" fill="#beb8b0"/>
+    <rect x="374" y="310" width="20" height="76" rx="10" fill="#beb8b0"/>
+    <!-- Thumb -->
+    <ellipse cx="295" cy="370" rx="14" ry="26" transform="rotate(-20 295 370)" fill="#beb8b0"/>
+  </g>
+
+  <!-- Product droplets -->
+  <g opacity="0.5" fill="#d0c8bc">
+    <ellipse cx="346" cy="295" rx="5" ry="7"/>
+    <ellipse cx="358" cy="292" rx="4" ry="6"/>
+    <ellipse cx="334" cy="298" rx="3.5" ry="5"/>
+  </g>
+
+  <!-- Small bottle in upper right -->
+  <g opacity="0.38">
+    <rect x="520" y="148" width="38" height="130" rx="4" fill="#d4cfc5" stroke="#a8a398" stroke-width="1"/>
+    <path d="M520 148 C520 134 527 127 539 124 C551 127 558 134 558 148Z" fill="#cac5bb" stroke="#a8a398" stroke-width="1"/>
+    <rect x="531" y="96" width="16" height="30" rx="2" fill="#cac5bb" stroke="#a8a398" stroke-width="1"/>
+    <rect x="528" y="88" width="22" height="10" rx="2" fill="#7a8870" stroke="#687558" stroke-width="0.8"/>
+    <rect x="526" y="178" width="26" height="48" rx="2" fill="#ece7dc" opacity="0.7"/>
+    <line x1="532" y1="193" x2="546" y2="193" stroke="#b0a89e" stroke-width="0.7" opacity="0.8"/>
+    <line x1="532" y1="201" x2="544" y2="201" stroke="#b0a89e" stroke-width="0.7" opacity="0.6"/>
+    <rect x="522" y="152" width="5" height="70" rx="2.5" fill="white" opacity="0.14"/>
+  </g>
+
+  <!-- Leaf accent — bottom left -->
+  <g opacity="0.2" stroke="#5a5448" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <line x1="80" y1="620" x2="110" y2="490" stroke-width="1.4"/>
+    <path d="M110 490 C140 468 168 472 178 450 C160 468 138 472 110 490Z" fill="#7a7468" fill-opacity="0.5" stroke-width="0"/>
+    <path d="M102" y1="542" x2="86" y2="524" stroke-width="1"/>
+    <line x1="102" y1="542" x2="86" y2="524" stroke-width="1"/>
+    <line x1="106" y1="515" x2="122" y2="500" stroke-width="1"/>
+  </g>
 </svg>
