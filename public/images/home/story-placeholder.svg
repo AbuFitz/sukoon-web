@@ -1,65 +1,119 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 650" preserveAspectRatio="xMidYMid slice">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 660" preserveAspectRatio="xMidYMid slice">
   <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#cdc8be"/>
-      <stop offset="100%" stop-color="#ddd8ce"/>
+    <linearGradient id="bg" x1="0" y1="0" x2="0.8" y2="1">
+      <stop offset="0%" stop-color="#c8c0b0"/>
+      <stop offset="55%" stop-color="#d4cabb"/>
+      <stop offset="100%" stop-color="#c0b8a8"/>
     </linearGradient>
-    <radialGradient id="soft" cx="50%" cy="38%" r="52%">
-      <stop offset="0%" stop-color="#e4dfd5" stop-opacity="0.65"/>
-      <stop offset="100%" stop-color="#c8c3b9" stop-opacity="0"/>
+    <radialGradient id="glow" cx="42%" cy="32%" r="52%">
+      <stop offset="0%" stop-color="#ddd4c0" stop-opacity="0.72"/>
+      <stop offset="100%" stop-color="#c0b8a8" stop-opacity="0"/>
     </radialGradient>
+    <linearGradient id="tableTop" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#b8b0a0"/>
+      <stop offset="100%" stop-color="#a8a090"/>
+    </linearGradient>
+    <linearGradient id="bottleShine" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#c0bab0"/>
+      <stop offset="35%" stop-color="#ddd8cc"/>
+      <stop offset="75%" stop-color="#cac4b8"/>
+      <stop offset="100%" stop-color="#b8b2a6"/>
+    </linearGradient>
+    <linearGradient id="labelFill" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#eee8da"/>
+      <stop offset="100%" stop-color="#e6e0d2"/>
+    </linearGradient>
   </defs>
-  <rect width="800" height="650" fill="url(#bg)"/>
-  <rect width="800" height="650" fill="url(#soft)"/>
 
-  <!-- Surface line -->
-  <rect x="0" y="440" width="800" height="210" fill="#b8b3a9" opacity="0.25"/>
-  <line x1="0" y1="440" x2="800" y2="440" stroke="#a8a39a" stroke-width="0.8" opacity="0.35"/>
+  <!-- Background -->
+  <rect width="800" height="660" fill="url(#bg)"/>
+  <rect width="800" height="660" fill="url(#glow)"/>
 
-  <!-- Main tall bottle -->
-  <g opacity="0.6">
-    <rect x="300" y="165" width="66" height="228" rx="5" fill="#d4cfc5" stroke="#a8a398" stroke-width="1.2"/>
-    <path d="M300 165 C300 145 313 135 333 131 C353 135 366 145 366 165Z" fill="#cac5bb" stroke="#a8a398" stroke-width="1.2"/>
-    <rect x="325" y="92" width="18" height="42" rx="3" fill="#cac5bb" stroke="#a8a398" stroke-width="1.2"/>
-    <rect x="321" y="83" width="26" height="12" rx="2" fill="#7a8870" stroke="#687558" stroke-width="0.9"/>
+  <!-- Warm wall / shadow at edges -->
+  <rect x="0" y="0" width="100" height="660" fill="#a89888" opacity="0.18"/>
+  <rect x="700" y="0" width="100" height="660" fill="#a89888" opacity="0.12"/>
+
+  <!-- Table surface -->
+  <rect x="0" y="458" width="800" height="202" fill="url(#tableTop)"/>
+  <!-- table edge highlight -->
+  <rect x="0" y="456" width="800" height="4" fill="#c8c0ae" opacity="0.6"/>
+  <rect x="0" y="460" width="800" height="2" fill="#a09080" opacity="0.35"/>
+
+  <!-- Cloth fold suggestion on table -->
+  <path d="M0 480 C80 474 150 486 240 476 C330 466 400 480 490 472 C580 464 680 476 800 470 L800 510 L0 510Z" fill="#c8c0ae" opacity="0.22"/>
+
+  <!-- MAIN TALL BOTTLE -->
+  <g>
+    <!-- shadow -->
+    <ellipse cx="318" cy="474" rx="48" ry="10" fill="#8a8070" opacity="0.2"/>
+    <!-- body -->
+    <rect x="284" y="178" width="68" height="280" rx="6" fill="url(#bottleShine)" stroke="#a8a298" stroke-width="1.2"/>
+    <!-- shoulder -->
+    <path d="M284 178 C284 154 298 142 318 138 C338 142 352 154 352 178Z" fill="#ccc6ba" stroke="#a8a298" stroke-width="1.2"/>
+    <!-- neck -->
+    <rect x="307" y="86" width="22" height="54" rx="4" fill="#c8c2b6" stroke="#a8a298" stroke-width="1.2"/>
+    <!-- cap -->
+    <rect x="302" y="72" width="32" height="17" rx="3.5" fill="#5e6e56" stroke="#4e5e46" stroke-width="1"/>
+    <rect x="306" y="74" width="24" height="13" rx="2.5" fill="#6a7a62"/>
     <!-- label -->
-    <rect x="310" y="205" width="46" height="68" rx="2" fill="#ece7dc" opacity="0.75"/>
-    <line x1="318" y1="222" x2="348" y2="222" stroke="#b0a89e" stroke-width="0.8" opacity="0.9"/>
-    <line x1="318" y1="232" x2="346" y2="232" stroke="#b0a89e" stroke-width="0.8" opacity="0.8"/>
-    <line x1="318" y1="242" x2="342" y2="242" stroke="#b0a89e" stroke-width="0.7" opacity="0.6"/>
-    <line x1="318" y1="252" x2="344" y2="252" stroke="#b0a89e" stroke-width="0.7" opacity="0.5"/>
-    <!-- highlight -->
-    <rect x="306" y="172" width="7" height="110" rx="3.5" fill="white" opacity="0.16"/>
+    <rect x="292" y="218" width="52" height="82" rx="2" fill="url(#labelFill)" stroke="#cac4b6" stroke-width="0.8"/>
+    <text x="318" y="242" text-anchor="middle" font-family="Georgia,serif" font-size="7" fill="#888078" letter-spacing="3" opacity="0.95">SUKOON</text>
+    <line x1="298" y1="249" x2="338" y2="249" stroke="#cac4b4" stroke-width="0.7" opacity="0.8"/>
+    <text x="318" y="261" text-anchor="middle" font-family="Georgia,serif" font-size="5.5" fill="#9a9488" letter-spacing="2" opacity="0.85">DAILY SOLACE</text>
+    <text x="318" y="272" text-anchor="middle" font-family="Georgia,serif" font-size="5" fill="#9a9488" letter-spacing="1.5" opacity="0.75">FLUID</text>
+    <line x1="300" y1="279" x2="336" y2="279" stroke="#cac4b4" stroke-width="0.5" opacity="0.6"/>
+    <text x="318" y="290" text-anchor="middle" font-family="Georgia,serif" font-size="5" fill="#aaa49a" letter-spacing="1" opacity="0.7">30 ml</text>
+    <!-- highlight streak -->
+    <rect x="289" y="184" width="8" height="160" rx="4" fill="white" opacity="0.18"/>
+    <rect x="299" y="182" width="3" height="70" rx="1.5" fill="white" opacity="0.09"/>
   </g>
 
-  <!-- Dropper bottle right -->
-  <g opacity="0.5">
-    <rect x="410" y="258" width="42" height="152" rx="5" fill="#d8d3c9" stroke="#a8a398" stroke-width="1"/>
-    <path d="M410 258 C410 242 418 234 431 231 C444 234 452 242 452 258Z" fill="#cec9bf" stroke="#a8a398" stroke-width="1"/>
-    <rect x="424" y="198" width="14" height="36" rx="2" fill="#cec9bf" stroke="#a8a398" stroke-width="1"/>
-    <line x1="431" y1="198" x2="431" y2="178" stroke="#9a9590" stroke-width="2" stroke-linecap="round"/>
-    <ellipse cx="431" cy="176" rx="4" ry="3" fill="#9a9590"/>
-    <rect x="418" y="193" width="26" height="9" rx="2" fill="#7a8870" stroke="#687558" stroke-width="0.8"/>
-    <rect x="416" y="290" width="30" height="46" rx="2" fill="#ece7dc" opacity="0.7"/>
-    <line x1="422" y1="305" x2="440" y2="305" stroke="#b0a89e" stroke-width="0.7" opacity="0.8"/>
-    <line x1="422" y1="313" x2="438" y2="313" stroke="#b0a89e" stroke-width="0.7" opacity="0.6"/>
+  <!-- DROPPER BOTTLE — right, slightly forward -->
+  <g>
+    <ellipse cx="426" cy="474" rx="32" ry="8" fill="#8a8070" opacity="0.16"/>
+    <rect x="400" y="270" width="52" height="196" rx="6" fill="#d2ccbe" stroke="#aaa498" stroke-width="1.1"/>
+    <path d="M400 270 C400 250 410 240 426 237 C442 240 452 250 452 270Z" fill="#c8c2b4" stroke="#aaa498" stroke-width="1.1"/>
+    <rect x="417" y="188" width="18" height="50" rx="3" fill="#c4beb0" stroke="#aaa498" stroke-width="1.1"/>
+    <!-- rubber bulb -->
+    <ellipse cx="426" cy="178" rx="15" ry="12" fill="#8a9882" stroke="#788870" stroke-width="1"/>
+    <ellipse cx="426" cy="175" rx="15" ry="12" fill="#96a68e"/>
+    <!-- pipette -->
+    <line x1="426" y1="163" x2="426" y2="144" stroke="#7a8872" stroke-width="2.2" stroke-linecap="round"/>
+    <path d="M424 144 L426 136 L428 144Z" fill="#9a9890"/>
+    <!-- label -->
+    <rect x="406" y="304" width="40" height="58" rx="2" fill="url(#labelFill)" stroke="#cac4b4" stroke-width="0.8" opacity="0.9"/>
+    <text x="426" y="324" text-anchor="middle" font-family="Georgia,serif" font-size="6" fill="#888078" letter-spacing="2.5" opacity="0.9">SUKOON</text>
+    <line x1="412" y1="330" x2="440" y2="330" stroke="#cac4b4" stroke-width="0.6" opacity="0.75"/>
+    <text x="426" y="341" text-anchor="middle" font-family="Georgia,serif" font-size="4.5" fill="#9a9488" letter-spacing="1.5" opacity="0.8">DAILY SOLACE</text>
+    <text x="426" y="351" text-anchor="middle" font-family="Georgia,serif" font-size="4" fill="#aaa49a" letter-spacing="1" opacity="0.65">15 ml</text>
+    <rect x="404" y="276" width="6" height="110" rx="3" fill="white" opacity="0.15"/>
   </g>
 
-  <!-- Dried botanical sprig leaning left -->
-  <g opacity="0.32" stroke="#7a7260" stroke-linecap="round" fill="none">
-    <line x1="248" y1="440" x2="276" y2="188" stroke-width="1.4"/>
-    <ellipse cx="260" cy="360" rx="17" ry="7" transform="rotate(-18 260 360)" fill="#8a8278" fill-opacity="0.55" stroke-width="0"/>
-    <ellipse cx="267" cy="300" rx="15" ry="6" transform="rotate(12 267 300)" fill="#8a8278" fill-opacity="0.5" stroke-width="0"/>
-    <ellipse cx="272" cy="248" rx="13" ry="5" transform="rotate(-6 272 248)" fill="#8a8278" fill-opacity="0.5" stroke-width="0"/>
-    <line x1="265" y1="320" x2="248" y2="304" stroke-width="0.9"/>
-    <line x1="270" y1="270" x2="285" y2="255" stroke-width="0.9"/>
+  <!-- BOTANICAL SPRIG — leaning against bottles -->
+  <g opacity="0.45" stroke="#8a7e68" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <line x1="244" y1="458" x2="268" y2="178" stroke-width="1.6"/>
+    <!-- leaves -->
+    <path d="M268 178 C252 162 236 158 226 146 C238 155 254 162 268 178Z" fill="#9a8e78" fill-opacity="0.5" stroke-width="0"/>
+    <path d="M262 228 C244 214 228 218 218 206 C228 215 244 218 262 228Z" fill="#9a8e78" fill-opacity="0.48" stroke-width="0"/>
+    <path d="M258 282 C276 268 290 266 300 254 C288 263 274 268 258 282Z" fill="#9a8e78" fill-opacity="0.45" stroke-width="0"/>
+    <path d="M254 336 C236 322 222 326 212 314 C222 322 236 326 254 336Z" fill="#9a8e78" fill-opacity="0.4" stroke-width="0"/>
+    <path d="M250 388 C268 374 282 372 292 360 C280 370 266 374 250 388Z" fill="#9a8e78" fill-opacity="0.36" stroke-width="0"/>
+    <!-- branch lines -->
+    <line x1="260" y1="248" x2="244" y2="232" stroke-width="1"/>
+    <line x1="256" y1="302" x2="272" y2="285" stroke-width="1"/>
+    <line x1="252" y1="356" x2="236" y2="340" stroke-width="1"/>
   </g>
 
-  <!-- Stone / pebble -->
-  <ellipse cx="400" cy="462" rx="34" ry="18" fill="#c8c3b9" opacity="0.45"/>
-  <ellipse cx="400" cy="458" rx="34" ry="18" fill="#d4cfc5" opacity="0.3"/>
+  <!-- PEBBLES -->
+  <ellipse cx="485" cy="468" rx="36" ry="20" fill="#b4ae9e" opacity="0.5"/>
+  <ellipse cx="485" cy="464" rx="34" ry="18" fill="#c0bab0" opacity="0.4"/>
+  <ellipse cx="485" cy="464" rx="28" ry="14" fill="#cac4ba" opacity="0.3"/>
+  <ellipse cx="230" cy="470" rx="22" ry="11" fill="#b8b2a8" opacity="0.4"/>
 
-  <!-- Soft shadows -->
-  <ellipse cx="333" cy="452" rx="44" ry="9" fill="#9a9590" opacity="0.14"/>
-  <ellipse cx="431" cy="452" rx="28" ry="7" fill="#9a9590" opacity="0.11"/>
+  <!-- Soft warm vignette -->
+  <radialGradient id="vig" cx="50%" cy="50%" r="72%">
+    <stop offset="55%" stop-color="transparent"/>
+    <stop offset="100%" stop-color="#7a6a58" stop-opacity="0.3"/>
+  </radialGradient>
+  <rect width="800" height="660" fill="url(#vig)"/>
 </svg>

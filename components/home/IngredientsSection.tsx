@@ -54,21 +54,19 @@ function IngredientColumn({ ing, index, isLast }: { ing: typeof ingredients[numb
         display: "flex", flexDirection: "column", gap: "0.875rem",
       }}
     >
-      {/* Icon */}
+      {/* Icon — bare, no circle */}
       <div
         style={{
-          width: 50, height: 50,
-          border: `1px solid ${hovered ? "rgba(69,84,61,0.5)" : "rgba(69,84,61,0.28)"}`,
-          borderRadius: "9999px",
-          display: "grid", placeItems: "center",
+          height: 28,
+          display: "flex", alignItems: "center",
           flexShrink: 0,
-          color: hovered ? "#45543d" : "#78836e",
-          transition: "border-color 220ms ease, color 220ms ease, transform 220ms ease",
+          color: hovered ? "#45543d" : "#8a9482",
+          transition: "color 220ms ease, transform 220ms ease",
           transform: hovered ? "translateY(-3px)" : "translateY(0)",
         }}
       >
         {icons[ing.name] ?? (
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
             <circle cx="12" cy="12" r="8"/>
           </svg>
         )}
@@ -77,30 +75,32 @@ function IngredientColumn({ ing, index, isLast }: { ing: typeof ingredients[numb
       <div>
         <p style={{
           fontFamily: "var(--font-body)", fontSize: "0.9375rem", fontWeight: 600,
-          color: "#292b25", margin: "0 0 0.2rem",
+          color: "#292b25", margin: "0 0 0.25rem",
         }}>
           {ing.name}
         </p>
         <p style={{
           fontFamily: "var(--font-body)", fontSize: "0.5rem", fontWeight: 600,
-          letterSpacing: "0.12em", textTransform: "uppercase",
-          color: "#9a9f95", margin: "0 0 0.625rem",
+          letterSpacing: "0.13em", textTransform: "uppercase",
+          color: "#a8ad9e", margin: "0 0 0.75rem",
         }}>
           {ing.latin}
         </p>
         <p style={{
-          fontFamily: "var(--font-body)", fontSize: "0.875rem", lineHeight: 1.7,
+          fontFamily: "var(--font-body)", fontSize: "0.875rem", lineHeight: 1.75,
           color: "#64685f", margin: 0,
-          transition: "color 220ms ease",
         }}>
           {ing.description}
         </p>
       </div>
 
       <p style={{
-        fontFamily: "var(--font-body)", fontSize: "0.625rem", fontWeight: 600,
-        letterSpacing: "0.08em", color: "#78836e",
+        fontFamily: "var(--font-body)", fontSize: "0.5625rem", fontWeight: 700,
+        letterSpacing: "0.1em", textTransform: "uppercase", color: "#9a9f95",
         margin: "auto 0 0",
+        paddingTop: "0.75rem",
+        borderTop: `1px solid ${hovered ? "rgba(69,84,61,0.2)" : "rgba(69,84,61,0.1)"}`,
+        transition: "border-color 220ms ease",
       }}>
         {ing.percent} of formula
       </p>
@@ -115,7 +115,7 @@ export function IngredientsSection() {
       style={{
         backgroundColor: "#FFFFFF",
         padding: "112px 0 120px",
-        borderTop: "1px solid #e8e9e2",
+        borderTop: "1px solid #e4e0d6",
         position: "relative",
         overflow: "hidden",
       }}

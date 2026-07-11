@@ -43,7 +43,7 @@ function ProductCard({ product }: { product: FeaturedProduct }) {
       {/* Image */}
       <a
         href={`/products/${product.handle}`}
-        style={{ display: "block", position: "relative", aspectRatio: "1 / 1.08", overflow: "hidden", backgroundColor: "#f5f1e9" }}
+        style={{ display: "block", position: "relative", aspectRatio: "1 / 1.12", overflow: "hidden", backgroundColor: "#f0ece2" }}
         tabIndex={-1}
       >
         <Image
@@ -105,14 +105,14 @@ function ProductCard({ product }: { product: FeaturedProduct }) {
               fontFamily: "var(--font-body)", fontSize: "0.6875rem", fontWeight: 600,
               letterSpacing: "0.12em", textTransform: "uppercase",
               color: "#45543d",
-              border: "1px solid rgba(69,84,61,0.35)",
+              border: "1px solid rgba(69,84,61,0.55)",
               padding: "0.875rem",
               textDecoration: "none", textAlign: "center",
               display: "block",
               transition: "border-color 220ms ease, transform 220ms ease",
             }}
             onMouseEnter={e => { const el = e.currentTarget as HTMLAnchorElement; el.style.borderColor = "#45543d"; el.style.transform = "translateY(-1px)"; }}
-            onMouseLeave={e => { const el = e.currentTarget as HTMLAnchorElement; el.style.borderColor = "rgba(69,84,61,0.35)"; el.style.transform = "none"; }}
+            onMouseLeave={e => { const el = e.currentTarget as HTMLAnchorElement; el.style.borderColor = "rgba(69,84,61,0.55)"; el.style.transform = "none"; }}
           >
             View Product
           </a>
@@ -124,7 +124,7 @@ function ProductCard({ product }: { product: FeaturedProduct }) {
 
 export function FeaturedProductsSection({ products }: { products: FeaturedProduct[] }) {
   return (
-    <section style={{ backgroundColor: "#faf8f3", padding: "104px 0" }}>
+    <section style={{ backgroundColor: "#FFFFFF", padding: "104px 0", borderTop: "1px solid #eceae2" }}>
       <div style={{ width: "min(calc(100% - 80px), 1400px)", margin: "0 auto" }}>
 
         {/* Header */}

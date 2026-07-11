@@ -40,6 +40,12 @@ export const productFallbackPrices: Record<FeaturedHandle, string> = {
   "solace-bundle":            "£45.00",
 };
 
+export const productFallbackTitles: Record<FeaturedHandle, string> = {
+  "daily-solace-fluid-30ml": "Daily Solace Fluid — 30ml",
+  "daily-solace-fluid-15ml": "Daily Solace Fluid — 15ml",
+  "solace-bundle":            "The Solace Bundle",
+};
+
 // ─── Ingredients ──────────────────────────────────────────────────────────────
 
 export const ingredients = [

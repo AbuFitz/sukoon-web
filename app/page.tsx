@@ -1,5 +1,6 @@
 import { SiteNav }                from "@/components/nav/SiteNav";
 import { HeroSection }            from "@/components/home/HeroSection";
+import { TrustStrip }             from "@/components/sections/TrustStrip";
 import { FeaturedProductsSection } from "@/components/home/FeaturedProductsSection";
 import { BrandStorySection }      from "@/components/home/BrandStorySection";
 import { IngredientsSection }     from "@/components/home/IngredientsSection";
@@ -7,13 +8,11 @@ import { BenefitsSection }        from "@/components/home/BenefitsSection";
 import { NewsletterSection }      from "@/components/home/NewsletterSection";
 import { Footer }                 from "@/components/sections/Footer";
 import { getProducts, formatPrice } from "@/lib/shopify";
-import { featuredProductHandles, productFallbackPrices, type FeaturedHandle } from "@/lib/homepage";
+import { featuredProductHandles, productFallbackPrices, productFallbackTitles, type FeaturedHandle } from "@/lib/homepage";
 import type { FeaturedProduct } from "@/components/home/FeaturedProductsSection";
 
 export default async function HomePage() {
-  // Fetch Shopify products; gracefully degrade if unavailable
   const allProducts = await getProducts().catch(() => []);
-
   const productByHandle = Object.fromEntries(allProducts.map(p => [p.handle, p]));
 
   const featuredProducts: FeaturedProduct[] = featuredProductHandles.map(handle => {
@@ -25,7 +24,7 @@ export default async function HomePage() {
 
     return {
       handle,
-      title: shopify?.title ?? handle,
+      title: shopify?.title ?? productFallbackTitles[handle as FeaturedHandle],
       price,
       variantId,
     };
@@ -36,6 +35,7 @@ export default async function HomePage() {
       <SiteNav />
       <main>
         <HeroSection />
+        <TrustStrip />
         <FeaturedProductsSection products={featuredProducts} />
         <BrandStorySection />
         <IngredientsSection />

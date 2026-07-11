@@ -45,11 +45,11 @@ export function HeroSection() {
       {/* Content */}
       <div style={{
         position: "absolute", inset: 0, zIndex: 2,
-        display: "flex", alignItems: "center",
-        padding: "0 clamp(2rem, 5vw, 5.25rem)",
+        display: "flex", alignItems: "flex-end",
+        padding: "0 clamp(2rem, 5vw, 5.25rem) clamp(3.5rem, 6vw, 5.5rem)",
       }}>
         <FadeIn delay={0.1} duration={0.9} direction="up">
-          <div style={{ maxWidth: 680 }}>
+          <div style={{ maxWidth: 640 }}>
             <h1 style={{
               fontFamily: "var(--font-display)", fontWeight: 400,
               fontSize: "clamp(3.625rem, 5.8vw, 5.75rem)",
