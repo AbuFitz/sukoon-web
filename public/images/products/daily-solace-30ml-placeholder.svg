@@ -1,49 +1,53 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 432" preserveAspectRatio="xMidYMid meet">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 480" preserveAspectRatio="xMidYMid meet">
   <defs>
-    <linearGradient id="bottleGrad" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#c8c3b8"/>
-      <stop offset="40%" stop-color="#e2ddd2"/>
-      <stop offset="100%" stop-color="#cac5ba"/>
+    <radialGradient id="bg" cx="50%" cy="45%" r="55%">
+      <stop offset="0%" stop-color="#f0ece2"/>
+      <stop offset="100%" stop-color="#e4ddd2"/>
+    </radialGradient>
+    <linearGradient id="btl" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#cdc0aa"/>
+      <stop offset="22%" stop-color="#ede4d2"/>
+      <stop offset="65%" stop-color="#e2d8c4"/>
+      <stop offset="100%" stop-color="#b0a088"/>
     </linearGradient>
-    <linearGradient id="labelGrad" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#ede8dd"/>
-      <stop offset="100%" stop-color="#e4dfd4"/>
+    <linearGradient id="cap" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#4e5a46"/>
+      <stop offset="50%" stop-color="#6a7860"/>
+      <stop offset="100%" stop-color="#404c3a"/>
     </linearGradient>
+    <filter id="drop"><feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#1a120a" flood-opacity="0.18"/></filter>
   </defs>
-  <rect width="400" height="432" fill="#f5f1e9"/>
 
-  <!-- Bottle shadow -->
-  <ellipse cx="200" cy="408" rx="58" ry="12" fill="#b8b2a8" opacity="0.22"/>
+  <rect width="400" height="480" fill="url(#bg)"/>
 
-  <!-- Bottle body -->
-  <rect x="152" y="145" width="96" height="248" rx="8" fill="url(#bottleGrad)" stroke="#b8b2a6" stroke-width="1.2"/>
+  <!-- Bottle -->
+  <g filter="url(#drop)" transform="translate(148, 40)">
+    <!-- Body -->
+    <rect x="0" y="72" width="104" height="340" rx="11" fill="url(#btl)"/>
+    <!-- Highlights -->
+    <rect x="11" y="88" width="13" height="312" rx="6.5" fill="white" opacity="0.22"/>
+    <rect x="28" y="88" width="5" height="312" rx="2.5" fill="white" opacity="0.1"/>
+    <!-- Shadow edge -->
+    <rect x="90" y="72" width="14" height="340" rx="7" fill="#8a7a60" opacity="0.28"/>
+    <!-- Shoulder -->
+    <path d="M0 72 Q0 46 15 38 L89 38 Q104 46 104 72Z" fill="url(#btl)"/>
+    <!-- Cap -->
+    <rect x="8" y="0" width="88" height="44" rx="8" fill="url(#cap)"/>
+    <rect x="15" y="5" width="11" height="34" rx="5.5" fill="white" opacity="0.15"/>
+    <!-- Label -->
+    <rect x="11" y="148" width="82" height="186" rx="4" fill="#faf6ee" opacity="0.96"/>
+    <!-- Wordmark -->
+    <text x="52" y="190" font-family="Georgia,serif" font-size="10" fill="#2a2418" text-anchor="middle" letter-spacing="5">SUKOON</text>
+    <line x1="15" y1="198" x2="89" y2="198" stroke="#2a2418" stroke-width="0.5" opacity="0.35"/>
+    <text x="52" y="216" font-family="Georgia,serif" font-size="6.5" fill="#4a4030" text-anchor="middle" letter-spacing="2">DAILY SOLACE</text>
+    <text x="52" y="230" font-family="Georgia,serif" font-size="6.5" fill="#4a4030" text-anchor="middle" letter-spacing="1.5">FLUID</text>
+    <!-- Plant motif -->
+    <path d="M46 276 C46 261 52 247 52 234" stroke="#6a5e46" stroke-width="0.9" fill="none"/>
+    <path d="M46 270 C40 261 38 251 43 247 C47 253 47 264 46 270Z" fill="#6a5e46" opacity="0.65"/>
+    <path d="M46 276 C52 267 54 257 49 253 C45 259 45 270 46 276Z" fill="#6a5e46" opacity="0.65"/>
+    <text x="52" y="296" font-family="Georgia,serif" font-size="5.5" fill="#8a7a60" text-anchor="middle" letter-spacing="1.5">30 ML / 1 FL. OZ.</text>
+  </g>
 
-  <!-- Shoulder -->
-  <path d="M152 145 C152 118 165 105 200 100 C235 105 248 118 248 145Z" fill="#d4cfc5" stroke="#b8b2a6" stroke-width="1.2"/>
-
-  <!-- Neck -->
-  <rect x="183" y="52" width="34" height="52" rx="4" fill="#cac5bb" stroke="#b8b2a6" stroke-width="1.2"/>
-
-  <!-- Cap -->
-  <rect x="178" y="36" width="44" height="20" rx="4" fill="#5a6852" stroke="#4a5844" stroke-width="1"/>
-  <rect x="182" y="38" width="36" height="16" rx="3" fill="#6a7862"/>
-
-  <!-- Label area -->
-  <rect x="160" y="185" width="80" height="112" rx="3" fill="url(#labelGrad)" stroke="#cac5ba" stroke-width="0.8"/>
-
-  <!-- Label content — abstract lines -->
-  <text x="200" y="215" text-anchor="middle" font-family="Georgia,serif" font-size="7" fill="#8a8478" letter-spacing="3" opacity="0.9">SUKOON</text>
-  <line x1="172" y1="222" x2="228" y2="222" stroke="#cac5ba" stroke-width="0.7" opacity="0.8"/>
-  <text x="200" y="236" text-anchor="middle" font-family="Georgia,serif" font-size="5.5" fill="#9a9490" letter-spacing="2" opacity="0.8">DAILY SOLACE</text>
-  <text x="200" y="248" text-anchor="middle" font-family="Georgia,serif" font-size="5" fill="#9a9490" letter-spacing="1.5" opacity="0.7">FLUID</text>
-  <line x1="176" y1="256" x2="224" y2="256" stroke="#cac5ba" stroke-width="0.5" opacity="0.6"/>
-  <text x="200" y="270" text-anchor="middle" font-family="Georgia,serif" font-size="5" fill="#aaa49a" letter-spacing="1" opacity="0.7">30 ml · 1 fl oz</text>
-  <line x1="176" y1="278" x2="224" y2="278" stroke="#cac5ba" stroke-width="0.5" opacity="0.5"/>
-
-  <!-- Highlight streak -->
-  <rect x="156" y="152" width="9" height="160" rx="4.5" fill="white" opacity="0.2"/>
-  <rect x="167" y="148" width="4" height="60" rx="2" fill="white" opacity="0.1"/>
-
-  <!-- Subtle texture line on right -->
-  <rect x="237" y="152" width="4" height="130" rx="2" fill="#a8a298" opacity="0.12"/>
+  <!-- Shadow ellipse -->
+  <ellipse cx="200" cy="428" rx="60" ry="10" fill="#1a120a" opacity="0.1"/>
 </svg>

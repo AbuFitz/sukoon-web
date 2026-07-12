@@ -1,120 +1,93 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 440" preserveAspectRatio="xMidYMid slice">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice">
   <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#c2bba9"/>
-      <stop offset="60%" stop-color="#cec7b4"/>
-      <stop offset="100%" stop-color="#c4bd9e"/>
-    </linearGradient>
-    <radialGradient id="warmglow" cx="38%" cy="28%" r="54%">
-      <stop offset="0%" stop-color="#ddd5be" stop-opacity="0.7"/>
-      <stop offset="100%" stop-color="#c2bba9" stop-opacity="0"/>
+    <radialGradient id="bg" cx="48%" cy="42%" r="72%">
+      <stop offset="0%" stop-color="#c0b09a"/>
+      <stop offset="48%" stop-color="#a89880"/>
+      <stop offset="100%" stop-color="#6a5a46"/>
     </radialGradient>
-    <radialGradient id="rightglow" cx="78%" cy="60%" r="36%">
-      <stop offset="0%" stop-color="#cac3b0" stop-opacity="0.5"/>
-      <stop offset="100%" stop-color="transparent"/>
+    <radialGradient id="light" cx="40%" cy="35%" r="50%">
+      <stop offset="0%" stop-color="#e8dcc6" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#e8dcc6" stop-opacity="0"/>
     </radialGradient>
-    <linearGradient id="bshineA" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#c0bab0"/>
-      <stop offset="38%" stop-color="#ddd8cc"/>
-      <stop offset="100%" stop-color="#c8c2b6"/>
+    <radialGradient id="vig" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#1a120a" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#1a120a" stop-opacity="0.52"/>
+    </radialGradient>
+    <linearGradient id="tbl" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#b8a890"/>
+      <stop offset="100%" stop-color="#7a6a54"/>
     </linearGradient>
-    <linearGradient id="jarGrad" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#cac4b8"/>
-      <stop offset="50%" stop-color="#e0dad0"/>
-      <stop offset="100%" stop-color="#ccc6ba"/>
+    <linearGradient id="btl" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#ccc0aa"/>
+      <stop offset="28%" stop-color="#eae0cc"/>
+      <stop offset="68%" stop-color="#dcd2be"/>
+      <stop offset="100%" stop-color="#ada090"/>
     </linearGradient>
-    <linearGradient id="lbl" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#eee8d8"/>
-      <stop offset="100%" stop-color="#e6e0d0"/>
+    <linearGradient id="cap" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#506048"/>
+      <stop offset="50%" stop-color="#6e7c64"/>
+      <stop offset="100%" stop-color="#424e3c"/>
     </linearGradient>
+    <filter id="blur"><feGaussianBlur stdDeviation="18"/></filter>
+    <filter id="drop"><feDropShadow dx="0" dy="12" stdDeviation="18" flood-color="#1a120a" flood-opacity="0.28"/></filter>
   </defs>
 
-  <!-- Background -->
-  <rect width="720" height="440" fill="url(#bg)"/>
-  <rect width="720" height="440" fill="url(#warmglow)"/>
-  <rect width="720" height="440" fill="url(#rightglow)"/>
+  <rect width="800" height="600" fill="url(#bg)"/>
+  <ellipse cx="380" cy="240" rx="400" ry="320" fill="url(#light)" filter="url(#blur)"/>
 
   <!-- Table surface -->
-  <rect x="0" y="336" width="720" height="104" fill="#b0a898" opacity="0.32"/>
-  <rect x="0" y="334" width="720" height="3" fill="#c8c0ae" opacity="0.55"/>
-  <rect x="0" y="337" width="720" height="2" fill="#9c9488" opacity="0.3"/>
+  <rect x="0" y="370" width="800" height="230" fill="url(#tbl)" opacity="0.32"/>
+  <line x1="0" y1="370" x2="800" y2="370" stroke="#c8b898" stroke-width="0.8" opacity="0.4"/>
 
-  <!-- Linen cloth drape -->
-  <path d="M0 354 C70 346 140 360 220 350 C300 340 380 356 460 346 C540 336 640 350 720 344 L720 390 L0 390Z" fill="#d4ccba" opacity="0.25"/>
-
-  <!-- TALL BOTTLE — centre-left -->
-  <g>
-    <ellipse cx="270" cy="344" rx="38" ry="8" fill="#8a8070" opacity="0.2"/>
-    <rect x="244" y="96" width="52" height="240" rx="5" fill="url(#bshineA)" stroke="#a8a298" stroke-width="1.1"/>
-    <path d="M244 96 C244 76 255 65 270 62 C285 65 296 76 296 96Z" fill="#ccc6ba" stroke="#a8a298" stroke-width="1.1"/>
-    <rect x="261" y="24" width="18" height="40" rx="3" fill="#c8c2b6" stroke="#a8a298" stroke-width="1.1"/>
-    <rect x="256" y="14" width="28" height="13" rx="3" fill="#5e6e56" stroke="#4e5e46" stroke-width="1"/>
-    <rect x="262" y="19" width="16" height="7" rx="1.5" fill="#6a7a62"/>
-    <!-- label -->
-    <rect x="250" y="136" width="40" height="68" rx="2" fill="url(#lbl)" stroke="#ccc6b6" stroke-width="0.8"/>
-    <text x="270" y="157" text-anchor="middle" font-family="Georgia,serif" font-size="6.5" fill="#888078" letter-spacing="2.5" opacity="0.95">SUKOON</text>
-    <line x1="255" y1="163" x2="285" y2="163" stroke="#cac4b4" stroke-width="0.6" opacity="0.8"/>
-    <text x="270" y="174" text-anchor="middle" font-family="Georgia,serif" font-size="5" fill="#9a9488" letter-spacing="1.8" opacity="0.85">DAILY SOLACE</text>
-    <text x="270" y="184" text-anchor="middle" font-family="Georgia,serif" font-size="4.5" fill="#9a9488" letter-spacing="1.4" opacity="0.75">FLUID</text>
-    <line x1="256" y1="191" x2="284" y2="191" stroke="#cac4b4" stroke-width="0.5" opacity="0.6"/>
-    <text x="270" y="200" text-anchor="middle" font-family="Georgia,serif" font-size="4.5" fill="#aea8a0" letter-spacing="0.8" opacity="0.7">30 ml</text>
-    <!-- highlight -->
-    <rect x="248" y="102" width="7" height="140" rx="3.5" fill="white" opacity="0.17"/>
+  <!-- Main tall bottle -->
+  <g filter="url(#drop)" transform="translate(290, 80)">
+    <rect x="0" y="62" width="84" height="440" rx="9" fill="url(#btl)"/>
+    <rect x="9" y="76" width="11" height="414" rx="5.5" fill="white" opacity="0.18"/>
+    <rect x="24" y="76" width="4" height="414" rx="2" fill="white" opacity="0.08"/>
+    <rect x="73" y="62" width="11" height="440" rx="5.5" fill="#907e64" opacity="0.3"/>
+    <path d="M0 62 Q0 40 13 32 L71 32 Q84 40 84 62Z" fill="url(#btl)"/>
+    <rect x="7" y="0" width="70" height="38" rx="7" fill="url(#cap)"/>
+    <rect x="13" y="4" width="9" height="30" rx="4.5" fill="white" opacity="0.14"/>
+    <!-- Label -->
+    <rect x="10" y="148" width="64" height="190" rx="4" fill="#faf6ee" opacity="0.95"/>
+    <text x="42" y="186" font-family="Georgia,serif" font-size="8.5" fill="#2a2418" text-anchor="middle" letter-spacing="4">SUKOON</text>
+    <line x1="14" y1="193" x2="70" y2="193" stroke="#2a2418" stroke-width="0.5" opacity="0.35"/>
+    <text x="42" y="210" font-family="Georgia,serif" font-size="5.5" fill="#4a4030" text-anchor="middle" letter-spacing="2">DAILY SOLACE</text>
+    <text x="42" y="222" font-family="Georgia,serif" font-size="5.5" fill="#4a4030" text-anchor="middle" letter-spacing="1.5">FLUID</text>
+    <path d="M36 268 C36 254 42 240 42 228" stroke="#6a5e46" stroke-width="0.8" fill="none"/>
+    <path d="M36 262 C30 252 28 242 33 238 C37 244 37 256 36 262Z" fill="#6a5e46" opacity="0.6"/>
+    <path d="M36 268 C42 258 44 248 39 244 C35 250 35 262 36 268Z" fill="#6a5e46" opacity="0.6"/>
+    <text x="42" y="290" font-family="Georgia,serif" font-size="5" fill="#8a7a60" text-anchor="middle" letter-spacing="1">30 ML</text>
   </g>
 
-  <!-- CREAM JAR — right of bottle -->
-  <g>
-    <ellipse cx="402" cy="344" rx="42" ry="9" fill="#8a8070" opacity="0.17"/>
-    <!-- jar shadow depth -->
-    <rect x="360" y="260" width="84" height="78" rx="5" fill="#c4beb2" stroke="#a8a298" stroke-width="1"/>
-    <!-- jar body -->
-    <rect x="360" y="254" width="84" height="76" rx="5" fill="url(#jarGrad)" stroke="#a8a298" stroke-width="1"/>
-    <!-- lid -->
-    <ellipse cx="402" cy="254" rx="42" ry="13" fill="#d4cec2" stroke="#a8a298" stroke-width="1"/>
-    <ellipse cx="402" cy="252" rx="38" ry="10" fill="#ddd8cc"/>
-    <!-- lid label -->
-    <ellipse cx="402" cy="252" rx="26" ry="7" fill="url(#lbl)" opacity="0.85"/>
-    <text x="402" y="254.5" text-anchor="middle" font-family="Georgia,serif" font-size="5" fill="#888078" letter-spacing="2" opacity="0.85">SUKOON</text>
-    <!-- body label -->
-    <rect x="368" y="272" width="68" height="46" rx="2" fill="url(#lbl)" opacity="0.75"/>
-    <text x="402" y="289" text-anchor="middle" font-family="Georgia,serif" font-size="6" fill="#888078" letter-spacing="2" opacity="0.9">SUKOON</text>
-    <line x1="374" y1="295" x2="430" y2="295" stroke="#cac4b4" stroke-width="0.6" opacity="0.7"/>
-    <text x="402" y="305" text-anchor="middle" font-family="Georgia,serif" font-size="4.5" fill="#9a9488" letter-spacing="1.5" opacity="0.8">FACE BALM</text>
-    <rect x="363" y="260" width="5" height="58" rx="2.5" fill="white" opacity="0.14"/>
+  <!-- Cream jar -->
+  <g transform="translate(406, 310)" opacity="0.9" filter="url(#drop)">
+    <ellipse cx="55" cy="18" rx="55" ry="18" fill="#d8cebb"/>
+    <rect x="0" y="18" width="110" height="90" rx="6" fill="#d4caba"/>
+    <ellipse cx="55" cy="108" rx="55" ry="14" fill="#c4b8a6"/>
+    <!-- Lid -->
+    <ellipse cx="55" cy="14" rx="48" ry="14" fill="#e0d6c6"/>
+    <ellipse cx="55" cy="10" rx="44" ry="12" fill="#e8dece"/>
+    <rect x="12" y="48" width="86" height="56" rx="3" fill="#faf6ee" opacity="0.88"/>
+    <text x="55" y="72" font-family="Georgia,serif" font-size="7.5" fill="#2a2418" text-anchor="middle" letter-spacing="3.5">SUKOON</text>
+    <line x1="16" y1="78" x2="94" y2="78" stroke="#2a2418" stroke-width="0.4" opacity="0.3"/>
+    <text x="55" y="92" font-family="Georgia,serif" font-size="5" fill="#4a4030" text-anchor="middle" letter-spacing="1.5">FACE BALM</text>
   </g>
 
-  <!-- DRIED BOTANICAL SPRIG -->
-  <g opacity="0.4" stroke="#80745e" stroke-linecap="round" fill="none">
-    <line x1="180" y1="336" x2="202" y2="88" stroke-width="1.5"/>
-    <path d="M202 88 C185 72 170 68 160 54 C170 66 186 72 202 88Z" fill="#908070" fill-opacity="0.55" stroke-width="0"/>
-    <path d="M196 144 C178 130 162 134 152 120 C162 130 178 132 196 144Z" fill="#908070" fill-opacity="0.5" stroke-width="0"/>
-    <path d="M193 198 C210 182 224 180 234 166 C222 178 208 182 193 198Z" fill="#908070" fill-opacity="0.46" stroke-width="0"/>
-    <path d="M190 252 C172 238 158 242 148 228 C158 238 172 240 190 252Z" fill="#908070" fill-opacity="0.42" stroke-width="0"/>
-    <path d="M188 302 C205 288 218 286 228 272 C216 284 202 288 188 302Z" fill="#908070" fill-opacity="0.38" stroke-width="0"/>
-    <line x1="195" y1="168" x2="180" y2="154" stroke-width="1"/>
-    <line x1="191" y1="222" x2="206" y2="208" stroke-width="1"/>
-    <line x1="189" y1="272" x2="175" y2="258" stroke-width="1"/>
+  <!-- Dried botanical -->
+  <g opacity="0.58" transform="translate(235, 290)">
+    <path d="M0 120 C6 90 14 60 22 30" stroke="#5a4e38" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+    <path d="M22 30 C14 22 6 26 3 34 C10 40 20 36 22 30Z" fill="#5a4e38"/>
+    <path d="M20 44 C28 37 34 41 32 50 C26 55 19 50 20 44Z" fill="#5a4e38" opacity="0.78"/>
+    <path d="M16 62 C8 55 4 60 5 68 C12 73 18 68 16 62Z" fill="#5a4e38" opacity="0.7"/>
+    <path d="M14 80 C22 73 28 78 26 86 C20 90 14 86 14 80Z" fill="#5a4e38" opacity="0.62"/>
+    <path d="M12 100 C3 94 -1 100 0 107 C7 112 14 108 12 100Z" fill="#5a4e38" opacity="0.54"/>
   </g>
 
-  <!-- Small pebble group -->
-  <ellipse cx="480" cy="347" rx="30" ry="14" fill="#b8b2a4" opacity="0.45"/>
-  <ellipse cx="480" cy="344" rx="28" ry="12" fill="#c4beb0" opacity="0.35"/>
-  <ellipse cx="505" cy="348" rx="18" ry="9" fill="#bab4a6" opacity="0.4"/>
+  <!-- Pebbles -->
+  <ellipse cx="258" cy="382" rx="14" ry="8" fill="#9a8a70" opacity="0.5"/>
+  <ellipse cx="276" cy="388" rx="10" ry="6" fill="#887a62" opacity="0.45"/>
+  <ellipse cx="244" cy="386" rx="9" ry="5" fill="#a8987a" opacity="0.4"/>
 
-  <!-- Right edge botanical accent -->
-  <g opacity="0.2" stroke="#7a7060" stroke-linecap="round" fill="none">
-    <line x1="660" y1="440" x2="680" y2="295" stroke-width="1.3"/>
-    <path d="M680 295 C698 279 710 272 718 258 C708 270 695 278 680 295Z" fill="#887e6c" fill-opacity="0.5" stroke-width="0"/>
-    <path d="M674 340 C658 328 646 332 638 320 C646 328 658 330 674 340Z" fill="#887e6c" fill-opacity="0.45" stroke-width="0"/>
-  </g>
-
-  <!-- Bottle shadow cast on table -->
-  <ellipse cx="270" cy="347" rx="34" ry="7" fill="#9a9082" opacity="0.14"/>
-
-  <!-- Vignette -->
-  <radialGradient id="vig" cx="50%" cy="50%" r="72%">
-    <stop offset="52%" stop-color="transparent"/>
-    <stop offset="100%" stop-color="#7a6e5a" stop-opacity="0.3"/>
-  </radialGradient>
-  <rect width="720" height="440" fill="url(#vig)"/>
+  <rect width="800" height="600" fill="url(#vig)"/>
 </svg>

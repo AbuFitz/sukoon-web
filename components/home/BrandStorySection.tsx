@@ -36,26 +36,34 @@ export function BrandStorySection() {
         }}>
           <FadeIn direction="up" delay={0.08}>
             <div style={{ maxWidth: 460 }}>
+              <p style={{
+                fontFamily: "var(--font-body)", fontSize: "0.625rem", fontWeight: 700,
+                letterSpacing: "0.18em", textTransform: "uppercase",
+                color: "#8a9482", marginBottom: "1.25rem",
+              }}>
+                Our Story
+              </p>
+
               <h2 style={{
                 fontFamily: "var(--font-display)", fontWeight: 400,
-                fontSize: "clamp(2.375rem, 3.5vw, 3.375rem)",
-                lineHeight: 1.04, letterSpacing: "-0.028em",
-                color: "#292b25", marginBottom: "1.75rem",
+                fontSize: "clamp(2.75rem, 4vw, 4.25rem)",
+                lineHeight: 0.98, letterSpacing: "-0.032em",
+                color: "#292b25", marginBottom: "2rem",
               }}>
                 Rooted in calm.<br />
                 <em style={{ fontStyle: "italic" }}>Made with intention.</em>
               </h2>
 
               <p style={{
-                fontFamily: "var(--font-body)", fontSize: "1rem", lineHeight: 1.75,
+                fontFamily: "var(--font-body)", fontSize: "1.0625rem", lineHeight: 1.75,
                 color: "#64685f", marginBottom: "1rem",
               }}>
                 Sukoon was born from the belief that less can do more — when it&rsquo;s made with care.
               </p>
 
               <p style={{
-                fontFamily: "var(--font-body)", fontSize: "1rem", lineHeight: 1.75,
-                color: "#64685f", marginBottom: "2.5rem",
+                fontFamily: "var(--font-body)", fontSize: "1rem", lineHeight: 1.78,
+                color: "#78836e", marginBottom: "2.5rem",
               }}>
                 We create high-performance formulas that nourish deeply, protect gently, and support the moments that matter.
               </p>

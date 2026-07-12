@@ -5,6 +5,7 @@ import { FeaturedProductsSection } from "@/components/home/FeaturedProductsSecti
 import { BrandStorySection }      from "@/components/home/BrandStorySection";
 import { IngredientsSection }     from "@/components/home/IngredientsSection";
 import { BenefitsSection }        from "@/components/home/BenefitsSection";
+import { ManifestoSection }       from "@/components/home/ManifestoSection";
 import { NewsletterSection }      from "@/components/home/NewsletterSection";
 import { Footer }                 from "@/components/sections/Footer";
 import { getProducts, formatPrice } from "@/lib/shopify";
@@ -39,6 +40,7 @@ export default async function HomePage() {
         <FeaturedProductsSection products={featuredProducts} />
         <BrandStorySection />
         <IngredientsSection />
+        <ManifestoSection />
         <BenefitsSection />
         <NewsletterSection />
       </main>

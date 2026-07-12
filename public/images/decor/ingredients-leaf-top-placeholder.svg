@@ -1,54 +1,44 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 415" fill="none" xmlns:xlink="http://www.w3.org/1999/xlink">
-  <!-- Botanical branch — top-right corner decoration -->
-  <!-- Dark sage line-art, semi-transparent, for white/light backgrounds -->
-  <g stroke="#3a4434" stroke-linecap="round" stroke-linejoin="round" opacity="0.72">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 415" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <style>.s{fill:#3d4e30;}</style>
+  </defs>
+  <!-- Main diagonal stem -->
+  <path d="M 300 8 C 250 70 190 150 140 240 C 100 310 72 370 50 415" 
+        stroke="#3d4e30" stroke-width="1.8" fill="none" stroke-linecap="round" opacity="0.7"/>
+  <!-- Secondary thinner stem -->
+  <path d="M 280 28 C 244 90 208 162 172 240"
+        stroke="#3d4e30" stroke-width="1.1" fill="none" stroke-linecap="round" opacity="0.45"/>
 
-    <!-- Main stem — runs diagonally from top-right corner downward -->
-    <path d="M320 8 C295 55 285 110 268 165 C255 210 240 255 228 310 C218 355 210 390 205 415" stroke-width="2"/>
+  <!-- Leaf cluster 1 -->
+  <path d="M 298 18 C 320 2 338 8 336 26 C 318 38 298 30 298 18Z" class="s" opacity="0.68"/>
+  <path d="M 282 14 C 264 -2 248 4 248 20 C 262 32 280 28 282 14Z" class="s" opacity="0.58"/>
 
-    <!-- Branch cluster 1 — upper right -->
-    <path d="M295 48 C315 34 330 22 338 10" stroke-width="1.4"/>
-    <path d="M295 48 C318 52 334 48 342 38" stroke-width="1.4"/>
-    <!-- leaf on branch 1a -->
-    <path d="M295 48 C308 28 322 16 338 10 C328 18 314 32 295 48Z" fill="#4a5844" fill-opacity="0.38" stroke-width="0"/>
-    <path d="M295 48 C312 46 330 42 342 38 C328 44 312 48 295 48Z" fill="#4a5844" fill-opacity="0.32" stroke-width="0"/>
+  <!-- Leaf cluster 2 -->
+  <path d="M 268 52 C 294 34 312 42 308 60 C 290 72 268 64 268 52Z" class="s" opacity="0.65"/>
+  <path d="M 254 44 C 232 30 216 38 218 56 C 232 66 252 60 254 44Z" class="s" opacity="0.55"/>
 
-    <!-- Branch cluster 2 -->
-    <path d="M282 85 C260 72 248 62 244 50" stroke-width="1.3"/>
-    <path d="M244 50 C248 62 258 72 282 85" fill="#4a5844" fill-opacity="0.34" stroke-width="0"/>
+  <!-- Leaf cluster 3 -->
+  <path d="M 240 92 C 266 72 284 82 278 100 C 260 114 240 104 240 92Z" class="s" opacity="0.62"/>
+  <path d="M 226 82 C 200 66 185 76 188 96 C 202 108 224 100 226 82Z" class="s" opacity="0.52"/>
 
-    <!-- Branch cluster 3 -->
-    <path d="M274 118 C296 106 314 98 325 88" stroke-width="1.3"/>
-    <path d="M274 118 C296 108 314 102 325 88" fill="#4a5844" fill-opacity="0.3" stroke-width="0"/>
+  <!-- Leaf cluster 4 -->
+  <path d="M 208 138 C 236 116 252 128 246 148 C 228 162 208 152 208 138Z" class="s" opacity="0.6"/>
+  <path d="M 196 126 C 168 110 153 122 157 142 C 172 155 194 147 196 126Z" class="s" opacity="0.5"/>
 
-    <!-- Branch cluster 4 — left side -->
-    <path d="M264 155 C240 140 225 128 218 114" stroke-width="1.3"/>
-    <path d="M218 114 C224 128 238 140 264 155" fill="#4a5844" fill-opacity="0.3" stroke-width="0"/>
+  <!-- Leaf cluster 5 -->
+  <path d="M 180 188 C 206 168 222 180 216 200 C 198 214 178 204 180 188Z" class="s" opacity="0.57"/>
+  <path d="M 168 176 C 141 160 127 172 131 192 C 147 205 168 197 168 176Z" class="s" opacity="0.47"/>
 
-    <!-- Branch cluster 5 -->
-    <path d="M256 196 C278 182 296 172 308 160" stroke-width="1.2"/>
-    <path d="M256 196 C278 185 296 176 308 160" fill="#4a5844" fill-opacity="0.28" stroke-width="0"/>
+  <!-- Leaf cluster 6 -->
+  <path d="M 154 244 C 180 222 196 236 190 256 C 172 270 152 260 154 244Z" class="s" opacity="0.54"/>
+  <path d="M 142 232 C 116 215 102 228 107 248 C 122 262 142 254 142 232Z" class="s" opacity="0.44"/>
 
-    <!-- Branch cluster 6 -->
-    <path d="M246 238 C225 222 212 210 205 196" stroke-width="1.2"/>
-    <path d="M205 196 C212 210 222 222 246 238" fill="#4a5844" fill-opacity="0.26" stroke-width="0"/>
+  <!-- Leaf cluster 7 -->
+  <path d="M 126 304 C 152 282 168 296 162 316 C 144 330 124 320 126 304Z" class="s" opacity="0.5"/>
+  <path d="M 115 292 C 89 276 75 290 80 310 C 95 324 115 316 115 292Z" class="s" opacity="0.4"/>
 
-    <!-- Branch cluster 7 -->
-    <path d="M238 278 C258 264 275 252 285 240" stroke-width="1.1"/>
-    <path d="M238 278 C258 266 275 255 285 240" fill="#4a5844" fill-opacity="0.24" stroke-width="0"/>
-
-    <!-- Branch cluster 8 -->
-    <path d="M228 320 C210 305 198 293 192 280" stroke-width="1.1"/>
-    <path d="M192 280 C198 293 208 305 228 320" fill="#4a5844" fill-opacity="0.22" stroke-width="0"/>
-
-    <!-- Branch cluster 9 -->
-    <path d="M218 362 C236 348 252 338 260 326" stroke-width="1"/>
-    <path d="M218 362 C236 350 252 340 260 326" fill="#4a5844" fill-opacity="0.2" stroke-width="0"/>
-
-    <!-- Tiny seed/berry details on some branches -->
-    <circle cx="338" cy="10" r="3" fill="#4a5844" fill-opacity="0.5" stroke-width="0"/>
-    <circle cx="342" cy="38" r="2.5" fill="#4a5844" fill-opacity="0.45" stroke-width="0"/>
-    <circle cx="244" cy="50" r="2" fill="#4a5844" fill-opacity="0.4" stroke-width="0"/>
-    <circle cx="218" cy="114" r="2" fill="#4a5844" fill-opacity="0.38" stroke-width="0"/>
-  </g>
+  <!-- Berry dots -->
+  <circle cx="310" cy="16" r="2.5" fill="#3d4e30" opacity="0.55"/>
+  <circle cx="264" cy="48" r="2" fill="#3d4e30" opacity="0.45"/>
+  <circle cx="236" cy="96" r="2" fill="#3d4e30" opacity="0.4"/>
 </svg>

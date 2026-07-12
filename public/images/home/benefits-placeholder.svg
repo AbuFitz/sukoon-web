@@ -1,87 +1,60 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 640" preserveAspectRatio="xMidYMid slice">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 900" preserveAspectRatio="xMidYMid slice">
   <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="0.5" y2="1">
-      <stop offset="0%" stop-color="#c4beb0"/>
-      <stop offset="100%" stop-color="#cec8ba"/>
-    </linearGradient>
-    <radialGradient id="warmspot" cx="46%" cy="36%" r="52%">
-      <stop offset="0%" stop-color="#ddd4c2" stop-opacity="0.7"/>
-      <stop offset="100%" stop-color="#c0b8a8" stop-opacity="0"/>
+    <radialGradient id="bg" cx="50%" cy="45%" r="70%">
+      <stop offset="0%" stop-color="#b8a890"/>
+      <stop offset="50%" stop-color="#9a8a72"/>
+      <stop offset="100%" stop-color="#60503c"/>
     </radialGradient>
-    <radialGradient id="sidelight" cx="85%" cy="25%" r="38%">
-      <stop offset="0%" stop-color="#d0c8b8" stop-opacity="0.5"/>
-      <stop offset="100%" stop-color="#c0b8a8" stop-opacity="0"/>
+    <radialGradient id="light" cx="40%" cy="35%" r="50%">
+      <stop offset="0%" stop-color="#e4d8c0" stop-opacity="0.52"/>
+      <stop offset="100%" stop-color="#e4d8c0" stop-opacity="0"/>
     </radialGradient>
-    <linearGradient id="handGrad" x1="0" y1="0" x2="0.4" y2="1">
-      <stop offset="0%" stop-color="#c8bfb0"/>
-      <stop offset="100%" stop-color="#b8b0a0"/>
-    </linearGradient>
+    <radialGradient id="vignette" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#1a120a" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#1a120a" stop-opacity="0.6"/>
+    </radialGradient>
+    <filter id="blur"><feGaussianBlur stdDeviation="24"/></filter>
   </defs>
 
-  <!-- Background -->
-  <rect width="700" height="640" fill="url(#bg)"/>
-  <rect width="700" height="640" fill="url(#warmspot)"/>
-  <rect width="700" height="640" fill="url(#sidelight)"/>
+  <rect width="700" height="900" fill="url(#bg)"/>
+  <ellipse cx="320" cy="380" rx="360" ry="440" fill="url(#light)" filter="url(#blur)"/>
 
-  <!-- Deep background tone -->
-  <ellipse cx="350" cy="320" rx="280" ry="300" fill="#b8b0a0" opacity="0.15"/>
+  <!-- Graceful hand/arm suggestion — abstract warm silhouette -->
+  <path d="M 180 900 C 180 820 200 750 230 690 C 255 640 290 600 310 560 C 325 530 330 500 320 470 C 312 446 296 432 290 414 C 282 392 290 370 308 358 C 324 348 345 350 360 360"
+        stroke="#2a1e12" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.35"/>
 
-  <!-- Forearm / wrist — from right edge, palm entering from right -->
-  <g opacity="0.5">
-    <!-- Forearm coming from right -->
-    <path d="M700 300 C640 295 595 305 560 320 C530 333 510 345 490 358 L510 400 C530 388 548 378 572 366 C598 352 634 344 700 348Z" fill="url(#handGrad)" stroke="#a8a090" stroke-width="0.8"/>
-    <!-- Palm -->
-    <path d="M490 358 C468 370 450 382 438 398 C428 412 428 428 440 438 C452 448 468 442 480 432 C492 422 504 408 516 396 L510 400Z" fill="#c0b8a8" stroke="#a8a090" stroke-width="0.8"/>
-    <!-- Thumb suggestion -->
-    <path d="M478 356 C462 348 454 352 454 366 C454 378 462 384 474 382 C484 380 490 374 490 366Z" fill="#bcb4a4" stroke="#a8a090" stroke-width="0.7"/>
-    <!-- Fingers — four gentle curves -->
-    <path d="M438 398 C422 384 410 374 408 360 C406 346 414 338 424 340 C434 342 440 352 444 364" fill="none" stroke="#a8a090" stroke-width="0.8" stroke-linecap="round"/>
-    <path d="M444 364 C430 350 422 338 422 324 C422 310 430 304 440 306 C450 308 456 318 458 330" fill="none" stroke="#a8a090" stroke-width="0.8" stroke-linecap="round"/>
-    <path d="M458 330 C446 316 442 302 444 288 C446 274 456 270 466 272 C476 274 480 284 480 298" fill="none" stroke="#a8a090" stroke-width="0.8" stroke-linecap="round"/>
-    <path d="M480 298 C472 282 472 268 476 256 C480 244 490 240 498 244 C506 248 508 258 506 272" fill="none" stroke="#a8a090" stroke-width="0.7" stroke-linecap="round"/>
+  <!-- Large botanical branch — atmospheric, right side -->
+  <g opacity="0.25" stroke="#f0e4cc" stroke-width="1.4" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 640 -20 C 600 80 560 180 510 300 C 468 400 440 490 420 600"/>
+    <path d="M 574 62 C 610 28 656 16 672 50 C 648 82 602 86 574 62Z" fill="#f0e4cc" opacity="0.8" stroke="none"/>
+    <path d="M 540 112 C 506 78 470 84 460 116 C 476 140 514 134 540 112Z" fill="#f0e4cc" opacity="0.7" stroke="none"/>
+    <path d="M 512 174 C 548 138 584 148 582 182 C 560 202 524 194 512 174Z" fill="#f0e4cc" opacity="0.65" stroke="none"/>
+    <path d="M 484 242 C 448 214 420 224 416 256 C 434 278 470 270 484 242Z" fill="#f0e4cc" opacity="0.6" stroke="none"/>
+    <path d="M 458 314 C 494 284 524 298 520 330 C 500 348 466 338 458 314Z" fill="#f0e4cc" opacity="0.55" stroke="none"/>
+    <path d="M 438 390 C 400 366 378 378 377 408 C 393 428 428 420 438 390Z" fill="#f0e4cc" opacity="0.5" stroke="none"/>
   </g>
 
-  <!-- Oil droplets on back of hand / forearm area -->
-  <g opacity="0.6">
-    <ellipse cx="468" cy="375" rx="6" ry="9" fill="#d8d0c0" stroke="#c0b8a8" stroke-width="0.6"/>
-    <ellipse cx="452" cy="360" rx="4.5" ry="7" fill="#d8d0c0" stroke="#c0b8a8" stroke-width="0.6"/>
-    <ellipse cx="480" cy="362" rx="3.5" ry="5.5" fill="#d8d0c0" stroke="#c0b8a8" stroke-width="0.5"/>
-    <!-- Spreading drop — already absorbed -->
-    <ellipse cx="442" cy="350" rx="9" ry="5" fill="#cec8b8" opacity="0.4"/>
+  <!-- Bottom left botanical -->
+  <g opacity="0.2" stroke="#f0e4cc" stroke-width="1.1" fill="none" stroke-linecap="round">
+    <path d="M 60 900 C 80 840 100 780 120 720 C 140 660 165 610 185 560"/>
+    <path d="M 75 865 C 46 832 38 802 58 782 C 82 786 96 818 75 865Z" fill="#f0e4cc" opacity="0.7" stroke="none"/>
+    <path d="M 100 818 C 124 790 142 796 140 818 C 126 834 102 828 100 818Z" fill="#f0e4cc" opacity="0.6" stroke="none"/>
+    <path d="M 122 776 C 96 754 84 762 84 782 C 96 796 118 790 122 776Z" fill="#f0e4cc" opacity="0.5" stroke="none"/>
   </g>
 
-  <!-- Small bottle — upper left, leaning -->
-  <g opacity="0.55" transform="rotate(-8, 180, 260)">
-    <ellipse cx="180" cy="498" rx="30" ry="7" fill="#8a8070" opacity="0.2"/>
-    <rect x="158" y="200" width="44" height="170" rx="5" fill="#d4cec0" stroke="#a8a298" stroke-width="1"/>
-    <path d="M158 200 C158 184 167 175 180 172 C193 175 202 184 202 200Z" fill="#ccc6b8" stroke="#a8a298" stroke-width="1"/>
-    <rect x="171" y="138" width="18" height="36" rx="3" fill="#c8c2b4" stroke="#a8a298" stroke-width="1"/>
-    <rect x="167" y="129" width="26" height="12" rx="3" fill="#5e6e56" stroke="#4e5e46" stroke-width="0.9"/>
-    <rect x="164" y="232" width="32" height="50" rx="2" fill="#eee8d8" opacity="0.8"/>
-    <text x="180" y="251" text-anchor="middle" font-family="Georgia,serif" font-size="6" fill="#888078" letter-spacing="2" opacity="0.9">SUKOON</text>
-    <line x1="168" y1="257" x2="192" y2="257" stroke="#cac4b4" stroke-width="0.6" opacity="0.75"/>
-    <text x="180" y="267" text-anchor="middle" font-family="Georgia,serif" font-size="4.5" fill="#9a9488" letter-spacing="1.5" opacity="0.8">30 ml</text>
-    <rect x="162" y="206" width="6" height="90" rx="3" fill="white" opacity="0.16"/>
+  <!-- Oil droplets suggestion — simple elegant dots -->
+  <circle cx="310" cy="440" r="6" fill="#f5e8d0" opacity="0.6"/>
+  <circle cx="326" cy="420" r="4" fill="#f5e8d0" opacity="0.5"/>
+  <circle cx="298" cy="460" r="3" fill="#f5e8d0" opacity="0.4"/>
+
+  <!-- Small bottle outline — very minimal, right center -->
+  <g opacity="0.28" transform="translate(440, 550)">
+    <rect x="0" y="50" width="52" height="280" rx="8" stroke="#f0e4cc" stroke-width="1.2" fill="none"/>
+    <path d="M0 50 Q0 32 9 24 L43 24 Q52 32 52 50Z" stroke="#f0e4cc" stroke-width="1.2" fill="none"/>
+    <rect x="7" y="0" width="38" height="30" rx="5" stroke="#f0e4cc" stroke-width="1" fill="none"/>
+    <line x1="8" y1="140" x2="44" y2="140" stroke="#f0e4cc" stroke-width="0.6" opacity="0.6"/>
+    <text x="26" y="130" font-family="Georgia,serif" font-size="7" fill="#f0e4cc" text-anchor="middle" letter-spacing="2.5" opacity="0.8">SUKOON</text>
   </g>
 
-  <!-- Botanical sprig — lower left -->
-  <g opacity="0.3" stroke="#7a7060" stroke-linecap="round" fill="none">
-    <line x1="60" y1="640" x2="88" y2="430" stroke-width="1.4"/>
-    <path d="M88 430 C108 414 126 410 136 396 C124 408 106 414 88 430Z" fill="#8a8070" fill-opacity="0.5" stroke-width="0"/>
-    <path d="M82 490 C64 476 50 480 40 468 C50 476 64 478 82 490Z" fill="#8a8070" fill-opacity="0.45" stroke-width="0"/>
-    <path d="M84 556 C102 542 118 540 128 526 C116 538 100 542 84 556Z" fill="#8a8070" fill-opacity="0.4" stroke-width="0"/>
-    <line x1="84" y1="510" x2="68" y2="495" stroke-width="0.9"/>
-    <line x1="86" y1="450" x2="100" y2="437" stroke-width="0.9"/>
-  </g>
-
-  <!-- Pebble -->
-  <ellipse cx="168" cy="525" rx="28" ry="14" fill="#b8b2a4" opacity="0.45"/>
-  <ellipse cx="168" cy="522" rx="26" ry="12" fill="#c4beb0" opacity="0.35"/>
-
-  <!-- Vignette -->
-  <radialGradient id="vig" cx="50%" cy="50%" r="70%">
-    <stop offset="50%" stop-color="transparent"/>
-    <stop offset="100%" stop-color="#7a6e5a" stop-opacity="0.28"/>
-  </radialGradient>
-  <rect width="700" height="640" fill="url(#vig)"/>
+  <rect width="700" height="900" fill="url(#vignette)"/>
 </svg>

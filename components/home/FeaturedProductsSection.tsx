@@ -43,7 +43,7 @@ function ProductCard({ product }: { product: FeaturedProduct }) {
       {/* Image */}
       <a
         href={`/products/${product.handle}`}
-        style={{ display: "block", position: "relative", aspectRatio: "1 / 1.12", overflow: "hidden", backgroundColor: "#f0ece2" }}
+        style={{ display: "block", position: "relative", aspectRatio: "1 / 1.15", overflow: "hidden", backgroundColor: "#f2ede4" }}
         tabIndex={-1}
       >
         <Image
@@ -124,7 +124,7 @@ function ProductCard({ product }: { product: FeaturedProduct }) {
 
 export function FeaturedProductsSection({ products }: { products: FeaturedProduct[] }) {
   return (
-    <section style={{ backgroundColor: "#FFFFFF", padding: "104px 0", borderTop: "1px solid #eceae2" }}>
+    <section style={{ backgroundColor: "#faf8f4", padding: "104px 0", borderTop: "1px solid #eceae2" }}>
       <div style={{ width: "min(calc(100% - 80px), 1400px)", margin: "0 auto" }}>
 
         {/* Header */}
@@ -133,14 +133,23 @@ export function FeaturedProductsSection({ products }: { products: FeaturedProduc
           marginBottom: 56, flexWrap: "wrap", gap: "1.5rem",
         }}>
           <FadeIn direction="up" delay={0.05}>
-            <h2 style={{
-              fontFamily: "var(--font-display)", fontWeight: 400,
-              fontSize: "clamp(2.625rem, 4vw, 4.125rem)",
-              lineHeight: 0.98, letterSpacing: "-0.03em",
-              color: "#292b25", margin: 0,
-            }}>
-              Simple rituals.<br />Visible results.
-            </h2>
+            <div>
+              <p style={{
+                fontFamily: "var(--font-body)", fontSize: "0.625rem", fontWeight: 700,
+                letterSpacing: "0.18em", textTransform: "uppercase",
+                color: "#8a9482", marginBottom: "1rem",
+              }}>
+                The Collection
+              </p>
+              <h2 style={{
+                fontFamily: "var(--font-display)", fontWeight: 400,
+                fontSize: "clamp(2.625rem, 4vw, 4.125rem)",
+                lineHeight: 0.98, letterSpacing: "-0.03em",
+                color: "#292b25", margin: 0,
+              }}>
+                Simple rituals.<br />Visible results.
+              </h2>
+            </div>
           </FadeIn>
 
           <FadeIn direction="up" delay={0.12}>
