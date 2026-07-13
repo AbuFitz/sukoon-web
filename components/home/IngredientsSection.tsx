@@ -63,15 +63,15 @@ export function IngredientsSection() {
         className="hidden md:block"
         style={{
           position: "absolute",
-          top: "-200px",
-          right: "-480px",
-          width: "clamp(820px, 62vw, 1100px)",
+          top: "-150px",
+          right: "-120px",
+          width: "clamp(560px, 37vw, 820px)",
           height: "auto",
-          transform: "rotate(-10deg)",
+          transform: "rotate(-11deg)",
           transformOrigin: "top right",
           pointerEvents: "none",
           userSelect: "none",
-          zIndex: 1,
+          zIndex: 4,
         }}
       />
 
