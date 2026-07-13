@@ -160,7 +160,7 @@ export function SiteNav() {
           {/* Logo — always dark */}
           <a href="/" style={{ justifySelf: "center", textDecoration: "none", lineHeight: 0 }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/otherlogo.png" alt="Sukoon" style={{ height: "clamp(72px, 8.5vw, 110px)", width: "auto", display: "block" }} />
+            <img src="/otherlogo.png" alt="Sukoon" style={{ height: "clamp(96px, 11vw, 144px)", width: "auto", display: "block" }} />
           </a>
 
           {/* Desktop icons */}
@@ -196,7 +196,7 @@ export function SiteNav() {
           padding: "0 clamp(1.5rem, 5vw, 3.5rem)", borderBottom: "1px solid rgba(255,255,255,0.14)", flexShrink: 0,
         }}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/otherlogo.png" alt="Sukoon" style={{ height: 72, width: "auto" }} />
+          <img src="/otherlogo.png" alt="Sukoon" style={{ height: 96, width: "auto" }} />
           <button aria-label="Close menu" onClick={() => setOpen(false)} style={{
             background: "none", border: "none", color: LINEN, cursor: "pointer", padding: 0, display: "flex",
           }}>
