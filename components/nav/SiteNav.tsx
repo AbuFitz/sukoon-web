@@ -109,8 +109,9 @@ export function SiteNav() {
   const [solid, setSolid] = useState(false);
   const { count } = useCart();
   const pathname = usePathname();
-  const isHome = pathname === "/" || pathname === "/shop";
-  const transparent = isHome && !solid;
+  const isTransparentPage = pathname === "/" || pathname === "/shop";
+  const transparent = isTransparentPage && !solid;
+  const useLightText = pathname === "/" && !solid;
 
   useEffect(() => {
     const onScroll = () => setSolid(window.scrollY > 40);
@@ -128,9 +129,9 @@ export function SiteNav() {
     <>
       <header style={{
         position: "fixed", top: "1.75rem", left: 0, right: 0, zIndex: 50,
-        backgroundColor: (solid || !isHome) ? "rgba(251,248,243,0.96)" : "transparent",
-        backdropFilter: (solid || !isHome) ? "blur(10px)" : "none",
-        borderBottom: `1px solid ${(solid || !isHome) ? LINE : "transparent"}`,
+        backgroundColor: (solid || !isTransparentPage) ? "rgba(251,248,243,0.96)" : "transparent",
+        backdropFilter: (solid || !isTransparentPage) ? "blur(10px)" : "none",
+        borderBottom: `1px solid ${(solid || !isTransparentPage) ? LINE : "transparent"}`,
         transition: "background-color 0.4s ease, border-color 0.4s ease",
       }}>
         <div className="h-[76px] md:h-[84px]" style={{
@@ -141,43 +142,39 @@ export function SiteNav() {
         }}>
           {/* Desktop nav links */}
           <nav className="hidden md:flex" style={{ gap: "2.25rem" }} aria-label="Primary">
-            <NavLink {...links[0]} transparent={transparent} />
-            <NavLink {...links[1]} transparent={transparent} />
-            <NavLink {...links[2]} transparent={transparent} />
+            <NavLink {...links[0]} transparent={useLightText} />
+            <NavLink {...links[1]} transparent={useLightText} />
+            <NavLink {...links[2]} transparent={useLightText} />
           </nav>
           {/* Mobile hamburger */}
           <div className="flex md:hidden" style={{ justifySelf: "start" }}>
             <button
               aria-label={open ? "Close menu" : "Open menu"}
               onClick={() => setOpen(o => !o)}
-              style={{ background: "none", border: "none", color: transparent ? CREAM : INK, cursor: "pointer", padding: 0, display: "flex", transition: "color 0.4s ease" }}
+              style={{ background: "none", border: "none", color: useLightText ? CREAM : INK, cursor: "pointer", padding: 0, display: "flex", transition: "color 0.4s ease" }}
             >
               <HamburgerIcon open={open} />
             </button>
           </div>
 
-          {/* Wordmark — always dark */}
-          <a href="/" style={{
-            justifySelf: "center", textDecoration: "none",
-            color: "#2C2A1F",
-            fontFamily: "var(--font-display)", fontSize: "clamp(1.875rem, 3vw, 2.75rem)", fontWeight: 400,
-            letterSpacing: "0.18em", textTransform: "uppercase", lineHeight: 1,
-          }}>
-            Sukoon
+          {/* Logo — always dark */}
+          <a href="/" style={{ justifySelf: "center", textDecoration: "none", lineHeight: 0 }}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/otherlogo.png" alt="Sukoon" style={{ height: "clamp(52px, 6vw, 80px)", width: "auto", display: "block" }} />
           </a>
 
           {/* Desktop icons */}
           <div className="hidden md:flex" style={{ justifySelf: "end", alignItems: "center", gap: "2.25rem" }}>
-            <span style={{ width: "1px", height: "16px", backgroundColor: transparent ? "rgba(245,242,235,0.35)" : LINE }} />
-            <IconBtn label="Search" onClick={() => setSearchOpen(true)} color={transparent ? CREAM : INK}><SearchIcon /></IconBtn>
-            <IconBtn label="Account" onClick={() => setAccountOpen(true)} color={transparent ? CREAM : INK}><AccountIcon /></IconBtn>
-            <IconBtn label="Bag" onClick={() => setBagOpen(true)} badge={count} color={transparent ? CREAM : INK}><BagIcon /></IconBtn>
+            <span style={{ width: "1px", height: "16px", backgroundColor: useLightText ? "rgba(245,242,235,0.35)" : LINE }} />
+            <IconBtn label="Search" onClick={() => setSearchOpen(true)} color={useLightText ? CREAM : INK}><SearchIcon /></IconBtn>
+            <IconBtn label="Account" onClick={() => setAccountOpen(true)} color={useLightText ? CREAM : INK}><AccountIcon /></IconBtn>
+            <IconBtn label="Bag" onClick={() => setBagOpen(true)} badge={count} color={useLightText ? CREAM : INK}><BagIcon /></IconBtn>
           </div>
 
           {/* Mobile icons */}
           <div className="flex md:hidden" style={{ justifySelf: "end", alignItems: "center", gap: "1.375rem" }}>
-            <IconBtn label="Search" onClick={() => setSearchOpen(true)} color={transparent ? CREAM : INK}><SearchIcon /></IconBtn>
-            <IconBtn label="Bag" onClick={() => setBagOpen(true)} badge={count} color={transparent ? CREAM : INK}><BagIcon /></IconBtn>
+            <IconBtn label="Search" onClick={() => setSearchOpen(true)} color={useLightText ? CREAM : INK}><SearchIcon /></IconBtn>
+            <IconBtn label="Bag" onClick={() => setBagOpen(true)} badge={count} color={useLightText ? CREAM : INK}><BagIcon /></IconBtn>
           </div>
         </div>
       </header>
@@ -198,12 +195,8 @@ export function SiteNav() {
           height: "76px", display: "flex", alignItems: "center", justifyContent: "space-between",
           padding: "0 clamp(1.5rem, 5vw, 3.5rem)", borderBottom: "1px solid rgba(255,255,255,0.14)", flexShrink: 0,
         }}>
-          <span style={{
-            fontFamily: "var(--font-display)", fontSize: "2.25rem", letterSpacing: "0.18em",
-            textTransform: "uppercase", color: LINEN,
-          }}>
-            Sukoon
-          </span>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/otherlogo.png" alt="Sukoon" style={{ height: 52, width: "auto" }} />
           <button aria-label="Close menu" onClick={() => setOpen(false)} style={{
             background: "none", border: "none", color: LINEN, cursor: "pointer", padding: 0, display: "flex",
           }}>
