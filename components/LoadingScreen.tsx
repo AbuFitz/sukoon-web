@@ -59,7 +59,7 @@ export function LoadingScreen() {
           src="/Sukoonlogo.png"
           alt="Sukoon"
           style={{
-            height: "clamp(100px, 13vw, 160px)",
+            height: "clamp(130px, 17vw, 200px)",
             width: "auto",
             display: "block",
             filter: "brightness(0) invert(1)",
