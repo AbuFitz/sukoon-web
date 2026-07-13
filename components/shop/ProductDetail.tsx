@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import { useCart } from "@/lib/cart-context";
+import { products } from "@/lib/products";
 
 const ingredients = [
   { name: "Olive Squalane", pct: "80%",   note: "Absorbs in under 60 seconds — never greasy" },
@@ -13,10 +14,10 @@ const ingredients = [
 ];
 
 const trust = [
-  "Free UK delivery over £40",
-  "30-day returns",
-  "Halal certified",
-  "Vegan & cruelty free",
+  { label: "Free UK delivery", sub: "on orders over £40" },
+  { label: "30-day returns",   sub: "no questions asked" },
+  { label: "Halal certified",  sub: "by accredited body" },
+  { label: "Vegan",            sub: "& cruelty free" },
 ];
 
 type Props = {
@@ -30,28 +31,80 @@ type Props = {
   variantId?: string;
 };
 
+function RelatedCard({ product }: { product: typeof products[number] }) {
+  const [hovered, setHovered] = useState(false);
+  return (
+    <a
+      href={`/products/${product.slug}`}
+      style={{ textDecoration: "none", display: "block" }}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+    >
+      <div style={{
+        position: "relative",
+        aspectRatio: "3 / 4",
+        backgroundColor: "#ede9e0",
+        overflow: "hidden",
+        marginBottom: "1.25rem",
+      }}>
+        <Image
+          src={product.src}
+          alt={product.name}
+          fill
+          sizes="(max-width: 768px) 50vw, 25vw"
+          style={{
+            objectFit: "cover",
+            transition: "transform 700ms cubic-bezier(0.2,0.7,0.2,1)",
+            transform: hovered ? "scale(1.04)" : "scale(1)",
+          }}
+        />
+      </div>
+      <p style={{
+        fontFamily: "var(--font-body)", fontSize: "0.5rem", fontWeight: 700,
+        letterSpacing: "0.16em", textTransform: "uppercase",
+        color: "#8a9482", margin: "0 0 0.375rem",
+      }}>
+        {product.size}
+      </p>
+      <p style={{
+        fontFamily: "var(--font-display)", fontWeight: 400,
+        fontSize: "1.25rem", lineHeight: 1.1, letterSpacing: "-0.02em",
+        color: "#292b25", margin: "0 0 0.375rem",
+      }}>
+        {product.name}
+      </p>
+      <p style={{
+        fontFamily: "var(--font-body)", fontSize: "0.9375rem", fontWeight: 500,
+        color: "#45543d", margin: 0,
+      }}>
+        {product.price}
+      </p>
+    </a>
+  );
+}
+
 export function ProductDetail({ handle, title, size, price, description, imageSrc, tag, variantId }: Props) {
   const { addToCart, loading } = useCart();
   const [qty, setQty] = useState(1);
   const [justAdded, setJustAdded] = useState(false);
   const [imgHovered, setImgHovered] = useState(false);
 
+  const related = products.filter(p => p.slug !== handle).slice(0, 2);
+
   const handleAdd = async () => {
     if (!variantId || loading || justAdded) return;
     await addToCart(variantId, qty);
     setJustAdded(true);
-    setTimeout(() => setJustAdded(false), 2000);
+    setTimeout(() => setJustAdded(false), 2200);
   };
 
   return (
     <div style={{ backgroundColor: "#faf8f4" }}>
       {/* Breadcrumb */}
-      <nav aria-label="Breadcrumb" style={{
-        borderBottom: "1px solid #e8e4da",
-        padding: "0 clamp(2rem, 5vw, 5rem)",
-      }}>
+      <nav aria-label="Breadcrumb" style={{ borderBottom: "1px solid #e8e4da" }}>
         <div style={{
           maxWidth: 1400, margin: "0 auto",
+          padding: "0 clamp(2rem, 5vw, 5rem)",
           display: "flex", gap: "0.5rem", alignItems: "center",
           height: 48,
           fontFamily: "var(--font-body)", fontSize: "0.75rem", color: "#9a9f95",
@@ -74,15 +127,12 @@ export function ProductDetail({ handle, title, size, price, description, imageSr
           className="grid grid-cols-1 lg:grid-cols-2"
           style={{ gap: "clamp(3rem, 6vw, 7rem)", alignItems: "start" }}
         >
-          {/* ── Image ── */}
+          {/* ── Image panel ── */}
           <div style={{ position: "sticky", top: 100 }}>
             <div
               onMouseEnter={() => setImgHovered(true)}
               onMouseLeave={() => setImgHovered(false)}
-              style={{
-                position: "relative", aspectRatio: "4 / 5",
-                backgroundColor: "#ede9e0", overflow: "hidden",
-              }}
+              style={{ position: "relative", aspectRatio: "4 / 5", backgroundColor: "#ede9e0", overflow: "hidden" }}
             >
               {tag && (
                 <span style={{
@@ -108,15 +158,28 @@ export function ProductDetail({ handle, title, size, price, description, imageSr
                 }}
               />
             </div>
+
+            {/* Caption below image */}
+            <p style={{
+              fontFamily: "var(--font-body)", fontSize: "0.6875rem",
+              color: "#a09b93", margin: "1rem 0 0",
+              display: "flex", alignItems: "center", gap: "0.5rem",
+            }}>
+              <span style={{
+                display: "inline-block", width: 18, height: "0.5px",
+                backgroundColor: "#a09b93",
+              }} />
+              Five ingredients. Nothing more.
+            </p>
           </div>
 
           {/* ── Details ── */}
           <div style={{ paddingTop: "0.25rem" }}>
-            {/* Category label */}
+            {/* Eyebrow */}
             <p style={{
               fontFamily: "var(--font-body)", fontSize: "0.5625rem", fontWeight: 700,
               letterSpacing: "0.2em", textTransform: "uppercase",
-              color: "#8a9482", margin: "0 0 1.125rem",
+              color: "#8a9482", margin: "0 0 1rem",
             }}>
               Daily Solace Collection
             </p>
@@ -126,41 +189,63 @@ export function ProductDetail({ handle, title, size, price, description, imageSr
               fontFamily: "var(--font-display)", fontWeight: 400,
               fontSize: "clamp(2.25rem, 3.5vw, 3.25rem)",
               lineHeight: 1.0, letterSpacing: "-0.028em",
-              color: "#292b25", margin: "0 0 0.625rem",
+              color: "#292b25", margin: "0 0 0.5rem",
             }}>
               {title}
             </h1>
 
-            {/* Size */}
-            <p style={{
-              fontFamily: "var(--font-body)", fontSize: "0.875rem",
-              color: "#8a9482", margin: "0 0 1.125rem",
+            {/* Size + price row */}
+            <div style={{
+              display: "flex", alignItems: "baseline",
+              gap: "1.25rem", margin: "0 0 1.5rem",
             }}>
-              {size}
-            </p>
-
-            {/* Price */}
-            <p style={{
-              fontFamily: "var(--font-body)", fontSize: "1.5rem", fontWeight: 600,
-              color: "#292b25", margin: "0 0 1.75rem",
-            }}>
-              {price}
-            </p>
+              <span style={{
+                fontFamily: "var(--font-body)", fontSize: "0.8125rem",
+                color: "#8a9482",
+              }}>
+                {size}
+              </span>
+              <span style={{
+                fontFamily: "var(--font-body)", fontSize: "1.375rem", fontWeight: 600,
+                color: "#292b25",
+              }}>
+                {price}
+              </span>
+            </div>
 
             {/* Description */}
             <p style={{
               fontFamily: "var(--font-body)", fontSize: "1rem", lineHeight: 1.78,
-              color: "#64685f", margin: "0 0 2.25rem", maxWidth: 460,
+              color: "#64685f", margin: "0 0 2rem", maxWidth: 460,
             }}>
               {description}
             </p>
 
-            {/* Divider */}
+            {/* Key claims strip */}
+            <div style={{
+              display: "grid", gridTemplateColumns: "1fr 1fr",
+              gap: "0.75rem", margin: "0 0 2rem",
+            }}>
+              {["Absorbs in 60s", "No synthetic fragrance", "Halal certified", "Vegan & cruelty free"].map(claim => (
+                <div key={claim} style={{
+                  display: "flex", alignItems: "center", gap: "0.5rem",
+                }}>
+                  <span style={{
+                    width: 5, height: 5, borderRadius: "50%",
+                    backgroundColor: "#8a9e7f", flexShrink: 0,
+                  }} />
+                  <span style={{
+                    fontFamily: "var(--font-body)", fontSize: "0.8125rem",
+                    color: "#64685f",
+                  }}>{claim}</span>
+                </div>
+              ))}
+            </div>
+
             <div style={{ height: 1, backgroundColor: "#e8e4da", margin: "0 0 2rem" }} />
 
             {/* Qty + Add to bag */}
-            <div style={{ display: "flex", gap: "0.875rem", marginBottom: "1.5rem", alignItems: "stretch" }}>
-              {/* Qty stepper */}
+            <div style={{ display: "flex", gap: "0.875rem", marginBottom: "1.25rem", alignItems: "stretch" }}>
               <div style={{
                 display: "flex", alignItems: "center",
                 border: "1px solid rgba(41,43,37,0.25)", flexShrink: 0,
@@ -169,10 +254,9 @@ export function ProductDetail({ handle, title, size, price, description, imageSr
                   aria-label="Decrease quantity"
                   onClick={() => setQty(q => Math.max(1, q - 1))}
                   style={{
-                    width: 44, height: 50, background: "none", border: "none",
+                    width: 44, height: 52, background: "none", border: "none",
                     cursor: "pointer", color: "#292b25", fontSize: "1.125rem",
                     fontFamily: "var(--font-body)",
-                    transition: "color 150ms",
                   }}
                 >−</button>
                 <span style={{
@@ -185,20 +269,18 @@ export function ProductDetail({ handle, title, size, price, description, imageSr
                   aria-label="Increase quantity"
                   onClick={() => setQty(q => q + 1)}
                   style={{
-                    width: 44, height: 50, background: "none", border: "none",
+                    width: 44, height: 52, background: "none", border: "none",
                     cursor: "pointer", color: "#292b25", fontSize: "1.125rem",
                     fontFamily: "var(--font-body)",
-                    transition: "color 150ms",
                   }}
                 >+</button>
               </div>
 
-              {/* Add to bag */}
               <button
                 onClick={handleAdd}
                 disabled={!variantId || loading || justAdded}
                 style={{
-                  flex: 1, height: 50,
+                  flex: 1, height: 52,
                   display: "flex", alignItems: "center", justifyContent: "center",
                   fontFamily: "var(--font-body)", fontSize: "0.6875rem", fontWeight: 600,
                   letterSpacing: "0.14em", textTransform: "uppercase",
@@ -212,81 +294,94 @@ export function ProductDetail({ handle, title, size, price, description, imageSr
                 onMouseEnter={e => { if (!justAdded && variantId) { const el = e.currentTarget as HTMLElement; el.style.backgroundColor = "#34402f"; el.style.borderColor = "#34402f"; el.style.transform = "translateY(-1px)"; } }}
                 onMouseLeave={e => { const el = e.currentTarget as HTMLElement; if (!justAdded) { el.style.backgroundColor = "#45543d"; el.style.borderColor = "#45543d"; } el.style.transform = "none"; }}
               >
-                {justAdded ? "Added to Bag ✓" : loading ? "Adding…" : !variantId ? "Unavailable" : "Add to Bag"}
+                {justAdded ? "Added ✓" : loading ? "Adding…" : !variantId ? "Unavailable" : "Add to Bag"}
               </button>
             </div>
 
-            {/* View bag link after add */}
             {justAdded && (
-              <p style={{
-                fontFamily: "var(--font-body)", fontSize: "0.8125rem",
-                color: "#64685f", marginBottom: "1.5rem",
-                animation: "fadeIn 300ms ease",
-              }}>
+              <p style={{ fontFamily: "var(--font-body)", fontSize: "0.8125rem", color: "#64685f", marginBottom: "1.25rem" }}>
                 <a href="/cart" style={{ color: "#45543d", textDecoration: "underline", textUnderlineOffset: 3 }}>
                   View your bag →
                 </a>
               </p>
             )}
 
-            {/* Trust badges */}
+            {/* Trust row */}
             <div style={{
-              display: "flex", flexWrap: "wrap", gap: "1rem",
+              display: "grid", gridTemplateColumns: "1fr 1fr",
+              gap: "0.875rem 1.5rem",
+              padding: "1.5rem",
+              backgroundColor: "#f2ede4",
               marginBottom: "2.5rem",
             }}>
               {trust.map(t => (
-                <span key={t} style={{
-                  fontFamily: "var(--font-body)", fontSize: "0.6875rem",
-                  color: "#78836e",
-                  display: "flex", alignItems: "center", gap: "0.375rem",
-                }}>
-                  <span style={{ color: "#8a9482" }}>✓</span> {t}
-                </span>
+                <div key={t.label} style={{ display: "flex", flexDirection: "column", gap: "0.125rem" }}>
+                  <span style={{
+                    fontFamily: "var(--font-body)", fontSize: "0.75rem", fontWeight: 600,
+                    color: "#45543d",
+                  }}>
+                    {t.label}
+                  </span>
+                  <span style={{
+                    fontFamily: "var(--font-body)", fontSize: "0.6875rem",
+                    color: "#9a9f95",
+                  }}>
+                    {t.sub}
+                  </span>
+                </div>
               ))}
             </div>
 
-            {/* Divider */}
             <div style={{ height: 1, backgroundColor: "#e8e4da", margin: "0 0 2rem" }} />
 
             {/* Ingredients */}
             <div>
-              <p style={{
-                fontFamily: "var(--font-body)", fontSize: "0.5625rem", fontWeight: 700,
-                letterSpacing: "0.18em", textTransform: "uppercase",
-                color: "#292b25", margin: "0 0 1.25rem",
-              }}>
-                What&apos;s inside
-              </p>
-              <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column" }}>
+              <div style={{ marginBottom: "1.5rem" }}>
+                <p style={{
+                  fontFamily: "var(--font-body)", fontSize: "0.5625rem", fontWeight: 700,
+                  letterSpacing: "0.18em", textTransform: "uppercase",
+                  color: "#292b25", margin: "0 0 0.375rem",
+                }}>
+                  What&apos;s inside
+                </p>
+                <p style={{
+                  fontFamily: "var(--font-body)", fontSize: "0.8125rem",
+                  color: "#9a9f95", margin: 0,
+                }}>
+                  Five ingredients. Every one named. Every one earning its place.
+                </p>
+              </div>
+
+              <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
                 {ingredients.map((ing, i) => (
                   <li
                     key={ing.name}
                     style={{
                       display: "grid",
-                      gridTemplateColumns: "2.5rem 1fr",
+                      gridTemplateColumns: "3rem 1fr",
                       gap: "0 1.125rem",
-                      alignItems: "baseline",
-                      padding: "1rem 0",
+                      alignItems: "start",
+                      padding: "1.125rem 0",
                       borderTop: i === 0 ? "1px solid #e8e4da" : "none",
                       borderBottom: "1px solid #e8e4da",
                     }}
                   >
                     <span style={{
                       fontFamily: "var(--font-body)", fontSize: "0.625rem", fontWeight: 700,
-                      color: "#8a9482", letterSpacing: "0.08em",
-                      paddingTop: "0.1rem",
+                      color: "#8a9e7f", letterSpacing: "0.06em",
+                      paddingTop: "0.175rem",
                     }}>
                       {ing.pct}
                     </span>
                     <div>
                       <p style={{
                         fontFamily: "var(--font-body)", fontSize: "0.9375rem", fontWeight: 600,
-                        color: "#292b25", margin: "0 0 0.2rem",
+                        color: "#292b25", margin: "0 0 0.25rem",
                       }}>
                         {ing.name}
                       </p>
                       <p style={{
-                        fontFamily: "var(--font-body)", fontSize: "0.8125rem", lineHeight: 1.6,
+                        fontFamily: "var(--font-body)", fontSize: "0.8125rem", lineHeight: 1.65,
                         color: "#78836e", margin: 0,
                       }}>
                         {ing.note}
@@ -300,28 +395,57 @@ export function ProductDetail({ handle, title, size, price, description, imageSr
         </div>
       </div>
 
-      {/* Related / back to shop */}
-      <div style={{
-        borderTop: "1px solid #e8e4da",
-        padding: "2.5rem clamp(2rem, 5vw, 5rem)",
-        display: "flex", alignItems: "center", justifyContent: "center",
-      }}>
-        <a
-          href="/shop"
-          style={{
-            fontFamily: "var(--font-body)", fontSize: "0.75rem", fontWeight: 600,
-            letterSpacing: "0.12em", textTransform: "uppercase",
-            color: "#64685f", textDecoration: "none",
-            borderBottom: "1px solid rgba(100,104,95,0.4)",
-            paddingBottom: 2,
-            transition: "color 200ms, border-color 200ms",
-          }}
-          onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.color = "#45543d"; el.style.borderColor = "#45543d"; }}
-          onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.color = "#64685f"; el.style.borderColor = "rgba(100,104,95,0.4)"; }}
-        >
-          ← Back to the collection
-        </a>
-      </div>
+      {/* You may also like */}
+      {related.length > 0 && (
+        <div style={{
+          borderTop: "1px solid #e8e4da",
+          padding: "clamp(3.5rem, 6vw, 5.5rem) clamp(2rem, 5vw, 5rem)",
+          backgroundColor: "#faf8f4",
+        }}>
+          <div style={{ maxWidth: 1400, margin: "0 auto" }}>
+            <div style={{ marginBottom: "2.5rem", display: "flex", alignItems: "baseline", justifyContent: "space-between" }}>
+              <div>
+                <p style={{
+                  fontFamily: "var(--font-body)", fontSize: "0.5rem", fontWeight: 700,
+                  letterSpacing: "0.18em", textTransform: "uppercase",
+                  color: "#8a9482", margin: "0 0 0.5rem",
+                }}>
+                  The Collection
+                </p>
+                <h2 style={{
+                  fontFamily: "var(--font-display)", fontWeight: 400,
+                  fontSize: "clamp(1.75rem, 2.5vw, 2.5rem)",
+                  lineHeight: 1.05, letterSpacing: "-0.025em",
+                  color: "#292b25", margin: 0,
+                }}>
+                  You may also like
+                </h2>
+              </div>
+              <a
+                href="/shop"
+                style={{
+                  fontFamily: "var(--font-body)", fontSize: "0.6875rem", fontWeight: 600,
+                  letterSpacing: "0.1em", textTransform: "uppercase",
+                  color: "#64685f", textDecoration: "none",
+                  borderBottom: "1px solid rgba(100,104,95,0.4)",
+                  paddingBottom: 2,
+                }}
+                onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.color = "#45543d"; el.style.borderColor = "#45543d"; }}
+                onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.color = "#64685f"; el.style.borderColor = "rgba(100,104,95,0.4)"; }}
+              >
+                View all
+              </a>
+            </div>
+
+            <div
+              className="grid grid-cols-2"
+              style={{ gap: "clamp(1.5rem, 3vw, 2.5rem)" }}
+            >
+              {related.map(p => <RelatedCard key={p.slug} product={p} />)}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
