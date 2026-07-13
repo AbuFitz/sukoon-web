@@ -53,28 +53,27 @@ export function IngredientsSection() {
         borderTop: "1px solid #e4e0d6",
       }}
     >
-      {/* Botanical leaf — top-right, partially cropped, hidden on mobile */}
-      <div
+      {/* Botanical leaf — overflows from top-right, hidden on mobile */}
+      <Image
+        src="/images/decor/ingredients-leaf.png"
+        alt=""
+        aria-hidden="true"
+        width={760}
+        height={507}
         className="hidden md:block"
         style={{
           position: "absolute",
-          top: "-20px",
-          right: "-60px",
-          width: "clamp(200px, 16vw, 280px)",
+          top: "-170px",
+          right: "-210px",
+          width: "clamp(520px, 34vw, 760px)",
+          height: "auto",
+          transform: "rotate(-14deg)",
+          transformOrigin: "top right",
           pointerEvents: "none",
           userSelect: "none",
           zIndex: 1,
         }}
-        aria-hidden="true"
-      >
-        <Image
-          src="/images/decor/ingredients-leaf.png"
-          alt=""
-          width={320}
-          height={213}
-          style={{ width: "100%", height: "auto", display: "block" }}
-        />
-      </div>
+      />
 
       {/* Content */}
       <div style={{ width: "min(calc(100% - 80px), 1400px)", margin: "0 auto", position: "relative", zIndex: 2 }}>
@@ -87,7 +86,7 @@ export function IngredientsSection() {
             lineHeight: 0.98, letterSpacing: "-0.028em",
             color: "#292b25", margin: "0 0 clamp(2rem, 4vw, 3rem)",
           }}>
-            Five ingredients. Nothing extra.
+            Five ingredients. <em style={{ fontStyle: "italic" }}>Nothing extra.</em>
           </h2>
         </FadeIn>
 
