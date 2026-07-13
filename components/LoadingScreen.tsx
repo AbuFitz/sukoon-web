@@ -65,40 +65,20 @@ export function LoadingScreen() {
           Sukoon
         </div>
 
-        {/* Heartbeat line */}
+        {/* Pulsing line */}
         <div style={{
-          width: 220,
+          width: 48, height: "1px",
           margin: "2rem auto 0",
+          backgroundColor: "rgba(152,164,125,0.9)",
           opacity: hasLine ? 1 : 0,
           transition: "opacity 0.6s ease",
-        }}>
-          <svg
-            viewBox="0 0 220 36"
-            width="220"
-            height="36"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            style={{
-              display: "block",
-              animation: hasLine ? "sukoon-beat 1.6s ease-in-out infinite" : "none",
-            }}
-          >
-            <polyline
-              points="0,18 38,18 50,4 58,32 66,10 74,26 82,18 220,18"
-              stroke="rgba(152,164,125,0.85)"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        </div>
+          animation: hasLine ? "sukoon-pulse 1.6s ease-in-out infinite" : "none",
+        }} />
 
         <style>{`
-          @keyframes sukoon-beat {
-            0%   { transform: scaleX(0.92); opacity: 0.5; }
-            40%  { transform: scaleX(1);    opacity: 1;   }
-            60%  { transform: scaleX(1);    opacity: 1;   }
-            100% { transform: scaleX(0.92); opacity: 0.5; }
+          @keyframes sukoon-pulse {
+            0%, 100% { opacity: 0.25; transform: scaleX(0.55); }
+            50%       { opacity: 1;   transform: scaleX(1);     }
           }
         `}</style>
       </div>

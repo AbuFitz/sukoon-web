@@ -10,7 +10,7 @@ export function BrandStorySection() {
   return (
     <section
       aria-label="Our story"
-      style={{ backgroundColor: "#f3efe7", position: "relative" }}
+      style={{ backgroundColor: "#faf8f4", position: "relative" }}
     >
       {/* Grain */}
       <div style={{
@@ -32,7 +32,7 @@ export function BrandStorySection() {
           display: "flex", alignItems: "center",
           padding: "90px clamp(3rem, 6vw, 5.75rem)",
           order: 1,
-          backgroundColor: "#f3efe7",
+          backgroundColor: "#faf8f4",
         }}>
           <FadeIn direction="up" delay={0.08}>
             <div style={{ maxWidth: 460 }}>
