@@ -27,7 +27,7 @@ export default function PrivacyPage() {
   return (
     <>
       <SiteNav />
-      <main style={{ paddingTop: "calc(1.75rem + 120px)", backgroundColor: "#faf8f3", minHeight: "80vh" }}>
+      <main style={{ paddingTop: "calc(1.75rem + 84px)", backgroundColor: "#faf8f3", minHeight: "80vh" }}>
         <div style={{ maxWidth: "780px", margin: "0 auto", padding: "clamp(3rem, 7vw, 5rem) clamp(1.5rem, 5vw, 3rem)" }}>
           <h1 style={{
             fontFamily: "var(--font-display)", fontSize: "clamp(2rem, 4vw, 3rem)",

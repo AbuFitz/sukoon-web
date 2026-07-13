@@ -12,7 +12,7 @@ export default function CartPage() {
     <>
       <SiteNav />
       <main style={{
-        paddingTop: "calc(1.75rem + 120px)",
+        paddingTop: "calc(1.75rem + 84px)",
         minHeight: "70vh",
         backgroundColor: "#faf8f4",
       }}>

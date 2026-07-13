@@ -11,7 +11,7 @@ export default function FAQPage() {
   return (
     <>
       <SiteNav />
-      <main style={{ paddingTop: "calc(1.75rem + 120px)" }}>
+      <main style={{ paddingTop: "calc(1.75rem + 84px)" }}>
         <FAQContent />
       </main>
       <Footer />
