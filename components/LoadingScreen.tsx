@@ -24,7 +24,6 @@ export function LoadingScreen() {
   const isExiting = phase === "exit";
   const hasWords  = phase === "words" || phase === "line" || phase === "hold" || phase === "exit";
   const hasLine   = phase === "line"  || phase === "hold" || phase === "exit";
-  const hasSub    = phase === "hold"  || phase === "exit";
 
   return (
     <div style={{
@@ -39,32 +38,19 @@ export function LoadingScreen() {
       {/* Blurred backdrop */}
       <div style={{
         position: "absolute", inset: 0,
-        backgroundColor: "rgba(41, 43, 37, 0.82)",
-        backdropFilter: "blur(18px) saturate(1.2)",
-        WebkitBackdropFilter: "blur(18px) saturate(1.2)",
+        backgroundColor: "rgba(41, 43, 37, 0.88)",
+        backdropFilter: "blur(20px) saturate(1.2)",
+        WebkitBackdropFilter: "blur(20px) saturate(1.2)",
       }} />
 
-      {/* Subtle vignette */}
+      {/* Vignette */}
       <div style={{
         position: "absolute", inset: 0,
-        background: "radial-gradient(ellipse at center, transparent 40%, rgba(20,22,18,0.55) 100%)",
+        background: "radial-gradient(ellipse at center, transparent 35%, rgba(18,20,15,0.6) 100%)",
       }} />
 
       {/* Content */}
       <div style={{ position: "relative", textAlign: "center", userSelect: "none" }}>
-
-        {/* Small eyebrow */}
-        <p style={{
-          fontFamily: "var(--font-body)", fontWeight: 500,
-          fontSize: "0.5625rem", letterSpacing: "0.28em", textTransform: "uppercase",
-          color: "rgba(245,242,235,0.35)",
-          marginBottom: "1.5rem",
-          opacity: hasWords ? 1 : 0,
-          transform: hasWords ? "translateY(0)" : "translateY(8px)",
-          transition: "opacity 1s ease 0.1s, transform 1s cubic-bezier(0.22,1,0.36,1) 0.1s",
-        }}>
-          A Daily Ritual
-        </p>
 
         {/* Wordmark */}
         <div style={{
@@ -79,37 +65,42 @@ export function LoadingScreen() {
           Sukoon
         </div>
 
-        {/* Growing line */}
+        {/* Heartbeat line */}
         <div style={{
-          width: 200, height: "1px",
+          width: 220,
           margin: "2rem auto 0",
-          backgroundColor: "rgba(245,242,235,0.1)",
-          overflow: "hidden",
+          opacity: hasLine ? 1 : 0,
+          transition: "opacity 0.6s ease",
         }}>
-          <div style={{
-            height: "100%",
-            backgroundColor: "rgba(152,164,125,0.8)",
-            transformOrigin: "left center",
-            transform: hasLine ? "scaleX(1)" : "scaleX(0)",
-            transition: hasLine
-              ? "transform 1.2s cubic-bezier(0.22,1,0.36,1)"
-              : "none",
-          }} />
+          <svg
+            viewBox="0 0 220 36"
+            width="220"
+            height="36"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            style={{
+              display: "block",
+              animation: hasLine ? "sukoon-beat 1.6s ease-in-out infinite" : "none",
+            }}
+          >
+            <polyline
+              points="0,18 38,18 50,4 58,32 66,10 74,26 82,18 220,18"
+              stroke="rgba(152,164,125,0.85)"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
         </div>
 
-        {/* Tagline */}
-        <p style={{
-          fontFamily: "var(--font-body)", fontWeight: 400,
-          fontSize: "clamp(8px, 0.9vw, 10px)",
-          letterSpacing: "0.24em", textTransform: "uppercase",
-          color: "rgba(245,242,235,0.3)",
-          margin: "1.5rem 0 0",
-          opacity: hasSub ? 1 : 0,
-          transform: hasSub ? "translateY(0)" : "translateY(6px)",
-          transition: "opacity 1s ease 0.1s, transform 1s cubic-bezier(0.22,1,0.36,1) 0.1s",
-        }}>
-          Rooted in calm
-        </p>
+        <style>{`
+          @keyframes sukoon-beat {
+            0%   { transform: scaleX(0.92); opacity: 0.5; }
+            40%  { transform: scaleX(1);    opacity: 1;   }
+            60%  { transform: scaleX(1);    opacity: 1;   }
+            100% { transform: scaleX(0.92); opacity: 0.5; }
+          }
+        `}</style>
       </div>
     </div>
   );
