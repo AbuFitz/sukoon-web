@@ -126,8 +126,8 @@ export function IngredientsSection() {
         style={{
           position: "absolute",
           top: -80, right: -120,
-          width: "clamp(250px, 25vw, 380px)",
-          height: "clamp(250px, 25vw, 380px)",
+          width: "clamp(300px, 30vw, 480px)",
+          height: "clamp(200px, 20vw, 320px)",
           pointerEvents: "none", userSelect: "none",
           zIndex: 1,
           transform: "rotate(-12deg)",
@@ -136,12 +136,11 @@ export function IngredientsSection() {
         aria-hidden="true"
       >
         <Image
-          src="/images/decor/ingredients-leaf.svg"
+          src="/images/decor/ingredients-leaf.png"
           alt=""
           fill
-          sizes="clamp(250px, 25vw, 380px)"
+          sizes="clamp(300px, 30vw, 480px)"
           style={{ objectFit: "contain", objectPosition: "top right" }}
-          unoptimized
         />
       </div>
 
