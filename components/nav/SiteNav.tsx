@@ -133,6 +133,7 @@ export function SiteNav() {
           <nav className="hidden md:flex" style={{ gap: "2.25rem" }} aria-label="Primary">
             <NavLink {...links[0]} />
             <NavLink {...links[1]} />
+            <NavLink {...links[2]} />
           </nav>
           <div className="flex md:hidden" style={{ justifySelf: "start" }}>
             <button
@@ -153,8 +154,6 @@ export function SiteNav() {
           </a>
 
           <div className="hidden md:flex" style={{ justifySelf: "end", alignItems: "center", gap: "2.25rem" }}>
-            <NavLink {...links[2]} />
-            <NavLink {...links[3]} />
             <span style={{ width: "1px", height: "16px", backgroundColor: LINE }} />
             <IconBtn label="Search" onClick={() => setSearchOpen(true)}><SearchIcon /></IconBtn>
             <IconBtn label="Account" onClick={() => setAccountOpen(true)}><AccountIcon /></IconBtn>

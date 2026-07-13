@@ -34,13 +34,13 @@ export function NewsletterSection() {
       }} />
 
       <div
-        style={{ minHeight: 420, position: "relative", zIndex: 1 }}
+        style={{ minHeight: 300, position: "relative", zIndex: 1 }}
         className="grid grid-cols-1 md:grid-cols-[0.95fr_1.05fr]"
       >
         {/* Image side */}
         <div style={{
           position: "relative",
-          minHeight: "clamp(280px, 35vw, 420px)",
+          minHeight: "clamp(200px, 25vw, 300px)",
           backgroundColor: "#d8d4c9",
           order: 1,
           overflow: "hidden",
@@ -57,7 +57,7 @@ export function NewsletterSection() {
         {/* Content */}
         <div style={{
           display: "flex", flexDirection: "column", justifyContent: "center",
-          padding: "clamp(3.5rem, 7vw, 4.5rem) clamp(2.5rem, 6vw, 5.5rem)",
+          padding: "clamp(2rem, 4vw, 3rem) clamp(2.5rem, 6vw, 5.5rem)",
           order: 2,
         }}>
           <FadeIn direction="up" delay={0.08}>
