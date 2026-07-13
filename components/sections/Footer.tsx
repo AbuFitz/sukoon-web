@@ -38,7 +38,7 @@ export function Footer() {
         }}>
           <a href="/" style={{ textDecoration: "none", lineHeight: 0 }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/Sukoonlogo.png" alt="Sukoon" style={{ height: "clamp(32px, 3vw, 44px)", width: "auto", filter: "brightness(0) invert(1)" }} />
+            <img src="/Sukoonlogo.png" alt="Sukoon" style={{ height: "clamp(48px, 4.5vw, 68px)", width: "auto", filter: "brightness(0) invert(1)" }} />
           </a>
 
           <nav style={{ display: "flex", flexWrap: "wrap", gap: "0.25rem 2rem" }} aria-label="Footer">

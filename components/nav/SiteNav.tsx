@@ -162,7 +162,7 @@ export function SiteNav() {
             <img
               src="/Sukoonlogo.png"
               alt="Sukoon"
-              style={{ height: "clamp(36px, 4vw, 52px)", width: "auto", display: "block" }}
+              style={{ height: "clamp(54px, 6vw, 80px)", width: "auto", display: "block" }}
             />
           </a>
 
@@ -199,7 +199,7 @@ export function SiteNav() {
           padding: "0 clamp(1.5rem, 5vw, 3.5rem)", borderBottom: "1px solid rgba(255,255,255,0.14)", flexShrink: 0,
         }}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/Sukoonlogo.png" alt="Sukoon" style={{ height: 40, width: "auto", filter: "brightness(0) invert(1)" }} />
+          <img src="/Sukoonlogo.png" alt="Sukoon" style={{ height: 60, width: "auto", filter: "brightness(0) invert(1)" }} />
           <button aria-label="Close menu" onClick={() => setOpen(false)} style={{
             background: "none", border: "none", color: LINEN, cursor: "pointer", padding: 0, display: "flex",
           }}>
