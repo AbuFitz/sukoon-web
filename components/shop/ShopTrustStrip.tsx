@@ -1,12 +1,16 @@
+const S = { width: 30, height: 30, viewBox: "0 0 24 24", fill: "none" as const, stroke: "#45543d", strokeWidth: 1.4, strokeLinecap: "round" as const, strokeLinejoin: "round" as const };
+
 const items = [
   {
     title: "Free Shipping",
     body: "On UK orders over £50",
     icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#45543d" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v3"/>
-        <rect x="9" y="11" width="14" height="10" rx="2"/>
-        <circle cx="12" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+      <svg {...S}>
+        {/* delivery truck */}
+        <rect x="1" y="6" width="15" height="11" rx="1"/>
+        <path d="M16 10h4l3 4v3h-7V10z"/>
+        <circle cx="5.5" cy="18.5" r="1.5"/>
+        <circle cx="18.5" cy="18.5" r="1.5"/>
       </svg>
     ),
   },
@@ -14,9 +18,11 @@ const items = [
     title: "Thoughtful Packaging",
     body: "Recyclable and minimal",
     icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#45543d" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2z"/>
-        <path d="M12 6v6l4 2"/>
+      <svg {...S}>
+        {/* open box */}
+        <polyline points="21 8 21 21 3 21 3 8"/>
+        <rect x="1" y="3" width="22" height="5"/>
+        <line x1="10" y1="12" x2="14" y2="12"/>
       </svg>
     ),
   },
@@ -24,8 +30,9 @@ const items = [
     title: "Made with Care",
     body: "Small batches, tested with intention",
     icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#45543d" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+      <svg {...S}>
+        {/* clean heart */}
+        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
       </svg>
     ),
   },
@@ -33,8 +40,10 @@ const items = [
     title: "Real Results",
     body: "Gentle formulas that support your skin",
     icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#45543d" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M12 2C6 2 5 10 5 14a7 7 0 0 0 14 0c0-4-1-12-7-12z"/>
+      <svg {...S}>
+        {/* leaf */}
+        <path d="M6.5 20.5C6.5 20.5 7 13 12 9C17 5 21 3 21 3C21 3 19 9 15 13C11 17 6.5 20.5 6.5 20.5Z"/>
+        <line x1="6.5" y1="20.5" x2="12" y2="13"/>
       </svg>
     ),
   },

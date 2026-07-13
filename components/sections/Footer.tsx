@@ -2,10 +2,10 @@
 
 import Link from "next/link";
 
-const BG    = "#292b25";
+const BG    = "#3F4A36";
 const LINEN = "#f5f3ed";
 const MUTED = "rgba(245,243,237,0.5)";
-const LINE  = "rgba(255,255,255,0.1)";
+const LINE  = "rgba(255,255,255,0.12)";
 
 const navLinks = [
   { label: "Shop",         href: "/shop"        },
@@ -67,7 +67,7 @@ export function Footer() {
         {/* Divider */}
         <div style={{ height: "1px", backgroundColor: LINE }} />
 
-        {/* Bottom row: copyright + credentials + legal */}
+        {/* Bottom row: copyright + social icons + legal */}
         <div style={{
           display: "flex", flexWrap: "wrap",
           alignItems: "center", justifyContent: "space-between", gap: "1rem",
@@ -76,10 +76,28 @@ export function Footer() {
             © {new Date().getFullYear()} Sukoon. All rights reserved.
           </p>
 
-          <div style={{ display: "flex", gap: "1.75rem", alignItems: "center" }}>
-            <span style={{ fontFamily: "var(--font-body)", fontSize: "0.6875rem", letterSpacing: "0.06em", color: MUTED }}>
-              UK Halal Certified · Made in the UK
-            </span>
+          {/* Social icons */}
+          <div style={{ display: "flex", gap: "1.25rem", alignItems: "center" }}>
+            <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram"
+              style={{ color: MUTED, transition: "color 0.18s ease", lineHeight: 0 }}
+              onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.color = LINEN)}
+              onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = MUTED)}
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                <circle cx="12" cy="12" r="4"/>
+                <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/>
+              </svg>
+            </a>
+            <a href="https://www.tiktok.com" target="_blank" rel="noopener noreferrer" aria-label="TikTok"
+              style={{ color: MUTED, transition: "color 0.18s ease", lineHeight: 0 }}
+              onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.color = LINEN)}
+              onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = MUTED)}
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.78a4.85 4.85 0 0 1-1.01-.09z"/>
+              </svg>
+            </a>
           </div>
 
           <div style={{ display: "flex", gap: "1.25rem" }}>
