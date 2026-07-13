@@ -117,7 +117,22 @@ function ProductCard({
             >
               {justAdded ? "Added ✓" : "Add to Bag"}
             </button>
-          ) : null}
+          ) : (
+            <a
+              href={`/products/${product.slug}`}
+              style={{
+                fontFamily: "var(--font-body)", fontSize: "0.625rem", fontWeight: 600,
+                letterSpacing: "0.14em", textTransform: "uppercase",
+                color: "#FFFFFF", backgroundColor: "#45543d",
+                border: "1px solid #45543d",
+                padding: "0 1.5rem", height: 46,
+                display: "inline-flex", alignItems: "center",
+                textDecoration: "none",
+              }}
+            >
+              Shop Now
+            </a>
+          )}
           <a
             href={`/products/${product.slug}`}
             style={{

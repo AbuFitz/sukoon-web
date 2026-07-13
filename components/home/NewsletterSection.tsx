@@ -34,8 +34,8 @@ export function NewsletterSection() {
       }} />
 
       <div
-        style={{ display: "grid", gridTemplateColumns: "0.95fr 1.05fr", minHeight: 420, position: "relative", zIndex: 1 }}
-        className="grid-cols-1 md:grid-cols-[0.95fr_1.05fr]"
+        style={{ minHeight: 420, position: "relative", zIndex: 1 }}
+        className="grid grid-cols-1 md:grid-cols-[0.95fr_1.05fr]"
       >
         {/* Image side */}
         <div style={{

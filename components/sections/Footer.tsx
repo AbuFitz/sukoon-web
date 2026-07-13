@@ -59,12 +59,9 @@ export function Footer() {
         maxWidth: 1440, margin: "0 auto",
         padding: "clamp(4.5rem, 8vw, 5.5rem) clamp(2.5rem, 5vw, 4rem) clamp(3rem, 5vw, 4rem)",
       }}>
-        <div style={{
-          display: "grid",
-          gridTemplateColumns: "1.5fr repeat(4, 1fr)",
-          gap: "clamp(2rem, 4vw, 3.375rem)",
-        }}
-          className="grid-cols-2 md:grid-cols-[1.5fr_repeat(4,1fr)]"
+        <div
+          style={{ gap: "clamp(2rem, 4vw, 3.375rem)" }}
+          className="grid grid-cols-2 md:grid-cols-[1.5fr_repeat(4,1fr)]"
         >
           {/* Brand column */}
           <div>
