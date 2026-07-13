@@ -9,35 +9,35 @@ const ingredients = [
     name: "Olive Squalane",
     description: "Lightweight hydration that absorbs quickly without clogging pores.",
     bg: "#CEC2AE",
-    numColor: "rgba(255,255,255,0.22)",
+    numColor: "rgba(255,255,255,0.28)",
   },
   {
     numeral: "٢",
     name: "Vitamin B3",
     description: "Supports the skin barrier across the face and hairline.",
     bg: "#A8BCA0",
-    numColor: "rgba(255,255,255,0.22)",
+    numColor: "rgba(255,255,255,0.28)",
   },
   {
     numeral: "٣",
     name: "Black Seed Oil",
     description: "Helps calm visible irritation and nourish stressed skin.",
     bg: "#364530",
-    numColor: "rgba(255,255,255,0.14)",
+    numColor: "rgba(255,255,255,0.18)",
   },
   {
     numeral: "٤",
     name: "Vitamin E",
     description: "Antioxidant support that helps protect and preserve the formula.",
     bg: "#C99850",
-    numColor: "rgba(255,255,255,0.20)",
+    numColor: "rgba(255,255,255,0.25)",
   },
   {
     numeral: "٥",
     name: "Vanilla Extract",
     description: "Softens the natural scent without synthetic fragrance.",
     bg: "#B8ADA4",
-    numColor: "rgba(255,255,255,0.22)",
+    numColor: "rgba(255,255,255,0.28)",
   },
 ];
 
@@ -53,18 +53,17 @@ export function IngredientsSection() {
         borderTop: "1px solid #e4e0d6",
       }}
     >
-      {/* Botanical leaf — enters from top-right, hidden on mobile */}
+      {/* Botanical leaf — top-right, partially cropped, hidden on mobile */}
       <div
         className="hidden md:block"
         style={{
           position: "absolute",
-          top: 0,
-          right: 0,
-          width: "clamp(180px, 18vw, 320px)",
+          top: "-20px",
+          right: "-60px",
+          width: "clamp(200px, 16vw, 280px)",
           pointerEvents: "none",
           userSelect: "none",
           zIndex: 1,
-          transform: "translate(10%, -10%)",
         }}
         aria-hidden="true"
       >
@@ -96,7 +95,7 @@ export function IngredientsSection() {
         <FadeInStagger stagger={0.07} delay={0.12}>
           <div
             className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5"
-            style={{ gap: "clamp(1rem, 2vw, 1.5rem)" }}
+            style={{ gap: "clamp(0.875rem, 1.5vw, 1.25rem)", alignItems: "start" }}
           >
             {ingredients.map((ing) => (
               <FadeInItem key={ing.name} direction="up">
@@ -105,17 +104,17 @@ export function IngredientsSection() {
                   <div style={{
                     position: "relative",
                     backgroundColor: ing.bg,
-                    aspectRatio: "3 / 4",
+                    height: "clamp(140px, 13vw, 200px)",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     overflow: "hidden",
-                    marginBottom: "1.25rem",
+                    marginBottom: "1rem",
                   }}>
                     <span style={{
                       fontFamily: '"Noto Naskh Arabic", "Amiri", Georgia, serif',
                       fontWeight: 400,
-                      fontSize: "clamp(96px, 9vw, 140px)",
+                      fontSize: "clamp(80px, 8vw, 120px)",
                       lineHeight: 1,
                       color: ing.numColor,
                       userSelect: "none",
@@ -128,9 +127,9 @@ export function IngredientsSection() {
                   {/* Name */}
                   <p style={{
                     fontFamily: "var(--font-body)", fontWeight: 600,
-                    fontSize: "0.9375rem",
+                    fontSize: "0.875rem",
                     color: "#22231F",
-                    margin: "0 0 0.5rem",
+                    margin: "0 0 0.375rem",
                     lineHeight: 1.3,
                   }}>
                     {ing.name}
@@ -139,9 +138,9 @@ export function IngredientsSection() {
                   {/* Description */}
                   <p style={{
                     fontFamily: "var(--font-body)",
-                    fontSize: "0.875rem",
-                    lineHeight: 1.65,
-                    color: "#292A26",
+                    fontSize: "0.8125rem",
+                    lineHeight: 1.6,
+                    color: "#64685f",
                     margin: 0,
                   }}>
                     {ing.description}
