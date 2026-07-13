@@ -134,11 +134,12 @@ export function SiteNav() {
         borderBottom: `1px solid ${(solid || !isTransparentPage) ? LINE : "transparent"}`,
         transition: "background-color 0.4s ease, border-color 0.4s ease",
       }}>
-        <div className="h-[76px] md:h-[84px]" style={{
+        <div style={{
           maxWidth: "1480px", margin: "0 auto",
-          padding: "0 clamp(1.25rem, 5vw, 3.5rem)",
+          padding: "clamp(0.625rem, 1.2vw, 1rem) clamp(1.25rem, 5vw, 3.5rem)",
           display: "grid", gridTemplateColumns: "1fr auto 1fr",
           alignItems: "center",
+          minHeight: "76px",
         }}>
           {/* Desktop nav links */}
           <nav className="hidden md:flex" style={{ gap: "2.25rem" }} aria-label="Primary">
@@ -157,14 +158,10 @@ export function SiteNav() {
             </button>
           </div>
 
-          {/* Wordmark — always dark */}
-          <a href="/" style={{
-            justifySelf: "center", textDecoration: "none",
-            color: "#2C2A1F",
-            fontFamily: "var(--font-display)", fontSize: "clamp(1.875rem, 3vw, 2.75rem)", fontWeight: 400,
-            letterSpacing: "0.18em", textTransform: "uppercase", lineHeight: 1,
-          }}>
-            Sukoon
+          {/* Logo — always dark */}
+          <a href="/" style={{ justifySelf: "center", textDecoration: "none", lineHeight: 0 }}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/otherlogo.png" alt="Sukoon" style={{ height: "clamp(44px, 5vw, 64px)", width: "auto", display: "block" }} />
           </a>
 
           {/* Desktop icons */}
@@ -199,10 +196,8 @@ export function SiteNav() {
           height: "76px", display: "flex", alignItems: "center", justifyContent: "space-between",
           padding: "0 clamp(1.5rem, 5vw, 3.5rem)", borderBottom: "1px solid rgba(255,255,255,0.14)", flexShrink: 0,
         }}>
-          <span style={{
-            fontFamily: "var(--font-display)", fontSize: "2.25rem", letterSpacing: "0.18em",
-            textTransform: "uppercase", color: LINEN,
-          }}>Sukoon</span>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/otherlogo.png" alt="Sukoon" style={{ height: 44, width: "auto" }} />
           <button aria-label="Close menu" onClick={() => setOpen(false)} style={{
             background: "none", border: "none", color: LINEN, cursor: "pointer", padding: 0, display: "flex",
           }}>
