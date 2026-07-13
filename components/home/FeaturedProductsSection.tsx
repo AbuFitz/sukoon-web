@@ -31,20 +31,14 @@ function ProductCard({ product }: { product: FeaturedProduct }) {
     <div
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      style={{
-        background: "#FFFFFF",
-        border: `1px solid ${hovered ? "rgba(69,84,61,0.28)" : "rgba(69,84,61,0.14)"}`,
-        display: "flex", flexDirection: "column",
-        transform: hovered ? "translateY(-4px)" : "translateY(0)",
-        boxShadow: hovered ? "0 18px 42px rgba(48,55,43,0.07)" : "none",
-        transition: "transform 260ms ease, border-color 260ms ease, box-shadow 260ms ease",
-      }}
+      style={{ display: "flex", flexDirection: "column" }}
     >
-      {/* Image */}
+      {/* Frameless image — sits directly on section bg */}
       <a
         href={`/products/${product.handle}`}
-        style={{ display: "block", position: "relative", aspectRatio: "1 / 1.15", overflow: "hidden", backgroundColor: "#f2ede4" }}
+        style={{ display: "block", position: "relative", aspectRatio: "3 / 4", overflow: "hidden" }}
         tabIndex={-1}
+        aria-hidden
       >
         <Image
           src={imgSrc}
@@ -52,71 +46,75 @@ function ProductCard({ product }: { product: FeaturedProduct }) {
           fill
           sizes="(min-width: 1280px) 30vw, (min-width: 768px) 50vw, 100vw"
           style={{
-            objectFit: "contain",
-            padding: "2rem",
-            transition: "transform 500ms cubic-bezier(0.2,0.7,0.2,1)",
-            transform: hovered ? "scale(1.025)" : "scale(1)",
+            objectFit: "cover",
+            transition: "transform 600ms cubic-bezier(0.2,0.7,0.2,1)",
+            transform: hovered ? "scale(1.03)" : "scale(1)",
           }}
-          unoptimized
         />
       </a>
 
-      {/* Info */}
-      <div style={{ padding: "1.125rem 1.125rem 1.25rem", display: "flex", flexDirection: "column", gap: "0.3rem", flex: 1 }}>
+      {/* Info — clean, no card chrome */}
+      <div style={{ paddingTop: "1.375rem", display: "flex", flexDirection: "column", gap: "0.25rem" }}>
         <a href={`/products/${product.handle}`} style={{ textDecoration: "none", color: "inherit" }}>
           <p style={{
-            fontFamily: "var(--font-body)", fontSize: "1.0625rem", fontWeight: 500,
-            color: "#292b25", lineHeight: 1.3, margin: 0,
-          }}>
+            fontFamily: "var(--font-display)", fontWeight: 400,
+            fontSize: "1.4375rem", letterSpacing: "-0.018em", lineHeight: 1.1,
+            color: "#292b25", margin: 0,
+            transition: "color 200ms ease",
+          }}
+            onMouseEnter={e => (e.currentTarget.style.color = "#45543d")}
+            onMouseLeave={e => (e.currentTarget.style.color = "#292b25")}
+          >
             {product.title}
           </p>
         </a>
-        <p style={{ fontFamily: "var(--font-body)", fontSize: "0.9375rem", color: "#64685f", margin: 0 }}>
+        <p style={{
+          fontFamily: "var(--font-body)", fontSize: "0.9375rem",
+          color: "#78836e", margin: 0,
+        }}>
           {product.price}
         </p>
 
-        {variantId ? (
-          <button
-            onClick={handleAdd}
-            disabled={justAdded || loading}
-            style={{
-              marginTop: "1rem",
-              fontFamily: "var(--font-body)", fontSize: "0.6875rem", fontWeight: 600,
-              letterSpacing: "0.12em", textTransform: "uppercase",
-              color: justAdded ? "#45543d" : "#FFFFFF",
-              backgroundColor: justAdded ? "transparent" : "#45543d",
-              border: "1px solid #45543d",
-              padding: "0.875rem",
-              cursor: "pointer",
-              transition: "background-color 220ms ease, color 220ms ease, transform 220ms ease",
-              width: "100%",
-              transform: justAdded ? "none" : undefined,
-            }}
-            onMouseEnter={e => { if (!justAdded) (e.currentTarget as HTMLButtonElement).style.transform = "translateY(-1px)"; }}
-            onMouseLeave={e => { (e.currentTarget as HTMLButtonElement).style.transform = "none"; }}
-          >
-            {justAdded ? "Added ✓" : "Add to Bag"}
-          </button>
-        ) : (
-          <a
-            href={`/products/${product.handle}`}
-            style={{
-              marginTop: "1rem",
-              fontFamily: "var(--font-body)", fontSize: "0.6875rem", fontWeight: 600,
-              letterSpacing: "0.12em", textTransform: "uppercase",
-              color: "#45543d",
-              border: "1px solid rgba(69,84,61,0.55)",
-              padding: "0.875rem",
-              textDecoration: "none", textAlign: "center",
-              display: "block",
-              transition: "border-color 220ms ease, transform 220ms ease",
-            }}
-            onMouseEnter={e => { const el = e.currentTarget as HTMLAnchorElement; el.style.borderColor = "#45543d"; el.style.transform = "translateY(-1px)"; }}
-            onMouseLeave={e => { const el = e.currentTarget as HTMLAnchorElement; el.style.borderColor = "rgba(69,84,61,0.55)"; el.style.transform = "none"; }}
-          >
-            View Product
-          </a>
-        )}
+        <div style={{ marginTop: "1rem" }}>
+          {variantId ? (
+            <button
+              onClick={handleAdd}
+              disabled={justAdded || loading}
+              style={{
+                fontFamily: "var(--font-body)", fontSize: "0.625rem", fontWeight: 600,
+                letterSpacing: "0.14em", textTransform: "uppercase",
+                color: justAdded ? "#45543d" : "#FFFFFF",
+                backgroundColor: justAdded ? "transparent" : "#45543d",
+                border: "1px solid #45543d",
+                padding: "0 1.5rem", height: 44,
+                cursor: "pointer", width: "100%",
+                transition: "background-color 220ms ease, color 220ms ease, transform 200ms ease",
+              }}
+              onMouseEnter={e => { if (!justAdded) { const el = e.currentTarget as HTMLElement; el.style.backgroundColor = "#34402f"; el.style.borderColor = "#34402f"; el.style.transform = "translateY(-1px)"; } }}
+              onMouseLeave={e => { const el = e.currentTarget as HTMLElement; if (!justAdded) { el.style.backgroundColor = "#45543d"; el.style.borderColor = "#45543d"; } el.style.transform = "none"; }}
+            >
+              {justAdded ? "Added ✓" : "Add to Bag"}
+            </button>
+          ) : (
+            <a
+              href={`/products/${product.handle}`}
+              style={{
+                fontFamily: "var(--font-body)", fontSize: "0.625rem", fontWeight: 600,
+                letterSpacing: "0.14em", textTransform: "uppercase",
+                color: "#292b25", textDecoration: "none",
+                border: "1px solid rgba(41,43,37,0.3)",
+                padding: "0 1.5rem", height: 44,
+                display: "flex", alignItems: "center", justifyContent: "center",
+                width: "100%",
+                transition: "border-color 200ms ease, transform 200ms ease",
+              }}
+              onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.borderColor = "#292b25"; el.style.transform = "translateY(-1px)"; }}
+              onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.borderColor = "rgba(41,43,37,0.3)"; el.style.transform = "none"; }}
+            >
+              View Product
+            </a>
+          )}
+        </div>
       </div>
     </div>
   );
@@ -124,55 +122,24 @@ function ProductCard({ product }: { product: FeaturedProduct }) {
 
 export function FeaturedProductsSection({ products }: { products: FeaturedProduct[] }) {
   return (
-    <section style={{ backgroundColor: "#faf8f4", padding: "104px 0", borderTop: "1px solid #eceae2" }}>
+    <section style={{ backgroundColor: "#faf8f4", padding: "clamp(5rem, 9vw, 8rem) 0" }}>
       <div style={{ width: "min(calc(100% - 80px), 1400px)", margin: "0 auto" }}>
 
-        {/* Header */}
-        <div style={{
-          display: "flex", justifyContent: "space-between", alignItems: "flex-end",
-          marginBottom: 56, flexWrap: "wrap", gap: "1.5rem",
-        }}>
-          <FadeIn direction="up" delay={0.05}>
-            <div>
-              <p style={{
-                fontFamily: "var(--font-body)", fontSize: "0.625rem", fontWeight: 700,
-                letterSpacing: "0.18em", textTransform: "uppercase",
-                color: "#8a9482", marginBottom: "1rem",
-              }}>
-                The Collection
-              </p>
-              <h2 style={{
-                fontFamily: "var(--font-display)", fontWeight: 400,
-                fontSize: "clamp(2.625rem, 4vw, 4.125rem)",
-                lineHeight: 0.98, letterSpacing: "-0.03em",
-                color: "#292b25", margin: 0,
-              }}>
-                Simple rituals.<br />Visible results.
-              </h2>
-            </div>
-          </FadeIn>
+        {/* Minimal tagline */}
+        <FadeIn direction="up" delay={0.05}>
+          <p style={{
+            fontFamily: "var(--font-display)", fontWeight: 400,
+            fontSize: "clamp(1.25rem, 1.8vw, 1.625rem)",
+            letterSpacing: "-0.01em", fontStyle: "italic",
+            color: "#8a9482", margin: "0 0 clamp(3rem, 5vw, 4.5rem)",
+          }}>
+            Simple rituals. Visible results.
+          </p>
+        </FadeIn>
 
-          <FadeIn direction="up" delay={0.12}>
-            <a
-              href="/shop"
-              style={{
-                fontFamily: "var(--font-body)", fontSize: "0.8125rem", fontWeight: 400,
-                color: "#292b25", textDecoration: "none", letterSpacing: "0.01em",
-                borderBottom: "1px solid rgba(41,43,37,0.35)", paddingBottom: 2,
-                flexShrink: 0, alignSelf: "flex-end",
-                transition: "color 200ms ease, border-color 200ms ease",
-              }}
-              onMouseEnter={e => { const el = e.currentTarget; el.style.color = "#45543d"; el.style.borderColor = "#45543d"; }}
-              onMouseLeave={e => { const el = e.currentTarget; el.style.color = "#292b25"; el.style.borderColor = "rgba(41,43,37,0.35)"; }}
-            >
-              View all products →
-            </a>
-          </FadeIn>
-        </div>
-
-        {/* Grid */}
+        {/* Frameless product grid */}
         <FadeInStagger stagger={0.08} delay={0.1}>
-          <div className="grid grid-cols-1 md:grid-cols-3" style={{ gap: 28 }}>
+          <div className="grid grid-cols-1 md:grid-cols-3" style={{ gap: "clamp(2rem, 4vw, 3.5rem)" }}>
             {products.map(p => (
               <FadeInItem key={p.handle}>
                 <ProductCard product={p} />

@@ -51,7 +51,6 @@ export function NewsletterSection() {
             fill
             sizes="(min-width: 1024px) 44vw, 100vw"
             style={{ objectFit: "cover", objectPosition: "center" }}
-            unoptimized
           />
         </div>
 
