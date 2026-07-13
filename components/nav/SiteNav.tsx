@@ -161,7 +161,7 @@ export function SiteNav() {
           {/* Logo — always dark */}
           <a href="/" style={{ justifySelf: "center", textDecoration: "none", lineHeight: 0 }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/otherlogo.png" alt="Sukoon" style={{ height: "clamp(28px, 3vw, 40px)", width: "auto", display: "block" }} />
+            <img src="/otherlogo.png" alt="Sukoon" style={{ height: "clamp(22px, 2.2vw, 32px)", width: "auto", display: "block" }} />
           </a>
 
           {/* Desktop icons */}
