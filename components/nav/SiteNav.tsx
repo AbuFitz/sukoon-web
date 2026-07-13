@@ -10,7 +10,6 @@ const links = [
   { label: "Shop",        href: "/shop" },
   { label: "Our Story",   href: "/about" },
   { label: "Ingredients", href: "#ingredients" },
-  { label: "Journal",     href: "#" },
 ];
 
 const INK   = "#111110";

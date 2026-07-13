@@ -4,7 +4,7 @@
 export const homepageImages = {
   hero:                   "/images/home/heroimage.png",
   heroLeaf:               "/images/decor/hero-leaf-placeholder.svg",
-  story:                  "https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=1200&q=85&fit=crop",
+  story:                  "/images/home/rootedcalm.png",
   storyDetail:            "/images/home/story-detail-placeholder.svg",
   benefits:               "https://images.unsplash.com/photo-1614159102989-40cc8abb8099?w=900&q=85&fit=crop",
   newsletter:             "https://images.unsplash.com/photo-1609220136736-443140cfe843?w=1000&q=85&fit=crop",

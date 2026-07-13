@@ -1,6 +1,5 @@
 import { SiteNav }                from "@/components/nav/SiteNav";
 import { HeroSection }            from "@/components/home/HeroSection";
-import { TrustStrip }             from "@/components/sections/TrustStrip";
 import { FeaturedProductsSection } from "@/components/home/FeaturedProductsSection";
 import { BrandStorySection }      from "@/components/home/BrandStorySection";
 import { IngredientsSection }     from "@/components/home/IngredientsSection";
@@ -40,7 +39,6 @@ export default async function HomePage() {
       <SiteNav />
       <main>
         <HeroSection />
-        <TrustStrip />
         <FeaturedProductsSection products={featuredProducts} />
         <BrandStorySection />
         <IngredientsSection />
