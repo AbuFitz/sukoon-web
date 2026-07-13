@@ -54,7 +54,7 @@ export function ShopHero() {
         zIndex: 2,
         maxWidth: 1400,
         margin: "0 auto",
-        padding: "calc(1.75rem + 84px + 1rem) clamp(2rem, 5vw, 3.5rem) 2.375rem",
+        padding: "calc(1.75rem + 120px + 1rem) clamp(2rem, 5vw, 3.5rem) 2.375rem",
         minHeight: 430,
         display: "flex",
         flexDirection: "column",

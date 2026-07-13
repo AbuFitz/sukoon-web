@@ -134,11 +134,12 @@ export function SiteNav() {
         borderBottom: `1px solid ${(solid || !isTransparentPage) ? LINE : "transparent"}`,
         transition: "background-color 0.4s ease, border-color 0.4s ease",
       }}>
-        <div className="h-[76px] md:h-[84px]" style={{
+        <div style={{
           maxWidth: "1480px", margin: "0 auto",
-          padding: "0 clamp(1.25rem, 5vw, 3.5rem)",
+          padding: "0.5rem clamp(1.25rem, 5vw, 3.5rem)",
           display: "grid", gridTemplateColumns: "1fr auto 1fr",
           alignItems: "center",
+          minHeight: "76px",
         }}>
           {/* Desktop nav links */}
           <nav className="hidden md:flex" style={{ gap: "2.25rem" }} aria-label="Primary">
@@ -192,8 +193,8 @@ export function SiteNav() {
         display: "flex", flexDirection: "column",
       }}>
         <div style={{
-          height: "76px", display: "flex", alignItems: "center", justifyContent: "space-between",
-          padding: "0 clamp(1.5rem, 5vw, 3.5rem)", borderBottom: "1px solid rgba(255,255,255,0.14)", flexShrink: 0,
+          minHeight: "76px", display: "flex", alignItems: "center", justifyContent: "space-between",
+          padding: "0.5rem clamp(1.5rem, 5vw, 3.5rem)", borderBottom: "1px solid rgba(255,255,255,0.14)", flexShrink: 0,
         }}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/otherlogo.png" alt="Sukoon" style={{ height: 96, width: "auto" }} />

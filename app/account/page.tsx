@@ -11,7 +11,7 @@ export default function AccountPage() {
   return (
     <>
       <SiteNav />
-      <main style={{ paddingTop: "calc(1.75rem + 84px)", backgroundColor: "#faf8f3", minHeight: "80vh" }}>
+      <main style={{ paddingTop: "calc(1.75rem + 120px)", backgroundColor: "#faf8f3", minHeight: "80vh" }}>
         {/* Page header */}
         <div style={{
           borderBottom: "1px solid #dedfd8",
