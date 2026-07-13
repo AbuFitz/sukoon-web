@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import { SearchOverlay } from "./SearchOverlay";
 import { AccountPanel } from "./AccountPanel";
 import { BagPanel } from "./BagPanel";
@@ -107,6 +108,9 @@ export function SiteNav() {
   const [bagOpen, setBagOpen] = useState(false);
   const [solid, setSolid] = useState(false);
   const { count } = useCart();
+  const pathname = usePathname();
+  const isHome = pathname === "/";
+  const transparent = isHome && !solid;
 
   useEffect(() => {
     const onScroll = () => setSolid(window.scrollY > 40);
@@ -124,9 +128,9 @@ export function SiteNav() {
     <>
       <header style={{
         position: "fixed", top: "1.75rem", left: 0, right: 0, zIndex: 50,
-        backgroundColor: solid ? "rgba(251,248,243,0.96)" : "transparent",
-        backdropFilter: solid ? "blur(10px)" : "none",
-        borderBottom: `1px solid ${solid ? LINE : "transparent"}`,
+        backgroundColor: (solid || !isHome) ? "rgba(251,248,243,0.96)" : "transparent",
+        backdropFilter: (solid || !isHome) ? "blur(10px)" : "none",
+        borderBottom: `1px solid ${(solid || !isHome) ? LINE : "transparent"}`,
         transition: "background-color 0.4s ease, border-color 0.4s ease",
       }}>
         <div className="h-[76px] md:h-[84px]" style={{
@@ -137,16 +141,16 @@ export function SiteNav() {
         }}>
           {/* Desktop nav links */}
           <nav className="hidden md:flex" style={{ gap: "2.25rem" }} aria-label="Primary">
-            <NavLink {...links[0]} transparent={!solid} />
-            <NavLink {...links[1]} transparent={!solid} />
-            <NavLink {...links[2]} transparent={!solid} />
+            <NavLink {...links[0]} transparent={transparent} />
+            <NavLink {...links[1]} transparent={transparent} />
+            <NavLink {...links[2]} transparent={transparent} />
           </nav>
           {/* Mobile hamburger */}
           <div className="flex md:hidden" style={{ justifySelf: "start" }}>
             <button
               aria-label={open ? "Close menu" : "Open menu"}
               onClick={() => setOpen(o => !o)}
-              style={{ background: "none", border: "none", color: solid ? INK : CREAM, cursor: "pointer", padding: 0, display: "flex", transition: "color 0.4s ease" }}
+              style={{ background: "none", border: "none", color: transparent ? CREAM : INK, cursor: "pointer", padding: 0, display: "flex", transition: "color 0.4s ease" }}
             >
               <HamburgerIcon open={open} />
             </button>
@@ -155,27 +159,27 @@ export function SiteNav() {
           {/* Wordmark */}
           <a href="/" style={{
             justifySelf: "center", textDecoration: "none",
-            color: solid ? "#2C2A1F" : CREAM,
+            color: transparent ? CREAM : "#2C2A1F",
             fontFamily: "var(--font-display)", fontSize: "clamp(1.875rem, 3vw, 2.75rem)", fontWeight: 400,
             letterSpacing: "0.18em", textTransform: "uppercase", lineHeight: 1,
             transition: "color 0.4s ease",
-            textShadow: solid ? "none" : "0 1px 6px rgba(0,0,0,0.3)",
+            textShadow: transparent ? "0 1px 6px rgba(0,0,0,0.3)" : "none",
           }}>
             Sukoon
           </a>
 
           {/* Desktop icons */}
           <div className="hidden md:flex" style={{ justifySelf: "end", alignItems: "center", gap: "2.25rem" }}>
-            <span style={{ width: "1px", height: "16px", backgroundColor: solid ? LINE : "rgba(245,242,235,0.35)" }} />
-            <IconBtn label="Search" onClick={() => setSearchOpen(true)} color={solid ? INK : CREAM}><SearchIcon /></IconBtn>
-            <IconBtn label="Account" onClick={() => setAccountOpen(true)} color={solid ? INK : CREAM}><AccountIcon /></IconBtn>
-            <IconBtn label="Bag" onClick={() => setBagOpen(true)} badge={count} color={solid ? INK : CREAM}><BagIcon /></IconBtn>
+            <span style={{ width: "1px", height: "16px", backgroundColor: transparent ? "rgba(245,242,235,0.35)" : LINE }} />
+            <IconBtn label="Search" onClick={() => setSearchOpen(true)} color={transparent ? CREAM : INK}><SearchIcon /></IconBtn>
+            <IconBtn label="Account" onClick={() => setAccountOpen(true)} color={transparent ? CREAM : INK}><AccountIcon /></IconBtn>
+            <IconBtn label="Bag" onClick={() => setBagOpen(true)} badge={count} color={transparent ? CREAM : INK}><BagIcon /></IconBtn>
           </div>
 
           {/* Mobile icons */}
           <div className="flex md:hidden" style={{ justifySelf: "end", alignItems: "center", gap: "1.375rem" }}>
-            <IconBtn label="Search" onClick={() => setSearchOpen(true)} color={solid ? INK : CREAM}><SearchIcon /></IconBtn>
-            <IconBtn label="Bag" onClick={() => setBagOpen(true)} badge={count} color={solid ? INK : CREAM}><BagIcon /></IconBtn>
+            <IconBtn label="Search" onClick={() => setSearchOpen(true)} color={transparent ? CREAM : INK}><SearchIcon /></IconBtn>
+            <IconBtn label="Bag" onClick={() => setBagOpen(true)} badge={count} color={transparent ? CREAM : INK}><BagIcon /></IconBtn>
           </div>
         </div>
       </header>
