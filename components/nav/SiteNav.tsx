@@ -156,14 +156,14 @@ export function SiteNav() {
             </button>
           </div>
 
-          {/* Wordmark — always dark */}
-          <a href="/" style={{
-            justifySelf: "center", textDecoration: "none",
-            color: "#2C2A1F",
-            fontFamily: "var(--font-display)", fontSize: "clamp(1.875rem, 3vw, 2.75rem)", fontWeight: 400,
-            letterSpacing: "0.18em", textTransform: "uppercase", lineHeight: 1,
-          }}>
-            Sukoon
+          {/* Logo — always dark */}
+          <a href="/" style={{ justifySelf: "center", textDecoration: "none", lineHeight: 0 }}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/Sukoonlogo.png"
+              alt="Sukoon"
+              style={{ height: "clamp(36px, 4vw, 52px)", width: "auto", display: "block" }}
+            />
           </a>
 
           {/* Desktop icons */}
@@ -198,12 +198,8 @@ export function SiteNav() {
           height: "76px", display: "flex", alignItems: "center", justifyContent: "space-between",
           padding: "0 clamp(1.5rem, 5vw, 3.5rem)", borderBottom: "1px solid rgba(255,255,255,0.14)", flexShrink: 0,
         }}>
-          <span style={{
-            fontFamily: "var(--font-display)", fontSize: "2.25rem", letterSpacing: "0.18em",
-            textTransform: "uppercase", color: LINEN,
-          }}>
-            Sukoon
-          </span>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/Sukoonlogo.png" alt="Sukoon" style={{ height: 40, width: "auto", filter: "brightness(0) invert(1)" }} />
           <button aria-label="Close menu" onClick={() => setOpen(false)} style={{
             background: "none", border: "none", color: LINEN, cursor: "pointer", padding: 0, display: "flex",
           }}>

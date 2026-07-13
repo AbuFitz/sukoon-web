@@ -28,9 +28,9 @@ export function ShopHero() {
         style={{
           position: "absolute",
           zIndex: 1,
-          top: -110,
-          right: -145,
-          width: "clamp(520px, 54vw, 920px)",
+          top: 40,
+          right: -200,
+          width: "clamp(600px, 62vw, 1040px)",
           pointerEvents: "none",
           userSelect: "none",
         }}

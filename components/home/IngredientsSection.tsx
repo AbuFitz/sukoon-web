@@ -63,9 +63,9 @@ export function IngredientsSection() {
         className="hidden md:block"
         style={{
           position: "absolute",
-          top: "-260px",
-          right: "-320px",
-          width: "clamp(700px, 52vw, 980px)",
+          top: "-200px",
+          right: "-480px",
+          width: "clamp(820px, 62vw, 1100px)",
           height: "auto",
           transform: "rotate(-10deg)",
           transformOrigin: "top right",
