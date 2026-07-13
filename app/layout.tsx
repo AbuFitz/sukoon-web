@@ -4,6 +4,7 @@ import { CartProvider } from "@/lib/cart-context";
 import { AnnouncementBar } from "@/components/sections/AnnouncementBar";
 import { CookieBanner } from "@/components/CookieBanner";
 import { LoadingScreen } from "@/components/LoadingScreen";
+import { ScrollProgress } from "@/components/ui/ScrollProgress";
 import "./globals.css";
 
 const cormorant = Cormorant_Garamond({
@@ -41,6 +42,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${cormorant.variable} ${dmSans.variable} h-full`}>
       <body className="min-h-full">
+        <ScrollProgress />
         <LoadingScreen />
         <AnnouncementBar />
         <CartProvider>{children}</CartProvider>

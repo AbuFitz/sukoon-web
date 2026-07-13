@@ -10,17 +10,11 @@ export function LoadingScreen() {
     sessionStorage.setItem("sukoon_loaded", "1");
 
     setPhase("enter");
-    const t1 = setTimeout(() => setPhase("words"), 180);   // wordmark fades in
-    const t2 = setTimeout(() => setPhase("line"),  500);   // line begins growing
-    const t3 = setTimeout(() => setPhase("hold"),  1650);  // line complete, subtitle appears
-    const t4 = setTimeout(() => setPhase("exit"),  2800);  // start exit
-    const t5 = setTimeout(() => setPhase("hidden"), 3600); // fully gone
-
-    // Dismiss early only if page takes too long — don't dismiss before hold
-    const onLoad = () => {
-      if (phase === "hidden" || phase === "exit") return;
-    };
-    window.addEventListener("load", onLoad, { once: true });
+    const t1 = setTimeout(() => setPhase("words"), 200);
+    const t2 = setTimeout(() => setPhase("line"),  550);
+    const t3 = setTimeout(() => setPhase("hold"),  1700);
+    const t4 = setTimeout(() => setPhase("exit"),  2900);
+    const t5 = setTimeout(() => setPhase("hidden"), 3800);
 
     return () => { clearTimeout(t1); clearTimeout(t2); clearTimeout(t3); clearTimeout(t4); clearTimeout(t5); };
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
@@ -35,43 +29,70 @@ export function LoadingScreen() {
   return (
     <div style={{
       position: "fixed", inset: 0, zIndex: 9999,
-      backgroundColor: "#2d3628",
       display: "grid", placeItems: "center",
       opacity: isExiting ? 0 : 1,
       transition: isExiting
-        ? "opacity 0.9s cubic-bezier(0.4,0,0.2,1)"
-        : "opacity 0.35s ease",
+        ? "opacity 1s cubic-bezier(0.4,0,0.2,1)"
+        : "opacity 0.4s ease",
       pointerEvents: isExiting ? "none" : "all",
     }}>
-      <div style={{ textAlign: "center", userSelect: "none" }}>
+      {/* Blurred backdrop */}
+      <div style={{
+        position: "absolute", inset: 0,
+        backgroundColor: "rgba(41, 43, 37, 0.82)",
+        backdropFilter: "blur(18px) saturate(1.2)",
+        WebkitBackdropFilter: "blur(18px) saturate(1.2)",
+      }} />
+
+      {/* Subtle vignette */}
+      <div style={{
+        position: "absolute", inset: 0,
+        background: "radial-gradient(ellipse at center, transparent 40%, rgba(20,22,18,0.55) 100%)",
+      }} />
+
+      {/* Content */}
+      <div style={{ position: "relative", textAlign: "center", userSelect: "none" }}>
+
+        {/* Small eyebrow */}
+        <p style={{
+          fontFamily: "var(--font-body)", fontWeight: 500,
+          fontSize: "0.5625rem", letterSpacing: "0.28em", textTransform: "uppercase",
+          color: "rgba(245,242,235,0.35)",
+          marginBottom: "1.5rem",
+          opacity: hasWords ? 1 : 0,
+          transform: hasWords ? "translateY(0)" : "translateY(8px)",
+          transition: "opacity 1s ease 0.1s, transform 1s cubic-bezier(0.22,1,0.36,1) 0.1s",
+        }}>
+          A Daily Ritual
+        </p>
 
         {/* Wordmark */}
         <div style={{
           fontFamily: "var(--font-display)", fontWeight: 400,
-          fontSize: "clamp(40px, 5vw, 68px)",
-          letterSpacing: "0.32em", textTransform: "uppercase",
+          fontSize: "clamp(48px, 6vw, 80px)",
+          letterSpacing: "0.36em", textTransform: "uppercase",
           color: "#f5f2eb",
           opacity: hasWords ? 1 : 0,
-          transform: hasWords ? "translateY(0)" : "translateY(14px)",
-          transition: "opacity 0.9s cubic-bezier(0.22,1,0.36,1), transform 1s cubic-bezier(0.22,1,0.36,1)",
+          transform: hasWords ? "translateY(0)" : "translateY(16px)",
+          transition: "opacity 1s cubic-bezier(0.22,1,0.36,1), transform 1.1s cubic-bezier(0.22,1,0.36,1)",
         }}>
           Sukoon
         </div>
 
         {/* Growing line */}
         <div style={{
-          width: 180, height: "0.5px",
-          margin: "28px auto 0",
-          backgroundColor: "rgba(245,242,235,0.15)",
+          width: 200, height: "1px",
+          margin: "2rem auto 0",
+          backgroundColor: "rgba(245,242,235,0.1)",
           overflow: "hidden",
         }}>
           <div style={{
             height: "100%",
-            backgroundColor: "rgba(245,242,235,0.7)",
+            backgroundColor: "rgba(152,164,125,0.8)",
             transformOrigin: "left center",
             transform: hasLine ? "scaleX(1)" : "scaleX(0)",
             transition: hasLine
-              ? "transform 1.1s cubic-bezier(0.22,1,0.36,1)"
+              ? "transform 1.2s cubic-bezier(0.22,1,0.36,1)"
               : "none",
           }} />
         </div>
@@ -79,15 +100,15 @@ export function LoadingScreen() {
         {/* Tagline */}
         <p style={{
           fontFamily: "var(--font-body)", fontWeight: 400,
-          fontSize: "clamp(9px, 1vw, 11px)",
-          letterSpacing: "0.26em", textTransform: "uppercase",
-          color: "rgba(245,242,235,0.45)",
-          margin: "20px 0 0",
+          fontSize: "clamp(8px, 0.9vw, 10px)",
+          letterSpacing: "0.24em", textTransform: "uppercase",
+          color: "rgba(245,242,235,0.3)",
+          margin: "1.5rem 0 0",
           opacity: hasSub ? 1 : 0,
           transform: hasSub ? "translateY(0)" : "translateY(6px)",
-          transition: "opacity 0.8s ease, transform 0.8s cubic-bezier(0.22,1,0.36,1)",
+          transition: "opacity 1s ease 0.1s, transform 1s cubic-bezier(0.22,1,0.36,1) 0.1s",
         }}>
-          Daily Solace
+          Rooted in calm
         </p>
       </div>
     </div>

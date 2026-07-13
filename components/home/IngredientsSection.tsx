@@ -53,21 +53,21 @@ export function IngredientsSection() {
         borderTop: "1px solid #e4e0d6",
       }}
     >
-      {/* Botanical leaf — overflows from top-right, hidden on mobile */}
+      {/* Botanical leaf — large, overflows from top-right, hidden on mobile */}
       <Image
         src="/images/decor/ingredients-leaf.png"
         alt=""
         aria-hidden="true"
-        width={760}
-        height={507}
+        width={900}
+        height={600}
         className="hidden md:block"
         style={{
           position: "absolute",
-          top: "-170px",
-          right: "-210px",
-          width: "clamp(520px, 34vw, 760px)",
+          top: "-220px",
+          right: "-280px",
+          width: "clamp(640px, 46vw, 900px)",
           height: "auto",
-          transform: "rotate(-14deg)",
+          transform: "rotate(-10deg)",
           transformOrigin: "top right",
           pointerEvents: "none",
           userSelect: "none",
