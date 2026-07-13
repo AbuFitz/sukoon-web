@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 420" fill="none">
+  <!-- Main arching stem — enters from top-right, curves down-left -->
+  <path d="M 370 -10 C 330 40 270 100 210 175 C 160 235 118 295 88 360 C 74 390 62 410 52 430"
+        stroke="#3a4c2e" stroke-width="2.2" fill="none" stroke-linecap="round" opacity="0.72"/>
+
+  <!-- Secondary parallel stem -->
+  <path d="M 356 -4 C 318 46 262 108 202 182 C 155 240 115 300 88 360"
+        stroke="#3a4c2e" stroke-width="1.2" fill="none" stroke-linecap="round" opacity="0.38"/>
+
+  <!-- Leaf pair 1 — uppermost, mostly off-canvas top-right -->
+  <path d="M 362 4 C 375 -14 394 -8 392 10 C 382 24 362 18 362 4 Z"
+        fill="#3d4e30" opacity="0.70"/>
+  <path d="M 345 -2 C 328 -18 313 -10 315 8 C 326 20 344 14 345 -2 Z"
+        fill="#3d4e30" opacity="0.60"/>
+
+  <!-- Leaf pair 2 -->
+  <path d="M 338 36 C 362 16 380 24 375 44 C 358 58 338 50 338 36 Z"
+        fill="#3d4e30" opacity="0.68"/>
+  <path d="M 320 28 C 296 12 280 22 284 42 C 298 55 320 48 320 28 Z"
+        fill="#3d4e30" opacity="0.57"/>
+
+  <!-- Leaf pair 3 -->
+  <path d="M 308 80 C 334 58 352 68 346 90 C 328 104 308 96 308 80 Z"
+        fill="#3d4e30" opacity="0.66"/>
+  <path d="M 292 70 C 264 54 248 66 252 88 C 268 101 292 93 292 70 Z"
+        fill="#3d4e30" opacity="0.55"/>
+  <!-- Small accent leaf -->
+  <path d="M 322 68 C 334 54 344 60 340 74 C 330 82 320 76 322 68 Z"
+        fill="#4a5e38" opacity="0.44"/>
+
+  <!-- Leaf pair 4 -->
+  <path d="M 276 128 C 304 105 322 116 315 138 C 297 154 276 144 276 128 Z"
+        fill="#3d4e30" opacity="0.64"/>
+  <path d="M 260 118 C 232 100 217 114 221 136 C 237 150 260 142 260 118 Z"
+        fill="#3d4e30" opacity="0.53"/>
+
+  <!-- Leaf pair 5 -->
+  <path d="M 245 180 C 274 155 292 168 285 192 C 266 208 245 198 245 180 Z"
+        fill="#3d4e30" opacity="0.62"/>
+  <path d="M 229 169 C 200 152 185 166 190 189 C 206 204 229 195 229 169 Z"
+        fill="#3d4e30" opacity="0.51"/>
+  <!-- Small elongated leaf -->
+  <path d="M 260 165 C 270 148 280 155 276 171 C 266 181 258 174 260 165 Z"
+        fill="#4a5e38" opacity="0.42"/>
+
+  <!-- Leaf pair 6 -->
+  <path d="M 212 238 C 241 213 259 226 252 250 C 233 266 212 256 212 238 Z"
+        fill="#3d4e30" opacity="0.59"/>
+  <path d="M 196 227 C 167 210 153 225 157 248 C 173 263 196 255 196 227 Z"
+        fill="#3d4e30" opacity="0.49"/>
+
+  <!-- Leaf pair 7 — lower, fading -->
+  <path d="M 178 300 C 207 274 225 288 218 312 C 199 329 178 318 178 300 Z"
+        fill="#3d4e30" opacity="0.54"/>
+  <path d="M 162 288 C 134 272 120 287 124 310 C 141 326 163 317 162 288 Z"
+        fill="#3d4e30" opacity="0.44"/>
+
+  <!-- Berry/bud accents -->
+  <circle cx="374" cy="8"   r="3.5" fill="#3d4e30" opacity="0.58"/>
+  <circle cx="350" cy="32"  r="2.8" fill="#3d4e30" opacity="0.48"/>
+  <circle cx="318" cy="74"  r="2.5" fill="#3d4e30" opacity="0.44"/>
+  <circle cx="284" cy="126" r="2.2" fill="#3d4e30" opacity="0.40"/>
+  <circle cx="254" cy="178" r="2.0" fill="#3d4e30" opacity="0.36"/>
+</svg>

@@ -120,18 +120,27 @@ export function IngredientsSection() {
         overflow: "hidden",
       }}
     >
-      {/* Single botanical branch — top right only */}
-      <div style={{
-        position: "absolute", top: -60, right: -70,
-        width: "clamp(220px, 22vw, 340px)",
-        opacity: 0.88, pointerEvents: "none", zIndex: 1,
-      }}>
+      {/* Botanical branch — enters from top-right, hidden on mobile */}
+      <div
+        className="hidden md:block"
+        style={{
+          position: "absolute",
+          top: -80, right: -120,
+          width: "clamp(250px, 25vw, 380px)",
+          height: "clamp(250px, 25vw, 380px)",
+          pointerEvents: "none", userSelect: "none",
+          zIndex: 1,
+          transform: "rotate(-12deg)",
+          transformOrigin: "top right",
+        }}
+        aria-hidden="true"
+      >
         <Image
-          src={homepageImages.ingredientsLeafTop}
+          src="/images/decor/ingredients-leaf.svg"
           alt=""
-          width={340}
-          height={415}
-          style={{ width: "100%", height: "auto" }}
+          fill
+          sizes="clamp(250px, 25vw, 380px)"
+          style={{ objectFit: "contain", objectPosition: "top right" }}
           unoptimized
         />
       </div>
