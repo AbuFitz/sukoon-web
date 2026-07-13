@@ -156,14 +156,12 @@ export function SiteNav() {
             </button>
           </div>
 
-          {/* Wordmark */}
+          {/* Wordmark — always dark */}
           <a href="/" style={{
             justifySelf: "center", textDecoration: "none",
-            color: transparent ? CREAM : "#2C2A1F",
+            color: "#2C2A1F",
             fontFamily: "var(--font-display)", fontSize: "clamp(1.875rem, 3vw, 2.75rem)", fontWeight: 400,
             letterSpacing: "0.18em", textTransform: "uppercase", lineHeight: 1,
-            transition: "color 0.4s ease",
-            textShadow: transparent ? "0 1px 6px rgba(0,0,0,0.3)" : "none",
           }}>
             Sukoon
           </a>
