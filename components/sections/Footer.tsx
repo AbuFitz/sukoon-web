@@ -36,9 +36,13 @@ export function Footer() {
           display: "flex", flexWrap: "wrap",
           alignItems: "baseline", justifyContent: "space-between", gap: "1.5rem",
         }}>
-          <a href="/" style={{ textDecoration: "none", lineHeight: 0 }}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/otherlogo.png" alt="Sukoon" style={{ height: "clamp(80px, 9.5vw, 120px)", width: "auto", filter: "brightness(0) invert(1)" }} />
+          <a href="/" style={{
+            fontFamily: "var(--font-display)", fontWeight: 400,
+            fontSize: "clamp(1.5rem, 2.5vw, 2rem)",
+            letterSpacing: "0.18em", textTransform: "uppercase",
+            color: LINEN, textDecoration: "none", lineHeight: 1,
+          }}>
+            Sukoon
           </a>
 
           <nav style={{ display: "flex", flexWrap: "wrap", gap: "0.25rem 2rem" }} aria-label="Footer">
