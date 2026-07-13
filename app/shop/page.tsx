@@ -1,10 +1,15 @@
 import { SiteNav }           from "@/components/nav/SiteNav";
+import { ShopHero }          from "@/components/shop/ShopHero";
 import { ShopCollection }    from "@/components/shop/ShopCollection";
-import { TrustStrip }        from "@/components/sections/TrustStrip";
-import { NewsletterSection } from "@/components/home/NewsletterSection";
+import { ShopTrustStrip }    from "@/components/shop/ShopTrustStrip";
 import { Footer }            from "@/components/sections/Footer";
 import { getVariantIdMap }   from "@/lib/shopify";
 import { products }          from "@/lib/products";
+
+export const metadata = {
+  title: "Shop — Sukoon",
+  description: "Thoughtful skincare made with intention. Shop the Daily Solace collection.",
+};
 
 export default async function ShopPage() {
   const variantMap = await getVariantIdMap().catch(() => ({} as Record<string, string>));
@@ -18,9 +23,9 @@ export default async function ShopPage() {
     <>
       <SiteNav />
       <main>
+        <ShopHero />
         <ShopCollection variantIds={variantIds} />
-        <TrustStrip />
-        <NewsletterSection />
+        <ShopTrustStrip />
       </main>
       <Footer />
     </>
