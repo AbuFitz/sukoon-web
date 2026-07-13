@@ -8,31 +8,36 @@ const ingredients = [
     numeral: "١",
     name: "Olive Squalane",
     description: "Lightweight hydration that absorbs quickly without clogging pores.",
-    color: "#A79B8B",
+    bg: "#CEC2AE",
+    numColor: "rgba(255,255,255,0.22)",
   },
   {
     numeral: "٢",
     name: "Vitamin B3",
     description: "Supports the skin barrier across the face and hairline.",
-    color: "#8FA37D",
+    bg: "#A8BCA0",
+    numColor: "rgba(255,255,255,0.22)",
   },
   {
     numeral: "٣",
     name: "Black Seed Oil",
     description: "Helps calm visible irritation and nourish stressed skin.",
-    color: "#34432D",
+    bg: "#364530",
+    numColor: "rgba(255,255,255,0.14)",
   },
   {
     numeral: "٤",
     name: "Vitamin E",
     description: "Antioxidant support that helps protect and preserve the formula.",
-    color: "#C68B3C",
+    bg: "#C99850",
+    numColor: "rgba(255,255,255,0.20)",
   },
   {
     numeral: "٥",
     name: "Vanilla Extract",
     description: "Softens the natural scent without synthetic fragrance.",
-    color: "#9D9184",
+    bg: "#B8ADA4",
+    numColor: "rgba(255,255,255,0.22)",
   },
 ];
 
@@ -43,8 +48,8 @@ export function IngredientsSection() {
       style={{
         position: "relative",
         overflow: "hidden",
-        backgroundColor: "#FAF9F5",
-        padding: "clamp(80px, 9vw, 140px) clamp(2rem, 5vw, 5rem)",
+        backgroundColor: "#FFFFFF",
+        padding: "112px 0 120px",
         borderTop: "1px solid #e4e0d6",
       }}
     >
@@ -72,77 +77,75 @@ export function IngredientsSection() {
         />
       </div>
 
-      {/* Content — sits above leaf */}
-      <div
-        style={{
-          width: "min(calc(100% - 0px), 1400px)",
-          margin: "0 auto",
-          position: "relative",
-          zIndex: 2,
-        }}
-      >
+      {/* Content */}
+      <div style={{ width: "min(calc(100% - 80px), 1400px)", margin: "0 auto", position: "relative", zIndex: 2 }}>
+
         {/* Heading */}
         <FadeIn direction="up" delay={0.05}>
           <h2 style={{
-            fontFamily: "var(--font-display)",
-            fontWeight: 400,
-            fontSize: "clamp(2.75rem, 4.5vw, 4.25rem)",
-            lineHeight: 1.05,
-            letterSpacing: "-0.02em",
-            color: "#292b25",
-            margin: "0 0 clamp(3.5rem, 6vw, 5.5rem)",
-            maxWidth: "14ch",
+            fontFamily: "var(--font-display)", fontWeight: 400,
+            fontSize: "clamp(2.625rem, 3.8vw, 4.25rem)",
+            lineHeight: 0.98, letterSpacing: "-0.028em",
+            color: "#292b25", margin: "0 0 clamp(2rem, 4vw, 3rem)",
           }}>
             Five ingredients. Nothing extra.
           </h2>
         </FadeIn>
 
-        {/* Desktop: 5-col grid / Tablet: 2-col / Mobile: 1-col */}
+        {/* Grid: 5-col desktop / 2-col tablet / 1-col mobile */}
         <FadeInStagger stagger={0.07} delay={0.12}>
           <div
             className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5"
-            style={{ gap: "clamp(2rem, 3vw, 3.5rem)" }}
+            style={{ gap: "clamp(1rem, 2vw, 1.5rem)" }}
           >
             {ingredients.map((ing) => (
               <FadeInItem key={ing.name} direction="up">
-                <div style={{ textAlign: "center" }}>
-
-                  {/* Arabic numeral */}
+                <div>
+                  {/* Coloured card with numeral watermark */}
                   <div style={{
-                    fontFamily: '"Noto Naskh Arabic", "Amiri", "Cormorant Garamond", Georgia, serif',
-                    fontWeight: 400,
-                    fontSize: "clamp(64px, 6vw, 96px)",
-                    lineHeight: 1,
-                    color: ing.color,
-                    marginBottom: "1.5rem",
-                    display: "block",
+                    position: "relative",
+                    backgroundColor: ing.bg,
+                    aspectRatio: "3 / 4",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    overflow: "hidden",
+                    marginBottom: "1.25rem",
                   }}>
-                    {ing.numeral}
+                    <span style={{
+                      fontFamily: '"Noto Naskh Arabic", "Amiri", Georgia, serif',
+                      fontWeight: 400,
+                      fontSize: "clamp(96px, 9vw, 140px)",
+                      lineHeight: 1,
+                      color: ing.numColor,
+                      userSelect: "none",
+                      pointerEvents: "none",
+                    }}>
+                      {ing.numeral}
+                    </span>
                   </div>
 
                   {/* Name */}
-                  <h3 style={{
-                    fontFamily: "var(--font-display)",
-                    fontWeight: 400,
-                    fontSize: "clamp(1.25rem, 1.7vw, 1.6875rem)",
-                    lineHeight: 1.2,
+                  <p style={{
+                    fontFamily: "var(--font-body)", fontWeight: 600,
+                    fontSize: "0.9375rem",
                     color: "#22231F",
-                    margin: "0 0 0.875rem",
+                    margin: "0 0 0.5rem",
+                    lineHeight: 1.3,
                   }}>
                     {ing.name}
-                  </h3>
+                  </p>
 
                   {/* Description */}
                   <p style={{
                     fontFamily: "var(--font-body)",
-                    fontSize: "0.9375rem",
+                    fontSize: "0.875rem",
                     lineHeight: 1.65,
                     color: "#292A26",
                     margin: 0,
                   }}>
                     {ing.description}
                   </p>
-
                 </div>
               </FadeInItem>
             ))}
