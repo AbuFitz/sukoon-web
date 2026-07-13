@@ -19,13 +19,17 @@ export default async function HomePage() {
   const featuredProducts: FeaturedProduct[] = featuredProductHandles.map(handle => {
     const shopify = productByHandle[handle];
     const variantId = shopify?.variants.nodes[0]?.id;
-    const price = shopify?.variants.nodes[0]?.priceV2
-      ? formatPrice(shopify.variants.nodes[0].priceV2.amount, shopify.variants.nodes[0].priceV2.currencyCode)
+    const shopifyPrice = shopify?.variants.nodes[0]?.priceV2;
+    const priceAmount = parseFloat(shopifyPrice?.amount ?? "0");
+    const price = (shopifyPrice && priceAmount > 0)
+      ? formatPrice(shopifyPrice.amount, shopifyPrice.currencyCode)
       : productFallbackPrices[handle as FeaturedHandle];
 
     return {
       handle,
-      title: shopify?.title ?? productFallbackTitles[handle as FeaturedHandle],
+      title: (shopify?.title && !shopify.title.match(/^[a-z0-9-]+$/))
+        ? shopify.title
+        : productFallbackTitles[handle as FeaturedHandle],
       price,
       variantId,
     };

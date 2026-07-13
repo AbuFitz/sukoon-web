@@ -2,7 +2,7 @@
 // Swap any path here when final photography is ready. No other file needs touching.
 
 export const homepageImages = {
-  hero:                   "https://images.unsplash.com/photo-1608248597279-f99d160bfcbc?w=1600&q=90&fit=crop",
+  hero:                   "/images/home/heroimage.png",
   heroLeaf:               "/images/decor/hero-leaf-placeholder.svg",
   story:                  "https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=1200&q=85&fit=crop",
   storyDetail:            "/images/home/story-detail-placeholder.svg",

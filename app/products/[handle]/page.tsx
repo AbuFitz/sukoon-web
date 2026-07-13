@@ -22,13 +22,24 @@ export default async function ProductPage({ params }: Props) {
   // Enrich from Shopify if available
   const shopifyProduct = await getProductByHandle(handle).catch(() => null);
 
-  const variantId = shopifyProduct?.variants.nodes[0]?.id;
-  const price = shopifyProduct?.variants.nodes[0]?.priceV2
-    ? `£${parseFloat(shopifyProduct.variants.nodes[0].priceV2.amount).toFixed(0)}`
+  const variant   = shopifyProduct?.variants.nodes[0];
+  const variantId = variant?.id;
+
+  // Use Shopify price only if > £0 (avoid showing £0 for misconfigured products)
+  const priceNum = parseFloat(variant?.priceV2?.amount ?? "0");
+  const price = (variant?.priceV2 && priceNum > 0)
+    ? `£${priceNum % 1 === 0 ? priceNum.toFixed(0) : priceNum.toFixed(2)}`
     : staticProduct.price;
-  const title   = shopifyProduct?.title ?? staticProduct.name;
-  const desc    = shopifyProduct?.description ?? staticProduct.description;
-  const imgSrc  = shopifyProduct?.featuredImage?.url ?? staticProduct.src;
+
+  // Use Shopify title only if it looks like a real title (not a slug)
+  const title = (shopifyProduct?.title && !shopifyProduct.title.match(/^[a-z0-9-]+$/))
+    ? shopifyProduct.title
+    : staticProduct.name;
+
+  const desc   = (shopifyProduct?.description?.trim())
+    ? shopifyProduct.description
+    : staticProduct.description;
+  const imgSrc = shopifyProduct?.featuredImage?.url ?? staticProduct.src;
 
   return (
     <>
