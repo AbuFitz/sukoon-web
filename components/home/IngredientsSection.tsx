@@ -48,7 +48,7 @@ export function IngredientsSection() {
       style={{
         position: "relative",
         overflow: "hidden",
-        backgroundColor: "#FFFFFF",
+        backgroundColor: "#faf8f4",
         padding: "112px 0 120px",
         borderTop: "1px solid #e4e0d6",
       }}
