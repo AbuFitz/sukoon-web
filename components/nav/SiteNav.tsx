@@ -16,9 +16,11 @@ const INK   = "#111110";
 const GREY  = "#6E6E68";
 const LINEN = "#FBF8F3";
 const LINE  = "#E3E1DA";
+const CREAM = "#F5F2EB";
 
-function IconBtn({ label, onClick, href, children, badge }: { label: string; onClick?: () => void; href?: string; children: React.ReactNode; badge?: number }) {
-  const style: React.CSSProperties = { position: "relative", display: "flex", color: INK, background: "none", border: "none", padding: 0, cursor: "pointer" };
+function IconBtn({ label, onClick, href, children, badge, color }: { label: string; onClick?: () => void; href?: string; children: React.ReactNode; badge?: number; color?: string }) {
+  const col = color ?? INK;
+  const style: React.CSSProperties = { position: "relative", display: "flex", color: col, background: "none", border: "none", padding: 0, cursor: "pointer", transition: "color 0.4s ease" };
   const badgeEl = badge ? (
     <span style={{
       position: "absolute", top: -7, right: -8, minWidth: 15, height: 15, borderRadius: "50%",
@@ -73,8 +75,9 @@ function HamburgerIcon({ open }: { open: boolean }) {
   );
 }
 
-function NavLink({ label, href }: { label: string; href: string }) {
+function NavLink({ label, href, transparent }: { label: string; href: string; transparent: boolean }) {
   const [hover, setHover] = useState(false);
+  const col = transparent ? CREAM : INK;
   return (
     <a
       href={href}
@@ -83,12 +86,14 @@ function NavLink({ label, href }: { label: string; href: string }) {
       style={{
         position: "relative",
         fontFamily: "var(--font-body)", fontSize: "0.9375rem", fontWeight: 500,
-        letterSpacing: "0.04em", color: INK, textDecoration: "none", paddingBottom: "4px",
+        letterSpacing: "0.04em", color: col, textDecoration: "none", paddingBottom: "4px",
+        transition: "color 0.4s ease",
+        textShadow: transparent ? "0 1px 4px rgba(0,0,0,0.35)" : "none",
       }}
     >
       {label}
       <span style={{
-        position: "absolute", left: 0, bottom: 0, height: "1px", backgroundColor: INK,
+        position: "absolute", left: 0, bottom: 0, height: "1px", backgroundColor: col,
         width: hover ? "100%" : "0%", transition: "width 0.3s cubic-bezier(0.22,1,0.36,1)",
       }} />
     </a>
@@ -130,39 +135,47 @@ export function SiteNav() {
           display: "grid", gridTemplateColumns: "1fr auto 1fr",
           alignItems: "center",
         }}>
+          {/* Desktop nav links */}
           <nav className="hidden md:flex" style={{ gap: "2.25rem" }} aria-label="Primary">
-            <NavLink {...links[0]} />
-            <NavLink {...links[1]} />
-            <NavLink {...links[2]} />
+            <NavLink {...links[0]} transparent={!solid} />
+            <NavLink {...links[1]} transparent={!solid} />
+            <NavLink {...links[2]} transparent={!solid} />
           </nav>
+          {/* Mobile hamburger */}
           <div className="flex md:hidden" style={{ justifySelf: "start" }}>
             <button
               aria-label={open ? "Close menu" : "Open menu"}
               onClick={() => setOpen(o => !o)}
-              style={{ background: "none", border: "none", color: INK, cursor: "pointer", padding: 0, display: "flex" }}
+              style={{ background: "none", border: "none", color: solid ? INK : CREAM, cursor: "pointer", padding: 0, display: "flex", transition: "color 0.4s ease" }}
             >
               <HamburgerIcon open={open} />
             </button>
           </div>
 
+          {/* Wordmark */}
           <a href="/" style={{
-            justifySelf: "center", textDecoration: "none", color: "#2C2A1F",
+            justifySelf: "center", textDecoration: "none",
+            color: solid ? "#2C2A1F" : CREAM,
             fontFamily: "var(--font-display)", fontSize: "clamp(1.875rem, 3vw, 2.75rem)", fontWeight: 400,
             letterSpacing: "0.18em", textTransform: "uppercase", lineHeight: 1,
+            transition: "color 0.4s ease",
+            textShadow: solid ? "none" : "0 1px 6px rgba(0,0,0,0.3)",
           }}>
             Sukoon
           </a>
 
+          {/* Desktop icons */}
           <div className="hidden md:flex" style={{ justifySelf: "end", alignItems: "center", gap: "2.25rem" }}>
-            <span style={{ width: "1px", height: "16px", backgroundColor: LINE }} />
-            <IconBtn label="Search" onClick={() => setSearchOpen(true)}><SearchIcon /></IconBtn>
-            <IconBtn label="Account" onClick={() => setAccountOpen(true)}><AccountIcon /></IconBtn>
-            <IconBtn label="Bag" onClick={() => setBagOpen(true)} badge={count}><BagIcon /></IconBtn>
+            <span style={{ width: "1px", height: "16px", backgroundColor: solid ? LINE : "rgba(245,242,235,0.35)" }} />
+            <IconBtn label="Search" onClick={() => setSearchOpen(true)} color={solid ? INK : CREAM}><SearchIcon /></IconBtn>
+            <IconBtn label="Account" onClick={() => setAccountOpen(true)} color={solid ? INK : CREAM}><AccountIcon /></IconBtn>
+            <IconBtn label="Bag" onClick={() => setBagOpen(true)} badge={count} color={solid ? INK : CREAM}><BagIcon /></IconBtn>
           </div>
 
+          {/* Mobile icons */}
           <div className="flex md:hidden" style={{ justifySelf: "end", alignItems: "center", gap: "1.375rem" }}>
-            <IconBtn label="Search" onClick={() => setSearchOpen(true)}><SearchIcon /></IconBtn>
-            <IconBtn label="Bag" onClick={() => setBagOpen(true)} badge={count}><BagIcon /></IconBtn>
+            <IconBtn label="Search" onClick={() => setSearchOpen(true)} color={solid ? INK : CREAM}><SearchIcon /></IconBtn>
+            <IconBtn label="Bag" onClick={() => setBagOpen(true)} badge={count} color={solid ? INK : CREAM}><BagIcon /></IconBtn>
           </div>
         </div>
       </header>

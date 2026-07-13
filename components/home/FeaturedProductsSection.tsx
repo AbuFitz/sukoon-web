@@ -122,19 +122,19 @@ function ProductCard({ product }: { product: FeaturedProduct }) {
 
 export function FeaturedProductsSection({ products }: { products: FeaturedProduct[] }) {
   return (
-    <section style={{ backgroundColor: "#faf8f4", padding: "clamp(5rem, 9vw, 8rem) 0" }}>
+    <section style={{ backgroundColor: "#faf8f4", padding: "clamp(3.5rem, 6vw, 5.5rem) 0" }}>
       <div style={{ width: "min(calc(100% - 80px), 1400px)", margin: "0 auto" }}>
 
-        {/* Minimal tagline */}
+        {/* Section heading — matches other homepage titles */}
         <FadeIn direction="up" delay={0.05}>
-          <p style={{
+          <h2 style={{
             fontFamily: "var(--font-display)", fontWeight: 400,
-            fontSize: "clamp(1.25rem, 1.8vw, 1.625rem)",
-            letterSpacing: "-0.01em", fontStyle: "italic",
-            color: "#8a9482", margin: "0 0 clamp(3rem, 5vw, 4.5rem)",
+            fontSize: "clamp(2.625rem, 3.8vw, 4.25rem)",
+            lineHeight: 0.98, letterSpacing: "-0.028em",
+            color: "#292b25", margin: "0 0 clamp(2rem, 4vw, 3rem)",
           }}>
-            Simple rituals. Visible results.
-          </p>
+            Simple rituals. <em style={{ fontStyle: "italic" }}>Visible results.</em>
+          </h2>
         </FadeIn>
 
         {/* Frameless product grid */}
