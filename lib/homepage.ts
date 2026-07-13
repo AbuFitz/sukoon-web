@@ -2,19 +2,19 @@
 // Swap any path here when final photography is ready. No other file needs touching.
 
 export const homepageImages = {
-  hero:                   "/images/home/hero-placeholder.svg",
+  hero:                   "https://images.unsplash.com/photo-1608248597279-f99d160bfcbc?w=1600&q=90&fit=crop",
   heroLeaf:               "/images/decor/hero-leaf-placeholder.svg",
-  story:                  "/images/home/story-placeholder.svg",
+  story:                  "https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=1200&q=85&fit=crop",
   storyDetail:            "/images/home/story-detail-placeholder.svg",
-  benefits:               "/images/home/benefits-placeholder.svg",
-  newsletter:             "/images/home/newsletter-placeholder.svg",
+  benefits:               "https://images.unsplash.com/photo-1614159102989-40cc8abb8099?w=900&q=85&fit=crop",
+  newsletter:             "https://images.unsplash.com/photo-1609220136736-443140cfe843?w=1000&q=85&fit=crop",
   ingredientsLeafTop:     "/images/decor/ingredients-leaf-top-placeholder.svg",
   ingredientsLeafBottom:  "/images/decor/ingredients-leaf-bottom-placeholder.svg",
   productCutout:          "/images/products/daily-solace-cutout-placeholder.svg",
   newsletterProductCutout:"/images/products/daily-solace-cutout-placeholder.svg",
-  product30ml:            "/images/products/daily-solace-30ml-placeholder.svg",
-  product15ml:            "/images/products/daily-solace-15ml-placeholder.svg",
-  bundle:                 "/images/products/solace-bundle-placeholder.svg",
+  product30ml:            "https://images.unsplash.com/photo-1707539160277-e39464517645?w=900&q=85&fit=crop",
+  product15ml:            "https://images.unsplash.com/photo-1693004927824-f2623bbedc8b?w=900&q=85&fit=crop",
+  bundle:                 "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=900&q=85&fit=crop",
 } as const;
 
 // ─── Featured products config ─────────────────────────────────────────────────
@@ -29,9 +29,9 @@ export const featuredProductHandles = [
 export type FeaturedHandle = typeof featuredProductHandles[number];
 
 export const productImageMap: Record<FeaturedHandle, string> = {
-  "daily-solace-fluid-30ml": homepageImages.product30ml,
-  "daily-solace-fluid-15ml": homepageImages.product15ml,
-  "solace-bundle":            homepageImages.bundle,
+  "daily-solace-fluid-30ml": "https://images.unsplash.com/photo-1707539160277-e39464517645?w=900&q=85&fit=crop",
+  "daily-solace-fluid-15ml": "https://images.unsplash.com/photo-1693004927824-f2623bbedc8b?w=900&q=85&fit=crop",
+  "solace-bundle":            "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=900&q=85&fit=crop",
 };
 
 export const productFallbackPrices: Record<FeaturedHandle, string> = {

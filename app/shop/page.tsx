@@ -1,18 +1,14 @@
 import { SiteNav }           from "@/components/nav/SiteNav";
-import { ShopHero }          from "@/components/shop/ShopHero";
-import { ProductDetailGrid } from "@/components/shop/ProductDetailGrid";
-import { IngredientsGrid }   from "@/components/sections/IngredientsGrid";
+import { ShopCollection }    from "@/components/shop/ShopCollection";
 import { TrustStrip }        from "@/components/sections/TrustStrip";
-import { EmailCapture }      from "@/components/sections/EmailCapture";
+import { NewsletterSection } from "@/components/home/NewsletterSection";
 import { Footer }            from "@/components/sections/Footer";
 import { getVariantIdMap }   from "@/lib/shopify";
 import { products }          from "@/lib/products";
 
 export default async function ShopPage() {
-  // Fetch all variant IDs from Shopify in one request; map by handle
   const variantMap = await getVariantIdMap().catch(() => ({} as Record<string, string>));
 
-  // Build slug → variantId map for the product selector
   const variantIds: Record<string, string> = {};
   for (const p of products) {
     if (variantMap[p.slug]) variantIds[p.slug] = variantMap[p.slug];
@@ -22,11 +18,9 @@ export default async function ShopPage() {
     <>
       <SiteNav />
       <main>
-        <ShopHero />
-        <ProductDetailGrid variantIds={variantIds} />
-        <IngredientsGrid />
+        <ShopCollection variantIds={variantIds} />
         <TrustStrip />
-        <EmailCapture />
+        <NewsletterSection />
       </main>
       <Footer />
     </>
