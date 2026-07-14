@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { products } from "@/lib/products";
 import { useCart } from "@/lib/cart-context";
+import type { VariantInfo } from "@/lib/shopify";
 
 const INK  = "#252820";
 const TEXT = "#4f534a";
@@ -11,19 +12,22 @@ const SAGE = "#45543d";
 
 function ProductCard({
   product,
-  variantId,
+  variantInfo,
   priority = false,
 }: {
   product: typeof products[number];
-  variantId?: string;
+  variantInfo?: VariantInfo;
   priority?: boolean;
 }) {
   const { addToCart, loading } = useCart();
   const [justAdded, setJustAdded] = useState(false);
   const [hovered, setHovered] = useState(false);
 
+  const variantId = variantInfo?.variantId;
+  const availableForSale = variantInfo?.availableForSale ?? true;
+
   const handleAdd = async () => {
-    if (!variantId || loading || justAdded) return;
+    if (!variantId || !availableForSale || loading || justAdded) return;
     await addToCart(variantId, 1);
     setJustAdded(true);
     setTimeout(() => setJustAdded(false), 1800);
@@ -106,7 +110,21 @@ function ProductCard({
             {product.price}
           </span>
 
-          {variantId ? (
+          {variantId && !availableForSale ? (
+            <button
+              disabled
+              style={{
+                width: "100%", minHeight: 50,
+                fontFamily: "var(--font-body)", fontSize: "0.6875rem", fontWeight: 600,
+                letterSpacing: "0.11em", textTransform: "uppercase",
+                color: "#9a9a90", backgroundColor: "#f0ede8",
+                border: "1px solid #ddd9d0",
+                cursor: "not-allowed",
+              }}
+            >
+              Out of Stock
+            </button>
+          ) : variantId ? (
             <button
               onClick={handleAdd}
               disabled={justAdded || loading}
@@ -155,7 +173,7 @@ const SORT_OPTIONS = [
   { value: "price-desc", label: "Price: High to Low" },
 ];
 
-export function ShopCollection({ variantIds = {} }: { variantIds?: Record<string, string> }) {
+export function ShopCollection({ variantIds = {} }: { variantIds?: Record<string, VariantInfo> }) {
   const [filter] = useState<Filter>("All Products");
   const [sort, setSort] = useState("featured");
 
@@ -232,7 +250,7 @@ export function ShopCollection({ variantIds = {} }: { variantIds?: Record<string
             <ProductCard
               key={p.slug}
               product={p}
-              variantId={variantIds[p.slug]}
+              variantInfo={variantIds[p.slug]}
               priority={i === 0}
             />
           ))}

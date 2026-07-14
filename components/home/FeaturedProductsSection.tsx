@@ -11,6 +11,7 @@ export type FeaturedProduct = {
   title: string;
   price: string;
   variantId?: string;
+  availableForSale?: boolean;
 };
 
 function ProductCard({ product }: { product: FeaturedProduct }) {
@@ -18,10 +19,11 @@ function ProductCard({ product }: { product: FeaturedProduct }) {
   const [justAdded, setJustAdded] = useState(false);
   const [hovered, setHovered] = useState(false);
   const variantId = product.variantId;
+  const availableForSale = product.availableForSale ?? true;
   const imgSrc = productImageMap[product.handle as FeaturedHandle] ?? "/images/products/daily-solace-30ml-placeholder.svg";
 
   const handleAdd = async () => {
-    if (!variantId || loading || justAdded) return;
+    if (!variantId || !availableForSale || loading || justAdded) return;
     await addToCart(variantId, 1);
     setJustAdded(true);
     setTimeout(() => setJustAdded(false), 1800);
@@ -76,7 +78,21 @@ function ProductCard({ product }: { product: FeaturedProduct }) {
         </p>
 
         <div style={{ marginTop: "1rem" }}>
-          {variantId ? (
+          {variantId && !availableForSale ? (
+            <button
+              disabled
+              style={{
+                fontFamily: "var(--font-body)", fontSize: "0.625rem", fontWeight: 600,
+                letterSpacing: "0.14em", textTransform: "uppercase",
+                color: "#9a9a90", backgroundColor: "#f0ede8",
+                border: "1px solid #ddd9d0",
+                padding: "0 1.5rem", height: 44,
+                cursor: "not-allowed", width: "100%",
+              }}
+            >
+              Out of Stock
+            </button>
+          ) : variantId ? (
             <button
               onClick={handleAdd}
               disabled={justAdded || loading}
@@ -137,9 +153,9 @@ export function FeaturedProductsSection({ products }: { products: FeaturedProduc
           </h2>
         </FadeIn>
 
-        {/* Frameless product grid */}
+        {/* Desktop grid */}
         <FadeInStagger stagger={0.08} delay={0.1}>
-          <div className="grid grid-cols-1 md:grid-cols-3" style={{ gap: "clamp(2rem, 4vw, 3.5rem)" }}>
+          <div className="hidden md:grid md:grid-cols-3" style={{ gap: "clamp(2rem, 4vw, 3.5rem)" }}>
             {products.map(p => (
               <FadeInItem key={p.handle}>
                 <ProductCard product={p} />
@@ -147,6 +163,24 @@ export function FeaturedProductsSection({ products }: { products: FeaturedProduc
             ))}
           </div>
         </FadeInStagger>
+
+        {/* Mobile horizontal scroll */}
+        <div className="flex md:hidden" style={{
+          overflowX: "auto", scrollSnapType: "x mandatory",
+          gap: "1.25rem", paddingBottom: "1rem",
+          marginLeft: "calc(-1 * clamp(1.25rem, 5vw, 3.5rem))",
+          marginRight: "calc(-1 * clamp(1.25rem, 5vw, 3.5rem))",
+          paddingLeft: "clamp(1.25rem, 5vw, 3.5rem)",
+          paddingRight: "clamp(1.25rem, 5vw, 3.5rem)",
+          scrollbarWidth: "none",
+          msOverflowStyle: "none",
+        }}>
+          {products.map(p => (
+            <div key={p.handle} style={{ flex: "0 0 75vw", maxWidth: 320, scrollSnapAlign: "start" }}>
+              <ProductCard product={p} />
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );

@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { SearchOverlay } from "./SearchOverlay";
 import { AccountPanel } from "./AccountPanel";
 import { BagPanel } from "./BagPanel";
+import { CurrencySelector } from "./CurrencySelector";
 import { useCart } from "@/lib/cart-context";
 
 const links = [
@@ -167,6 +168,7 @@ export function SiteNav() {
           {/* Desktop icons */}
           <div className="hidden md:flex" style={{ justifySelf: "end", alignItems: "center", gap: "2.25rem" }}>
             <span style={{ width: "1px", height: "16px", backgroundColor: useLightText ? "rgba(245,242,235,0.35)" : LINE }} />
+            <CurrencySelector color={useLightText ? CREAM : INK} />
             <IconBtn label="Search" onClick={() => setSearchOpen(true)} color={useLightText ? CREAM : INK}><SearchIcon /></IconBtn>
             <IconBtn label="Account" onClick={() => setAccountOpen(true)} color={useLightText ? CREAM : INK}><AccountIcon /></IconBtn>
             <IconBtn label="Bag" onClick={() => setBagOpen(true)} badge={count} color={useLightText ? CREAM : INK}><BagIcon /></IconBtn>
@@ -184,22 +186,41 @@ export function SiteNav() {
       <AccountPanel open={accountOpen} onClose={() => setAccountOpen(false)} />
       <BagPanel open={bagOpen} onClose={() => setBagOpen(false)} />
 
-      <div aria-hidden={!open} style={{
-        position: "fixed", inset: 0, zIndex: 60,
-        pointerEvents: open ? "auto" : "none",
-        backgroundColor: INK,
-        opacity: open ? 1 : 0,
-        transition: "opacity 0.4s ease",
-        display: "flex", flexDirection: "column",
-      }}>
+      {/* Mobile drawer backdrop */}
+      <div
+        aria-hidden
+        onClick={() => setOpen(false)}
+        style={{
+          position: "fixed", inset: 0, zIndex: 59,
+          pointerEvents: open ? "auto" : "none",
+          backgroundColor: "rgba(17,17,16,0.45)",
+          opacity: open ? 1 : 0,
+          transition: "opacity 0.35s ease",
+        }}
+      />
+
+      {/* Mobile drawer — slides in from left */}
+      <div
+        aria-hidden={!open}
+        style={{
+          position: "fixed", top: 0, left: 0, bottom: 0, zIndex: 60,
+          width: "82vw", maxWidth: 360,
+          backgroundColor: LINEN,
+          transform: open ? "translateX(0)" : "translateX(-100%)",
+          transition: "transform 0.4s cubic-bezier(0.22,1,0.36,1)",
+          display: "flex", flexDirection: "column",
+          boxShadow: "10px 0 40px rgba(17,17,16,0.12)",
+        }}
+      >
+        {/* Drawer header */}
         <div style={{
           height: "76px", display: "flex", alignItems: "center", justifyContent: "space-between",
-          padding: "0 clamp(1.5rem, 5vw, 3.5rem)", borderBottom: "1px solid rgba(255,255,255,0.14)", flexShrink: 0,
+          padding: "0 1.75rem", borderBottom: `1px solid ${LINE}`, flexShrink: 0,
         }}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/otherlogo.png" alt="Sukoon" style={{ height: 28, width: "auto" }} />
+          <img src="/otherlogo.png" alt="Sukoon" style={{ height: 24, width: "auto" }} />
           <button aria-label="Close menu" onClick={() => setOpen(false)} style={{
-            background: "none", border: "none", color: LINEN, cursor: "pointer", padding: 0, display: "flex",
+            background: "none", border: "none", color: INK, cursor: "pointer", padding: "0.25rem", display: "flex",
           }}>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" aria-hidden>
               <line x1="5" y1="5" x2="19" y2="19" /><line x1="19" y1="5" x2="5" y2="19" />
@@ -207,16 +228,18 @@ export function SiteNav() {
           </button>
         </div>
 
+        {/* Drawer body */}
         <div style={{ flex: 1, overflowY: "auto", display: "flex", flexDirection: "column" }}>
-          <nav style={{ padding: "2rem clamp(1.5rem, 5vw, 3.5rem) 0.5rem" }} aria-label="Mobile">
+          <nav style={{ padding: "2rem 1.75rem 1rem" }} aria-label="Mobile">
             {links.map((l, i) => (
               <a key={l.label} href={l.href} onClick={() => setOpen(false)} style={{
                 display: "block",
-                fontFamily: "var(--font-display)", fontSize: "2.5rem", fontWeight: 400,
-                color: LINEN, textDecoration: "none", padding: "0.625rem 0",
+                fontFamily: "var(--font-display)", fontSize: "2.25rem", fontWeight: 400,
+                color: INK, textDecoration: "none", padding: "0.5rem 0",
+                borderBottom: `1px solid ${LINE}`,
                 opacity: open ? 1 : 0,
-                transform: open ? "translateY(0)" : "translateY(14px)",
-                transition: `opacity 0.5s ease ${open ? 0.08 + i * 0.05 : 0}s, transform 0.5s ease ${open ? 0.08 + i * 0.05 : 0}s`,
+                transform: open ? "translateX(0)" : "translateX(-16px)",
+                transition: `opacity 0.4s ease ${open ? 0.06 + i * 0.06 : 0}s, transform 0.4s ease ${open ? 0.06 + i * 0.06 : 0}s`,
               }}>
                 {l.label}
               </a>
@@ -224,37 +247,40 @@ export function SiteNav() {
           </nav>
 
           <div style={{
-            padding: "1.5rem clamp(1.5rem, 5vw, 3.5rem) 0",
-            display: "flex", gap: "2rem",
+            padding: "1.25rem 1.75rem 0",
+            display: "flex", flexDirection: "column", gap: "1rem",
             opacity: open ? 1 : 0,
-            transition: `opacity 0.5s ease ${open ? 0.36 : 0}s`,
+            transition: `opacity 0.4s ease ${open ? 0.28 : 0}s`,
           }}>
             <a href="/account" onClick={() => setOpen(false)} style={{
-              display: "flex", alignItems: "center", gap: "0.625rem", color: LINEN, textDecoration: "none",
+              display: "flex", alignItems: "center", gap: "0.625rem", color: GREY, textDecoration: "none",
               fontFamily: "var(--font-body)", fontSize: "0.8125rem", fontWeight: 500, letterSpacing: "0.04em",
             }}>
               <AccountIcon /> Account
             </a>
             <button onClick={() => { setOpen(false); setBagOpen(true); }} style={{
-              display: "flex", alignItems: "center", gap: "0.625rem", background: "none", border: "none", cursor: "pointer", color: LINEN,
+              display: "flex", alignItems: "center", gap: "0.625rem", background: "none", border: "none", cursor: "pointer", color: GREY,
               fontFamily: "var(--font-body)", fontSize: "0.8125rem", fontWeight: 500, letterSpacing: "0.04em", padding: 0,
             }}>
               <BagIcon /> Bag{count > 0 ? ` (${count})` : ""}
             </button>
           </div>
+        </div>
 
-          <div style={{
-            marginTop: "auto",
-            padding: "1.5rem clamp(1.5rem, 5vw, 3.5rem) 2rem",
-            borderTop: "1px solid rgba(255,255,255,0.14)",
-            display: "flex", justifyContent: "space-between", alignItems: "center",
-            opacity: open ? 1 : 0,
-            transition: `opacity 0.5s ease ${open ? 0.46 : 0}s`,
-          }}>
-            <span style={{ fontFamily: "var(--font-body)", fontSize: "0.6875rem", letterSpacing: "0.06em", color: "rgba(251,248,243,0.55)" }}>
-              UK Halal Certified
+        {/* Drawer footer */}
+        <div style={{
+          padding: "1.25rem 1.75rem 2rem",
+          borderTop: `1px solid ${LINE}`,
+          display: "flex", flexDirection: "column", gap: "1rem",
+          opacity: open ? 1 : 0,
+          transition: `opacity 0.4s ease ${open ? 0.36 : 0}s`,
+        }}>
+          <CurrencySelector color={INK} />
+          <div style={{ display: "flex", justifyContent: "space-between" }}>
+            <span style={{ fontFamily: "var(--font-body)", fontSize: "0.625rem", letterSpacing: "0.1em", textTransform: "uppercase", color: GREY }}>
+              Halal Certified
             </span>
-            <span style={{ fontFamily: "var(--font-body)", fontSize: "0.6875rem", letterSpacing: "0.06em", color: "rgba(251,248,243,0.55)" }}>
+            <span style={{ fontFamily: "var(--font-body)", fontSize: "0.625rem", letterSpacing: "0.1em", textTransform: "uppercase", color: GREY }}>
               Made in the UK
             </span>
           </div>

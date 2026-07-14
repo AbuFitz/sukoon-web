@@ -200,12 +200,15 @@ export async function getCart(cartId: string): Promise<ShopifyCart | null> {
 // Pages call this once on the server; variantIds flow down as props.
 // This means Shopify is the source of truth — no hardcoded handles in pages.
 
-export async function getVariantIdMap(): Promise<Record<string, string>> {
+export type VariantInfo = { variantId: string; availableForSale: boolean };
+
+export async function getVariantIdMap(): Promise<Record<string, VariantInfo>> {
   const prods = await getProducts();
-  const map: Record<string, string> = {};
+  const map: Record<string, VariantInfo> = {};
   for (const p of prods) {
-    if (p.variants.nodes[0]?.id) {
-      map[p.handle] = p.variants.nodes[0].id;
+    const v = p.variants.nodes[0];
+    if (v?.id) {
+      map[p.handle] = { variantId: v.id, availableForSale: v.availableForSale };
     }
   }
   return map;

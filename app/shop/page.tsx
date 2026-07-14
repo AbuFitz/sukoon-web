@@ -4,6 +4,7 @@ import { ShopCollection }    from "@/components/shop/ShopCollection";
 import { ShopTrustStrip }    from "@/components/shop/ShopTrustStrip";
 import { Footer }            from "@/components/sections/Footer";
 import { getVariantIdMap }   from "@/lib/shopify";
+import type { VariantInfo }  from "@/lib/shopify";
 import { products }          from "@/lib/products";
 
 export const metadata = {
@@ -12,9 +13,9 @@ export const metadata = {
 };
 
 export default async function ShopPage() {
-  const variantMap = await getVariantIdMap().catch(() => ({} as Record<string, string>));
+  const variantMap = await getVariantIdMap().catch(() => ({} as Record<string, VariantInfo>));
 
-  const variantIds: Record<string, string> = {};
+  const variantIds: Record<string, VariantInfo> = {};
   for (const p of products) {
     if (variantMap[p.slug]) variantIds[p.slug] = variantMap[p.slug];
   }
