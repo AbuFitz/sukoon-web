@@ -28,7 +28,7 @@ export function TabAttention() {
           const display = TICKER.slice(posRef.current) + TICKER.slice(0, posRef.current);
           document.title = display.slice(0, 50);
           posRef.current = (posRef.current + 1) % TICKER.length;
-        }, 30);
+        }, 150);
       }, 3000);
     };
 
