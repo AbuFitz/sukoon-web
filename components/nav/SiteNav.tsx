@@ -275,7 +275,7 @@ export function SiteNav() {
           opacity: open ? 1 : 0,
           transition: `opacity 0.4s ease ${open ? 0.36 : 0}s`,
         }}>
-          <CurrencySelector color={INK} />
+          <CurrencySelector color={INK} openUp />
           <div style={{ display: "flex", justifyContent: "space-between" }}>
             <span style={{ fontFamily: "var(--font-body)", fontSize: "0.625rem", letterSpacing: "0.1em", textTransform: "uppercase", color: GREY }}>
               Halal Certified
