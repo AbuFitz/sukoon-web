@@ -63,7 +63,7 @@ export function HeroSection() {
               fontFamily: "var(--font-display)", fontWeight: 400,
               fontSize: "clamp(3rem, 5.4vw, 5.5rem)",
               lineHeight: 0.95, letterSpacing: "-0.035em",
-              color: "#FFFFFF", margin: "0 0 1.5rem",
+              color: "#F5F2EB", margin: "0 0 1.5rem",
             }}>
               One oil.<br />
               <em style={{ fontStyle: "italic" }}>Your face and your hairline.</em>

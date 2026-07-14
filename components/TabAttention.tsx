@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 
-const DEFAULT_TITLE = "Sukoon Skin — Beauty Rooted in Simplicity";
+const DEFAULT_TITLE = "Sukoon Skin - Beauty Rooted in Simplicity";
 
 // The ticker string — loops continuously when user is away
 const TICKER = "  Your ritual is waiting  ·  Come back to Sukoon  ·  Five ingredients. Real results.  ·  Beauty rooted in simplicity  ·  ";
@@ -28,7 +28,7 @@ export function TabAttention() {
           const display = TICKER.slice(posRef.current) + TICKER.slice(0, posRef.current);
           document.title = display.slice(0, 50);
           posRef.current = (posRef.current + 1) % TICKER.length;
-        }, 90);
+        }, 50);
       }, 3000);
     };
 

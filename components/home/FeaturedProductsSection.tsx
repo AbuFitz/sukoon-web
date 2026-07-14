@@ -181,7 +181,7 @@ export function FeaturedProductsSection({ products }: { products: FeaturedProduc
 
         {/* Desktop grid — 4 cols, compact */}
         <FadeInStagger stagger={0.07} delay={0.1}>
-          <div className="hidden md:grid" style={{ gridTemplateColumns: "repeat(4, 1fr)", gap: "clamp(1rem, 2vw, 1.75rem)" }}>
+          <div className="hidden md:grid" style={{ gridTemplateColumns: `repeat(${products.length}, 1fr)`, gap: "clamp(1rem, 2vw, 1.75rem)" }}>
             {products.map(p => (
               <FadeInItem key={p.handle}>
                 <ProductCard product={p} compact />

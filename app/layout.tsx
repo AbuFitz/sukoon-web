@@ -29,7 +29,7 @@ const BASE_URL = "https://sukoon.co.uk";
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
-    default: "Sukoon Skin — Beauty Rooted in Simplicity",
+    default: "Sukoon Skin - Beauty Rooted in Simplicity",
     template: "%s | Sukoon Skin",
   },
   description:
