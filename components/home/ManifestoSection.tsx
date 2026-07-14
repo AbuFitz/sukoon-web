@@ -10,7 +10,7 @@ export function ManifestoSection() {
       <p style={{
         fontFamily: "var(--font-body)", fontSize: "0.625rem", fontWeight: 700,
         letterSpacing: "0.2em", textTransform: "uppercase",
-        color: "#8a9482", margin: "0 0 1.25rem",
+        color: "#3F4A36", margin: "0 0 1.25rem",
       }}>
         Our Philosophy
       </p>

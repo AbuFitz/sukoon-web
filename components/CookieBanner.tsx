@@ -35,7 +35,7 @@ export function CookieBanner() {
         color: "rgba(251,248,243,0.7)", maxWidth: "680px", flex: "1 1 300px",
       }}>
         We use cookies to improve your experience and understand how our site is used.{" "}
-        <a href="/cookies" style={{ color: "#a8b89c", textDecoration: "underline", textUnderlineOffset: "2px" }}>
+        <a href="/cookies" style={{ color: "#FBF8F3", textDecoration: "underline", textUnderlineOffset: "2px" }}>
           Cookie Policy
         </a>
         .

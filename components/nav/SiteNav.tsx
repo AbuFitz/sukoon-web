@@ -14,7 +14,8 @@ const links = [
   { label: "Ingredients", href: "#ingredients" },
 ];
 
-const INK   = "#111110";
+const INK   = "#292b25";
+const SAGE  = "#3F4A36";
 const GREY  = "#6E6E68";
 const LINEN = "#FBF8F3";
 const LINE  = "#E3E1DA";
@@ -78,26 +79,22 @@ function HamburgerIcon({ open }: { open: boolean }) {
 }
 
 function NavLink({ label, href, transparent }: { label: string; href: string; transparent: boolean }) {
-  const [hover, setHover] = useState(false);
   const col = transparent ? CREAM : INK;
+  const hoverCol = transparent ? "rgba(245,242,235,0.6)" : SAGE;
   return (
     <a
       href={href}
-      onMouseEnter={() => setHover(true)}
-      onMouseLeave={() => setHover(false)}
       style={{
-        position: "relative",
         fontFamily: "var(--font-body)", fontSize: "0.9375rem", fontWeight: 500,
-        letterSpacing: "0.04em", color: col, textDecoration: "none", paddingBottom: "4px",
-        transition: "color 0.4s ease",
+        letterSpacing: "0.04em", color: col, textDecoration: "none",
+        transition: "color 0.25s ease, transform 0.25s ease",
+        display: "inline-block",
         textShadow: transparent ? "0 1px 4px rgba(0,0,0,0.35)" : "none",
       }}
+      onMouseEnter={e => { const el = e.currentTarget; el.style.color = hoverCol; el.style.transform = "translateY(-1px)"; }}
+      onMouseLeave={e => { const el = e.currentTarget; el.style.color = col; el.style.transform = "translateY(0)"; }}
     >
       {label}
-      <span style={{
-        position: "absolute", left: 0, bottom: 0, height: "1px", backgroundColor: col,
-        width: hover ? "100%" : "0%", transition: "width 0.3s cubic-bezier(0.22,1,0.36,1)",
-      }} />
     </a>
   );
 }
@@ -153,7 +150,7 @@ export function SiteNav() {
             <button
               aria-label={open ? "Close menu" : "Open menu"}
               onClick={() => setOpen(o => !o)}
-              style={{ background: "none", border: "none", color: useLightText ? CREAM : INK, cursor: "pointer", padding: 0, display: "flex", transition: "color 0.4s ease" }}
+              style={{ background: "none", border: "none", color: useLightText ? CREAM : SAGE, cursor: "pointer", padding: 0, display: "flex", transition: "color 0.4s ease" }}
             >
               <HamburgerIcon open={open} />
             </button>
@@ -176,8 +173,8 @@ export function SiteNav() {
 
           {/* Mobile icons */}
           <div className="flex md:hidden" style={{ justifySelf: "end", alignItems: "center", gap: "1.375rem" }}>
-            <IconBtn label="Search" onClick={() => setSearchOpen(true)} color={useLightText ? CREAM : INK}><SearchIcon /></IconBtn>
-            <IconBtn label="Bag" onClick={() => setBagOpen(true)} badge={count} color={useLightText ? CREAM : INK}><BagIcon /></IconBtn>
+            <IconBtn label="Search" onClick={() => setSearchOpen(true)} color={useLightText ? CREAM : SAGE}><SearchIcon /></IconBtn>
+            <IconBtn label="Bag" onClick={() => setBagOpen(true)} badge={count} color={useLightText ? CREAM : SAGE}><BagIcon /></IconBtn>
           </div>
         </div>
       </header>
