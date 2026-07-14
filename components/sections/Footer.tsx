@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { CurrencySelector } from "@/components/nav/CurrencySelector";
 
 const BG    = "#3F4A36";
 const LINEN = "#f5f3ed";
@@ -63,7 +64,7 @@ export function Footer() {
         {/* Divider */}
         <div style={{ height: "1px", backgroundColor: LINE }} />
 
-        {/* Bottom row: copyright + social icons + legal */}
+        {/* Bottom row: copyright + currency + social + legal */}
         <div style={{
           display: "flex", flexWrap: "wrap",
           alignItems: "center", justifyContent: "space-between", gap: "1rem",
@@ -71,6 +72,9 @@ export function Footer() {
           <p style={{ fontFamily: "var(--font-body)", fontSize: "0.75rem", color: MUTED, margin: 0 }}>
             © {new Date().getFullYear()} Sukoon. All rights reserved.
           </p>
+
+          {/* Currency selector — visible on all screen sizes in footer */}
+          <CurrencySelector color={MUTED} light openUp />
 
           {/* Social icons */}
           <div style={{ display: "flex", gap: "1.25rem", alignItems: "center" }}>
