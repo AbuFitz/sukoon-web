@@ -32,18 +32,18 @@ export function LoadingScreen() {
         : "opacity 0.3s ease",
       pointerEvents: isExiting ? "none" : "all",
     }}>
-      {/* Blurred backdrop */}
+      {/* Light linen backdrop */}
       <div style={{
         position: "absolute", inset: 0,
-        backgroundColor: "rgba(41, 43, 37, 0.92)",
-        backdropFilter: "blur(20px) saturate(1.2)",
-        WebkitBackdropFilter: "blur(20px) saturate(1.2)",
+        backgroundColor: "#F5F1E8",
+        backdropFilter: "blur(4px)",
+        WebkitBackdropFilter: "blur(4px)",
       }} />
 
-      {/* Vignette */}
+      {/* Soft vignette */}
       <div style={{
         position: "absolute", inset: 0,
-        background: "radial-gradient(ellipse at center, transparent 35%, rgba(18,20,15,0.55) 100%)",
+        background: "radial-gradient(ellipse at center, transparent 40%, rgba(200,193,180,0.28) 100%)",
       }} />
 
       {/* Logo */}
@@ -62,7 +62,7 @@ export function LoadingScreen() {
             height: "clamp(160px, 22vw, 260px)",
             width: "auto",
             display: "block",
-            filter: "brightness(0) invert(1)",
+            filter: "brightness(0)",
           }}
         />
       </div>

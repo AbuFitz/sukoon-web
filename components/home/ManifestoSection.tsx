@@ -2,7 +2,7 @@ export function ManifestoSection() {
   return (
     <section
       style={{
-        backgroundColor: "#3F4A36",
+        backgroundColor: "#F5F2EB",
         padding: "clamp(80px, 8vw, 100px) clamp(2rem, 6vw, 6rem)",
         textAlign: "center",
       }}
@@ -10,7 +10,7 @@ export function ManifestoSection() {
       <p style={{
         fontFamily: "var(--font-body)", fontSize: "0.625rem", fontWeight: 700,
         letterSpacing: "0.2em", textTransform: "uppercase",
-        color: "rgba(251,248,243,0.55)", margin: "0 0 1.25rem",
+        color: "#8a9482", margin: "0 0 1.25rem",
       }}>
         Our Philosophy
       </p>
@@ -24,7 +24,7 @@ export function ManifestoSection() {
         fontFamily: "var(--font-display)", fontWeight: 400, fontStyle: "italic",
         fontSize: "clamp(34px, 3.4vw, 56px)",
         lineHeight: 1.15, letterSpacing: "-0.022em",
-        color: "#FBF8F3",
+        color: "#292b25",
         margin: "0 auto",
         maxWidth: 1200,
       }}>
