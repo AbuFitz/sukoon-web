@@ -110,11 +110,6 @@ export default function RootLayout({
         <TabAttention />
         <ScrollProgress />
         <LoadingScreen />
-        {/* Botanical atmosphere — behind the frame, on the sage body */}
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/icons/leaf-decor.svg" alt="" aria-hidden className="frame-leaf" style={{ width: "clamp(200px,20vw,320px)", top: "6vh", right: "-4vw", transform: "rotate(155deg)" }} />
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/icons/leaf-decor.svg" alt="" aria-hidden className="frame-leaf" style={{ width: "clamp(160px,15vw,260px)", bottom: "10vh", left: "-3vw", transform: "rotate(-25deg)" }} />
         <div id="site-frame" className="site-frame">
           <AnnouncementBar />
           <CartProvider>{children}</CartProvider>

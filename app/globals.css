@@ -38,24 +38,10 @@ html {
 }
 
 body {
-  background-color: #3F4A36;
+  background-color: #F6F1E8;
   color: #2C2416;
   font-family: var(--font-body);
   overflow-x: hidden;
-}
-
-/* ─── Site frame — one continuous elevated surface (desktop) ─── */
-.site-frame {
-  position: relative;
-  z-index: 1;
-  width: calc(100% - 40px);
-  max-width: 1920px;
-  margin: 20px auto;
-  overflow: clip;
-  background: #FAF8F4;
-  border: 1px solid rgba(244, 240, 232, 0.45);
-  border-radius: 22px;
-  box-shadow: 0 20px 60px rgba(24, 32, 22, 0.16), 0 3px 12px rgba(24, 32, 22, 0.08);
 }
 
 /* ─── Announcement bar — fixed on all sizes ─── */
@@ -74,25 +60,14 @@ body {
   right: 0 !important;
 }
 
-/* ─── Mobile: inset via body padding — frame is just the cream content area ─── */
-/* Nav stays fixed; left/right inset is constrained to match the body padding.  */
-/* This preserves full nav transparency & scroll behaviour on all devices.       */
+/* ─── Mobile: sage background + inset via body padding ─── */
 @media (max-width: 767px) {
   body {
+    background-color: #3F4A36;
     /* 8px side padding creates the green frame strips */
     padding: 0 8px;
     /* Respect iPhone home-indicator safe area at the bottom */
     padding-bottom: env(safe-area-inset-bottom, 0px);
-  }
-
-  .site-frame {
-    /* Reset desktop frame — inset is handled by body padding, not box styles */
-    width: 100%;
-    margin: 0;
-    border-radius: 0;
-    box-shadow: none;
-    border: none;
-    overflow: visible;
   }
 
   /* Constrain fixed bars to the inset content width */
@@ -105,17 +80,6 @@ body {
     left: 8px !important;
     right: 8px !important;
   }
-}
-
-/* ─── Botanical leaves — behind the frame on the sage body ─── */
-.frame-leaf {
-  position: fixed;
-  pointer-events: none;
-  opacity: 0.08;
-  filter: blur(2px);
-  z-index: 0;
-  user-select: none;
-  -webkit-user-select: none;
 }
 
 ::selection { background-color: #DDD5C8; color: #2C2416; }
