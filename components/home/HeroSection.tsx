@@ -10,6 +10,7 @@ export function HeroSection() {
   return (
     <section
       aria-label="Hero"
+      className="hero-section"
       style={{
         position: "relative",
         width: "100%",
@@ -49,25 +50,34 @@ export function HeroSection() {
       }}>
         <FadeIn delay={0.1} duration={0.9} direction="up">
           <div style={{ maxWidth: 640 }}>
+            {/* Eyebrow */}
+            <p style={{
+              fontFamily: "var(--font-body)", fontSize: "0.625rem", fontWeight: 700,
+              letterSpacing: "0.22em", textTransform: "uppercase",
+              color: "rgba(255,255,255,0.65)", margin: "0 0 1.25rem",
+            }}>
+              100% Waterless · 5 Active Ingredients · UK Made
+            </p>
+
             <h1 style={{
               fontFamily: "var(--font-display)", fontWeight: 400,
-              fontSize: "clamp(3.625rem, 5.8vw, 5.75rem)",
+              fontSize: "clamp(3rem, 5.4vw, 5.5rem)",
               lineHeight: 0.95, letterSpacing: "-0.035em",
-              color: "#FFFFFF", margin: "0 0 1.625rem",
+              color: "#FFFFFF", margin: "0 0 1.5rem",
             }}>
-              Care for your face.{" "}
-              <em style={{ fontStyle: "italic", display: "block" }}>Care for your hairline.</em>
+              One oil.<br />
+              <em style={{ fontStyle: "italic" }}>Your face and your hairline.</em>
             </h1>
 
             <p style={{
               fontFamily: "var(--font-body)", fontSize: "clamp(0.9375rem, 1.2vw, 1.0625rem)",
-              lineHeight: 1.65, color: "rgba(255,255,255,0.72)",
-              margin: "0 0 2.75rem", maxWidth: 440,
+              lineHeight: 1.65, color: "rgba(255,255,255,0.75)",
+              margin: "0 0 2.5rem", maxWidth: 460,
             }}>
-              Skincare that protects where your skin meets your story.
+              The Daily Solace Fluid tackles acne, strengthens your skin barrier, and reverses friction-induced hairline thinning — all in under 60 seconds. No water. No fillers. Just five ingredients that work.
             </p>
 
-            <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap" }}>
+            <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", alignItems: "center" }}>
               <a
                 href="/shop"
                 style={{
@@ -83,25 +93,25 @@ export function HeroSection() {
                 onMouseEnter={e => { const el = e.currentTarget; el.style.backgroundColor = "#34402f"; el.style.borderColor = "#34402f"; el.style.transform = "translateY(-1px)"; }}
                 onMouseLeave={e => { const el = e.currentTarget; el.style.backgroundColor = "#45543d"; el.style.borderColor = "#45543d"; el.style.transform = "translateY(0)"; }}
               >
-                Shop Now
+                Shop the Collection
               </a>
               <a
-                href="/about"
+                href="#ingredients"
                 style={{
                   display: "inline-flex", alignItems: "center", justifyContent: "center",
                   fontFamily: "var(--font-body)", fontSize: "0.6875rem", fontWeight: 600,
                   letterSpacing: "0.12em", textTransform: "uppercase",
                   color: "#FFFFFF", backgroundColor: "rgba(255,255,255,0.08)",
-                  border: "1px solid rgba(255,255,255,0.55)",
+                  border: "1px solid rgba(255,255,255,0.45)",
                   minHeight: 50, padding: "0 1.75rem",
                   textDecoration: "none",
                   backdropFilter: "blur(4px)",
                   transition: "background-color 220ms ease, border-color 220ms ease",
                 }}
                 onMouseEnter={e => { const el = e.currentTarget; el.style.backgroundColor = "rgba(255,255,255,0.18)"; el.style.borderColor = "rgba(255,255,255,0.85)"; }}
-                onMouseLeave={e => { const el = e.currentTarget; el.style.backgroundColor = "rgba(255,255,255,0.08)"; el.style.borderColor = "rgba(255,255,255,0.55)"; }}
+                onMouseLeave={e => { const el = e.currentTarget; el.style.backgroundColor = "rgba(255,255,255,0.08)"; el.style.borderColor = "rgba(255,255,255,0.45)"; }}
               >
-                Learn More
+                See the Ingredients
               </a>
             </div>
           </div>

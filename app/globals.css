@@ -64,6 +64,15 @@ img {
 ::-webkit-scrollbar { display: none; }
 html { scrollbar-width: none; -ms-overflow-style: none; }
 
+/* ─── Mobile hero height ─── */
+@media (max-width: 767px) {
+  .hero-section {
+    min-height: 480px !important;
+    height: 62vh !important;
+    max-height: 580px !important;
+  }
+}
+
 /* ─── Layout ─── */
 .container {
   width: 100%;

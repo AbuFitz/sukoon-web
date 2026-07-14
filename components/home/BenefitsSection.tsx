@@ -28,7 +28,7 @@ export function BenefitsSection() {
   return (
     <section
       aria-label="Product benefits"
-      style={{ backgroundColor: "#f4f0e6" }}
+      style={{ backgroundColor: "#F5F2EB" }}
     >
       <div
         style={{ display: "grid", gridTemplateColumns: "1.25fr 0.75fr", alignItems: "stretch" }}

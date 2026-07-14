@@ -162,7 +162,7 @@ export function SiteNav() {
           {/* Logo — always dark */}
           <a href="/" style={{ justifySelf: "center", textDecoration: "none", lineHeight: 0 }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/otherlogo.png" alt="Sukoon" style={{ height: "clamp(22px, 2.2vw, 32px)", width: "auto", display: "block" }} />
+            <img src="/otherlogo.png" alt="Sukoon" style={{ height: "clamp(28px, 2.8vw, 40px)", width: "auto", display: "block" }} />
           </a>
 
           {/* Desktop icons */}
@@ -218,7 +218,7 @@ export function SiteNav() {
           padding: "0 1.75rem", borderBottom: `1px solid ${LINE}`, flexShrink: 0,
         }}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/otherlogo.png" alt="Sukoon" style={{ height: 24, width: "auto" }} />
+          <img src="/otherlogo.png" alt="Sukoon" style={{ height: 30, width: "auto" }} />
           <button aria-label="Close menu" onClick={() => setOpen(false)} style={{
             background: "none", border: "none", color: INK, cursor: "pointer", padding: "0.25rem", display: "flex",
           }}>
@@ -276,14 +276,9 @@ export function SiteNav() {
           transition: `opacity 0.4s ease ${open ? 0.36 : 0}s`,
         }}>
           <CurrencySelector color={INK} openUp />
-          <div style={{ display: "flex", justifyContent: "space-between" }}>
-            <span style={{ fontFamily: "var(--font-body)", fontSize: "0.625rem", letterSpacing: "0.1em", textTransform: "uppercase", color: GREY }}>
-              Halal Certified
-            </span>
-            <span style={{ fontFamily: "var(--font-body)", fontSize: "0.625rem", letterSpacing: "0.1em", textTransform: "uppercase", color: GREY }}>
-              Made in the UK
-            </span>
-          </div>
+          <span style={{ fontFamily: "var(--font-body)", fontSize: "0.625rem", letterSpacing: "0.1em", textTransform: "uppercase", color: GREY }}>
+            Made in the UK
+          </span>
         </div>
       </div>
     </>

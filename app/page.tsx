@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { SiteNav }                from "@/components/nav/SiteNav";
 import { HeroSection }            from "@/components/home/HeroSection";
 import { FeaturedProductsSection } from "@/components/home/FeaturedProductsSection";
@@ -10,6 +11,22 @@ import { Footer }                 from "@/components/sections/Footer";
 import { getProducts, formatPrice } from "@/lib/shopify";
 import { featuredProductHandles, productFallbackPrices, productFallbackTitles, type FeaturedHandle } from "@/lib/homepage";
 import type { FeaturedProduct } from "@/components/home/FeaturedProductsSection";
+
+export const metadata: Metadata = {
+  alternates: { canonical: "https://sukoon.co.uk" },
+};
+
+const websiteJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "Sukoon",
+  url: "https://sukoon.co.uk",
+  potentialAction: {
+    "@type": "SearchAction",
+    target: "https://sukoon.co.uk/shop?q={search_term_string}",
+    "query-input": "required name=search_term_string",
+  },
+};
 
 export default async function HomePage() {
   const allProducts = await getProducts().catch(() => []);
@@ -39,6 +56,7 @@ export default async function HomePage() {
 
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }} />
       <SiteNav />
       <main>
         <HeroSection />
