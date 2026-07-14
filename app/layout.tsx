@@ -6,6 +6,7 @@ import { CookieBanner } from "@/components/CookieBanner";
 import { LoadingScreen } from "@/components/LoadingScreen";
 import { ImageGuard } from "@/components/ImageGuard";
 import { ScrollProgress } from "@/components/ui/ScrollProgress";
+import { TabAttention } from "@/components/TabAttention";
 import "./globals.css";
 
 const cormorant = Cormorant_Garamond({
@@ -28,8 +29,8 @@ const BASE_URL = "https://sukoon.co.uk";
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
-    default: "Sukoon — Waterless Face & Hairline Oil | 5 Active Ingredients",
-    template: "%s | Sukoon",
+    default: "Sukoon Skin — Beauty Rooted in Simplicity",
+    template: "%s | Sukoon Skin",
   },
   description:
     "The Daily Solace Fluid — 100% waterless face and hairline oil with Black Seed, Olive Squalane, Vitamin B3, Vitamin E and Vanilla. Tackles acne, strengthens your skin barrier and reverses friction-induced hairline thinning. Made in the UK.",
@@ -50,7 +51,7 @@ export const metadata: Metadata = {
     googleBot: { index: true, follow: true, "max-snippet": -1, "max-image-preview": "large", "max-video-preview": -1 },
   },
   openGraph: {
-    title: "Sukoon — Waterless Face & Hairline Oil | 5 Active Ingredients",
+    title: "Sukoon Skin — Beauty Rooted in Simplicity",
     description:
       "100% waterless. 5 active ingredients. Made in the UK. The Daily Solace Fluid tackles acne, strengthens your skin barrier and reverses friction-induced hairline thinning — in under 60 seconds.",
     url: BASE_URL,
@@ -106,6 +107,7 @@ export default function RootLayout({
       </head>
       <body className="min-h-full">
         <ImageGuard />
+        <TabAttention />
         <ScrollProgress />
         <LoadingScreen />
         <AnnouncementBar />

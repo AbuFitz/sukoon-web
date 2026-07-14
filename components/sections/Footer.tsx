@@ -43,7 +43,7 @@ export function Footer() {
                 style={{
                   height: "clamp(26px, 2.6vw, 36px)",
                   width: "auto",
-                  filter: "brightness(0) invert(1) sepia(0.12)",
+                  filter: "brightness(0) invert(1) sepia(0.18) saturate(0.4) hue-rotate(5deg)",
                 }}
               />
             </a>
