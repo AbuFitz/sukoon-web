@@ -2,13 +2,24 @@
 
 import { useEffect, useState } from "react";
 
+// Module-level flag prevents React strict-mode double-invoke from skipping the animation
+let hasAttempted = false;
+
 export function LoadingScreen() {
-  const [phase, setPhase] = useState<"enter" | "visible" | "exit" | "hidden">("enter");
+  const [phase, setPhase] = useState<"hidden" | "enter" | "visible" | "exit">("hidden");
 
   useEffect(() => {
-    const t1 = setTimeout(() => setPhase("visible"), 100);
-    const t2 = setTimeout(() => setPhase("exit"), 2000);
-    const t3 = setTimeout(() => setPhase("hidden"), 3000);
+    if (hasAttempted) return;
+    hasAttempted = true;
+
+    // Only show on first visit — sessionStorage clears when the browser tab closes
+    if (sessionStorage.getItem("sukoon_loaded")) return;
+    sessionStorage.setItem("sukoon_loaded", "1");
+
+    setPhase("enter");
+    const t1 = setTimeout(() => setPhase("visible"), 80);
+    const t2 = setTimeout(() => setPhase("exit"), 2200);
+    const t3 = setTimeout(() => setPhase("hidden"), 3400);
     return () => { clearTimeout(t1); clearTimeout(t2); clearTimeout(t3); };
   }, []);
 
