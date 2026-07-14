@@ -38,69 +38,64 @@ html {
 }
 
 body {
-  background-color: #F6F1E8;
+  background-color: #3F4A36;
   color: #2C2416;
   font-family: var(--font-body);
   overflow-x: hidden;
 }
 
-/* ─── Site frame — mobile only ─── */
-@media (max-width: 767px) {
-  body {
-    background-color: #3F4A36;
-    overflow: hidden; /* frame handles all scrolling */
-  }
+/* ─── Site frame — one continuous elevated surface ─── */
+.site-frame {
+  position: relative;
+  z-index: 1;
+  width: calc(100% - 40px);
+  max-width: 1920px;
+  margin: 20px auto;
+  overflow: clip; /* clips border-radius without breaking sticky children */
+  background: #FAF8F4;
+  border: 1px solid rgba(244, 240, 232, 0.45);
+  border-radius: 22px;
+  box-shadow: 0 20px 60px rgba(24, 32, 22, 0.16), 0 3px 12px rgba(24, 32, 22, 0.08);
+}
 
+@media (max-width: 767px) {
   .site-frame {
-    position: fixed !important;
-    top: 8px !important;
-    left: 8px !important;
-    right: 8px !important;
-    bottom: 8px !important;
-    width: auto !important;
-    margin: 0 !important;
+    width: calc(100% - 16px);
+    margin: 8px auto;
     border-radius: 18px;
-    overflow-y: auto;
-    overflow-x: hidden;
-    background: #FAF8F4;
-    box-shadow: 0 16px 48px rgba(24, 32, 22, 0.22), 0 3px 10px rgba(24, 32, 22, 0.1);
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
   }
-
-  .site-frame::-webkit-scrollbar { display: none; }
 }
 
-/* ─── Announcement bar positioning ─── */
+/* ─── Announcement bar — sticky inside the frame ─── */
 .announcement-pos {
-  position: fixed !important;
+  position: sticky !important;
   top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-}
-@media (max-width: 767px) {
-  .announcement-pos {
-    position: sticky !important;
-    top: 0 !important;
-    left: auto !important;
-    right: auto !important;
-  }
+  left: auto !important;
+  right: auto !important;
 }
 
-/* ─── Site nav positioning ─── */
+/* ─── Site nav — sticky just below the announcement bar ─── */
 .sitenav-pos {
-  position: fixed !important;
+  position: sticky !important;
   top: 1.75rem !important;
-  left: 0 !important;
-  right: 0 !important;
+  left: auto !important;
+  right: auto !important;
 }
-@media (max-width: 767px) {
-  .sitenav-pos {
-    position: sticky !important;
-    top: 1.75rem !important;
-    left: auto !important;
-    right: auto !important;
-  }
+
+/* ─── Pull hero under the sticky nav so the transparent effect is preserved ─── */
+.hero-section {
+  margin-top: -76px;
+}
+
+/* ─── Botanical leaves sit behind the frame on the sage body ─── */
+.frame-leaf {
+  position: fixed;
+  pointer-events: none;
+  opacity: 0.08;
+  filter: blur(2px);
+  z-index: 0;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 ::selection { background-color: #DDD5C8; color: #2C2416; }

@@ -112,27 +112,15 @@ export function SiteNav() {
   const useLightText = pathname === "/" && !solid;
 
   useEffect(() => {
-    const frame = () => document.getElementById("site-frame");
-    const getY = () => (frame()?.scrollTop ?? 0) + window.scrollY;
-    const onScroll = () => setSolid(getY() > 40);
+    const onScroll = () => setSolid(window.scrollY > 40);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
-    frame()?.addEventListener("scroll", onScroll, { passive: true });
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-      frame()?.removeEventListener("scroll", onScroll);
-    };
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   useEffect(() => {
-    const frameEl = document.getElementById("site-frame");
-    const locked = open || searchOpen || accountOpen || bagOpen;
-    if (frameEl) frameEl.style.overflowY = locked ? "hidden" : "";
-    document.body.style.overflow = locked ? "hidden" : "";
-    return () => {
-      if (frameEl) frameEl.style.overflowY = "";
-      document.body.style.overflow = "";
-    };
+    document.body.style.overflow = (open || searchOpen || accountOpen || bagOpen) ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
   }, [open, searchOpen, accountOpen, bagOpen]);
 
   return (
