@@ -132,6 +132,11 @@ img {
 ::-webkit-scrollbar { display: none; }
 html { scrollbar-width: none; -ms-overflow-style: none; }
 
+/* Hide scroll progress on mobile — it sits in the sage strip above the frame */
+@media (max-width: 767px) {
+  .scroll-progress { display: none !important; }
+}
+
 /* ─── Mobile hero height ─── */
 @media (max-width: 767px) {
   .hero-section {

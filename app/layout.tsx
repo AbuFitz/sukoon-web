@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Cormorant_Garamond, DM_Sans } from "next/font/google";
 import { CartProvider } from "@/lib/cart-context";
 import { AnnouncementBar } from "@/components/sections/AnnouncementBar";
@@ -77,6 +77,12 @@ export const metadata: Metadata = {
   alternates: {
     canonical: BASE_URL,
   },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
 };
 
 const orgJsonLd = {

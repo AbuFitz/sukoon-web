@@ -21,6 +21,7 @@ export function ScrollProgress() {
   return (
     <div
       aria-hidden="true"
+      className="scroll-progress"
       style={{
         position: "fixed", top: 0, left: 0, right: 0, height: "2px",
         zIndex: 9998, backgroundColor: "transparent",
