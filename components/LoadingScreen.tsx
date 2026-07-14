@@ -31,21 +31,24 @@ export function LoadingScreen() {
     <div style={{
       position: "fixed", inset: 0, zIndex: 9999,
       display: "grid", placeItems: "center",
-      backgroundColor: "#3F4A36",
       opacity: isExiting ? 0 : 1,
       transition: isExiting ? "opacity 1s cubic-bezier(0.4,0,0.2,1)" : "none",
       pointerEvents: isExiting ? "none" : "all",
     }}>
-      {/* Cream panel — mirrors .site-frame language */}
       <div style={{
-        backgroundColor: "#FAF8F4",
-        borderRadius: 22,
-        border: "1px solid rgba(244,240,232,0.45)",
-        boxShadow: "0 20px 60px rgba(24,32,22,0.16), 0 3px 12px rgba(24,32,22,0.08)",
-        padding: "clamp(3rem, 6vw, 5rem) clamp(3.5rem, 7vw, 6rem)",
-        display: "flex", alignItems: "center", justifyContent: "center",
+        position: "absolute", inset: 0,
+        backgroundColor: "rgba(63, 74, 54, 0.55)",
+        backdropFilter: "blur(18px) saturate(1.1)",
+        WebkitBackdropFilter: "blur(18px) saturate(1.1)",
+      }} />
+      <div style={{
+        position: "absolute", inset: 0,
+        background: "radial-gradient(ellipse at center, transparent 40%, rgba(30,36,24,0.3) 100%)",
+      }} />
+      <div style={{
+        position: "relative",
         opacity: isVisible ? 1 : 0,
-        transform: isVisible ? "translateY(0) scale(1)" : "translateY(16px) scale(0.97)",
+        transform: isVisible ? "translateY(0)" : "translateY(12px)",
         transition: "opacity 1.2s cubic-bezier(0.22,1,0.36,1), transform 1.3s cubic-bezier(0.22,1,0.36,1)",
         userSelect: "none",
       }}>
@@ -54,9 +57,10 @@ export function LoadingScreen() {
           src="/Sukoonlogo.png"
           alt="Sukoon"
           style={{
-            height: "clamp(100px, 14vw, 180px)",
+            height: "clamp(160px, 22vw, 260px)",
             width: "auto",
             display: "block",
+            filter: "brightness(0) invert(1)",
           }}
         />
       </div>

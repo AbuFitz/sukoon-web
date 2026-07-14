@@ -5,8 +5,9 @@ export function AnnouncementBar() {
     <div
       role="note"
       aria-label="Announcement"
+      className="announcement-pos"
       style={{
-        position: "fixed", top: 0, left: 0, right: 0, zIndex: 51,
+        zIndex: 51,
         height: "1.75rem",
         backgroundColor: "#3F4A36",
         display: "flex", alignItems: "center",
