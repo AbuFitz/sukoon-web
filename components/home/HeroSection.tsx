@@ -15,7 +15,7 @@ export function HeroSection() {
         position: "relative",
         width: "100%",
         minHeight: 720,
-        height: "calc(100svh - 6.5rem)",
+        height: "calc(100vh - 1.75rem)",
         maxHeight: 920,
         overflow: "hidden",
         backgroundColor: "#d5cfc3",

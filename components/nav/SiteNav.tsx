@@ -126,7 +126,7 @@ export function SiteNav() {
   return (
     <>
       <header style={{
-        position: "sticky", top: "1.75rem", zIndex: 50,
+        position: "fixed", top: "1.75rem", left: 0, right: 0, zIndex: 50,
         backgroundColor: (solid || !isTransparentPage) ? "rgba(251,248,243,0.96)" : "transparent",
         backdropFilter: (solid || !isTransparentPage) ? "blur(10px)" : "none",
         borderBottom: `1px solid ${(solid || !isTransparentPage) ? LINE : "transparent"}`,
@@ -201,22 +201,22 @@ export function SiteNav() {
         style={{
           position: "fixed", top: 0, left: 0, bottom: 0, zIndex: 60,
           width: "82vw", maxWidth: 360,
-          backgroundColor: LINEN,
+          backgroundColor: SAGE,
           transform: open ? "translateX(0)" : "translateX(-100%)",
           transition: "transform 0.4s cubic-bezier(0.22,1,0.36,1)",
           display: "flex", flexDirection: "column",
-          boxShadow: "10px 0 40px rgba(17,17,16,0.12)",
+          boxShadow: "10px 0 40px rgba(17,17,16,0.22)",
         }}
       >
         {/* Drawer header */}
         <div style={{
           height: "76px", display: "flex", alignItems: "center", justifyContent: "space-between",
-          padding: "0 1.75rem", borderBottom: `1px solid ${LINE}`, flexShrink: 0,
+          padding: "0 1.75rem", borderBottom: "1px solid rgba(245,242,235,0.12)", flexShrink: 0,
         }}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/otherlogo.png" alt="Sukoon" style={{ height: 30, width: "auto" }} />
+          <img src="/otherlogo.png" alt="Sukoon" style={{ height: 30, width: "auto", filter: "brightness(0) invert(1) sepia(0.18) saturate(0.4) hue-rotate(5deg)" }} />
           <button aria-label="Close menu" onClick={() => setOpen(false)} style={{
-            background: "none", border: "none", color: INK, cursor: "pointer", padding: "0.25rem", display: "flex",
+            background: "none", border: "none", color: CREAM, cursor: "pointer", padding: "0.25rem", display: "flex",
           }}>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" aria-hidden>
               <line x1="5" y1="5" x2="19" y2="19" /><line x1="19" y1="5" x2="5" y2="19" />
@@ -231,8 +231,8 @@ export function SiteNav() {
               <a key={l.label} href={l.href} onClick={() => setOpen(false)} style={{
                 display: "block",
                 fontFamily: "var(--font-display)", fontSize: "2.25rem", fontWeight: 400,
-                color: INK, textDecoration: "none", padding: "0.5rem 0",
-                borderBottom: `1px solid ${LINE}`,
+                color: CREAM, textDecoration: "none", padding: "0.5rem 0",
+                borderBottom: "1px solid rgba(245,242,235,0.15)",
                 opacity: open ? 1 : 0,
                 transform: open ? "translateX(0)" : "translateX(-16px)",
                 transition: `opacity 0.4s ease ${open ? 0.06 + i * 0.06 : 0}s, transform 0.4s ease ${open ? 0.06 + i * 0.06 : 0}s`,
@@ -249,13 +249,13 @@ export function SiteNav() {
             transition: `opacity 0.4s ease ${open ? 0.28 : 0}s`,
           }}>
             <a href="/account" onClick={() => setOpen(false)} style={{
-              display: "flex", alignItems: "center", gap: "0.625rem", color: GREY, textDecoration: "none",
+              display: "flex", alignItems: "center", gap: "0.625rem", color: "rgba(245,242,235,0.6)", textDecoration: "none",
               fontFamily: "var(--font-body)", fontSize: "0.8125rem", fontWeight: 500, letterSpacing: "0.04em",
             }}>
               <AccountIcon /> Account
             </a>
             <button onClick={() => { setOpen(false); setBagOpen(true); }} style={{
-              display: "flex", alignItems: "center", gap: "0.625rem", background: "none", border: "none", cursor: "pointer", color: GREY,
+              display: "flex", alignItems: "center", gap: "0.625rem", background: "none", border: "none", cursor: "pointer", color: "rgba(245,242,235,0.6)",
               fontFamily: "var(--font-body)", fontSize: "0.8125rem", fontWeight: 500, letterSpacing: "0.04em", padding: 0,
             }}>
               <BagIcon /> Bag{count > 0 ? ` (${count})` : ""}
@@ -266,13 +266,13 @@ export function SiteNav() {
         {/* Drawer footer */}
         <div style={{
           padding: "1.25rem 1.75rem 2rem",
-          borderTop: `1px solid ${LINE}`,
+          borderTop: "1px solid rgba(245,242,235,0.12)",
           display: "flex", flexDirection: "column", gap: "1rem",
           opacity: open ? 1 : 0,
           transition: `opacity 0.4s ease ${open ? 0.36 : 0}s`,
         }}>
-          <CurrencySelector color={INK} openUp />
-          <span style={{ fontFamily: "var(--font-body)", fontSize: "0.625rem", letterSpacing: "0.1em", textTransform: "uppercase", color: GREY }}>
+          <CurrencySelector color={CREAM} openUp />
+          <span style={{ fontFamily: "var(--font-body)", fontSize: "0.625rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(245,242,235,0.45)" }}>
             Made in the UK
           </span>
         </div>
