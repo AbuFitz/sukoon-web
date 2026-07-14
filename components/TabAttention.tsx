@@ -4,35 +4,32 @@ import { useEffect, useRef } from "react";
 
 const DEFAULT_TITLE = "Sukoon Skin — Beauty Rooted in Simplicity";
 
-const AWAY_FRAMES = [
-  "🌿 We miss you — Sukoon Skin",
-  "✨ Your skin misses you too",
-  "🌿 Come back to simplicity",
-  "✨ 5 ingredients. Real results.",
-  "🌿 Sukoon Skin — Beauty Rooted in Simplicity",
-];
+// The ticker string — loops continuously when user is away
+const TICKER = "  Your ritual is waiting  ·  Come back to Sukoon  ·  Five ingredients. Real results.  ·  Beauty rooted in simplicity  ·  ";
 
 export function TabAttention() {
-  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const timerRef    = useRef<ReturnType<typeof setTimeout> | null>(null);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
-  const frameRef = useRef(0);
+  const posRef      = useRef(0);
 
   useEffect(() => {
     const clear = () => {
-      if (timerRef.current) clearTimeout(timerRef.current);
+      if (timerRef.current)    clearTimeout(timerRef.current);
       if (intervalRef.current) clearInterval(intervalRef.current);
     };
 
     const onHide = () => {
       clear();
-      // Start cycling after 4 seconds away
+      // Wait 3s before starting the ticker
       timerRef.current = setTimeout(() => {
-        frameRef.current = 0;
+        posRef.current = 0;
         intervalRef.current = setInterval(() => {
-          document.title = AWAY_FRAMES[frameRef.current % AWAY_FRAMES.length];
-          frameRef.current++;
-        }, 2200);
-      }, 4000);
+          // Rotate one character at a time for smooth scroll effect
+          const display = TICKER.slice(posRef.current) + TICKER.slice(0, posRef.current);
+          document.title = display.slice(0, 50);
+          posRef.current = (posRef.current + 1) % TICKER.length;
+        }, 90);
+      }, 3000);
     };
 
     const onShow = () => {
