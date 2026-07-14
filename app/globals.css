@@ -38,10 +38,42 @@ html {
 }
 
 body {
-  background-color: #F6F1E8;
+  background-color: #3F4A36;
   color: #2C2416;
   font-family: var(--font-body);
   overflow-x: hidden;
+}
+
+/* ─── Site frame ─── */
+.site-frame {
+  position: relative;
+  z-index: 1;
+  width: calc(100% - 40px);
+  max-width: 1920px;
+  margin: 20px auto;
+  overflow: clip;
+  background: #FAF8F4;
+  border: 1px solid rgba(244, 240, 232, 0.45);
+  border-radius: 22px;
+  box-shadow: 0 20px 60px rgba(24, 32, 22, 0.16), 0 3px 12px rgba(24, 32, 22, 0.08);
+}
+
+@media (max-width: 767px) {
+  .site-frame {
+    width: calc(100% - 16px);
+    margin: 8px auto;
+    border-radius: 18px;
+  }
+}
+
+.frame-leaf {
+  position: fixed;
+  pointer-events: none;
+  opacity: 0.07;
+  filter: blur(2px);
+  z-index: 0;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 ::selection { background-color: #DDD5C8; color: #2C2416; }

@@ -6,7 +6,7 @@ export function AnnouncementBar() {
       role="note"
       aria-label="Announcement"
       style={{
-        position: "fixed", top: 0, left: 0, right: 0, zIndex: 51,
+        position: "sticky", top: 0, zIndex: 51,
         height: "1.75rem",
         backgroundColor: "#3F4A36",
         display: "flex", alignItems: "center",

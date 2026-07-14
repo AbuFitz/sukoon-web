@@ -126,7 +126,7 @@ export function SiteNav() {
   return (
     <>
       <header style={{
-        position: "fixed", top: "1.75rem", left: 0, right: 0, zIndex: 50,
+        position: "sticky", top: "1.75rem", zIndex: 50,
         backgroundColor: (solid || !isTransparentPage) ? "rgba(251,248,243,0.96)" : "transparent",
         backdropFilter: (solid || !isTransparentPage) ? "blur(10px)" : "none",
         borderBottom: `1px solid ${(solid || !isTransparentPage) ? LINE : "transparent"}`,
@@ -173,7 +173,6 @@ export function SiteNav() {
 
           {/* Mobile icons */}
           <div className="flex md:hidden" style={{ justifySelf: "end", alignItems: "center", gap: "1.375rem" }}>
-            <IconBtn label="Search" onClick={() => setSearchOpen(true)} color={useLightText ? CREAM : SAGE}><SearchIcon /></IconBtn>
             <IconBtn label="Bag" onClick={() => setBagOpen(true)} badge={count} color={useLightText ? CREAM : SAGE}><BagIcon /></IconBtn>
           </div>
         </div>

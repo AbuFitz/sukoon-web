@@ -110,9 +110,16 @@ export default function RootLayout({
         <TabAttention />
         <ScrollProgress />
         <LoadingScreen />
-        <AnnouncementBar />
-        <CartProvider>{children}</CartProvider>
-        <CookieBanner />
+        {/* Botanical leaf decorations — fixed, sit on sage body behind the frame */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/icons/leaf-decor.svg" alt="" aria-hidden className="frame-leaf" style={{ width: "clamp(180px,18vw,280px)", bottom: "8vh", left: "-3vw", transform: "rotate(-20deg)" }} />
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/icons/leaf-decor.svg" alt="" aria-hidden className="frame-leaf" style={{ width: "clamp(140px,14vw,220px)", top: "12vh", right: "-2vw", transform: "rotate(160deg)" }} />
+        <div className="site-frame">
+          <AnnouncementBar />
+          <CartProvider>{children}</CartProvider>
+          <CookieBanner />
+        </div>
       </body>
     </html>
   );
