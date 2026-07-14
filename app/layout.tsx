@@ -110,7 +110,7 @@ export default function RootLayout({
         <TabAttention />
         <ScrollProgress />
         <LoadingScreen />
-        <div className="site-frame">
+        <div id="site-frame" className="site-frame">
           <AnnouncementBar />
           <CartProvider>{children}</CartProvider>
           <CookieBanner />

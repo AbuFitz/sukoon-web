@@ -48,16 +48,27 @@ body {
 @media (max-width: 767px) {
   body {
     background-color: #3F4A36;
+    overflow: hidden; /* frame handles all scrolling */
   }
 
   .site-frame {
-    width: calc(100% - 16px);
-    margin: 8px auto;
-    overflow: hidden;
-    background: #FAF8F4;
+    position: fixed !important;
+    top: 8px !important;
+    left: 8px !important;
+    right: 8px !important;
+    bottom: 8px !important;
+    width: auto !important;
+    margin: 0 !important;
     border-radius: 18px;
-    box-shadow: 0 16px 48px rgba(24, 32, 22, 0.2), 0 3px 10px rgba(24, 32, 22, 0.1);
+    overflow-y: auto;
+    overflow-x: hidden;
+    background: #FAF8F4;
+    box-shadow: 0 16px 48px rgba(24, 32, 22, 0.22), 0 3px 10px rgba(24, 32, 22, 0.1);
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
   }
+
+  .site-frame::-webkit-scrollbar { display: none; }
 }
 
 /* ─── Announcement bar positioning ─── */
@@ -69,9 +80,10 @@ body {
 }
 @media (max-width: 767px) {
   .announcement-pos {
-    left: 8px !important;
-    right: 8px !important;
-    border-radius: 18px 18px 0 0;
+    position: sticky !important;
+    top: 0 !important;
+    left: auto !important;
+    right: auto !important;
   }
 }
 
@@ -84,8 +96,10 @@ body {
 }
 @media (max-width: 767px) {
   .sitenav-pos {
-    left: 8px !important;
-    right: 8px !important;
+    position: sticky !important;
+    top: 1.75rem !important;
+    left: auto !important;
+    right: auto !important;
   }
 }
 
