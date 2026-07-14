@@ -1,7 +1,9 @@
 "use client";
 
-const INK  = "#111110";
-const LINE = "#E3E1DA";
+const INK   = "#292b25";
+const SAGE  = "#3F4A36";
+const LINE  = "#E3E1DA";
+const CREAM = "#FAF8F4";
 
 export function Panel({ open, onClose, title, children }: { open: boolean; onClose: () => void; title: string; children: React.ReactNode }) {
   return (
@@ -20,7 +22,7 @@ export function Panel({ open, onClose, title, children }: { open: boolean; onClo
         style={{
           position: "fixed",
           height: "100dvh",
-          backgroundColor: "#FFFFFF",
+          backgroundColor: CREAM,
           display: "flex", flexDirection: "column",
           boxShadow: "-10px 0 40px rgba(17,17,16,0.16)",
         }}
@@ -29,7 +31,7 @@ export function Panel({ open, onClose, title, children }: { open: boolean; onClo
           display: "flex", alignItems: "center", justifyContent: "space-between",
           padding: "1.5rem clamp(1.25rem, 4vw, 2rem)", borderBottom: `1px solid ${LINE}`, flexShrink: 0,
         }}>
-          <span style={{ fontFamily: "var(--font-body)", fontSize: "1.0625rem", fontWeight: 700, letterSpacing: "0.01em", color: INK }}>{title}</span>
+          <span style={{ fontFamily: "var(--font-body)", fontSize: "0.6875rem", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: SAGE }}>{title}</span>
           <button aria-label={`Close ${title}`} onClick={onClose} style={{
             background: "none", border: "none", color: INK, cursor: "pointer", padding: "0.25rem", display: "flex",
           }}>

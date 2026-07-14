@@ -69,13 +69,16 @@ export function HeroSection() {
               <em style={{ fontStyle: "italic" }}>Your face and your hairline.</em>
             </h1>
 
-            <p style={{
+            <p className="hidden sm:block" style={{
               fontFamily: "var(--font-body)", fontSize: "clamp(0.9375rem, 1.2vw, 1.0625rem)",
               lineHeight: 1.65, color: "rgba(255,255,255,0.75)",
               margin: "0 0 2.5rem", maxWidth: 460,
             }}>
               The Daily Solace Fluid tackles acne, strengthens your skin barrier, and reverses friction-induced hairline thinning — all in under 60 seconds. No water. No fillers. Just five ingredients that work.
             </p>
+
+            {/* Mobile spacer replaces the hidden paragraph */}
+            <div className="block sm:hidden" style={{ height: "1.75rem" }} />
 
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", alignItems: "center" }}>
               <a
@@ -84,21 +87,22 @@ export function HeroSection() {
                   display: "inline-flex", alignItems: "center", justifyContent: "center",
                   fontFamily: "var(--font-body)", fontSize: "0.6875rem", fontWeight: 600,
                   letterSpacing: "0.12em", textTransform: "uppercase",
-                  color: "#FFFFFF", backgroundColor: "#45543d",
-                  border: "1px solid #45543d",
+                  color: "#FFFFFF", backgroundColor: "#3F4A36",
+                  border: "1px solid #3F4A36",
                   minHeight: 50, padding: "0 1.75rem",
                   textDecoration: "none",
-                  transition: "background-color 220ms ease, border-color 220ms ease, transform 220ms ease",
+                  transition: "background-color 220ms ease, transform 220ms ease",
                 }}
-                onMouseEnter={e => { const el = e.currentTarget; el.style.backgroundColor = "#34402f"; el.style.borderColor = "#34402f"; el.style.transform = "translateY(-1px)"; }}
-                onMouseLeave={e => { const el = e.currentTarget; el.style.backgroundColor = "#45543d"; el.style.borderColor = "#45543d"; el.style.transform = "translateY(0)"; }}
+                onMouseEnter={e => { const el = e.currentTarget; el.style.backgroundColor = "#2e3829"; el.style.transform = "translateY(-1px)"; }}
+                onMouseLeave={e => { const el = e.currentTarget; el.style.backgroundColor = "#3F4A36"; el.style.transform = "translateY(0)"; }}
               >
-                Shop the Collection
+                Shop Now
               </a>
               <a
                 href="#ingredients"
+                className="hidden sm:inline-flex"
                 style={{
-                  display: "inline-flex", alignItems: "center", justifyContent: "center",
+                  alignItems: "center", justifyContent: "center",
                   fontFamily: "var(--font-body)", fontSize: "0.6875rem", fontWeight: 600,
                   letterSpacing: "0.12em", textTransform: "uppercase",
                   color: "#FFFFFF", backgroundColor: "rgba(255,255,255,0.08)",

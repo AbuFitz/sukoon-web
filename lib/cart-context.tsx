@@ -10,7 +10,7 @@ type CartContextValue = {
   cart: ShopifyCart | null;
   count: number;
   loading: boolean;
-  addToCart: (variantId: string, qty?: number) => Promise<void>;
+  addToCart: (variantId: string, qty?: number) => Promise<string | null>;
   removeFromCart: (lineId: string) => Promise<void>;
   updateQty: (lineId: string, qty: number) => Promise<void>;
   checkoutUrl: string | null;
@@ -33,13 +33,12 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     }).catch(() => localStorage.removeItem(CART_ID_KEY));
   }, []);
 
-  const addToCart = useCallback(async (variantId: string, qty = 1) => {
+  const addToCart = useCallback(async (variantId: string, qty = 1): Promise<string | null> => {
     setLoading(true);
     try {
       const cartId = localStorage.getItem(CART_ID_KEY);
       let updated: ShopifyCart;
       if (cartId) {
-        // Check if variant already in cart → update qty instead
         const existing = cart?.lines.nodes.find(l => l.merchandise.id === variantId);
         if (existing) {
           updated = await cartLinesUpdate(cartId, existing.id, existing.quantity + qty);
@@ -51,6 +50,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
         localStorage.setItem(CART_ID_KEY, updated.id);
       }
       setCart(updated);
+      return updated.checkoutUrl ?? null;
     } finally {
       setLoading(false);
     }

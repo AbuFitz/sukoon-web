@@ -5,7 +5,8 @@ import { Panel } from "./Panel";
 import { useCart } from "@/lib/cart-context";
 import { formatPrice } from "@/lib/shopify";
 
-const INK  = "#111110";
+const INK  = "#292b25";
+const SAGE = "#3F4A36";
 const GREY = "#6E6E68";
 const LINE = "#E3E1DA";
 
@@ -56,8 +57,8 @@ export function BagPanel({ open, onClose }: { open: boolean; onClose: () => void
           <a href="/shop" onClick={onClose} style={{
             display: "inline-flex", alignItems: "center", justifyContent: "center",
             padding: "0.9375rem 2rem", textDecoration: "none",
-            backgroundColor: INK, color: "#FFFFFF",
-            fontFamily: "var(--font-body)", fontSize: "0.75rem", fontWeight: 500,
+            backgroundColor: SAGE, color: "#FFFFFF",
+            fontFamily: "var(--font-body)", fontSize: "0.6875rem", fontWeight: 600,
             letterSpacing: "0.12em", textTransform: "uppercase",
           }}>
             Shop Now
@@ -127,8 +128,8 @@ export function BagPanel({ open, onClose }: { open: boolean; onClose: () => void
             style={{
               display: "flex", alignItems: "center", justifyContent: "center", width: "100%",
               padding: "0.9375rem 2rem", border: "none", cursor: "pointer",
-              backgroundColor: INK, color: "#FFFFFF",
-              fontFamily: "var(--font-body)", fontSize: "0.75rem", fontWeight: 500,
+              backgroundColor: SAGE, color: "#FFFFFF",
+              fontFamily: "var(--font-body)", fontSize: "0.6875rem", fontWeight: 600,
               letterSpacing: "0.12em", textTransform: "uppercase", textDecoration: "none",
               pointerEvents: checkoutUrl ? "auto" : "none",
             }}
