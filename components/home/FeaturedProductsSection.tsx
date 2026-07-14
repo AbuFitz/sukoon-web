@@ -143,32 +143,22 @@ function ProductCard({ product, compact = false }: { product: FeaturedProduct; c
 export function FeaturedProductsSection({ products }: { products: FeaturedProduct[] }) {
   return (
     <section style={{ backgroundColor: "#faf8f4", padding: "clamp(3rem, 5vw, 5rem) 0" }}>
-      <div style={{ width: "min(calc(100% - 48px), 1400px)", margin: "0 auto" }}>
+      <div style={{ width: "min(calc(100% - clamp(2rem, 4vw, 5rem)), 1480px)", margin: "0 auto" }}>
 
-        {/* Bold editorial header */}
+        {/* Header */}
         <FadeIn direction="up" delay={0.05}>
           <div style={{
             display: "flex", alignItems: "flex-end", justifyContent: "space-between",
             marginBottom: "clamp(1.5rem, 3vw, 2.5rem)",
-            borderBottom: "1.5px solid #292b25", paddingBottom: "clamp(0.75rem, 1.5vw, 1rem)",
           }}>
-            <div>
-              <p style={{
-                fontFamily: "var(--font-body)", fontSize: "0.625rem", fontWeight: 700,
-                letterSpacing: "0.2em", textTransform: "uppercase", color: "#45543d",
-                margin: "0 0 0.5rem",
-              }}>
-                The Collection
-              </p>
-              <h2 style={{
-                fontFamily: "var(--font-display)", fontWeight: 400,
-                fontSize: "clamp(2rem, 3.2vw, 3.5rem)",
-                lineHeight: 0.95, letterSpacing: "-0.024em",
-                color: "#292b25", margin: 0,
-              }}>
-                Simple rituals.<br /><em>Visible results.</em>
-              </h2>
-            </div>
+            <h2 style={{
+              fontFamily: "var(--font-display)", fontWeight: 400,
+              fontSize: "clamp(2.25rem, 3.5vw, 4rem)",
+              lineHeight: 0.95, letterSpacing: "-0.026em",
+              color: "#292b25", margin: 0,
+            }}>
+              Simple rituals.<br /><em>Visible results.</em>
+            </h2>
             <a
               href="/shop"
               className="hidden md:flex"
@@ -178,6 +168,7 @@ export function FeaturedProductsSection({ products }: { products: FeaturedProduc
                 color: "#292b25", textDecoration: "none",
                 borderBottom: "1px solid #292b25", paddingBottom: "2px",
                 whiteSpace: "nowrap", alignItems: "center", gap: "0.4rem",
+                flexShrink: 0, marginLeft: "2rem", marginBottom: "0.5rem",
                 transition: "color 200ms ease, border-color 200ms ease",
               }}
               onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.color = "#45543d"; el.style.borderColor = "#45543d"; }}

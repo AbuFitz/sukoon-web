@@ -90,16 +90,15 @@ export function IngredientsSection() {
           </h2>
         </FadeIn>
 
-        {/* Grid: 5-col desktop / 2-col tablet / 1-col mobile */}
+        {/* Desktop: 5-col grid */}
         <FadeInStagger stagger={0.07} delay={0.12}>
           <div
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5"
-            style={{ gap: "clamp(0.875rem, 1.5vw, 1.25rem)", alignItems: "start" }}
+            className="hidden lg:grid"
+            style={{ gridTemplateColumns: "repeat(5, 1fr)", gap: "clamp(0.875rem, 1.5vw, 1.25rem)", alignItems: "start" }}
           >
             {ingredients.map((ing) => (
               <FadeInItem key={ing.name} direction="up">
                 <div>
-                  {/* Coloured card with numeral watermark */}
                   <div style={{
                     position: "relative",
                     backgroundColor: ing.bg,
@@ -122,26 +121,10 @@ export function IngredientsSection() {
                       {ing.numeral}
                     </span>
                   </div>
-
-                  {/* Name */}
-                  <p style={{
-                    fontFamily: "var(--font-body)", fontWeight: 600,
-                    fontSize: "0.875rem",
-                    color: "#22231F",
-                    margin: "0 0 0.375rem",
-                    lineHeight: 1.3,
-                  }}>
+                  <p style={{ fontFamily: "var(--font-body)", fontWeight: 600, fontSize: "0.875rem", color: "#22231F", margin: "0 0 0.375rem", lineHeight: 1.3 }}>
                     {ing.name}
                   </p>
-
-                  {/* Description */}
-                  <p style={{
-                    fontFamily: "var(--font-body)",
-                    fontSize: "0.8125rem",
-                    lineHeight: 1.6,
-                    color: "#64685f",
-                    margin: 0,
-                  }}>
+                  <p style={{ fontFamily: "var(--font-body)", fontSize: "0.8125rem", lineHeight: 1.6, color: "#64685f", margin: 0 }}>
                     {ing.description}
                   </p>
                 </div>
@@ -149,6 +132,53 @@ export function IngredientsSection() {
             ))}
           </div>
         </FadeInStagger>
+
+        {/* Mobile: compact list — coloured strip left, text right */}
+        <div className="flex lg:hidden" style={{ flexDirection: "column", gap: "0" }}>
+          {ingredients.map((ing, i) => (
+            <div
+              key={ing.name}
+              style={{
+                display: "flex", alignItems: "stretch",
+                borderTop: i === 0 ? "1px solid #e4e0d6" : "none",
+                borderBottom: "1px solid #e4e0d6",
+              }}
+            >
+              {/* Coloured swatch strip */}
+              <div style={{
+                width: 52, flexShrink: 0,
+                backgroundColor: ing.bg,
+                display: "flex", alignItems: "center", justifyContent: "center",
+              }}>
+                <span style={{
+                  fontFamily: '"Noto Naskh Arabic", "Amiri", Georgia, serif',
+                  fontSize: "1.75rem", lineHeight: 1,
+                  color: ing.numColor,
+                  userSelect: "none",
+                }}>
+                  {ing.numeral}
+                </span>
+              </div>
+
+              {/* Text */}
+              <div style={{ padding: "1rem 1.125rem", flex: 1 }}>
+                <p style={{
+                  fontFamily: "var(--font-body)", fontWeight: 600,
+                  fontSize: "0.875rem", color: "#22231F",
+                  margin: "0 0 0.25rem", lineHeight: 1.2,
+                }}>
+                  {ing.name}
+                </p>
+                <p style={{
+                  fontFamily: "var(--font-body)", fontSize: "0.8rem",
+                  lineHeight: 1.55, color: "#64685f", margin: 0,
+                }}>
+                  {ing.description}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
