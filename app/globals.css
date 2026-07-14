@@ -60,25 +60,42 @@ body {
   right: 0 !important;
 }
 
-/* ─── Mobile: sage background + inset via body padding ─── */
+/* ─── Mobile: full-surround sage frame ─── */
 @media (max-width: 767px) {
-  body {
-    background-color: #3F4A36;
-    /* 8px side padding creates the green frame strips */
-    padding: 0 8px;
-    /* Respect iPhone home-indicator safe area at the bottom */
-    padding-bottom: env(safe-area-inset-bottom, 0px);
+  :root {
+    /* Top inset: at least 10px, but yields to iPhone notch/dynamic-island safe area */
+    --fi-top: max(10px, env(safe-area-inset-top, 0px));
+    --fi-side: 8px;
+    --fi-bottom: max(10px, env(safe-area-inset-bottom, 0px));
   }
 
-  /* Constrain fixed bars to the inset content width */
+  body {
+    background-color: #3F4A36;
+    padding: var(--fi-top) var(--fi-side) var(--fi-bottom);
+  }
+
+  /* Frame surface — cream inset card */
+  .site-frame {
+    background: #F9F6F1;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    overflow: clip; /* rounds the content edges without creating a scroll container */
+    min-height: calc(100dvh - var(--fi-top) - var(--fi-bottom));
+  }
+
+  /* Shift fixed bars down to sit inside the top inset */
   .announcement-pos {
-    left: 8px !important;
-    right: 8px !important;
+    top: var(--fi-top) !important;
+    left: var(--fi-side) !important;
+    right: var(--fi-side) !important;
+    border-radius: 14px 14px 0 0; /* match frame top corners */
+    overflow: hidden;
   }
 
   .sitenav-pos {
-    left: 8px !important;
-    right: 8px !important;
+    top: calc(var(--fi-top) + 1.75rem) !important;
+    left: var(--fi-side) !important;
+    right: var(--fi-side) !important;
   }
 }
 
