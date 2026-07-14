@@ -62,40 +62,53 @@ body {
 
 /* ─── Mobile: full-surround sage frame ─── */
 @media (max-width: 767px) {
-  :root {
-    /* Top inset: at least 10px, but yields to iPhone notch/dynamic-island safe area */
-    --fi-top: max(10px, env(safe-area-inset-top, 0px));
-    --fi-side: 8px;
-    --fi-bottom: max(10px, env(safe-area-inset-bottom, 0px));
+  /*
+   * html fills the viewport safe zones (iPhone notch, home indicator).
+   * Without this, the default white bleeds through as "hinges" at top/bottom.
+   */
+  html {
+    background-color: #3F4A36;
   }
 
   body {
     background-color: #3F4A36;
-    padding: var(--fi-top) var(--fi-side) var(--fi-bottom);
+    /*
+     * env() values are 0 when not in a safe-area context (e.g. Chrome/non-notch).
+     * max() ensures at least 8px of green stripe on every device.
+     */
+    padding-top:    max(8px, env(safe-area-inset-top, 0px));
+    padding-right:  8px;
+    padding-bottom: max(8px, env(safe-area-inset-bottom, 0px));
+    padding-left:   8px;
   }
 
-  /* Frame surface — cream inset card */
+  /* Cream card with rounded corners and a faint outline */
   .site-frame {
     background: #F9F6F1;
-    border-radius: 14px;
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    overflow: clip; /* rounds the content edges without creating a scroll container */
-    min-height: calc(100dvh - var(--fi-top) - var(--fi-bottom));
+    border-radius: 16px;
+    /*
+     * overflow: hidden clips any overflowing section content (hero, decorative elements)
+     * to the rounded frame. overflow: clip has a WebKit bug with border-radius on iOS.
+     * Height is auto so this never becomes an internal scroll container.
+     */
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    min-height: calc(100dvh - max(8px, env(safe-area-inset-top, 0px)) - max(8px, env(safe-area-inset-bottom, 0px)));
   }
 
-  /* Shift fixed bars down to sit inside the top inset */
+  /* Fixed bars shift down to match the body top padding */
   .announcement-pos {
-    top: var(--fi-top) !important;
-    left: var(--fi-side) !important;
-    right: var(--fi-side) !important;
-    border-radius: 14px 14px 0 0; /* match frame top corners */
+    top:   max(8px, env(safe-area-inset-top, 0px)) !important;
+    left:  8px !important;
+    right: 8px !important;
+    border-radius: 16px 16px 0 0; /* flush with frame top corners */
     overflow: hidden;
   }
 
   .sitenav-pos {
-    top: calc(var(--fi-top) + 1.75rem) !important;
-    left: var(--fi-side) !important;
-    right: var(--fi-side) !important;
+    top:   calc(max(8px, env(safe-area-inset-top, 0px)) + 1.75rem) !important;
+    left:  8px !important;
+    right: 8px !important;
   }
 }
 
