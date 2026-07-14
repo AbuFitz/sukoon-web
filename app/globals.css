@@ -61,19 +61,17 @@ body {
 }
 
 /* ─── Announcement bar positioning ─── */
-/* Desktop: fixed overlay */
 .announcement-pos {
   position: fixed !important;
   top: 0 !important;
   left: 0 !important;
   right: 0 !important;
 }
-/* Mobile: sticky inside the frame */
 @media (max-width: 767px) {
   .announcement-pos {
-    position: sticky !important;
-    left: auto !important;
-    right: auto !important;
+    left: 8px !important;
+    right: 8px !important;
+    border-radius: 18px 18px 0 0;
   }
 }
 
@@ -86,9 +84,8 @@ body {
 }
 @media (max-width: 767px) {
   .sitenav-pos {
-    position: sticky !important;
-    left: auto !important;
-    right: auto !important;
+    left: 8px !important;
+    right: 8px !important;
   }
 }
 
