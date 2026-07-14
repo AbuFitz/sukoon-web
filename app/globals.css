@@ -44,50 +44,70 @@ body {
   overflow-x: hidden;
 }
 
-/* ─── Site frame — one continuous elevated surface ─── */
+/* ─── Site frame — one continuous elevated surface (desktop) ─── */
 .site-frame {
   position: relative;
   z-index: 1;
   width: calc(100% - 40px);
   max-width: 1920px;
   margin: 20px auto;
-  overflow: clip; /* clips border-radius without breaking sticky children */
+  overflow: clip;
   background: #FAF8F4;
   border: 1px solid rgba(244, 240, 232, 0.45);
   border-radius: 22px;
   box-shadow: 0 20px 60px rgba(24, 32, 22, 0.16), 0 3px 12px rgba(24, 32, 22, 0.08);
 }
 
+/* ─── Announcement bar — fixed on all sizes ─── */
+.announcement-pos {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+}
+
+/* ─── Site nav — fixed on all sizes ─── */
+.sitenav-pos {
+  position: fixed !important;
+  top: 1.75rem !important;
+  left: 0 !important;
+  right: 0 !important;
+}
+
+/* ─── Mobile: inset via body padding — frame is just the cream content area ─── */
+/* Nav stays fixed; left/right inset is constrained to match the body padding.  */
+/* This preserves full nav transparency & scroll behaviour on all devices.       */
 @media (max-width: 767px) {
+  body {
+    /* 8px side padding creates the green frame strips */
+    padding: 0 8px;
+    /* Respect iPhone home-indicator safe area at the bottom */
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+
   .site-frame {
-    width: calc(100% - 16px);
-    margin: 8px auto;
-    border-radius: 18px;
+    /* Reset desktop frame — inset is handled by body padding, not box styles */
+    width: 100%;
+    margin: 0;
+    border-radius: 0;
+    box-shadow: none;
+    border: none;
+    overflow: visible;
+  }
+
+  /* Constrain fixed bars to the inset content width */
+  .announcement-pos {
+    left: 8px !important;
+    right: 8px !important;
+  }
+
+  .sitenav-pos {
+    left: 8px !important;
+    right: 8px !important;
   }
 }
 
-/* ─── Announcement bar — sticky inside the frame ─── */
-.announcement-pos {
-  position: sticky !important;
-  top: 0 !important;
-  left: auto !important;
-  right: auto !important;
-}
-
-/* ─── Site nav — sticky just below the announcement bar ─── */
-.sitenav-pos {
-  position: sticky !important;
-  top: 1.75rem !important;
-  left: auto !important;
-  right: auto !important;
-}
-
-/* ─── Pull hero under the sticky nav so the transparent effect is preserved ─── */
-.hero-section {
-  margin-top: -76px;
-}
-
-/* ─── Botanical leaves sit behind the frame on the sage body ─── */
+/* ─── Botanical leaves — behind the frame on the sage body ─── */
 .frame-leaf {
   position: fixed;
   pointer-events: none;
