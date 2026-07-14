@@ -28,11 +28,15 @@ export function Panel({ open, onClose, title, children }: { open: boolean; onClo
         }}
       >
         <div style={{
-          display: "flex", alignItems: "center", justifyContent: "space-between",
-          padding: "1.5rem clamp(1.25rem, 4vw, 2rem)", borderBottom: `1px solid ${LINE}`, flexShrink: 0,
+          display: "flex", alignItems: "center",
+          justifyContent: title ? "space-between" : "flex-end",
+          padding: "1.25rem clamp(1.25rem, 4vw, 2rem)",
+          borderBottom: `1px solid ${LINE}`, flexShrink: 0,
         }}>
-          <span style={{ fontFamily: "var(--font-body)", fontSize: "0.6875rem", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: SAGE }}>{title}</span>
-          <button aria-label={`Close ${title}`} onClick={onClose} style={{
+          {title && (
+            <span style={{ fontFamily: "var(--font-body)", fontSize: "0.6875rem", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: SAGE }}>{title}</span>
+          )}
+          <button aria-label="Close panel" onClick={onClose} style={{
             background: "none", border: "none", color: INK, cursor: "pointer", padding: "0.25rem", display: "flex",
           }}>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" aria-hidden>

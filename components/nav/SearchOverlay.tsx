@@ -31,7 +31,7 @@ export function SearchOverlay({ open, onClose }: { open: boolean; onClose: () =>
     : products;
 
   return (
-    <Panel open={open} onClose={onClose} title="Search">
+    <Panel open={open} onClose={onClose} title="">
       <div style={{
         display: "flex", alignItems: "center", gap: "0.875rem",
         border: `1.5px solid ${SAGE}`,

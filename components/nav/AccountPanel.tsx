@@ -5,7 +5,7 @@ import { AccountForm } from "./AccountForm";
 
 export function AccountPanel({ open, onClose }: { open: boolean; onClose: () => void }) {
   return (
-    <Panel open={open} onClose={onClose} title="Account">
+    <Panel open={open} onClose={onClose} title="">
       <AccountForm />
     </Panel>
   );

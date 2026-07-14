@@ -1,6 +1,7 @@
 "use client";
 
-const INK  = "#111110";
+const INK  = "#292b25";
+const SAGE = "#3F4A36";
 const GREY = "#6E6E68";
 const LINE = "#E3E1DA";
 
@@ -22,9 +23,9 @@ export function AccountForm() {
         <input type="password" placeholder="Password" autoComplete="current-password" style={fieldStyle} />
         <button type="submit" style={{
           marginTop: "0.375rem", padding: "0.9375rem", border: "none", cursor: "pointer",
-          backgroundColor: INK, color: "#FFFFFF",
-          fontFamily: "var(--font-body)", fontSize: "0.75rem", fontWeight: 500,
-          letterSpacing: "0.12em", textTransform: "uppercase",
+          backgroundColor: SAGE, color: "#FFFFFF",
+          fontFamily: "var(--font-body)", fontSize: "0.6875rem", fontWeight: 600,
+          letterSpacing: "0.14em", textTransform: "uppercase",
         }}>
           Sign In
         </button>
@@ -38,9 +39,9 @@ export function AccountForm() {
 
       <button style={{
         width: "100%", padding: "0.9375rem", cursor: "pointer",
-        backgroundColor: "transparent", color: INK, border: `1px solid ${INK}`,
-        fontFamily: "var(--font-body)", fontSize: "0.75rem", fontWeight: 500,
-        letterSpacing: "0.12em", textTransform: "uppercase",
+        backgroundColor: "transparent", color: SAGE, border: `1px solid ${SAGE}`,
+        fontFamily: "var(--font-body)", fontSize: "0.6875rem", fontWeight: 600,
+        letterSpacing: "0.14em", textTransform: "uppercase",
       }}>
         Create Account
       </button>
