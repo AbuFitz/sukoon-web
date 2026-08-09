@@ -1,113 +1,106 @@
 "use client";
 
 import Image from "next/image";
-import { benefits, homepageImages } from "@/lib/homepage";
-import { FadeIn, FadeInStagger, FadeInItem } from "@/components/ui/FadeIn";
+import { homepageImages } from "@/lib/homepage";
 
-const benefitIcons: React.ReactNode[] = [
-  // Soothe — calm wave
-  <svg key="soothe" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
-    <path d="M2 12 C5 9 7 15 10 12 C13 9 15 15 18 12 C19.5 10.5 21 12 22 12"/>
-  </svg>,
-  // Shield — barrier
-  <svg key="shield" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M12 3 L4 6.5 L4 12.5 C4 16.5 7.5 20 12 21.5 C16.5 20 20 16.5 20 12.5 L20 6.5 Z"/>
-  </svg>,
-  // Drop — hydration
-  <svg key="drop" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M12 3 C12 3 5 11 5 15.5 A7 7 0 0 0 19 15.5 C19 11 12 3 12 3Z"/>
-  </svg>,
-  // Leaf — natural protection
-  <svg key="leaf" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M6 21 C6 21 6 13 12 9 C18 5 21 3 21 3 C21 3 19 9 15 13 C11 17 6 21 6 21Z"/>
-    <line x1="6" y1="21" x2="12" y2="13"/>
-  </svg>,
+const BENEFITS = [
+  {
+    label: "Face + Hairline",
+    body: "The only oil that serves both your skin and your hairline in one bottle. Morning ritual, done.",
+  },
+  {
+    label: "Absorbs in seconds",
+    body: "Olive Squalane mirrors your skin's natural sebum — it sinks in without residue or shine.",
+  },
+  {
+    label: "Barrier strength",
+    body: "Vitamin B3 rebuilds the lipid barrier on your face and along your follicles simultaneously.",
+  },
+  {
+    label: "Anti-inflammatory",
+    body: "Black Seed Oil (Nigella Sativa) quiets redness, breakouts, and friction damage at the source.",
+  },
 ];
 
 export function BenefitsSection() {
   return (
-    <section
-      aria-label="Product benefits"
-      style={{ backgroundColor: "#faf8f4", borderTop: "1px solid #e4e0d6" }}
-    >
-      <div
-        style={{ display: "grid", gridTemplateColumns: "1.25fr 0.75fr", alignItems: "stretch" }}
-        className="grid-cols-1 md:grid-cols-[1.25fr_0.75fr]"
+    <section style={{ backgroundColor: "#F5F5F3", padding: "clamp(5rem, 9vw, 8rem) 0" }}>
+      <div style={{
+        maxWidth: 1320, margin: "0 auto",
+        padding: "0 clamp(1.25rem, 4vw, 3rem)",
+        display: "grid",
+        gridTemplateColumns: "1fr 1fr",
+        gap: "clamp(3rem, 6vw, 6rem)",
+        alignItems: "center",
+      }}
+      className="benefits-grid"
       >
-        {/* Left — heading + 2×2 benefit grid */}
-        <div style={{
-          padding: "clamp(3.5rem, 8vw, 5.5rem) clamp(2rem, 6vw, 5.75rem)",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          order: 1,
-        }}>
-          <FadeIn direction="up" delay={0.05}>
-            <h2 style={{
-              fontFamily: "var(--font-display)", fontWeight: 400,
-              fontSize: "clamp(2.5rem, 3.6vw, 3.875rem)",
-              lineHeight: 0.98, letterSpacing: "-0.028em",
-              color: "#292b25", margin: "0 0 clamp(2rem, 4vw, 3rem)",
-            }}>
-              Real care.<br />
-              <em style={{ fontStyle: "italic" }}>Real change.</em>
-            </h2>
-          </FadeIn>
+        {/* Copy */}
+        <div>
+          <p className="eyebrow" style={{ marginBottom: "1.25rem" }}>Why it works</p>
+          <h2 style={{
+            fontFamily: "var(--font-body)", fontWeight: 700,
+            fontSize: "clamp(2rem, 3.5vw, 3rem)",
+            letterSpacing: "-0.025em", color: "#111111",
+            margin: "0 0 3rem",
+          }}>
+            Designed around<br />real results.
+          </h2>
 
-          <FadeInStagger stagger={0.09} delay={0.12}>
-            <div className="grid grid-cols-2" style={{ gap: "clamp(1.25rem, 2.5vw, 2rem)" }}>
-              {benefits.map((b, i) => (
-                <FadeInItem key={b.title} direction="up">
-                  <div style={{
-                    borderLeft: "2px solid #8a9e7f",
-                    paddingLeft: "1.25rem",
-                    paddingTop: "0.125rem",
-                  }}>
-                    <div style={{
-                      color: "#45543d",
-                      marginBottom: "0.75rem",
-                    }}>
-                      {benefitIcons[i]}
-                    </div>
-                    <p style={{
-                      fontFamily: "var(--font-body)", fontSize: "0.9375rem", fontWeight: 600,
-                      color: "#292b25", margin: "0 0 0.4rem", lineHeight: 1.3,
-                    }}>
-                      {b.title}
-                    </p>
-                    <p style={{
-                      fontFamily: "var(--font-body)", fontSize: "0.875rem", lineHeight: 1.7,
-                      color: "#64685f", margin: 0,
-                    }}>
-                      {b.description}
-                    </p>
-                  </div>
-                </FadeInItem>
-              ))}
-            </div>
-          </FadeInStagger>
+          <div style={{ display: "flex", flexDirection: "column", gap: "0" }}>
+            {BENEFITS.map((b, i) => (
+              <div key={b.label} style={{
+                padding: "1.5rem 0",
+                borderTop: i === 0 ? "1px solid #E3E3DF" : undefined,
+                borderBottom: "1px solid #E3E3DF",
+              }}>
+                <p style={{
+                  fontFamily: "var(--font-body)", fontWeight: 600,
+                  fontSize: "0.9375rem", color: "#111111", margin: "0 0 0.375rem",
+                }}>
+                  {b.label}
+                </p>
+                <p style={{
+                  fontFamily: "var(--font-body)", fontSize: "0.875rem",
+                  lineHeight: 1.65, color: "#676764", margin: 0,
+                }}>
+                  {b.body}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
 
-        {/* Right — image */}
-        <div style={{
-          position: "relative",
-          minHeight: "clamp(420px, 55vw, 700px)",
-          backgroundColor: "#c8c0b0",
-          order: 2,
-          overflow: "hidden",
-        }}>
-          <Image
-            src={homepageImages.benefits}
-            alt="Applying Sukoon Daily Solace Fluid"
-            fill
-            sizes="(min-width: 1024px) 38vw, 100vw"
-            style={{
-              objectFit: "cover", objectPosition: "center",
-              transition: "transform 800ms cubic-bezier(0.2,0.7,0.2,1)",
-            }}
-          />
+        {/* Image */}
+        <div>
+          <div style={{
+            position: "relative",
+            aspectRatio: "4 / 5",
+            borderRadius: 24,
+            overflow: "hidden",
+            backgroundColor: "#EAEAE8",
+          }}>
+            <Image
+              src={homepageImages.benefits}
+              alt="Sukoon Daily Solace Fluid in use"
+              fill
+              sizes="(max-width: 768px) 100vw, 50vw"
+              style={{ objectFit: "cover" }}
+            />
+          </div>
         </div>
       </div>
+
+      <style>{`
+        @media (max-width: 767px) {
+          .benefits-grid {
+            grid-template-columns: 1fr !important;
+          }
+          .benefits-grid > div:last-child {
+            order: -1;
+          }
+        }
+      `}</style>
     </section>
   );
 }

@@ -1,9 +1,8 @@
 "use client";
 
-const INK   = "#292b25";
-const SAGE  = "#3F4A36";
-const LINE  = "#E3E1DA";
-const CREAM = "#FAF8F4";
+const INK   = "#111111";
+const LINE  = "#E3E3DF";
+const CREAM = "#FFFFFF";
 
 export function Panel({ open, onClose, title, children }: { open: boolean; onClose: () => void; title: string; children: React.ReactNode }) {
   return (
@@ -34,7 +33,7 @@ export function Panel({ open, onClose, title, children }: { open: boolean; onClo
           borderBottom: `1px solid ${LINE}`, flexShrink: 0,
         }}>
           {title && (
-            <span style={{ fontFamily: "var(--font-body)", fontSize: "0.6875rem", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: SAGE }}>{title}</span>
+            <span style={{ fontFamily: "var(--font-body)", fontSize: "0.9375rem", fontWeight: 500, color: INK }}>{title}</span>
           )}
           <button aria-label="Close panel" onClick={onClose} style={{
             background: "none", border: "none", color: INK, cursor: "pointer", padding: "0.25rem", display: "flex",

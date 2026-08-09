@@ -5,26 +5,30 @@ import { Panel } from "./Panel";
 import { useCart } from "@/lib/cart-context";
 import { formatPrice } from "@/lib/shopify";
 
-const INK  = "#292b25";
-const SAGE = "#3F4A36";
-const GREY = "#6E6E68";
-const LINE = "#E3E1DA";
+const TEXT   = "#111111";
+const MUTED  = "#92928D";
+const BORDER = "#E3E3DF";
 
 function Stepper({ qty, onChange }: { qty: number; onChange: (qty: number) => void }) {
   return (
-    <div style={{ display: "flex", alignItems: "center", border: `1px solid ${LINE}` }}>
+    <div style={{
+      display: "flex", alignItems: "center",
+      border: `1.5px solid ${BORDER}`, borderRadius: 8,
+    }}>
       <button
         aria-label="Decrease quantity"
         onClick={() => onChange(qty - 1)}
-        style={{ width: 26, height: 26, background: "none", border: "none", cursor: "pointer", color: INK, fontSize: "0.875rem" }}
+        style={{ width: 30, height: 30, background: "none", border: "none", cursor: "pointer", color: TEXT, fontSize: "1rem", fontFamily: "var(--font-body)" }}
       >
         −
       </button>
-      <span style={{ width: 24, textAlign: "center", fontFamily: "var(--font-body)", fontSize: "0.8125rem", color: INK }}>{qty}</span>
+      <span style={{ width: 28, textAlign: "center", fontFamily: "var(--font-body)", fontSize: "0.875rem", color: TEXT }}>
+        {qty}
+      </span>
       <button
         aria-label="Increase quantity"
         onClick={() => onChange(qty + 1)}
-        style={{ width: 26, height: 26, background: "none", border: "none", cursor: "pointer", color: INK, fontSize: "0.875rem" }}
+        style={{ width: 30, height: 30, background: "none", border: "none", cursor: "pointer", color: TEXT, fontSize: "1rem", fontFamily: "var(--font-body)" }}
       >
         +
       </button>
@@ -38,30 +42,25 @@ export function BagPanel({ open, onClose }: { open: boolean; onClose: () => void
 
   if (lines.length === 0) {
     return (
-      <Panel open={open} onClose={onClose} title="Your Bag">
+      <Panel open={open} onClose={onClose} title="Your bag">
         <div style={{
-          display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center",
-          padding: "2.5rem 0",
+          display: "flex", flexDirection: "column", alignItems: "center",
+          textAlign: "center", padding: "3rem 0",
         }}>
-          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke={INK} strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden style={{ marginBottom: "1.25rem" }}>
-            <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z" />
-            <path d="M3 6h18" />
-            <path d="M16 10a4 4 0 0 1-8 0" />
-          </svg>
-          <p style={{ fontFamily: "var(--font-display)", fontSize: "1.25rem", color: INK, marginBottom: "0.625rem" }}>
+          <p style={{ fontFamily: "var(--font-body)", fontWeight: 500, fontSize: "1.0625rem", color: TEXT, marginBottom: "0.5rem" }}>
             Your bag is empty
           </p>
-          <p style={{ fontFamily: "var(--font-body)", fontSize: "0.875rem", color: GREY, lineHeight: 1.6, maxWidth: "280px", marginBottom: "1.75rem" }}>
-            Add The Daily Solace Fluid to your bag to begin your ritual.
+          <p style={{ fontFamily: "var(--font-body)", fontSize: "0.875rem", color: MUTED, lineHeight: 1.6, maxWidth: 260, marginBottom: "2rem" }}>
+            Add something to get started.
           </p>
           <a href="/shop" onClick={onClose} style={{
             display: "inline-flex", alignItems: "center", justifyContent: "center",
-            padding: "0.9375rem 2rem", textDecoration: "none",
-            backgroundColor: SAGE, color: "#FFFFFF",
-            fontFamily: "var(--font-body)", fontSize: "0.6875rem", fontWeight: 600,
-            letterSpacing: "0.12em", textTransform: "uppercase",
+            padding: "0.875rem 2rem", textDecoration: "none",
+            backgroundColor: TEXT, color: "#FFFFFF",
+            fontFamily: "var(--font-body)", fontSize: "0.875rem", fontWeight: 500,
+            borderRadius: 12,
           }}>
-            Shop Now
+            Shop now
           </a>
         </div>
       </Panel>
@@ -71,7 +70,7 @@ export function BagPanel({ open, onClose }: { open: boolean; onClose: () => void
   const subtotal = cart?.cost.subtotalAmount;
 
   return (
-    <Panel open={open} onClose={onClose} title="Your Bag">
+    <Panel open={open} onClose={onClose} title="Your bag">
       <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem", opacity: loading ? 0.6 : 1, transition: "opacity 0.2s" }}>
         {lines.map((line) => {
           const { merchandise } = line;
@@ -83,19 +82,19 @@ export function BagPanel({ open, onClose }: { open: boolean; onClose: () => void
           return (
             <div key={line.id} style={{ display: "flex", gap: "1rem" }}>
               {merchandise.image ? (
-                <div style={{ position: "relative", width: 72, height: 90, flexShrink: 0, backgroundColor: "#E8D4AE" }}>
-                  <Image src={merchandise.image.url} alt={merchandise.image.altText ?? merchandise.product.title} fill sizes="72px" style={{ objectFit: "cover" }} />
+                <div style={{ position: "relative", width: 80, height: 96, flexShrink: 0, borderRadius: 12, overflow: "hidden", backgroundColor: "#F0F0EE" }}>
+                  <Image src={merchandise.image.url} alt={merchandise.image.altText ?? merchandise.product.title} fill sizes="80px" style={{ objectFit: "cover" }} />
                 </div>
               ) : (
-                <div style={{ width: 72, height: 90, flexShrink: 0, backgroundColor: "#E8D4AE" }} />
+                <div style={{ width: 80, height: 96, flexShrink: 0, borderRadius: 12, backgroundColor: "#F0F0EE" }} />
               )}
               <div style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
                 <div>
-                  <p style={{ fontFamily: "var(--font-body)", fontSize: "0.875rem", fontWeight: 600, color: INK, marginBottom: "0.2rem" }}>
+                  <p style={{ fontFamily: "var(--font-body)", fontSize: "0.9375rem", fontWeight: 500, color: TEXT, margin: "0 0 0.25rem" }}>
                     {merchandise.product.title}
                   </p>
-                  <p style={{ fontFamily: "var(--font-body)", fontSize: "0.75rem", color: GREY, marginBottom: "0.5rem" }}>
-                    {merchandise.title !== "Default Title" ? `${merchandise.title} · ` : ""}{price} ea · {lineTotal}
+                  <p style={{ fontFamily: "var(--font-body)", fontSize: "0.8125rem", color: MUTED, margin: "0 0 0.5rem" }}>
+                    {merchandise.title !== "Default Title" ? `${merchandise.title} · ` : ""}{price} · {lineTotal}
                   </p>
                 </div>
                 <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
@@ -104,8 +103,8 @@ export function BagPanel({ open, onClose }: { open: boolean; onClose: () => void
                     onClick={() => removeFromCart(line.id)}
                     style={{
                       background: "none", border: "none", cursor: "pointer", padding: 0,
-                      fontFamily: "var(--font-body)", fontSize: "0.6875rem", color: GREY,
-                      textDecoration: "underline", letterSpacing: "0.02em",
+                      fontFamily: "var(--font-body)", fontSize: "0.8125rem", color: MUTED,
+                      textDecoration: "underline", textUnderlineOffset: 2,
                     }}
                   >
                     Remove
@@ -116,10 +115,10 @@ export function BagPanel({ open, onClose }: { open: boolean; onClose: () => void
           );
         })}
 
-        <div style={{ borderTop: `1px solid ${LINE}`, paddingTop: "1.25rem", marginTop: "0.25rem" }}>
+        <div style={{ borderTop: `1px solid ${BORDER}`, paddingTop: "1.25rem" }}>
           <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "1.25rem" }}>
-            <span style={{ fontFamily: "var(--font-body)", fontSize: "0.875rem", fontWeight: 600, color: INK }}>Subtotal</span>
-            <span style={{ fontFamily: "var(--font-body)", fontSize: "0.875rem", fontWeight: 600, color: INK }}>
+            <span style={{ fontFamily: "var(--font-body)", fontSize: "0.9375rem", fontWeight: 500, color: TEXT }}>Subtotal</span>
+            <span style={{ fontFamily: "var(--font-body)", fontSize: "0.9375rem", fontWeight: 500, color: TEXT }}>
               {subtotal ? formatPrice(subtotal.amount, subtotal.currencyCode) : "—"}
             </span>
           </div>
@@ -127,16 +126,17 @@ export function BagPanel({ open, onClose }: { open: boolean; onClose: () => void
             href={checkoutUrl ?? "#"}
             style={{
               display: "flex", alignItems: "center", justifyContent: "center", width: "100%",
-              padding: "0.9375rem 2rem", border: "none", cursor: "pointer",
-              backgroundColor: SAGE, color: "#FFFFFF",
-              fontFamily: "var(--font-body)", fontSize: "0.6875rem", fontWeight: 600,
-              letterSpacing: "0.12em", textTransform: "uppercase", textDecoration: "none",
+              height: 52, border: "none", cursor: "pointer",
+              backgroundColor: TEXT, color: "#FFFFFF",
+              fontFamily: "var(--font-body)", fontSize: "0.875rem", fontWeight: 500,
+              letterSpacing: "0.04em", textDecoration: "none",
+              borderRadius: 12,
               pointerEvents: checkoutUrl ? "auto" : "none",
             }}
           >
             {loading ? "Updating…" : "Checkout"}
           </a>
-          <p style={{ fontFamily: "var(--font-body)", fontSize: "0.6875rem", color: GREY, textAlign: "center", marginTop: "0.75rem" }}>
+          <p style={{ fontFamily: "var(--font-body)", fontSize: "0.75rem", color: MUTED, textAlign: "center", marginTop: "0.75rem" }}>
             Shipping &amp; taxes calculated at checkout
           </p>
         </div>

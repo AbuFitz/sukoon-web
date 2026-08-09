@@ -4,7 +4,6 @@ import Image from "next/image";
 import { useState } from "react";
 import { useCart } from "@/lib/cart-context";
 import { productImageMap, type FeaturedHandle } from "@/lib/homepage";
-import { FadeIn, FadeInStagger, FadeInItem } from "@/components/ui/FadeIn";
 
 export type FeaturedProduct = {
   handle: string;
@@ -14,212 +13,149 @@ export type FeaturedProduct = {
   availableForSale?: boolean;
 };
 
-function ProductCard({ product, compact = false }: { product: FeaturedProduct; compact?: boolean }) {
-  const { addToCart, loading } = useCart();
-  const [justAdded, setJustAdded] = useState(false);
+function ProductCard({ product }: { product: FeaturedProduct }) {
   const [hovered, setHovered] = useState(false);
-  const variantId = product.variantId;
-  const availableForSale = product.availableForSale ?? true;
-  const imgSrc = productImageMap[product.handle as FeaturedHandle] ?? "/images/products/daily-solace-30ml-placeholder.svg";
+  const [adding, setAdding] = useState(false);
+  const [added, setAdded] = useState(false);
+  const { addToCart } = useCart();
 
-  const handleAdd = async () => {
-    if (!variantId || !availableForSale || loading || justAdded) return;
-    await addToCart(variantId, 1);
-    setJustAdded(true);
-    setTimeout(() => setJustAdded(false), 1800);
+  const src = productImageMap[product.handle as FeaturedHandle]
+    ?? "https://images.unsplash.com/photo-1707539160277-e39464517645?w=900&q=85&fit=crop";
+
+  const handleAdd = async (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (!product.variantId || adding || added) return;
+    setAdding(true);
+    await addToCart(product.variantId, 1);
+    setAdding(false);
+    setAdded(true);
+    setTimeout(() => setAdded(false), 2000);
   };
 
   return (
-    <div
+    <a
+      href={`/products/${product.handle}`}
+      style={{ textDecoration: "none", display: "block" }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      style={{ display: "flex", flexDirection: "column" }}
     >
       {/* Image */}
-      <a
-        href={`/products/${product.handle}`}
-        style={{ display: "block", position: "relative", aspectRatio: compact ? "3 / 4" : "3 / 4", overflow: "hidden", backgroundColor: "#f0ede6" }}
-        tabIndex={-1}
-        aria-hidden
-      >
+      <div style={{
+        position: "relative",
+        aspectRatio: "4 / 5",
+        borderRadius: 22,
+        overflow: "hidden",
+        backgroundColor: "#F0F0EE",
+        marginBottom: "1.125rem",
+      }}>
         <Image
-          src={imgSrc}
+          src={src}
           alt={product.title}
           fill
-          sizes="(min-width: 1280px) 25vw, (min-width: 768px) 33vw, 70vw"
+          sizes="(max-width: 768px) 100vw, 33vw"
           style={{
             objectFit: "cover",
-            transition: "transform 600ms cubic-bezier(0.2,0.7,0.2,1)",
+            transition: "transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94)",
             transform: hovered ? "scale(1.04)" : "scale(1)",
           }}
         />
-      </a>
+      </div>
 
       {/* Info */}
-      <div style={{ paddingTop: compact ? "0.875rem" : "1.375rem", display: "flex", flexDirection: "column", gap: "0.2rem" }}>
-        <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", gap: "0.5rem" }}>
-          <a href={`/products/${product.handle}`} style={{ textDecoration: "none", color: "inherit", flex: 1, minWidth: 0 }}>
-            <p style={{
-              fontFamily: "var(--font-display)", fontWeight: 400,
-              fontSize: compact ? "clamp(1rem, 1.3vw, 1.25rem)" : "1.4375rem",
-              letterSpacing: "-0.014em", lineHeight: 1.1,
-              color: "#292b25", margin: 0,
-              transition: "color 200ms ease",
-              overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap",
-            }}
-              onMouseEnter={e => (e.currentTarget.style.color = "#45543d")}
-              onMouseLeave={e => (e.currentTarget.style.color = "#292b25")}
-            >
-              {product.title}
-            </p>
-          </a>
-          <span style={{
-            fontFamily: "var(--font-body)", fontSize: compact ? "0.8125rem" : "0.9375rem",
-            color: "#292b25", fontWeight: 500, flexShrink: 0,
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", gap: "1rem" }}>
+        <div>
+          <p style={{
+            fontFamily: "var(--font-body)", fontWeight: 500,
+            fontSize: "0.9375rem", color: "#111111",
+            margin: "0 0 0.25rem", lineHeight: 1.3,
+          }}>
+            {product.title}
+          </p>
+          <p style={{
+            fontFamily: "var(--font-body)", fontSize: "0.875rem",
+            color: "#92928D", margin: 0,
           }}>
             {product.price}
-          </span>
+          </p>
         </div>
 
-        <div style={{ marginTop: compact ? "0.75rem" : "1rem" }}>
-          {variantId && !availableForSale ? (
-            <button
-              disabled
-              style={{
-                fontFamily: "var(--font-body)", fontSize: "0.5625rem", fontWeight: 600,
-                letterSpacing: "0.14em", textTransform: "uppercase",
-                color: "#9a9a90", backgroundColor: "#f0ede8",
-                border: "1px solid #ddd9d0",
-                padding: "0 1rem", height: compact ? 36 : 44,
-                cursor: "not-allowed", width: "100%",
-              }}
-            >
-              Out of Stock
-            </button>
-          ) : variantId ? (
-            <button
-              onClick={handleAdd}
-              disabled={justAdded || loading}
-              style={{
-                fontFamily: "var(--font-body)", fontSize: "0.5625rem", fontWeight: 600,
-                letterSpacing: "0.14em", textTransform: "uppercase",
-                color: justAdded ? "#45543d" : "#FFFFFF",
-                backgroundColor: justAdded ? "transparent" : "#292b25",
-                border: "1px solid #292b25",
-                padding: "0 1rem", height: compact ? 36 : 44,
-                cursor: "pointer", width: "100%",
-                transition: "background-color 200ms ease, color 200ms ease",
-              }}
-              onMouseEnter={e => { if (!justAdded) { const el = e.currentTarget as HTMLElement; el.style.backgroundColor = "#45543d"; el.style.borderColor = "#45543d"; } }}
-              onMouseLeave={e => { const el = e.currentTarget as HTMLElement; if (!justAdded) { el.style.backgroundColor = "#292b25"; el.style.borderColor = "#292b25"; } }}
-            >
-              {justAdded ? "Added ✓" : "Add to Bag"}
-            </button>
-          ) : (
-            <a
-              href={`/products/${product.handle}`}
-              style={{
-                fontFamily: "var(--font-body)", fontSize: "0.5625rem", fontWeight: 600,
-                letterSpacing: "0.14em", textTransform: "uppercase",
-                color: "#292b25", textDecoration: "none",
-                border: "1px solid rgba(41,43,37,0.3)",
-                padding: "0 1rem", height: compact ? 36 : 44,
-                display: "flex", alignItems: "center", justifyContent: "center",
-                width: "100%",
-                transition: "border-color 200ms ease, background-color 200ms ease",
-              }}
-              onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.borderColor = "#292b25"; el.style.backgroundColor = "#292b25"; el.style.color = "#fff"; }}
-              onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.borderColor = "rgba(41,43,37,0.3)"; el.style.backgroundColor = "transparent"; el.style.color = "#292b25"; }}
-            >
-              View Product
-            </a>
-          )}
-        </div>
+        {product.variantId && (
+          <button
+            onClick={handleAdd}
+            disabled={adding || added}
+            aria-label={added ? "Added to bag" : `Add ${product.title} to bag`}
+            style={{
+              flexShrink: 0,
+              fontFamily: "var(--font-body)", fontSize: "0.75rem", fontWeight: 500,
+              letterSpacing: "0.04em",
+              color: added ? "#676764" : "#111111",
+              backgroundColor: "transparent",
+              border: `1.5px solid ${added ? "#E3E3DF" : "#111111"}`,
+              borderRadius: 10,
+              padding: "0.5rem 1rem",
+              cursor: adding ? "wait" : "pointer",
+              transition: "all 0.2s ease",
+              whiteSpace: "nowrap",
+            }}
+            onMouseEnter={e => {
+              if (!added) {
+                const el = e.currentTarget as HTMLElement;
+                el.style.backgroundColor = "#111111";
+                el.style.color = "#FFFFFF";
+              }
+            }}
+            onMouseLeave={e => {
+              if (!added) {
+                const el = e.currentTarget as HTMLElement;
+                el.style.backgroundColor = "transparent";
+                el.style.color = "#111111";
+              }
+            }}
+          >
+            {added ? "Added ✓" : adding ? "…" : "Add to Bag"}
+          </button>
+        )}
       </div>
-    </div>
+    </a>
   );
 }
 
 export function FeaturedProductsSection({ products }: { products: FeaturedProduct[] }) {
   return (
-    <section style={{ backgroundColor: "#faf8f4", padding: "clamp(3rem, 5vw, 5rem) 0" }}>
-      <div style={{ width: "min(calc(100% - clamp(2rem, 4vw, 5rem)), 1480px)", margin: "0 auto" }}>
-
+    <section style={{ backgroundColor: "#FFFFFF", padding: "clamp(5rem, 9vw, 8rem) 0" }}>
+      <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 clamp(1.25rem, 4vw, 3rem)" }}>
         {/* Header */}
-        <FadeIn direction="up" delay={0.05}>
-          <div style={{
-            display: "flex", alignItems: "flex-end", justifyContent: "space-between",
-            marginBottom: "clamp(1.5rem, 3vw, 2.5rem)",
-          }}>
-            <h2 style={{
-              fontFamily: "var(--font-display)", fontWeight: 400,
-              fontSize: "clamp(2.25rem, 3.5vw, 4rem)",
-              lineHeight: 0.95, letterSpacing: "-0.026em",
-              color: "#292b25", margin: 0,
-            }}>
-              Simple rituals.<br /><em>Visible results.</em>
-            </h2>
-            <a
-              href="/shop"
-              className="hidden md:flex"
-              style={{
-                fontFamily: "var(--font-body)", fontSize: "0.6875rem", fontWeight: 600,
-                letterSpacing: "0.12em", textTransform: "uppercase",
-                color: "#292b25", textDecoration: "none",
-                borderBottom: "1px solid #292b25", paddingBottom: "2px",
-                whiteSpace: "nowrap", alignItems: "center", gap: "0.4rem",
-                flexShrink: 0, marginLeft: "2rem", marginBottom: "0.5rem",
-                transition: "color 200ms ease, border-color 200ms ease",
-              }}
-              onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.color = "#45543d"; el.style.borderColor = "#45543d"; }}
-              onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.color = "#292b25"; el.style.borderColor = "#292b25"; }}
-            >
-              Shop All →
-            </a>
-          </div>
-        </FadeIn>
-
-        {/* Desktop grid — 4 cols, compact */}
-        <FadeInStagger stagger={0.07} delay={0.1}>
-          <div className="hidden md:grid" style={{ gridTemplateColumns: `repeat(${products.length}, 1fr)`, gap: "clamp(1rem, 2vw, 1.75rem)" }}>
-            {products.map(p => (
-              <FadeInItem key={p.handle}>
-                <ProductCard product={p} compact />
-              </FadeInItem>
-            ))}
-          </div>
-        </FadeInStagger>
-
-        {/* Mobile horizontal scroll */}
-        <div className="flex md:hidden" style={{
-          overflowX: "auto", scrollSnapType: "x mandatory",
-          gap: "1rem", paddingBottom: "1rem",
-          marginLeft: "calc(-1 * clamp(1rem, 4vw, 1.5rem))",
-          marginRight: "calc(-1 * clamp(1rem, 4vw, 1.5rem))",
-          paddingLeft: "clamp(1rem, 4vw, 1.5rem)",
-          paddingRight: "clamp(1rem, 4vw, 1.5rem)",
-          scrollbarWidth: "none",
-          msOverflowStyle: "none",
+        <div style={{
+          display: "flex", alignItems: "baseline", justifyContent: "space-between",
+          gap: "1rem", marginBottom: "clamp(2.5rem, 4vw, 3.5rem)",
         }}>
-          {products.map(p => (
-            <div key={p.handle} style={{ flex: "0 0 68vw", maxWidth: 260, scrollSnapAlign: "start" }}>
-              <ProductCard product={p} compact />
-            </div>
-          ))}
-          {/* trailing spacer so last card isn't flush edge */}
-          <div style={{ flex: "0 0 clamp(1rem, 4vw, 1.5rem)" }} />
+          <h2 style={{
+            fontFamily: "var(--font-body)", fontWeight: 700,
+            fontSize: "clamp(1.75rem, 3vw, 2.5rem)",
+            letterSpacing: "-0.025em", color: "#111111", margin: 0,
+          }}>
+            The Collection
+          </h2>
+          <a href="/shop" style={{
+            fontFamily: "var(--font-body)", fontSize: "0.8125rem", fontWeight: 400,
+            color: "#92928D", textDecoration: "none",
+            borderBottom: "1px solid #E3E3DF", paddingBottom: 2,
+            whiteSpace: "nowrap", flexShrink: 0,
+            transition: "color 0.2s ease, border-color 0.2s ease",
+          }}
+          onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.color = "#111111"; el.style.borderColor = "#111111"; }}
+          onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.color = "#92928D"; el.style.borderColor = "#E3E3DF"; }}
+          >
+            View all
+          </a>
         </div>
 
-        {/* Mobile shop all link */}
-        <div className="flex md:hidden" style={{ marginTop: "1.5rem" }}>
-          <a href="/shop" style={{
-            fontFamily: "var(--font-body)", fontSize: "0.6875rem", fontWeight: 600,
-            letterSpacing: "0.12em", textTransform: "uppercase",
-            color: "#292b25", textDecoration: "none",
-            borderBottom: "1px solid #292b25", paddingBottom: "2px",
-          }}>
-            Shop All →
-          </a>
+        {/* Grid */}
+        <div
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
+          style={{ gap: "clamp(1.5rem, 3vw, 2.5rem)" }}
+        >
+          {products.map(p => <ProductCard key={p.handle} product={p} />)}
         </div>
       </div>
     </section>

@@ -3,7 +3,6 @@ import { Cormorant_Garamond, DM_Sans } from "next/font/google";
 import { CartProvider } from "@/lib/cart-context";
 import { AnnouncementBar } from "@/components/sections/AnnouncementBar";
 import { CookieBanner } from "@/components/CookieBanner";
-import { LoadingScreen } from "@/components/LoadingScreen";
 import { ImageGuard } from "@/components/ImageGuard";
 import { ScrollProgress } from "@/components/ui/ScrollProgress";
 import { TabAttention } from "@/components/TabAttention";
@@ -26,10 +25,16 @@ const dmSans = DM_Sans({
 
 const BASE_URL = "https://sukoon.co.uk";
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+};
+
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
-    default: "Sukoon Skin - Beauty Rooted in Simplicity",
+    default: "Sukoon Skin — Waterless Face & Hairline Oil",
     template: "%s | Sukoon Skin",
   },
   description:
@@ -39,7 +44,6 @@ export const metadata: Metadata = {
     "olive squalane", "vitamin b3", "acne face oil", "skin barrier", "UK skincare",
     "natural face oil", "sukoon", "sukoon skin", "daily solace fluid",
     "friction alopecia", "traction alopecia oil", "men skincare", "women skincare",
-    "no filler skincare", "5 ingredient skincare",
   ],
   authors: [{ name: "Sukoon Skin", url: BASE_URL }],
   creator: "Sukoon Skin",
@@ -51,38 +55,22 @@ export const metadata: Metadata = {
     googleBot: { index: true, follow: true, "max-snippet": -1, "max-image-preview": "large", "max-video-preview": -1 },
   },
   openGraph: {
-    title: "Sukoon Skin — Beauty Rooted in Simplicity",
+    title: "Sukoon Skin — Waterless Face & Hairline Oil",
     description:
-      "100% waterless. 5 active ingredients. Made in the UK. The Daily Solace Fluid tackles acne, strengthens your skin barrier and reverses friction-induced hairline thinning — in under 60 seconds.",
+      "100% waterless. 5 active ingredients. Made in the UK. Tackles acne, strengthens your skin barrier and reverses friction-induced hairline thinning.",
     url: BASE_URL,
     siteName: "Sukoon",
     type: "website",
     locale: "en_GB",
-    images: [
-      {
-        url: "/og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Sukoon Daily Solace Fluid — Waterless face and hairline oil",
-      },
-    ],
+    images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "Sukoon Daily Solace Fluid" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Sukoon — Waterless Face & Hairline Oil",
-    description:
-      "100% waterless. 5 active ingredients. Made in the UK. Tackles acne, strengthens your skin barrier and reverses hairline thinning.",
+    description: "100% waterless. 5 active ingredients. Made in the UK.",
     images: ["/og-image.jpg"],
   },
-  alternates: {
-    canonical: BASE_URL,
-  },
-};
-
-export const viewport: Viewport = {
-  width: "device-width",
-  initialScale: 1,
-  viewportFit: "cover",
+  alternates: { canonical: BASE_URL },
 };
 
 const orgJsonLd = {
@@ -91,7 +79,7 @@ const orgJsonLd = {
   name: "Sukoon Skin",
   url: "https://sukoon.co.uk",
   logo: "https://sukoon.co.uk/Sukoonlogo.png",
-  description: "Sukoon Skin creates waterless, high-performance skincare made in the UK with 5 active ingredients.",
+  description: "Sukoon Skin creates waterless, high-performance skincare made in the UK.",
   foundingLocation: { "@type": "Country", name: "United Kingdom" },
   contactPoint: { "@type": "ContactPoint", contactType: "customer service", url: "https://sukoon.co.uk/contact" },
   sameAs: [
@@ -100,9 +88,7 @@ const orgJsonLd = {
   ],
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{ children: React.ReactNode }>) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={`${cormorant.variable} ${dmSans.variable} h-full`}>
       <head>
@@ -115,12 +101,9 @@ export default function RootLayout({
         <ImageGuard />
         <TabAttention />
         <ScrollProgress />
-        <LoadingScreen />
-        <div id="site-frame" className="site-frame">
-          <AnnouncementBar />
-          <CartProvider>{children}</CartProvider>
-          <CookieBanner />
-        </div>
+        <AnnouncementBar />
+        <CartProvider>{children}</CartProvider>
+        <CookieBanner />
       </body>
     </html>
   );

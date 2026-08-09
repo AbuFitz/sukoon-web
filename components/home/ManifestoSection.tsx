@@ -1,35 +1,32 @@
 export function ManifestoSection() {
   return (
-    <section
-      style={{
-        backgroundColor: "#F5F2EB",
-        padding: "clamp(80px, 8vw, 100px) clamp(2rem, 6vw, 6rem)",
-        textAlign: "center",
-      }}
-    >
-      <p style={{
-        fontFamily: "var(--font-body)", fontSize: "0.625rem", fontWeight: 700,
-        letterSpacing: "0.2em", textTransform: "uppercase",
-        color: "#3F4A36", margin: "0 0 1.25rem",
-      }}>
-        Our Philosophy
-      </p>
-
-      <div style={{
-        width: 40, height: 1, backgroundColor: "rgba(251,248,243,0.3)",
-        margin: "0 auto 2.25rem",
-      }} />
-
-      <blockquote style={{
-        fontFamily: "var(--font-display)", fontWeight: 400, fontStyle: "italic",
-        fontSize: "clamp(34px, 3.4vw, 56px)",
-        lineHeight: 1.15, letterSpacing: "-0.022em",
-        color: "#292b25",
-        margin: "0 auto",
-        maxWidth: 1200,
-      }}>
-        Care should never ask you to become someone else. Only help you feel at home in who you already are.
-      </blockquote>
+    <section style={{
+      backgroundColor: "#111111",
+      padding: "clamp(5rem, 9vw, 8rem) clamp(1.25rem, 4vw, 3rem)",
+      textAlign: "center",
+    }}>
+      <div style={{ maxWidth: 820, margin: "0 auto" }}>
+        <p style={{
+          fontFamily: "var(--font-display)",
+          fontStyle: "italic",
+          fontWeight: 400,
+          fontSize: "clamp(1.75rem, 4vw, 3rem)",
+          lineHeight: 1.35,
+          color: "#F5F5F3",
+          margin: "0 0 2rem",
+          letterSpacing: "-0.01em",
+        }}>
+          "Skin care shouldn&apos;t require a chemistry degree. Ours requires five ingredients and sixty seconds."
+        </p>
+        <p style={{
+          fontFamily: "var(--font-body)", fontWeight: 500,
+          fontSize: "0.75rem", letterSpacing: "0.14em",
+          textTransform: "uppercase", color: "#676764",
+          margin: 0,
+        }}>
+          Sukoon Skin
+        </p>
+      </div>
     </section>
   );
 }

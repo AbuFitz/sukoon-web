@@ -1,184 +1,101 @@
 "use client";
 
-import Image from "next/image";
-import { FadeIn, FadeInStagger, FadeInItem } from "@/components/ui/FadeIn";
-
-const ingredients = [
-  {
-    numeral: "١",
-    name: "Olive Squalane",
-    description: "Lightweight hydration that absorbs quickly without clogging pores.",
-    bg: "#CEC2AE",
-    numColor: "rgba(255,255,255,0.28)",
-  },
-  {
-    numeral: "٢",
-    name: "Vitamin B3",
-    description: "Supports the skin barrier across the face and hairline.",
-    bg: "#A8BCA0",
-    numColor: "rgba(255,255,255,0.28)",
-  },
-  {
-    numeral: "٣",
-    name: "Black Seed Oil",
-    description: "Helps calm visible irritation and nourish stressed skin.",
-    bg: "#364530",
-    numColor: "rgba(255,255,255,0.18)",
-  },
-  {
-    numeral: "٤",
-    name: "Vitamin E",
-    description: "Antioxidant support that helps protect and preserve the formula.",
-    bg: "#C99850",
-    numColor: "rgba(255,255,255,0.25)",
-  },
-  {
-    numeral: "٥",
-    name: "Vanilla Extract",
-    description: "Softens the natural scent without synthetic fragrance.",
-    bg: "#B8ADA4",
-    numColor: "rgba(255,255,255,0.28)",
-  },
-];
+import { ingredients } from "@/lib/homepage";
 
 export function IngredientsSection() {
   return (
     <section
       id="ingredients"
-      style={{
-        position: "relative",
-        overflow: "hidden",
-        backgroundColor: "#faf8f4",
-        padding: "112px 0 120px",
-        borderTop: "1px solid #e4e0d6",
-      }}
+      style={{ backgroundColor: "#F5F5F3", padding: "clamp(5rem, 9vw, 8rem) 0" }}
     >
-      {/* Botanical leaf — large, overflows from top-right, hidden on mobile */}
-      <Image
-        src="/images/decor/ingredients-leaf.png"
-        alt=""
-        aria-hidden="true"
-        width={900}
-        height={600}
-        className="hidden md:block"
-        style={{
-          position: "absolute",
-          top: "-150px",
-          right: "-120px",
-          width: "clamp(560px, 37vw, 820px)",
-          height: "auto",
-          transform: "rotate(-11deg)",
-          transformOrigin: "top right",
-          pointerEvents: "none",
-          userSelect: "none",
-          zIndex: 4,
-        }}
-      />
-
-      {/* Content */}
-      <div style={{ width: "min(calc(100% - 80px), 1400px)", margin: "0 auto", position: "relative", zIndex: 2 }}>
-
-        {/* Heading */}
-        <FadeIn direction="up" delay={0.05}>
+      <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 clamp(1.25rem, 4vw, 3rem)" }}>
+        {/* Header */}
+        <div style={{ marginBottom: "clamp(3rem, 5vw, 4.5rem)", maxWidth: 600 }}>
+          <p className="eyebrow" style={{ marginBottom: "1rem" }}>The Formula</p>
           <h2 style={{
-            fontFamily: "var(--font-display)", fontWeight: 400,
-            fontSize: "clamp(2.625rem, 3.8vw, 4.25rem)",
-            lineHeight: 0.98, letterSpacing: "-0.028em",
-            color: "#292b25", margin: "0 0 clamp(2rem, 4vw, 3rem)",
+            fontFamily: "var(--font-body)", fontWeight: 700,
+            fontSize: "clamp(2rem, 3.5vw, 3rem)",
+            letterSpacing: "-0.025em", color: "#111111", margin: "0 0 1rem",
           }}>
-            Five ingredients. <em style={{ fontStyle: "italic" }}>Nothing extra.</em>
+            Five ingredients.<br />Nothing hidden.
           </h2>
-        </FadeIn>
+          <p style={{
+            fontFamily: "var(--font-body)", fontSize: "1rem", lineHeight: 1.7, color: "#676764", margin: 0,
+          }}>
+            Every ingredient earns its place. No water. No fillers. No bullshit.
+          </p>
+        </div>
 
-        {/* Desktop: 5-col grid */}
-        <FadeInStagger stagger={0.07} delay={0.12}>
-          <div
-            className="hidden lg:grid"
-            style={{ gridTemplateColumns: "repeat(5, 1fr)", gap: "clamp(0.875rem, 1.5vw, 1.25rem)", alignItems: "start" }}
-          >
-            {ingredients.map((ing) => (
-              <FadeInItem key={ing.name} direction="up">
-                <div>
-                  <div style={{
-                    position: "relative",
-                    backgroundColor: ing.bg,
-                    height: "clamp(140px, 13vw, 200px)",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    overflow: "hidden",
-                    marginBottom: "1rem",
-                  }}>
-                    <span style={{
-                      fontFamily: '"Noto Naskh Arabic", "Amiri", Georgia, serif',
-                      fontWeight: 400,
-                      fontSize: "clamp(80px, 8vw, 120px)",
-                      lineHeight: 1,
-                      color: ing.numColor,
-                      userSelect: "none",
-                      pointerEvents: "none",
-                    }}>
-                      {ing.numeral}
-                    </span>
-                  </div>
-                  <p style={{ fontFamily: "var(--font-body)", fontWeight: 600, fontSize: "0.875rem", color: "#22231F", margin: "0 0 0.375rem", lineHeight: 1.3 }}>
-                    {ing.name}
-                  </p>
-                  <p style={{ fontFamily: "var(--font-body)", fontSize: "0.8125rem", lineHeight: 1.6, color: "#64685f", margin: 0 }}>
-                    {ing.description}
-                  </p>
-                </div>
-              </FadeInItem>
-            ))}
-          </div>
-        </FadeInStagger>
-
-        {/* Mobile: compact list — coloured strip left, text right */}
-        <div className="flex lg:hidden" style={{ flexDirection: "column", gap: "0" }}>
+        {/* Ingredient list */}
+        <div style={{ display: "flex", flexDirection: "column" }}>
           {ingredients.map((ing, i) => (
-            <div
-              key={ing.name}
-              style={{
-                display: "flex", alignItems: "stretch",
-                borderTop: i === 0 ? "1px solid #e4e0d6" : "none",
-                borderBottom: "1px solid #e4e0d6",
-              }}
+            <div key={ing.name} style={{
+              display: "grid",
+              gridTemplateColumns: "3rem 1fr 1fr",
+              gap: "clamp(1.5rem, 3vw, 3rem)",
+              alignItems: "start",
+              padding: "2rem 0",
+              borderTop: i === 0 ? "1px solid #E3E3DF" : undefined,
+              borderBottom: "1px solid #E3E3DF",
+            }}
+            className="ingredient-row"
             >
-              {/* Coloured swatch strip */}
-              <div style={{
-                width: 52, flexShrink: 0,
-                backgroundColor: ing.bg,
-                display: "flex", alignItems: "center", justifyContent: "center",
+              {/* Number */}
+              <span style={{
+                fontFamily: "var(--font-body)", fontWeight: 700,
+                fontSize: "0.75rem", letterSpacing: "0.1em",
+                color: "#D4D4CF", paddingTop: "0.25rem",
               }}>
-                <span style={{
-                  fontFamily: '"Noto Naskh Arabic", "Amiri", Georgia, serif',
-                  fontSize: "1.75rem", lineHeight: 1,
-                  color: ing.numColor,
-                  userSelect: "none",
-                }}>
-                  {ing.numeral}
-                </span>
-              </div>
+                {String(i + 1).padStart(2, "0")}
+              </span>
 
-              {/* Text */}
-              <div style={{ padding: "1rem 1.125rem", flex: 1 }}>
+              {/* Name + latin */}
+              <div>
                 <p style={{
                   fontFamily: "var(--font-body)", fontWeight: 600,
-                  fontSize: "0.875rem", color: "#22231F",
-                  margin: "0 0 0.25rem", lineHeight: 1.2,
+                  fontSize: "clamp(1rem, 1.5vw, 1.25rem)", color: "#111111", margin: "0 0 0.25rem",
                 }}>
                   {ing.name}
                 </p>
                 <p style={{
-                  fontFamily: "var(--font-body)", fontSize: "0.8rem",
-                  lineHeight: 1.55, color: "#64685f", margin: 0,
+                  fontFamily: "var(--font-body)", fontStyle: "italic",
+                  fontSize: "0.8125rem", color: "#92928D", margin: "0 0 0",
+                }}>
+                  {ing.latin}
+                </p>
+              </div>
+
+              {/* Description + percent */}
+              <div>
+                <p style={{
+                  fontFamily: "var(--font-body)", fontSize: "0.9375rem",
+                  lineHeight: 1.65, color: "#676764", margin: "0 0 0.5rem",
                 }}>
                   {ing.description}
                 </p>
+                <span style={{
+                  fontFamily: "var(--font-body)", fontWeight: 600, fontSize: "0.75rem",
+                  letterSpacing: "0.08em", color: "#D4D4CF",
+                }}>
+                  {ing.percent}
+                </span>
               </div>
             </div>
           ))}
         </div>
+
+        {/* Mobile stacked style */}
+        <style>{`
+          @media (max-width: 767px) {
+            .ingredient-row {
+              grid-template-columns: 2rem 1fr !important;
+              grid-template-rows: auto auto;
+            }
+            .ingredient-row > div:last-child {
+              grid-column: 2;
+            }
+          }
+        `}</style>
       </div>
     </section>
   );

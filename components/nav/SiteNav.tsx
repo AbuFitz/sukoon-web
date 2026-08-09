@@ -5,41 +5,21 @@ import { usePathname } from "next/navigation";
 import { SearchOverlay } from "./SearchOverlay";
 import { AccountPanel } from "./AccountPanel";
 import { BagPanel } from "./BagPanel";
-import { CurrencySelector } from "./CurrencySelector";
 import { useCart } from "@/lib/cart-context";
 
-const links = [
+const NAV_LINKS = [
   { label: "Shop",        href: "/shop" },
   { label: "Our Story",   href: "/about" },
-  { label: "Ingredients", href: "#ingredients" },
+  { label: "Ingredients", href: "/#ingredients" },
 ];
 
-const INK   = "#292b25";
-const SAGE  = "#3F4A36";
-const GREY  = "#6E6E68";
-const LINEN = "#FBF8F3";
-const LINE  = "#E3E1DA";
-const CREAM = "#F5F2EB";
-
-function IconBtn({ label, onClick, href, children, badge, color }: { label: string; onClick?: () => void; href?: string; children: React.ReactNode; badge?: number; color?: string }) {
-  const col = color ?? INK;
-  const style: React.CSSProperties = { position: "relative", display: "flex", color: col, background: "none", border: "none", padding: 0, cursor: "pointer", transition: "color 0.4s ease" };
-  const badgeEl = badge ? (
-    <span style={{
-      position: "absolute", top: -7, right: -8, minWidth: 15, height: 15, borderRadius: "50%",
-      backgroundColor: INK, color: "#FFFFFF", fontFamily: "var(--font-body)", fontSize: "0.5625rem",
-      fontWeight: 600, display: "flex", alignItems: "center", justifyContent: "center", padding: "0 3px",
-    }}>
-      {badge}
-    </span>
-  ) : null;
-  if (href) return <a href={href} aria-label={label} style={{ ...style, textDecoration: "none" }}>{children}{badgeEl}</a>;
-  return <button aria-label={label} onClick={onClick} style={style}>{children}{badgeEl}</button>;
-}
+const TEXT   = "#111111";
+const MUTED  = "#676764";
+const BORDER = "#E3E3DF";
 
 function SearchIcon() {
   return (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" aria-hidden>
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" aria-hidden>
       <circle cx="11" cy="11" r="7" /><line x1="21" y1="21" x2="16.2" y2="16.2" />
     </svg>
   );
@@ -47,7 +27,7 @@ function SearchIcon() {
 
 function AccountIcon() {
   return (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
       <circle cx="12" cy="8" r="3.5" /><path d="M4.5 20c1.5-4 4-6 7.5-6s6 2 7.5 6" />
     </svg>
   );
@@ -55,47 +35,75 @@ function AccountIcon() {
 
 function BagIcon() {
   return (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
       <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z" />
-      <path d="M3 6h18" />
-      <path d="M16 10a4 4 0 0 1-8 0" />
+      <path d="M3 6h18" /><path d="M16 10a4 4 0 0 1-8 0" />
     </svg>
   );
 }
 
-function HamburgerIcon({ open }: { open: boolean }) {
+function MenuIcon({ open }: { open: boolean }) {
   return (
-    <span style={{ position: "relative", width: 20, height: 14, display: "inline-block" }} aria-hidden>
+    <span style={{ position: "relative", width: 20, height: 13, display: "inline-flex", flexDirection: "column", justifyContent: "space-between" }} aria-hidden>
       <span style={{
-        position: "absolute", left: 0, top: open ? 6 : 0, width: 20, height: 1.4, backgroundColor: "currentColor",
-        transform: open ? "rotate(45deg)" : "none", transition: "top 0.25s ease, transform 0.25s ease",
+        display: "block", width: 20, height: 1.5, backgroundColor: "currentColor",
+        transformOrigin: "center",
+        transform: open ? "translateY(5.75px) rotate(45deg)" : "none",
+        transition: "transform 0.25s ease",
       }} />
       <span style={{
-        position: "absolute", left: 0, bottom: open ? 6 : 0, width: 20, height: 1.4, backgroundColor: "currentColor",
-        transform: open ? "rotate(-45deg)" : "none", transition: "bottom 0.25s ease, transform 0.25s ease",
+        display: "block", width: 20, height: 1.5, backgroundColor: "currentColor",
+        transformOrigin: "center",
+        transform: open ? "translateY(-5.75px) rotate(-45deg)" : "none",
+        transition: "transform 0.25s ease",
       }} />
     </span>
   );
 }
 
-function NavLink({ label, href, transparent }: { label: string; href: string; transparent: boolean }) {
-  const col = transparent ? CREAM : INK;
-  const hoverCol = transparent ? "rgba(245,242,235,0.6)" : SAGE;
+function Wordmark({ color = TEXT }: { color?: string }) {
   return (
-    <a
-      href={href}
-      style={{
-        fontFamily: "var(--font-body)", fontSize: "0.9375rem", fontWeight: 500,
-        letterSpacing: "0.04em", color: col, textDecoration: "none",
-        transition: "color 0.25s ease, transform 0.25s ease",
-        display: "inline-block",
-        textShadow: transparent ? "0 1px 4px rgba(0,0,0,0.35)" : "none",
-      }}
-      onMouseEnter={e => { const el = e.currentTarget; el.style.color = hoverCol; el.style.transform = "translateY(-1px)"; }}
-      onMouseLeave={e => { const el = e.currentTarget; el.style.color = col; el.style.transform = "translateY(0)"; }}
-    >
-      {label}
+    <a href="/" aria-label="Sukoon home" style={{ textDecoration: "none" }}>
+      <span style={{
+        fontFamily: "var(--font-body)",
+        fontWeight: 700,
+        fontSize: "1rem",
+        letterSpacing: "0.2em",
+        color,
+        textTransform: "uppercase",
+        userSelect: "none",
+        transition: "color 0.35s ease",
+      }}>
+        SUKOON
+      </span>
     </a>
+  );
+}
+
+function IconBtn({
+  label, onClick, children, badge, color,
+}: { label: string; onClick: () => void; children: React.ReactNode; badge?: number; color: string }) {
+  return (
+    <button
+      aria-label={label}
+      onClick={onClick}
+      style={{ background: "none", border: "none", color, cursor: "pointer", display: "flex", padding: 0, position: "relative", transition: "opacity 0.2s ease" }}
+      onMouseEnter={e => { (e.currentTarget as HTMLElement).style.opacity = "0.55"; }}
+      onMouseLeave={e => { (e.currentTarget as HTMLElement).style.opacity = "1"; }}
+    >
+      {children}
+      {badge ? (
+        <span style={{
+          position: "absolute", top: -6, right: -8,
+          minWidth: 16, height: 16, borderRadius: "50%",
+          backgroundColor: color, color: color === TEXT ? "#FFFFFF" : TEXT,
+          fontFamily: "var(--font-body)", fontSize: "0.5rem", fontWeight: 700,
+          display: "flex", alignItems: "center", justifyContent: "center", padding: "0 3px",
+        }}>
+          {badge}
+        </span>
+      ) : null}
+    </button>
   );
 }
 
@@ -104,15 +112,15 @@ export function SiteNav() {
   const [searchOpen, setSearchOpen] = useState(false);
   const [accountOpen, setAccountOpen] = useState(false);
   const [bagOpen, setBagOpen] = useState(false);
-  const [solid, setSolid] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const { count } = useCart();
   const pathname = usePathname();
-  const isTransparentPage = pathname === "/" || pathname === "/shop";
-  const transparent = isTransparentPage && !solid;
-  const useLightText = pathname === "/" && !solid;
+
+  const isHomepage = pathname === "/";
+  const transparent = isHomepage && !scrolled;
 
   useEffect(() => {
-    const onScroll = () => setSolid(window.scrollY > 40);
+    const onScroll = () => setScrolled(window.scrollY > 60);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -123,57 +131,75 @@ export function SiteNav() {
     return () => { document.body.style.overflow = ""; };
   }, [open, searchOpen, accountOpen, bagOpen]);
 
+  const iconColor = transparent ? "rgba(255,255,255,0.9)" : TEXT;
+  const wordmarkColor = transparent ? "#FFFFFF" : TEXT;
+  const linkColor = transparent ? "rgba(255,255,255,0.8)" : MUTED;
+
   return (
     <>
-      <header className="sitenav-pos" style={{
-        zIndex: 50,
-        backgroundColor: (solid || !isTransparentPage) ? "rgba(251,248,243,0.96)" : "transparent",
-        backdropFilter: (solid || !isTransparentPage) ? "blur(10px)" : "none",
-        borderBottom: `1px solid ${(solid || !isTransparentPage) ? LINE : "transparent"}`,
-        transition: "background-color 0.4s ease, border-color 0.4s ease",
-      }}>
+      <header
+        className="sitenav-pos"
+        style={{
+          zIndex: 50,
+          backgroundColor: transparent ? "transparent" : "rgba(255,255,255,0.94)",
+          backdropFilter: transparent ? "none" : "blur(16px)",
+          borderBottom: `1px solid ${transparent ? "transparent" : BORDER}`,
+          transition: "background-color 0.4s ease, border-color 0.4s ease",
+        }}
+      >
         <div style={{
-          maxWidth: "1480px", margin: "0 auto",
-          padding: "clamp(0.625rem, 1.2vw, 1rem) clamp(1.25rem, 5vw, 3.5rem)",
-          display: "grid", gridTemplateColumns: "1fr auto 1fr",
+          maxWidth: 1480, margin: "0 auto",
+          padding: "0 clamp(1.25rem, 4vw, 3rem)",
+          height: 68,
+          display: "grid",
+          gridTemplateColumns: "1fr auto 1fr",
           alignItems: "center",
-          minHeight: "76px",
         }}>
-          {/* Desktop nav links */}
-          <nav className="hidden md:flex" style={{ gap: "2.25rem" }} aria-label="Primary">
-            <NavLink {...links[0]} transparent={useLightText} />
-            <NavLink {...links[1]} transparent={useLightText} />
-            <NavLink {...links[2]} transparent={useLightText} />
+          {/* Desktop nav */}
+          <nav className="hidden md:flex" style={{ gap: "2rem" }} aria-label="Primary navigation">
+            {NAV_LINKS.map(l => (
+              <a
+                key={l.label}
+                href={l.href}
+                style={{
+                  fontFamily: "var(--font-body)", fontSize: "0.875rem", fontWeight: 400,
+                  color: linkColor, textDecoration: "none",
+                  transition: "color 0.2s ease",
+                }}
+                onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = transparent ? "#ffffff" : TEXT; }}
+                onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = linkColor; }}
+              >
+                {l.label}
+              </a>
+            ))}
           </nav>
+
           {/* Mobile hamburger */}
           <div className="flex md:hidden" style={{ justifySelf: "start" }}>
             <button
               aria-label={open ? "Close menu" : "Open menu"}
               onClick={() => setOpen(o => !o)}
-              style={{ background: "none", border: "none", color: useLightText ? CREAM : SAGE, cursor: "pointer", padding: 0, display: "flex", transition: "color 0.4s ease" }}
+              style={{ background: "none", border: "none", color: iconColor, cursor: "pointer", padding: 0, display: "flex", alignItems: "center" }}
             >
-              <HamburgerIcon open={open} />
+              <MenuIcon open={open} />
             </button>
           </div>
 
-          {/* Logo — always dark */}
-          <a href="/" style={{ justifySelf: "center", textDecoration: "none", lineHeight: 0 }}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/otherlogo.png" alt="Sukoon" style={{ height: "clamp(28px, 2.8vw, 40px)", width: "auto", display: "block" }} />
-          </a>
+          {/* Wordmark */}
+          <div style={{ justifySelf: "center" }}>
+            <Wordmark color={wordmarkColor} />
+          </div>
 
           {/* Desktop icons */}
-          <div className="hidden md:flex" style={{ justifySelf: "end", alignItems: "center", gap: "2.25rem" }}>
-            <span style={{ width: "1px", height: "16px", backgroundColor: useLightText ? "rgba(245,242,235,0.35)" : LINE }} />
-            <CurrencySelector color={useLightText ? CREAM : INK} />
-            <IconBtn label="Search" onClick={() => setSearchOpen(true)} color={useLightText ? CREAM : INK}><SearchIcon /></IconBtn>
-            <IconBtn label="Account" onClick={() => setAccountOpen(true)} color={useLightText ? CREAM : INK}><AccountIcon /></IconBtn>
-            <IconBtn label="Bag" onClick={() => setBagOpen(true)} badge={count} color={useLightText ? CREAM : INK}><BagIcon /></IconBtn>
+          <div className="hidden md:flex" style={{ justifySelf: "end", alignItems: "center", gap: "1.375rem" }}>
+            <IconBtn label="Search" onClick={() => setSearchOpen(true)} color={iconColor}><SearchIcon /></IconBtn>
+            <IconBtn label="Account" onClick={() => setAccountOpen(true)} color={iconColor}><AccountIcon /></IconBtn>
+            <IconBtn label={`Bag${count > 0 ? `, ${count} item${count > 1 ? "s" : ""}` : ""}`} onClick={() => setBagOpen(true)} badge={count} color={iconColor}><BagIcon /></IconBtn>
           </div>
 
           {/* Mobile icons */}
-          <div className="flex md:hidden" style={{ justifySelf: "end", alignItems: "center", gap: "1.375rem" }}>
-            <IconBtn label="Bag" onClick={() => setBagOpen(true)} badge={count} color={useLightText ? CREAM : SAGE}><BagIcon /></IconBtn>
+          <div className="flex md:hidden" style={{ justifySelf: "end", alignItems: "center", gap: "1rem" }}>
+            <IconBtn label={`Bag${count > 0 ? `, ${count} item${count > 1 ? "s" : ""}` : ""}`} onClick={() => setBagOpen(true)} badge={count} color={iconColor}><BagIcon /></IconBtn>
           </div>
         </div>
       </header>
@@ -182,99 +208,68 @@ export function SiteNav() {
       <AccountPanel open={accountOpen} onClose={() => setAccountOpen(false)} />
       <BagPanel open={bagOpen} onClose={() => setBagOpen(false)} />
 
-      {/* Mobile drawer backdrop */}
-      <div
-        aria-hidden
-        onClick={() => setOpen(false)}
-        style={{
-          position: "fixed", inset: 0, zIndex: 59,
-          pointerEvents: open ? "auto" : "none",
-          backgroundColor: "rgba(17,17,16,0.45)",
-          opacity: open ? 1 : 0,
-          transition: "opacity 0.35s ease",
-        }}
-      />
+      {/* Backdrop */}
+      <div aria-hidden onClick={() => setOpen(false)} style={{
+        position: "fixed", inset: 0, zIndex: 59,
+        pointerEvents: open ? "auto" : "none",
+        backgroundColor: "rgba(0,0,0,0.3)",
+        opacity: open ? 1 : 0,
+        transition: "opacity 0.3s ease",
+      }} />
 
-      {/* Mobile drawer — slides in from left */}
-      <div
-        aria-hidden={!open}
-        style={{
-          position: "fixed", top: 0, left: 0, bottom: 0, zIndex: 60,
-          width: "82vw", maxWidth: 360,
-          backgroundColor: SAGE,
-          transform: open ? "translateX(0)" : "translateX(-100%)",
-          transition: "transform 0.4s cubic-bezier(0.22,1,0.36,1)",
-          display: "flex", flexDirection: "column",
-          boxShadow: "10px 0 40px rgba(17,17,16,0.22)",
-        }}
-      >
-        {/* Drawer header */}
+      {/* Mobile drawer */}
+      <div aria-hidden={!open} style={{
+        position: "fixed", top: 0, left: 0, bottom: 0, zIndex: 60,
+        width: "80vw", maxWidth: 320,
+        backgroundColor: "#FFFFFF",
+        borderRight: `1px solid ${BORDER}`,
+        transform: open ? "translateX(0)" : "translateX(-100%)",
+        transition: "transform 0.35s cubic-bezier(0.22,1,0.36,1)",
+        display: "flex", flexDirection: "column",
+      }}>
         <div style={{
-          height: "76px", display: "flex", alignItems: "center", justifyContent: "space-between",
-          padding: "0 1.75rem", borderBottom: "1px solid rgba(245,242,235,0.12)", flexShrink: 0,
+          height: 68, display: "flex", alignItems: "center", justifyContent: "space-between",
+          padding: "0 1.5rem", borderBottom: `1px solid ${BORDER}`, flexShrink: 0,
         }}>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/otherlogo.png" alt="Sukoon" style={{ height: 30, width: "auto", filter: "brightness(0) invert(1) sepia(0.18) saturate(0.4) hue-rotate(5deg)" }} />
-          <button aria-label="Close menu" onClick={() => setOpen(false)} style={{
-            background: "none", border: "none", color: CREAM, cursor: "pointer", padding: "0.25rem", display: "flex",
-          }}>
+          <Wordmark />
+          <button aria-label="Close menu" onClick={() => setOpen(false)}
+            style={{ background: "none", border: "none", color: TEXT, cursor: "pointer", display: "flex", padding: 0 }}>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" aria-hidden>
               <line x1="5" y1="5" x2="19" y2="19" /><line x1="19" y1="5" x2="5" y2="19" />
             </svg>
           </button>
         </div>
 
-        {/* Drawer body */}
-        <div style={{ flex: 1, overflowY: "auto", display: "flex", flexDirection: "column" }}>
-          <nav style={{ padding: "2rem 1.75rem 1rem" }} aria-label="Mobile">
-            {links.map((l, i) => (
-              <a key={l.label} href={l.href} onClick={() => setOpen(false)} style={{
-                display: "block",
-                fontFamily: "var(--font-display)", fontSize: "2.25rem", fontWeight: 400,
-                color: CREAM, textDecoration: "none", padding: "0.5rem 0",
-                borderBottom: "1px solid rgba(245,242,235,0.15)",
-                opacity: open ? 1 : 0,
-                transform: open ? "translateX(0)" : "translateX(-16px)",
-                transition: `opacity 0.4s ease ${open ? 0.06 + i * 0.06 : 0}s, transform 0.4s ease ${open ? 0.06 + i * 0.06 : 0}s`,
-              }}>
-                {l.label}
-              </a>
-            ))}
-          </nav>
-
-          <div style={{
-            padding: "1.25rem 1.75rem 0",
-            display: "flex", flexDirection: "column", gap: "1rem",
-            opacity: open ? 1 : 0,
-            transition: `opacity 0.4s ease ${open ? 0.28 : 0}s`,
-          }}>
-            <a href="/account" onClick={() => setOpen(false)} style={{
-              display: "flex", alignItems: "center", gap: "0.625rem", color: "rgba(245,242,235,0.6)", textDecoration: "none",
-              fontFamily: "var(--font-body)", fontSize: "0.8125rem", fontWeight: 500, letterSpacing: "0.04em",
+        <nav style={{ flex: 1, padding: "1.75rem 1.5rem" }} aria-label="Mobile navigation">
+          {NAV_LINKS.map((l, i) => (
+            <a key={l.label} href={l.href} onClick={() => setOpen(false)} style={{
+              display: "block",
+              fontFamily: "var(--font-body)", fontSize: "1.5rem", fontWeight: 500,
+              color: TEXT, textDecoration: "none", padding: "0.625rem 0",
+              borderBottom: `1px solid ${BORDER}`,
+              opacity: open ? 1 : 0,
+              transform: open ? "none" : "translateX(-10px)",
+              transition: `opacity 0.3s ease ${open ? 0.04 + i * 0.05 : 0}s, transform 0.3s ease ${open ? 0.04 + i * 0.05 : 0}s`,
             }}>
-              <AccountIcon /> Account
+              {l.label}
             </a>
-            <button onClick={() => { setOpen(false); setBagOpen(true); }} style={{
-              display: "flex", alignItems: "center", gap: "0.625rem", background: "none", border: "none", cursor: "pointer", color: "rgba(245,242,235,0.6)",
-              fontFamily: "var(--font-body)", fontSize: "0.8125rem", fontWeight: 500, letterSpacing: "0.04em", padding: 0,
-            }}>
-              <BagIcon /> Bag{count > 0 ? ` (${count})` : ""}
+          ))}
+          <div style={{ marginTop: "1.75rem", display: "flex", flexDirection: "column", gap: "0.875rem" }}>
+            <button onClick={() => { setOpen(false); setAccountOpen(true); }}
+              style={{ background: "none", border: "none", cursor: "pointer", textAlign: "left", display: "flex", alignItems: "center", gap: "0.5rem", color: MUTED, fontFamily: "var(--font-body)", fontSize: "0.875rem", padding: 0 }}>
+              <AccountIcon /> Account
+            </button>
+            <button onClick={() => { setOpen(false); setSearchOpen(true); }}
+              style={{ background: "none", border: "none", cursor: "pointer", textAlign: "left", display: "flex", alignItems: "center", gap: "0.5rem", color: MUTED, fontFamily: "var(--font-body)", fontSize: "0.875rem", padding: 0 }}>
+              <SearchIcon /> Search
             </button>
           </div>
-        </div>
+        </nav>
 
-        {/* Drawer footer */}
-        <div style={{
-          padding: "1.25rem 1.75rem 2rem",
-          borderTop: "1px solid rgba(245,242,235,0.12)",
-          display: "flex", flexDirection: "column", gap: "1rem",
-          opacity: open ? 1 : 0,
-          transition: `opacity 0.4s ease ${open ? 0.36 : 0}s`,
-        }}>
-          <CurrencySelector color={CREAM} openUp />
-          <span style={{ fontFamily: "var(--font-body)", fontSize: "0.625rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(245,242,235,0.45)" }}>
+        <div style={{ padding: "1rem 1.5rem", borderTop: `1px solid ${BORDER}` }}>
+          <p style={{ fontFamily: "var(--font-body)", fontSize: "0.625rem", color: MUTED, letterSpacing: "0.1em", textTransform: "uppercase", margin: 0 }}>
             Made in the UK
-          </span>
+          </p>
         </div>
       </div>
     </>

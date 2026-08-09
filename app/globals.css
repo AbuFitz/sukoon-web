@@ -1,124 +1,71 @@
 @import "tailwindcss";
 
-/* ─── Sukoon Skin Design Tokens ─── */
+/* ─── Sukoon 2.0 Design System ─── */
 @theme {
-  /* Brand palette — sage + warm cream, pulled from product photography */
-  --color-cream:       #F7F1E4;
-  --color-sage:         #98A47D;
-  --color-sage-deep:    #98A47D;
-  --color-sage-dark:    #3F4A36;
-  --color-linen:       #FBF8F3;
-  --color-stone:       #DDD5C8;
-  --color-sand:        #E8D4AE;
-  --color-amber:        #D9A356;
-  --color-bark:        #2C2A1F;
-  /* legacy aliases kept for compatibility */
-  --color-olive:       #98A47D;
-  --color-olive-dark:  #3F4A36;
-  --color-olive-soft:  #98A47D;
+  /* New neutral palette — white/cream/grey dominant, no green */
+  --color-bg:           #FFFFFF;
+  --color-surface:      #F5F5F3;
+  --color-surface-alt:  #F0F0EE;
+  --color-cream:        #F7F3EC;
+  --color-cream-deep:   #EFE9DF;
+
+  --color-text:         #111111;
+  --color-text-secondary: #676764;
+  --color-text-muted:   #92928D;
+
+  --color-border:       #E3E3DF;
+  --color-border-strong: #D4D4CF;
+
+  --color-button:       #111111;
+  --color-button-text:  #FFFFFF;
+
+  /* Legacy aliases — kept so any remaining utility references don't break */
+  --color-cream-legacy:  #F7F3EC;
+  --color-stone:         #E3E3DF;
+  --color-bark:          #111111;
 
   /* Fonts */
   --font-display: var(--font-cormorant), Georgia, serif;
   --font-body:    var(--font-dm-sans), system-ui, -apple-system, sans-serif;
 
-  /* Spacing extras */
-  --spacing-18: 4.5rem;
-  --spacing-22: 5.5rem;
-  --spacing-26: 6.5rem;
-  --spacing-30: 7.5rem;
+  /* Radii */
+  --radius-panel:  24px;
+  --radius-image:  22px;
+  --radius-card:   18px;
+  --radius-button: 12px;
+  --radius-input:  12px;
 }
 
-/* ─── Base ─── */
+/* ─── Reset ─── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #FFFFFF;
 }
 
 body {
-  background-color: #F6F1E8;
-  color: #2C2416;
+  background-color: #FFFFFF;
+  color: #111111;
   font-family: var(--font-body);
   overflow-x: hidden;
 }
 
-/* ─── Announcement bar — fixed on all sizes ─── */
-.announcement-pos {
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-}
+/* ─── Selection ─── */
+::selection { background-color: #E3E3DF; color: #111111; }
 
-/* ─── Site nav — fixed on all sizes ─── */
-.sitenav-pos {
-  position: fixed !important;
-  top: 1.75rem !important;
-  left: 0 !important;
-  right: 0 !important;
-}
-
-/* ─── Mobile: full-surround sage frame ─── */
-@media (max-width: 767px) {
-  /*
-   * html fills the viewport safe zones (iPhone notch, home indicator).
-   * Without this, the default white bleeds through as "hinges" at top/bottom.
-   */
-  html {
-    background-color: #3F4A36;
-  }
-
-  body {
-    background-color: #3F4A36;
-    /*
-     * env() values are 0 when not in a safe-area context (e.g. Chrome/non-notch).
-     * max() ensures at least 8px of green stripe on every device.
-     */
-    padding-top:    max(8px, env(safe-area-inset-top, 0px));
-    padding-right:  8px;
-    padding-bottom: max(8px, env(safe-area-inset-bottom, 0px));
-    padding-left:   8px;
-  }
-
-  /* Cream card with rounded corners and a faint outline */
-  .site-frame {
-    background: #F9F6F1;
-    border-radius: 16px;
-    /*
-     * overflow: hidden clips any overflowing section content (hero, decorative elements)
-     * to the rounded frame. overflow: clip has a WebKit bug with border-radius on iOS.
-     * Height is auto so this never becomes an internal scroll container.
-     */
-    overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.22);
-    min-height: calc(100dvh - max(8px, env(safe-area-inset-top, 0px)) - max(8px, env(safe-area-inset-bottom, 0px)));
-  }
-
-  /* Fixed bars shift down to match the body top padding */
-  .announcement-pos {
-    top:   max(8px, env(safe-area-inset-top, 0px)) !important;
-    left:  8px !important;
-    right: 8px !important;
-    border-radius: 16px 16px 0 0; /* flush with frame top corners */
-    overflow: hidden;
-  }
-
-  .sitenav-pos {
-    top:   calc(max(8px, env(safe-area-inset-top, 0px)) + 1.75rem) !important;
-    left:  8px !important;
-    right: 8px !important;
-  }
-}
-
-::selection { background-color: #DDD5C8; color: #2C2416; }
-
+/* ─── Focus ─── */
 :focus-visible {
-  outline: 2px solid #98A47D;
+  outline: 2px solid #111111;
   outline-offset: 2px;
-  border-radius: 2px;
+  border-radius: 3px;
 }
+
+/* ─── Scrollbar (hidden — replaced by scroll progress) ─── */
+::-webkit-scrollbar { display: none; }
+html { scrollbar-width: none; -ms-overflow-style: none; }
 
 /* ─── Image protection ─── */
 img {
@@ -128,35 +75,33 @@ img {
   -moz-user-select: none;
 }
 
-/* Hide native scrollbar — replaced by custom scroll progress line */
-::-webkit-scrollbar { display: none; }
-html { scrollbar-width: none; -ms-overflow-style: none; }
-
-/* Hide scroll progress on mobile — it sits in the sage strip above the frame */
-@media (max-width: 767px) {
-  .scroll-progress { display: none !important; }
+/* ─── Announcement bar — fixed ─── */
+.announcement-pos {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
 }
 
-/* ─── Mobile hero height ─── */
-@media (max-width: 767px) {
-  .hero-section {
-    min-height: 480px !important;
-    height: 62vh !important;
-    max-height: 580px !important;
-  }
+/* ─── Nav — fixed ─── */
+.sitenav-pos {
+  position: fixed !important;
+  top: 2rem !important;
+  left: 0 !important;
+  right: 0 !important;
 }
 
 /* ─── Layout ─── */
 .container {
   width: 100%;
-  max-width: 1280px;
+  max-width: 1320px;
   margin-inline: auto;
   padding-inline: clamp(1.25rem, 5vw, 3.5rem);
 }
 
 .section {
-  padding-top:    clamp(4rem, 8vw, 7rem);
-  padding-bottom: clamp(4rem, 8vw, 7rem);
+  padding-top:    clamp(5rem, 9vw, 8rem);
+  padding-bottom: clamp(5rem, 9vw, 8rem);
 }
 
 /* ─── Typography helpers ─── */
@@ -165,76 +110,108 @@ html { scrollbar-width: none; -ms-overflow-style: none; }
 .eyebrow {
   font-family: var(--font-body);
   font-size: 0.6875rem;
-  font-weight: 500;
-  letter-spacing: 0.18em;
+  font-weight: 600;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: #98A47D;
+  color: #92928D;
 }
 
 /* ─── Buttons ─── */
 .btn {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
-  padding: 0.8125rem 2rem;
   font-family: var(--font-body);
   font-size: 0.8125rem;
   font-weight: 500;
-  letter-spacing: 0.06em;
-  border-radius: 3px;
+  letter-spacing: 0.04em;
+  border-radius: var(--radius-button);
   cursor: pointer;
   text-decoration: none;
   white-space: nowrap;
-  transition: all 0.22s ease;
+  transition: all 0.2s ease;
   border: none;
 }
 
-.btn-olive {
-  background-color: #98A47D;
-  color: #FBF8F3;
-  border: 1.5px solid #98A47D;
+.btn-dark {
+  background-color: #111111;
+  color: #FFFFFF;
+  padding: 0.875rem 2rem;
+  border: 1.5px solid #111111;
 }
-.btn-olive:hover { background-color: #434A33; border-color: #434A33; }
+.btn-dark:hover { background-color: #333333; border-color: #333333; }
 
 .btn-outline {
   background-color: transparent;
-  color: #434A33;
-  border: 1.5px solid #DDD5C8;
+  color: #111111;
+  padding: 0.875rem 2rem;
+  border: 1.5px solid #E3E3DF;
 }
-.btn-outline:hover { border-color: #98A47D; background-color: #FBF8F3; }
+.btn-outline:hover { border-color: #111111; }
 
-.btn-outline-light {
+.btn-ghost {
   background-color: transparent;
-  color: #FBF8F3;
-  border: 1.5px solid rgba(251,248,243,0.4);
+  color: #111111;
+  padding: 0.875rem 0;
+  border: none;
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
-.btn-outline-light:hover { border-color: #FBF8F3; background-color: rgba(251,248,243,0.08); }
+.btn-ghost:hover { color: #676764; }
 
-/* ─── Nav helpers ─── */
-.nav-blur {
-  background-color: rgba(246,241,232,0.92) !important;
-  backdrop-filter: blur(12px) !important;
-  border-bottom: 1px solid #DDD5C8 !important;
-}
-
-/* ─── Input ─── */
+/* ─── Inputs ─── */
 .input {
   width: 100%;
-  padding: 0.8125rem 1.125rem;
-  background-color: #FBF8F3;
-  border: 1.5px solid #DDD5C8;
-  border-radius: 3px;
+  height: 52px;
+  padding: 0 1rem;
+  background-color: #FFFFFF;
+  border: 1.5px solid #E3E3DF;
+  border-radius: var(--radius-input);
   font-family: var(--font-body);
   font-size: 0.9375rem;
-  color: #2C2416;
+  color: #111111;
   transition: border-color 0.2s ease;
   outline: none;
 }
-.input::placeholder { color: #98A47D; }
-.input:focus { border-color: #98A47D; }
+.input::placeholder { color: #92928D; }
+.input:focus { border-color: #111111; }
 
-/* ─── Mobile base resets ─── */
+/* ─── Divider ─── */
+.divider { height: 1px; background-color: #E3E3DF; }
+
+/* ─── Scroll progress ─── */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+/* ─── Mobile ─── */
 @media (max-width: 767px) {
-  body { font-size: 16px; -webkit-text-size-adjust: 100%; }
+  html { background-color: #FFFFFF; }
+
+  body {
+    background-color: #FFFFFF;
+    font-size: 16px;
+    -webkit-text-size-adjust: 100%;
+  }
+
   img { max-width: 100%; }
+
+  .sitenav-pos {
+    top: 2rem !important;
+  }
+}
+
+/* ─── Reduced motion ─── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
 }
