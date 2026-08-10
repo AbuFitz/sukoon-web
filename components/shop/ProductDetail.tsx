@@ -1,14 +1,15 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 import { useCart } from "@/lib/cart-context";
 import { products } from "@/lib/products";
-import { homepageImages } from "@/lib/homepage";
+import { homepageImages, ingredients } from "@/lib/homepage";
 
 const TEXT   = "#111111";
 const MUTED  = "#969690";
-const BORDER = "#E5E5E2";
+const BORDER = "#EDEBE5";
 
 type Props = {
   handle: string;
@@ -27,11 +28,6 @@ const ACCORDIONS = [
     id: "benefits",
     label: "Benefits",
     content: "Deeply nourishing without heaviness. Balances the skin barrier, reduces redness and inflammation, and leaves skin visibly smoother. Suitable for all skin types including sensitive and oily skin.",
-  },
-  {
-    id: "ingredients",
-    label: "Ingredients",
-    content: "Olea Europaea (Olive) Squalane, Nigella Sativa (Black Seed) Oil, Niacinamide (Vitamin B3), Tocopherol (Vitamin E), Bisabolol.",
   },
   {
     id: "how-to-use",
@@ -54,7 +50,7 @@ function Accordion({ label, content, defaultOpen = false }: { label: string; con
         style={{
           width: "100%", display: "flex", alignItems: "center", justifyContent: "space-between",
           padding: "1rem 0", background: "none", border: "none", cursor: "pointer",
-          fontFamily: "var(--font-body)", fontSize: "0.9375rem", fontWeight: 600,
+          fontFamily: "var(--font-body)", fontSize: "0.9375rem", fontWeight: 700,
           color: TEXT, textAlign: "left",
         }}
         aria-expanded={open}
@@ -70,7 +66,7 @@ function Accordion({ label, content, defaultOpen = false }: { label: string; con
       {open && (
         <p style={{
           fontFamily: "var(--font-body)", fontSize: "0.9rem", lineHeight: 1.65,
-          color: "#636360", margin: "0 0 1.125rem", paddingRight: "1.5rem",
+          color: "#666666", margin: "0 0 1.125rem", paddingRight: "1.5rem",
         }}>
           {content}
         </p>
@@ -81,8 +77,8 @@ function Accordion({ label, content, defaultOpen = false }: { label: string; con
 
 function RelatedCard({ product }: { product: typeof products[number] }) {
   return (
-    <a href={`/products/${product.slug}`} style={{ textDecoration: "none", display: "block" }}>
-      <div className="cut-corner" style={{
+    <a href={`/products/${product.slug}`} className="card" style={{ textDecoration: "none", display: "block", padding: "0.875rem" }}>
+      <div className="card-sm" style={{
         position: "relative", aspectRatio: "4 / 5",
         overflow: "hidden",
         backgroundColor: "#F4F4F2", marginBottom: "0.75rem",
@@ -94,7 +90,7 @@ function RelatedCard({ product }: { product: typeof products[number] }) {
           style={{ objectFit: "cover" }}
         />
       </div>
-      <p style={{ fontFamily: "var(--font-body)", fontWeight: 600, fontSize: "0.9375rem", color: TEXT, margin: "0 0 0.2rem" }}>
+      <p style={{ fontFamily: "var(--font-body)", fontWeight: 700, fontSize: "0.9375rem", color: TEXT, margin: "0 0 0.2rem" }}>
         {product.name}
       </p>
       <p style={{ fontFamily: "var(--font-body)", fontSize: "0.9375rem", fontWeight: 600, color: TEXT, margin: 0 }}>
@@ -110,6 +106,7 @@ export function ProductDetail({ handle, title, size, price, description, imageSr
   const [justAdded, setJustAdded] = useState(false);
 
   const related = products.filter(p => p.slug !== handle).slice(0, 3);
+  const sizeOptions = products.filter(p => p.slug.startsWith("daily-solace-fluid"));
 
   const handleAdd = async () => {
     if (!variantId || loading || justAdded) return;
@@ -123,194 +120,208 @@ export function ProductDetail({ handle, title, size, price, description, imageSr
   );
 
   return (
-    <div className="stack-panel stack-panel--first stack-inner" style={{ backgroundColor: "#FFFFFF" }}>
+    <div className="container" style={{ paddingTop: "clamp(1rem, 2vw, 1.5rem)" }}>
       {/* Main grid */}
-      <div style={{ maxWidth: 1440, margin: "0 auto", padding: "0 clamp(1.25rem, 4vw, 3rem) clamp(1.5rem, 3vw, 2.5rem)" }}>
-        <div
-          className="product-grid"
-          style={{ display: "grid", gridTemplateColumns: "60fr 40fr", gap: "clamp(2rem, 4vw, 4rem)", alignItems: "start" }}
-        >
-          {/* Image column */}
-          <div style={{ position: "sticky", top: 90 }}>
-            <div className="cut-corner" style={{
-              position: "relative", aspectRatio: "4 / 5",
-              maxHeight: "clamp(440px, 50vw, 620px)",
-              overflow: "hidden", backgroundColor: "#F4F4F2",
-            }}>
-              {tag && (
-                <span style={{
-                  position: "absolute", top: "1.25rem", left: "1.25rem", zIndex: 2,
-                  fontFamily: "var(--font-body)", fontSize: "0.625rem", fontWeight: 700,
-                  color: "#FFFFFF", backgroundColor: TEXT,
-                  padding: "0.3rem 0.75rem", borderRadius: 6,
-                }}>
-                  {tag}
-                </span>
-              )}
-              <Image
-                src={imageSrc} alt={title} fill priority
-                sizes="(max-width: 1024px) 100vw, 60vw"
-                style={{ objectFit: "cover" }}
-              />
-            </div>
+      <div
+        className="product-grid"
+        style={{ display: "grid", gridTemplateColumns: "7fr 5fr", gap: "clamp(1rem, 2vw, 1.25rem)", alignItems: "start", marginBottom: "clamp(1rem, 2vw, 1.25rem)" }}
+      >
+        {/* Gallery card */}
+        <div className="card" style={{ position: "sticky", top: 92, padding: "clamp(1rem, 2vw, 1.25rem)" }}>
+          <div className="card-sm" style={{
+            position: "relative", aspectRatio: "4 / 5",
+            maxHeight: "clamp(440px, 50vw, 600px)",
+            overflow: "hidden", backgroundColor: "#F4F4F2",
+          }}>
+            {tag && <span className="badge" style={{ position: "absolute", top: "1rem", left: "1rem", zIndex: 2, backgroundColor: TEXT, color: "#FFFFFF" }}>{tag}</span>}
+            <Image
+              src={imageSrc} alt={title} fill priority
+              sizes="(max-width: 1024px) 100vw, 55vw"
+              style={{ objectFit: "cover" }}
+            />
           </div>
+        </div>
 
-          {/* Details column */}
-          <div style={{ paddingTop: "0.25rem" }}>
-            <p style={{
-              fontFamily: "var(--font-body)", fontSize: "0.875rem", fontWeight: 500, color: MUTED,
-              margin: "0 0 0.5rem",
-            }}>
-              {size}
-            </p>
-            <h1 style={{
-              fontFamily: "var(--font-body)", fontWeight: 600,
-              fontSize: "clamp(1.875rem, 2.8vw, 2.5rem)",
-              letterSpacing: "-0.035em", color: TEXT,
-              margin: "0 0 0.625rem", lineHeight: 1.02,
-            }}>
-              {title}
-            </h1>
-            <p style={{
-              fontFamily: "var(--font-body)", fontSize: "1.1875rem", fontWeight: 600,
-              color: TEXT, margin: "0 0 1.75rem",
-            }}>
-              {price}
-            </p>
+        {/* Configurator card */}
+        <div className="card" style={{ padding: "clamp(1.5rem, 3vw, 2rem)" }}>
+          <p style={{
+            fontFamily: "var(--font-body)", fontSize: "0.875rem", fontWeight: 600, color: MUTED,
+            margin: "0 0 0.5rem",
+          }}>
+            {size}
+          </p>
+          <h1 style={{
+            fontFamily: "var(--font-body)", fontWeight: 700,
+            fontSize: "clamp(1.625rem, 2.4vw, 2.125rem)",
+            letterSpacing: "-0.03em", color: TEXT,
+            margin: "0 0 0.625rem", lineHeight: 1.05,
+          }}>
+            {title}
+          </h1>
+          <p style={{
+            fontFamily: "var(--font-body)", fontSize: "1.25rem", fontWeight: 700,
+            color: TEXT, margin: "0 0 1.5rem",
+          }}>
+            {price}
+          </p>
 
-            {/* Qty selector */}
-            <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", marginBottom: "0.75rem" }}>
-              <span style={{ fontFamily: "var(--font-body)", fontSize: "0.875rem", color: MUTED, marginRight: "0.25rem" }}>
-                Qty
-              </span>
-              <div style={{
-                display: "flex", alignItems: "center",
-                border: `1px solid ${BORDER}`, borderRadius: 8,
-              }}>
-                <button
-                  aria-label="Decrease quantity"
-                  onClick={() => setQty(q => Math.max(1, q - 1))}
-                  style={{
-                    width: 38, height: 42, background: "none", border: "none",
-                    cursor: "pointer", color: TEXT, fontSize: "1.1rem",
-                    fontFamily: "var(--font-body)",
-                  }}
-                >−</button>
-                <span style={{
-                  width: 32, textAlign: "center",
-                  fontFamily: "var(--font-body)", fontSize: "0.9375rem", color: TEXT,
-                }}>
-                  {qty}
-                </span>
-                <button
-                  aria-label="Increase quantity"
-                  onClick={() => setQty(q => q + 1)}
-                  style={{
-                    width: 38, height: 42, background: "none", border: "none",
-                    cursor: "pointer", color: TEXT, fontSize: "1.1rem",
-                    fontFamily: "var(--font-body)",
-                  }}
-                >+</button>
-              </div>
-            </div>
-
-            {/* Add to bag */}
-            <button
-              onClick={handleAdd}
-              disabled={!variantId || loading || justAdded}
-              className="btn btn-dark"
-              style={{
-                width: "100%", height: 52,
-                backgroundColor: justAdded ? "#F4F4F2" : "#111111",
-                color: justAdded ? "#111111" : "#FFFFFF",
-                borderColor: justAdded ? "#D0D0CB" : "#111111",
-                cursor: !variantId ? "not-allowed" : "pointer",
-                opacity: !variantId ? 0.5 : 1,
-                marginBottom: "1.25rem",
-              }}
-            >
-              {justAdded ? "Added to bag" : loading ? "Adding…" : !variantId ? "Unavailable" : "Add to Bag"}
-            </button>
-
-            {/* Trust line */}
-            <p style={{
-              fontFamily: "var(--font-body)", fontSize: "0.8125rem",
-              color: MUTED, margin: "0 0 1.75rem", lineHeight: 1.5,
-            }}>
-              Free UK delivery over £40 · 30-day returns · Made in the UK
-            </p>
-
-            {/* Accordions */}
-            <div style={{ borderBottom: `1px solid ${BORDER}` }}>
-              {accordionItems.map((a, i) => (
-                <Accordion key={a.id} label={a.label} content={a.content!} defaultOpen={i === 0} />
+          {/* Size toggle — real navigation between the two sizes */}
+          {sizeOptions.length > 1 && (
+            <div className="toggle" role="tablist" aria-label="Select size" style={{ marginBottom: "1.25rem", width: "100%" }}>
+              {sizeOptions.map(opt => (
+                <Link
+                  key={opt.slug}
+                  href={`/products/${opt.slug}`}
+                  role="tab"
+                  aria-selected={opt.slug === handle}
+                  className="toggle-option"
+                  data-active={opt.slug === handle}
+                  style={{ flex: 1, textAlign: "center", textDecoration: "none", display: "block" }}
+                >
+                  {opt.size} — {opt.price}
+                </Link>
               ))}
             </div>
+          )}
+
+          {/* Qty selector */}
+          <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", marginBottom: "1rem" }}>
+            <span style={{ fontFamily: "var(--font-body)", fontSize: "0.875rem", color: MUTED }}>
+              Qty
+            </span>
+            <div className="toggle" style={{ padding: 4 }}>
+              <button
+                aria-label="Decrease quantity"
+                onClick={() => setQty(q => Math.max(1, q - 1))}
+                style={{
+                  width: 34, height: 34, background: "none", border: "none", borderRadius: 999,
+                  cursor: "pointer", color: TEXT, fontSize: "1.1rem",
+                  fontFamily: "var(--font-body)",
+                }}
+              >−</button>
+              <span style={{
+                width: 30, textAlign: "center",
+                fontFamily: "var(--font-body)", fontSize: "0.9375rem", fontWeight: 600, color: TEXT,
+              }}>
+                {qty}
+              </span>
+              <button
+                aria-label="Increase quantity"
+                onClick={() => setQty(q => q + 1)}
+                style={{
+                  width: 34, height: 34, background: "none", border: "none", borderRadius: 999,
+                  cursor: "pointer", color: TEXT, fontSize: "1.1rem",
+                  fontFamily: "var(--font-body)",
+                }}
+              >+</button>
+            </div>
           </div>
+
+          {/* Add to bag */}
+          <button
+            onClick={handleAdd}
+            disabled={!variantId || loading || justAdded}
+            className="btn btn-dark"
+            style={{
+              width: "100%", height: 52,
+              backgroundColor: justAdded ? "#F4F4F2" : "#111111",
+              color: justAdded ? "#111111" : "#FFFFFF",
+              borderColor: justAdded ? "#EDEBE5" : "#111111",
+              cursor: !variantId ? "not-allowed" : "pointer",
+              opacity: !variantId ? 0.5 : 1,
+              marginBottom: "1.25rem",
+            }}
+          >
+            {justAdded ? "Added to bag" : loading ? "Adding…" : !variantId ? "Unavailable" : "Add to Bag"}
+          </button>
+
+          {/* Trust badges */}
+          <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem", marginBottom: "1.5rem" }}>
+            {["Free UK delivery", "30-day returns", "Made in the UK"].map(t => (
+              <span key={t} className="badge" style={{ backgroundColor: "#F4F4F2" }}>{t}</span>
+            ))}
+          </div>
+
+          {/* Accordions */}
+          <div style={{ borderBottom: `1px solid ${BORDER}` }}>
+            {accordionItems.map((a, i) => (
+              <Accordion key={a.id} label={a.label} content={a.content!} defaultOpen={i === 0} />
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Active ingredients bento */}
+      <div style={{ marginBottom: "clamp(1rem, 2vw, 1.25rem)" }}>
+        <span className="eyebrow">Active Ingredients</span>
+        <div className="pdp-ingredient-grid" style={{ marginTop: "0.75rem" }}>
+          {ingredients.map(ing => (
+            <div key={ing.name} className="card" style={{ padding: "clamp(1.25rem, 2.5vw, 1.5rem)" }}>
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "0.625rem" }}>
+                <span style={{ fontFamily: "var(--font-body)", fontWeight: 700, fontSize: "0.9375rem", color: TEXT }}>{ing.name}</span>
+                <span className="badge">{ing.percent}</span>
+              </div>
+              <p style={{ fontFamily: "var(--font-body)", fontSize: "0.75rem", color: MUTED, margin: "0 0 0.5rem", fontStyle: "italic" }}>{ing.latin}</p>
+              <p style={{ fontFamily: "var(--font-body)", fontSize: "0.8125rem", lineHeight: 1.5, color: "#666666", margin: 0 }}>{ing.description}</p>
+            </div>
+          ))}
         </div>
       </div>
 
       {/* Editorial break */}
-      <div style={{ maxWidth: 1440, margin: "0 auto", padding: "0 clamp(1.25rem, 4vw, 3rem)" }}>
-        <div className="cut-corner" style={{ position: "relative", aspectRatio: "21 / 9", backgroundColor: "#F4F4F2", overflow: "hidden" }}>
-          <Image
-            src={homepageImages.benefits}
-            alt="The Daily Solace Fluid in use"
-            fill
-            sizes="100vw"
-            style={{ objectFit: "cover" }}
-          />
-          <p style={{
-            position: "absolute", left: "clamp(1.25rem, 3vw, 2.5rem)", bottom: "clamp(1.25rem, 3vw, 2.5rem)",
-            fontFamily: "var(--font-body)", fontSize: "clamp(1.125rem, 2.2vw, 1.625rem)", fontWeight: 600,
-            letterSpacing: "-0.02em", lineHeight: 1.15, color: "#FFFFFF", margin: 0, maxWidth: 420,
-            textShadow: "0 2px 20px rgba(0,0,0,0.35)",
-          }}>
-            Sixty seconds. Every morning.
-          </p>
-        </div>
+      <div className="card" style={{ position: "relative", aspectRatio: "21 / 9", backgroundColor: "#F4F4F2", overflow: "hidden", marginBottom: "clamp(1rem, 2vw, 1.25rem)" }}>
+        <Image
+          src={homepageImages.benefits}
+          alt="The Daily Solace Fluid in use"
+          fill
+          sizes="100vw"
+          style={{ objectFit: "cover" }}
+        />
+        <p style={{
+          position: "absolute", left: "clamp(1.25rem, 3vw, 2.5rem)", bottom: "clamp(1.25rem, 3vw, 2.5rem)",
+          fontFamily: "var(--font-body)", fontSize: "clamp(1.125rem, 2.2vw, 1.625rem)", fontWeight: 700,
+          letterSpacing: "-0.02em", lineHeight: 1.15, color: "#FFFFFF", margin: 0, maxWidth: 420,
+          textShadow: "0 2px 20px rgba(0,0,0,0.35)",
+        }}>
+          Sixty seconds. Every morning.
+        </p>
       </div>
 
       {/* You may also like */}
       {related.length > 0 && (
-        <div style={{
-          padding: "clamp(2.5rem, 5vw, 4rem) clamp(1.25rem, 4vw, 3rem)",
-          backgroundColor: "#FFFFFF",
-        }}>
-          <div style={{ maxWidth: 1440, margin: "0 auto" }}>
-            <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", marginBottom: "1.5rem" }}>
-              <h2 style={{
-                fontFamily: "var(--font-body)", fontWeight: 600,
-                fontSize: "clamp(1.375rem, 2vw, 1.75rem)",
-                letterSpacing: "-0.02em", color: TEXT, margin: 0,
-              }}>
-                You may also like
-              </h2>
-              <a
-                href="/shop"
-                style={{
-                  fontFamily: "var(--font-body)", fontSize: "0.875rem", fontWeight: 600,
-                  color: TEXT, textDecoration: "none",
-                }}
-              >
-                Shop all →
-              </a>
-            </div>
-            <div
-              className="grid grid-cols-2 sm:grid-cols-3"
-              style={{ gap: "18px", maxWidth: 900 }}
-            >
-              {related.map(p => <RelatedCard key={p.slug} product={p} />)}
-            </div>
+        <div style={{ marginBottom: "clamp(1rem, 2vw, 1.25rem)" }}>
+          <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", marginBottom: "1rem" }}>
+            <h2 style={{
+              fontFamily: "var(--font-body)", fontWeight: 700,
+              fontSize: "clamp(1.25rem, 2vw, 1.5rem)",
+              letterSpacing: "-0.02em", color: TEXT, margin: 0,
+            }}>
+              You may also like
+            </h2>
+            <Link href="/shop" className="badge">Shop all →</Link>
+          </div>
+          <div
+            className="grid grid-cols-2 sm:grid-cols-3"
+            style={{ gap: "clamp(1rem, 2vw, 1.25rem)", maxWidth: 900 }}
+          >
+            {related.map(p => <RelatedCard key={p.slug} product={p} />)}
           </div>
         </div>
       )}
 
       <style>{`
-        @media (max-width: 767px) {
-          .product-grid {
-            grid-template-columns: 1fr !important;
-          }
+        .pdp-ingredient-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: clamp(1rem, 2vw, 1.25rem);
+        }
+        @media (max-width: 900px) {
+          .product-grid { grid-template-columns: 1fr !important; }
+          .product-grid > div:first-child { position: static !important; }
+          .pdp-ingredient-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 560px) {
+          .pdp-ingredient-grid { grid-template-columns: 1fr; }
         }
       `}</style>
     </div>

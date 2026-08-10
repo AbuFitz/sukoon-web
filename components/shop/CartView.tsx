@@ -6,7 +6,7 @@ import { formatPrice } from "@/lib/shopify";
 
 const TEXT   = "#111111";
 const MUTED  = "#969690";
-const BORDER = "#D0D0CB";
+const BORDER = "#EDEBE5";
 
 function QtyButton({ label, onClick, children }: { label: string; onClick: () => void; children: React.ReactNode }) {
   return (
@@ -14,7 +14,7 @@ function QtyButton({ label, onClick, children }: { label: string; onClick: () =>
       aria-label={label}
       onClick={onClick}
       style={{
-        width: 32, height: 32, background: "none", borderRadius: 8,
+        width: 32, height: 32, background: "none", borderRadius: 999,
         border: `1px solid ${BORDER}`,
         cursor: "pointer", color: TEXT,
         fontSize: "1rem", display: "flex", alignItems: "center", justifyContent: "center",
@@ -34,9 +34,9 @@ export function CartView() {
 
   if (lines.length === 0) {
     return (
-      <div style={{
+      <div className="card" style={{
         maxWidth: 560, margin: "0 auto",
-        padding: "clamp(4rem, 8vw, 7rem) clamp(2rem, 5vw, 3rem)",
+        padding: "clamp(3rem, 7vw, 5rem) clamp(2rem, 5vw, 3rem)",
         textAlign: "center",
       }}>
         <svg
@@ -50,8 +50,8 @@ export function CartView() {
           <path d="M16 10a4 4 0 0 1-8 0" />
         </svg>
         <h1 style={{
-          fontFamily: "var(--font-body)", fontWeight: 600,
-          fontSize: "clamp(2rem, 4vw, 2.75rem)",
+          fontFamily: "var(--font-body)", fontWeight: 700,
+          fontSize: "clamp(1.75rem, 3.5vw, 2.5rem)",
           lineHeight: 1.0, letterSpacing: "-0.035em",
           color: TEXT, margin: "0 0 0.875rem",
         }}>
@@ -59,7 +59,7 @@ export function CartView() {
         </h1>
         <p style={{
           fontFamily: "var(--font-body)", fontSize: "1rem", lineHeight: 1.6,
-          color: "#636360", margin: "0 0 2.5rem",
+          color: "#666666", margin: "0 0 2rem",
         }}>
           Add The Daily Solace Fluid to begin your ritual.
         </p>
@@ -74,22 +74,15 @@ export function CartView() {
   const total    = cart!.cost.totalAmount;
 
   return (
-    <div style={{ maxWidth: 1200, margin: "0 auto", padding: "clamp(2.5rem, 5vw, 4rem) clamp(2rem, 5vw, 4rem)" }}>
-
+    <div>
       {/* Page header */}
-      <div style={{ borderBottom: `1px solid ${BORDER}`, paddingBottom: "1.5rem", marginBottom: "2.5rem" }}>
-        <p style={{
-          fontFamily: "var(--font-body)", fontSize: "0.6875rem", fontWeight: 700,
-          letterSpacing: "0.2em", textTransform: "uppercase",
-          color: MUTED, margin: "0 0 0.5rem",
-        }}>
-          Review
-        </p>
+      <div style={{ marginBottom: "1.25rem" }}>
+        <span className="eyebrow">Review</span>
         <h1 style={{
-          fontFamily: "var(--font-body)", fontWeight: 600,
-          fontSize: "clamp(2rem, 4vw, 2.75rem)",
+          fontFamily: "var(--font-body)", fontWeight: 700,
+          fontSize: "clamp(1.75rem, 3.5vw, 2.5rem)",
           lineHeight: 1.0, letterSpacing: "-0.035em",
-          color: TEXT, margin: 0,
+          color: TEXT, margin: "0.5rem 0 0",
         }}>
           Your Bag
         </h1>
@@ -97,23 +90,11 @@ export function CartView() {
 
       <div
         className="grid grid-cols-1 lg:grid-cols-[1fr_360px]"
-        style={{ gap: "clamp(3rem, 5vw, 5rem)", alignItems: "start" }}
+        style={{ gap: "clamp(1rem, 2vw, 1.25rem)", alignItems: "start" }}
       >
         {/* ── Line items ── */}
-        <div style={{ opacity: loading ? 0.6 : 1, transition: "opacity 0.2s" }}>
-          <div style={{
-            display: "grid",
-            gridTemplateColumns: "1fr auto",
-            gap: "0 1rem",
-            paddingBottom: "0.875rem",
-            borderBottom: `1px solid ${BORDER}`,
-            marginBottom: "0.25rem",
-          }}>
-            <span style={{ fontFamily: "var(--font-body)", fontSize: "0.6875rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: MUTED }}>Product</span>
-            <span style={{ fontFamily: "var(--font-body)", fontSize: "0.6875rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: MUTED, textAlign: "right" }}>Total</span>
-          </div>
-
-          {lines.map((line) => {
+        <div className="card" style={{ padding: "clamp(1.25rem, 3vw, 2rem)", opacity: loading ? 0.6 : 1, transition: "opacity 0.2s" }}>
+          {lines.map((line, i) => {
             const { merchandise } = line;
             const lineTotal = formatPrice(
               String(parseFloat(merchandise.priceV2.amount) * line.quantity),
@@ -125,22 +106,22 @@ export function CartView() {
               <div
                 key={line.id}
                 style={{
-                  display: "flex", gap: "1.5rem",
-                  padding: "1.75rem 0",
-                  borderBottom: `1px solid ${BORDER}`,
+                  display: "flex", gap: "1.25rem",
+                  padding: "1.5rem 0",
+                  borderTop: i > 0 ? `1px solid ${BORDER}` : "none",
                 }}
               >
                 {/* Image */}
-                <div className="cut-corner--sm" style={{
+                <div className="card-sm" style={{
                   position: "relative",
-                  width: 90, height: 112, flexShrink: 0,
+                  width: 84, height: 104, flexShrink: 0,
                   backgroundColor: "#F4F4F2", overflow: "hidden",
                 }}>
                   {merchandise.image ? (
                     <Image
                       src={merchandise.image.url}
                       alt={merchandise.image.altText ?? merchandise.product.title}
-                      fill sizes="90px"
+                      fill sizes="84px"
                       style={{ objectFit: "cover" }}
                     />
                   ) : null}
@@ -149,8 +130,7 @@ export function CartView() {
                 {/* Details */}
                 <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: "0.375rem" }}>
                   <p style={{
-                    fontFamily: "var(--font-body)", fontSize: "0.875rem", fontWeight: 700,
-                    textTransform: "uppercase", letterSpacing: "0.02em",
+                    fontFamily: "var(--font-body)", fontSize: "0.9375rem", fontWeight: 700,
                     color: TEXT, margin: 0,
                   }}>
                     {merchandise.product.title}
@@ -160,7 +140,7 @@ export function CartView() {
                       {merchandise.title}
                     </p>
                   )}
-                  <p style={{ fontFamily: "var(--font-body)", fontSize: "0.8125rem", color: "#676764", margin: 0 }}>
+                  <p style={{ fontFamily: "var(--font-body)", fontSize: "0.8125rem", color: "#666666", margin: 0 }}>
                     {unitPrice} each
                   </p>
 
@@ -195,7 +175,7 @@ export function CartView() {
                 {/* Line total */}
                 <div style={{ flexShrink: 0, textAlign: "right", paddingTop: "0.125rem" }}>
                   <span style={{
-                    fontFamily: "var(--font-body)", fontSize: "0.9375rem", fontWeight: 600,
+                    fontFamily: "var(--font-body)", fontSize: "0.9375rem", fontWeight: 700,
                     color: TEXT,
                   }}>
                     {lineTotal}
@@ -205,29 +185,15 @@ export function CartView() {
             );
           })}
 
-          <div style={{ marginTop: "1.5rem" }}>
-            <a
-              href="/shop"
-              style={{
-                fontFamily: "var(--font-body)", fontSize: "0.75rem", fontWeight: 700,
-                letterSpacing: "0.1em", textTransform: "uppercase",
-                color: "#676764", textDecoration: "none",
-                borderBottom: "1px solid #D4D4CF",
-                paddingBottom: 2, transition: "color 200ms, border-color 200ms",
-              }}
-              onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.color = TEXT; el.style.borderColor = TEXT; }}
-              onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.color = "#676764"; el.style.borderColor = "#D4D4CF"; }}
-            >
-              ← Continue shopping
-            </a>
+          <div style={{ marginTop: "1rem", paddingTop: "1rem", borderTop: `1px solid ${BORDER}` }}>
+            <a href="/shop" className="badge">← Continue shopping</a>
           </div>
         </div>
 
         {/* ── Order summary ── */}
-        <div style={{
-          backgroundColor: "#F1EBDD",
-          borderRadius: 20,
-          padding: "2rem",
+        <div className="card" style={{
+          backgroundColor: "#F6F1E9",
+          padding: "1.75rem",
           position: "sticky",
           top: 92,
         }}>
@@ -241,22 +207,22 @@ export function CartView() {
 
           <div style={{ display: "flex", flexDirection: "column", gap: "0.875rem", marginBottom: "1.5rem" }}>
             <div style={{ display: "flex", justifyContent: "space-between" }}>
-              <span style={{ fontFamily: "var(--font-body)", fontSize: "0.875rem", color: "#676764" }}>
+              <span style={{ fontFamily: "var(--font-body)", fontSize: "0.875rem", color: "#666666" }}>
                 Subtotal ({cart!.totalQuantity} {cart!.totalQuantity === 1 ? "item" : "items"})
               </span>
-              <span style={{ fontFamily: "var(--font-body)", fontSize: "0.875rem", fontWeight: 600, color: TEXT }}>
+              <span style={{ fontFamily: "var(--font-body)", fontSize: "0.875rem", fontWeight: 700, color: TEXT }}>
                 {formatPrice(subtotal.amount, subtotal.currencyCode)}
               </span>
             </div>
             <div style={{ display: "flex", justifyContent: "space-between" }}>
-              <span style={{ fontFamily: "var(--font-body)", fontSize: "0.875rem", color: "#676764" }}>Shipping</span>
+              <span style={{ fontFamily: "var(--font-body)", fontSize: "0.875rem", color: "#666666" }}>Shipping</span>
               <span style={{ fontFamily: "var(--font-body)", fontSize: "0.875rem", color: MUTED }}>
                 {parseFloat(subtotal.amount) >= 40 ? "Free" : "Calculated at checkout"}
               </span>
             </div>
           </div>
 
-          <div style={{ borderTop: `1px solid ${BORDER}`, paddingTop: "1.25rem", marginBottom: "1.5rem" }}>
+          <div style={{ borderTop: `1px solid #E0D9C6`, paddingTop: "1.25rem", marginBottom: "1.5rem" }}>
             <div style={{ display: "flex", justifyContent: "space-between" }}>
               <span style={{ fontFamily: "var(--font-body)", fontSize: "0.9375rem", fontWeight: 700, color: TEXT }}>Total</span>
               <span style={{ fontFamily: "var(--font-body)", fontSize: "0.9375rem", fontWeight: 700, color: TEXT }}>
@@ -281,15 +247,9 @@ export function CartView() {
           </a>
 
           {/* Trust micro-signals */}
-          <div style={{ marginTop: "1.25rem", display: "flex", flexDirection: "column", gap: "0.5rem" }}>
-            {["Free UK delivery over £40", "30-day returns", "Secure checkout"].map(t => (
-              <p key={t} style={{
-                fontFamily: "var(--font-body)", fontSize: "0.6875rem",
-                color: "#676764", margin: 0,
-                display: "flex", alignItems: "center", gap: "0.375rem",
-              }}>
-                <span style={{ color: TEXT }}>✓</span> {t}
-              </p>
+          <div style={{ marginTop: "1.25rem", display: "flex", flexWrap: "wrap", gap: "0.5rem" }}>
+            {["Free UK delivery", "30-day returns", "Secure checkout"].map(t => (
+              <span key={t} className="badge" style={{ backgroundColor: "#FFFFFF" }}>{t}</span>
             ))}
           </div>
         </div>

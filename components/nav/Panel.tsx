@@ -1,7 +1,7 @@
 "use client";
 
 const INK   = "#111111";
-const LINE  = "#E5E5E2";
+const LINE  = "#EDEBE5";
 const CREAM = "#FFFFFF";
 
 export function Panel({ open, onClose, title, children }: { open: boolean; onClose: () => void; title: string; children: React.ReactNode }) {
@@ -38,7 +38,9 @@ export function Panel({ open, onClose, title, children }: { open: boolean; onClo
             <span style={{ fontFamily: "var(--font-body)", fontSize: "0.9375rem", fontWeight: 600, color: INK }}>{title}</span>
           )}
           <button aria-label="Close panel" onClick={onClose} style={{
-            background: "none", border: "none", color: INK, cursor: "pointer", padding: "0.25rem", display: "flex",
+            width: 36, height: 36, borderRadius: "50%",
+            background: "#F4F4F2", border: "none", color: INK, cursor: "pointer",
+            display: "flex", alignItems: "center", justifyContent: "center", padding: 0,
           }}>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" aria-hidden>
               <line x1="5" y1="5" x2="19" y2="19" /><line x1="19" y1="5" x2="5" y2="19" />

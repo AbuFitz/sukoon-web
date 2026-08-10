@@ -7,12 +7,12 @@ import { formatPrice } from "@/lib/shopify";
 
 const TEXT   = "#111111";
 const MUTED  = "#969690";
-const BORDER = "#D0D0CB";
+const BORDER = "#EDEBE5";
 
 function Stepper({ qty, onChange }: { qty: number; onChange: (qty: number) => void }) {
   return (
     <div style={{
-      display: "flex", alignItems: "center", borderRadius: 8,
+      display: "flex", alignItems: "center", borderRadius: 999,
       border: `1px solid ${BORDER}`,
     }}>
       <button
@@ -76,11 +76,11 @@ export function BagPanel({ open, onClose }: { open: boolean; onClose: () => void
           return (
             <div key={line.id} style={{ display: "flex", gap: "1rem" }}>
               {merchandise.image ? (
-                <div style={{ position: "relative", width: 80, height: 96, flexShrink: 0, overflow: "hidden", borderRadius: 12, backgroundColor: "#F4F4F2" }}>
+                <div className="card-sm" style={{ position: "relative", width: 80, height: 96, flexShrink: 0, overflow: "hidden", backgroundColor: "#F4F4F2" }}>
                   <Image src={merchandise.image.url} alt={merchandise.image.altText ?? merchandise.product.title} fill sizes="80px" style={{ objectFit: "cover" }} />
                 </div>
               ) : (
-                <div style={{ width: 80, height: 96, flexShrink: 0, borderRadius: 12, backgroundColor: "#F4F4F2" }} />
+                <div className="card-sm" style={{ width: 80, height: 96, flexShrink: 0, backgroundColor: "#F4F4F2" }} />
               )}
               <div style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
                 <div>

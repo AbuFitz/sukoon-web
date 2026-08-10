@@ -58,8 +58,8 @@ export default async function HomePage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }} />
       <SiteNav />
-      <main>
-        <HeroSection />
+      <main style={{ paddingBottom: "clamp(1rem, 2vw, 1.25rem)" }}>
+        <HeroSection products={featuredProducts} />
         <FeaturedProductsSection products={featuredProducts} />
         <BrandStorySection />
         <IngredientsSection />

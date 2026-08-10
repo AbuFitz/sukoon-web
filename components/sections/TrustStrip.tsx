@@ -6,14 +6,10 @@ const items = [
 
 export function TrustStrip() {
   return (
-    <section
-      aria-label="Trust signals"
-      className="stack-panel stack-inner"
-      style={{ backgroundColor: "#F1EBDD", paddingBottom: "1px" }}
-    >
+    <section aria-label="Trust signals" className="container" style={{ paddingTop: "clamp(1rem, 2vw, 1.25rem)", paddingBottom: "clamp(1rem, 2vw, 1.25rem)" }}>
       <div
-        className="flex flex-col sm:flex-row"
-        style={{ maxWidth: 1440, margin: "0 auto", padding: "0 clamp(1.25rem, 4vw, 3rem) 2rem" }}
+        className="card flex flex-col sm:flex-row"
+        style={{ padding: "1.25rem clamp(1.5rem, 3vw, 2rem)" }}
       >
         {items.map((item, i) => (
           <p
@@ -21,10 +17,10 @@ export function TrustStrip() {
             className={i > 0 ? "border-t sm:border-t-0 sm:border-l" : ""}
             style={{
               flex: 1,
-              fontFamily: "var(--font-body)", fontSize: "0.875rem", fontWeight: 500,
+              fontFamily: "var(--font-body)", fontSize: "0.875rem", fontWeight: 600,
               color: "#111111", margin: 0, textAlign: "center",
               padding: "0.5rem 0",
-              borderColor: "#E5E5E2",
+              borderColor: "#EDEBE5",
             }}
           >
             {item}

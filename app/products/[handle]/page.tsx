@@ -92,7 +92,7 @@ export default async function ProductPage({ params }: Props) {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }} />
       <SiteNav />
-      <main>
+      <main style={{ paddingBottom: "clamp(1rem, 2vw, 1.25rem)" }}>
         <ProductDetail
           handle={handle}
           title={title}

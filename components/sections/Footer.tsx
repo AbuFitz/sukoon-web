@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { DropMark } from "@/components/ui/DropMark";
 
 const SHOP = [
   { label: "Shop All",    href: "/shop" },
@@ -32,9 +31,9 @@ const LEGAL = [
   { label: "Cookies",     href: "/cookies" },
 ];
 
-const TEXT   = "#FAFAFA";
-const MUTED  = "#9C968A";
-const BORDER = "rgba(250,250,250,0.12)";
+const TEXT   = "#111111";
+const MUTED  = "#666666";
+const BORDER = "#EDEBE5";
 
 function FooterCol({ title, links }: { title: string; links: { label: string; href: string }[] }) {
   return (
@@ -63,26 +62,21 @@ function FooterCol({ title, links }: { title: string; links: { label: string; hr
 
 export function Footer() {
   return (
-    <footer
-      className="stack-panel stack-panel--last stack-inner grain"
-      style={{ backgroundColor: "#111111" }}
-      aria-label="Site footer"
-    >
-      <div style={{
-        maxWidth: 1440, margin: "0 auto",
-        padding: "0 clamp(1.25rem, 4vw, 3rem) clamp(2rem, 4vw, 3rem)",
+    <footer aria-label="Site footer" style={{ padding: "0 clamp(0.75rem, 3vw, 1.5rem) clamp(0.75rem, 3vw, 1.5rem)" }}>
+      <div className="card" style={{
+        maxWidth: 1360, margin: "0 auto",
+        padding: "clamp(2rem, 4vw, 3rem) clamp(1.5rem, 4vw, 3rem)",
       }}>
         <div
           className="grid grid-cols-2 md:grid-cols-[1.4fr_1fr_1fr_1fr_1fr]"
-          style={{ gap: "clamp(2rem, 4vw, 3rem)", paddingBottom: "clamp(3rem, 5vw, 4rem)" }}
+          style={{ gap: "clamp(2rem, 4vw, 3rem)", paddingBottom: "clamp(2rem, 4vw, 3rem)" }}
         >
           {/* Brand */}
           <div className="col-span-2 md:col-span-1" style={{ display: "flex", flexDirection: "column", gap: "1.125rem" }}>
-            <Link href="/" style={{ textDecoration: "none", display: "flex", alignItems: "center", gap: "0.5rem" }}>
-              <DropMark size={13} color={TEXT} />
+            <Link href="/" style={{ textDecoration: "none" }}>
               <span style={{
                 fontFamily: "var(--font-body)", fontWeight: 700,
-                fontSize: "1.5rem", letterSpacing: "-0.02em",
+                fontSize: "1.375rem", letterSpacing: "-0.02em",
                 color: TEXT,
               }}>
                 SUKOON.
@@ -94,17 +88,11 @@ export function Footer() {
             }}>
               Waterless skincare made in the UK. Five ingredients. Nothing extra.
             </p>
-            <div style={{ display: "flex", gap: "1rem" }}>
-              <a href="https://www.instagram.com/sukoonskin" target="_blank" rel="noopener noreferrer"
-                style={{ fontFamily: "var(--font-body)", fontSize: "0.8125rem", fontWeight: 600, color: MUTED, textDecoration: "none" }}
-                onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = TEXT; }}
-                onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = MUTED; }}>
+            <div style={{ display: "flex", gap: "0.625rem" }}>
+              <a href="https://www.instagram.com/sukoonskin" target="_blank" rel="noopener noreferrer" className="badge">
                 Instagram
               </a>
-              <a href="https://www.tiktok.com/@sukoonskin" target="_blank" rel="noopener noreferrer"
-                style={{ fontFamily: "var(--font-body)", fontSize: "0.8125rem", fontWeight: 600, color: MUTED, textDecoration: "none" }}
-                onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = TEXT; }}
-                onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = MUTED; }}>
+              <a href="https://www.tiktok.com/@sukoonskin" target="_blank" rel="noopener noreferrer" className="badge">
                 TikTok
               </a>
             </div>

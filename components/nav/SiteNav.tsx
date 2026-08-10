@@ -11,15 +11,16 @@ const NAV_LINKS = [
   { label: "Shop",        href: "/shop" },
   { label: "Our Story",   href: "/about" },
   { label: "Ingredients", href: "/#ingredients" },
+  { label: "FAQ",         href: "/faq" },
 ];
 
 const TEXT   = "#111111";
-const MUTED  = "#676764";
-const BORDER = "#E3E3DF";
+const MUTED  = "#666666";
+const BORDER = "#EDEBE5";
 
 function SearchIcon() {
   return (
-    <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" aria-hidden>
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" aria-hidden>
       <circle cx="11" cy="11" r="7" /><line x1="21" y1="21" x2="16.2" y2="16.2" />
     </svg>
   );
@@ -27,7 +28,7 @@ function SearchIcon() {
 
 function AccountIcon() {
   return (
-    <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
       <circle cx="12" cy="8" r="3.5" /><path d="M4.5 20c1.5-4 4-6 7.5-6s6 2 7.5 6" />
     </svg>
   );
@@ -35,7 +36,7 @@ function AccountIcon() {
 
 function BagIcon() {
   return (
-    <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
       <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z" />
       <path d="M3 6h18" /><path d="M16 10a4 4 0 0 1-8 0" />
     </svg>
@@ -44,7 +45,7 @@ function BagIcon() {
 
 function MenuIcon() {
   return (
-    <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" aria-hidden>
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" aria-hidden>
       <line x1="3" y1="6" x2="21" y2="6" />
       <line x1="3" y1="12" x2="21" y2="12" />
       <line x1="3" y1="18" x2="21" y2="18" />
@@ -58,7 +59,7 @@ function Wordmark() {
       <span style={{
         fontFamily: "var(--font-body)",
         fontWeight: 700,
-        fontSize: "1.25rem",
+        fontSize: "1.125rem",
         letterSpacing: "-0.01em",
         color: TEXT,
         userSelect: "none",
@@ -69,25 +70,32 @@ function Wordmark() {
   );
 }
 
-function IconBtn({
+function IconPillBtn({
   label, onClick, children, badge,
 }: { label: string; onClick: () => void; children: React.ReactNode; badge?: number }) {
   return (
     <button
       aria-label={label}
       onClick={onClick}
-      style={{ background: "none", border: "none", color: TEXT, cursor: "pointer", display: "flex", padding: 0, position: "relative", transition: "opacity 0.2s ease" }}
-      onMouseEnter={e => { (e.currentTarget as HTMLElement).style.opacity = "0.55"; }}
-      onMouseLeave={e => { (e.currentTarget as HTMLElement).style.opacity = "1"; }}
+      style={{
+        width: 40, height: 40, borderRadius: "50%",
+        background: "#F4F4F2", border: "none", color: TEXT, cursor: "pointer",
+        display: "flex", alignItems: "center", justifyContent: "center",
+        position: "relative", transition: "background-color 0.18s ease",
+        flexShrink: 0,
+      }}
+      onMouseEnter={e => { (e.currentTarget as HTMLElement).style.backgroundColor = "#E8E3D9"; }}
+      onMouseLeave={e => { (e.currentTarget as HTMLElement).style.backgroundColor = "#F4F4F2"; }}
     >
       {children}
       {badge ? (
         <span style={{
-          position: "absolute", top: -6, right: -8,
-          minWidth: 16, height: 16, borderRadius: "50%",
+          position: "absolute", top: -2, right: -2,
+          minWidth: 17, height: 17, borderRadius: "50%",
           backgroundColor: TEXT, color: "#FFFFFF",
-          fontFamily: "var(--font-body)", fontSize: "0.5rem", fontWeight: 700,
+          fontFamily: "var(--font-body)", fontSize: "0.5625rem", fontWeight: 700,
           display: "flex", alignItems: "center", justifyContent: "center", padding: "0 3px",
+          border: "2px solid #FFFFFF",
         }}>
           {badge}
         </span>
@@ -110,71 +118,60 @@ export function SiteNav() {
 
   return (
     <>
-      <header
-        style={{
-          position: "sticky",
-          top: 0,
-          zIndex: 50,
-          backgroundColor: "#FFFFFF",
-          borderBottom: `1px solid ${BORDER}`,
-        }}
-      >
-        <div style={{
-          maxWidth: 1480, margin: "0 auto",
-          padding: "0 clamp(1.25rem, 4vw, 3rem)",
-          height: 70,
-          display: "grid",
-          gridTemplateColumns: "1fr auto 1fr",
-          alignItems: "center",
-        }}>
-          {/* Desktop nav */}
-          <nav className="hidden md:flex" style={{ gap: "1.75rem" }} aria-label="Primary navigation">
-            {NAV_LINKS.map(l => (
-              <a
-                key={l.label}
-                href={l.href}
-                style={{
-                  fontFamily: "var(--font-body)", fontSize: "0.875rem", fontWeight: 500,
-                  color: MUTED, textDecoration: "none",
-                  transition: "color 0.18s ease",
-                }}
-                onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = TEXT; }}
-                onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = MUTED; }}
-              >
-                {l.label}
-              </a>
-            ))}
-          </nav>
-
-          {/* Mobile hamburger */}
-          <div className="flex md:hidden" style={{ justifySelf: "start" }}>
-            <button
-              aria-label="Open menu"
-              onClick={() => setOpen(true)}
-              style={{ background: "none", border: "none", color: TEXT, cursor: "pointer", padding: 0, display: "flex", alignItems: "center" }}
-            >
-              <MenuIcon />
-            </button>
-          </div>
-
-          {/* Wordmark */}
-          <div style={{ justifySelf: "center" }}>
+      <div style={{ position: "sticky", top: 0, zIndex: 50, padding: "12px clamp(0.75rem, 3vw, 1.5rem) 0" }}>
+        <header
+          style={{
+            maxWidth: 1360, margin: "0 auto",
+            backgroundColor: "#FFFFFF",
+            borderRadius: 999,
+            boxShadow: "0 4px 24px rgba(0,0,0,0.05)",
+          }}
+        >
+          <div style={{
+            padding: "0 0.5rem 0 clamp(1.25rem, 3vw, 1.75rem)",
+            height: 64,
+            display: "grid",
+            gridTemplateColumns: "auto 1fr auto",
+            alignItems: "center",
+            gap: "1rem",
+          }}>
+            {/* Wordmark */}
             <Wordmark />
-          </div>
 
-          {/* Desktop icons */}
-          <div className="hidden md:flex" style={{ justifySelf: "end", alignItems: "center", gap: "1.375rem" }}>
-            <IconBtn label="Search" onClick={() => setSearchOpen(true)}><SearchIcon /></IconBtn>
-            <IconBtn label="Account" onClick={() => setAccountOpen(true)}><AccountIcon /></IconBtn>
-            <IconBtn label={`Bag${count > 0 ? `, ${count} item${count > 1 ? "s" : ""}` : ""}`} onClick={() => setBagOpen(true)} badge={count}><BagIcon /></IconBtn>
-          </div>
+            {/* Desktop nav */}
+            <nav className="hidden md:flex" style={{ gap: "0.5rem", justifySelf: "center" }} aria-label="Primary navigation">
+              {NAV_LINKS.map(l => (
+                <a
+                  key={l.label}
+                  href={l.href}
+                  style={{
+                    fontFamily: "var(--font-body)", fontSize: "0.875rem", fontWeight: 600,
+                    color: MUTED, textDecoration: "none",
+                    padding: "0.5rem 0.875rem", borderRadius: 999,
+                    transition: "color 0.18s ease, background-color 0.18s ease",
+                  }}
+                  onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.color = TEXT; el.style.backgroundColor = "#F4F4F2"; }}
+                  onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.color = MUTED; el.style.backgroundColor = "transparent"; }}
+                >
+                  {l.label}
+                </a>
+              ))}
+            </nav>
 
-          {/* Mobile icons */}
-          <div className="flex md:hidden" style={{ justifySelf: "end", alignItems: "center", gap: "1rem" }}>
-            <IconBtn label={`Bag${count > 0 ? `, ${count} item${count > 1 ? "s" : ""}` : ""}`} onClick={() => setBagOpen(true)} badge={count}><BagIcon /></IconBtn>
+            {/* Icons */}
+            <div style={{ justifySelf: "end", display: "flex", alignItems: "center", gap: "0.5rem" }}>
+              <div className="hidden md:flex" style={{ alignItems: "center", gap: "0.5rem" }}>
+                <IconPillBtn label="Search" onClick={() => setSearchOpen(true)}><SearchIcon /></IconPillBtn>
+                <IconPillBtn label="Account" onClick={() => setAccountOpen(true)}><AccountIcon /></IconPillBtn>
+              </div>
+              <IconPillBtn label={`Bag${count > 0 ? `, ${count} item${count > 1 ? "s" : ""}` : ""}`} onClick={() => setBagOpen(true)} badge={count}><BagIcon /></IconPillBtn>
+              <div className="flex md:hidden">
+                <IconPillBtn label="Open menu" onClick={() => setOpen(true)}><MenuIcon /></IconPillBtn>
+              </div>
+            </div>
           </div>
-        </div>
-      </header>
+        </header>
+      </div>
 
       <SearchOverlay open={searchOpen} onClose={() => setSearchOpen(false)} />
       <AccountPanel open={accountOpen} onClose={() => setAccountOpen(false)} />
@@ -193,7 +190,7 @@ export function SiteNav() {
       <div aria-hidden={!open} style={{
         position: "fixed", top: 12, left: 12, bottom: 12, zIndex: 60,
         width: "80vw", maxWidth: 320,
-        borderRadius: 24,
+        borderRadius: 28,
         backgroundColor: "#FFFFFF",
         boxShadow: "0 24px 60px rgba(17,17,16,0.22)",
         overflow: "hidden",
@@ -207,15 +204,15 @@ export function SiteNav() {
         }}>
           <Wordmark />
           <button aria-label="Close menu" onClick={() => setOpen(false)}
-            style={{ background: "none", border: "none", color: TEXT, cursor: "pointer", display: "flex", padding: 0 }}>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" aria-hidden>
+            style={{ width: 36, height: 36, borderRadius: "50%", background: "#F4F4F2", border: "none", color: TEXT, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", padding: 0 }}>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" aria-hidden>
               <line x1="5" y1="5" x2="19" y2="19" /><line x1="19" y1="5" x2="5" y2="19" />
             </svg>
           </button>
         </div>
 
         <nav style={{ flex: 1, padding: "1.75rem 1.5rem" }} aria-label="Mobile navigation">
-          {[...NAV_LINKS, { label: "Contact", href: "/contact" }, { label: "FAQ", href: "/faq" }].map((l, i) => (
+          {[...NAV_LINKS, { label: "Contact", href: "/contact" }].map((l, i) => (
             <a key={l.label} href={l.href} onClick={() => setOpen(false)} style={{
               display: "block",
               fontFamily: "var(--font-body)", fontSize: "1.125rem", fontWeight: 600,

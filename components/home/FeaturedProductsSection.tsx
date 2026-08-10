@@ -14,36 +14,7 @@ export type FeaturedProduct = {
   availableForSale?: boolean;
 };
 
-function AddButton({
-  product, adding, added, onAdd,
-}: { product: FeaturedProduct; adding: boolean; added: boolean; onAdd: (e: React.MouseEvent) => void }) {
-  return (
-    <button
-      onClick={onAdd}
-      disabled={!product.variantId || adding || added}
-      aria-label={added ? "Added to bag" : `Add ${product.title} to bag`}
-      className="add-fab"
-      style={{
-        position: "absolute", bottom: "0.75rem", right: "0.75rem", zIndex: 2,
-        width: 40, height: 40, borderRadius: "50%", border: "none",
-        display: "flex", alignItems: "center", justifyContent: "center",
-        backgroundColor: added ? "#FAFAFA" : !product.variantId ? "#B8B8B2" : "#111111",
-        color: added ? "#111111" : "#FFFFFF",
-        cursor: !product.variantId ? "default" : adding ? "wait" : "pointer",
-        boxShadow: "0 6px 18px rgba(17,17,16,0.22)",
-        transition: "transform 0.18s ease, background-color 0.18s ease",
-      }}
-    >
-      {added ? (
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12" /></svg>
-      ) : (
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round"><line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" /></svg>
-      )}
-    </button>
-  );
-}
-
-function ProductCard({ product, large }: { product: FeaturedProduct; large?: boolean }) {
+function ProductCard({ product }: { product: FeaturedProduct }) {
   const [adding, setAdding] = useState(false);
   const [added, setAdded] = useState(false);
   const { addToCart } = useCart();
@@ -62,126 +33,100 @@ function ProductCard({ product, large }: { product: FeaturedProduct; large?: boo
   };
 
   return (
-    <article className={`product-card ${large ? "product-card--large" : ""}`}>
-      <div style={{ position: "relative" }}>
-        <Link href={`/products/${product.handle}`} style={{ textDecoration: "none", display: "block" }}>
-          <div className="cut-corner" style={{
-            position: "relative",
-            aspectRatio: large ? "4 / 5.6" : "4 / 5",
-            overflow: "hidden",
-            backgroundColor: "#F4F4F2",
-            marginBottom: "0.875rem",
-          }}>
-            <Image
-              src={src}
-              alt={product.title}
-              fill
-              sizes="(max-width: 768px) 80vw, 33vw"
-              className="img-hover"
-              style={{ objectFit: "cover" }}
-            />
-          </div>
-        </Link>
-        <AddButton product={product} adding={adding} added={added} onAdd={handleAdd} />
-      </div>
-
+    <article className="card" style={{ padding: "clamp(1rem, 2vw, 1.25rem)", display: "flex", flexDirection: "column" }}>
       <Link href={`/products/${product.handle}`} style={{ textDecoration: "none", display: "block" }}>
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: "0.75rem" }}>
-          <p style={{
-            fontFamily: "var(--font-body)", fontWeight: 600,
-            fontSize: "0.9375rem", color: "#111111", margin: 0,
-          }}>
-            {product.title}
-          </p>
-          <p style={{
-            fontFamily: "var(--font-body)", fontWeight: 600, fontSize: "0.9375rem",
-            color: "#111111", margin: 0, whiteSpace: "nowrap",
-          }}>
-            {product.price}
-          </p>
+        <div className="card-sm" style={{
+          position: "relative",
+          aspectRatio: "4 / 5",
+          overflow: "hidden",
+          backgroundColor: "#F4F4F2",
+          marginBottom: "1rem",
+        }}>
+          <Image
+            src={src}
+            alt={product.title}
+            fill
+            sizes="(max-width: 768px) 80vw, 33vw"
+            className="img-hover"
+            style={{ objectFit: "cover" }}
+          />
         </div>
+
+        <p style={{
+          fontFamily: "var(--font-body)", fontWeight: 700,
+          fontSize: "0.9375rem", color: "#111111", margin: "0 0 0.25rem",
+        }}>
+          {product.title}
+        </p>
+        <p style={{
+          fontFamily: "var(--font-body)", fontWeight: 600, fontSize: "0.875rem",
+          color: "#666666", margin: "0 0 1rem",
+        }}>
+          {product.price}
+        </p>
       </Link>
+
+      <button
+        onClick={handleAdd}
+        disabled={!product.variantId || adding || added}
+        aria-label={added ? "Added to bag" : `Add ${product.title} to bag`}
+        className="btn btn-dark"
+        style={{
+          width: "100%", marginTop: "auto",
+          backgroundColor: added ? "#F4F4F2" : "#111111",
+          color: added ? "#111111" : "#FFFFFF",
+          borderColor: added ? "#EDEBE5" : "#111111",
+          opacity: !product.variantId ? 0.45 : 1,
+          cursor: !product.variantId ? "default" : adding ? "wait" : "pointer",
+        }}
+      >
+        {added ? "Added" : adding ? "Adding…" : "Add to Bag"}
+      </button>
     </article>
   );
 }
 
 export function FeaturedProductsSection({ products }: { products: FeaturedProduct[] }) {
   return (
-    <section
-      className="stack-panel stack-panel--pull-lg stack-inner"
-      style={{ backgroundColor: "#FFFFFF", paddingBottom: "clamp(3rem, 5vw, 4.5rem)" }}
-    >
-      <div style={{ maxWidth: 1440, margin: "0 auto", padding: "0 clamp(1.25rem, 4vw, 3rem)" }}>
-        {/* Header */}
-        <div style={{
-          display: "flex", alignItems: "baseline", justifyContent: "space-between",
-          gap: "1rem", marginBottom: "1.75rem",
+    <section className="container" style={{ paddingTop: "clamp(1rem, 2vw, 1.25rem)" }}>
+      <div style={{
+        display: "flex", alignItems: "baseline", justifyContent: "space-between",
+        gap: "1rem", marginBottom: "1.25rem",
+      }}>
+        <h2 style={{
+          fontFamily: "var(--font-body)", fontWeight: 700,
+          fontSize: "clamp(1.375rem, 2.2vw, 1.75rem)",
+          letterSpacing: "-0.02em", color: "#111111", margin: 0,
         }}>
-          <h2 style={{
-            fontFamily: "var(--font-body)", fontWeight: 600,
-            fontSize: "clamp(1.5rem, 2.4vw, 2rem)",
-            letterSpacing: "-0.02em", color: "#111111", margin: 0,
-          }}>
-            The Collection
-          </h2>
-          <a href="/shop" style={{
-            fontFamily: "var(--font-body)", fontSize: "0.875rem", fontWeight: 600,
-            color: "#111111", textDecoration: "none",
-          }}>
-            Shop all →
-          </a>
-        </div>
+          The Collection
+        </h2>
+        <Link href="/shop" className="badge">Shop all →</Link>
+      </div>
 
-        {/* Asymmetric: first product runs larger, the other two stack beside it */}
-        <div className="product-row">
-          {products.map((p, i) => <ProductCard key={p.handle} product={p} large={i === 0} />)}
-        </div>
+      <div className="product-row">
+        {products.map(p => <ProductCard key={p.handle} product={p} />)}
       </div>
 
       <style>{`
         .product-row {
           display: grid;
-          grid-template-columns: 1.35fr 1fr 1fr;
-          gap: 18px;
-        }
-        .add-fab { opacity: 0; transform: scale(0.85); }
-        @media (hover: none) {
-          .add-fab { opacity: 1; transform: none; }
-        }
-        .product-card:hover .add-fab,
-        .product-card:focus-within .add-fab { opacity: 1; transform: scale(1); }
-        @media (max-width: 900px) {
-          .product-row {
-            grid-template-columns: 1fr 1fr;
-          }
-          .product-card--large {
-            grid-column: 1 / -1;
-          }
-          .product-card--large .cut-corner {
-            aspect-ratio: 16 / 9;
-          }
+          grid-template-columns: repeat(3, 1fr);
+          gap: clamp(1rem, 2vw, 1.25rem);
         }
         @media (max-width: 640px) {
           .product-row {
             display: flex;
-            grid-template-columns: unset;
-            gap: 12px;
+            gap: 0.875rem;
             overflow-x: auto;
             scroll-snap-type: x mandatory;
             margin: 0 -1.25rem;
-            padding: 0 1.25rem;
+            padding: 0 1.25rem 0.25rem;
             -webkit-overflow-scrolling: touch;
           }
           .product-row::-webkit-scrollbar { display: none; }
-          .product-card {
+          .product-row > article {
             flex: 0 0 78%;
             scroll-snap-align: start;
-          }
-          .product-card--large {
-            grid-column: unset;
-          }
-          .product-card--large .cut-corner {
-            aspect-ratio: 4 / 5;
           }
         }
       `}</style>

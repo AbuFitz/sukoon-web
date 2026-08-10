@@ -3,29 +3,28 @@
 import { useState } from "react";
 import { SiteNav } from "@/components/nav/SiteNav";
 import { Footer } from "@/components/sections/Footer";
-import { DropMark } from "@/components/ui/DropMark";
 
 const INK   = "#111111";
-const MUTED = "#636360";
-const LINE  = "#D0D0CB";
-const LINEN = "#FAFAFA";
+const MUTED = "#666666";
 
 const inputStyle = {
   width: "100%",
   fontFamily: "var(--font-body)",
   fontSize: "0.9375rem",
   color: INK,
-  backgroundColor: "#FFFFFF",
-  border: `1px solid ${LINE}`,
-  borderRadius: 8,
-  padding: "0.875rem 1rem",
+  backgroundColor: "#F9F8F6",
+  border: "1px solid #EDEBE5",
+  borderRadius: 999,
+  padding: "0.875rem 1.25rem",
   outline: "none",
   boxSizing: "border-box" as const,
   display: "block",
 };
 
+const textareaStyle = { ...inputStyle, borderRadius: 20, resize: "vertical" as const };
+
 const labelStyle = {
-  fontFamily: "var(--font-body)", fontSize: "0.8125rem", fontWeight: 600,
+  fontFamily: "var(--font-body)", fontSize: "0.8125rem", fontWeight: 700,
   color: INK,
   display: "block", marginBottom: "0.5rem",
 };
@@ -46,35 +45,24 @@ export default function ContactPage() {
   return (
     <>
       <SiteNav />
-      <main
-        className="stack-panel stack-panel--first stack-panel--last stack-inner"
-        style={{ backgroundColor: LINEN, minHeight: "70vh" }}
-      >
-        <div style={{ maxWidth: "680px", margin: "0 auto", padding: "0 clamp(1.5rem, 5vw, 3rem) clamp(3rem, 7vw, 5rem)" }}>
-          <DropMark size={9} color={INK} style={{ marginBottom: "1rem" }} />
-          <p style={{
-            fontFamily: "var(--font-body)", fontSize: "0.75rem", fontWeight: 600,
-            color: "#969690",
-            marginBottom: "1rem",
-          }}>Contact</p>
+      <main className="container" style={{ paddingTop: "clamp(1rem, 2vw, 1.5rem)", paddingBottom: "clamp(1rem, 2vw, 1.25rem)" }}>
+        <div className="card" style={{ maxWidth: 680, margin: "0 auto", padding: "clamp(2rem, 5vw, 3rem)" }}>
+          <span className="eyebrow">Contact</span>
           <h1 style={{
-            fontFamily: "var(--font-body)", fontSize: "clamp(2.5rem, 5vw, 4rem)",
-            fontWeight: 600, letterSpacing: "-0.04em", color: INK,
-            marginBottom: "0.75rem", lineHeight: 0.98,
+            fontFamily: "var(--font-body)", fontSize: "clamp(2rem, 4vw, 3rem)",
+            fontWeight: 700, letterSpacing: "-0.035em", color: INK,
+            margin: "0.75rem 0 0.625rem", lineHeight: 1.02,
           }}>We read every message.</h1>
           <p style={{
             fontFamily: "var(--font-body)", fontSize: "0.9375rem", lineHeight: 1.6, color: MUTED,
-            marginBottom: "2.5rem",
+            marginBottom: "2rem",
           }}>
             A real person reads every message. We aim to respond within one working day.
           </p>
 
           {sent ? (
-            <div style={{
-              backgroundColor: "#FFFFFF", border: `1px solid ${LINE}`, borderRadius: 16,
-              padding: "2.5rem 2rem", textAlign: "center",
-            }}>
-              <p style={{ fontFamily: "var(--font-body)", fontSize: "1.5rem", fontWeight: 600, color: INK, marginBottom: "0.5rem" }}>
+            <div className="card-flat" style={{ padding: "2.5rem 2rem", textAlign: "center" }}>
+              <p style={{ fontFamily: "var(--font-body)", fontSize: "1.375rem", fontWeight: 700, color: INK, marginBottom: "0.5rem" }}>
                 Message received.
               </p>
               <p style={{ fontFamily: "var(--font-body)", fontSize: "0.9375rem", color: MUTED }}>
@@ -119,7 +107,7 @@ export default function ContactPage() {
                 <textarea
                   name="message" required rows={6}
                   value={form.message} onChange={handleChange}
-                  style={{ ...inputStyle, resize: "vertical" }}
+                  style={textareaStyle}
                 />
               </div>
               <button type="submit" className="btn btn-dark" style={{ alignSelf: "flex-start" }}>
@@ -128,8 +116,8 @@ export default function ContactPage() {
             </form>
           )}
 
-          <div style={{ marginTop: "3rem", paddingTop: "2rem", borderTop: `1px solid ${LINE}` }}>
-            <p style={{ fontFamily: "var(--font-body)", fontSize: "0.8125rem", color: MUTED, lineHeight: 1.6 }}>
+          <div className="card-flat" style={{ marginTop: "2rem", padding: "1.25rem 1.5rem" }}>
+            <p style={{ fontFamily: "var(--font-body)", fontSize: "0.8125rem", color: MUTED, lineHeight: 1.6, margin: 0 }}>
               Or reach us directly at{" "}
               <a href="mailto:hello@sukoon.co.uk" style={{ color: INK, textUnderlineOffset: "3px" }}>
                 hello@sukoon.co.uk

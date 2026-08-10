@@ -10,7 +10,7 @@ const PROSE = {
   fontFamily: "var(--font-body)",
   fontSize: "0.9375rem",
   lineHeight: 1.7,
-  color: "#636360",
+  color: "#666666",
 };
 
 const H2 = {
@@ -27,8 +27,8 @@ export default function TermsPage() {
   return (
     <>
       <SiteNav />
-      <main className="stack-panel stack-panel--first stack-panel--last stack-inner" style={{ backgroundColor: "#FAFAFA", minHeight: "80vh" }}>
-        <div style={{ maxWidth: "780px", margin: "0 auto", padding: "0 clamp(1.5rem, 5vw, 3rem) clamp(3rem, 7vw, 5rem)" }}>
+      <main className="container" style={{ minHeight: "70vh", paddingTop: "clamp(1rem, 2vw, 1.5rem)", paddingBottom: "clamp(1rem, 2vw, 1.25rem)" }}>
+        <div className="card" style={{ maxWidth: "780px", margin: "0 auto", padding: "clamp(2rem, 5vw, 3rem)" }}>
           <h1 style={{
             fontFamily: "var(--font-body)", fontWeight: 600, fontSize: "clamp(1.875rem, 3.5vw, 2.75rem)",
             letterSpacing: "-0.03em", color: "#111111",

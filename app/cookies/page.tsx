@@ -10,7 +10,7 @@ const PROSE = {
   fontFamily: "var(--font-body)",
   fontSize: "0.9375rem",
   lineHeight: 1.7,
-  color: "#636360",
+  color: "#666666",
 };
 
 const H2 = {
@@ -27,9 +27,9 @@ const TABLE_CELL = {
   fontFamily: "var(--font-body)",
   fontSize: "0.8125rem",
   lineHeight: 1.6,
-  color: "#636360",
+  color: "#666666",
   padding: "0.625rem 0.875rem",
-  borderBottom: "1px solid #D0D0CB",
+  borderBottom: "1px solid #EDEBE5",
   verticalAlign: "top" as const,
 };
 
@@ -37,8 +37,8 @@ export default function CookiesPage() {
   return (
     <>
       <SiteNav />
-      <main className="stack-panel stack-panel--first stack-panel--last stack-inner" style={{ backgroundColor: "#FAFAFA", minHeight: "80vh" }}>
-        <div style={{ maxWidth: "780px", margin: "0 auto", padding: "0 clamp(1.5rem, 5vw, 3rem) clamp(3rem, 7vw, 5rem)" }}>
+      <main className="container" style={{ minHeight: "70vh", paddingTop: "clamp(1rem, 2vw, 1.5rem)", paddingBottom: "clamp(1rem, 2vw, 1.25rem)" }}>
+        <div className="card" style={{ maxWidth: "780px", margin: "0 auto", padding: "clamp(2rem, 5vw, 3rem)" }}>
           <h1 style={{
             fontFamily: "var(--font-body)", fontWeight: 600, fontSize: "clamp(1.875rem, 3.5vw, 2.75rem)",
             letterSpacing: "-0.03em", color: "#111111",
@@ -54,7 +54,7 @@ export default function CookiesPage() {
           <p style={PROSE}>Cookies are small text files placed on your device by websites you visit. They are widely used to make sites work efficiently and to provide basic analytics information to site owners.</p>
 
           <h2 style={H2}>Cookies we use</h2>
-          <div style={{ overflowX: "auto", marginTop: "1rem", borderRadius: 12, border: "1px solid #D0D0CB" }}>
+          <div style={{ overflowX: "auto", marginTop: "1rem", borderRadius: 20, border: "1px solid #EDEBE5" }}>
             <table style={{ width: "100%", borderCollapse: "collapse" }}>
               <thead>
                 <tr>
