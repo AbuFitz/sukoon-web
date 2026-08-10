@@ -91,7 +91,7 @@ function ProductCard({ product }: { product: FeaturedProduct }) {
 
 export function FeaturedProductsSection({ products }: { products: FeaturedProduct[] }) {
   return (
-    <section style={{ backgroundColor: "#FFFFFF", padding: "clamp(3.5rem, 6vw, 5.5rem) 0" }}>
+    <section className="stack-panel stack-inner" style={{ backgroundColor: "#FFFFFF", paddingBottom: "clamp(3rem, 5vw, 4.5rem)" }}>
       <div style={{ maxWidth: 1440, margin: "0 auto", padding: "0 clamp(1.25rem, 4vw, 3rem)" }}>
         {/* Header */}
         <div style={{

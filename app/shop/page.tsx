@@ -24,8 +24,10 @@ export default async function ShopPage() {
     <>
       <SiteNav />
       <main>
-        <ShopHero />
-        <ShopCollection variantIds={variantIds} />
+        <div className="stack-panel stack-panel--first" style={{ backgroundColor: "#FFFFFF" }}>
+          <ShopHero />
+          <ShopCollection variantIds={variantIds} />
+        </div>
         <ShopTrustStrip />
       </main>
       <Footer />

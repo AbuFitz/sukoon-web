@@ -3,7 +3,7 @@ import { homepageImages } from "@/lib/homepage";
 
 export function BrandStorySection() {
   return (
-    <section style={{ backgroundColor: "#FFFFFF" }}>
+    <section className="stack-panel stack-panel--clip" style={{ backgroundColor: "#F1EBDD" }}>
       <div
         className="campaign-grid"
         style={{

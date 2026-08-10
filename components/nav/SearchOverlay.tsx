@@ -6,8 +6,8 @@ import { Panel } from "./Panel";
 import { products } from "@/lib/products";
 
 const TEXT   = "#111111";
-const MUTED  = "#92928D";
-const BORDER = "#E3E3DF";
+const MUTED  = "#969690";
+const BORDER = "#D0D0CB";
 
 export function SearchOverlay({ open, onClose }: { open: boolean; onClose: () => void }) {
   const inputRef = useRef<HTMLInputElement>(null);
@@ -34,7 +34,7 @@ export function SearchOverlay({ open, onClose }: { open: boolean; onClose: () =>
       {/* Input */}
       <div style={{
         display: "flex", alignItems: "center", gap: "0.75rem",
-        border: `1px solid ${BORDER}`,
+        border: `1px solid ${BORDER}`, borderRadius: 12,
         padding: "0.75rem 1rem",
         marginBottom: "1.75rem",
       }}>
@@ -79,8 +79,8 @@ export function SearchOverlay({ open, onClose }: { open: boolean; onClose: () =>
             <a key={p.slug} href={`/products/${p.slug}`} onClick={onClose} style={{ textDecoration: "none" }}>
               <div style={{
                 position: "relative", aspectRatio: "4 / 5",
-                overflow: "hidden",
-                backgroundColor: "#F0F0EE", marginBottom: "0.625rem",
+                overflow: "hidden", borderRadius: 12,
+                backgroundColor: "#F4F4F2", marginBottom: "0.625rem",
               }}>
                 <Image
                   src={p.src} alt={p.name} fill

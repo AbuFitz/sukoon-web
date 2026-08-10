@@ -31,9 +31,9 @@ const LEGAL = [
   { label: "Cookies",     href: "/cookies" },
 ];
 
-const TEXT   = "#111111";
-const MUTED  = "#969690";
-const BORDER = "#E5E5E2";
+const TEXT   = "#FAFAFA";
+const MUTED  = "#9C968A";
+const BORDER = "rgba(250,250,250,0.12)";
 
 function FooterCol({ title, links }: { title: string; links: { label: string; href: string }[] }) {
   return (
@@ -62,10 +62,14 @@ function FooterCol({ title, links }: { title: string; links: { label: string; hr
 
 export function Footer() {
   return (
-    <footer style={{ backgroundColor: "#FAFAFA", borderTop: `1px solid ${BORDER}` }} aria-label="Site footer">
+    <footer
+      className="stack-panel stack-panel--last stack-inner"
+      style={{ backgroundColor: "#111111" }}
+      aria-label="Site footer"
+    >
       <div style={{
         maxWidth: 1440, margin: "0 auto",
-        padding: "clamp(3.5rem, 6vw, 5.5rem) clamp(1.25rem, 4vw, 3rem) clamp(2rem, 4vw, 3rem)",
+        padding: "0 clamp(1.25rem, 4vw, 3rem) clamp(2rem, 4vw, 3rem)",
       }}>
         <div
           className="grid grid-cols-2 md:grid-cols-[1.4fr_1fr_1fr_1fr_1fr]"

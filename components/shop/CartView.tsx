@@ -5,8 +5,8 @@ import { useCart } from "@/lib/cart-context";
 import { formatPrice } from "@/lib/shopify";
 
 const TEXT   = "#111111";
-const MUTED  = "#92928D";
-const BORDER = "#E3E3DF";
+const MUTED  = "#969690";
+const BORDER = "#D0D0CB";
 
 function QtyButton({ label, onClick, children }: { label: string; onClick: () => void; children: React.ReactNode }) {
   return (
@@ -14,7 +14,7 @@ function QtyButton({ label, onClick, children }: { label: string; onClick: () =>
       aria-label={label}
       onClick={onClick}
       style={{
-        width: 32, height: 32, background: "none",
+        width: 32, height: 32, background: "none", borderRadius: 8,
         border: `1px solid ${BORDER}`,
         cursor: "pointer", color: TEXT,
         fontSize: "1rem", display: "flex", alignItems: "center", justifyContent: "center",
@@ -50,34 +50,20 @@ export function CartView() {
           <path d="M16 10a4 4 0 0 1-8 0" />
         </svg>
         <h1 style={{
-          fontFamily: "var(--font-body)", fontWeight: 200,
-          fontSize: "clamp(2rem, 3.5vw, 3rem)",
-          lineHeight: 1.05, letterSpacing: "-0.02em",
+          fontFamily: "var(--font-body)", fontWeight: 600,
+          fontSize: "clamp(1.75rem, 3.5vw, 2.5rem)",
+          lineHeight: 1.05, letterSpacing: "-0.03em",
           color: TEXT, margin: "0 0 0.875rem",
         }}>
           Your bag is empty
         </h1>
         <p style={{
-          fontFamily: "var(--font-body)", fontSize: "1rem", lineHeight: 1.7,
-          color: "#676764", margin: "0 0 2.5rem",
+          fontFamily: "var(--font-body)", fontSize: "1rem", lineHeight: 1.6,
+          color: "#636360", margin: "0 0 2.5rem",
         }}>
           Add The Daily Solace Fluid to begin your ritual.
         </p>
-        <a
-          href="/shop"
-          style={{
-            display: "inline-flex", alignItems: "center", justifyContent: "center",
-            fontFamily: "var(--font-body)", fontSize: "0.6875rem", fontWeight: 700,
-            letterSpacing: "0.16em", textTransform: "uppercase",
-            color: "#FFFFFF", backgroundColor: TEXT,
-            border: `1px solid ${TEXT}`,
-            minHeight: 52, padding: "0 2.25rem",
-            textDecoration: "none",
-            transition: "background-color 220ms ease",
-          }}
-          onMouseEnter={e => { (e.currentTarget as HTMLElement).style.backgroundColor = "#333333"; }}
-          onMouseLeave={e => { (e.currentTarget as HTMLElement).style.backgroundColor = TEXT; }}
-        >
+        <a href="/shop" className="btn btn-dark">
           Shop the Collection
         </a>
       </div>
@@ -100,9 +86,9 @@ export function CartView() {
           Review
         </p>
         <h1 style={{
-          fontFamily: "var(--font-body)", fontWeight: 200,
-          fontSize: "clamp(2rem, 3.5vw, 3rem)",
-          lineHeight: 1.0, letterSpacing: "-0.02em",
+          fontFamily: "var(--font-body)", fontWeight: 600,
+          fontSize: "clamp(1.75rem, 3.5vw, 2.5rem)",
+          lineHeight: 1.05, letterSpacing: "-0.03em",
           color: TEXT, margin: 0,
         }}>
           Your Bag
@@ -148,7 +134,7 @@ export function CartView() {
                 <div style={{
                   position: "relative",
                   width: 90, height: 112, flexShrink: 0,
-                  backgroundColor: "#F0F0EE",
+                  backgroundColor: "#F4F4F2", borderRadius: 12, overflow: "hidden",
                 }}>
                   {merchandise.image ? (
                     <Image
@@ -239,7 +225,8 @@ export function CartView() {
 
         {/* ── Order summary ── */}
         <div style={{
-          backgroundColor: "#F5F5F3",
+          backgroundColor: "#F1EBDD",
+          borderRadius: 20,
           padding: "2rem",
           position: "sticky",
           top: 92,
@@ -283,20 +270,12 @@ export function CartView() {
 
           <a
             href={checkoutUrl ?? "#"}
+            className="btn btn-dark"
             style={{
-              display: "flex", alignItems: "center", justifyContent: "center",
-              width: "100%", minHeight: 52,
-              fontFamily: "var(--font-body)", fontSize: "0.6875rem", fontWeight: 700,
-              letterSpacing: "0.16em", textTransform: "uppercase",
-              color: "#FFFFFF", backgroundColor: TEXT,
-              border: `1px solid ${TEXT}`,
-              textDecoration: "none",
+              width: "100%",
               pointerEvents: checkoutUrl ? "auto" : "none",
               opacity: checkoutUrl ? 1 : 0.5,
-              transition: "background-color 220ms ease",
             }}
-            onMouseEnter={e => { if (checkoutUrl) { (e.currentTarget as HTMLElement).style.backgroundColor = "#333333"; } }}
-            onMouseLeave={e => { (e.currentTarget as HTMLElement).style.backgroundColor = TEXT; }}
           >
             {loading ? "Updating…" : "Proceed to Checkout"}
           </a>

@@ -9,17 +9,17 @@ export const metadata: Metadata = {
 const PROSE = {
   fontFamily: "var(--font-body)",
   fontSize: "0.9375rem",
-  lineHeight: 1.85,
-  color: "#676764",
+  lineHeight: 1.7,
+  color: "#636360",
 };
 
 const H2 = {
   fontFamily: "var(--font-body)",
-  fontSize: "clamp(1.375rem, 2.5vw, 1.75rem)",
-  fontWeight: 300,
+  fontSize: "clamp(1.25rem, 2.2vw, 1.5rem)",
+  fontWeight: 600,
   color: "#111111",
-  marginTop: "2.5rem",
-  marginBottom: "0.875rem",
+  marginTop: "2.25rem",
+  marginBottom: "0.75rem",
   lineHeight: 1.2,
 };
 
@@ -27,9 +27,9 @@ const TABLE_CELL = {
   fontFamily: "var(--font-body)",
   fontSize: "0.8125rem",
   lineHeight: 1.6,
-  color: "#676764",
+  color: "#636360",
   padding: "0.625rem 0.875rem",
-  borderBottom: "1px solid #E3E3DF",
+  borderBottom: "1px solid #D0D0CB",
   verticalAlign: "top" as const,
 };
 
@@ -37,14 +37,14 @@ export default function CookiesPage() {
   return (
     <>
       <SiteNav />
-      <main style={{ backgroundColor: "#F5F5F3", minHeight: "80vh" }}>
-        <div style={{ maxWidth: "780px", margin: "0 auto", padding: "clamp(3rem, 7vw, 5rem) clamp(1.5rem, 5vw, 3rem)" }}>
+      <main className="stack-panel stack-panel--first stack-panel--last stack-inner" style={{ backgroundColor: "#FAFAFA", minHeight: "80vh" }}>
+        <div style={{ maxWidth: "780px", margin: "0 auto", padding: "0 clamp(1.5rem, 5vw, 3rem) clamp(3rem, 7vw, 5rem)" }}>
           <h1 style={{
-            fontFamily: "var(--font-body)", fontWeight: 200, fontSize: "clamp(2rem, 4vw, 3rem)",
-            letterSpacing: "-0.02em", color: "#111111",
+            fontFamily: "var(--font-body)", fontWeight: 600, fontSize: "clamp(1.875rem, 3.5vw, 2.75rem)",
+            letterSpacing: "-0.03em", color: "#111111",
             marginBottom: "0.5rem",
           }}>Cookie Policy</h1>
-          <p style={{ ...PROSE, color: "#92928D", marginBottom: "2.5rem", fontSize: "0.8125rem" }}>
+          <p style={{ ...PROSE, color: "#969690", marginBottom: "2.5rem", fontSize: "0.8125rem" }}>
             Last updated: July 2025
           </p>
 
@@ -54,8 +54,8 @@ export default function CookiesPage() {
           <p style={PROSE}>Cookies are small text files placed on your device by websites you visit. They are widely used to make sites work efficiently and to provide basic analytics information to site owners.</p>
 
           <h2 style={H2}>Cookies we use</h2>
-          <div style={{ overflowX: "auto", marginTop: "1rem" }}>
-            <table style={{ width: "100%", borderCollapse: "collapse", borderTop: "1px solid #E3E3DF" }}>
+          <div style={{ overflowX: "auto", marginTop: "1rem", borderRadius: 12, border: "1px solid #D0D0CB" }}>
+            <table style={{ width: "100%", borderCollapse: "collapse" }}>
               <thead>
                 <tr>
                   {["Name", "Type", "Purpose", "Duration"].map(h => (

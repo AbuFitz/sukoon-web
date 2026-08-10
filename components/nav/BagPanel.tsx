@@ -6,13 +6,13 @@ import { useCart } from "@/lib/cart-context";
 import { formatPrice } from "@/lib/shopify";
 
 const TEXT   = "#111111";
-const MUTED  = "#92928D";
-const BORDER = "#E3E3DF";
+const MUTED  = "#969690";
+const BORDER = "#D0D0CB";
 
 function Stepper({ qty, onChange }: { qty: number; onChange: (qty: number) => void }) {
   return (
     <div style={{
-      display: "flex", alignItems: "center",
+      display: "flex", alignItems: "center", borderRadius: 8,
       border: `1px solid ${BORDER}`,
     }}>
       <button
@@ -47,19 +47,13 @@ export function BagPanel({ open, onClose }: { open: boolean; onClose: () => void
           display: "flex", flexDirection: "column", alignItems: "center",
           textAlign: "center", padding: "3rem 0",
         }}>
-          <p style={{ fontFamily: "var(--font-body)", fontWeight: 500, fontSize: "1.0625rem", color: TEXT, marginBottom: "0.5rem" }}>
+          <p style={{ fontFamily: "var(--font-body)", fontWeight: 600, fontSize: "1.0625rem", color: TEXT, marginBottom: "0.5rem" }}>
             Your bag is empty
           </p>
           <p style={{ fontFamily: "var(--font-body)", fontSize: "0.875rem", color: MUTED, lineHeight: 1.6, maxWidth: 260, marginBottom: "2rem" }}>
             Add something to get started.
           </p>
-          <a href="/shop" onClick={onClose} style={{
-            display: "inline-flex", alignItems: "center", justifyContent: "center",
-            padding: "0.875rem 2rem", textDecoration: "none",
-            backgroundColor: TEXT, color: "#FFFFFF",
-            fontFamily: "var(--font-body)", fontSize: "0.6875rem", fontWeight: 700,
-            letterSpacing: "0.16em", textTransform: "uppercase",
-          }}>
+          <a href="/shop" onClick={onClose} className="btn btn-dark">
             Shop now
           </a>
         </div>
@@ -82,15 +76,15 @@ export function BagPanel({ open, onClose }: { open: boolean; onClose: () => void
           return (
             <div key={line.id} style={{ display: "flex", gap: "1rem" }}>
               {merchandise.image ? (
-                <div style={{ position: "relative", width: 80, height: 96, flexShrink: 0, overflow: "hidden", backgroundColor: "#F0F0EE" }}>
+                <div style={{ position: "relative", width: 80, height: 96, flexShrink: 0, overflow: "hidden", borderRadius: 12, backgroundColor: "#F4F4F2" }}>
                   <Image src={merchandise.image.url} alt={merchandise.image.altText ?? merchandise.product.title} fill sizes="80px" style={{ objectFit: "cover" }} />
                 </div>
               ) : (
-                <div style={{ width: 80, height: 96, flexShrink: 0, backgroundColor: "#F0F0EE" }} />
+                <div style={{ width: 80, height: 96, flexShrink: 0, borderRadius: 12, backgroundColor: "#F4F4F2" }} />
               )}
               <div style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
                 <div>
-                  <p style={{ fontFamily: "var(--font-body)", fontSize: "0.9375rem", fontWeight: 500, color: TEXT, margin: "0 0 0.25rem" }}>
+                  <p style={{ fontFamily: "var(--font-body)", fontSize: "0.9375rem", fontWeight: 600, color: TEXT, margin: "0 0 0.25rem" }}>
                     {merchandise.product.title}
                   </p>
                   <p style={{ fontFamily: "var(--font-body)", fontSize: "0.8125rem", color: MUTED, margin: "0 0 0.5rem" }}>
@@ -117,21 +111,15 @@ export function BagPanel({ open, onClose }: { open: boolean; onClose: () => void
 
         <div style={{ borderTop: `1px solid ${BORDER}`, paddingTop: "1.25rem" }}>
           <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "1.25rem" }}>
-            <span style={{ fontFamily: "var(--font-body)", fontSize: "0.9375rem", fontWeight: 500, color: TEXT }}>Subtotal</span>
-            <span style={{ fontFamily: "var(--font-body)", fontSize: "0.9375rem", fontWeight: 500, color: TEXT }}>
+            <span style={{ fontFamily: "var(--font-body)", fontSize: "0.9375rem", fontWeight: 600, color: TEXT }}>Subtotal</span>
+            <span style={{ fontFamily: "var(--font-body)", fontSize: "0.9375rem", fontWeight: 600, color: TEXT }}>
               {subtotal ? formatPrice(subtotal.amount, subtotal.currencyCode) : "—"}
             </span>
           </div>
           <a
             href={checkoutUrl ?? "#"}
-            style={{
-              display: "flex", alignItems: "center", justifyContent: "center", width: "100%",
-              height: 52, border: "none", cursor: "pointer",
-              backgroundColor: TEXT, color: "#FFFFFF",
-              fontFamily: "var(--font-body)", fontSize: "0.6875rem", fontWeight: 700,
-              letterSpacing: "0.16em", textTransform: "uppercase", textDecoration: "none",
-              pointerEvents: checkoutUrl ? "auto" : "none",
-            }}
+            className="btn btn-dark"
+            style={{ width: "100%", pointerEvents: checkoutUrl ? "auto" : "none" }}
           >
             {loading ? "Updating…" : "Checkout"}
           </a>

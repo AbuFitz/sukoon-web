@@ -4,7 +4,11 @@ import { homepageImages } from "@/lib/homepage";
 
 export function HeroSection() {
   return (
-    <section aria-label="Hero" style={{ backgroundColor: "#FFFFFF" }}>
+    <section
+      aria-label="Hero"
+      className="stack-panel stack-panel--first stack-panel--clip"
+      style={{ backgroundColor: "#FFFFFF" }}
+    >
       <div
         className="hero-grid"
         style={{

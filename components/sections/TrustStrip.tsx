@@ -8,14 +8,12 @@ export function TrustStrip() {
   return (
     <section
       aria-label="Trust signals"
-      style={{
-        backgroundColor: "#FAFAFA",
-        borderTop: "1px solid #E5E5E2",
-      }}
+      className="stack-panel stack-inner"
+      style={{ backgroundColor: "#F1EBDD", paddingBottom: "1px" }}
     >
       <div
         className="flex flex-col sm:flex-row"
-        style={{ maxWidth: 1440, margin: "0 auto", padding: "1.25rem clamp(1.25rem, 4vw, 3rem)" }}
+        style={{ maxWidth: 1440, margin: "0 auto", padding: "0 clamp(1.25rem, 4vw, 3rem) 2rem" }}
       >
         {items.map((item, i) => (
           <p

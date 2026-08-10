@@ -123,9 +123,9 @@ export function ProductDetail({ handle, title, size, price, description, imageSr
   );
 
   return (
-    <div style={{ backgroundColor: "#FFFFFF" }}>
+    <div className="stack-panel stack-panel--first stack-inner" style={{ backgroundColor: "#FFFFFF" }}>
       {/* Main grid */}
-      <div style={{ maxWidth: 1440, margin: "0 auto", padding: "clamp(1.5rem, 3vw, 2.5rem) clamp(1.25rem, 4vw, 3rem)" }}>
+      <div style={{ maxWidth: 1440, margin: "0 auto", padding: "0 clamp(1.25rem, 4vw, 3rem) clamp(1.5rem, 3vw, 2.5rem)" }}>
         <div
           className="product-grid"
           style={{ display: "grid", gridTemplateColumns: "60fr 40fr", gap: "clamp(2rem, 4vw, 4rem)", alignItems: "start" }}
@@ -134,6 +134,7 @@ export function ProductDetail({ handle, title, size, price, description, imageSr
           <div style={{ position: "sticky", top: 90 }}>
             <div style={{
               position: "relative", aspectRatio: "4 / 5",
+              maxHeight: "clamp(440px, 50vw, 620px)",
               overflow: "hidden", backgroundColor: "#F4F4F2", borderRadius: 16,
             }}>
               {tag && (
@@ -250,14 +251,16 @@ export function ProductDetail({ handle, title, size, price, description, imageSr
       </div>
 
       {/* Editorial break */}
-      <div style={{ position: "relative", aspectRatio: "21 / 9", backgroundColor: "#F4F4F2" }}>
-        <Image
-          src={homepageImages.benefits}
-          alt="The Daily Solace Fluid in use"
-          fill
-          sizes="100vw"
-          style={{ objectFit: "cover" }}
-        />
+      <div style={{ maxWidth: 1440, margin: "0 auto", padding: "0 clamp(1.25rem, 4vw, 3rem)" }}>
+        <div style={{ position: "relative", aspectRatio: "21 / 9", backgroundColor: "#F4F4F2", borderRadius: 20, overflow: "hidden" }}>
+          <Image
+            src={homepageImages.benefits}
+            alt="The Daily Solace Fluid in use"
+            fill
+            sizes="100vw"
+            style={{ objectFit: "cover" }}
+          />
+        </div>
       </div>
 
       {/* You may also like */}

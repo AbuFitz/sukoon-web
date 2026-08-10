@@ -1,6 +1,6 @@
 export function ManifestoSection() {
   return (
-    <section style={{
+    <section className="stack-panel" style={{
       backgroundColor: "#111111",
       minHeight: "clamp(420px, 45vw, 500px)",
       display: "flex",

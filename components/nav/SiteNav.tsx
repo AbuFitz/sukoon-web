@@ -191,11 +191,13 @@ export function SiteNav() {
 
       {/* Mobile drawer */}
       <div aria-hidden={!open} style={{
-        position: "fixed", top: 0, left: 0, bottom: 0, zIndex: 60,
+        position: "fixed", top: 12, left: 12, bottom: 12, zIndex: 60,
         width: "80vw", maxWidth: 320,
+        borderRadius: 24,
         backgroundColor: "#FFFFFF",
-        borderRight: `1px solid ${BORDER}`,
-        transform: open ? "translateX(0)" : "translateX(-100%)",
+        boxShadow: "0 24px 60px rgba(17,17,16,0.22)",
+        overflow: "hidden",
+        transform: open ? "translateX(0)" : "translateX(calc(-100% - 24px))",
         transition: "transform 0.35s cubic-bezier(0.22,1,0.36,1)",
         display: "flex", flexDirection: "column",
       }}>

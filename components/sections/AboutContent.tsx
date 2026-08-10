@@ -8,10 +8,11 @@ export function AboutContent() {
     <article>
 
       {/* Hero */}
-      <div style={{
+      <div className="stack-panel stack-panel--first stack-inner" style={{
         backgroundColor: "#FAFAFA",
-        padding: "clamp(2.75rem, 6vw, 4.5rem) clamp(1.5rem, 6vw, 6rem) clamp(2.25rem, 5vw, 3.5rem)",
-        borderBottom: "1px solid #E5E5E2",
+        paddingLeft: "clamp(1.5rem, 6vw, 6rem)",
+        paddingRight: "clamp(1.5rem, 6vw, 6rem)",
+        paddingBottom: "clamp(2.25rem, 5vw, 3.5rem)",
       }}>
         <div style={{ maxWidth: "780px" }}>
           <p style={{
@@ -39,7 +40,7 @@ export function AboutContent() {
       </div>
 
       {/* Split: Image + The Problem */}
-      <div className="flex flex-col md:grid md:grid-cols-2" style={{ backgroundColor: "#FFFFFF" }}>
+      <div className="stack-panel stack-panel--clip flex flex-col md:grid md:grid-cols-2" style={{ backgroundColor: "#FFFFFF" }}>
         <div style={{ position: "relative", minHeight: "clamp(340px, 55vw, 620px)", backgroundColor: "#F4F4F2" }}>
           <Image
             src={homepageImages.story}
@@ -74,9 +75,11 @@ export function AboutContent() {
       </div>
 
       {/* The Formula Philosophy */}
-      <div style={{
+      <div className="stack-panel stack-inner" style={{
         backgroundColor: "#111111",
-        padding: "clamp(3rem, 6vw, 5rem) clamp(1.5rem, 6vw, 6rem)",
+        paddingLeft: "clamp(1.5rem, 6vw, 6rem)",
+        paddingRight: "clamp(1.5rem, 6vw, 6rem)",
+        paddingBottom: "clamp(3rem, 6vw, 5rem)",
       }}>
         <div style={{ maxWidth: "780px", margin: "0 auto" }}>
           <h2 style={{
@@ -122,9 +125,11 @@ export function AboutContent() {
       </div>
 
       {/* Certifications */}
-      <div style={{
-        backgroundColor: "#FAFAFA", borderBottom: "1px solid #E5E5E2",
-        padding: "clamp(2rem, 4vw, 3rem) clamp(1.5rem, 6vw, 6rem)",
+      <div className="stack-panel stack-inner" style={{
+        backgroundColor: "#FAFAFA",
+        paddingLeft: "clamp(1.5rem, 6vw, 6rem)",
+        paddingRight: "clamp(1.5rem, 6vw, 6rem)",
+        paddingBottom: "clamp(2rem, 4vw, 3rem)",
       }}>
         <div style={{ maxWidth: "1320px", margin: "0 auto" }}>
           <div className="grid grid-cols-2 md:grid-cols-4" style={{ gap: "clamp(1.5rem, 3vw, 2.5rem)" }}>
@@ -150,9 +155,11 @@ export function AboutContent() {
       </div>
 
       {/* CTA */}
-      <div style={{
+      <div className="stack-panel stack-inner" style={{
         backgroundColor: "#FFFFFF",
-        padding: "clamp(3rem, 6vw, 4.5rem) clamp(1.5rem, 6vw, 6rem)",
+        paddingLeft: "clamp(1.5rem, 6vw, 6rem)",
+        paddingRight: "clamp(1.5rem, 6vw, 6rem)",
+        paddingBottom: "clamp(3rem, 6vw, 4.5rem)",
         textAlign: "center",
       }}>
         <h2 style={{

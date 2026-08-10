@@ -5,9 +5,9 @@ import { SiteNav } from "@/components/nav/SiteNav";
 import { Footer } from "@/components/sections/Footer";
 
 const INK   = "#111111";
-const MUTED = "#676764";
-const LINE  = "#E3E3DF";
-const LINEN = "#F5F5F3";
+const MUTED = "#636360";
+const LINE  = "#D0D0CB";
+const LINEN = "#FAFAFA";
 
 const inputStyle = {
   width: "100%",
@@ -16,6 +16,7 @@ const inputStyle = {
   color: INK,
   backgroundColor: "#FFFFFF",
   border: `1px solid ${LINE}`,
+  borderRadius: 8,
   padding: "0.875rem 1rem",
   outline: "none",
   boxSizing: "border-box" as const,
@@ -23,8 +24,8 @@ const inputStyle = {
 };
 
 const labelStyle = {
-  fontFamily: "var(--font-body)", fontSize: "0.6875rem", fontWeight: 700,
-  letterSpacing: "0.16em", textTransform: "uppercase" as const, color: INK,
+  fontFamily: "var(--font-body)", fontSize: "0.8125rem", fontWeight: 600,
+  color: INK,
   display: "block", marginBottom: "0.5rem",
 };
 
@@ -44,20 +45,23 @@ export default function ContactPage() {
   return (
     <>
       <SiteNav />
-      <main style={{ backgroundColor: LINEN, minHeight: "80vh" }}>
-        <div style={{ maxWidth: "680px", margin: "0 auto", padding: "clamp(3rem, 7vw, 5rem) clamp(1.5rem, 5vw, 3rem)" }}>
+      <main
+        className="stack-panel stack-panel--first stack-panel--last stack-inner"
+        style={{ backgroundColor: LINEN, minHeight: "70vh" }}
+      >
+        <div style={{ maxWidth: "680px", margin: "0 auto", padding: "0 clamp(1.5rem, 5vw, 3rem) clamp(3rem, 7vw, 5rem)" }}>
           <p style={{
-            fontFamily: "var(--font-body)", fontSize: "0.6875rem", fontWeight: 700,
-            letterSpacing: "0.2em", textTransform: "uppercase", color: "#92928D",
+            fontFamily: "var(--font-body)", fontSize: "0.75rem", fontWeight: 600,
+            color: "#969690",
             marginBottom: "1rem",
           }}>Contact</p>
           <h1 style={{
-            fontFamily: "var(--font-body)", fontSize: "clamp(2rem, 4vw, 3rem)",
-            fontWeight: 200, letterSpacing: "-0.02em", color: INK,
-            marginBottom: "0.75rem",
+            fontFamily: "var(--font-body)", fontSize: "clamp(2.25rem, 4.5vw, 3.5rem)",
+            fontWeight: 600, letterSpacing: "-0.03em", color: INK,
+            marginBottom: "0.75rem", lineHeight: 1.05,
           }}>We read every message.</h1>
           <p style={{
-            fontFamily: "var(--font-body)", fontSize: "0.9375rem", lineHeight: 1.8, color: MUTED,
+            fontFamily: "var(--font-body)", fontSize: "0.9375rem", lineHeight: 1.6, color: MUTED,
             marginBottom: "2.5rem",
           }}>
             A real person reads every message. We aim to respond within one working day.
@@ -65,10 +69,10 @@ export default function ContactPage() {
 
           {sent ? (
             <div style={{
-              backgroundColor: "#FFFFFF", border: `1px solid ${LINE}`,
+              backgroundColor: "#FFFFFF", border: `1px solid ${LINE}`, borderRadius: 16,
               padding: "2.5rem 2rem", textAlign: "center",
             }}>
-              <p style={{ fontFamily: "var(--font-body)", fontSize: "1.75rem", fontWeight: 200, color: INK, marginBottom: "0.5rem" }}>
+              <p style={{ fontFamily: "var(--font-body)", fontSize: "1.5rem", fontWeight: 600, color: INK, marginBottom: "0.5rem" }}>
                 Message received.
               </p>
               <p style={{ fontFamily: "var(--font-body)", fontSize: "0.9375rem", color: MUTED }}>
@@ -116,26 +120,14 @@ export default function ContactPage() {
                   style={{ ...inputStyle, resize: "vertical" }}
                 />
               </div>
-              <button
-                type="submit"
-                style={{
-                  alignSelf: "flex-start",
-                  fontFamily: "var(--font-body)", fontSize: "0.6875rem", fontWeight: 700,
-                  letterSpacing: "0.16em", textTransform: "uppercase",
-                  color: "#FFFFFF", backgroundColor: INK, border: `1px solid ${INK}`,
-                  padding: "1rem 2.25rem", cursor: "pointer",
-                  transition: "background 0.25s",
-                }}
-                onMouseEnter={e => { (e.currentTarget as HTMLElement).style.backgroundColor = "#333333"; }}
-                onMouseLeave={e => { (e.currentTarget as HTMLElement).style.backgroundColor = INK; }}
-              >
+              <button type="submit" className="btn btn-dark" style={{ alignSelf: "flex-start" }}>
                 Send Message
               </button>
             </form>
           )}
 
           <div style={{ marginTop: "3rem", paddingTop: "2rem", borderTop: `1px solid ${LINE}` }}>
-            <p style={{ fontFamily: "var(--font-body)", fontSize: "0.8125rem", color: MUTED, lineHeight: 1.7 }}>
+            <p style={{ fontFamily: "var(--font-body)", fontSize: "0.8125rem", color: MUTED, lineHeight: 1.6 }}>
               Or reach us directly at{" "}
               <a href="mailto:hello@sukoon.co.uk" style={{ color: INK, textUnderlineOffset: "3px" }}>
                 hello@sukoon.co.uk

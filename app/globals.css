@@ -40,14 +40,20 @@ html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #FFFFFF;
+  background-color: #EBE6DB;
+  /* Clip horizontal overflow on the real scrolling element (html is
+     document.scrollingElement here). Putting this on body instead
+     would give body a non-visible overflow axis, which per spec
+     makes body a "scroll container" — and since body itself never
+     actually scrolls, any sticky descendant would resolve against
+     that inert container instead of the viewport and stop sticking. */
+  overflow-x: clip;
 }
 
 body {
-  background-color: #FFFFFF;
+  background-color: #EBE6DB;
   color: #111111;
   font-family: var(--font-body);
-  overflow-x: hidden;
 }
 
 /* ─── Selection ─── */
@@ -167,15 +173,65 @@ img {
 
 /* ─── Mobile ─── */
 @media (max-width: 767px) {
-  html { background-color: #FFFFFF; }
-
   body {
-    background-color: #FFFFFF;
     font-size: 16px;
     -webkit-text-size-adjust: 100%;
   }
 
   img { max-width: 100%; }
+}
+
+/* ─── Stacked panel system ───
+ * Each major section is a "sheet" that rises up over the one before
+ * it: rounded top corners, a small horizontal inset off the canvas,
+ * and a negative top margin so it visually overlaps and lifts off
+ * the previous panel. Later panels paint over earlier ones simply by
+ * virtue of normal document flow — no z-index needed. Purely CSS,
+ * reads identically with all motion disabled. */
+:root {
+  --canvas: #EBE6DB;
+  --panel-radius: 44px;
+  --panel-gutter: 18px;
+  --panel-pull: 44px;
+}
+
+@media (max-width: 900px) {
+  :root {
+    --panel-radius: 28px;
+    --panel-gutter: 8px;
+    --panel-pull: 26px;
+  }
+}
+
+.stack-panel {
+  position: relative;
+  margin-left: var(--panel-gutter);
+  margin-right: var(--panel-gutter);
+  margin-top: calc(var(--panel-pull) * -1);
+  border-radius: var(--panel-radius) var(--panel-radius) 0 0;
+  box-shadow: 0 -18px 44px rgba(28, 24, 16, 0.07);
+}
+
+.stack-panel--clip { overflow: hidden; }
+
+.stack-panel--flush {
+  margin-top: 0;
+  box-shadow: none;
+}
+
+.stack-panel--first {
+  margin-top: 0;
+  border-radius: var(--panel-radius) var(--panel-radius) 0 0;
+  box-shadow: none;
+}
+
+.stack-panel--last {
+  border-radius: var(--panel-radius) var(--panel-radius) 0 0;
+  margin-bottom: var(--panel-gutter);
+}
+
+.stack-inner {
+  padding-top: clamp(2.75rem, 6vw, 4.5rem);
 }
 
 /* ─── Reduced motion ─── */

@@ -15,7 +15,7 @@ export function NewsletterSection() {
   };
 
   return (
-    <section style={{ backgroundColor: "#F6F1E9" }}>
+    <section className="stack-panel stack-panel--clip" style={{ backgroundColor: "#F6F1E9" }}>
       <div
         className="newsletter-grid"
         style={{

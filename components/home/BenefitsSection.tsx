@@ -22,7 +22,7 @@ const BENEFITS = [
 
 export function BenefitsSection() {
   return (
-    <section style={{ backgroundColor: "#FAFAFA" }}>
+    <section className="stack-panel stack-panel--clip" style={{ backgroundColor: "#FAFAFA" }}>
       <div
         className="benefits-grid"
         style={{

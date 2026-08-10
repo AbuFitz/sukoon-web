@@ -4,7 +4,8 @@ export function IngredientsSection() {
   return (
     <section
       id="ingredients"
-      style={{ backgroundColor: "#F5F5F3", padding: "clamp(3.5rem, 6vw, 5.5rem) 0" }}
+      className="stack-panel stack-inner"
+      style={{ backgroundColor: "#FFFFFF", paddingBottom: "clamp(3.5rem, 6vw, 5.5rem)" }}
     >
       <div style={{ maxWidth: 1000, margin: "0 auto", padding: "0 clamp(1.25rem, 4vw, 3rem)" }}>
         {/* Header */}

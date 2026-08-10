@@ -1,7 +1,7 @@
 "use client";
 
 const INK   = "#111111";
-const LINE  = "#E3E3DF";
+const LINE  = "#E5E5E2";
 const CREAM = "#FFFFFF";
 
 export function Panel({ open, onClose, title, children }: { open: boolean; onClose: () => void; title: string; children: React.ReactNode }) {
@@ -17,13 +17,15 @@ export function Panel({ open, onClose, title, children }: { open: boolean; onClo
         }}
       />
       <div
-        className={`w-[88vw] max-w-[420px] inset-y-0 right-0 transition-transform duration-[400ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${open ? "translate-x-0" : "translate-x-full"}`}
+        className={`w-[88vw] max-w-[420px] transition-transform duration-[400ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${open ? "translate-x-0" : "translate-x-[calc(100%+24px)]"}`}
         style={{
           position: "fixed",
-          height: "100dvh",
+          top: 12, right: 12, bottom: 12,
+          borderRadius: 24,
           backgroundColor: CREAM,
           display: "flex", flexDirection: "column",
-          boxShadow: "-10px 0 40px rgba(17,17,16,0.16)",
+          overflow: "hidden",
+          boxShadow: "0 24px 60px rgba(17,17,16,0.22)",
         }}
       >
         <div style={{
@@ -33,7 +35,7 @@ export function Panel({ open, onClose, title, children }: { open: boolean; onClo
           borderBottom: `1px solid ${LINE}`, flexShrink: 0,
         }}>
           {title && (
-            <span style={{ fontFamily: "var(--font-body)", fontSize: "0.9375rem", fontWeight: 500, color: INK }}>{title}</span>
+            <span style={{ fontFamily: "var(--font-body)", fontSize: "0.9375rem", fontWeight: 600, color: INK }}>{title}</span>
           )}
           <button aria-label="Close panel" onClick={onClose} style={{
             background: "none", border: "none", color: INK, cursor: "pointer", padding: "0.25rem", display: "flex",

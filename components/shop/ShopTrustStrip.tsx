@@ -9,11 +9,12 @@ export function ShopTrustStrip() {
   return (
     <section
       aria-label="Why Sukoon"
-      style={{ backgroundColor: "#FAFAFA", borderTop: "1px solid #E5E5E2" }}
+      className="stack-panel stack-inner"
+      style={{ backgroundColor: "#F1EBDD", paddingBottom: "1px" }}
     >
       <div
         className="grid grid-cols-2 md:grid-cols-4"
-        style={{ maxWidth: 1440, margin: "0 auto", padding: "1.75rem clamp(1.25rem, 4vw, 3rem)", gap: "1.25rem" }}
+        style={{ maxWidth: 1440, margin: "0 auto", padding: "0 clamp(1.25rem, 4vw, 3rem) 2.5rem", gap: "1.25rem" }}
       >
         {items.map(item => (
           <div key={item.title}>

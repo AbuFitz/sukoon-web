@@ -45,22 +45,28 @@ export function FAQContent() {
   const [openKey, setOpenKey] = useState<string | null>("The Product-0");
 
   return (
-    <section aria-label="Frequently asked questions" style={{
-      backgroundColor: "#F5F5F3",
-      padding: "clamp(3.5rem, 8vw, 6rem) clamp(1.5rem, 6vw, 5rem)",
-    }}>
+    <section
+      aria-label="Frequently asked questions"
+      className="stack-panel stack-panel--first stack-panel--last stack-inner"
+      style={{
+        backgroundColor: "#FAFAFA",
+        paddingLeft: "clamp(1.5rem, 6vw, 5rem)",
+        paddingRight: "clamp(1.5rem, 6vw, 5rem)",
+        paddingBottom: "clamp(3.5rem, 8vw, 6rem)",
+      }}
+    >
       <div style={{ maxWidth: "820px", margin: "0 auto" }}>
 
         <div style={{ marginBottom: "clamp(3rem, 6vw, 4.5rem)" }}>
           <p style={{
-            fontFamily: "var(--font-body)", fontSize: "0.6875rem", fontWeight: 700,
-            letterSpacing: "0.2em", textTransform: "uppercase", color: "#92928D", marginBottom: "1rem",
+            fontFamily: "var(--font-body)", fontSize: "0.75rem", fontWeight: 600,
+            color: "#969690", marginBottom: "1rem",
           }}>
             FAQ
           </p>
           <h1 style={{
             fontFamily: "var(--font-body)", fontSize: "clamp(2.25rem, 5vw, 3.5rem)",
-            fontWeight: 200, letterSpacing: "-0.015em", lineHeight: 1.1, color: "#111111",
+            fontWeight: 600, letterSpacing: "-0.03em", lineHeight: 1.05, color: "#111111",
           }}>
             Honest answers.
           </h1>
@@ -71,9 +77,9 @@ export function FAQContent() {
             <div key={sec.heading}>
               <p style={{
                 fontFamily: "var(--font-body)", fontSize: "0.6875rem", fontWeight: 700,
-                letterSpacing: "0.18em", textTransform: "uppercase", color: "#92928D",
+                letterSpacing: "0.14em", textTransform: "uppercase", color: "#969690",
                 marginBottom: "1rem", paddingBottom: "0.75rem",
-                borderBottom: "1px solid #E3E3DF",
+                borderBottom: "1px solid #D0D0CB",
               }}>
                 {sec.heading}
               </p>
@@ -81,7 +87,7 @@ export function FAQContent() {
                 const key = `${sec.heading}-${i}`;
                 const open = openKey === key;
                 return (
-                  <div key={item.q} style={{ borderBottom: "1px solid #E3E3DF" }}>
+                  <div key={item.q} style={{ borderBottom: "1px solid #D0D0CB" }}>
                     <button
                       onClick={() => setOpenKey(open ? null : key)}
                       aria-expanded={open}
@@ -94,7 +100,7 @@ export function FAQContent() {
                     >
                       {item.q}
                       <span aria-hidden style={{
-                        flexShrink: 0, fontSize: "1.125rem", color: "#92928D",
+                        flexShrink: 0, fontSize: "1.125rem", color: "#969690",
                         display: "inline-block",
                         transform: open ? "rotate(45deg)" : "none", transition: "transform 0.25s ease",
                       }}>+</span>
@@ -104,8 +110,8 @@ export function FAQContent() {
                       transition: "max-height 0.35s ease",
                     }}>
                       <p style={{
-                        fontFamily: "var(--font-body)", fontSize: "0.875rem", lineHeight: 1.8,
-                        color: "#676764", paddingBottom: "1.25rem", maxWidth: "660px",
+                        fontFamily: "var(--font-body)", fontSize: "0.875rem", lineHeight: 1.7,
+                        color: "#636360", paddingBottom: "1.25rem", maxWidth: "660px",
                       }}>
                         {item.a}
                       </p>
@@ -119,7 +125,7 @@ export function FAQContent() {
 
         <div style={{
           marginTop: "clamp(3rem, 6vw, 4.5rem)", padding: "clamp(1.75rem, 4vw, 2.5rem)",
-          backgroundColor: "#FFFFFF", borderLeft: "3px solid #111111",
+          backgroundColor: "#FFFFFF", borderRadius: 16, borderLeft: "3px solid #111111",
         }}>
           <p style={{ fontFamily: "var(--font-body)", fontSize: "0.875rem", lineHeight: 1.75, color: "#111111" }}>
             Didn&rsquo;t find what you were looking for?{" "}

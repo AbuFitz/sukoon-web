@@ -11,10 +11,10 @@ export default function CartPage() {
   return (
     <>
       <SiteNav />
-      <main style={{
-        minHeight: "70vh",
-        backgroundColor: "#F5F5F3",
-      }}>
+      <main
+        className="stack-panel stack-panel--first stack-panel--last stack-inner"
+        style={{ minHeight: "70vh", backgroundColor: "#FAFAFA" }}
+      >
         <CartView />
       </main>
       <Footer />
