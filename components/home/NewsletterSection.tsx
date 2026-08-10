@@ -15,44 +15,44 @@ export function NewsletterSection() {
   };
 
   return (
-    <section style={{ backgroundColor: "#F7F3EC", padding: "clamp(5rem, 9vw, 8rem) 0" }}>
-      <div style={{
-        maxWidth: 1320, margin: "0 auto",
-        padding: "0 clamp(1.25rem, 4vw, 3rem)",
-        display: "grid",
-        gridTemplateColumns: "1fr 1fr",
-        gap: "clamp(3rem, 6vw, 6rem)",
-        alignItems: "center",
-      }}
-      className="newsletter-grid"
+    <section style={{ backgroundColor: "#F6F1E9" }}>
+      <div
+        className="newsletter-grid"
+        style={{
+          display: "grid",
+          gridTemplateColumns: "45fr 55fr",
+          minHeight: "min(60vh, 520px)",
+        }}
       >
         {/* Copy + form */}
-        <div>
-          <p className="eyebrow" style={{ marginBottom: "1.25rem" }}>Stay in the loop</p>
+        <div style={{
+          display: "flex", flexDirection: "column", justifyContent: "center",
+          padding: "clamp(2.5rem, 5vw, 4rem) clamp(1.5rem, 5vw, 3.5rem)",
+        }}>
           <h2 style={{
-            fontFamily: "var(--font-body)", fontWeight: 300,
-            fontSize: "clamp(2rem, 3vw, 2.75rem)",
-            letterSpacing: "-0.02em", color: "#111111",
-            margin: "0 0 1rem",
+            fontFamily: "var(--font-body)", fontWeight: 500,
+            fontSize: "clamp(1.75rem, 2.8vw, 2.375rem)",
+            letterSpacing: "-0.03em", color: "#111111",
+            margin: "0 0 0.75rem", lineHeight: 1.08,
           }}>
             Skincare without the noise.
           </h2>
           <p style={{
-            fontFamily: "var(--font-body)", fontSize: "1rem", lineHeight: 1.7,
-            color: "#676764", margin: "0 0 2rem",
+            fontFamily: "var(--font-body)", fontSize: "0.9375rem", lineHeight: 1.6,
+            color: "#636360", margin: "0 0 1.75rem", maxWidth: 360,
           }}>
             Formulation updates, early access, and honest skin content. No spam, ever.
           </p>
 
           {submitted ? (
             <p style={{
-              fontFamily: "var(--font-body)", fontSize: "1rem", fontWeight: 500,
+              fontFamily: "var(--font-body)", fontSize: "0.9375rem", fontWeight: 600,
               color: "#111111",
             }}>
               You&apos;re in. Talk soon.
             </p>
           ) : (
-            <form onSubmit={handleSubmit} style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap" }}>
+            <form onSubmit={handleSubmit} style={{ display: "flex", gap: "0.625rem", flexWrap: "wrap" }}>
               <input
                 type="email"
                 placeholder="your@email.com"
@@ -60,52 +60,31 @@ export function NewsletterSection() {
                 onChange={e => setEmail(e.target.value)}
                 required
                 className="input"
-                style={{ flex: "1 1 200px", maxWidth: 320 }}
+                style={{ flex: "1 1 200px", maxWidth: 300, backgroundColor: "#FFFFFF" }}
                 aria-label="Email address"
               />
-              <button
-                type="submit"
-                style={{
-                  height: 52, padding: "0 1.75rem",
-                  fontFamily: "var(--font-body)", fontSize: "0.6875rem", fontWeight: 700,
-                  letterSpacing: "0.16em", textTransform: "uppercase",
-                  color: "#FFFFFF", backgroundColor: "#111111",
-                  border: "1px solid #111111",
-                  cursor: "pointer", transition: "background-color 0.2s ease",
-                  whiteSpace: "nowrap",
-                }}
-                onMouseEnter={e => { (e.currentTarget as HTMLElement).style.backgroundColor = "#333333"; }}
-                onMouseLeave={e => { (e.currentTarget as HTMLElement).style.backgroundColor = "#111111"; }}
-              >
-                Subscribe
-              </button>
+              <button type="submit" className="btn btn-dark">Sign Up</button>
             </form>
           )}
         </div>
 
         {/* Image */}
-        <div>
-          <div style={{
-            position: "relative",
-            aspectRatio: "4 / 3",
-            overflow: "hidden",
-            backgroundColor: "#EFE9DF",
-          }}>
-            <Image
-              src={homepageImages.newsletter}
-              alt="Sukoon skincare"
-              fill
-              sizes="(max-width: 768px) 100vw, 50vw"
-              style={{ objectFit: "cover" }}
-            />
-          </div>
+        <div style={{ position: "relative", backgroundColor: "#EFE7D8", minHeight: 300 }}>
+          <Image
+            src={homepageImages.newsletter}
+            alt="Sukoon skincare"
+            fill
+            sizes="(max-width: 900px) 100vw, 55vw"
+            style={{ objectFit: "cover" }}
+          />
         </div>
       </div>
 
       <style>{`
-        @media (max-width: 767px) {
+        @media (max-width: 900px) {
           .newsletter-grid {
             grid-template-columns: 1fr !important;
+            min-height: 0 !important;
           }
           .newsletter-grid > div:last-child {
             display: none;

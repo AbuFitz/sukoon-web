@@ -1,60 +1,51 @@
-"use client";
-
 import Image from "next/image";
 import { homepageImages } from "@/lib/homepage";
 
 export function BrandStorySection() {
   return (
-    <section style={{ backgroundColor: "#FFFFFF", padding: "clamp(5rem, 9vw, 8rem) 0" }}>
-      <div style={{
-        maxWidth: 1320, margin: "0 auto",
-        padding: "0 clamp(1.25rem, 4vw, 3rem)",
-        display: "grid",
-        gridTemplateColumns: "1fr 1fr",
-        gap: "clamp(3rem, 6vw, 6rem)",
-        alignItems: "center",
-      }}
-      className="brand-story-grid"
+    <section style={{ backgroundColor: "#FFFFFF" }}>
+      <div
+        className="campaign-grid"
+        style={{
+          display: "grid",
+          gridTemplateColumns: "52fr 48fr",
+          minHeight: "min(70vh, 700px)",
+        }}
       >
         {/* Image */}
-        <div>
-          <div style={{
-            position: "relative",
-            aspectRatio: "3 / 4",
-            overflow: "hidden",
-            backgroundColor: "#F0F0EE",
-          }}>
-            <Image
-              src={homepageImages.story}
-              alt="Sukoon Daily Solace Fluid application"
-              fill
-              sizes="(max-width: 768px) 100vw, 50vw"
-              style={{ objectFit: "cover" }}
-            />
-          </div>
+        <div style={{ position: "relative", backgroundColor: "#F4F4F2", minHeight: 360 }}>
+          <Image
+            src={homepageImages.story}
+            alt="Sukoon Daily Solace Fluid application"
+            fill
+            sizes="(max-width: 900px) 100vw, 52vw"
+            style={{ objectFit: "cover" }}
+          />
         </div>
 
         {/* Copy */}
-        <div>
-          <p className="eyebrow" style={{ marginBottom: "1.25rem" }}>The Science</p>
+        <div style={{
+          display: "flex", flexDirection: "column", justifyContent: "center",
+          padding: "clamp(2.5rem, 5vw, 5rem) clamp(1.5rem, 5vw, 4.5rem)",
+        }}>
           <h2 style={{
-            fontFamily: "var(--font-body)", fontWeight: 300,
-            fontSize: "clamp(2rem, 3.5vw, 3rem)",
-            letterSpacing: "-0.02em", color: "#111111",
-            margin: "0 0 1.5rem",
+            fontFamily: "var(--font-body)", fontWeight: 500,
+            fontSize: "clamp(1.875rem, 3.2vw, 2.75rem)",
+            letterSpacing: "-0.03em", color: "#111111",
+            margin: "0 0 1.25rem", lineHeight: 1.05,
           }}>
-            Why waterless<br />changes everything.
+            Why waterless changes everything.
           </h2>
           <p style={{
-            fontFamily: "var(--font-body)", fontSize: "1rem", lineHeight: 1.75,
-            color: "#676764", margin: "0 0 1.25rem",
+            fontFamily: "var(--font-body)", fontSize: "1rem", lineHeight: 1.65,
+            color: "#636360", margin: "0 0 1rem", maxWidth: 440,
           }}>
             Most skincare is 70–80% water. That water dilutes every active ingredient
             and requires preservatives to prevent bacteria. We removed it entirely.
           </p>
           <p style={{
-            fontFamily: "var(--font-body)", fontSize: "1rem", lineHeight: 1.75,
-            color: "#676764", margin: "0 0 2rem",
+            fontFamily: "var(--font-body)", fontSize: "1rem", lineHeight: 1.65,
+            color: "#636360", margin: "0 0 1.75rem", maxWidth: 440,
           }}>
             What&apos;s left is a concentrated formula of five actives — each selected
             because it genuinely works, not because it&apos;s cheap to include.
@@ -62,14 +53,9 @@ export function BrandStorySection() {
           <a
             href="/about"
             style={{
-              display: "inline-flex", alignItems: "center",
-              fontFamily: "var(--font-body)", fontSize: "0.875rem", fontWeight: 500,
+              fontFamily: "var(--font-body)", fontSize: "0.9375rem", fontWeight: 600,
               color: "#111111", textDecoration: "none",
-              borderBottom: "1.5px solid #111111", paddingBottom: 2,
-              transition: "color 0.2s ease, border-color 0.2s ease",
             }}
-            onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.color = "#676764"; el.style.borderColor = "#676764"; }}
-            onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.color = "#111111"; el.style.borderColor = "#111111"; }}
           >
             Our Story →
           </a>
@@ -77,12 +63,14 @@ export function BrandStorySection() {
       </div>
 
       <style>{`
-        @media (max-width: 767px) {
-          .brand-story-grid {
+        @media (max-width: 900px) {
+          .campaign-grid {
             grid-template-columns: 1fr !important;
+            min-height: 0 !important;
           }
-          .brand-story-grid > div:first-child {
-            order: -1;
+          .campaign-grid > div:first-child {
+            aspect-ratio: 4 / 5;
+            min-height: 0 !important;
           }
         }
       `}</style>

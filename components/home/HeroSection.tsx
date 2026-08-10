@@ -1,130 +1,102 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
 import { homepageImages } from "@/lib/homepage";
 
 export function HeroSection() {
   return (
-    <section
-      aria-label="Hero"
-      style={{
-        position: "relative",
-        backgroundColor: "#F5F5F3",
-        overflow: "hidden",
-        minHeight: "85vh",
-        borderBottom: "1px solid #E3E3DF",
-        display: "flex",
-        alignItems: "center",
-      }}
-    >
-      <div style={{
-        maxWidth: 1320, margin: "0 auto", width: "100%",
-        padding: "clamp(3rem, 6vw, 5rem) clamp(1.25rem, 4vw, 3rem)",
-        display: "grid",
-        gridTemplateColumns: "1fr 1fr",
-        gap: "clamp(3rem, 6vw, 5rem)",
-        alignItems: "center",
-      }}>
+    <section aria-label="Hero" style={{ backgroundColor: "#FFFFFF" }}>
+      <div
+        className="hero-grid"
+        style={{
+          maxWidth: 1600, margin: "0 auto", width: "100%",
+          display: "grid",
+          gridTemplateColumns: "43% 57%",
+          alignItems: "stretch",
+        }}
+      >
         {/* Left — copy */}
-        <div>
-          <p className="eyebrow" style={{ marginBottom: "1.5rem" }}>
+        <div style={{
+          display: "flex", flexDirection: "column", justifyContent: "center",
+          padding: "clamp(2.5rem, 5vw, 4rem) clamp(1.5rem, 4vw, 3.5rem)",
+          minHeight: "min(88vh, 780px)",
+        }}>
+          <p style={{
+            fontFamily: "var(--font-body)", fontSize: "0.75rem", fontWeight: 600,
+            letterSpacing: "0.06em", color: "#636360", margin: "0 0 1.25rem",
+          }}>
             100% Waterless · Made in the UK
           </p>
 
           <h1 style={{
             fontFamily: "var(--font-body)",
-            fontWeight: 200,
-            fontSize: "clamp(2.75rem, 5.5vw, 5rem)",
+            fontWeight: 500,
+            fontSize: "clamp(2.75rem, 5.2vw, 5.25rem)",
             lineHeight: 0.98,
-            letterSpacing: "-0.02em",
+            letterSpacing: "-0.035em",
             color: "#111111",
             margin: "0 0 1.5rem",
           }}>
-            One oil.<br />
-            Your face<br />
-            and hairline.
+            One oil. Your face and hairline.
           </h1>
 
           <p style={{
             fontFamily: "var(--font-body)",
-            fontSize: "clamp(1rem, 1.25vw, 1.125rem)",
-            lineHeight: 1.7,
-            color: "#676764",
-            maxWidth: 420,
-            margin: "0 0 2.5rem",
+            fontSize: "1.0625rem",
+            lineHeight: 1.6,
+            color: "#636360",
+            maxWidth: 440,
+            margin: "0 0 2rem",
           }}>
-            The Daily Solace Fluid tackles acne, strengthens your skin barrier,
-            and reverses friction-induced hairline thinning — all in under 60 seconds.
+            Tackles acne, strengthens your skin barrier, and reverses
+            friction-induced hairline thinning — all in under 60 seconds.
             Five ingredients. No fillers. No water.
           </p>
 
-          <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", alignItems: "center" }}>
-            <a
-              href="/shop"
-              style={{
-                display: "inline-flex", alignItems: "center", justifyContent: "center",
-                fontFamily: "var(--font-body)", fontSize: "0.6875rem", fontWeight: 700,
-                letterSpacing: "0.16em", textTransform: "uppercase",
-                color: "#FFFFFF", backgroundColor: "#111111",
-                padding: "1rem 2.25rem",
-                textDecoration: "none", border: "1px solid #111111",
-                transition: "background-color 0.2s ease",
-              }}
-              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.backgroundColor = "#333333"; }}
-              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.backgroundColor = "#111111"; }}
-            >
-              Shop Now
-            </a>
+          <div style={{ display: "flex", gap: "1.75rem", flexWrap: "wrap", alignItems: "center" }}>
+            <Link href="/shop" className="btn btn-dark">Shop Now</Link>
             <Link
               href="/#ingredients"
               style={{
-                display: "inline-flex", alignItems: "center", justifyContent: "center",
-                fontFamily: "var(--font-body)", fontSize: "0.6875rem", fontWeight: 700,
-                letterSpacing: "0.16em", textTransform: "uppercase",
-                color: "#111111", backgroundColor: "transparent",
-                padding: "1rem 2.25rem",
-                textDecoration: "none", border: "1px solid #E3E3DF",
-                transition: "border-color 0.2s ease",
+                fontFamily: "var(--font-body)", fontSize: "0.875rem", fontWeight: 600,
+                color: "#111111", textDecoration: "none",
               }}
-              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = "#111111"; }}
-              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = "#E3E3DF"; }}
             >
-              See the Formula
+              Why the formula →
             </Link>
           </div>
-
-          <div style={{ marginTop: "2.5rem", display: "flex", gap: "2rem", flexWrap: "wrap" }}>
-            {["Vegan", "Cruelty Free", "Waterless", "5 Ingredients"].map(s => (
-              <span key={s} style={{
-                fontFamily: "var(--font-body)", fontSize: "0.625rem", fontWeight: 700,
-                letterSpacing: "0.12em", textTransform: "uppercase", color: "#92928D",
-              }}>
-                {s}
-              </span>
-            ))}
-          </div>
         </div>
 
-        {/* Right — product image */}
-        <div>
-          <div style={{
-            position: "relative",
-            aspectRatio: "4 / 5",
-            overflow: "hidden",
-            backgroundColor: "#EAEAE8",
-          }}>
-            <Image
-              src={homepageImages.hero}
-              alt="Sukoon Daily Solace Fluid"
-              fill
-              priority
-              sizes="(max-width: 768px) 100vw, 50vw"
-              style={{ objectFit: "cover" }}
-            />
-          </div>
+        {/* Right — product photography, full bleed */}
+        <div style={{ position: "relative", minHeight: 420, backgroundColor: "#F4F4F2", overflow: "hidden" }}>
+          <Image
+            src={homepageImages.hero}
+            alt="Sukoon Daily Solace Fluid"
+            fill
+            priority
+            sizes="(max-width: 900px) 100vw, 57vw"
+            style={{ objectFit: "cover", objectPosition: "62% 50%" }}
+          />
         </div>
       </div>
+
+      <style>{`
+        @media (max-width: 900px) {
+          .hero-grid {
+            grid-template-columns: 1fr !important;
+          }
+          .hero-grid > div:first-child {
+            min-height: 0 !important;
+            padding-top: 1.75rem !important;
+            padding-bottom: 2.5rem !important;
+            order: 2;
+          }
+          .hero-grid > div:last-child {
+            aspect-ratio: 1 / 1;
+            min-height: 0 !important;
+            order: 1;
+          }
+        }
+      `}</style>
     </section>
   );
 }

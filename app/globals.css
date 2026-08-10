@@ -1,36 +1,36 @@
 @import "tailwindcss";
 
-/* ─── Sukoon Design System — high-street retail register ───
- * Pure white surfaces, warm light-grey panels, near-black type.
- * Square corners throughout, bold uppercase micro-labels,
- * extralight editorial headlines. No colour, no gradients, no pills. */
+/* ─── Sukoon Design System — modern beauty retailer ───
+ * Predominantly white/grey/black. Products and photography carry
+ * colour, not the interface. Confident sans typography, dense
+ * commercial merchandising, small selective corner radii. */
 @theme {
   --color-bg:           #FFFFFF;
-  --color-surface:      #F5F5F3;
-  --color-surface-alt:  #F0F0EE;
-  --color-cream:        #F7F3EC;
-  --color-cream-deep:   #EFE9DF;
+  --color-surface:      #FAFAFA;
+  --color-surface-alt:  #F4F4F2;
+  --color-cream:        #F6F1E9;
+  --color-cream-deep:   #EFE7D8;
 
   --color-text:         #111111;
-  --color-text-secondary: #676764;
-  --color-text-muted:   #92928D;
+  --color-text-secondary: #636360;
+  --color-text-muted:   #969690;
 
-  --color-border:       #E3E3DF;
-  --color-border-strong: #D4D4CF;
+  --color-border:       #E5E5E2;
+  --color-border-strong: #D0D0CB;
 
   --color-button:       #111111;
   --color-button-text:  #FFFFFF;
 
-  /* Fonts — single family throughout */
+  /* Fonts — single confident sans throughout */
   --font-display: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-body:    var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 
-  /* Radii — square corners, no rounding on structural elements */
-  --radius-panel:  0px;
-  --radius-image:  0px;
-  --radius-card:   0px;
-  --radius-button: 0px;
-  --radius-input:  0px;
+  /* Radii — selective, not a rounded-card system */
+  --radius-panel:  16px;
+  --radius-image:  14px;
+  --radius-card:   14px;
+  --radius-button: 8px;
+  --radius-input:  8px;
 }
 
 /* ─── Reset ─── */
@@ -80,8 +80,8 @@ img {
 }
 
 .section {
-  padding-top:    clamp(5rem, 9vw, 8rem);
-  padding-bottom: clamp(5rem, 9vw, 8rem);
+  padding-top:    clamp(3.5rem, 6vw, 5.5rem);
+  padding-bottom: clamp(3.5rem, 6vw, 5.5rem);
 }
 
 /* ─── Typography helpers ─── */
@@ -91,9 +91,9 @@ img {
   font-family: var(--font-body);
   font-size: 0.6875rem;
   font-weight: 600;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #92928D;
+  color: #969690;
 }
 
 /* ─── Buttons ─── */
@@ -103,30 +103,29 @@ img {
   justify-content: center;
   gap: 0.5rem;
   font-family: var(--font-body);
-  font-size: 0.8125rem;
+  font-size: 0.875rem;
   font-weight: 500;
-  letter-spacing: 0.04em;
   border-radius: var(--radius-button);
   cursor: pointer;
   text-decoration: none;
   white-space: nowrap;
-  transition: all 0.2s ease;
+  transition: background-color 0.18s ease, border-color 0.18s ease, color 0.18s ease;
   border: none;
 }
 
 .btn-dark {
   background-color: #111111;
   color: #FFFFFF;
-  padding: 0.875rem 2rem;
-  border: 1.5px solid #111111;
+  padding: 0.9375rem 2rem;
+  border: 1px solid #111111;
 }
-.btn-dark:hover { background-color: #333333; border-color: #333333; }
+.btn-dark:hover { background-color: #2A2A2A; border-color: #2A2A2A; }
 
 .btn-outline {
   background-color: transparent;
   color: #111111;
-  padding: 0.875rem 2rem;
-  border: 1.5px solid #E3E3DF;
+  padding: 0.9375rem 2rem;
+  border: 1px solid #D0D0CB;
 }
 .btn-outline:hover { border-color: #111111; }
 
@@ -138,38 +137,33 @@ img {
   text-decoration: underline;
   text-underline-offset: 3px;
 }
-.btn-ghost:hover { color: #676764; }
+.btn-ghost:hover { color: #636360; }
 
 /* ─── Inputs ─── */
 .input {
   width: 100%;
-  height: 52px;
+  height: 50px;
   padding: 0 1rem;
   background-color: #FFFFFF;
-  border: 1.5px solid #E3E3DF;
+  border: 1px solid #D0D0CB;
   border-radius: var(--radius-input);
   font-family: var(--font-body);
   font-size: 0.9375rem;
   color: #111111;
-  transition: border-color 0.2s ease;
+  transition: border-color 0.18s ease;
   outline: none;
 }
-.input::placeholder { color: #92928D; }
+.input::placeholder { color: #969690; }
 .input:focus { border-color: #111111; }
 
 /* ─── Divider ─── */
-.divider { height: 1px; background-color: #E3E3DF; }
+.divider { height: 1px; background-color: #E5E5E2; }
 
-/* ─── Scroll progress ─── */
-.scroll-progress {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  z-index: 9999;
-  pointer-events: none;
+/* ─── Image hover ─── */
+.img-hover {
+  transition: transform 0.4s ease;
 }
+.img-hover:hover { transform: scale(1.02); }
 
 /* ─── Mobile ─── */
 @media (max-width: 767px) {

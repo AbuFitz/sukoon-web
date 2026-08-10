@@ -1,5 +1,3 @@
-"use client";
-
 import Image from "next/image";
 import { homepageImages } from "@/lib/homepage";
 
@@ -24,45 +22,45 @@ const BENEFITS = [
 
 export function BenefitsSection() {
   return (
-    <section style={{ backgroundColor: "#F5F5F3", padding: "clamp(5rem, 9vw, 8rem) 0" }}>
-      <div style={{
-        maxWidth: 1320, margin: "0 auto",
-        padding: "0 clamp(1.25rem, 4vw, 3rem)",
-        display: "grid",
-        gridTemplateColumns: "1fr 1fr",
-        gap: "clamp(3rem, 6vw, 6rem)",
-        alignItems: "center",
-      }}
-      className="benefits-grid"
+    <section style={{ backgroundColor: "#FAFAFA" }}>
+      <div
+        className="benefits-grid"
+        style={{
+          display: "grid",
+          gridTemplateColumns: "42fr 58fr",
+          minHeight: "min(72vh, 680px)",
+        }}
       >
         {/* Copy */}
-        <div>
-          <p className="eyebrow" style={{ marginBottom: "1.25rem" }}>Why it works</p>
+        <div style={{
+          display: "flex", flexDirection: "column", justifyContent: "center",
+          padding: "clamp(2.5rem, 5vw, 4rem) clamp(1.5rem, 5vw, 3.5rem)",
+        }}>
           <h2 style={{
-            fontFamily: "var(--font-body)", fontWeight: 300,
-            fontSize: "clamp(2rem, 3.5vw, 3rem)",
-            letterSpacing: "-0.02em", color: "#111111",
-            margin: "0 0 3rem",
+            fontFamily: "var(--font-body)", fontWeight: 500,
+            fontSize: "clamp(1.875rem, 3vw, 2.5rem)",
+            letterSpacing: "-0.03em", color: "#111111",
+            margin: "0 0 2rem", lineHeight: 1.05,
           }}>
-            Designed around<br />real results.
+            Designed around real results.
           </h2>
 
-          <div style={{ display: "flex", flexDirection: "column", gap: "0" }}>
+          <div>
             {BENEFITS.map((b, i) => (
               <div key={b.label} style={{
-                padding: "1.5rem 0",
-                borderTop: i === 0 ? "1px solid #E3E3DF" : undefined,
-                borderBottom: "1px solid #E3E3DF",
+                padding: "1.125rem 0",
+                borderTop: i === 0 ? "1px solid #D0D0CB" : undefined,
+                borderBottom: "1px solid #D0D0CB",
               }}>
                 <p style={{
                   fontFamily: "var(--font-body)", fontWeight: 600,
-                  fontSize: "0.9375rem", color: "#111111", margin: "0 0 0.375rem",
+                  fontSize: "0.9375rem", color: "#111111", margin: "0 0 0.25rem",
                 }}>
                   {b.label}
                 </p>
                 <p style={{
                   fontFamily: "var(--font-body)", fontSize: "0.875rem",
-                  lineHeight: 1.65, color: "#676764", margin: 0,
+                  lineHeight: 1.55, color: "#636360", margin: 0,
                 }}>
                   {b.body}
                 </p>
@@ -72,31 +70,27 @@ export function BenefitsSection() {
         </div>
 
         {/* Image */}
-        <div>
-          <div style={{
-            position: "relative",
-            aspectRatio: "4 / 5",
-            overflow: "hidden",
-            backgroundColor: "#EAEAE8",
-          }}>
-            <Image
-              src={homepageImages.benefits}
-              alt="Sukoon Daily Solace Fluid in use"
-              fill
-              sizes="(max-width: 768px) 100vw, 50vw"
-              style={{ objectFit: "cover" }}
-            />
-          </div>
+        <div style={{ position: "relative", backgroundColor: "#F0F0EE", minHeight: 340 }}>
+          <Image
+            src={homepageImages.benefits}
+            alt="Sukoon Daily Solace Fluid in use"
+            fill
+            sizes="(max-width: 900px) 100vw, 58vw"
+            style={{ objectFit: "cover" }}
+          />
         </div>
       </div>
 
       <style>{`
-        @media (max-width: 767px) {
+        @media (max-width: 900px) {
           .benefits-grid {
             grid-template-columns: 1fr !important;
+            min-height: 0 !important;
           }
           .benefits-grid > div:last-child {
             order: -1;
+            aspect-ratio: 4 / 3;
+            min-height: 0 !important;
           }
         }
       `}</style>

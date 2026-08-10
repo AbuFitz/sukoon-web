@@ -25,9 +25,8 @@ export function AnnouncementBar() {
       aria-label="Announcement"
       style={{
         position: "relative",
-        height: "2rem",
-        backgroundColor: "#F5F5F3",
-        borderBottom: "1px solid #E3E3DF",
+        height: "2.125rem",
+        backgroundColor: "#111111",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
@@ -41,11 +40,9 @@ export function AnnouncementBar() {
           style={{
             position: "absolute",
             fontFamily: "var(--font-body)",
-            fontSize: "0.6875rem",
-            fontWeight: 600,
-            letterSpacing: "0.14em",
-            textTransform: "uppercase",
-            color: "#676764",
+            fontSize: "0.75rem",
+            fontWeight: 500,
+            color: "#FAFAFA",
             margin: 0,
             textAlign: "center",
             opacity: i === index ? 1 : 0,

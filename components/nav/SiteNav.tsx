@@ -57,14 +57,13 @@ function Wordmark() {
     <Link href="/" aria-label="Sukoon home" style={{ textDecoration: "none" }}>
       <span style={{
         fontFamily: "var(--font-body)",
-        fontWeight: 800,
-        fontSize: "1.0625rem",
-        letterSpacing: "0.2em",
+        fontWeight: 700,
+        fontSize: "1.25rem",
+        letterSpacing: "-0.01em",
         color: TEXT,
-        textTransform: "uppercase",
         userSelect: "none",
       }}>
-        SUKOON
+        SUKOON.
       </span>
     </Link>
   );
@@ -123,22 +122,21 @@ export function SiteNav() {
         <div style={{
           maxWidth: 1480, margin: "0 auto",
           padding: "0 clamp(1.25rem, 4vw, 3rem)",
-          height: 68,
+          height: 70,
           display: "grid",
           gridTemplateColumns: "1fr auto 1fr",
           alignItems: "center",
         }}>
           {/* Desktop nav */}
-          <nav className="hidden md:flex" style={{ gap: "2rem" }} aria-label="Primary navigation">
+          <nav className="hidden md:flex" style={{ gap: "1.75rem" }} aria-label="Primary navigation">
             {NAV_LINKS.map(l => (
               <a
                 key={l.label}
                 href={l.href}
                 style={{
-                  fontFamily: "var(--font-body)", fontSize: "0.75rem", fontWeight: 700,
-                  letterSpacing: "0.16em", textTransform: "uppercase",
+                  fontFamily: "var(--font-body)", fontSize: "0.875rem", fontWeight: 500,
                   color: MUTED, textDecoration: "none",
-                  transition: "color 0.2s ease",
+                  transition: "color 0.18s ease",
                 }}
                 onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = TEXT; }}
                 onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = MUTED; }}
@@ -218,8 +216,8 @@ export function SiteNav() {
           {[...NAV_LINKS, { label: "Contact", href: "/contact" }, { label: "FAQ", href: "/faq" }].map((l, i) => (
             <a key={l.label} href={l.href} onClick={() => setOpen(false)} style={{
               display: "block",
-              fontFamily: "var(--font-body)", fontSize: "0.9375rem", fontWeight: 700,
-              letterSpacing: "0.14em", textTransform: "uppercase",
+              fontFamily: "var(--font-body)", fontSize: "1.125rem", fontWeight: 600,
+              letterSpacing: "-0.01em",
               color: TEXT, textDecoration: "none", padding: "1rem 0",
               borderBottom: `1px solid ${BORDER}`,
               opacity: open ? 1 : 0,

@@ -4,14 +4,13 @@ import { CartProvider } from "@/lib/cart-context";
 import { AnnouncementBar } from "@/components/sections/AnnouncementBar";
 import { CookieBanner } from "@/components/CookieBanner";
 import { ImageGuard } from "@/components/ImageGuard";
-import { ScrollProgress } from "@/components/ui/ScrollProgress";
 import { TabAttention } from "@/components/TabAttention";
 import "./globals.css";
 
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
-  weight: ["200", "300", "400", "500", "600", "700", "800", "900"],
+  weight: ["400", "500", "600", "700", "800"],
   display: "swap",
 });
 
@@ -92,7 +91,6 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <body className="min-h-full">
         <ImageGuard />
         <TabAttention />
-        <ScrollProgress />
         <AnnouncementBar />
         <CartProvider>{children}</CartProvider>
         <CookieBanner />

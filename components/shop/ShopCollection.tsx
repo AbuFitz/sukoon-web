@@ -7,8 +7,7 @@ import { useCart } from "@/lib/cart-context";
 import type { VariantInfo } from "@/lib/shopify";
 
 const TEXT   = "#111111";
-const MUTED  = "#92928D";
-const BORDER = "#E3E3DF";
+const MUTED  = "#969690";
 
 const SORT_OPTIONS = [
   { value: "featured",   label: "Featured" },
@@ -27,7 +26,6 @@ function ProductCard({
 }) {
   const { addToCart, loading } = useCart();
   const [justAdded, setJustAdded] = useState(false);
-  const [hovered, setHovered] = useState(false);
 
   const variantId = variantInfo?.variantId;
   const availableForSale = variantInfo?.availableForSale ?? true;
@@ -42,20 +40,17 @@ function ProductCard({
 
   return (
     <article style={{ display: "flex", flexDirection: "column" }}>
-      {/* Image */}
       <a
         href={`/products/${product.slug}`}
-        style={{ display: "block", position: "relative", textDecoration: "none", marginBottom: "1.125rem" }}
-        onMouseEnter={() => setHovered(true)}
-        onMouseLeave={() => setHovered(false)}
+        style={{ display: "block", position: "relative", textDecoration: "none", marginBottom: "0.875rem" }}
       >
         {product.tag && (
           <span style={{
-            position: "absolute", top: "1rem", left: "1rem", zIndex: 2,
-            fontFamily: "var(--font-body)", fontSize: "0.5625rem", fontWeight: 700,
-            letterSpacing: "0.12em", textTransform: "uppercase",
+            position: "absolute", top: "0.875rem", left: "0.875rem", zIndex: 2,
+            fontFamily: "var(--font-body)", fontSize: "0.625rem", fontWeight: 700,
+            letterSpacing: "0.04em",
             color: "#FFFFFF", backgroundColor: TEXT,
-            padding: "0.3rem 0.75rem",
+            padding: "0.3rem 0.625rem", borderRadius: 6,
           }}>
             {product.tag}
           </span>
@@ -64,87 +59,63 @@ function ProductCard({
           position: "relative",
           aspectRatio: "4 / 5",
           overflow: "hidden",
-          backgroundColor: "#F0F0EE",
+          backgroundColor: "#F4F4F2",
+          borderRadius: 14,
         }}>
           <Image
             src={product.src}
             alt={product.name}
             fill
             priority={priority}
-            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-            style={{
-              objectFit: "cover",
-              transition: "transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94)",
-              transform: hovered ? "scale(1.04)" : "scale(1)",
-            }}
+            sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 31vw"
+            className="img-hover"
+            style={{ objectFit: "cover" }}
           />
         </div>
       </a>
 
-      {/* Info */}
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: "0.75rem" }}>
-        <a href={`/products/${product.slug}`} style={{ textDecoration: "none", flex: 1 }}>
+      <a href={`/products/${product.slug}`} style={{ textDecoration: "none" }}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: "0.75rem" }}>
           <p style={{
-            fontFamily: "var(--font-body)", fontWeight: 700,
-            fontSize: "0.875rem", color: TEXT, textTransform: "uppercase", letterSpacing: "0.02em",
-            margin: "0 0 0.25rem", lineHeight: 1.3,
+            fontFamily: "var(--font-body)", fontWeight: 600,
+            fontSize: "0.9375rem", color: TEXT, margin: 0,
           }}>
             {product.name}
           </p>
-          <p style={{ fontFamily: "var(--font-body)", fontSize: "0.8125rem", color: MUTED, margin: "0 0 0.25rem" }}>
-            {product.size}
-          </p>
-          <p style={{ fontFamily: "var(--font-body)", fontSize: "0.9375rem", fontWeight: 500, color: TEXT, margin: 0 }}>
+          <p style={{ fontFamily: "var(--font-body)", fontWeight: 600, fontSize: "0.9375rem", color: TEXT, margin: 0, whiteSpace: "nowrap" }}>
             {product.price}
           </p>
-        </a>
+        </div>
+        <p style={{ fontFamily: "var(--font-body)", fontSize: "0.8125rem", color: MUTED, margin: "0.125rem 0 0" }}>
+          {product.size}
+        </p>
+      </a>
 
-        {variantId && availableForSale && (
-          <button
-            onClick={handleAdd}
-            disabled={loading || justAdded}
-            aria-label={`Add ${product.name} to bag`}
-            style={{
-              flexShrink: 0,
-              fontFamily: "var(--font-body)", fontSize: "0.75rem", fontWeight: 500,
-              letterSpacing: "0.04em",
-              color: justAdded ? MUTED : TEXT,
-              backgroundColor: "transparent",
-              border: `1px solid ${justAdded ? BORDER : TEXT}`,
-              padding: "0.5rem 0.875rem",
-              cursor: loading ? "wait" : "pointer",
-              transition: "all 0.2s ease",
-              whiteSpace: "nowrap",
-              marginTop: "0.125rem",
-            }}
-            onMouseEnter={e => {
-              if (!justAdded) {
-                const el = e.currentTarget as HTMLElement;
-                el.style.backgroundColor = TEXT;
-                el.style.color = "#FFFFFF";
-              }
-            }}
-            onMouseLeave={e => {
-              if (!justAdded) {
-                const el = e.currentTarget as HTMLElement;
-                el.style.backgroundColor = "transparent";
-                el.style.color = TEXT;
-              }
-            }}
-          >
-            {justAdded ? "Added ✓" : loading ? "…" : "Add"}
-          </button>
-        )}
-
-        {variantId && !availableForSale && (
-          <span style={{
-            flexShrink: 0, fontFamily: "var(--font-body)", fontSize: "0.75rem",
-            color: MUTED, marginTop: "0.125rem",
-          }}>
-            Sold out
-          </span>
-        )}
-      </div>
+      {variantId && !availableForSale ? (
+        <button className="btn" disabled style={{
+          width: "100%", marginTop: "0.75rem",
+          backgroundColor: "#F4F4F2", color: MUTED, border: "1px solid #E5E5E2", cursor: "default",
+        }}>
+          Sold out
+        </button>
+      ) : (
+        <button
+          onClick={handleAdd}
+          disabled={!variantId || loading || justAdded}
+          aria-label={`Add ${product.name} to bag`}
+          className="btn btn-dark"
+          style={{
+            width: "100%", marginTop: "0.75rem",
+            backgroundColor: justAdded ? "#F4F4F2" : "#111111",
+            color: justAdded ? "#111111" : "#FFFFFF",
+            borderColor: justAdded ? "#D0D0CB" : "#111111",
+            opacity: !variantId ? 0.45 : 1,
+            cursor: !variantId ? "default" : loading ? "wait" : "pointer",
+          }}
+        >
+          {justAdded ? "Added" : loading ? "Adding…" : "Add to Bag"}
+        </button>
+      )}
     </article>
   );
 }
@@ -159,13 +130,13 @@ export function ShopCollection({ variantIds = {} }: { variantIds?: Record<string
   });
 
   return (
-    <section style={{ backgroundColor: "#FFFFFF", padding: "clamp(3rem, 5vw, 5rem) 0 clamp(5rem, 9vw, 8rem)" }}>
-      <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 clamp(1.25rem, 4vw, 3rem)" }}>
+    <section style={{ backgroundColor: "#FFFFFF", padding: "0 0 clamp(3.5rem, 6vw, 5.5rem)" }}>
+      <div style={{ maxWidth: 1440, margin: "0 auto", padding: "0 clamp(1.25rem, 4vw, 3rem)" }}>
         {/* Controls */}
         <div style={{
           display: "flex", alignItems: "center", justifyContent: "space-between",
-          gap: "1rem", flexWrap: "wrap", marginBottom: "clamp(2rem, 3vw, 3rem)",
-          paddingBottom: "1rem", borderBottom: `1px solid ${BORDER}`,
+          gap: "1rem", flexWrap: "wrap", marginBottom: "1.5rem",
+          paddingBottom: "0.875rem", borderBottom: "1px solid #E5E5E2",
         }}>
           <p style={{ fontFamily: "var(--font-body)", fontSize: "0.875rem", color: MUTED, margin: 0 }}>
             {products.length} products
@@ -193,8 +164,8 @@ export function ShopCollection({ variantIds = {} }: { variantIds?: Record<string
 
         {/* Grid */}
         <div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
-          style={{ gap: "clamp(2rem, 3vw, 3rem)" }}
+          className="grid grid-cols-2 lg:grid-cols-3"
+          style={{ gap: "18px" }}
         >
           {sorted.map((p, i) => (
             <ProductCard
