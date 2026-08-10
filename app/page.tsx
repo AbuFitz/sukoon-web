@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { SiteNav }                from "@/components/nav/SiteNav";
+import { Marquee }                from "@/components/ui/Marquee";
 import { HeroSection }            from "@/components/home/HeroSection";
 import { FeaturedProductsSection } from "@/components/home/FeaturedProductsSection";
 import { BrandStorySection }      from "@/components/home/BrandStorySection";
@@ -60,6 +61,9 @@ export default async function HomePage() {
       <SiteNav />
       <main>
         <HeroSection />
+        <Marquee
+          items={["100% Waterless", "5 Ingredients", "Made in the UK", "Vegan & Cruelty-Free"]}
+        />
         <FeaturedProductsSection products={featuredProducts} />
         <BrandStorySection />
         <IngredientsSection />

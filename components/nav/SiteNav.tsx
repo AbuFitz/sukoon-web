@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { SearchOverlay } from "./SearchOverlay";
 import { AccountPanel } from "./AccountPanel";
@@ -102,11 +102,26 @@ export function SiteNav() {
   const [searchOpen, setSearchOpen] = useState(false);
   const [accountOpen, setAccountOpen] = useState(false);
   const [bagOpen, setBagOpen] = useState(false);
+  const [hidden, setHidden] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const lastY = useRef(0);
   const { count } = useCart();
 
   useEffect(() => {
     document.body.style.overflow = (open || searchOpen || accountOpen || bagOpen) ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
+  }, [open, searchOpen, accountOpen, bagOpen]);
+
+  useEffect(() => {
+    const onScroll = () => {
+      const y = window.scrollY;
+      setScrolled(y > 8);
+      if (open || searchOpen || accountOpen || bagOpen) { lastY.current = y; return; }
+      setHidden(y > lastY.current && y > 140);
+      lastY.current = y;
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, [open, searchOpen, accountOpen, bagOpen]);
 
   return (
@@ -116,8 +131,13 @@ export function SiteNav() {
           position: "sticky",
           top: 0,
           zIndex: 50,
-          backgroundColor: "#FFFFFF",
+          backgroundColor: "rgba(255,255,255,0.92)",
+          backdropFilter: "blur(10px)",
+          WebkitBackdropFilter: "blur(10px)",
           borderBottom: `1px solid ${BORDER}`,
+          boxShadow: scrolled ? "0 1px 0 rgba(17,17,17,0.02), 0 8px 24px rgba(17,17,17,0.04)" : "none",
+          transform: hidden ? "translateY(-100%)" : "translateY(0)",
+          transition: "transform 0.35s cubic-bezier(0.16,1,0.3,1), box-shadow 0.3s ease",
         }}
       >
         <div style={{
@@ -134,6 +154,7 @@ export function SiteNav() {
               <a
                 key={l.label}
                 href={l.href}
+                className="nav-underline-link"
                 style={{
                   fontFamily: "var(--font-body)", fontSize: "0.75rem", fontWeight: 700,
                   letterSpacing: "0.16em", textTransform: "uppercase",

@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import { homepageImages } from "@/lib/homepage";
+import { Reveal } from "@/components/ui/Reveal";
 
 export function NewsletterSection() {
   const [email, setEmail] = useState("");
@@ -28,21 +29,25 @@ export function NewsletterSection() {
       >
         {/* Copy + form */}
         <div>
-          <p className="eyebrow" style={{ marginBottom: "1.25rem" }}>Stay in the loop</p>
-          <h2 style={{
-            fontFamily: "var(--font-body)", fontWeight: 300,
-            fontSize: "clamp(2rem, 3vw, 2.75rem)",
-            letterSpacing: "-0.02em", color: "#111111",
-            margin: "0 0 1rem",
-          }}>
-            Skincare without the noise.
-          </h2>
-          <p style={{
-            fontFamily: "var(--font-body)", fontSize: "1rem", lineHeight: 1.7,
-            color: "#676764", margin: "0 0 2rem",
-          }}>
-            Formulation updates, early access, and honest skin content. No spam, ever.
-          </p>
+          <Reveal><p className="eyebrow" style={{ marginBottom: "1.25rem" }}>Stay in the loop</p></Reveal>
+          <Reveal delay={0.06}>
+            <h2 style={{
+              fontFamily: "var(--font-body)", fontWeight: 200,
+              fontSize: "clamp(2.25rem, 4vw, 3.25rem)",
+              letterSpacing: "-0.02em", color: "#111111",
+              margin: "0 0 1rem", lineHeight: 1.08,
+            }}>
+              Skincare without the noise.
+            </h2>
+          </Reveal>
+          <Reveal delay={0.12}>
+            <p style={{
+              fontFamily: "var(--font-body)", fontSize: "1rem", lineHeight: 1.7,
+              color: "#676764", margin: "0 0 2rem",
+            }}>
+              Formulation updates, early access, and honest skin content. No spam, ever.
+            </p>
+          </Reveal>
 
           {submitted ? (
             <p style={{
@@ -52,39 +57,41 @@ export function NewsletterSection() {
               You&apos;re in. Talk soon.
             </p>
           ) : (
-            <form onSubmit={handleSubmit} style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap" }}>
-              <input
-                type="email"
-                placeholder="your@email.com"
-                value={email}
-                onChange={e => setEmail(e.target.value)}
-                required
-                className="input"
-                style={{ flex: "1 1 200px", maxWidth: 320 }}
-                aria-label="Email address"
-              />
-              <button
-                type="submit"
-                style={{
-                  height: 52, padding: "0 1.75rem",
-                  fontFamily: "var(--font-body)", fontSize: "0.6875rem", fontWeight: 700,
-                  letterSpacing: "0.16em", textTransform: "uppercase",
-                  color: "#FFFFFF", backgroundColor: "#111111",
-                  border: "1px solid #111111",
-                  cursor: "pointer", transition: "background-color 0.2s ease",
-                  whiteSpace: "nowrap",
-                }}
-                onMouseEnter={e => { (e.currentTarget as HTMLElement).style.backgroundColor = "#333333"; }}
-                onMouseLeave={e => { (e.currentTarget as HTMLElement).style.backgroundColor = "#111111"; }}
-              >
-                Subscribe
-              </button>
-            </form>
+            <Reveal delay={0.18}>
+              <form onSubmit={handleSubmit} style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap" }}>
+                <input
+                  type="email"
+                  placeholder="your@email.com"
+                  value={email}
+                  onChange={e => setEmail(e.target.value)}
+                  required
+                  className="input"
+                  style={{ flex: "1 1 200px", maxWidth: 320 }}
+                  aria-label="Email address"
+                />
+                <button
+                  type="submit"
+                  style={{
+                    height: 52, padding: "0 1.75rem",
+                    fontFamily: "var(--font-body)", fontSize: "0.6875rem", fontWeight: 700,
+                    letterSpacing: "0.16em", textTransform: "uppercase",
+                    color: "#FFFFFF", backgroundColor: "#111111",
+                    border: "1px solid #111111",
+                    cursor: "pointer", transition: "background-color 0.2s ease",
+                    whiteSpace: "nowrap",
+                  }}
+                  onMouseEnter={e => { (e.currentTarget as HTMLElement).style.backgroundColor = "#333333"; }}
+                  onMouseLeave={e => { (e.currentTarget as HTMLElement).style.backgroundColor = "#111111"; }}
+                >
+                  Subscribe
+                </button>
+              </form>
+            </Reveal>
           )}
         </div>
 
         {/* Image */}
-        <div>
+        <Reveal delay={0.1} y={20}>
           <div style={{
             position: "relative",
             aspectRatio: "4 / 3",
@@ -99,7 +106,7 @@ export function NewsletterSection() {
               style={{ objectFit: "cover" }}
             />
           </div>
-        </div>
+        </Reveal>
       </div>
 
       <style>{`

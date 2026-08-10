@@ -1,9 +1,12 @@
 "use client";
 
 import Image from "next/image";
+import { motion } from "framer-motion";
 import { useState } from "react";
 import { useCart } from "@/lib/cart-context";
 import { products } from "@/lib/products";
+
+const easeOut = [0.16, 1, 0.3, 1] as const;
 
 const TEXT   = "#111111";
 const MUTED  = "#92928D";
@@ -153,7 +156,12 @@ export function ProductDetail({ handle, title, size, price, description, imageSr
           style={{ display: "grid", gridTemplateColumns: "58fr 42fr", gap: "clamp(2.5rem, 5vw, 6rem)", alignItems: "start" }}
         >
           {/* Image column */}
-          <div style={{ position: "sticky", top: 92 }}>
+          <motion.div
+            initial={{ opacity: 0, scale: 1.04 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.9, ease: easeOut }}
+            style={{ position: "sticky", top: 92 }}
+          >
             <div style={{
               position: "relative", aspectRatio: "4 / 5",
               overflow: "hidden", backgroundColor: "#F0F0EE",
@@ -175,10 +183,15 @@ export function ProductDetail({ handle, title, size, price, description, imageSr
                 style={{ objectFit: "cover" }}
               />
             </div>
-          </div>
+          </motion.div>
 
           {/* Details column */}
-          <div style={{ paddingTop: "0.5rem" }}>
+          <motion.div
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.15, ease: easeOut }}
+            style={{ paddingTop: "0.5rem" }}
+          >
             <p style={{
               fontFamily: "var(--font-body)", fontSize: "0.6875rem", fontWeight: 700,
               letterSpacing: "0.16em", textTransform: "uppercase", color: MUTED,
@@ -187,10 +200,10 @@ export function ProductDetail({ handle, title, size, price, description, imageSr
               {size}
             </p>
             <h1 style={{
-              fontFamily: "var(--font-body)", fontWeight: 300,
-              fontSize: "clamp(1.75rem, 3vw, 2.75rem)",
-              letterSpacing: "-0.02em", color: TEXT,
-              margin: "0 0 0.75rem", lineHeight: 1.1,
+              fontFamily: "var(--font-body)", fontWeight: 200,
+              fontSize: "clamp(2.25rem, 4vw, 3.5rem)",
+              letterSpacing: "-0.025em", color: TEXT,
+              margin: "0 0 0.75rem", lineHeight: 1.02,
             }}>
               {title}
             </h1>
@@ -295,7 +308,7 @@ export function ProductDetail({ handle, title, size, price, description, imageSr
                 <Accordion key={a.id} label={a.label} content={a.content!} />
               ))}
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
 

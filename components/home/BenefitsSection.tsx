@@ -1,7 +1,10 @@
 "use client";
 
 import Image from "next/image";
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { homepageImages } from "@/lib/homepage";
+import { Reveal, RevealGroup, RevealItem } from "@/components/ui/Reveal";
 
 const BENEFITS = [
   {
@@ -23,6 +26,10 @@ const BENEFITS = [
 ];
 
 export function BenefitsSection() {
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
+  const y = useTransform(scrollYProgress, [0, 1], ["-6%", "6%"]);
+
   return (
     <section style={{ backgroundColor: "#F5F5F3", padding: "clamp(5rem, 9vw, 8rem) 0" }}>
       <div style={{
@@ -37,48 +44,52 @@ export function BenefitsSection() {
       >
         {/* Copy */}
         <div>
-          <p className="eyebrow" style={{ marginBottom: "1.25rem" }}>Why it works</p>
-          <h2 style={{
-            fontFamily: "var(--font-body)", fontWeight: 300,
-            fontSize: "clamp(2rem, 3.5vw, 3rem)",
-            letterSpacing: "-0.02em", color: "#111111",
-            margin: "0 0 3rem",
-          }}>
-            Designed around<br />real results.
-          </h2>
+          <Reveal><p className="eyebrow" style={{ marginBottom: "1.25rem" }}>Why it works</p></Reveal>
+          <Reveal delay={0.06}>
+            <h2 style={{
+              fontFamily: "var(--font-body)", fontWeight: 200,
+              fontSize: "clamp(2.25rem, 4.5vw, 3.5rem)",
+              letterSpacing: "-0.02em", color: "#111111",
+              margin: "0 0 3rem", lineHeight: 1.05,
+            }}>
+              Designed around<br />real results.
+            </h2>
+          </Reveal>
 
-          <div style={{ display: "flex", flexDirection: "column", gap: "0" }}>
+          <RevealGroup style={{ display: "flex", flexDirection: "column" }} stagger={0.06}>
             {BENEFITS.map((b, i) => (
-              <div key={b.label} style={{
-                padding: "1.5rem 0",
-                borderTop: i === 0 ? "1px solid #E3E3DF" : undefined,
-                borderBottom: "1px solid #E3E3DF",
-              }}>
-                <p style={{
-                  fontFamily: "var(--font-body)", fontWeight: 600,
-                  fontSize: "0.9375rem", color: "#111111", margin: "0 0 0.375rem",
+              <RevealItem key={b.label} y={16}>
+                <div style={{
+                  padding: "1.5rem 0",
+                  borderTop: i === 0 ? "1px solid #E3E3DF" : undefined,
+                  borderBottom: "1px solid #E3E3DF",
                 }}>
-                  {b.label}
-                </p>
-                <p style={{
-                  fontFamily: "var(--font-body)", fontSize: "0.875rem",
-                  lineHeight: 1.65, color: "#676764", margin: 0,
-                }}>
-                  {b.body}
-                </p>
-              </div>
+                  <p style={{
+                    fontFamily: "var(--font-body)", fontWeight: 700,
+                    fontSize: "0.9375rem", color: "#111111", margin: "0 0 0.375rem",
+                  }}>
+                    {b.label}
+                  </p>
+                  <p style={{
+                    fontFamily: "var(--font-body)", fontSize: "0.875rem",
+                    lineHeight: 1.65, color: "#676764", margin: 0,
+                  }}>
+                    {b.body}
+                  </p>
+                </div>
+              </RevealItem>
             ))}
-          </div>
+          </RevealGroup>
         </div>
 
         {/* Image */}
-        <div>
-          <div style={{
-            position: "relative",
-            aspectRatio: "4 / 5",
-            overflow: "hidden",
-            backgroundColor: "#EAEAE8",
-          }}>
+        <div ref={ref} style={{
+          position: "relative",
+          aspectRatio: "4 / 5",
+          overflow: "hidden",
+          backgroundColor: "#EAEAE8",
+        }}>
+          <motion.div style={{ position: "absolute", inset: "-6% 0", y }}>
             <Image
               src={homepageImages.benefits}
               alt="Sukoon Daily Solace Fluid in use"
@@ -86,7 +97,7 @@ export function BenefitsSection() {
               sizes="(max-width: 768px) 100vw, 50vw"
               style={{ objectFit: "cover" }}
             />
-          </div>
+          </motion.div>
         </div>
       </div>
 

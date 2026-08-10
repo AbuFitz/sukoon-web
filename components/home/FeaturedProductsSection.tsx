@@ -1,9 +1,11 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 import { useCart } from "@/lib/cart-context";
 import { productImageMap, type FeaturedHandle } from "@/lib/homepage";
+import { Reveal, RevealGroup, RevealItem } from "@/components/ui/Reveal";
 
 export type FeaturedProduct = {
   handle: string;
@@ -33,7 +35,7 @@ function ProductCard({ product }: { product: FeaturedProduct }) {
   };
 
   return (
-    <a
+    <Link
       href={`/products/${product.handle}`}
       style={{ textDecoration: "none", display: "block" }}
       onMouseEnter={() => setHovered(true)}
@@ -54,8 +56,17 @@ function ProductCard({ product }: { product: FeaturedProduct }) {
           sizes="(max-width: 768px) 100vw, 33vw"
           style={{
             objectFit: "cover",
-            transition: "transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94)",
-            transform: hovered ? "scale(1.04)" : "scale(1)",
+            transition: "transform 0.7s cubic-bezier(0.16,1,0.3,1)",
+            transform: hovered ? "scale(1.06)" : "scale(1)",
+          }}
+        />
+        <div
+          aria-hidden
+          style={{
+            position: "absolute", inset: 0,
+            backgroundColor: "#111111",
+            opacity: hovered ? 0.04 : 0,
+            transition: "opacity 0.4s ease",
           }}
         />
       </div>
@@ -115,7 +126,7 @@ function ProductCard({ product }: { product: FeaturedProduct }) {
           </button>
         )}
       </div>
-    </a>
+    </Link>
   );
 }
 
@@ -128,34 +139,42 @@ export function FeaturedProductsSection({ products }: { products: FeaturedProduc
           display: "flex", alignItems: "baseline", justifyContent: "space-between",
           gap: "1rem", marginBottom: "clamp(2.5rem, 4vw, 3.5rem)",
         }}>
-          <h2 style={{
-            fontFamily: "var(--font-body)", fontWeight: 300,
-            fontSize: "clamp(1.75rem, 3vw, 2.5rem)",
-            letterSpacing: "-0.02em", color: "#111111", margin: 0,
-          }}>
-            The Collection
-          </h2>
-          <a href="/shop" style={{
-            fontFamily: "var(--font-body)", fontSize: "0.8125rem", fontWeight: 400,
-            color: "#92928D", textDecoration: "none",
-            borderBottom: "1px solid #E3E3DF", paddingBottom: 2,
-            whiteSpace: "nowrap", flexShrink: 0,
-            transition: "color 0.2s ease, border-color 0.2s ease",
-          }}
-          onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.color = "#111111"; el.style.borderColor = "#111111"; }}
-          onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.color = "#92928D"; el.style.borderColor = "#E3E3DF"; }}
-          >
-            View all
-          </a>
+          <Reveal>
+            <h2 style={{
+              fontFamily: "var(--font-body)", fontWeight: 200,
+              fontSize: "clamp(2.25rem, 4.5vw, 3.75rem)",
+              letterSpacing: "-0.025em", color: "#111111", margin: 0,
+            }}>
+              The Collection
+            </h2>
+          </Reveal>
+          <Reveal delay={0.08}>
+            <a href="/shop" style={{
+              fontFamily: "var(--font-body)", fontSize: "0.8125rem", fontWeight: 400,
+              color: "#92928D", textDecoration: "none",
+              borderBottom: "1px solid #E3E3DF", paddingBottom: 2,
+              whiteSpace: "nowrap", flexShrink: 0,
+              transition: "color 0.2s ease, border-color 0.2s ease",
+            }}
+            onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.color = "#111111"; el.style.borderColor = "#111111"; }}
+            onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.color = "#92928D"; el.style.borderColor = "#E3E3DF"; }}
+            >
+              View all
+            </a>
+          </Reveal>
         </div>
 
         {/* Grid */}
-        <div
+        <RevealGroup
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
           style={{ gap: "clamp(1.5rem, 3vw, 2.5rem)" }}
         >
-          {products.map(p => <ProductCard key={p.handle} product={p} />)}
-        </div>
+          {products.map(p => (
+            <RevealItem key={p.handle}>
+              <ProductCard product={p} />
+            </RevealItem>
+          ))}
+        </RevealGroup>
       </div>
     </section>
   );

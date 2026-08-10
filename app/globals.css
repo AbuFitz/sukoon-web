@@ -96,6 +96,46 @@ img {
   color: #92928D;
 }
 
+/* ─── Magnetic button (icon-slide CTA) ─── */
+.magnetic-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem;
+  font-family: var(--font-body); font-size: 0.6875rem; font-weight: 700;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  padding: 1rem 2.25rem; text-decoration: none;
+  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+.magnetic-btn svg { transition: transform 0.25s ease; }
+.magnetic-btn:hover svg { transform: translateX(3px); }
+.magnetic-btn--dark {
+  color: #FFFFFF; background-color: #111111; border: 1px solid #111111;
+}
+.magnetic-btn--dark:hover { background-color: #2A2A2A; }
+.magnetic-btn--outline {
+  color: #111111; background-color: transparent; border: 1px solid #E3E3DF;
+}
+.magnetic-btn--outline:hover { border-color: #111111; }
+
+/* ─── Nav underline hover ─── */
+.nav-underline-link {
+  position: relative;
+}
+.nav-underline-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 1px;
+  background-color: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.nav-underline-link:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
 /* ─── Buttons ─── */
 .btn {
   display: inline-flex;

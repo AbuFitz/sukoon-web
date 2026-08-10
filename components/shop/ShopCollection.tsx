@@ -5,6 +5,7 @@ import { useState } from "react";
 import { products } from "@/lib/products";
 import { useCart } from "@/lib/cart-context";
 import type { VariantInfo } from "@/lib/shopify";
+import { RevealGroup, RevealItem } from "@/components/ui/Reveal";
 
 const TEXT   = "#111111";
 const MUTED  = "#92928D";
@@ -74,8 +75,8 @@ function ProductCard({
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
             style={{
               objectFit: "cover",
-              transition: "transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94)",
-              transform: hovered ? "scale(1.04)" : "scale(1)",
+              transition: "transform 0.7s cubic-bezier(0.16,1,0.3,1)",
+              transform: hovered ? "scale(1.06)" : "scale(1)",
             }}
           />
         </div>
@@ -192,19 +193,20 @@ export function ShopCollection({ variantIds = {} }: { variantIds?: Record<string
         </div>
 
         {/* Grid */}
-        <div
+        <RevealGroup
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
           style={{ gap: "clamp(2rem, 3vw, 3rem)" }}
         >
           {sorted.map((p, i) => (
-            <ProductCard
-              key={p.slug}
-              product={p}
-              variantInfo={variantIds[p.slug]}
-              priority={i === 0}
-            />
+            <RevealItem key={p.slug}>
+              <ProductCard
+                product={p}
+                variantInfo={variantIds[p.slug]}
+                priority={i === 0}
+              />
+            </RevealItem>
           ))}
-        </div>
+        </RevealGroup>
       </div>
     </section>
   );
