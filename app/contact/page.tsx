@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { SiteNav } from "@/components/nav/SiteNav";
 import { Footer } from "@/components/sections/Footer";
+import { DropMark } from "@/components/ui/DropMark";
 
 const INK   = "#111111";
 const MUTED = "#636360";
@@ -50,15 +51,16 @@ export default function ContactPage() {
         style={{ backgroundColor: LINEN, minHeight: "70vh" }}
       >
         <div style={{ maxWidth: "680px", margin: "0 auto", padding: "0 clamp(1.5rem, 5vw, 3rem) clamp(3rem, 7vw, 5rem)" }}>
+          <DropMark size={9} color={INK} style={{ marginBottom: "1rem" }} />
           <p style={{
             fontFamily: "var(--font-body)", fontSize: "0.75rem", fontWeight: 600,
             color: "#969690",
             marginBottom: "1rem",
           }}>Contact</p>
           <h1 style={{
-            fontFamily: "var(--font-body)", fontSize: "clamp(2.25rem, 4.5vw, 3.5rem)",
-            fontWeight: 600, letterSpacing: "-0.03em", color: INK,
-            marginBottom: "0.75rem", lineHeight: 1.05,
+            fontFamily: "var(--font-body)", fontSize: "clamp(2.5rem, 5vw, 4rem)",
+            fontWeight: 600, letterSpacing: "-0.04em", color: INK,
+            marginBottom: "0.75rem", lineHeight: 0.98,
           }}>We read every message.</h1>
           <p style={{
             fontFamily: "var(--font-body)", fontSize: "0.9375rem", lineHeight: 1.6, color: MUTED,

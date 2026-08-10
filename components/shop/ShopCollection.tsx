@@ -55,12 +55,11 @@ function ProductCard({
             {product.tag}
           </span>
         )}
-        <div style={{
+        <div className="cut-corner" style={{
           position: "relative",
           aspectRatio: "4 / 5",
           overflow: "hidden",
           backgroundColor: "#F4F4F2",
-          borderRadius: 14,
         }}>
           <Image
             src={product.src}

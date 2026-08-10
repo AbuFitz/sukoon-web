@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { DropMark } from "@/components/ui/DropMark";
 
 const SHOP = [
   { label: "Shop All",    href: "/shop" },
@@ -63,7 +64,7 @@ function FooterCol({ title, links }: { title: string; links: { label: string; hr
 export function Footer() {
   return (
     <footer
-      className="stack-panel stack-panel--last stack-inner"
+      className="stack-panel stack-panel--last stack-inner grain"
       style={{ backgroundColor: "#111111" }}
       aria-label="Site footer"
     >
@@ -77,7 +78,8 @@ export function Footer() {
         >
           {/* Brand */}
           <div className="col-span-2 md:col-span-1" style={{ display: "flex", flexDirection: "column", gap: "1.125rem" }}>
-            <Link href="/" style={{ textDecoration: "none" }}>
+            <Link href="/" style={{ textDecoration: "none", display: "flex", alignItems: "center", gap: "0.5rem" }}>
+              <DropMark size={13} color={TEXT} />
               <span style={{
                 fontFamily: "var(--font-body)", fontWeight: 700,
                 fontSize: "1.5rem", letterSpacing: "-0.02em",

@@ -234,6 +234,82 @@ img {
   padding-top: clamp(2.75rem, 6vw, 4.5rem);
 }
 
+/* ─── Panel rhythm — deliberately varied ───
+ * Not every section lifts the same amount. Most sections use the
+ * default pull; exactly one per page uses --pull-lg as a genuine
+ * "event", and quiet transitional moments use --pull-sm. Varying the
+ * amount is what makes the stack read as composed, not templated. */
+:root {
+  --pull-sm: 22px;
+  --pull-lg: 88px;
+}
+@media (max-width: 900px) {
+  :root { --pull-sm: 14px; --pull-lg: 46px; }
+}
+
+.stack-panel--pull-sm { margin-top: calc(var(--pull-sm) * -1); }
+.stack-panel--pull-lg {
+  margin-top: calc(var(--pull-lg) * -1);
+  box-shadow: 0 -30px 70px rgba(28, 24, 16, 0.11);
+}
+
+/* Full-bleed — the hero opts out of the panel system entirely: no
+ * gutter, no radius, flush to the very top of the page. It reads as
+ * the establishing shot, not a card, which is what makes the first
+ * panel underneath it feel like an actual event when it lifts in. */
+.bleed {
+  margin-left: 0;
+  margin-right: 0;
+  margin-top: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+/* ─── Signature cut corner ───
+ * One rounded corner, one sharp — a nod to the dropper's angled tip.
+ * Used on product photography site-wide instead of a uniform
+ * all-corners radius, so imagery reads as this brand's, not a
+ * generic template's. */
+.cut-corner {
+  border-radius: 3px clamp(20px, 3vw, 34px) 3px clamp(20px, 3vw, 34px);
+}
+.cut-corner--sm {
+  border-radius: 2px 16px 2px 16px;
+}
+
+/* ─── Ghost numeral ───
+ * Oversized, hollow index numerals used as a layered background
+ * element for editorial density — not a decorative icon. */
+.ghost-num {
+  font-family: var(--font-body);
+  font-weight: 700;
+  line-height: 0.8;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(17, 17, 17, 0.14);
+  letter-spacing: -0.04em;
+  user-select: none;
+  pointer-events: none;
+}
+.ghost-num--light {
+  -webkit-text-stroke: 1px rgba(250, 250, 250, 0.16);
+}
+
+/* ─── Grain ───
+ * A near-invisible noise layer for material depth on flat dark
+ * panels. Self-contained SVG turbulence, no external asset. */
+.grain {
+  position: relative;
+}
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+
 /* ─── Reduced motion ─── */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {

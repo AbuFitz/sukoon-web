@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { homepageImages } from "@/lib/homepage";
+import { DropMark } from "@/components/ui/DropMark";
 
 export function AboutContent() {
   return (
@@ -14,7 +15,8 @@ export function AboutContent() {
         paddingRight: "clamp(1.5rem, 6vw, 6rem)",
         paddingBottom: "clamp(2.25rem, 5vw, 3.5rem)",
       }}>
-        <div style={{ maxWidth: "780px" }}>
+        <div style={{ maxWidth: "820px" }}>
+          <DropMark size={9} color="#111111" style={{ marginBottom: "1rem" }} />
           <p style={{
             fontFamily: "var(--font-body)", fontSize: "0.75rem", fontWeight: 600,
             color: "#969690",
@@ -23,16 +25,16 @@ export function AboutContent() {
             About Sukoon
           </p>
           <h1 style={{
-            fontFamily: "var(--font-body)", fontSize: "clamp(2.25rem, 4.5vw, 3.5rem)",
-            fontWeight: 600, lineHeight: 1.05, letterSpacing: "-0.03em", color: "#111111",
-            marginBottom: "clamp(1.25rem, 3vw, 1.75rem)",
+            fontFamily: "var(--font-body)", fontSize: "clamp(2.5rem, 5vw, 4.25rem)",
+            fontWeight: 600, lineHeight: 0.98, letterSpacing: "-0.04em", color: "#111111",
+            marginBottom: "clamp(1.5rem, 3vw, 2rem)",
           }}>
             The skincare industry built<br />everything for your face.<br />
             We built one thing<br />for what it missed.
           </h1>
           <p style={{
-            fontFamily: "var(--font-body)", fontSize: "1rem", lineHeight: 1.85,
-            color: "#636360", maxWidth: "560px",
+            fontFamily: "var(--font-body)", fontSize: "1.125rem", lineHeight: 1.75,
+            color: "#636360", maxWidth: "560px", borderLeft: "2px solid #D0D0CB", paddingLeft: "1.25rem",
           }}>
             سكون. In Arabic, it means stillness. The moment the day slows down, the noise drops away, and you return to yourself. That&rsquo;s the feeling we wanted to bottle — not just for your face, but for every part of your ritual that never had a product made for it.
           </p>
@@ -41,7 +43,7 @@ export function AboutContent() {
 
       {/* Split: Image + The Problem */}
       <div className="stack-panel stack-panel--clip flex flex-col md:grid md:grid-cols-2" style={{ backgroundColor: "#FFFFFF" }}>
-        <div style={{ position: "relative", minHeight: "clamp(340px, 55vw, 620px)", backgroundColor: "#F4F4F2" }}>
+        <div className="cut-corner" style={{ position: "relative", minHeight: "clamp(340px, 55vw, 620px)", backgroundColor: "#F4F4F2", margin: "clamp(1rem, 2vw, 1.5rem)", overflow: "hidden" }}>
           <Image
             src={homepageImages.story}
             alt="Applying the Daily Solace Fluid"
@@ -75,13 +77,19 @@ export function AboutContent() {
       </div>
 
       {/* The Formula Philosophy */}
-      <div className="stack-panel stack-inner" style={{
+      <div className="stack-panel stack-inner grain" style={{
         backgroundColor: "#111111",
         paddingLeft: "clamp(1.5rem, 6vw, 6rem)",
         paddingRight: "clamp(1.5rem, 6vw, 6rem)",
         paddingBottom: "clamp(3rem, 6vw, 5rem)",
+        position: "relative",
       }}>
-        <div style={{ maxWidth: "780px", margin: "0 auto" }}>
+        <DropMark
+          size={180}
+          color="#FAFAFA"
+          style={{ position: "absolute", left: "clamp(-2rem, 1vw, 2rem)", top: "clamp(-1rem, -1vw, 1rem)", opacity: 0.04, pointerEvents: "none" }}
+        />
+        <div style={{ maxWidth: "780px", margin: "0 auto", position: "relative" }}>
           <h2 style={{
             fontFamily: "var(--font-body)", fontSize: "clamp(1.625rem, 3vw, 2.375rem)",
             fontWeight: 600, lineHeight: 1.15, letterSpacing: "-0.02em",
@@ -139,7 +147,7 @@ export function AboutContent() {
               { label: "Vegan & Cruelty-Free", sub: "No animal testing, ever" },
               { label: "Fragrance-Free", sub: "No synthetic perfumes" },
             ].map(c => (
-              <div key={c.label}>
+              <div key={c.label} style={{ borderLeft: "1px solid #D0D0CB", paddingLeft: "1rem" }}>
                 <p style={{
                   fontFamily: "var(--font-body)", fontSize: "0.875rem", fontWeight: 600,
                   color: "#111111",

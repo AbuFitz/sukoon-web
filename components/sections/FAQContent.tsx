@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { DropMark } from "@/components/ui/DropMark";
 
 const sections = [
   {
@@ -58,6 +59,7 @@ export function FAQContent() {
       <div style={{ maxWidth: "820px", margin: "0 auto" }}>
 
         <div style={{ marginBottom: "clamp(3rem, 6vw, 4.5rem)" }}>
+          <DropMark size={9} color="#111111" style={{ marginBottom: "1rem" }} />
           <p style={{
             fontFamily: "var(--font-body)", fontSize: "0.75rem", fontWeight: 600,
             color: "#969690", marginBottom: "1rem",
@@ -65,8 +67,8 @@ export function FAQContent() {
             FAQ
           </p>
           <h1 style={{
-            fontFamily: "var(--font-body)", fontSize: "clamp(2.25rem, 5vw, 3.5rem)",
-            fontWeight: 600, letterSpacing: "-0.03em", lineHeight: 1.05, color: "#111111",
+            fontFamily: "var(--font-body)", fontSize: "clamp(2.5rem, 5.5vw, 4rem)",
+            fontWeight: 600, letterSpacing: "-0.04em", lineHeight: 0.98, color: "#111111",
           }}>
             Honest answers.
           </h1>

@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import { homepageImages } from "@/lib/homepage";
+import { DropMark } from "@/components/ui/DropMark";
 
 export function NewsletterSection() {
   const [email, setEmail] = useState("");
@@ -15,13 +16,13 @@ export function NewsletterSection() {
   };
 
   return (
-    <section className="stack-panel stack-panel--clip" style={{ backgroundColor: "#F6F1E9" }}>
+    <section className="stack-panel stack-panel--pull-sm stack-panel--clip" style={{ backgroundColor: "#F6F1E9" }}>
       <div
         className="newsletter-grid"
         style={{
           display: "grid",
           gridTemplateColumns: "45fr 55fr",
-          minHeight: "min(60vh, 520px)",
+          minHeight: "min(56vh, 480px)",
         }}
       >
         {/* Copy + form */}
@@ -29,13 +30,16 @@ export function NewsletterSection() {
           display: "flex", flexDirection: "column", justifyContent: "center",
           padding: "clamp(2.5rem, 5vw, 4rem) clamp(1.5rem, 5vw, 3.5rem)",
         }}>
+          <DropMark size={16} color="#111111" style={{ marginBottom: "1.25rem" }} />
           <h2 style={{
-            fontFamily: "var(--font-body)", fontWeight: 500,
-            fontSize: "clamp(1.75rem, 2.8vw, 2.375rem)",
-            letterSpacing: "-0.03em", color: "#111111",
-            margin: "0 0 0.75rem", lineHeight: 1.08,
+            fontFamily: "var(--font-body)", fontWeight: 600,
+            fontSize: "clamp(1.875rem, 2.8vw, 2.5rem)",
+            letterSpacing: "-0.035em", color: "#111111",
+            margin: "0 0 0.75rem", lineHeight: 1.02,
           }}>
-            Skincare without the noise.
+            Skincare
+            <br />
+            without the noise.
           </h2>
           <p style={{
             fontFamily: "var(--font-body)", fontSize: "0.9375rem", lineHeight: 1.6,
@@ -69,7 +73,7 @@ export function NewsletterSection() {
         </div>
 
         {/* Image */}
-        <div style={{ position: "relative", backgroundColor: "#EFE7D8", minHeight: 300 }}>
+        <div className="cut-corner--sm" style={{ position: "relative", backgroundColor: "#EFE7D8", minHeight: 300, margin: "clamp(1rem, 2vw, 1.5rem) clamp(1rem, 2vw, 1.5rem) clamp(1rem, 2vw, 1.5rem) 0", overflow: "hidden" }}>
           <Image
             src={homepageImages.newsletter}
             alt="Sukoon skincare"

@@ -51,8 +51,8 @@ export function CartView() {
         </svg>
         <h1 style={{
           fontFamily: "var(--font-body)", fontWeight: 600,
-          fontSize: "clamp(1.75rem, 3.5vw, 2.5rem)",
-          lineHeight: 1.05, letterSpacing: "-0.03em",
+          fontSize: "clamp(2rem, 4vw, 2.75rem)",
+          lineHeight: 1.0, letterSpacing: "-0.035em",
           color: TEXT, margin: "0 0 0.875rem",
         }}>
           Your bag is empty
@@ -87,8 +87,8 @@ export function CartView() {
         </p>
         <h1 style={{
           fontFamily: "var(--font-body)", fontWeight: 600,
-          fontSize: "clamp(1.75rem, 3.5vw, 2.5rem)",
-          lineHeight: 1.05, letterSpacing: "-0.03em",
+          fontSize: "clamp(2rem, 4vw, 2.75rem)",
+          lineHeight: 1.0, letterSpacing: "-0.035em",
           color: TEXT, margin: 0,
         }}>
           Your Bag
@@ -131,10 +131,10 @@ export function CartView() {
                 }}
               >
                 {/* Image */}
-                <div style={{
+                <div className="cut-corner--sm" style={{
                   position: "relative",
                   width: 90, height: 112, flexShrink: 0,
-                  backgroundColor: "#F4F4F2", borderRadius: 12, overflow: "hidden",
+                  backgroundColor: "#F4F4F2", overflow: "hidden",
                 }}>
                   {merchandise.image ? (
                     <Image

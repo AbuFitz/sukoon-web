@@ -82,9 +82,9 @@ function Accordion({ label, content, defaultOpen = false }: { label: string; con
 function RelatedCard({ product }: { product: typeof products[number] }) {
   return (
     <a href={`/products/${product.slug}`} style={{ textDecoration: "none", display: "block" }}>
-      <div style={{
+      <div className="cut-corner" style={{
         position: "relative", aspectRatio: "4 / 5",
-        overflow: "hidden", borderRadius: 14,
+        overflow: "hidden",
         backgroundColor: "#F4F4F2", marginBottom: "0.75rem",
       }}>
         <Image
@@ -132,10 +132,10 @@ export function ProductDetail({ handle, title, size, price, description, imageSr
         >
           {/* Image column */}
           <div style={{ position: "sticky", top: 90 }}>
-            <div style={{
+            <div className="cut-corner" style={{
               position: "relative", aspectRatio: "4 / 5",
               maxHeight: "clamp(440px, 50vw, 620px)",
-              overflow: "hidden", backgroundColor: "#F4F4F2", borderRadius: 16,
+              overflow: "hidden", backgroundColor: "#F4F4F2",
             }}>
               {tag && (
                 <span style={{
@@ -165,9 +165,9 @@ export function ProductDetail({ handle, title, size, price, description, imageSr
             </p>
             <h1 style={{
               fontFamily: "var(--font-body)", fontWeight: 600,
-              fontSize: "clamp(1.625rem, 2.4vw, 2.125rem)",
-              letterSpacing: "-0.02em", color: TEXT,
-              margin: "0 0 0.625rem", lineHeight: 1.1,
+              fontSize: "clamp(1.875rem, 2.8vw, 2.5rem)",
+              letterSpacing: "-0.035em", color: TEXT,
+              margin: "0 0 0.625rem", lineHeight: 1.02,
             }}>
               {title}
             </h1>
@@ -252,7 +252,7 @@ export function ProductDetail({ handle, title, size, price, description, imageSr
 
       {/* Editorial break */}
       <div style={{ maxWidth: 1440, margin: "0 auto", padding: "0 clamp(1.25rem, 4vw, 3rem)" }}>
-        <div style={{ position: "relative", aspectRatio: "21 / 9", backgroundColor: "#F4F4F2", borderRadius: 20, overflow: "hidden" }}>
+        <div className="cut-corner" style={{ position: "relative", aspectRatio: "21 / 9", backgroundColor: "#F4F4F2", overflow: "hidden" }}>
           <Image
             src={homepageImages.benefits}
             alt="The Daily Solace Fluid in use"
@@ -260,6 +260,14 @@ export function ProductDetail({ handle, title, size, price, description, imageSr
             sizes="100vw"
             style={{ objectFit: "cover" }}
           />
+          <p style={{
+            position: "absolute", left: "clamp(1.25rem, 3vw, 2.5rem)", bottom: "clamp(1.25rem, 3vw, 2.5rem)",
+            fontFamily: "var(--font-body)", fontSize: "clamp(1.125rem, 2.2vw, 1.625rem)", fontWeight: 600,
+            letterSpacing: "-0.02em", lineHeight: 1.15, color: "#FFFFFF", margin: 0, maxWidth: 420,
+            textShadow: "0 2px 20px rgba(0,0,0,0.35)",
+          }}>
+            Sixty seconds. Every morning.
+          </p>
         </div>
       </div>
 

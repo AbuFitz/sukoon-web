@@ -14,10 +14,16 @@ export function ShopTrustStrip() {
     >
       <div
         className="grid grid-cols-2 md:grid-cols-4"
-        style={{ maxWidth: 1440, margin: "0 auto", padding: "0 clamp(1.25rem, 4vw, 3rem) 2.5rem", gap: "1.25rem" }}
+        style={{ maxWidth: 1440, margin: "0 auto", padding: "0 clamp(1.25rem, 4vw, 3rem) 2.5rem", gap: "1.75rem" }}
       >
-        {items.map(item => (
-          <div key={item.title}>
+        {items.map((item, i) => (
+          <div key={item.title} style={{ borderLeft: "1px solid #D0C9B3", paddingLeft: "1rem" }}>
+            <span style={{
+              fontFamily: "var(--font-body)", fontWeight: 600,
+              fontSize: "0.6875rem", color: "#A39D8C", display: "block", marginBottom: "0.5rem",
+            }}>
+              {String(i + 1).padStart(2, "0")}
+            </span>
             <p style={{
               fontFamily: "var(--font-body)", fontWeight: 600,
               fontSize: "0.875rem", color: "#111111", margin: "0 0 0.2rem",

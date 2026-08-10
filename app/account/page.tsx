@@ -1,6 +1,7 @@
 import { SiteNav } from "@/components/nav/SiteNav";
 import { Footer } from "@/components/sections/Footer";
 import { AccountForm } from "@/components/nav/AccountForm";
+import { DropMark } from "@/components/ui/DropMark";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -19,6 +20,7 @@ export default function AccountPage() {
         <div style={{
           padding: "0 clamp(1.5rem, 6vw, 6rem) clamp(2rem, 5vw, 3rem)",
         }}>
+          <DropMark size={9} color="#111111" style={{ marginBottom: "0.875rem" }} />
           <p style={{
             fontFamily: "var(--font-body)", fontSize: "0.75rem", fontWeight: 600,
             color: "#969690", marginBottom: "0.875rem",
