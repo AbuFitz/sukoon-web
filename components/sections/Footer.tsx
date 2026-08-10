@@ -129,7 +129,7 @@ export function Footer() {
                 alt="Sukoon"
                 width={1214}
                 height={263}
-                style={{ height: 24, width: "auto", userSelect: "none" }}
+                style={{ height: 30, width: "auto", userSelect: "none" }}
               />
             </Link>
             <p style={{

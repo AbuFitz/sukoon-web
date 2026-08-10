@@ -63,7 +63,7 @@ function Wordmark() {
         width={1214}
         height={263}
         priority
-        style={{ height: 20, width: "auto", userSelect: "none" }}
+        style={{ height: 26, width: "auto", userSelect: "none" }}
       />
     </Link>
   );
