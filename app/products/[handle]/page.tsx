@@ -82,7 +82,7 @@ export default async function ProductPage({ params }: Props) {
       seller: { "@type": "Organization", name: "Sukoon Skin" },
     },
     additionalProperty: [
-      { "@type": "PropertyValue", name: "Formula", value: "100% Waterless" },
+      { "@type": "PropertyValue", name: "Formula", value: "5 Active Ingredients" },
       { "@type": "PropertyValue", name: "Origin", value: "Made in the UK" },
       { "@type": "PropertyValue", name: "Key Ingredients", value: "Black Seed Oil, Olive Squalane, Vitamin B3, Vitamin E, Vanilla Extract" },
     ],

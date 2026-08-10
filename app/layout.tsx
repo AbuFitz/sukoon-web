@@ -25,13 +25,13 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
-    default: "Sukoon Skin — Waterless Face & Hairline Oil",
+    default: "Sukoon Skin — Face & Hairline Oil",
     template: "%s | Sukoon Skin",
   },
   description:
-    "The Daily Solace Fluid — 100% waterless face and hairline oil with Black Seed, Olive Squalane, Vitamin B3, Vitamin E and Vanilla. Tackles acne, strengthens your skin barrier and reverses friction-induced hairline thinning. Made in the UK.",
+    "The Daily Solace Fluid — a face and hairline oil with Black Seed, Olive Squalane, Vitamin B3, Vitamin E and Vanilla. Tackles acne, strengthens your skin barrier and reverses friction-induced hairline thinning. Made in the UK.",
   keywords: [
-    "face oil", "black seed oil", "hairline thinning", "waterless skincare",
+    "face oil", "black seed oil", "hairline thinning",
     "olive squalane", "vitamin b3", "acne face oil", "skin barrier", "UK skincare",
     "natural face oil", "sukoon", "sukoon skin", "daily solace fluid",
     "friction alopecia", "traction alopecia oil", "men skincare", "women skincare",
@@ -46,9 +46,9 @@ export const metadata: Metadata = {
     googleBot: { index: true, follow: true, "max-snippet": -1, "max-image-preview": "large", "max-video-preview": -1 },
   },
   openGraph: {
-    title: "Sukoon Skin — Waterless Face & Hairline Oil",
+    title: "Sukoon Skin — Face & Hairline Oil",
     description:
-      "100% waterless. 5 active ingredients. Made in the UK. Tackles acne, strengthens your skin barrier and reverses friction-induced hairline thinning.",
+      "5 active ingredients. Made in the UK. Tackles acne, strengthens your skin barrier and reverses friction-induced hairline thinning.",
     url: BASE_URL,
     siteName: "Sukoon",
     type: "website",
@@ -57,8 +57,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Sukoon — Waterless Face & Hairline Oil",
-    description: "100% waterless. 5 active ingredients. Made in the UK.",
+    title: "Sukoon — Face & Hairline Oil",
+    description: "5 active ingredients. Made in the UK.",
     images: ["/og-image.jpg"],
   },
   alternates: { canonical: BASE_URL },
@@ -70,7 +70,7 @@ const orgJsonLd = {
   name: "Sukoon Skin",
   url: "https://sukoon.co.uk",
   logo: "https://sukoon.co.uk/Sukoonlogo.png",
-  description: "Sukoon Skin creates waterless, high-performance skincare made in the UK.",
+  description: "Sukoon Skin creates high-performance skincare made in the UK.",
   foundingLocation: { "@type": "Country", name: "United Kingdom" },
   contactPoint: { "@type": "ContactPoint", contactType: "customer service", url: "https://sukoon.co.uk/contact" },
   sameAs: [

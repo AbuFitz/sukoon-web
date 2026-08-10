@@ -25,21 +25,21 @@ export function BrandStorySection() {
           display: "flex", flexDirection: "column", justifyContent: "center",
           padding: "clamp(2rem, 4vw, 3.5rem)",
         }}>
-          <span className="badge" style={{ alignSelf: "flex-start", marginBottom: "1rem" }}>0% Water</span>
+          <span className="badge" style={{ alignSelf: "flex-start", marginBottom: "1rem" }}>5 Ingredients</span>
           <h2 style={{
             fontFamily: "var(--font-body)", fontWeight: 700,
             fontSize: "clamp(1.5rem, 2.6vw, 2.25rem)",
             letterSpacing: "-0.025em", color: "#111111",
             margin: "0 0 1rem", lineHeight: 1.1,
           }}>
-            Why waterless changes everything.
+            A concentrated formula, not a diluted one.
           </h2>
           <p style={{
             fontFamily: "var(--font-body)", fontSize: "0.9375rem", lineHeight: 1.65,
             color: "#5C5C5C", margin: "0 0 0.875rem", maxWidth: 440,
           }}>
-            Most skincare is 70–80% water. That water dilutes every active ingredient
-            and requires preservatives to prevent bacteria. We removed it entirely.
+            Most skincare is built around filler ingredients that dilute every
+            active and pad out the label. We took the opposite approach.
           </p>
           <p style={{
             fontFamily: "var(--font-body)", fontSize: "0.9375rem", lineHeight: 1.65,

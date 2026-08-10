@@ -86,7 +86,7 @@ export function Footer() {
               fontFamily: "var(--font-body)", fontSize: "0.875rem", lineHeight: 1.6,
               color: MUTED, maxWidth: 220, margin: 0,
             }}>
-              Waterless skincare made in the UK. Five ingredients. Nothing extra.
+              Skincare made in the UK. Five ingredients. Nothing extra.
             </p>
             <div style={{ display: "flex", gap: "0.625rem" }}>
               <a href="https://www.instagram.com/sukoonskin" target="_blank" rel="noopener noreferrer" className="badge">

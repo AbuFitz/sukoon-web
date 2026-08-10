@@ -6,9 +6,8 @@ const sections = [
   {
     heading: "The Product",
     items: [
-      { q: "What exactly is The Daily Solace Fluid?", a: "A 100% waterless oil nectar — 30ml of five active ingredients, nothing else. It works on two areas most products ignore: your face and your hairline. No water, no fragrance, no filler oils." },
+      { q: "What exactly is The Daily Solace Fluid?", a: "A concentrated oil nectar — 30ml of five active ingredients, nothing else. It works on two areas most products ignore: your face and your hairline. No fragrance, no filler oils." },
       { q: "What ingredients are in the formula?", a: "Olive Squalane (80%), Niacinamide / Vitamin B3 (14.9%), Black Seed Oil (2%), Vitamin E (3%), and Vanilla Extract (0.1%). That's the entire formula. Every percentage is there for a reason." },
-      { q: "Why is it waterless?", a: "Water is the most common filler in skincare. When there's no water, every drop of product is active. It also means the formula is self-preserving — no preservatives needed, no compromise on shelf life." },
       { q: "Does it smell?", a: "Barely. The Black Seed Oil is vacuum-steam-refined to remove its sharp medicinal scent. A trace of vanilla extract rounds the base. Most people describe it as 'clean' or 'almost nothing.'" },
       { q: "Is it suitable for sensitive skin?", a: "The formula is fragrance-free and built to be gentle. We still recommend a patch test 24 hours before first full use — just to be sure." },
     ],

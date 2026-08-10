@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { homepageImages } from "@/lib/homepage";
 
-const BADGES = ["100% Waterless", "Made in the UK", "Fragrance-Free", "Vegan & Cruelty-Free"];
+const BADGES = ["5 Active Ingredients", "Made in the UK", "Fragrance-Free", "Vegan & Cruelty-Free"];
 
 export function HeroSection() {
   return (
@@ -17,7 +17,7 @@ export function HeroSection() {
           display: "flex", flexDirection: "column", justifyContent: "center",
           minHeight: "clamp(420px, 46vw, 560px)",
         }}>
-          <span className="eyebrow" style={{ marginBottom: "1.25rem" }}>Waterless Skincare, Made in the UK</span>
+          <span className="eyebrow" style={{ marginBottom: "1.25rem" }}>Made in the UK</span>
 
           <h1 style={{
             fontFamily: "var(--font-body)", fontWeight: 700,
@@ -25,7 +25,7 @@ export function HeroSection() {
             lineHeight: 1.03, letterSpacing: "-0.035em",
             color: "#111111", margin: "0 0 1.5rem",
           }}>
-            One waterless oil.
+            One oil.
             <br />
             Two rituals — face &amp; hairline.
           </h1>
@@ -34,14 +34,14 @@ export function HeroSection() {
             fontFamily: "var(--font-body)", fontSize: "1.0625rem", lineHeight: 1.7,
             color: "#5C5C5C", maxWidth: 460, margin: "0 0 2rem",
           }}>
-            Most skincare is 70% water. We removed it entirely, leaving five active
-            ingredients built to calm skin, strengthen the barrier, and reverse
-            friction-induced hairline thinning — in under sixty seconds.
+            Five active ingredients, nothing else — built to calm skin, strengthen
+            the barrier, and reverse friction-induced hairline thinning, in under
+            sixty seconds.
           </p>
 
           <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", marginBottom: "2.25rem" }}>
             <Link href="/shop" className="btn btn-dark">Shop the Fluid</Link>
-            <Link href="/about" className="btn btn-outline">Why Waterless</Link>
+            <Link href="/about" className="btn btn-outline">Our Story</Link>
           </div>
 
           <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem" }}>
