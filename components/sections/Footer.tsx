@@ -124,11 +124,11 @@ export function Footer() {
           <div className="col-span-2 md:col-span-1" style={{ display: "flex", flexDirection: "column", gap: "1.125rem" }}>
             <Link href="/" style={{ textDecoration: "none" }}>
               <span style={{
-                fontFamily: "var(--font-body)", fontWeight: 700,
-                fontSize: "1.375rem", letterSpacing: "-0.02em",
+                fontFamily: "var(--font-body)", fontWeight: 800,
+                fontSize: "1.375rem", letterSpacing: "0.03em",
                 color: TEXT,
               }}>
-                SUKOON.
+                SUKOON
               </span>
             </Link>
             <p style={{
@@ -137,11 +137,21 @@ export function Footer() {
             }}>
               Skincare made in the UK. Five ingredients. Nothing extra.
             </p>
-            <div style={{ display: "flex", gap: "0.625rem" }}>
-              <a href="https://www.instagram.com/sukoonskin" target="_blank" rel="noopener noreferrer" className="badge">
+            <div style={{ display: "flex", gap: "1.25rem" }}>
+              <a
+                href="https://www.instagram.com/sukoonskin" target="_blank" rel="noopener noreferrer"
+                style={{ fontFamily: "var(--font-body)", fontSize: "0.875rem", color: MUTED, textDecoration: "none", transition: "color 0.18s ease" }}
+                onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = TEXT; }}
+                onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = MUTED; }}
+              >
                 Instagram
               </a>
-              <a href="https://www.tiktok.com/@sukoonskin" target="_blank" rel="noopener noreferrer" className="badge">
+              <a
+                href="https://www.tiktok.com/@sukoonskin" target="_blank" rel="noopener noreferrer"
+                style={{ fontFamily: "var(--font-body)", fontSize: "0.875rem", color: MUTED, textDecoration: "none", transition: "color 0.18s ease" }}
+                onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = TEXT; }}
+                onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = MUTED; }}
+              >
                 TikTok
               </a>
             </div>

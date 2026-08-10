@@ -101,24 +101,8 @@ export function CollectionSection({ products }: { products: FeaturedProduct[] })
         .product-row {
           display: grid;
           grid-template-columns: repeat(2, 1fr);
-          gap: clamp(1.25rem, 3vw, 2rem);
+          gap: clamp(0.875rem, 3vw, 2rem);
           max-width: 640px;
-        }
-        @media (max-width: 560px) {
-          .product-row {
-            display: flex;
-            gap: 0.875rem;
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
-            margin: 0 -1.25rem;
-            padding: 0 1.25rem 0.25rem;
-            -webkit-overflow-scrolling: touch;
-          }
-          .product-row::-webkit-scrollbar { display: none; }
-          .product-row > article {
-            flex: 0 0 78%;
-            scroll-snap-align: start;
-          }
         }
       `}</style>
     </section>

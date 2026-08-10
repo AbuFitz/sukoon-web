@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import { CartProvider } from "@/lib/cart-context";
-import { AnnouncementBar } from "@/components/sections/AnnouncementBar";
 import { CookieBanner } from "@/components/CookieBanner";
 import { ImageGuard } from "@/components/ImageGuard";
 import { TabAttention } from "@/components/TabAttention";
@@ -69,7 +68,7 @@ const orgJsonLd = {
   "@type": "Organization",
   name: "Sukoon Skin",
   url: "https://sukoon.co.uk",
-  logo: "https://sukoon.co.uk/Sukoonlogo.png",
+  logo: "https://sukoon.co.uk/logo.png",
   description: "Sukoon Skin creates high-performance skincare made in the UK.",
   foundingLocation: { "@type": "Country", name: "United Kingdom" },
   contactPoint: { "@type": "ContactPoint", contactType: "customer service", url: "https://sukoon.co.uk/contact" },
@@ -91,7 +90,6 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <body className="min-h-full">
         <ImageGuard />
         <TabAttention />
-        <AnnouncementBar />
         <CartProvider>{children}</CartProvider>
         <CookieBanner />
       </body>

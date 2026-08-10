@@ -1,11 +1,12 @@
 import Image from "next/image";
 import { homepageImages } from "@/lib/homepage";
 
-const BADGES = ["Made in the UK", "Fragrance-Free", "Vegan & Cruelty-Free"];
-
 export function HeroSection() {
   return (
-    <section aria-label="Hero" style={{ position: "relative", minHeight: "min(88vh, 760px)", overflow: "hidden" }}>
+    <section aria-label="Hero" style={{
+      position: "relative", minHeight: "min(88vh, 760px)", overflow: "hidden",
+      marginTop: "-76px",
+    }}>
       <Image
         src={homepageImages.hero}
         alt="The Daily Solace Fluid ritual"
@@ -28,29 +29,15 @@ export function HeroSection() {
           fontFamily: "var(--font-body)", fontWeight: 700,
           fontSize: "clamp(2.5rem, 5vw, 4.25rem)",
           lineHeight: 1.02, letterSpacing: "-0.035em",
-          color: "#FFFFFF", margin: "0 0 1rem", maxWidth: 640,
+          color: "#FFFFFF", margin: "0 0 1.75rem", maxWidth: 640,
         }}>
-          One oil. Two rituals — face &amp; hairline.
+          One oil. Two rituals.
         </h1>
 
-        <p style={{
-          fontFamily: "var(--font-body)", fontSize: "1.0625rem", lineHeight: 1.6,
-          color: "rgba(255,255,255,0.88)", maxWidth: 460, margin: "0 0 1.75rem",
-        }}>
-          Five active ingredients. Zero fillers. Calms skin, strengthens the
-          barrier, and combats hairline friction.
-        </p>
-
-        <div style={{ marginBottom: "1.5rem" }}>
+        <div>
           <a href="#collection" className="btn btn-dark">
             Shop The Fluid
           </a>
-        </div>
-
-        <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem" }}>
-          {BADGES.map(b => (
-            <span key={b} className="badge" style={{ backgroundColor: "rgba(255,255,255,0.14)", color: "#FFFFFF" }}>{b}</span>
-          ))}
         </div>
       </div>
     </section>

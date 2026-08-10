@@ -58,13 +58,13 @@ function Wordmark() {
     <Link href="/" aria-label="Sukoon home" style={{ textDecoration: "none" }}>
       <span style={{
         fontFamily: "var(--font-body)",
-        fontWeight: 700,
+        fontWeight: 800,
         fontSize: "1.125rem",
-        letterSpacing: "-0.01em",
+        letterSpacing: "0.03em",
         color: TEXT,
         userSelect: "none",
       }}>
-        SUKOON.
+        SUKOON
       </span>
     </Link>
   );
