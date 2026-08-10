@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -122,14 +123,14 @@ export function Footer() {
         >
           {/* Brand */}
           <div className="col-span-2 md:col-span-1" style={{ display: "flex", flexDirection: "column", gap: "1.125rem" }}>
-            <Link href="/" style={{ textDecoration: "none" }}>
-              <span style={{
-                fontFamily: "var(--font-body)", fontWeight: 800,
-                fontSize: "1.375rem", letterSpacing: "0.03em",
-                color: TEXT,
-              }}>
-                SUKOON
-              </span>
+            <Link href="/" style={{ display: "inline-flex" }}>
+              <Image
+                src="/logo.png"
+                alt="Sukoon"
+                width={1214}
+                height={263}
+                style={{ height: 24, width: "auto", userSelect: "none" }}
+              />
             </Link>
             <p style={{
               fontFamily: "var(--font-body)", fontSize: "0.875rem", lineHeight: 1.6,

@@ -48,11 +48,10 @@ export function FAQContent() {
       <div style={{ maxWidth: "820px", margin: "0 auto", display: "flex", flexDirection: "column", gap: "clamp(1rem, 2vw, 1.25rem)" }}>
 
         <div className="card" style={{ padding: "clamp(2rem, 5vw, 3rem)" }}>
-          <span className="eyebrow">FAQ</span>
           <h1 style={{
             fontFamily: "var(--font-body)", fontSize: "clamp(2rem, 4.5vw, 3rem)",
             fontWeight: 700, letterSpacing: "-0.035em", lineHeight: 1.0, color: "#111111",
-            margin: "0.75rem 0 0",
+            margin: 0,
           }}>
             Honest answers.
           </h1>

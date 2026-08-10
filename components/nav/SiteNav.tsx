@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { SearchOverlay } from "./SearchOverlay";
 import { AccountPanel } from "./AccountPanel";
@@ -55,17 +56,15 @@ function MenuIcon() {
 
 function Wordmark() {
   return (
-    <Link href="/" aria-label="Sukoon home" style={{ textDecoration: "none" }}>
-      <span style={{
-        fontFamily: "var(--font-body)",
-        fontWeight: 800,
-        fontSize: "1.125rem",
-        letterSpacing: "0.03em",
-        color: TEXT,
-        userSelect: "none",
-      }}>
-        SUKOON
-      </span>
+    <Link href="/" aria-label="Sukoon home" style={{ display: "inline-flex" }}>
+      <Image
+        src="/logo.png"
+        alt="Sukoon"
+        width={1214}
+        height={263}
+        priority
+        style={{ height: 20, width: "auto", userSelect: "none" }}
+      />
     </Link>
   );
 }

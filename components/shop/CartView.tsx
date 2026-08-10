@@ -77,12 +77,11 @@ export function CartView() {
     <div>
       {/* Page header */}
       <div style={{ marginBottom: "1.25rem" }}>
-        <span className="eyebrow">Review</span>
         <h1 style={{
           fontFamily: "var(--font-body)", fontWeight: 700,
           fontSize: "clamp(1.75rem, 3.5vw, 2.5rem)",
           lineHeight: 1.0, letterSpacing: "-0.035em",
-          color: TEXT, margin: "0.5rem 0 0",
+          color: TEXT, margin: 0,
         }}>
           Your Bag
         </h1>

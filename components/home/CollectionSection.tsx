@@ -83,11 +83,10 @@ export function CollectionSection({ products }: { products: FeaturedProduct[] })
   return (
     <section id="collection" className="container" style={{ paddingTop: "clamp(2.5rem, 5vw, 4rem)" }}>
       <div style={{ marginBottom: "1.5rem" }}>
-        <span className="eyebrow">The Collection</span>
         <h2 style={{
           fontFamily: "var(--font-body)", fontWeight: 700,
           fontSize: "clamp(1.375rem, 2.2vw, 1.75rem)",
-          letterSpacing: "-0.02em", color: "#111111", margin: "0.5rem 0 0",
+          letterSpacing: "-0.02em", color: "#111111", margin: 0,
         }}>
           The Daily Solace Fluid
         </h2>

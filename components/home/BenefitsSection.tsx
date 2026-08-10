@@ -4,14 +4,12 @@ import { homepageImages } from "@/lib/homepage";
 const RITUALS = [
   {
     label: "Face Ritual",
-    dose: "2-3 Drops Daily",
     body: "Calms redness, repairs the barrier, locks in hydration — no greasy residue.",
     image: homepageImages.benefits,
     alt: "Applying the Daily Solace Fluid to the face",
   },
   {
     label: "Hairline Ritual",
-    dose: "1-2 Drops Weekly",
     body: "Protects follicles from tension damage caused by tight styles, braids, and caps.",
     image: homepageImages.story,
     alt: "The Daily Solace Fluid ritual, prepared for hairline application",
@@ -22,11 +20,10 @@ export function BenefitsSection() {
   return (
     <section className="container" style={{ paddingTop: "clamp(2.5rem, 5vw, 4rem)" }}>
       <div style={{ marginBottom: "1.25rem" }}>
-        <span className="eyebrow">The Ritual</span>
         <h2 style={{
           fontFamily: "var(--font-body)", fontWeight: 700,
           fontSize: "clamp(1.375rem, 2.2vw, 1.75rem)",
-          letterSpacing: "-0.02em", color: "#111111", margin: "0.5rem 0 0",
+          letterSpacing: "-0.02em", color: "#111111", margin: 0,
         }}>
           One bottle. Two rituals.
         </h2>
@@ -46,9 +43,6 @@ export function BenefitsSection() {
                 sizes="(max-width: 900px) 100vw, 50vw"
                 style={{ objectFit: "cover" }}
               />
-              <span className="badge badge-light" style={{ position: "absolute", top: "1rem", left: "1rem" }}>
-                {r.dose}
-              </span>
             </div>
             <h3 style={{
               fontFamily: "var(--font-body)", fontWeight: 700,

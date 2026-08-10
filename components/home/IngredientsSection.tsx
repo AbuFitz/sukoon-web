@@ -35,11 +35,10 @@ export function IngredientsSection() {
   return (
     <section id="ingredients" className="container" style={{ paddingTop: "clamp(2.5rem, 5vw, 4rem)" }}>
       <div style={{ marginBottom: "1.25rem", maxWidth: 560 }}>
-        <span className="eyebrow">Formula</span>
         <h2 style={{
           fontFamily: "var(--font-body)", fontWeight: 700,
           fontSize: "clamp(1.375rem, 2.2vw, 1.75rem)",
-          letterSpacing: "-0.02em", color: "#111111", margin: "0.5rem 0 0", lineHeight: 1.1,
+          letterSpacing: "-0.02em", color: "#111111", margin: 0, lineHeight: 1.1,
         }}>
           Five ingredients. Nothing hidden.
         </h2>

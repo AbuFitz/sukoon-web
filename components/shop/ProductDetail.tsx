@@ -253,7 +253,6 @@ export function ProductDetail({ handle, title, size, price, description, imageSr
 
       {/* Active ingredients bento */}
       <div style={{ marginBottom: "clamp(1rem, 2vw, 1.25rem)" }}>
-        <span className="eyebrow">Active Ingredients</span>
         <div className="pdp-ingredient-grid" style={{ marginTop: "0.75rem" }}>
           {ingredients.map(ing => (
             <div key={ing.name} className="card" style={{ padding: "clamp(1.25rem, 2.5vw, 1.5rem)" }}>

@@ -15,12 +15,11 @@ export default function AccountPage() {
         <div style={{ maxWidth: 440, margin: "0 auto" }}>
           {/* Page header */}
           <div style={{ marginBottom: "1.25rem", textAlign: "center" }}>
-            <span className="eyebrow">Your Account</span>
             <h1 style={{
               fontFamily: "var(--font-body)", fontWeight: 700,
               fontSize: "clamp(1.875rem, 4vw, 2.5rem)",
               lineHeight: 1.05, letterSpacing: "-0.03em",
-              color: "#111111", margin: "0.5rem 0 0",
+              color: "#111111", margin: 0,
             }}>
               Welcome back.
             </h1>

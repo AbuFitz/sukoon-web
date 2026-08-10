@@ -13,11 +13,10 @@ export function AboutContent() {
           padding: "clamp(2rem, 5vw, 3.5rem) clamp(1.5rem, 5vw, 3.5rem)",
         }}>
           <div style={{ maxWidth: "780px" }}>
-            <span className="eyebrow">About Sukoon</span>
             <h1 style={{
               fontFamily: "var(--font-body)", fontSize: "clamp(2.25rem, 4.5vw, 3.5rem)",
               fontWeight: 700, lineHeight: 1.02, letterSpacing: "-0.035em", color: "#111111",
-              margin: "0.75rem 0 clamp(1.5rem, 3vw, 2rem)",
+              margin: "0 0 clamp(1.5rem, 3vw, 2rem)",
             }}>
               The skincare industry built everything for your face. We built one thing for what it missed.
             </h1>
@@ -70,11 +69,10 @@ export function AboutContent() {
         {/* The Formula Philosophy */}
         <div className="card" style={{ padding: "clamp(2rem, 5vw, 3rem) clamp(1.5rem, 5vw, 3rem)" }}>
           <div style={{ maxWidth: "780px", margin: "0 auto" }}>
-            <span className="eyebrow">The Formula</span>
             <h2 style={{
               fontFamily: "var(--font-body)", fontSize: "clamp(1.5rem, 2.6vw, 2.125rem)",
               fontWeight: 700, lineHeight: 1.15, letterSpacing: "-0.02em",
-              color: "#111111", margin: "0.75rem 0 clamp(1.25rem, 3vw, 1.75rem)",
+              color: "#111111", margin: "0 0 clamp(1.25rem, 3vw, 1.75rem)",
             }}>
               Five ingredients. Nothing extra.
             </h2>

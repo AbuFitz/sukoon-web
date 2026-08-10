@@ -47,11 +47,10 @@ export default function ContactPage() {
       <SiteNav />
       <main className="container" style={{ paddingTop: "clamp(1rem, 2vw, 1.5rem)", paddingBottom: "clamp(1rem, 2vw, 1.25rem)" }}>
         <div className="card" style={{ maxWidth: 680, margin: "0 auto", padding: "clamp(2rem, 5vw, 3rem)" }}>
-          <span className="eyebrow">Contact</span>
           <h1 style={{
             fontFamily: "var(--font-body)", fontSize: "clamp(2rem, 4vw, 3rem)",
             fontWeight: 700, letterSpacing: "-0.035em", color: INK,
-            margin: "0.75rem 0 0.625rem", lineHeight: 1.02,
+            margin: "0 0 0.625rem", lineHeight: 1.02,
           }}>We read every message.</h1>
           <p style={{
             fontFamily: "var(--font-body)", fontSize: "0.9375rem", lineHeight: 1.6, color: MUTED,

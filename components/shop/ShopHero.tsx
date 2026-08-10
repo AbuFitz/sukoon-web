@@ -9,11 +9,10 @@ export function ShopHero() {
         gap: "1.5rem", flexWrap: "wrap",
       }}>
         <div>
-          <span className="eyebrow">Shop</span>
           <h1 style={{
             fontFamily: "var(--font-body)", fontWeight: 700,
             fontSize: "clamp(1.75rem, 3vw, 2.5rem)",
-            letterSpacing: "-0.03em", lineHeight: 1.05, color: "#111111", margin: "0.5rem 0 0.625rem",
+            letterSpacing: "-0.03em", lineHeight: 1.05, color: "#111111", margin: "0 0 0.625rem",
           }}>
             Shop Sukoon
           </h1>
