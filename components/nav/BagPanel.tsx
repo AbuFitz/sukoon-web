@@ -1,19 +1,18 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { Panel } from "./Panel";
 import { useCart } from "@/lib/cart-context";
 import { formatPrice } from "@/lib/shopify";
 
-const TEXT   = "#000000";
-const MUTED  = "#A3A3A3";
-const BORDER = "#E5E5E5";
+const TEXT   = "#111111";
+const MUTED  = "#9A9A9A";
+const BORDER = "#E2E2E2";
 
 function Stepper({ qty, onChange }: { qty: number; onChange: (qty: number) => void }) {
   return (
     <div style={{
-      display: "flex", alignItems: "center", borderRadius: 2,
+      display: "flex", alignItems: "center", borderRadius: 8,
       border: `1px solid ${BORDER}`,
     }}>
       <button
@@ -54,9 +53,9 @@ export function BagPanel({ open, onClose }: { open: boolean; onClose: () => void
           <p style={{ fontFamily: "var(--font-body)", fontSize: "0.875rem", color: MUTED, lineHeight: 1.6, maxWidth: 260, marginBottom: "2rem" }}>
             Add something to get started.
           </p>
-          <Link href="/#fluid" onClick={onClose} className="btn btn-dark">
+          <a href="/shop" onClick={onClose} className="btn btn-dark">
             Shop now
-          </Link>
+          </a>
         </div>
       </Panel>
     );
@@ -77,11 +76,11 @@ export function BagPanel({ open, onClose }: { open: boolean; onClose: () => void
           return (
             <div key={line.id} style={{ display: "flex", gap: "1rem" }}>
               {merchandise.image ? (
-                <div style={{ position: "relative", width: 80, height: 96, flexShrink: 0, overflow: "hidden", backgroundColor: "#F5F5F5", border: `1px solid ${BORDER}` }}>
+                <div className="card-sm" style={{ position: "relative", width: 80, height: 96, flexShrink: 0, overflow: "hidden", backgroundColor: "#EFEFEF" }}>
                   <Image src={merchandise.image.url} alt={merchandise.image.altText ?? merchandise.product.title} fill sizes="80px" style={{ objectFit: "cover" }} />
                 </div>
               ) : (
-                <div style={{ width: 80, height: 96, flexShrink: 0, backgroundColor: "#F5F5F5", border: `1px solid ${BORDER}` }} />
+                <div className="card-sm" style={{ width: 80, height: 96, flexShrink: 0, backgroundColor: "#EFEFEF" }} />
               )}
               <div style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
                 <div>

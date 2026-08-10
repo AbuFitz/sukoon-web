@@ -5,6 +5,8 @@ import { FeaturedProductsSection } from "@/components/home/FeaturedProductsSecti
 import { BrandStorySection }      from "@/components/home/BrandStorySection";
 import { IngredientsSection }     from "@/components/home/IngredientsSection";
 import { BenefitsSection }        from "@/components/home/BenefitsSection";
+import { ManifestoSection }       from "@/components/home/ManifestoSection";
+import { NewsletterSection }      from "@/components/home/NewsletterSection";
 import { Footer }                 from "@/components/sections/Footer";
 import { getProducts, formatPrice } from "@/lib/shopify";
 import { featuredProductHandles, productFallbackPrices, productFallbackTitles, type FeaturedHandle } from "@/lib/homepage";
@@ -19,6 +21,11 @@ const websiteJsonLd = {
   "@type": "WebSite",
   name: "Sukoon",
   url: "https://sukoon.co.uk",
+  potentialAction: {
+    "@type": "SearchAction",
+    target: "https://sukoon.co.uk/shop?q={search_term_string}",
+    "query-input": "required name=search_term_string",
+  },
 };
 
 export default async function HomePage() {
@@ -51,12 +58,14 @@ export default async function HomePage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }} />
       <SiteNav />
-      <main>
+      <main style={{ paddingBottom: "clamp(1rem, 2vw, 1.25rem)" }}>
         <HeroSection />
         <FeaturedProductsSection products={featuredProducts} />
         <BrandStorySection />
         <IngredientsSection />
+        <ManifestoSection />
         <BenefitsSection />
+        <NewsletterSection />
       </main>
       <Footer />
     </>

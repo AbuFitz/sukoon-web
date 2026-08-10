@@ -27,20 +27,19 @@ export function CookieBanner() {
       position: "fixed", bottom: 16, left: 16, right: 16, zIndex: 200,
       display: "flex", justifyContent: "center",
     }}>
-      <div className="block" style={{
+      <div className="card" style={{
         width: "100%", maxWidth: 720,
-        backgroundColor: "#FFFFFF",
-        boxShadow: "0 20px 50px rgba(0,0,0,0.12)",
+        boxShadow: "0 20px 50px rgba(17,17,16,0.12)",
         padding: "1.25rem 1.5rem",
         display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between",
         gap: "1rem",
       }}>
         <p style={{
           fontFamily: "var(--font-body)", fontSize: "0.875rem", lineHeight: 1.6,
-          color: "#525252", maxWidth: 420, flex: "1 1 260px", margin: 0,
+          color: "#5C5C5C", maxWidth: 420, flex: "1 1 260px", margin: 0,
         }}>
           We use cookies to improve your experience.{" "}
-          <a href="/cookies" style={{ color: "#000000", textDecoration: "underline", textUnderlineOffset: 2 }}>
+          <a href="/cookies" style={{ color: "#111111", textDecoration: "underline", textUnderlineOffset: 2 }}>
             Cookie Policy
           </a>
           .

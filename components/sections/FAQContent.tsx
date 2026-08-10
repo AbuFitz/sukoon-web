@@ -7,7 +7,7 @@ const sections = [
     heading: "The Product",
     items: [
       { q: "What exactly is The Daily Solace Fluid?", a: "A 100% waterless oil nectar — 30ml of five active ingredients, nothing else. It works on two areas most products ignore: your face and your hairline. No water, no fragrance, no filler oils." },
-      { q: "What ingredients are in the formula?", a: "Olive Squalane (80%), Vitamin B3 / Niacinamide (14.9%), Vitamin E (3%), Black Seed Oil (2%), and Vanilla Extract (0.1%). That's the entire formula. Every percentage is there for a reason." },
+      { q: "What ingredients are in the formula?", a: "Olive Squalane (80%), Niacinamide / Vitamin B3 (14.9%), Black Seed Oil (2%), Vitamin E (3%), and Vanilla Extract (0.1%). That's the entire formula. Every percentage is there for a reason." },
       { q: "Why is it waterless?", a: "Water is the most common filler in skincare. When there's no water, every drop of product is active. It also means the formula is self-preserving — no preservatives needed, no compromise on shelf life." },
       { q: "Does it smell?", a: "Barely. The Black Seed Oil is vacuum-steam-refined to remove its sharp medicinal scent. A trace of vanilla extract rounds the base. Most people describe it as 'clean' or 'almost nothing.'" },
       { q: "Is it suitable for sensitive skin?", a: "The formula is fragrance-free and built to be gentle. We still recommend a patch test 24 hours before first full use — just to be sure." },
@@ -16,8 +16,8 @@ const sections = [
   {
     heading: "Using It",
     items: [
-      { q: "How do I use it on my face?", a: "Two to three drops. Warm between your palms. Press into skin. Morning or evening — or both. It sinks in under sixty seconds and works as a standalone moisturiser for most skin types." },
-      { q: "How do I use it on my hairline?", a: "One to two drops along the part-line. Massage slowly into the roots. Weekly is enough — more if your hairline is under heavy daily strain from tight styles or under-caps." },
+      { q: "How do I use it on my face?", a: "Two drops. Warm between your palms. Press into skin. Morning or evening — or both. It sinks in under sixty seconds and works as a standalone moisturiser for most skin types." },
+      { q: "How do I use it on my hairline?", a: "A few drops along the part-line. Massage slowly into the roots. Weekly is enough — more if your hairline is under heavy daily strain from tight styles or under-caps." },
       { q: "Can I use it every day?", a: "Yes. It's designed for daily face use. For the hairline, weekly or as needed." },
       { q: "How much product do I use per application?", a: "Two to three drops for the face. One to two for the hairline. The dropper makes it easy to control. Less is more — it goes a long way." },
     ],
@@ -45,14 +45,14 @@ export function FAQContent() {
   const [openKey, setOpenKey] = useState<string | null>("The Product-0");
 
   return (
-    <section aria-label="Frequently asked questions" className="container" style={{ paddingTop: "clamp(2rem, 4vw, 3rem)", paddingBottom: "clamp(3rem, 5vw, 4.5rem)" }}>
+    <section aria-label="Frequently asked questions" className="container" style={{ paddingTop: "clamp(1rem, 2vw, 1.5rem)", paddingBottom: "clamp(1rem, 2vw, 1.25rem)" }}>
       <div style={{ maxWidth: "820px", margin: "0 auto", display: "flex", flexDirection: "column", gap: "clamp(1rem, 2vw, 1.25rem)" }}>
 
-        <div className="block" style={{ padding: "clamp(2rem, 5vw, 3rem)" }}>
+        <div className="card" style={{ padding: "clamp(2rem, 5vw, 3rem)" }}>
           <span className="eyebrow">FAQ</span>
           <h1 style={{
             fontFamily: "var(--font-body)", fontSize: "clamp(2rem, 4.5vw, 3rem)",
-            fontWeight: 700, letterSpacing: "-0.035em", lineHeight: 1.0, color: "#000000",
+            fontWeight: 700, letterSpacing: "-0.035em", lineHeight: 1.0, color: "#111111",
             margin: "0.75rem 0 0",
           }}>
             Honest answers.
@@ -60,13 +60,13 @@ export function FAQContent() {
         </div>
 
         {sections.map((sec) => (
-          <div key={sec.heading} className="block" style={{ padding: "clamp(1.5rem, 3vw, 2rem) clamp(1.5rem, 3vw, 2rem)" }}>
-            <span className="tag" style={{ marginBottom: "0.75rem" }}>{sec.heading}</span>
+          <div key={sec.heading} className="card" style={{ padding: "clamp(1.5rem, 3vw, 2rem) clamp(1.5rem, 3vw, 2rem)" }}>
+            <span className="badge" style={{ marginBottom: "0.75rem" }}>{sec.heading}</span>
             {sec.items.map((item, i) => {
               const key = `${sec.heading}-${i}`;
               const open = openKey === key;
               return (
-                <div key={item.q} style={{ borderTop: "1px solid #E5E5E5" }}>
+                <div key={item.q} style={{ borderTop: "1px solid #E2E2E2" }}>
                   <button
                     onClick={() => setOpenKey(open ? null : key)}
                     aria-expanded={open}
@@ -74,12 +74,12 @@ export function FAQContent() {
                       width: "100%", display: "flex", alignItems: "center", justifyContent: "space-between",
                       gap: "1rem", background: "none", border: "none", cursor: "pointer", textAlign: "left",
                       padding: "1.125rem 0",
-                      fontFamily: "var(--font-body)", fontSize: "0.9375rem", fontWeight: 700, color: "#000000",
+                      fontFamily: "var(--font-body)", fontSize: "0.9375rem", fontWeight: 700, color: "#111111",
                     }}
                   >
                     {item.q}
                     <span aria-hidden style={{
-                      flexShrink: 0, fontSize: "1.125rem", color: "#A3A3A3",
+                      flexShrink: 0, fontSize: "1.125rem", color: "#9A9A9A",
                       display: "inline-block",
                       transform: open ? "rotate(45deg)" : "none", transition: "transform 0.25s ease",
                     }}>+</span>
@@ -90,7 +90,7 @@ export function FAQContent() {
                   }}>
                     <p style={{
                       fontFamily: "var(--font-body)", fontSize: "0.875rem", lineHeight: 1.7,
-                      color: "#525252", paddingBottom: "1.25rem", maxWidth: "660px", margin: 0,
+                      color: "#5C5C5C", paddingBottom: "1.25rem", maxWidth: "660px", margin: 0,
                     }}>
                       {item.a}
                     </p>
@@ -101,10 +101,10 @@ export function FAQContent() {
           </div>
         ))}
 
-        <div className="block" style={{ padding: "clamp(1.5rem, 3vw, 2rem)", backgroundColor: "#FAFAFA" }}>
-          <p style={{ fontFamily: "var(--font-body)", fontSize: "0.875rem", lineHeight: 1.75, color: "#000000", margin: 0 }}>
+        <div className="card" style={{ padding: "clamp(1.5rem, 3vw, 2rem)", backgroundColor: "#EBEBEB" }}>
+          <p style={{ fontFamily: "var(--font-body)", fontSize: "0.875rem", lineHeight: 1.75, color: "#111111", margin: 0 }}>
             Didn&rsquo;t find what you were looking for?{" "}
-            <a href="mailto:hello@sukoon.co.uk" style={{ color: "#000000", fontWeight: 700, textDecoration: "underline", textUnderlineOffset: "2px" }}>
+            <a href="mailto:hello@sukoon.co.uk" style={{ color: "#111111", fontWeight: 700, textDecoration: "underline", textUnderlineOffset: "2px" }}>
               Get in touch
             </a>{" "}
             — we reply within one working day.

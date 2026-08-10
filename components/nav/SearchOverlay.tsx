@@ -5,9 +5,9 @@ import { useEffect, useRef, useState } from "react";
 import { Panel } from "./Panel";
 import { products } from "@/lib/products";
 
-const TEXT   = "#000000";
-const MUTED  = "#A3A3A3";
-const BORDER = "#E5E5E5";
+const TEXT   = "#111111";
+const MUTED  = "#9A9A9A";
+const BORDER = "#E2E2E2";
 
 export function SearchOverlay({ open, onClose }: { open: boolean; onClose: () => void }) {
   const inputRef = useRef<HTMLInputElement>(null);
@@ -34,8 +34,8 @@ export function SearchOverlay({ open, onClose }: { open: boolean; onClose: () =>
       {/* Input */}
       <div style={{
         display: "flex", alignItems: "center", gap: "0.75rem",
-        border: `1px solid ${BORDER}`, borderRadius: 2, backgroundColor: "#FAFAFA",
-        padding: "0.75rem 1rem",
+        border: `1px solid ${BORDER}`, borderRadius: 8, backgroundColor: "#F5F5F5",
+        padding: "0.75rem 1.25rem",
         marginBottom: "1.75rem",
       }}>
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={MUTED} strokeWidth="1.8" strokeLinecap="round" aria-hidden>
@@ -77,10 +77,10 @@ export function SearchOverlay({ open, onClose }: { open: boolean; onClose: () =>
         <div className="grid grid-cols-2" style={{ gap: "1rem" }}>
           {filtered.map((p) => (
             <a key={p.slug} href={`/products/${p.slug}`} onClick={onClose} style={{ textDecoration: "none" }}>
-              <div style={{
+              <div className="card-sm" style={{
                 position: "relative", aspectRatio: "4 / 5",
-                overflow: "hidden", border: `1px solid ${BORDER}`,
-                backgroundColor: "#F5F5F5", marginBottom: "0.625rem",
+                overflow: "hidden",
+                backgroundColor: "#EFEFEF", marginBottom: "0.625rem",
               }}>
                 <Image
                   src={p.src} alt={p.name} fill
