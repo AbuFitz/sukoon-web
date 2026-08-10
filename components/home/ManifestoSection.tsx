@@ -7,16 +7,15 @@ export function ManifestoSection() {
     }}>
       <div style={{ maxWidth: 820, margin: "0 auto" }}>
         <p style={{
-          fontFamily: "var(--font-display)",
-          fontStyle: "italic",
-          fontWeight: 400,
+          fontFamily: "var(--font-body)",
+          fontWeight: 200,
           fontSize: "clamp(1.75rem, 4vw, 3rem)",
-          lineHeight: 1.35,
+          lineHeight: 1.3,
           color: "#F5F5F3",
           margin: "0 0 2rem",
           letterSpacing: "-0.01em",
         }}>
-          "Skin care shouldn&apos;t require a chemistry degree. Ours requires five ingredients and sixty seconds."
+          &ldquo;Skin care shouldn&apos;t require a chemistry degree. Ours requires five ingredients and sixty seconds.&rdquo;
         </p>
         <p style={{
           fontFamily: "var(--font-body)", fontWeight: 500,

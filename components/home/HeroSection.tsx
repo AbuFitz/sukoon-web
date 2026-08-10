@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { homepageImages } from "@/lib/homepage";
 
 export function HeroSection() {
@@ -11,14 +12,15 @@ export function HeroSection() {
         position: "relative",
         backgroundColor: "#F5F5F3",
         overflow: "hidden",
-        minHeight: "100dvh",
+        minHeight: "85vh",
+        borderBottom: "1px solid #E3E3DF",
         display: "flex",
         alignItems: "center",
       }}
     >
       <div style={{
         maxWidth: 1320, margin: "0 auto", width: "100%",
-        padding: "clamp(7rem, 12vw, 10rem) clamp(1.25rem, 4vw, 3rem) clamp(4rem, 8vw, 6rem)",
+        padding: "clamp(3rem, 6vw, 5rem) clamp(1.25rem, 4vw, 3rem)",
         display: "grid",
         gridTemplateColumns: "1fr 1fr",
         gap: "clamp(3rem, 6vw, 5rem)",
@@ -32,10 +34,10 @@ export function HeroSection() {
 
           <h1 style={{
             fontFamily: "var(--font-body)",
-            fontWeight: 700,
+            fontWeight: 200,
             fontSize: "clamp(2.75rem, 5.5vw, 5rem)",
-            lineHeight: 1.04,
-            letterSpacing: "-0.03em",
+            lineHeight: 0.98,
+            letterSpacing: "-0.02em",
             color: "#111111",
             margin: "0 0 1.5rem",
           }}>
@@ -62,10 +64,11 @@ export function HeroSection() {
               href="/shop"
               style={{
                 display: "inline-flex", alignItems: "center", justifyContent: "center",
-                fontFamily: "var(--font-body)", fontSize: "0.875rem", fontWeight: 500,
+                fontFamily: "var(--font-body)", fontSize: "0.6875rem", fontWeight: 700,
+                letterSpacing: "0.16em", textTransform: "uppercase",
                 color: "#FFFFFF", backgroundColor: "#111111",
-                borderRadius: 12, padding: "0.875rem 2rem",
-                textDecoration: "none", border: "1.5px solid #111111",
+                padding: "1rem 2.25rem",
+                textDecoration: "none", border: "1px solid #111111",
                 transition: "background-color 0.2s ease",
               }}
               onMouseEnter={e => { (e.currentTarget as HTMLElement).style.backgroundColor = "#333333"; }}
@@ -73,27 +76,28 @@ export function HeroSection() {
             >
               Shop Now
             </a>
-            <a
+            <Link
               href="/#ingredients"
               style={{
                 display: "inline-flex", alignItems: "center", justifyContent: "center",
-                fontFamily: "var(--font-body)", fontSize: "0.875rem", fontWeight: 400,
+                fontFamily: "var(--font-body)", fontSize: "0.6875rem", fontWeight: 700,
+                letterSpacing: "0.16em", textTransform: "uppercase",
                 color: "#111111", backgroundColor: "transparent",
-                borderRadius: 12, padding: "0.875rem 2rem",
-                textDecoration: "none", border: "1.5px solid #E3E3DF",
+                padding: "1rem 2.25rem",
+                textDecoration: "none", border: "1px solid #E3E3DF",
                 transition: "border-color 0.2s ease",
               }}
               onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = "#111111"; }}
               onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = "#E3E3DF"; }}
             >
               See the Formula
-            </a>
+            </Link>
           </div>
 
           <div style={{ marginTop: "2.5rem", display: "flex", gap: "2rem", flexWrap: "wrap" }}>
             {["Vegan", "Cruelty Free", "Waterless", "5 Ingredients"].map(s => (
               <span key={s} style={{
-                fontFamily: "var(--font-body)", fontSize: "0.625rem", fontWeight: 600,
+                fontFamily: "var(--font-body)", fontSize: "0.625rem", fontWeight: 700,
                 letterSpacing: "0.12em", textTransform: "uppercase", color: "#92928D",
               }}>
                 {s}
@@ -107,7 +111,6 @@ export function HeroSection() {
           <div style={{
             position: "relative",
             aspectRatio: "4 / 5",
-            borderRadius: 24,
             overflow: "hidden",
             backgroundColor: "#EAEAE8",
           }}>

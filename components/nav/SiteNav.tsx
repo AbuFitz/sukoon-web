@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { usePathname } from "next/navigation";
+import Link from "next/link";
 import { SearchOverlay } from "./SearchOverlay";
 import { AccountPanel } from "./AccountPanel";
 import { BagPanel } from "./BagPanel";
@@ -19,7 +19,7 @@ const BORDER = "#E3E3DF";
 
 function SearchIcon() {
   return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" aria-hidden>
+    <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" aria-hidden>
       <circle cx="11" cy="11" r="7" /><line x1="21" y1="21" x2="16.2" y2="16.2" />
     </svg>
   );
@@ -27,7 +27,7 @@ function SearchIcon() {
 
 function AccountIcon() {
   return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+    <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
       <circle cx="12" cy="8" r="3.5" /><path d="M4.5 20c1.5-4 4-6 7.5-6s6 2 7.5 6" />
     </svg>
   );
@@ -35,59 +35,49 @@ function AccountIcon() {
 
 function BagIcon() {
   return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+    <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
       <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z" />
       <path d="M3 6h18" /><path d="M16 10a4 4 0 0 1-8 0" />
     </svg>
   );
 }
 
-function MenuIcon({ open }: { open: boolean }) {
+function MenuIcon() {
   return (
-    <span style={{ position: "relative", width: 20, height: 13, display: "inline-flex", flexDirection: "column", justifyContent: "space-between" }} aria-hidden>
-      <span style={{
-        display: "block", width: 20, height: 1.5, backgroundColor: "currentColor",
-        transformOrigin: "center",
-        transform: open ? "translateY(5.75px) rotate(45deg)" : "none",
-        transition: "transform 0.25s ease",
-      }} />
-      <span style={{
-        display: "block", width: 20, height: 1.5, backgroundColor: "currentColor",
-        transformOrigin: "center",
-        transform: open ? "translateY(-5.75px) rotate(-45deg)" : "none",
-        transition: "transform 0.25s ease",
-      }} />
-    </span>
+    <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" aria-hidden>
+      <line x1="3" y1="6" x2="21" y2="6" />
+      <line x1="3" y1="12" x2="21" y2="12" />
+      <line x1="3" y1="18" x2="21" y2="18" />
+    </svg>
   );
 }
 
-function Wordmark({ color = TEXT }: { color?: string }) {
+function Wordmark() {
   return (
-    <a href="/" aria-label="Sukoon home" style={{ textDecoration: "none" }}>
+    <Link href="/" aria-label="Sukoon home" style={{ textDecoration: "none" }}>
       <span style={{
         fontFamily: "var(--font-body)",
-        fontWeight: 700,
-        fontSize: "1rem",
+        fontWeight: 800,
+        fontSize: "1.0625rem",
         letterSpacing: "0.2em",
-        color,
+        color: TEXT,
         textTransform: "uppercase",
         userSelect: "none",
-        transition: "color 0.35s ease",
       }}>
         SUKOON
       </span>
-    </a>
+    </Link>
   );
 }
 
 function IconBtn({
-  label, onClick, children, badge, color,
-}: { label: string; onClick: () => void; children: React.ReactNode; badge?: number; color: string }) {
+  label, onClick, children, badge,
+}: { label: string; onClick: () => void; children: React.ReactNode; badge?: number }) {
   return (
     <button
       aria-label={label}
       onClick={onClick}
-      style={{ background: "none", border: "none", color, cursor: "pointer", display: "flex", padding: 0, position: "relative", transition: "opacity 0.2s ease" }}
+      style={{ background: "none", border: "none", color: TEXT, cursor: "pointer", display: "flex", padding: 0, position: "relative", transition: "opacity 0.2s ease" }}
       onMouseEnter={e => { (e.currentTarget as HTMLElement).style.opacity = "0.55"; }}
       onMouseLeave={e => { (e.currentTarget as HTMLElement).style.opacity = "1"; }}
     >
@@ -96,7 +86,7 @@ function IconBtn({
         <span style={{
           position: "absolute", top: -6, right: -8,
           minWidth: 16, height: 16, borderRadius: "50%",
-          backgroundColor: color, color: color === TEXT ? "#FFFFFF" : TEXT,
+          backgroundColor: TEXT, color: "#FFFFFF",
           fontFamily: "var(--font-body)", fontSize: "0.5rem", fontWeight: 700,
           display: "flex", alignItems: "center", justifyContent: "center", padding: "0 3px",
         }}>
@@ -112,39 +102,22 @@ export function SiteNav() {
   const [searchOpen, setSearchOpen] = useState(false);
   const [accountOpen, setAccountOpen] = useState(false);
   const [bagOpen, setBagOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
   const { count } = useCart();
-  const pathname = usePathname();
-
-  const isHomepage = pathname === "/";
-  const transparent = isHomepage && !scrolled;
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 60);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   useEffect(() => {
     document.body.style.overflow = (open || searchOpen || accountOpen || bagOpen) ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
   }, [open, searchOpen, accountOpen, bagOpen]);
 
-  const iconColor = transparent ? "rgba(255,255,255,0.9)" : TEXT;
-  const wordmarkColor = transparent ? "#FFFFFF" : TEXT;
-  const linkColor = transparent ? "rgba(255,255,255,0.8)" : MUTED;
-
   return (
     <>
       <header
-        className="sitenav-pos"
         style={{
+          position: "sticky",
+          top: 0,
           zIndex: 50,
-          backgroundColor: transparent ? "transparent" : "rgba(255,255,255,0.94)",
-          backdropFilter: transparent ? "none" : "blur(16px)",
-          borderBottom: `1px solid ${transparent ? "transparent" : BORDER}`,
-          transition: "background-color 0.4s ease, border-color 0.4s ease",
+          backgroundColor: "#FFFFFF",
+          borderBottom: `1px solid ${BORDER}`,
         }}
       >
         <div style={{
@@ -162,12 +135,13 @@ export function SiteNav() {
                 key={l.label}
                 href={l.href}
                 style={{
-                  fontFamily: "var(--font-body)", fontSize: "0.875rem", fontWeight: 400,
-                  color: linkColor, textDecoration: "none",
+                  fontFamily: "var(--font-body)", fontSize: "0.75rem", fontWeight: 700,
+                  letterSpacing: "0.16em", textTransform: "uppercase",
+                  color: MUTED, textDecoration: "none",
                   transition: "color 0.2s ease",
                 }}
-                onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = transparent ? "#ffffff" : TEXT; }}
-                onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = linkColor; }}
+                onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = TEXT; }}
+                onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = MUTED; }}
               >
                 {l.label}
               </a>
@@ -177,29 +151,29 @@ export function SiteNav() {
           {/* Mobile hamburger */}
           <div className="flex md:hidden" style={{ justifySelf: "start" }}>
             <button
-              aria-label={open ? "Close menu" : "Open menu"}
-              onClick={() => setOpen(o => !o)}
-              style={{ background: "none", border: "none", color: iconColor, cursor: "pointer", padding: 0, display: "flex", alignItems: "center" }}
+              aria-label="Open menu"
+              onClick={() => setOpen(true)}
+              style={{ background: "none", border: "none", color: TEXT, cursor: "pointer", padding: 0, display: "flex", alignItems: "center" }}
             >
-              <MenuIcon open={open} />
+              <MenuIcon />
             </button>
           </div>
 
           {/* Wordmark */}
           <div style={{ justifySelf: "center" }}>
-            <Wordmark color={wordmarkColor} />
+            <Wordmark />
           </div>
 
           {/* Desktop icons */}
           <div className="hidden md:flex" style={{ justifySelf: "end", alignItems: "center", gap: "1.375rem" }}>
-            <IconBtn label="Search" onClick={() => setSearchOpen(true)} color={iconColor}><SearchIcon /></IconBtn>
-            <IconBtn label="Account" onClick={() => setAccountOpen(true)} color={iconColor}><AccountIcon /></IconBtn>
-            <IconBtn label={`Bag${count > 0 ? `, ${count} item${count > 1 ? "s" : ""}` : ""}`} onClick={() => setBagOpen(true)} badge={count} color={iconColor}><BagIcon /></IconBtn>
+            <IconBtn label="Search" onClick={() => setSearchOpen(true)}><SearchIcon /></IconBtn>
+            <IconBtn label="Account" onClick={() => setAccountOpen(true)}><AccountIcon /></IconBtn>
+            <IconBtn label={`Bag${count > 0 ? `, ${count} item${count > 1 ? "s" : ""}` : ""}`} onClick={() => setBagOpen(true)} badge={count}><BagIcon /></IconBtn>
           </div>
 
           {/* Mobile icons */}
           <div className="flex md:hidden" style={{ justifySelf: "end", alignItems: "center", gap: "1rem" }}>
-            <IconBtn label={`Bag${count > 0 ? `, ${count} item${count > 1 ? "s" : ""}` : ""}`} onClick={() => setBagOpen(true)} badge={count} color={iconColor}><BagIcon /></IconBtn>
+            <IconBtn label={`Bag${count > 0 ? `, ${count} item${count > 1 ? "s" : ""}` : ""}`} onClick={() => setBagOpen(true)} badge={count}><BagIcon /></IconBtn>
           </div>
         </div>
       </header>
@@ -212,7 +186,7 @@ export function SiteNav() {
       <div aria-hidden onClick={() => setOpen(false)} style={{
         position: "fixed", inset: 0, zIndex: 59,
         pointerEvents: open ? "auto" : "none",
-        backgroundColor: "rgba(0,0,0,0.3)",
+        backgroundColor: "rgba(17,17,17,0.3)",
         opacity: open ? 1 : 0,
         transition: "opacity 0.3s ease",
       }} />
@@ -241,11 +215,12 @@ export function SiteNav() {
         </div>
 
         <nav style={{ flex: 1, padding: "1.75rem 1.5rem" }} aria-label="Mobile navigation">
-          {NAV_LINKS.map((l, i) => (
+          {[...NAV_LINKS, { label: "Contact", href: "/contact" }, { label: "FAQ", href: "/faq" }].map((l, i) => (
             <a key={l.label} href={l.href} onClick={() => setOpen(false)} style={{
               display: "block",
-              fontFamily: "var(--font-body)", fontSize: "1.5rem", fontWeight: 500,
-              color: TEXT, textDecoration: "none", padding: "0.625rem 0",
+              fontFamily: "var(--font-body)", fontSize: "0.9375rem", fontWeight: 700,
+              letterSpacing: "0.14em", textTransform: "uppercase",
+              color: TEXT, textDecoration: "none", padding: "1rem 0",
               borderBottom: `1px solid ${BORDER}`,
               opacity: open ? 1 : 0,
               transform: open ? "none" : "translateX(-10px)",
@@ -267,7 +242,7 @@ export function SiteNav() {
         </nav>
 
         <div style={{ padding: "1rem 1.5rem", borderTop: `1px solid ${BORDER}` }}>
-          <p style={{ fontFamily: "var(--font-body)", fontSize: "0.625rem", color: MUTED, letterSpacing: "0.1em", textTransform: "uppercase", margin: 0 }}>
+          <p style={{ fontFamily: "var(--font-body)", fontSize: "0.625rem", fontWeight: 700, color: MUTED, letterSpacing: "0.14em", textTransform: "uppercase", margin: 0 }}>
             Made in the UK
           </p>
         </div>

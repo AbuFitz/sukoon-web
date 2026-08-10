@@ -1,8 +1,10 @@
 @import "tailwindcss";
 
-/* ─── Sukoon 2.0 Design System ─── */
+/* ─── Sukoon Design System — high-street retail register ───
+ * Pure white surfaces, warm light-grey panels, near-black type.
+ * Square corners throughout, bold uppercase micro-labels,
+ * extralight editorial headlines. No colour, no gradients, no pills. */
 @theme {
-  /* New neutral palette — white/cream/grey dominant, no green */
   --color-bg:           #FFFFFF;
   --color-surface:      #F5F5F3;
   --color-surface-alt:  #F0F0EE;
@@ -19,21 +21,16 @@
   --color-button:       #111111;
   --color-button-text:  #FFFFFF;
 
-  /* Legacy aliases — kept so any remaining utility references don't break */
-  --color-cream-legacy:  #F7F3EC;
-  --color-stone:         #E3E3DF;
-  --color-bark:          #111111;
+  /* Fonts — single family throughout */
+  --font-display: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-body:    var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 
-  /* Fonts */
-  --font-display: var(--font-cormorant), Georgia, serif;
-  --font-body:    var(--font-dm-sans), system-ui, -apple-system, sans-serif;
-
-  /* Radii */
-  --radius-panel:  24px;
-  --radius-image:  22px;
-  --radius-card:   18px;
-  --radius-button: 12px;
-  --radius-input:  12px;
+  /* Radii — square corners, no rounding on structural elements */
+  --radius-panel:  0px;
+  --radius-image:  0px;
+  --radius-card:   0px;
+  --radius-button: 0px;
+  --radius-input:  0px;
 }
 
 /* ─── Reset ─── */
@@ -60,7 +57,6 @@ body {
 :focus-visible {
   outline: 2px solid #111111;
   outline-offset: 2px;
-  border-radius: 3px;
 }
 
 /* ─── Scrollbar (hidden — replaced by scroll progress) ─── */
@@ -73,22 +69,6 @@ img {
   user-select: none;
   -webkit-user-select: none;
   -moz-user-select: none;
-}
-
-/* ─── Announcement bar — fixed ─── */
-.announcement-pos {
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-}
-
-/* ─── Nav — fixed ─── */
-.sitenav-pos {
-  position: fixed !important;
-  top: 2rem !important;
-  left: 0 !important;
-  right: 0 !important;
 }
 
 /* ─── Layout ─── */
@@ -202,10 +182,6 @@ img {
   }
 
   img { max-width: 100%; }
-
-  .sitenav-pos {
-    top: 2rem !important;
-  }
 }
 
 /* ─── Reduced motion ─── */

@@ -34,7 +34,7 @@ export function SearchOverlay({ open, onClose }: { open: boolean; onClose: () =>
       {/* Input */}
       <div style={{
         display: "flex", alignItems: "center", gap: "0.75rem",
-        border: `1.5px solid ${BORDER}`, borderRadius: 12,
+        border: `1px solid ${BORDER}`,
         padding: "0.75rem 1rem",
         marginBottom: "1.75rem",
       }}>
@@ -79,7 +79,7 @@ export function SearchOverlay({ open, onClose }: { open: boolean; onClose: () =>
             <a key={p.slug} href={`/products/${p.slug}`} onClick={onClose} style={{ textDecoration: "none" }}>
               <div style={{
                 position: "relative", aspectRatio: "4 / 5",
-                borderRadius: 16, overflow: "hidden",
+                overflow: "hidden",
                 backgroundColor: "#F0F0EE", marginBottom: "0.625rem",
               }}>
                 <Image

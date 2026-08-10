@@ -21,7 +21,6 @@ export function BrandStorySection() {
           <div style={{
             position: "relative",
             aspectRatio: "3 / 4",
-            borderRadius: 24,
             overflow: "hidden",
             backgroundColor: "#F0F0EE",
           }}>
@@ -39,9 +38,9 @@ export function BrandStorySection() {
         <div>
           <p className="eyebrow" style={{ marginBottom: "1.25rem" }}>The Science</p>
           <h2 style={{
-            fontFamily: "var(--font-body)", fontWeight: 700,
+            fontFamily: "var(--font-body)", fontWeight: 300,
             fontSize: "clamp(2rem, 3.5vw, 3rem)",
-            letterSpacing: "-0.025em", color: "#111111",
+            letterSpacing: "-0.02em", color: "#111111",
             margin: "0 0 1.5rem",
           }}>
             Why waterless<br />changes everything.

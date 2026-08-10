@@ -1,25 +1,25 @@
-import Image from "next/image";
+import { Leaf, MapPin, ShieldCheck, Truck } from "lucide-react";
 
 const items = [
-  { src: "/icons/icon-natural.svg",     label: "Natural",     tagline: "100% natural ingredients",  mobile: true  },
-  { src: "/icons/icon-ethical.svg",     label: "Ethical",     tagline: "Vegan & cruelty free",       mobile: true  },
-  { src: "/icons/icon-pure.svg",        label: "Pure",        tagline: "No harmful chemicals",       mobile: true  },
-  { src: "/icons/icon-sustainable.svg", label: "Sustainable", tagline: "Eco-friendly packaging",     mobile: false },
+  { icon: Truck,       label: "Free Delivery",  tagline: "On UK orders over £40" },
+  { icon: Leaf,        label: "Vegan",          tagline: "Cruelty-free, always" },
+  { icon: ShieldCheck, label: "Fragrance-Free", tagline: "No synthetic perfumes" },
+  { icon: MapPin,      label: "Made in the UK", tagline: "Formulated & manufactured" },
 ];
 
-const DIVIDER = "1px solid rgba(180,172,158,0.35)";
+const DIVIDER = "1px solid #E3E3DF";
 
 export function TrustStrip() {
   return (
     <section
       aria-label="Trust signals"
       style={{
-        backgroundColor: "#f5f1e8",
-        borderTop: "1px solid rgba(180,172,158,0.3)",
-        borderBottom: "1px solid rgba(180,172,158,0.3)",
+        backgroundColor: "#F5F5F3",
+        borderTop: DIVIDER,
+        borderBottom: DIVIDER,
       }}
     >
-      <div style={{ maxWidth: 1400, margin: "0 auto", padding: "0 clamp(1.5rem, 3vw, 2.5rem)" }}>
+      <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 clamp(1.25rem, 3vw, 2.5rem)" }}>
 
         {/* Desktop — all 4 */}
         <div className="hidden md:grid" style={{ gridTemplateColumns: "repeat(4,1fr)" }}>
@@ -34,23 +34,15 @@ export function TrustStrip() {
                 borderRight: i < items.length - 1 ? DIVIDER : "none",
               }}
             >
-              <div style={{
-                flexShrink: 0,
-                width: 36,
-                height: 36,
-                position: "relative",
-                opacity: 0.8,
-              }}>
-                <Image src={item.src} alt="" fill sizes="36px"/>
-              </div>
+              <item.icon style={{ flexShrink: 0, width: 24, height: 24, color: "#111111" }} strokeWidth={1.5} aria-hidden />
               <div>
                 <p style={{
                   fontFamily: "var(--font-body)",
-                  fontSize: "0.5rem",
+                  fontSize: "0.6875rem",
                   fontWeight: 700,
-                  letterSpacing: "0.16em",
+                  letterSpacing: "0.14em",
                   textTransform: "uppercase",
-                  color: "#45543d",
+                  color: "#111111",
                   margin: "0 0 0.25rem",
                 }}>
                   {item.label}
@@ -59,7 +51,7 @@ export function TrustStrip() {
                   fontFamily: "var(--font-body)",
                   fontSize: "0.8125rem",
                   lineHeight: 1.5,
-                  color: "#78736a",
+                  color: "#676764",
                   margin: 0,
                 }}>
                   {item.tagline}
@@ -69,9 +61,9 @@ export function TrustStrip() {
           ))}
         </div>
 
-        {/* Mobile — 3 items stacked horizontally */}
+        {/* Mobile — stacked horizontally, first three shown */}
         <div className="flex md:hidden">
-          {items.filter(item => item.mobile).map((item, i, arr) => (
+          {items.slice(0, 3).map((item, i, arr) => (
             <div
               key={item.label}
               style={{
@@ -85,16 +77,14 @@ export function TrustStrip() {
                 borderRight: i < arr.length - 1 ? DIVIDER : "none",
               }}
             >
-              <div style={{ width: 28, height: 28, position: "relative", opacity: 0.8 }}>
-                <Image src={item.src} alt="" fill sizes="28px"/>
-              </div>
+              <item.icon style={{ width: 20, height: 20, color: "#111111" }} strokeWidth={1.5} aria-hidden />
               <p style={{
                 fontFamily: "var(--font-body)",
-                fontSize: "0.45rem",
+                fontSize: "0.5625rem",
                 fontWeight: 700,
-                letterSpacing: "0.15em",
+                letterSpacing: "0.12em",
                 textTransform: "uppercase",
-                color: "#45543d",
+                color: "#111111",
                 margin: 0,
               }}>
                 {item.label}
@@ -103,7 +93,7 @@ export function TrustStrip() {
                 fontFamily: "var(--font-body)",
                 fontSize: "0.6875rem",
                 lineHeight: 1.4,
-                color: "#78736a",
+                color: "#676764",
                 margin: 0,
               }}>
                 {item.tagline}

@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Cormorant_Garamond, DM_Sans } from "next/font/google";
+import { Inter } from "next/font/google";
 import { CartProvider } from "@/lib/cart-context";
 import { AnnouncementBar } from "@/components/sections/AnnouncementBar";
 import { CookieBanner } from "@/components/CookieBanner";
@@ -8,18 +8,10 @@ import { ScrollProgress } from "@/components/ui/ScrollProgress";
 import { TabAttention } from "@/components/TabAttention";
 import "./globals.css";
 
-const cormorant = Cormorant_Garamond({
-  variable: "--font-cormorant",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  style: ["normal", "italic"],
-  display: "swap",
-});
-
-const dmSans = DM_Sans({
-  variable: "--font-dm-sans",
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
+  weight: ["200", "300", "400", "500", "600", "700", "800", "900"],
   display: "swap",
 });
 
@@ -90,7 +82,7 @@ const orgJsonLd = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${cormorant.variable} ${dmSans.variable} h-full`}>
+    <html lang="en" className={`${inter.variable} h-full`}>
       <head>
         <script
           type="application/ld+json"

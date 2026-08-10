@@ -30,9 +30,9 @@ export function NewsletterSection() {
         <div>
           <p className="eyebrow" style={{ marginBottom: "1.25rem" }}>Stay in the loop</p>
           <h2 style={{
-            fontFamily: "var(--font-body)", fontWeight: 700,
+            fontFamily: "var(--font-body)", fontWeight: 300,
             fontSize: "clamp(2rem, 3vw, 2.75rem)",
-            letterSpacing: "-0.025em", color: "#111111",
+            letterSpacing: "-0.02em", color: "#111111",
             margin: "0 0 1rem",
           }}>
             Skincare without the noise.
@@ -67,9 +67,10 @@ export function NewsletterSection() {
                 type="submit"
                 style={{
                   height: 52, padding: "0 1.75rem",
-                  fontFamily: "var(--font-body)", fontSize: "0.875rem", fontWeight: 500,
+                  fontFamily: "var(--font-body)", fontSize: "0.6875rem", fontWeight: 700,
+                  letterSpacing: "0.16em", textTransform: "uppercase",
                   color: "#FFFFFF", backgroundColor: "#111111",
-                  border: "1.5px solid #111111", borderRadius: 12,
+                  border: "1px solid #111111",
                   cursor: "pointer", transition: "background-color 0.2s ease",
                   whiteSpace: "nowrap",
                 }}
@@ -87,7 +88,6 @@ export function NewsletterSection() {
           <div style={{
             position: "relative",
             aspectRatio: "4 / 3",
-            borderRadius: 24,
             overflow: "hidden",
             backgroundColor: "#EFE9DF",
           }}>

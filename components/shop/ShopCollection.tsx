@@ -55,7 +55,7 @@ function ProductCard({
             fontFamily: "var(--font-body)", fontSize: "0.5625rem", fontWeight: 700,
             letterSpacing: "0.12em", textTransform: "uppercase",
             color: "#FFFFFF", backgroundColor: TEXT,
-            padding: "0.3rem 0.75rem", borderRadius: 4,
+            padding: "0.3rem 0.75rem",
           }}>
             {product.tag}
           </span>
@@ -63,7 +63,6 @@ function ProductCard({
         <div style={{
           position: "relative",
           aspectRatio: "4 / 5",
-          borderRadius: 22,
           overflow: "hidden",
           backgroundColor: "#F0F0EE",
         }}>
@@ -86,8 +85,8 @@ function ProductCard({
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: "0.75rem" }}>
         <a href={`/products/${product.slug}`} style={{ textDecoration: "none", flex: 1 }}>
           <p style={{
-            fontFamily: "var(--font-body)", fontWeight: 500,
-            fontSize: "0.9375rem", color: TEXT,
+            fontFamily: "var(--font-body)", fontWeight: 700,
+            fontSize: "0.875rem", color: TEXT, textTransform: "uppercase", letterSpacing: "0.02em",
             margin: "0 0 0.25rem", lineHeight: 1.3,
           }}>
             {product.name}
@@ -111,8 +110,8 @@ function ProductCard({
               letterSpacing: "0.04em",
               color: justAdded ? MUTED : TEXT,
               backgroundColor: "transparent",
-              border: `1.5px solid ${justAdded ? BORDER : TEXT}`,
-              borderRadius: 10, padding: "0.5rem 0.875rem",
+              border: `1px solid ${justAdded ? BORDER : TEXT}`,
+              padding: "0.5rem 0.875rem",
               cursor: loading ? "wait" : "pointer",
               transition: "all 0.2s ease",
               whiteSpace: "nowrap",

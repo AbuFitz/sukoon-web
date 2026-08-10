@@ -13,9 +13,9 @@ export function IngredientsSection() {
         <div style={{ marginBottom: "clamp(3rem, 5vw, 4.5rem)", maxWidth: 600 }}>
           <p className="eyebrow" style={{ marginBottom: "1rem" }}>The Formula</p>
           <h2 style={{
-            fontFamily: "var(--font-body)", fontWeight: 700,
+            fontFamily: "var(--font-body)", fontWeight: 300,
             fontSize: "clamp(2rem, 3.5vw, 3rem)",
-            letterSpacing: "-0.025em", color: "#111111", margin: "0 0 1rem",
+            letterSpacing: "-0.02em", color: "#111111", margin: "0 0 1rem",
           }}>
             Five ingredients.<br />Nothing hidden.
           </h2>

@@ -11,7 +11,7 @@ export default function AboutPage() {
   return (
     <>
       <SiteNav />
-      <main style={{ paddingTop: "calc(1.75rem + 84px)" }}>
+      <main>
         <AboutContent />
       </main>
       <Footer />

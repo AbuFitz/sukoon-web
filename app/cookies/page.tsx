@@ -10,14 +10,14 @@ const PROSE = {
   fontFamily: "var(--font-body)",
   fontSize: "0.9375rem",
   lineHeight: 1.85,
-  color: "#64685f",
+  color: "#676764",
 };
 
 const H2 = {
-  fontFamily: "var(--font-display)",
+  fontFamily: "var(--font-body)",
   fontSize: "clamp(1.375rem, 2.5vw, 1.75rem)",
-  fontWeight: 400,
-  color: "#292b25",
+  fontWeight: 300,
+  color: "#111111",
   marginTop: "2.5rem",
   marginBottom: "0.875rem",
   lineHeight: 1.2,
@@ -27,9 +27,9 @@ const TABLE_CELL = {
   fontFamily: "var(--font-body)",
   fontSize: "0.8125rem",
   lineHeight: 1.6,
-  color: "#64685f",
+  color: "#676764",
   padding: "0.625rem 0.875rem",
-  borderBottom: "1px solid #E8D4AE",
+  borderBottom: "1px solid #E3E3DF",
   verticalAlign: "top" as const,
 };
 
@@ -37,14 +37,14 @@ export default function CookiesPage() {
   return (
     <>
       <SiteNav />
-      <main style={{ paddingTop: "calc(1.75rem + 84px)", backgroundColor: "#faf8f3", minHeight: "80vh" }}>
+      <main style={{ backgroundColor: "#F5F5F3", minHeight: "80vh" }}>
         <div style={{ maxWidth: "780px", margin: "0 auto", padding: "clamp(3rem, 7vw, 5rem) clamp(1.5rem, 5vw, 3rem)" }}>
           <h1 style={{
-            fontFamily: "var(--font-display)", fontSize: "clamp(2rem, 4vw, 3rem)",
-            fontWeight: 400, letterSpacing: "-0.015em", color: "#292b25",
+            fontFamily: "var(--font-body)", fontWeight: 200, fontSize: "clamp(2rem, 4vw, 3rem)",
+            letterSpacing: "-0.02em", color: "#111111",
             marginBottom: "0.5rem",
           }}>Cookie Policy</h1>
-          <p style={{ ...PROSE, color: "#64685f", marginBottom: "2.5rem", fontSize: "0.8125rem" }}>
+          <p style={{ ...PROSE, color: "#92928D", marginBottom: "2.5rem", fontSize: "0.8125rem" }}>
             Last updated: July 2025
           </p>
 
@@ -55,11 +55,11 @@ export default function CookiesPage() {
 
           <h2 style={H2}>Cookies we use</h2>
           <div style={{ overflowX: "auto", marginTop: "1rem" }}>
-            <table style={{ width: "100%", borderCollapse: "collapse", borderTop: "1px solid #E8D4AE" }}>
+            <table style={{ width: "100%", borderCollapse: "collapse", borderTop: "1px solid #E3E3DF" }}>
               <thead>
                 <tr>
                   {["Name", "Type", "Purpose", "Duration"].map(h => (
-                    <th key={h} style={{ ...TABLE_CELL, color: "#292b25", fontWeight: 600, textAlign: "left", fontSize: "0.6875rem", letterSpacing: "0.08em", textTransform: "uppercase" }}>{h}</th>
+                    <th key={h} style={{ ...TABLE_CELL, color: "#111111", fontWeight: 700, textAlign: "left", fontSize: "0.6875rem", letterSpacing: "0.08em", textTransform: "uppercase" }}>{h}</th>
                   ))}
                 </tr>
               </thead>

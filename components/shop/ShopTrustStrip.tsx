@@ -1,25 +1,25 @@
-const iconSize = 36;
+import { Heart, Leaf, Package, Truck } from "lucide-react";
 
 const items = [
   {
     title: "Free Shipping",
-    body: "On UK orders over £50",
-    icon: "/icons/trust-truck.png",
+    body: "On UK orders over £40",
+    icon: Truck,
   },
   {
     title: "Thoughtful Packaging",
     body: "Recyclable and minimal",
-    icon: "/icons/trust-box.png",
+    icon: Package,
   },
   {
     title: "Made with Care",
-    body: "Small batches, tested with intention",
-    icon: "/icons/trust-heart.png",
+    body: "Small batches, formulated in the UK",
+    icon: Heart,
   },
   {
-    title: "Real Results",
-    body: "Gentle formulas that support your skin",
-    icon: "/icons/trust-leaf.png",
+    title: "Fragrance-Free",
+    body: "Gentle formula, no synthetic perfume",
+    icon: Leaf,
   },
 ];
 
@@ -28,14 +28,14 @@ export function ShopTrustStrip() {
     <section
       aria-label="Why Sukoon"
       style={{
-        backgroundColor: "#faf8f4",
-        borderTop: "1px solid rgba(53,65,47,0.1)",
-        borderBottom: "1px solid rgba(53,65,47,0.1)",
+        backgroundColor: "#F5F5F3",
+        borderTop: "1px solid #E3E3DF",
+        borderBottom: "1px solid #E3E3DF",
       }}
     >
       <div
         className="grid grid-cols-2 md:grid-cols-4"
-        style={{ maxWidth: 1400, margin: "0 auto" }}
+        style={{ maxWidth: 1320, margin: "0 auto" }}
       >
         {items.map((item, i) => (
           <div
@@ -46,30 +46,24 @@ export function ShopTrustStrip() {
               display: "flex", flexDirection: "column",
               alignItems: "center", justifyContent: "center",
               textAlign: "center",
-              borderRight: i < items.length - 1 ? "1px solid rgba(53,65,47,0.1)" : "none",
+              borderRight: i < items.length - 1 ? "1px solid #E3E3DF" : "none",
             }}
           >
-            <div style={{ marginBottom: "0.875rem", width: iconSize, height: iconSize, display: "flex", alignItems: "center", justifyContent: "center" }}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={item.icon}
-                alt=""
-                aria-hidden="true"
-                width={iconSize}
-                height={iconSize}
-                style={{ objectFit: "contain", width: iconSize, height: iconSize }}
-              />
-            </div>
+            <item.icon
+              style={{ width: 28, height: 28, color: "#111111", marginBottom: "0.875rem" }}
+              strokeWidth={1.5}
+              aria-hidden
+            />
             <h3 style={{
-              fontFamily: "var(--font-display)", fontWeight: 400,
-              fontSize: "1.375rem", lineHeight: 1.2,
-              color: "#252820", margin: "0 0 0.5rem",
+              fontFamily: "var(--font-body)", fontWeight: 700,
+              fontSize: "0.8125rem", letterSpacing: "0.06em", textTransform: "uppercase",
+              color: "#111111", margin: "0 0 0.5rem",
             }}>
               {item.title}
             </h3>
             <p style={{
               fontFamily: "var(--font-body)", fontSize: "0.875rem", lineHeight: 1.55,
-              color: "#4f534a", margin: 0, maxWidth: 220,
+              color: "#676764", margin: 0, maxWidth: 220,
             }}>
               {item.body}
             </p>

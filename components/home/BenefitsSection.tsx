@@ -39,9 +39,9 @@ export function BenefitsSection() {
         <div>
           <p className="eyebrow" style={{ marginBottom: "1.25rem" }}>Why it works</p>
           <h2 style={{
-            fontFamily: "var(--font-body)", fontWeight: 700,
+            fontFamily: "var(--font-body)", fontWeight: 300,
             fontSize: "clamp(2rem, 3.5vw, 3rem)",
-            letterSpacing: "-0.025em", color: "#111111",
+            letterSpacing: "-0.02em", color: "#111111",
             margin: "0 0 3rem",
           }}>
             Designed around<br />real results.
@@ -76,7 +76,6 @@ export function BenefitsSection() {
           <div style={{
             position: "relative",
             aspectRatio: "4 / 5",
-            borderRadius: 24,
             overflow: "hidden",
             backgroundColor: "#EAEAE8",
           }}>

@@ -43,7 +43,6 @@ function ProductCard({ product }: { product: FeaturedProduct }) {
       <div style={{
         position: "relative",
         aspectRatio: "4 / 5",
-        borderRadius: 22,
         overflow: "hidden",
         backgroundColor: "#F0F0EE",
         marginBottom: "1.125rem",
@@ -65,8 +64,9 @@ function ProductCard({ product }: { product: FeaturedProduct }) {
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", gap: "1rem" }}>
         <div>
           <p style={{
-            fontFamily: "var(--font-body)", fontWeight: 500,
-            fontSize: "0.9375rem", color: "#111111",
+            fontFamily: "var(--font-body)", fontWeight: 700,
+            fontSize: "0.875rem", color: "#111111",
+            textTransform: "uppercase", letterSpacing: "0.02em",
             margin: "0 0 0.25rem", lineHeight: 1.3,
           }}>
             {product.title}
@@ -90,8 +90,7 @@ function ProductCard({ product }: { product: FeaturedProduct }) {
               letterSpacing: "0.04em",
               color: added ? "#676764" : "#111111",
               backgroundColor: "transparent",
-              border: `1.5px solid ${added ? "#E3E3DF" : "#111111"}`,
-              borderRadius: 10,
+              border: `1px solid ${added ? "#E3E3DF" : "#111111"}`,
               padding: "0.5rem 1rem",
               cursor: adding ? "wait" : "pointer",
               transition: "all 0.2s ease",
@@ -130,9 +129,9 @@ export function FeaturedProductsSection({ products }: { products: FeaturedProduc
           gap: "1rem", marginBottom: "clamp(2.5rem, 4vw, 3.5rem)",
         }}>
           <h2 style={{
-            fontFamily: "var(--font-body)", fontWeight: 700,
+            fontFamily: "var(--font-body)", fontWeight: 300,
             fontSize: "clamp(1.75rem, 3vw, 2.5rem)",
-            letterSpacing: "-0.025em", color: "#111111", margin: 0,
+            letterSpacing: "-0.02em", color: "#111111", margin: 0,
           }}>
             The Collection
           </h2>

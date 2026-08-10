@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "next/link";
+
 const SHOP = [
   { label: "Shop All",    href: "/shop" },
   { label: "Our Story",   href: "/about" },
@@ -24,7 +26,7 @@ const BORDER = "#E3E3DF";
 
 function FooterLink({ label, href }: { label: string; href: string }) {
   return (
-    <a
+    <Link
       href={href}
       style={{
         fontFamily: "var(--font-body)", fontSize: "0.875rem",
@@ -35,7 +37,7 @@ function FooterLink({ label, href }: { label: string; href: string }) {
       onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = MUTED; }}
     >
       {label}
-    </a>
+    </Link>
   );
 }
 
@@ -53,7 +55,7 @@ export function Footer() {
         >
           {/* Brand */}
           <div className="col-span-2 md:col-span-1" style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
-            <a href="/" style={{ textDecoration: "none" }}>
+            <Link href="/" style={{ textDecoration: "none" }}>
               <span style={{
                 fontFamily: "var(--font-body)", fontWeight: 700,
                 fontSize: "0.9375rem", letterSpacing: "0.2em",
@@ -61,7 +63,7 @@ export function Footer() {
               }}>
                 SUKOON
               </span>
-            </a>
+            </Link>
             <p style={{
               fontFamily: "var(--font-body)", fontSize: "0.875rem", lineHeight: 1.65,
               color: MUTED, maxWidth: 240, margin: 0,

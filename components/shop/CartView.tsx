@@ -4,6 +4,10 @@ import Image from "next/image";
 import { useCart } from "@/lib/cart-context";
 import { formatPrice } from "@/lib/shopify";
 
+const TEXT   = "#111111";
+const MUTED  = "#92928D";
+const BORDER = "#E3E3DF";
+
 function QtyButton({ label, onClick, children }: { label: string; onClick: () => void; children: React.ReactNode }) {
   return (
     <button
@@ -11,13 +15,13 @@ function QtyButton({ label, onClick, children }: { label: string; onClick: () =>
       onClick={onClick}
       style={{
         width: 32, height: 32, background: "none",
-        border: "1px solid rgba(41,43,37,0.2)",
-        cursor: "pointer", color: "#292b25",
+        border: `1px solid ${BORDER}`,
+        cursor: "pointer", color: TEXT,
         fontSize: "1rem", display: "flex", alignItems: "center", justifyContent: "center",
         transition: "border-color 150ms",
       }}
-      onMouseEnter={e => (e.currentTarget.style.borderColor = "#292b25")}
-      onMouseLeave={e => (e.currentTarget.style.borderColor = "rgba(41,43,37,0.2)")}
+      onMouseEnter={e => (e.currentTarget.style.borderColor = TEXT)}
+      onMouseLeave={e => (e.currentTarget.style.borderColor = BORDER)}
     >
       {children}
     </button>
@@ -37,7 +41,7 @@ export function CartView() {
       }}>
         <svg
           width="48" height="48" viewBox="0 0 24 24"
-          fill="none" stroke="#c4c0b6" strokeWidth="1.2"
+          fill="none" stroke={BORDER} strokeWidth="1.2"
           strokeLinecap="round" strokeLinejoin="round"
           aria-hidden style={{ marginBottom: "2rem" }}
         >
@@ -46,16 +50,16 @@ export function CartView() {
           <path d="M16 10a4 4 0 0 1-8 0" />
         </svg>
         <h1 style={{
-          fontFamily: "var(--font-display)", fontWeight: 400,
+          fontFamily: "var(--font-body)", fontWeight: 200,
           fontSize: "clamp(2rem, 3.5vw, 3rem)",
-          lineHeight: 1.05, letterSpacing: "-0.025em",
-          color: "#292b25", margin: "0 0 0.875rem",
+          lineHeight: 1.05, letterSpacing: "-0.02em",
+          color: TEXT, margin: "0 0 0.875rem",
         }}>
           Your bag is empty
         </h1>
         <p style={{
           fontFamily: "var(--font-body)", fontSize: "1rem", lineHeight: 1.7,
-          color: "#64685f", margin: "0 0 2.5rem",
+          color: "#676764", margin: "0 0 2.5rem",
         }}>
           Add The Daily Solace Fluid to begin your ritual.
         </p>
@@ -63,16 +67,16 @@ export function CartView() {
           href="/shop"
           style={{
             display: "inline-flex", alignItems: "center", justifyContent: "center",
-            fontFamily: "var(--font-body)", fontSize: "0.6875rem", fontWeight: 600,
-            letterSpacing: "0.14em", textTransform: "uppercase",
-            color: "#FFFFFF", backgroundColor: "#45543d",
-            border: "1px solid #45543d",
+            fontFamily: "var(--font-body)", fontSize: "0.6875rem", fontWeight: 700,
+            letterSpacing: "0.16em", textTransform: "uppercase",
+            color: "#FFFFFF", backgroundColor: TEXT,
+            border: `1px solid ${TEXT}`,
             minHeight: 52, padding: "0 2.25rem",
             textDecoration: "none",
-            transition: "background-color 220ms ease, transform 200ms ease",
+            transition: "background-color 220ms ease",
           }}
-          onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.backgroundColor = "#34402f"; el.style.transform = "translateY(-1px)"; }}
-          onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.backgroundColor = "#45543d"; el.style.transform = "none"; }}
+          onMouseEnter={e => { (e.currentTarget as HTMLElement).style.backgroundColor = "#333333"; }}
+          onMouseLeave={e => { (e.currentTarget as HTMLElement).style.backgroundColor = TEXT; }}
         >
           Shop the Collection
         </a>
@@ -87,19 +91,19 @@ export function CartView() {
     <div style={{ maxWidth: 1200, margin: "0 auto", padding: "clamp(2.5rem, 5vw, 4rem) clamp(2rem, 5vw, 4rem)" }}>
 
       {/* Page header */}
-      <div style={{ borderBottom: "1px solid #e8e4da", paddingBottom: "1.5rem", marginBottom: "2.5rem" }}>
+      <div style={{ borderBottom: `1px solid ${BORDER}`, paddingBottom: "1.5rem", marginBottom: "2.5rem" }}>
         <p style={{
-          fontFamily: "var(--font-body)", fontSize: "0.5625rem", fontWeight: 700,
+          fontFamily: "var(--font-body)", fontSize: "0.6875rem", fontWeight: 700,
           letterSpacing: "0.2em", textTransform: "uppercase",
-          color: "#8a9482", margin: "0 0 0.5rem",
+          color: MUTED, margin: "0 0 0.5rem",
         }}>
           Review
         </p>
         <h1 style={{
-          fontFamily: "var(--font-display)", fontWeight: 400,
+          fontFamily: "var(--font-body)", fontWeight: 200,
           fontSize: "clamp(2rem, 3.5vw, 3rem)",
-          lineHeight: 1.0, letterSpacing: "-0.028em",
-          color: "#292b25", margin: 0,
+          lineHeight: 1.0, letterSpacing: "-0.02em",
+          color: TEXT, margin: 0,
         }}>
           Your Bag
         </h1>
@@ -116,11 +120,11 @@ export function CartView() {
             gridTemplateColumns: "1fr auto",
             gap: "0 1rem",
             paddingBottom: "0.875rem",
-            borderBottom: "1px solid #e8e4da",
+            borderBottom: `1px solid ${BORDER}`,
             marginBottom: "0.25rem",
           }}>
-            <span style={{ fontFamily: "var(--font-body)", fontSize: "0.6875rem", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: "#9a9f95" }}>Product</span>
-            <span style={{ fontFamily: "var(--font-body)", fontSize: "0.6875rem", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: "#9a9f95", textAlign: "right" }}>Total</span>
+            <span style={{ fontFamily: "var(--font-body)", fontSize: "0.6875rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: MUTED }}>Product</span>
+            <span style={{ fontFamily: "var(--font-body)", fontSize: "0.6875rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: MUTED, textAlign: "right" }}>Total</span>
           </div>
 
           {lines.map((line) => {
@@ -137,14 +141,14 @@ export function CartView() {
                 style={{
                   display: "flex", gap: "1.5rem",
                   padding: "1.75rem 0",
-                  borderBottom: "1px solid #e8e4da",
+                  borderBottom: `1px solid ${BORDER}`,
                 }}
               >
                 {/* Image */}
                 <div style={{
                   position: "relative",
                   width: 90, height: 112, flexShrink: 0,
-                  backgroundColor: "#ede9e0",
+                  backgroundColor: "#F0F0EE",
                 }}>
                   {merchandise.image ? (
                     <Image
@@ -159,17 +163,18 @@ export function CartView() {
                 {/* Details */}
                 <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: "0.375rem" }}>
                   <p style={{
-                    fontFamily: "var(--font-body)", fontSize: "0.9375rem", fontWeight: 600,
-                    color: "#292b25", margin: 0,
+                    fontFamily: "var(--font-body)", fontSize: "0.875rem", fontWeight: 700,
+                    textTransform: "uppercase", letterSpacing: "0.02em",
+                    color: TEXT, margin: 0,
                   }}>
                     {merchandise.product.title}
                   </p>
                   {merchandise.title !== "Default Title" && (
-                    <p style={{ fontFamily: "var(--font-body)", fontSize: "0.8125rem", color: "#8a9482", margin: 0 }}>
+                    <p style={{ fontFamily: "var(--font-body)", fontSize: "0.8125rem", color: MUTED, margin: 0 }}>
                       {merchandise.title}
                     </p>
                   )}
-                  <p style={{ fontFamily: "var(--font-body)", fontSize: "0.8125rem", color: "#78836e", margin: 0 }}>
+                  <p style={{ fontFamily: "var(--font-body)", fontSize: "0.8125rem", color: "#676764", margin: 0 }}>
                     {unitPrice} each
                   </p>
 
@@ -179,7 +184,7 @@ export function CartView() {
                       <QtyButton label="Decrease quantity" onClick={() => updateQty(line.id, line.quantity - 1)}>−</QtyButton>
                       <span style={{
                         fontFamily: "var(--font-body)", fontSize: "0.9375rem",
-                        color: "#292b25", minWidth: 24, textAlign: "center",
+                        color: TEXT, minWidth: 24, textAlign: "center",
                       }}>
                         {line.quantity}
                       </span>
@@ -190,11 +195,11 @@ export function CartView() {
                       style={{
                         background: "none", border: "none", cursor: "pointer", padding: 0,
                         fontFamily: "var(--font-body)", fontSize: "0.75rem",
-                        color: "#9a9f95", textDecoration: "underline", textUnderlineOffset: 3,
+                        color: MUTED, textDecoration: "underline", textUnderlineOffset: 3,
                         transition: "color 150ms",
                       }}
-                      onMouseEnter={e => (e.currentTarget.style.color = "#292b25")}
-                      onMouseLeave={e => (e.currentTarget.style.color = "#9a9f95")}
+                      onMouseEnter={e => (e.currentTarget.style.color = TEXT)}
+                      onMouseLeave={e => (e.currentTarget.style.color = MUTED)}
                     >
                       Remove
                     </button>
@@ -205,7 +210,7 @@ export function CartView() {
                 <div style={{ flexShrink: 0, textAlign: "right", paddingTop: "0.125rem" }}>
                   <span style={{
                     fontFamily: "var(--font-body)", fontSize: "0.9375rem", fontWeight: 600,
-                    color: "#292b25",
+                    color: TEXT,
                   }}>
                     {lineTotal}
                   </span>
@@ -218,14 +223,14 @@ export function CartView() {
             <a
               href="/shop"
               style={{
-                fontFamily: "var(--font-body)", fontSize: "0.75rem", fontWeight: 600,
+                fontFamily: "var(--font-body)", fontSize: "0.75rem", fontWeight: 700,
                 letterSpacing: "0.1em", textTransform: "uppercase",
-                color: "#64685f", textDecoration: "none",
-                borderBottom: "1px solid rgba(100,104,95,0.4)",
+                color: "#676764", textDecoration: "none",
+                borderBottom: "1px solid #D4D4CF",
                 paddingBottom: 2, transition: "color 200ms, border-color 200ms",
               }}
-              onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.color = "#45543d"; el.style.borderColor = "#45543d"; }}
-              onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.color = "#64685f"; el.style.borderColor = "rgba(100,104,95,0.4)"; }}
+              onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.color = TEXT; el.style.borderColor = TEXT; }}
+              onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.color = "#676764"; el.style.borderColor = "#D4D4CF"; }}
             >
               ← Continue shopping
             </a>
@@ -234,44 +239,44 @@ export function CartView() {
 
         {/* ── Order summary ── */}
         <div style={{
-          backgroundColor: "#f2ede4",
+          backgroundColor: "#F5F5F3",
           padding: "2rem",
           position: "sticky",
-          top: "calc(1.75rem + 100px)",
+          top: 92,
         }}>
           <h2 style={{
             fontFamily: "var(--font-body)", fontSize: "0.6875rem", fontWeight: 700,
             letterSpacing: "0.16em", textTransform: "uppercase",
-            color: "#292b25", margin: "0 0 1.5rem",
+            color: TEXT, margin: "0 0 1.5rem",
           }}>
             Order Summary
           </h2>
 
           <div style={{ display: "flex", flexDirection: "column", gap: "0.875rem", marginBottom: "1.5rem" }}>
             <div style={{ display: "flex", justifyContent: "space-between" }}>
-              <span style={{ fontFamily: "var(--font-body)", fontSize: "0.875rem", color: "#64685f" }}>
+              <span style={{ fontFamily: "var(--font-body)", fontSize: "0.875rem", color: "#676764" }}>
                 Subtotal ({cart!.totalQuantity} {cart!.totalQuantity === 1 ? "item" : "items"})
               </span>
-              <span style={{ fontFamily: "var(--font-body)", fontSize: "0.875rem", fontWeight: 600, color: "#292b25" }}>
+              <span style={{ fontFamily: "var(--font-body)", fontSize: "0.875rem", fontWeight: 600, color: TEXT }}>
                 {formatPrice(subtotal.amount, subtotal.currencyCode)}
               </span>
             </div>
             <div style={{ display: "flex", justifyContent: "space-between" }}>
-              <span style={{ fontFamily: "var(--font-body)", fontSize: "0.875rem", color: "#64685f" }}>Shipping</span>
-              <span style={{ fontFamily: "var(--font-body)", fontSize: "0.875rem", color: "#8a9482" }}>
+              <span style={{ fontFamily: "var(--font-body)", fontSize: "0.875rem", color: "#676764" }}>Shipping</span>
+              <span style={{ fontFamily: "var(--font-body)", fontSize: "0.875rem", color: MUTED }}>
                 {parseFloat(subtotal.amount) >= 40 ? "Free" : "Calculated at checkout"}
               </span>
             </div>
           </div>
 
-          <div style={{ borderTop: "1px solid rgba(41,43,37,0.15)", paddingTop: "1.25rem", marginBottom: "1.5rem" }}>
+          <div style={{ borderTop: `1px solid ${BORDER}`, paddingTop: "1.25rem", marginBottom: "1.5rem" }}>
             <div style={{ display: "flex", justifyContent: "space-between" }}>
-              <span style={{ fontFamily: "var(--font-body)", fontSize: "0.9375rem", fontWeight: 700, color: "#292b25" }}>Total</span>
-              <span style={{ fontFamily: "var(--font-body)", fontSize: "0.9375rem", fontWeight: 700, color: "#292b25" }}>
+              <span style={{ fontFamily: "var(--font-body)", fontSize: "0.9375rem", fontWeight: 700, color: TEXT }}>Total</span>
+              <span style={{ fontFamily: "var(--font-body)", fontSize: "0.9375rem", fontWeight: 700, color: TEXT }}>
                 {formatPrice(total.amount, total.currencyCode)}
               </span>
             </div>
-            <p style={{ fontFamily: "var(--font-body)", fontSize: "0.6875rem", color: "#9a9f95", margin: "0.375rem 0 0" }}>
+            <p style={{ fontFamily: "var(--font-body)", fontSize: "0.6875rem", color: MUTED, margin: "0.375rem 0 0" }}>
               Taxes calculated at checkout
             </p>
           </div>
@@ -281,17 +286,17 @@ export function CartView() {
             style={{
               display: "flex", alignItems: "center", justifyContent: "center",
               width: "100%", minHeight: 52,
-              fontFamily: "var(--font-body)", fontSize: "0.6875rem", fontWeight: 600,
-              letterSpacing: "0.14em", textTransform: "uppercase",
-              color: "#FFFFFF", backgroundColor: "#45543d",
-              border: "1px solid #45543d",
+              fontFamily: "var(--font-body)", fontSize: "0.6875rem", fontWeight: 700,
+              letterSpacing: "0.16em", textTransform: "uppercase",
+              color: "#FFFFFF", backgroundColor: TEXT,
+              border: `1px solid ${TEXT}`,
               textDecoration: "none",
               pointerEvents: checkoutUrl ? "auto" : "none",
               opacity: checkoutUrl ? 1 : 0.5,
-              transition: "background-color 220ms ease, transform 200ms ease",
+              transition: "background-color 220ms ease",
             }}
-            onMouseEnter={e => { if (checkoutUrl) { const el = e.currentTarget as HTMLElement; el.style.backgroundColor = "#34402f"; el.style.transform = "translateY(-1px)"; } }}
-            onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.backgroundColor = "#45543d"; el.style.transform = "none"; }}
+            onMouseEnter={e => { if (checkoutUrl) { (e.currentTarget as HTMLElement).style.backgroundColor = "#333333"; } }}
+            onMouseLeave={e => { (e.currentTarget as HTMLElement).style.backgroundColor = TEXT; }}
           >
             {loading ? "Updating…" : "Proceed to Checkout"}
           </a>
@@ -301,10 +306,10 @@ export function CartView() {
             {["Free UK delivery over £40", "30-day returns", "Secure checkout"].map(t => (
               <p key={t} style={{
                 fontFamily: "var(--font-body)", fontSize: "0.6875rem",
-                color: "#78836e", margin: 0,
+                color: "#676764", margin: 0,
                 display: "flex", alignItems: "center", gap: "0.375rem",
               }}>
-                <span style={{ color: "#8a9e7f" }}>✓</span> {t}
+                <span style={{ color: TEXT }}>✓</span> {t}
               </p>
             ))}
           </div>

@@ -57,7 +57,8 @@ function Accordion({ label, content }: { label: string; content: string }) {
         style={{
           width: "100%", display: "flex", alignItems: "center", justifyContent: "space-between",
           padding: "1.125rem 0", background: "none", border: "none", cursor: "pointer",
-          fontFamily: "var(--font-body)", fontSize: "0.9375rem", fontWeight: 500,
+          fontFamily: "var(--font-body)", fontSize: "0.8125rem", fontWeight: 700,
+          letterSpacing: "0.08em", textTransform: "uppercase",
           color: TEXT, textAlign: "left",
         }}
         aria-expanded={open}
@@ -93,7 +94,7 @@ function RelatedCard({ product }: { product: typeof products[number] }) {
     >
       <div style={{
         position: "relative", aspectRatio: "4 / 5",
-        borderRadius: 22, overflow: "hidden",
+        overflow: "hidden",
         backgroundColor: "#F0F0EE", marginBottom: "1rem",
       }}>
         <Image
@@ -106,7 +107,7 @@ function RelatedCard({ product }: { product: typeof products[number] }) {
           }}
         />
       </div>
-      <p style={{ fontFamily: "var(--font-body)", fontWeight: 500, fontSize: "0.9375rem", color: TEXT, margin: "0 0 0.25rem" }}>
+      <p style={{ fontFamily: "var(--font-body)", fontWeight: 700, fontSize: "0.875rem", color: TEXT, textTransform: "uppercase", letterSpacing: "0.02em", margin: "0 0 0.25rem" }}>
         {product.name}
       </p>
       <p style={{ fontFamily: "var(--font-body)", fontSize: "0.8125rem", color: MUTED, margin: "0 0 0.25rem" }}>
@@ -152,10 +153,10 @@ export function ProductDetail({ handle, title, size, price, description, imageSr
           style={{ display: "grid", gridTemplateColumns: "58fr 42fr", gap: "clamp(2.5rem, 5vw, 6rem)", alignItems: "start" }}
         >
           {/* Image column */}
-          <div style={{ position: "sticky", top: 120 }}>
+          <div style={{ position: "sticky", top: 92 }}>
             <div style={{
               position: "relative", aspectRatio: "4 / 5",
-              borderRadius: 24, overflow: "hidden", backgroundColor: "#F0F0EE",
+              overflow: "hidden", backgroundColor: "#F0F0EE",
             }}>
               {tag && (
                 <span style={{
@@ -163,7 +164,7 @@ export function ProductDetail({ handle, title, size, price, description, imageSr
                   fontFamily: "var(--font-body)", fontSize: "0.5625rem", fontWeight: 700,
                   letterSpacing: "0.12em", textTransform: "uppercase",
                   color: "#FFFFFF", backgroundColor: TEXT,
-                  padding: "0.3rem 0.75rem", borderRadius: 4,
+                  padding: "0.3rem 0.75rem",
                 }}>
                   {tag}
                 </span>
@@ -179,16 +180,16 @@ export function ProductDetail({ handle, title, size, price, description, imageSr
           {/* Details column */}
           <div style={{ paddingTop: "0.5rem" }}>
             <p style={{
-              fontFamily: "var(--font-body)", fontSize: "0.6875rem", fontWeight: 600,
+              fontFamily: "var(--font-body)", fontSize: "0.6875rem", fontWeight: 700,
               letterSpacing: "0.16em", textTransform: "uppercase", color: MUTED,
               margin: "0 0 0.75rem",
             }}>
               {size}
             </p>
             <h1 style={{
-              fontFamily: "var(--font-body)", fontWeight: 700,
+              fontFamily: "var(--font-body)", fontWeight: 300,
               fontSize: "clamp(1.75rem, 3vw, 2.75rem)",
-              letterSpacing: "-0.03em", color: TEXT,
+              letterSpacing: "-0.02em", color: TEXT,
               margin: "0 0 0.75rem", lineHeight: 1.1,
             }}>
               {title}
@@ -207,7 +208,7 @@ export function ProductDetail({ handle, title, size, price, description, imageSr
               </span>
               <div style={{
                 display: "flex", alignItems: "center",
-                border: `1.5px solid ${BORDER}`, borderRadius: 10,
+                border: `1px solid ${BORDER}`,
               }}>
                 <button
                   aria-label="Decrease quantity"
@@ -243,12 +244,11 @@ export function ProductDetail({ handle, title, size, price, description, imageSr
               style={{
                 width: "100%", height: 56,
                 display: "flex", alignItems: "center", justifyContent: "center",
-                fontFamily: "var(--font-body)", fontSize: "0.875rem", fontWeight: 500,
-                letterSpacing: "0.04em",
+                fontFamily: "var(--font-body)", fontSize: "0.75rem", fontWeight: 700,
+                letterSpacing: "0.16em", textTransform: "uppercase",
                 color: justAdded ? TEXT : "#FFFFFF",
                 backgroundColor: justAdded ? "transparent" : TEXT,
-                border: `1.5px solid ${TEXT}`,
-                borderRadius: 12,
+                border: `1px solid ${TEXT}`,
                 cursor: !variantId ? "not-allowed" : "pointer",
                 opacity: !variantId ? 0.5 : 1,
                 transition: "background-color 0.2s ease, color 0.2s ease",
@@ -266,11 +266,10 @@ export function ProductDetail({ handle, title, size, price, description, imageSr
                 style={{
                   width: "100%", height: 56,
                   display: "flex", alignItems: "center", justifyContent: "center",
-                  fontFamily: "var(--font-body)", fontSize: "0.875rem", fontWeight: 500,
-                  letterSpacing: "0.04em",
+                  fontFamily: "var(--font-body)", fontSize: "0.75rem", fontWeight: 700,
+                  letterSpacing: "0.16em", textTransform: "uppercase",
                   color: TEXT, backgroundColor: "#F5F5F3",
-                  border: `1.5px solid ${BORDER}`,
-                  borderRadius: 12,
+                  border: `1px solid ${BORDER}`,
                   cursor: loading ? "not-allowed" : "pointer",
                   transition: "background-color 0.2s ease",
                   marginBottom: "1.5rem",
@@ -310,9 +309,9 @@ export function ProductDetail({ handle, title, size, price, description, imageSr
           <div style={{ maxWidth: 1320, margin: "0 auto" }}>
             <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", marginBottom: "2.5rem" }}>
               <h2 style={{
-                fontFamily: "var(--font-body)", fontWeight: 700,
+                fontFamily: "var(--font-body)", fontWeight: 300,
                 fontSize: "clamp(1.5rem, 2.5vw, 2rem)",
-                letterSpacing: "-0.025em", color: TEXT, margin: 0,
+                letterSpacing: "-0.02em", color: TEXT, margin: 0,
               }}>
                 You may also like
               </h2>

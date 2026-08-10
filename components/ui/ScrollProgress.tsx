@@ -31,9 +31,8 @@ export function ScrollProgress() {
     >
       <div style={{
         height: "100%", width: `${progress * 100}%`,
-        backgroundColor: "#3F4A36",
+        backgroundColor: "#111111",
         transition: "width 0.08s linear",
-        boxShadow: "0 0 6px rgba(63,74,54,0.4)",
       }} />
     </div>
   );

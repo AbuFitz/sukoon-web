@@ -46,21 +46,21 @@ export function FAQContent() {
 
   return (
     <section aria-label="Frequently asked questions" style={{
-      backgroundColor: "#FBF8F3",
+      backgroundColor: "#F5F5F3",
       padding: "clamp(3.5rem, 8vw, 6rem) clamp(1.5rem, 6vw, 5rem)",
     }}>
       <div style={{ maxWidth: "820px", margin: "0 auto" }}>
 
         <div style={{ marginBottom: "clamp(3rem, 6vw, 4.5rem)" }}>
           <p style={{
-            fontFamily: "var(--font-body)", fontSize: "0.5625rem", fontWeight: 500,
-            letterSpacing: "0.2em", textTransform: "uppercase", color: "#98A47D", marginBottom: "1rem",
+            fontFamily: "var(--font-body)", fontSize: "0.6875rem", fontWeight: 700,
+            letterSpacing: "0.2em", textTransform: "uppercase", color: "#92928D", marginBottom: "1rem",
           }}>
             FAQ
           </p>
           <h1 style={{
-            fontFamily: "var(--font-display)", fontSize: "clamp(2.25rem, 5vw, 3.5rem)",
-            fontWeight: 400, letterSpacing: "-0.015em", lineHeight: 1.1, color: "#2C2A1F",
+            fontFamily: "var(--font-body)", fontSize: "clamp(2.25rem, 5vw, 3.5rem)",
+            fontWeight: 200, letterSpacing: "-0.015em", lineHeight: 1.1, color: "#111111",
           }}>
             Honest answers.
           </h1>
@@ -70,10 +70,10 @@ export function FAQContent() {
           {sections.map((sec) => (
             <div key={sec.heading}>
               <p style={{
-                fontFamily: "var(--font-body)", fontSize: "0.5625rem", fontWeight: 600,
-                letterSpacing: "0.18em", textTransform: "uppercase", color: "#98A47D",
+                fontFamily: "var(--font-body)", fontSize: "0.6875rem", fontWeight: 700,
+                letterSpacing: "0.18em", textTransform: "uppercase", color: "#92928D",
                 marginBottom: "1rem", paddingBottom: "0.75rem",
-                borderBottom: "1px solid #E8D4AE",
+                borderBottom: "1px solid #E3E3DF",
               }}>
                 {sec.heading}
               </p>
@@ -81,7 +81,7 @@ export function FAQContent() {
                 const key = `${sec.heading}-${i}`;
                 const open = openKey === key;
                 return (
-                  <div key={item.q} style={{ borderBottom: "1px solid #E8D4AE" }}>
+                  <div key={item.q} style={{ borderBottom: "1px solid #E3E3DF" }}>
                     <button
                       onClick={() => setOpenKey(open ? null : key)}
                       aria-expanded={open}
@@ -89,12 +89,12 @@ export function FAQContent() {
                         width: "100%", display: "flex", alignItems: "center", justifyContent: "space-between",
                         gap: "1rem", background: "none", border: "none", cursor: "pointer", textAlign: "left",
                         padding: "1.125rem 0",
-                        fontFamily: "var(--font-body)", fontSize: "0.9375rem", fontWeight: 600, color: "#2C2A1F",
+                        fontFamily: "var(--font-body)", fontSize: "0.9375rem", fontWeight: 600, color: "#111111",
                       }}
                     >
                       {item.q}
                       <span aria-hidden style={{
-                        flexShrink: 0, fontSize: "1.125rem", color: "#98A47D",
+                        flexShrink: 0, fontSize: "1.125rem", color: "#92928D",
                         display: "inline-block",
                         transform: open ? "rotate(45deg)" : "none", transition: "transform 0.25s ease",
                       }}>+</span>
@@ -105,7 +105,7 @@ export function FAQContent() {
                     }}>
                       <p style={{
                         fontFamily: "var(--font-body)", fontSize: "0.875rem", lineHeight: 1.8,
-                        color: "#98A47D", paddingBottom: "1.25rem", maxWidth: "660px",
+                        color: "#676764", paddingBottom: "1.25rem", maxWidth: "660px",
                       }}>
                         {item.a}
                       </p>
@@ -119,11 +119,11 @@ export function FAQContent() {
 
         <div style={{
           marginTop: "clamp(3rem, 6vw, 4.5rem)", padding: "clamp(1.75rem, 4vw, 2.5rem)",
-          backgroundColor: "#F0EAD8", borderLeft: "3px solid #98A47D",
+          backgroundColor: "#FFFFFF", borderLeft: "3px solid #111111",
         }}>
-          <p style={{ fontFamily: "var(--font-body)", fontSize: "0.875rem", lineHeight: 1.75, color: "#2C2A1F" }}>
+          <p style={{ fontFamily: "var(--font-body)", fontSize: "0.875rem", lineHeight: 1.75, color: "#111111" }}>
             Didn&rsquo;t find what you were looking for?{" "}
-            <a href="mailto:hello@sukoonskin.com" style={{ color: "#3F4A36", fontWeight: 600, textDecoration: "underline", textUnderlineOffset: "2px" }}>
+            <a href="mailto:hello@sukoon.co.uk" style={{ color: "#111111", fontWeight: 600, textDecoration: "underline", textUnderlineOffset: "2px" }}>
               Get in touch
             </a>{" "}
             — we reply within one working day.

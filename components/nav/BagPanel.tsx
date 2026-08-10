@@ -13,7 +13,7 @@ function Stepper({ qty, onChange }: { qty: number; onChange: (qty: number) => vo
   return (
     <div style={{
       display: "flex", alignItems: "center",
-      border: `1.5px solid ${BORDER}`, borderRadius: 8,
+      border: `1px solid ${BORDER}`,
     }}>
       <button
         aria-label="Decrease quantity"
@@ -57,8 +57,8 @@ export function BagPanel({ open, onClose }: { open: boolean; onClose: () => void
             display: "inline-flex", alignItems: "center", justifyContent: "center",
             padding: "0.875rem 2rem", textDecoration: "none",
             backgroundColor: TEXT, color: "#FFFFFF",
-            fontFamily: "var(--font-body)", fontSize: "0.875rem", fontWeight: 500,
-            borderRadius: 12,
+            fontFamily: "var(--font-body)", fontSize: "0.6875rem", fontWeight: 700,
+            letterSpacing: "0.16em", textTransform: "uppercase",
           }}>
             Shop now
           </a>
@@ -82,11 +82,11 @@ export function BagPanel({ open, onClose }: { open: boolean; onClose: () => void
           return (
             <div key={line.id} style={{ display: "flex", gap: "1rem" }}>
               {merchandise.image ? (
-                <div style={{ position: "relative", width: 80, height: 96, flexShrink: 0, borderRadius: 12, overflow: "hidden", backgroundColor: "#F0F0EE" }}>
+                <div style={{ position: "relative", width: 80, height: 96, flexShrink: 0, overflow: "hidden", backgroundColor: "#F0F0EE" }}>
                   <Image src={merchandise.image.url} alt={merchandise.image.altText ?? merchandise.product.title} fill sizes="80px" style={{ objectFit: "cover" }} />
                 </div>
               ) : (
-                <div style={{ width: 80, height: 96, flexShrink: 0, borderRadius: 12, backgroundColor: "#F0F0EE" }} />
+                <div style={{ width: 80, height: 96, flexShrink: 0, backgroundColor: "#F0F0EE" }} />
               )}
               <div style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
                 <div>
@@ -128,9 +128,8 @@ export function BagPanel({ open, onClose }: { open: boolean; onClose: () => void
               display: "flex", alignItems: "center", justifyContent: "center", width: "100%",
               height: 52, border: "none", cursor: "pointer",
               backgroundColor: TEXT, color: "#FFFFFF",
-              fontFamily: "var(--font-body)", fontSize: "0.875rem", fontWeight: 500,
-              letterSpacing: "0.04em", textDecoration: "none",
-              borderRadius: 12,
+              fontFamily: "var(--font-body)", fontSize: "0.6875rem", fontWeight: 700,
+              letterSpacing: "0.16em", textTransform: "uppercase", textDecoration: "none",
               pointerEvents: checkoutUrl ? "auto" : "none",
             }}
           >
