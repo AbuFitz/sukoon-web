@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { SiteNav }                from "@/components/nav/SiteNav";
 import { HeroSection }            from "@/components/home/HeroSection";
+import { CollectionSection }      from "@/components/home/CollectionSection";
 import { BrandStorySection }      from "@/components/home/BrandStorySection";
 import { IngredientsSection }     from "@/components/home/IngredientsSection";
 import { BenefitsSection }        from "@/components/home/BenefitsSection";
@@ -61,9 +62,13 @@ export default async function HomePage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }} />
       <SiteNav />
       <main style={{ paddingBottom: "clamp(1rem, 2vw, 1.25rem)" }}>
-        <HeroSection products={featuredProducts} />
-        <BenefitsSection />
-        <IngredientsSection />
+        <HeroSection />
+        <div style={{ backgroundColor: "#F9F8F6" }}>
+          <CollectionSection products={featuredProducts} />
+          <BenefitsSection />
+          <IngredientsSection />
+          <div style={{ height: "clamp(2.5rem, 5vw, 4rem)" }} />
+        </div>
         <BrandStorySection />
       </main>
       <Footer />

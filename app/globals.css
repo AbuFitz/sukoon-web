@@ -31,6 +31,11 @@
   --radius-card-sm: 8px;
   --radius-image:   10px;
   --radius-control: 8px;
+
+  /* Used only by the off-white editorial block below the hero
+     (Collection shelf, Rituals, Formula grid) — kept separate from
+     the small-radius card system used everywhere else on the site. */
+  --radius-2xl: 16px;
 }
 
 /* ─── Reset ─── */

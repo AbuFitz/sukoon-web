@@ -1,13 +1,9 @@
 import Image from "next/image";
-import Link from "next/link";
-import { homepageImages, type FeaturedProduct } from "@/lib/homepage";
+import { homepageImages } from "@/lib/homepage";
 
 const BADGES = ["Made in the UK", "Fragrance-Free", "Vegan & Cruelty-Free"];
 
-export function HeroSection({ products }: { products: FeaturedProduct[] }) {
-  const size30 = products.find(p => p.handle.includes("30ml"));
-  const size15 = products.find(p => p.handle.includes("15ml"));
-
+export function HeroSection() {
   return (
     <section aria-label="Hero" style={{ position: "relative", minHeight: "min(88vh, 760px)", overflow: "hidden" }}>
       <Image
@@ -42,24 +38,13 @@ export function HeroSection({ products }: { products: FeaturedProduct[] }) {
           color: "rgba(255,255,255,0.88)", maxWidth: 460, margin: "0 0 1.75rem",
         }}>
           Five active ingredients. Zero fillers. Calms skin, strengthens the
-          barrier, and reverses hairline friction — in sixty seconds.
+          barrier, and combats hairline friction.
         </p>
 
-        <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", marginBottom: "1.5rem" }}>
-          {size30 && (
-            <Link href={`/products/${size30.handle}`} className="btn btn-dark">
-              Shop 30ml — {size30.price}
-            </Link>
-          )}
-          {size15 && (
-            <Link
-              href={`/products/${size15.handle}`}
-              className="btn btn-outline"
-              style={{ backgroundColor: "transparent", borderColor: "rgba(255,255,255,0.6)", color: "#FFFFFF" }}
-            >
-              Discover 15ml — {size15.price}
-            </Link>
-          )}
+        <div style={{ marginBottom: "1.5rem" }}>
+          <a href="#collection" className="btn btn-dark">
+            Shop The Fluid
+          </a>
         </div>
 
         <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem" }}>

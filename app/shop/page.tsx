@@ -1,5 +1,6 @@
 import { SiteNav }           from "@/components/nav/SiteNav";
-import { ShopConfigurator }  from "@/components/shop/ShopConfigurator";
+import { ShopHero }          from "@/components/shop/ShopHero";
+import { ShopCollection }    from "@/components/shop/ShopCollection";
 import { ShopTrustStrip }    from "@/components/shop/ShopTrustStrip";
 import { Footer }            from "@/components/sections/Footer";
 import { getVariantIdMap }   from "@/lib/shopify";
@@ -8,7 +9,7 @@ import { products }          from "@/lib/products";
 
 export const metadata = {
   title: "Shop — Sukoon",
-  description: "The Daily Solace Fluid — one formula, two sizes.",
+  description: "Thoughtful skincare made with intention. Shop the Daily Solace collection.",
 };
 
 export default async function ShopPage() {
@@ -23,7 +24,8 @@ export default async function ShopPage() {
     <>
       <SiteNav />
       <main style={{ paddingBottom: "clamp(1rem, 2vw, 1.25rem)" }}>
-        <ShopConfigurator variantIds={variantIds} />
+        <ShopHero />
+        <ShopCollection variantIds={variantIds} />
         <ShopTrustStrip />
       </main>
       <Footer />

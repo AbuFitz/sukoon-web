@@ -33,7 +33,7 @@ function Cell({ ing }: { ing: (typeof ingredients)[number] }) {
 
 export function IngredientsSection() {
   return (
-    <section id="ingredients" className="container" style={{ paddingTop: "clamp(1rem, 2vw, 1.25rem)" }}>
+    <section id="ingredients" className="container" style={{ paddingTop: "clamp(2.5rem, 5vw, 4rem)" }}>
       <div style={{ marginBottom: "1.25rem", maxWidth: 560 }}>
         <span className="eyebrow">Formula</span>
         <h2 style={{
@@ -45,7 +45,7 @@ export function IngredientsSection() {
         </h2>
       </div>
 
-      <div className="card formula-bento">
+      <div className="formula-bento" style={{ border: "1px solid #E5E5E5", borderRadius: "var(--radius-2xl)" }}>
         {ingredients.map(ing => <Cell key={ing.name} ing={ing} />)}
       </div>
 
@@ -53,15 +53,16 @@ export function IngredientsSection() {
         .formula-bento {
           display: grid;
           grid-template-columns: 1fr 1fr;
+          overflow: hidden;
         }
-        .formula-bento > div:nth-child(1) { border-right: 1px solid #E2E2E2; }
-        .formula-bento > div:nth-child(3) { border-top: 1px solid #E2E2E2; border-right: 1px solid #E2E2E2; }
-        .formula-bento > div:nth-child(4) { border-top: 1px solid #E2E2E2; }
-        .formula-bento > div:nth-child(5) { border-top: 1px solid #E2E2E2; grid-column: 1 / -1; }
+        .formula-bento > div:nth-child(1) { border-right: 1px solid #E5E5E5; }
+        .formula-bento > div:nth-child(3) { border-top: 1px solid #E5E5E5; border-right: 1px solid #E5E5E5; }
+        .formula-bento > div:nth-child(4) { border-top: 1px solid #E5E5E5; }
+        .formula-bento > div:nth-child(5) { border-top: 1px solid #E5E5E5; grid-column: 1 / -1; }
         @media (max-width: 640px) {
           .formula-bento { grid-template-columns: 1fr; }
           .formula-bento > div { border-right: none !important; border-top: none; }
-          .formula-bento > div:nth-child(n + 2) { border-top: 1px solid #E2E2E2 !important; }
+          .formula-bento > div:nth-child(n + 2) { border-top: 1px solid #E5E5E5 !important; }
         }
       `}</style>
     </section>
