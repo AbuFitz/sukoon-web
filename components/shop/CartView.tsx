@@ -1,12 +1,13 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useCart } from "@/lib/cart-context";
 import { formatPrice } from "@/lib/shopify";
 
-const TEXT   = "#111111";
-const MUTED  = "#969690";
-const BORDER = "#EDEBE5";
+const TEXT   = "#000000";
+const MUTED  = "#A3A3A3";
+const BORDER = "#E5E5E5";
 
 function QtyButton({ label, onClick, children }: { label: string; onClick: () => void; children: React.ReactNode }) {
   return (
@@ -14,7 +15,7 @@ function QtyButton({ label, onClick, children }: { label: string; onClick: () =>
       aria-label={label}
       onClick={onClick}
       style={{
-        width: 32, height: 32, background: "none", borderRadius: 999,
+        width: 32, height: 32, background: "none", borderRadius: 2,
         border: `1px solid ${BORDER}`,
         cursor: "pointer", color: TEXT,
         fontSize: "1rem", display: "flex", alignItems: "center", justifyContent: "center",
@@ -34,7 +35,7 @@ export function CartView() {
 
   if (lines.length === 0) {
     return (
-      <div className="card" style={{
+      <div className="block" style={{
         maxWidth: 560, margin: "0 auto",
         padding: "clamp(3rem, 7vw, 5rem) clamp(2rem, 5vw, 3rem)",
         textAlign: "center",
@@ -59,13 +60,13 @@ export function CartView() {
         </h1>
         <p style={{
           fontFamily: "var(--font-body)", fontSize: "1rem", lineHeight: 1.6,
-          color: "#666666", margin: "0 0 2rem",
+          color: "#525252", margin: "0 0 2rem",
         }}>
           Add The Daily Solace Fluid to begin your ritual.
         </p>
-        <a href="/shop" className="btn btn-dark">
-          Shop the Collection
-        </a>
+        <Link href="/#fluid" className="btn btn-dark tracked-wide">
+          Shop the Fluid
+        </Link>
       </div>
     );
   }
@@ -93,7 +94,7 @@ export function CartView() {
         style={{ gap: "clamp(1rem, 2vw, 1.25rem)", alignItems: "start" }}
       >
         {/* ── Line items ── */}
-        <div className="card" style={{ padding: "clamp(1.25rem, 3vw, 2rem)", opacity: loading ? 0.6 : 1, transition: "opacity 0.2s" }}>
+        <div className="block" style={{ padding: "clamp(1.25rem, 3vw, 2rem)", opacity: loading ? 0.6 : 1, transition: "opacity 0.2s" }}>
           {lines.map((line, i) => {
             const { merchandise } = line;
             const lineTotal = formatPrice(
@@ -112,10 +113,10 @@ export function CartView() {
                 }}
               >
                 {/* Image */}
-                <div className="card-sm" style={{
+                <div style={{
                   position: "relative",
                   width: 84, height: 104, flexShrink: 0,
-                  backgroundColor: "#F4F4F2", overflow: "hidden",
+                  backgroundColor: "#F5F5F5", overflow: "hidden", border: `1px solid ${BORDER}`,
                 }}>
                   {merchandise.image ? (
                     <Image
@@ -140,7 +141,7 @@ export function CartView() {
                       {merchandise.title}
                     </p>
                   )}
-                  <p style={{ fontFamily: "var(--font-body)", fontSize: "0.8125rem", color: "#666666", margin: 0 }}>
+                  <p style={{ fontFamily: "var(--font-body)", fontSize: "0.8125rem", color: "#525252", margin: 0 }}>
                     {unitPrice} each
                   </p>
 
@@ -186,20 +187,19 @@ export function CartView() {
           })}
 
           <div style={{ marginTop: "1rem", paddingTop: "1rem", borderTop: `1px solid ${BORDER}` }}>
-            <a href="/shop" className="badge">← Continue shopping</a>
+            <Link href="/#fluid" className="btn-ghost tracked" style={{ fontFamily: "var(--font-body)", fontSize: "0.75rem", fontWeight: 700 }}>← Continue shopping</Link>
           </div>
         </div>
 
         {/* ── Order summary ── */}
-        <div className="card" style={{
-          backgroundColor: "#F6F1E9",
+        <div className="block" style={{
+          backgroundColor: "#FAFAFA",
           padding: "1.75rem",
           position: "sticky",
-          top: 92,
+          top: 93,
         }}>
-          <h2 style={{
+          <h2 className="tracked-wide" style={{
             fontFamily: "var(--font-body)", fontSize: "0.6875rem", fontWeight: 700,
-            letterSpacing: "0.16em", textTransform: "uppercase",
             color: TEXT, margin: "0 0 1.5rem",
           }}>
             Order Summary
@@ -207,7 +207,7 @@ export function CartView() {
 
           <div style={{ display: "flex", flexDirection: "column", gap: "0.875rem", marginBottom: "1.5rem" }}>
             <div style={{ display: "flex", justifyContent: "space-between" }}>
-              <span style={{ fontFamily: "var(--font-body)", fontSize: "0.875rem", color: "#666666" }}>
+              <span style={{ fontFamily: "var(--font-body)", fontSize: "0.875rem", color: "#525252" }}>
                 Subtotal ({cart!.totalQuantity} {cart!.totalQuantity === 1 ? "item" : "items"})
               </span>
               <span style={{ fontFamily: "var(--font-body)", fontSize: "0.875rem", fontWeight: 700, color: TEXT }}>
@@ -215,14 +215,14 @@ export function CartView() {
               </span>
             </div>
             <div style={{ display: "flex", justifyContent: "space-between" }}>
-              <span style={{ fontFamily: "var(--font-body)", fontSize: "0.875rem", color: "#666666" }}>Shipping</span>
+              <span style={{ fontFamily: "var(--font-body)", fontSize: "0.875rem", color: "#525252" }}>Shipping</span>
               <span style={{ fontFamily: "var(--font-body)", fontSize: "0.875rem", color: MUTED }}>
                 {parseFloat(subtotal.amount) >= 40 ? "Free" : "Calculated at checkout"}
               </span>
             </div>
           </div>
 
-          <div style={{ borderTop: `1px solid #E0D9C6`, paddingTop: "1.25rem", marginBottom: "1.5rem" }}>
+          <div style={{ borderTop: `1px solid ${BORDER}`, paddingTop: "1.25rem", marginBottom: "1.5rem" }}>
             <div style={{ display: "flex", justifyContent: "space-between" }}>
               <span style={{ fontFamily: "var(--font-body)", fontSize: "0.9375rem", fontWeight: 700, color: TEXT }}>Total</span>
               <span style={{ fontFamily: "var(--font-body)", fontSize: "0.9375rem", fontWeight: 700, color: TEXT }}>
@@ -236,7 +236,7 @@ export function CartView() {
 
           <a
             href={checkoutUrl ?? "#"}
-            className="btn btn-dark"
+            className="btn btn-dark tracked-wide"
             style={{
               width: "100%",
               pointerEvents: checkoutUrl ? "auto" : "none",
@@ -249,7 +249,7 @@ export function CartView() {
           {/* Trust micro-signals */}
           <div style={{ marginTop: "1.25rem", display: "flex", flexWrap: "wrap", gap: "0.5rem" }}>
             {["Free UK delivery", "30-day returns", "Secure checkout"].map(t => (
-              <span key={t} className="badge" style={{ backgroundColor: "#FFFFFF" }}>{t}</span>
+              <span key={t} className="tag">{t}</span>
             ))}
           </div>
         </div>

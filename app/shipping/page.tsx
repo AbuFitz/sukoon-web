@@ -10,14 +10,14 @@ const PROSE = {
   fontFamily: "var(--font-body)",
   fontSize: "0.9375rem",
   lineHeight: 1.7,
-  color: "#666666",
+  color: "#525252",
 };
 
 const H2 = {
   fontFamily: "var(--font-body)",
   fontSize: "clamp(1.25rem, 2.2vw, 1.5rem)",
   fontWeight: 600,
-  color: "#111111",
+  color: "#000000",
   marginTop: "2.25rem",
   marginBottom: "0.75rem",
   lineHeight: 1.2,
@@ -25,8 +25,8 @@ const H2 = {
 
 const CARD = {
   backgroundColor: "#FFFFFF",
-  border: "1px solid #EDEBE5",
-  borderRadius: 20,
+  border: "1px solid #E5E5E5",
+  borderRadius: 4,
   padding: "1.5rem",
   marginBottom: "0.75rem",
 };
@@ -36,24 +36,24 @@ export default function ShippingPage() {
     <>
       <SiteNav />
       <main className="container" style={{ minHeight: "70vh", paddingTop: "clamp(1rem, 2vw, 1.5rem)", paddingBottom: "clamp(1rem, 2vw, 1.25rem)" }}>
-        <div className="card" style={{ maxWidth: "780px", margin: "0 auto", padding: "clamp(2rem, 5vw, 3rem)" }}>
+        <div className="block" style={{ maxWidth: "780px", margin: "0 auto", padding: "clamp(2rem, 5vw, 3rem)" }}>
           <h1 style={{
             fontFamily: "var(--font-body)", fontWeight: 600, fontSize: "clamp(1.875rem, 3.5vw, 2.75rem)",
-            letterSpacing: "-0.03em", color: "#111111",
+            letterSpacing: "-0.03em", color: "#000000",
             marginBottom: "0.5rem",
           }}>Shipping &amp; Returns</h1>
-          <p style={{ ...PROSE, color: "#969690", marginBottom: "2.5rem", fontSize: "0.8125rem" }}>
+          <p style={{ ...PROSE, color: "#A3A3A3", marginBottom: "2.5rem", fontSize: "0.8125rem" }}>
             Last updated: July 2025
           </p>
 
           <h2 style={{ ...H2, marginTop: 0 }}>Delivery — UK</h2>
 
           <div style={CARD}>
-            <p style={{ ...PROSE, fontWeight: 700, color: "#111111", marginBottom: "0.375rem" }}>Standard Delivery</p>
+            <p style={{ ...PROSE, fontWeight: 700, color: "#000000", marginBottom: "0.375rem" }}>Standard Delivery</p>
             <p style={PROSE}>3–5 working days · Free on all orders</p>
           </div>
           <div style={CARD}>
-            <p style={{ ...PROSE, fontWeight: 700, color: "#111111", marginBottom: "0.375rem" }}>Express Delivery</p>
+            <p style={{ ...PROSE, fontWeight: 700, color: "#000000", marginBottom: "0.375rem" }}>Express Delivery</p>
             <p style={PROSE}>1–2 working days · £4.95</p>
           </div>
 

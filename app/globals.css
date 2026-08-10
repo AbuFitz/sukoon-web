@@ -1,35 +1,35 @@
 @import "tailwindcss";
 
-/* ─── Sukoon Design System — bento / soft-card ───
- * Soft cream canvas, distinct pure-white rounded cards for every
- * section (never a continuous flat background), heavy curvature on
- * containers, fully-pill interactive elements, ambient shadows. */
+/* ─── Sukoon Design System — sharp monochrome luxury ───
+ * Pure black / pure white / cool neutral grays. No warm tones, no
+ * heavy curvature, no pill shapes. Structure comes from 1px sharp
+ * dividers and high-contrast type, not shadows or roundness. */
 @theme {
-  --color-canvas:       #F9F8F6;
-  --color-card:         #FFFFFF;
-  --color-surface-alt:  #F4F4F2;
-  --color-cream:        #F6F1E9;
-  --color-accent:       #E8E3D9;
+  --color-bg:           #FFFFFF;
+  --color-ink:          #000000;
+  --color-obsidian:     #0A0A0A;
+  --color-surface:      #FAFAFA;
+  --color-surface-alt:  #171717;
 
-  --color-text:         #111111;
-  --color-text-secondary: #666666;
-  --color-text-muted:   #969690;
+  --color-text:         #000000;
+  --color-text-secondary: #525252;
+  --color-text-muted:   #A3A3A3;
+  --color-text-on-dark: #FFFFFF;
+  --color-text-on-dark-muted: #A1A1AA;
 
-  --color-border:       #EDEBE5;
-  --color-border-strong: #DFDACD;
+  --color-border:       #E5E5E5;
+  --color-border-dark:  #262626;
 
-  --color-button:       #111111;
+  --color-button:       #000000;
   --color-button-text:  #FFFFFF;
 
   /* Fonts — single confident geometric sans throughout */
   --font-display: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-body:    var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 
-  /* Radii — heavy curvature on containers, full pill on controls */
-  --radius-card:   28px;
-  --radius-card-sm: 20px;
-  --radius-image:  24px;
-  --radius-pill:   999px;
+  /* Radii — sharp by default, never more than 4px */
+  --radius-sm: 2px;
+  --radius-md: 4px;
 }
 
 /* ─── Reset ─── */
@@ -39,22 +39,22 @@ html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #F9F8F6;
+  background-color: #FFFFFF;
   overflow-x: clip;
 }
 
 body {
-  background-color: #F9F8F6;
-  color: #111111;
+  background-color: #FFFFFF;
+  color: #000000;
   font-family: var(--font-body);
 }
 
 /* ─── Selection ─── */
-::selection { background-color: #E8E3D9; color: #111111; }
+::selection { background-color: #000000; color: #FFFFFF; }
 
 /* ─── Focus ─── */
 :focus-visible {
-  outline: 2px solid #111111;
+  outline: 2px solid #000000;
   outline-offset: 2px;
 }
 
@@ -79,8 +79,8 @@ img {
 }
 
 .section {
-  padding-top:    clamp(2.5rem, 4vw, 3.5rem);
-  padding-bottom: clamp(2.5rem, 4vw, 3.5rem);
+  padding-top:    clamp(3rem, 5vw, 4.5rem);
+  padding-bottom: clamp(3rem, 5vw, 4.5rem);
 }
 
 /* ─── Typography helpers ─── */
@@ -90,155 +90,183 @@ img {
   font-family: var(--font-body);
   font-size: 0.6875rem;
   font-weight: 700;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: #969690;
+  color: #A3A3A3;
+}
+.eyebrow-on-dark { color: #A1A1AA; }
+
+.tracked {
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.tracked-wide {
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.tracked-widest {
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
 }
 
-/* ─── Bento card ───
- * The single structural unit of the whole site: a distinct pure
- * white rounded container with an ambient shadow, sitting on the
- * cream canvas. Sections are built from these placed in a grid with
- * real gaps between them — never overlapping, never flush. */
-.card {
-  background-color: #FFFFFF;
-  border-radius: var(--radius-card);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+/* ─── Structural blocks ───
+ * The single structural unit: a block separated by 1px sharp
+ * dividers, never a floating shadowed card. Sections sit directly
+ * against each other, distinguished by background colour and
+ * borders, not by elevation. */
+.block {
+  border: 1px solid #E5E5E5;
+  border-radius: var(--radius-md);
+}
+.block-dark {
+  border: 1px solid #262626;
+  border-radius: var(--radius-md);
 }
 
-.card-sm {
-  border-radius: var(--radius-card-sm);
-}
+.divider { height: 1px; background-color: #E5E5E5; }
+.divider-dark { height: 1px; background-color: #262626; }
 
-.card-flat {
-  background-color: #F9F8F6;
-  border-radius: var(--radius-card);
-}
-
-/* ─── Buttons — pill ─── */
+/* ─── Buttons — sharp rectangles ─── */
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
   font-family: var(--font-body);
-  font-size: 0.875rem;
-  font-weight: 600;
-  border-radius: var(--radius-pill);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-radius: var(--radius-sm);
   cursor: pointer;
   text-decoration: none;
   white-space: nowrap;
-  transition: background-color 0.18s ease, border-color 0.18s ease, color 0.18s ease, transform 0.18s ease;
-  border: none;
+  transition: background-color 0.18s ease, border-color 0.18s ease, color 0.18s ease;
+  border: 1px solid transparent;
 }
 
 .btn-dark {
-  background-color: #111111;
+  background-color: #000000;
   color: #FFFFFF;
-  padding: 0.9375rem 1.875rem;
-  border: 1px solid #111111;
+  padding: 1rem 2rem;
+  border-color: #000000;
 }
-.btn-dark:hover { background-color: #2A2A2A; border-color: #2A2A2A; }
+.btn-dark:hover { background-color: #FFFFFF; color: #000000; border-color: #000000; }
+
+.btn-light {
+  background-color: #FFFFFF;
+  color: #000000;
+  padding: 1rem 2rem;
+  border-color: #FFFFFF;
+}
+.btn-light:hover { background-color: #000000; color: #FFFFFF; border-color: #FFFFFF; }
 
 .btn-outline {
-  background-color: #FFFFFF;
-  color: #111111;
-  padding: 0.9375rem 1.875rem;
-  border: 1px solid #EDEBE5;
+  background-color: transparent;
+  color: #000000;
+  padding: 1rem 2rem;
+  border-color: #000000;
 }
-.btn-outline:hover { border-color: #111111; }
+.btn-outline:hover { background-color: #000000; color: #FFFFFF; }
+
+.btn-outline-on-dark {
+  background-color: transparent;
+  color: #FFFFFF;
+  padding: 1rem 2rem;
+  border-color: #FFFFFF;
+}
+.btn-outline-on-dark:hover { background-color: #FFFFFF; color: #000000; }
 
 .btn-ghost {
   background-color: transparent;
-  color: #111111;
+  color: #000000;
   padding: 0.875rem 0;
   border: none;
   text-decoration: underline;
   text-underline-offset: 3px;
   border-radius: 0;
 }
-.btn-ghost:hover { color: #666666; }
+.btn-ghost:hover { color: #525252; }
 
-/* ─── Pill badge ─── */
-.badge {
+/* ─── Tag / badge — square, not pill ─── */
+.tag {
   display: inline-flex;
   align-items: center;
   gap: 0.375rem;
   font-family: var(--font-body);
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: #111111;
-  background-color: #E8E3D9;
-  border-radius: var(--radius-pill);
-  padding: 0.5rem 1rem;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #000000;
+  border: 1px solid #E5E5E5;
+  border-radius: var(--radius-sm);
+  padding: 0.5rem 0.875rem;
   white-space: nowrap;
 }
-.badge-light {
-  background-color: rgba(255, 255, 255, 0.9);
-  color: #111111;
-}
-
-/* ─── Pill toggle (segmented control) ─── */
-.toggle {
-  display: inline-flex;
-  align-items: center;
-  background-color: #F4F4F2;
-  border-radius: var(--radius-pill);
-  padding: 4px;
-  gap: 2px;
-}
-.toggle-option {
-  font-family: var(--font-body);
-  font-size: 0.8125rem;
-  font-weight: 600;
-  color: #666666;
-  background: none;
-  border: none;
-  border-radius: var(--radius-pill);
-  padding: 0.625rem 1.125rem;
-  cursor: pointer;
-  transition: background-color 0.18s ease, color 0.18s ease;
-  white-space: nowrap;
-}
-.toggle-option[data-active="true"] {
-  background-color: #111111;
+.tag-fill {
+  background-color: #000000;
   color: #FFFFFF;
+  border-color: #000000;
+}
+.tag-on-dark {
+  color: #FFFFFF;
+  border-color: #262626;
 }
 
-/* ─── Inputs — pill ─── */
+/* ─── Selector card (dual-size picker) ─── */
+.selector-card {
+  border: 1px solid #E5E5E5;
+  border-radius: var(--radius-md);
+  padding: 1.25rem 1.5rem;
+  cursor: pointer;
+  text-align: left;
+  background: none;
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+  width: 100%;
+}
+.selector-card[data-active="true"] {
+  border-color: #000000;
+  border-width: 2px;
+  padding: calc(1.25rem - 1px) calc(1.5rem - 1px);
+}
+
+/* ─── Inputs — sharp ─── */
 .input {
   width: 100%;
   height: 52px;
-  padding: 0 1.25rem;
-  background-color: #F9F8F6;
-  border: 1px solid #EDEBE5;
-  border-radius: var(--radius-pill);
+  padding: 0 1rem;
+  background-color: #FFFFFF;
+  border: 1px solid #E5E5E5;
+  border-radius: var(--radius-sm);
   font-family: var(--font-body);
   font-size: 0.9375rem;
-  color: #111111;
+  color: #000000;
   transition: border-color 0.18s ease;
   outline: none;
 }
-.input::placeholder { color: #969690; }
-.input:focus { border-color: #111111; }
+.input::placeholder { color: #A3A3A3; }
+.input:focus { border-color: #000000; }
 
-/* Form fields that hold multi-line content stay card-radius, not pill */
-.input-card {
-  border-radius: var(--radius-card-sm);
+.input-on-dark {
+  background-color: transparent;
+  border-color: #262626;
+  color: #FFFFFF;
 }
-textarea.input-card {
+.input-on-dark::placeholder { color: #A1A1AA; }
+.input-on-dark:focus { border-color: #FFFFFF; }
+
+textarea.input {
   height: auto;
-  padding: 0.875rem 1.25rem;
+  padding: 0.875rem 1rem;
+  resize: vertical;
 }
-
-/* ─── Divider ─── */
-.divider { height: 1px; background-color: #EDEBE5; }
 
 /* ─── Image hover ─── */
 .img-hover {
   transition: transform 0.4s ease;
 }
-.img-hover:hover { transform: scale(1.03); }
+.img-hover:hover { transform: scale(1.02); }
 
 /* ─── Mobile ─── */
 @media (max-width: 767px) {

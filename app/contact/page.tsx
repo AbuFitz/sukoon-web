@@ -4,24 +4,24 @@ import { useState } from "react";
 import { SiteNav } from "@/components/nav/SiteNav";
 import { Footer } from "@/components/sections/Footer";
 
-const INK   = "#111111";
-const MUTED = "#666666";
+const INK   = "#000000";
+const MUTED = "#525252";
 
 const inputStyle = {
   width: "100%",
   fontFamily: "var(--font-body)",
   fontSize: "0.9375rem",
   color: INK,
-  backgroundColor: "#F9F8F6",
-  border: "1px solid #EDEBE5",
-  borderRadius: 999,
-  padding: "0.875rem 1.25rem",
+  backgroundColor: "#FAFAFA",
+  border: "1px solid #E5E5E5",
+  borderRadius: 2,
+  padding: "0.875rem 1rem",
   outline: "none",
   boxSizing: "border-box" as const,
   display: "block",
 };
 
-const textareaStyle = { ...inputStyle, borderRadius: 20, resize: "vertical" as const };
+const textareaStyle = { ...inputStyle, resize: "vertical" as const };
 
 const labelStyle = {
   fontFamily: "var(--font-body)", fontSize: "0.8125rem", fontWeight: 700,
@@ -46,7 +46,7 @@ export default function ContactPage() {
     <>
       <SiteNav />
       <main className="container" style={{ paddingTop: "clamp(1rem, 2vw, 1.5rem)", paddingBottom: "clamp(1rem, 2vw, 1.25rem)" }}>
-        <div className="card" style={{ maxWidth: 680, margin: "0 auto", padding: "clamp(2rem, 5vw, 3rem)" }}>
+        <div className="block" style={{ maxWidth: 680, margin: "0 auto", padding: "clamp(2rem, 5vw, 3rem)" }}>
           <span className="eyebrow">Contact</span>
           <h1 style={{
             fontFamily: "var(--font-body)", fontSize: "clamp(2rem, 4vw, 3rem)",
@@ -61,7 +61,7 @@ export default function ContactPage() {
           </p>
 
           {sent ? (
-            <div className="card-flat" style={{ padding: "2.5rem 2rem", textAlign: "center" }}>
+            <div className="block" style={{ backgroundColor: "#FAFAFA", padding: "2.5rem 2rem", textAlign: "center" }}>
               <p style={{ fontFamily: "var(--font-body)", fontSize: "1.375rem", fontWeight: 700, color: INK, marginBottom: "0.5rem" }}>
                 Message received.
               </p>
@@ -110,13 +110,13 @@ export default function ContactPage() {
                   style={textareaStyle}
                 />
               </div>
-              <button type="submit" className="btn btn-dark" style={{ alignSelf: "flex-start" }}>
+              <button type="submit" className="btn btn-dark tracked-wide" style={{ alignSelf: "flex-start" }}>
                 Send Message
               </button>
             </form>
           )}
 
-          <div className="card-flat" style={{ marginTop: "2rem", padding: "1.25rem 1.5rem" }}>
+          <div className="block" style={{ backgroundColor: "#FAFAFA", marginTop: "2rem", padding: "1.25rem 1.5rem" }}>
             <p style={{ fontFamily: "var(--font-body)", fontSize: "0.8125rem", color: MUTED, lineHeight: 1.6, margin: 0 }}>
               Or reach us directly at{" "}
               <a href="mailto:hello@sukoon.co.uk" style={{ color: INK, textUnderlineOffset: "3px" }}>

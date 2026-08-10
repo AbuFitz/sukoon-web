@@ -1,78 +1,66 @@
-import Image from "next/image";
-import { homepageImages } from "@/lib/homepage";
-
-const BENEFITS = [
+const PROTOCOL = [
   {
-    label: "Face + Hairline",
-    body: "The only oil that serves both your skin and your hairline in one bottle.",
+    label: "Face",
+    frequency: "Daily · AM / PM",
+    dose: "2–3 drops",
+    body: "Targets inflammation, redness, and barrier damage. Warm between palms and press into skin — absorbs in under sixty seconds.",
   },
   {
-    label: "Absorbs in seconds",
-    body: "Olive Squalane mirrors your skin's natural sebum — no residue, no shine.",
-  },
-  {
-    label: "Barrier strength",
-    body: "Vitamin B3 rebuilds the lipid barrier on your face and along your follicles.",
-  },
-  {
-    label: "Anti-inflammatory",
-    body: "Black Seed Oil quiets redness, breakouts, and friction damage at the source.",
+    label: "Hairline",
+    frequency: "Weekly · As Needed",
+    dose: "1–2 drops",
+    body: "Applied along the part-line. Protects follicles against traction alopecia from tight styles, braids, weaves, and under-caps.",
   },
 ];
 
 export function BenefitsSection() {
   return (
-    <section className="container" style={{ paddingTop: "clamp(1rem, 2vw, 1.25rem)" }}>
-      <div className="results-grid">
-        {/* Image card */}
-        <div className="card" style={{ position: "relative", minHeight: 280, overflow: "hidden" }}>
-          <Image
-            src={homepageImages.benefits}
-            alt="Sukoon Daily Solace Fluid in use"
-            fill
-            sizes="(max-width: 900px) 100vw, 40vw"
-            style={{ objectFit: "cover" }}
-          />
-        </div>
+    <section className="container" style={{ paddingTop: "clamp(3rem, 5vw, 4.5rem)", paddingBottom: "clamp(3rem, 5vw, 4.5rem)" }}>
+      <div style={{ marginBottom: "1.75rem", maxWidth: 560 }}>
+        <span className="eyebrow">The Ritual</span>
+        <h2 style={{
+          fontFamily: "var(--font-body)", fontWeight: 700,
+          fontSize: "clamp(1.75rem, 2.8vw, 2.375rem)",
+          letterSpacing: "-0.025em", color: "#000000", margin: "0.5rem 0 0",
+        }}>
+          Sixty seconds. Two applications.
+        </h2>
+      </div>
 
-        {/* Stat cards */}
-        <div className="results-stats">
-          {BENEFITS.map(b => (
-            <div key={b.label} className="card" style={{ padding: "clamp(1.25rem, 2.5vw, 1.75rem)" }}>
-              <p style={{
-                fontFamily: "var(--font-body)", fontWeight: 700,
-                fontSize: "0.9375rem", color: "#111111", margin: "0 0 0.375rem",
-              }}>
-                {b.label}
-              </p>
-              <p style={{
-                fontFamily: "var(--font-body)", fontSize: "0.8125rem",
-                lineHeight: 1.55, color: "#666666", margin: 0,
-              }}>
-                {b.body}
-              </p>
+      <div className="block protocol-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", overflow: "hidden" }}>
+        {PROTOCOL.map((p, i) => (
+          <div key={p.label} style={{
+            padding: "clamp(2rem, 4vw, 3rem)",
+            borderLeft: i > 0 ? "1px solid #E5E5E5" : "none",
+          }}>
+            <span className="tracked-wide" style={{ fontFamily: "var(--font-body)", fontSize: "0.6875rem", fontWeight: 700, color: "#A3A3A3" }}>
+              Column {String(i + 1).padStart(2, "0")}
+            </span>
+            <h3 style={{
+              fontFamily: "var(--font-body)", fontWeight: 700,
+              fontSize: "1.75rem", letterSpacing: "-0.02em", color: "#000000",
+              margin: "0.75rem 0 1.25rem",
+            }}>
+              {p.label}
+            </h3>
+            <div style={{ display: "flex", gap: "0.5rem", marginBottom: "1.25rem" }}>
+              <span className="tag">{p.frequency}</span>
+              <span className="tag tag-fill">{p.dose}</span>
             </div>
-          ))}
-        </div>
+            <p style={{
+              fontFamily: "var(--font-body)", fontSize: "0.9375rem",
+              lineHeight: 1.65, color: "#525252", margin: 0,
+            }}>
+              {p.body}
+            </p>
+          </div>
+        ))}
       </div>
 
       <style>{`
-        .results-grid {
-          display: grid;
-          grid-template-columns: 5fr 7fr;
-          gap: clamp(1rem, 2vw, 1.25rem);
-        }
-        .results-stats {
-          display: grid;
-          grid-template-columns: repeat(2, 1fr);
-          gap: clamp(1rem, 2vw, 1.25rem);
-        }
-        @media (max-width: 900px) {
-          .results-grid { grid-template-columns: 1fr; }
-          .results-grid > div:first-child { aspect-ratio: 16 / 9; min-height: 0; }
-        }
-        @media (max-width: 560px) {
-          .results-stats { grid-template-columns: 1fr; }
+        @media (max-width: 767px) {
+          .protocol-grid { grid-template-columns: 1fr !important; }
+          .protocol-grid > div:nth-child(2) { border-left: none !important; border-top: 1px solid #E5E5E5; }
         }
       `}</style>
     </section>

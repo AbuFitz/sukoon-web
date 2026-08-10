@@ -26,7 +26,7 @@ export function AnnouncementBar() {
       style={{
         position: "relative",
         height: "2.125rem",
-        backgroundColor: "#111111",
+        backgroundColor: "#000000",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
@@ -40,9 +40,11 @@ export function AnnouncementBar() {
           style={{
             position: "absolute",
             fontFamily: "var(--font-body)",
-            fontSize: "0.75rem",
-            fontWeight: 500,
-            color: "#FAFAFA",
+            fontSize: "0.6875rem",
+            fontWeight: 600,
+            letterSpacing: "0.08em",
+            textTransform: "uppercase",
+            color: "#FFFFFF",
             margin: 0,
             textAlign: "center",
             opacity: i === index ? 1 : 0,

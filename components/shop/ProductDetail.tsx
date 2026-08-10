@@ -7,9 +7,11 @@ import { useCart } from "@/lib/cart-context";
 import { products } from "@/lib/products";
 import { homepageImages, ingredients } from "@/lib/homepage";
 
-const TEXT   = "#111111";
-const MUTED  = "#969690";
-const BORDER = "#EDEBE5";
+const TEXT   = "#000000";
+const MUTED  = "#A3A3A3";
+const BORDER = "#E5E5E5";
+
+const TRANSPARENCY = ["Made in UK", "Halal Certified", "Vegan & Cruelty Free", "100% Waterless"];
 
 type Props = {
   handle: string;
@@ -66,7 +68,7 @@ function Accordion({ label, content, defaultOpen = false }: { label: string; con
       {open && (
         <p style={{
           fontFamily: "var(--font-body)", fontSize: "0.9rem", lineHeight: 1.65,
-          color: "#666666", margin: "0 0 1.125rem", paddingRight: "1.5rem",
+          color: "#525252", margin: "0 0 1.125rem", paddingRight: "1.5rem",
         }}>
           {content}
         </p>
@@ -75,37 +77,11 @@ function Accordion({ label, content, defaultOpen = false }: { label: string; con
   );
 }
 
-function RelatedCard({ product }: { product: typeof products[number] }) {
-  return (
-    <a href={`/products/${product.slug}`} className="card" style={{ textDecoration: "none", display: "block", padding: "0.875rem" }}>
-      <div className="card-sm" style={{
-        position: "relative", aspectRatio: "4 / 5",
-        overflow: "hidden",
-        backgroundColor: "#F4F4F2", marginBottom: "0.75rem",
-      }}>
-        <Image
-          src={product.src} alt={product.name} fill
-          sizes="(max-width: 768px) 50vw, 25vw"
-          className="img-hover"
-          style={{ objectFit: "cover" }}
-        />
-      </div>
-      <p style={{ fontFamily: "var(--font-body)", fontWeight: 700, fontSize: "0.9375rem", color: TEXT, margin: "0 0 0.2rem" }}>
-        {product.name}
-      </p>
-      <p style={{ fontFamily: "var(--font-body)", fontSize: "0.9375rem", fontWeight: 600, color: TEXT, margin: 0 }}>
-        {product.price}
-      </p>
-    </a>
-  );
-}
-
 export function ProductDetail({ handle, title, size, price, description, imageSrc, tag, variantId }: Props) {
   const { addToCart, loading } = useCart();
   const [qty, setQty] = useState(1);
   const [justAdded, setJustAdded] = useState(false);
 
-  const related = products.filter(p => p.slug !== handle).slice(0, 3);
   const sizeOptions = products.filter(p => p.slug.startsWith("daily-solace-fluid"));
 
   const handleAdd = async () => {
@@ -120,20 +96,20 @@ export function ProductDetail({ handle, title, size, price, description, imageSr
   );
 
   return (
-    <div className="container" style={{ paddingTop: "clamp(1rem, 2vw, 1.5rem)" }}>
+    <div className="container" style={{ paddingTop: "clamp(2rem, 4vw, 3rem)", paddingBottom: "clamp(3rem, 5vw, 4.5rem)" }}>
       {/* Main grid */}
       <div
-        className="product-grid"
-        style={{ display: "grid", gridTemplateColumns: "7fr 5fr", gap: "clamp(1rem, 2vw, 1.25rem)", alignItems: "start", marginBottom: "clamp(1rem, 2vw, 1.25rem)" }}
+        className="block product-grid"
+        style={{ display: "grid", gridTemplateColumns: "7fr 5fr", overflow: "hidden", marginBottom: "clamp(2rem, 4vw, 3rem)" }}
       >
-        {/* Gallery card */}
-        <div className="card" style={{ position: "sticky", top: 92, padding: "clamp(1rem, 2vw, 1.25rem)" }}>
-          <div className="card-sm" style={{
+        {/* Gallery */}
+        <div style={{ position: "sticky", top: 93, alignSelf: "start" }}>
+          <div style={{
             position: "relative", aspectRatio: "4 / 5",
-            maxHeight: "clamp(440px, 50vw, 600px)",
-            overflow: "hidden", backgroundColor: "#F4F4F2",
+            maxHeight: "clamp(440px, 50vw, 640px)",
+            overflow: "hidden", backgroundColor: "#F5F5F5", borderRight: "1px solid #E5E5E5",
           }}>
-            {tag && <span className="badge" style={{ position: "absolute", top: "1rem", left: "1rem", zIndex: 2, backgroundColor: TEXT, color: "#FFFFFF" }}>{tag}</span>}
+            {tag && <span className="tag tag-fill" style={{ position: "absolute", top: "1rem", left: "1rem", zIndex: 2 }}>{tag}</span>}
             <Image
               src={imageSrc} alt={title} fill priority
               sizes="(max-width: 1024px) 100vw, 55vw"
@@ -142,11 +118,11 @@ export function ProductDetail({ handle, title, size, price, description, imageSr
           </div>
         </div>
 
-        {/* Configurator card */}
-        <div className="card" style={{ padding: "clamp(1.5rem, 3vw, 2rem)" }}>
-          <p style={{
-            fontFamily: "var(--font-body)", fontSize: "0.875rem", fontWeight: 600, color: MUTED,
-            margin: "0 0 0.5rem",
+        {/* Configurator */}
+        <div style={{ padding: "clamp(1.5rem, 3vw, 2.5rem)" }}>
+          <p className="tracked" style={{
+            fontFamily: "var(--font-body)", fontSize: "0.8125rem", fontWeight: 700, color: MUTED,
+            margin: "0 0 0.625rem",
           }}>
             {size}
           </p>
@@ -165,36 +141,40 @@ export function ProductDetail({ handle, title, size, price, description, imageSr
             {price}
           </p>
 
-          {/* Size toggle — real navigation between the two sizes */}
+          {/* Size selector cards — real navigation between the two sizes */}
           {sizeOptions.length > 1 && (
-            <div className="toggle" role="tablist" aria-label="Select size" style={{ marginBottom: "1.25rem", width: "100%" }}>
+            <div className="size-selector" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0.75rem", marginBottom: "1.5rem" }}>
               {sizeOptions.map(opt => (
                 <Link
                   key={opt.slug}
                   href={`/products/${opt.slug}`}
-                  role="tab"
-                  aria-selected={opt.slug === handle}
-                  className="toggle-option"
+                  aria-current={opt.slug === handle}
+                  className="selector-card"
                   data-active={opt.slug === handle}
-                  style={{ flex: 1, textAlign: "center", textDecoration: "none", display: "block" }}
+                  style={{ textDecoration: "none", display: "block" }}
                 >
-                  {opt.size} — {opt.price}
+                  <span className="tracked-wide" style={{ display: "block", fontFamily: "var(--font-body)", fontSize: "0.6875rem", fontWeight: 700, color: "#A3A3A3", marginBottom: "0.5rem" }}>
+                    {opt.size}
+                  </span>
+                  <span style={{ display: "block", fontFamily: "var(--font-body)", fontSize: "0.875rem", fontWeight: 700, color: "#000000" }}>
+                    {opt.price}
+                  </span>
                 </Link>
               ))}
             </div>
           )}
 
           {/* Qty selector */}
-          <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", marginBottom: "1rem" }}>
-            <span style={{ fontFamily: "var(--font-body)", fontSize: "0.875rem", color: MUTED }}>
+          <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", marginBottom: "1.25rem" }}>
+            <span className="tracked" style={{ fontFamily: "var(--font-body)", fontSize: "0.75rem", fontWeight: 700, color: MUTED }}>
               Qty
             </span>
-            <div className="toggle" style={{ padding: 4 }}>
+            <div style={{ display: "flex", alignItems: "center", border: `1px solid ${BORDER}`, borderRadius: 2 }}>
               <button
                 aria-label="Decrease quantity"
                 onClick={() => setQty(q => Math.max(1, q - 1))}
                 style={{
-                  width: 34, height: 34, background: "none", border: "none", borderRadius: 999,
+                  width: 34, height: 34, background: "none", border: "none",
                   cursor: "pointer", color: TEXT, fontSize: "1.1rem",
                   fontFamily: "var(--font-body)",
                 }}
@@ -209,7 +189,7 @@ export function ProductDetail({ handle, title, size, price, description, imageSr
                 aria-label="Increase quantity"
                 onClick={() => setQty(q => q + 1)}
                 style={{
-                  width: 34, height: 34, background: "none", border: "none", borderRadius: 999,
+                  width: 34, height: 34, background: "none", border: "none",
                   cursor: "pointer", color: TEXT, fontSize: "1.1rem",
                   fontFamily: "var(--font-body)",
                 }}
@@ -221,24 +201,32 @@ export function ProductDetail({ handle, title, size, price, description, imageSr
           <button
             onClick={handleAdd}
             disabled={!variantId || loading || justAdded}
-            className="btn btn-dark"
+            className="btn btn-dark tracked-wide"
             style={{
               width: "100%", height: 52,
-              backgroundColor: justAdded ? "#F4F4F2" : "#111111",
-              color: justAdded ? "#111111" : "#FFFFFF",
-              borderColor: justAdded ? "#EDEBE5" : "#111111",
+              backgroundColor: justAdded ? "#FFFFFF" : "#000000",
+              color: justAdded ? "#000000" : "#FFFFFF",
+              borderColor: "#000000",
               cursor: !variantId ? "not-allowed" : "pointer",
-              opacity: !variantId ? 0.5 : 1,
-              marginBottom: "1.25rem",
+              opacity: !variantId ? 0.4 : 1,
+              marginBottom: "1.5rem",
             }}
           >
-            {justAdded ? "Added to bag" : loading ? "Adding…" : !variantId ? "Unavailable" : "Add to Bag"}
+            {justAdded ? "Added to Bag" : loading ? "Adding…" : !variantId ? "Unavailable" : `Add to Bag — ${price}`}
           </button>
 
-          {/* Trust badges */}
-          <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem", marginBottom: "1.5rem" }}>
-            {["Free UK delivery", "30-day returns", "Made in the UK"].map(t => (
-              <span key={t} className="badge" style={{ backgroundColor: "#F4F4F2" }}>{t}</span>
+          {/* Transparency bar */}
+          <div className="divider" style={{ marginBottom: "1rem" }} />
+          <div style={{ display: "flex", flexWrap: "wrap", marginBottom: "1.5rem" }}>
+            {TRANSPARENCY.map((t, i) => (
+              <span key={t} className="tracked" style={{
+                fontFamily: "var(--font-body)", fontSize: "0.6875rem", fontWeight: 700,
+                color: "#525252", paddingRight: "0.875rem", marginRight: "0.875rem",
+                marginBottom: "0.375rem",
+                borderRight: i < TRANSPARENCY.length - 1 ? "1px solid #E5E5E5" : "none",
+              }}>
+                {t}
+              </span>
             ))}
           </div>
 
@@ -251,77 +239,61 @@ export function ProductDetail({ handle, title, size, price, description, imageSr
         </div>
       </div>
 
-      {/* Active ingredients bento */}
-      <div style={{ marginBottom: "clamp(1rem, 2vw, 1.25rem)" }}>
-        <span className="eyebrow">Active Ingredients</span>
-        <div className="pdp-ingredient-grid" style={{ marginTop: "0.75rem" }}>
-          {ingredients.map(ing => (
-            <div key={ing.name} className="card" style={{ padding: "clamp(1.25rem, 2.5vw, 1.5rem)" }}>
-              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "0.625rem" }}>
-                <span style={{ fontFamily: "var(--font-body)", fontWeight: 700, fontSize: "0.9375rem", color: TEXT }}>{ing.name}</span>
-                <span className="badge">{ing.percent}</span>
+      {/* Active ingredients */}
+      <div style={{ marginBottom: "clamp(2rem, 4vw, 3rem)" }}>
+        <span className="eyebrow">Formula Breakdown</span>
+        <div className="block" style={{ overflow: "hidden", marginTop: "0.75rem" }}>
+          {ingredients.map((ing, i) => (
+            <div key={ing.name} className="pdp-ingredient-row" style={{ borderTop: i > 0 ? "1px solid #E5E5E5" : "none" }}>
+              <span style={{ fontFamily: "var(--font-body)", fontWeight: 700, fontSize: "1rem", color: TEXT }}>{ing.percent}</span>
+              <div>
+                <p style={{ fontFamily: "var(--font-body)", fontWeight: 700, fontSize: "0.9375rem", color: TEXT, margin: 0 }}>{ing.name}</p>
+                <p style={{ fontFamily: "var(--font-body)", fontSize: "0.8125rem", color: MUTED, margin: "0.125rem 0 0" }}>{ing.latin}</p>
               </div>
-              <p style={{ fontFamily: "var(--font-body)", fontSize: "0.75rem", color: MUTED, margin: "0 0 0.5rem", fontStyle: "italic" }}>{ing.latin}</p>
-              <p style={{ fontFamily: "var(--font-body)", fontSize: "0.8125rem", lineHeight: 1.5, color: "#666666", margin: 0 }}>{ing.description}</p>
+              <p style={{ fontFamily: "var(--font-body)", fontSize: "0.875rem", lineHeight: 1.5, color: "#525252", margin: 0 }}>{ing.description}</p>
             </div>
           ))}
         </div>
       </div>
 
       {/* Editorial break */}
-      <div className="card" style={{ position: "relative", aspectRatio: "21 / 9", backgroundColor: "#F4F4F2", overflow: "hidden", marginBottom: "clamp(1rem, 2vw, 1.25rem)" }}>
+      <div className="block" style={{ position: "relative", aspectRatio: "21 / 9", backgroundColor: "#F5F5F5", overflow: "hidden" }}>
         <Image
           src={homepageImages.benefits}
           alt="The Daily Solace Fluid in use"
           fill
           sizes="100vw"
-          style={{ objectFit: "cover" }}
+          style={{ objectFit: "cover", filter: "grayscale(0.15)" }}
         />
+        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(0deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0) 45%)" }} />
         <p style={{
           position: "absolute", left: "clamp(1.25rem, 3vw, 2.5rem)", bottom: "clamp(1.25rem, 3vw, 2.5rem)",
           fontFamily: "var(--font-body)", fontSize: "clamp(1.125rem, 2.2vw, 1.625rem)", fontWeight: 700,
           letterSpacing: "-0.02em", lineHeight: 1.15, color: "#FFFFFF", margin: 0, maxWidth: 420,
-          textShadow: "0 2px 20px rgba(0,0,0,0.35)",
         }}>
           Sixty seconds. Every morning.
         </p>
       </div>
 
-      {/* You may also like */}
-      {related.length > 0 && (
-        <div style={{ marginBottom: "clamp(1rem, 2vw, 1.25rem)" }}>
-          <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", marginBottom: "1rem" }}>
-            <h2 style={{
-              fontFamily: "var(--font-body)", fontWeight: 700,
-              fontSize: "clamp(1.25rem, 2vw, 1.5rem)",
-              letterSpacing: "-0.02em", color: TEXT, margin: 0,
-            }}>
-              You may also like
-            </h2>
-            <Link href="/shop" className="badge">Shop all →</Link>
-          </div>
-          <div
-            className="grid grid-cols-2 sm:grid-cols-3"
-            style={{ gap: "clamp(1rem, 2vw, 1.25rem)", maxWidth: 900 }}
-          >
-            {related.map(p => <RelatedCard key={p.slug} product={p} />)}
-          </div>
-        </div>
-      )}
-
       <style>{`
-        .pdp-ingredient-grid {
+        .pdp-ingredient-row {
           display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: clamp(1rem, 2vw, 1.25rem);
+          grid-template-columns: 4.5rem 1fr 1.5fr;
+          gap: clamp(1rem, 3vw, 2rem);
+          align-items: center;
+          padding: 1.25rem clamp(1.25rem, 3vw, 1.75rem);
         }
         @media (max-width: 900px) {
           .product-grid { grid-template-columns: 1fr !important; }
           .product-grid > div:first-child { position: static !important; }
-          .pdp-ingredient-grid { grid-template-columns: repeat(2, 1fr); }
         }
-        @media (max-width: 560px) {
-          .pdp-ingredient-grid { grid-template-columns: 1fr; }
+        @media (max-width: 640px) {
+          .pdp-ingredient-row {
+            grid-template-columns: 2.5rem 1fr;
+            grid-template-rows: auto auto;
+            row-gap: 0.5rem;
+          }
+          .pdp-ingredient-row > p:last-child { grid-column: 1 / -1; }
         }
       `}</style>
     </div>

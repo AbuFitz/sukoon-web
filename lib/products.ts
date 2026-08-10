@@ -27,13 +27,4 @@ export const products: Product[] = [
     tag: "",
     description: "A trial size to start the ritual before committing to the full bottle.",
   },
-  {
-    slug: "solace-bundle",
-    name: "The Solace Bundle",
-    size: "30ml Fluid + 10ml Lip Balm",
-    price: "£45",
-    src: "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=900&q=85&fit=crop",
-    tag: "Bundle",
-    description: "The Daily Solace Fluid paired with The Solace Lip Balm. One ritual, two products, one price.",
-  },
 ];
