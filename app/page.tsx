@@ -1,16 +1,18 @@
 import type { Metadata } from "next";
 import { SiteNav }                from "@/components/nav/SiteNav";
 import { HeroSection }            from "@/components/home/HeroSection";
-import { FeaturedProductsSection } from "@/components/home/FeaturedProductsSection";
 import { BrandStorySection }      from "@/components/home/BrandStorySection";
 import { IngredientsSection }     from "@/components/home/IngredientsSection";
 import { BenefitsSection }        from "@/components/home/BenefitsSection";
-import { ManifestoSection }       from "@/components/home/ManifestoSection";
-import { NewsletterSection }      from "@/components/home/NewsletterSection";
 import { Footer }                 from "@/components/sections/Footer";
 import { getProducts, formatPrice } from "@/lib/shopify";
-import { featuredProductHandles, productFallbackPrices, productFallbackTitles, type FeaturedHandle } from "@/lib/homepage";
-import type { FeaturedProduct } from "@/components/home/FeaturedProductsSection";
+import {
+  featuredProductHandles,
+  productFallbackPrices,
+  productFallbackTitles,
+  type FeaturedHandle,
+  type FeaturedProduct,
+} from "@/lib/homepage";
 
 export const metadata: Metadata = {
   alternates: { canonical: "https://sukoon.co.uk" },
@@ -59,13 +61,10 @@ export default async function HomePage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }} />
       <SiteNav />
       <main style={{ paddingBottom: "clamp(1rem, 2vw, 1.25rem)" }}>
-        <HeroSection />
-        <FeaturedProductsSection products={featuredProducts} />
-        <BrandStorySection />
-        <IngredientsSection />
-        <ManifestoSection />
+        <HeroSection products={featuredProducts} />
         <BenefitsSection />
-        <NewsletterSection />
+        <IngredientsSection />
+        <BrandStorySection />
       </main>
       <Footer />
     </>

@@ -1,78 +1,78 @@
 import Image from "next/image";
 import { homepageImages } from "@/lib/homepage";
 
-const BENEFITS = [
+const RITUALS = [
   {
-    label: "Face + Hairline",
-    body: "The only oil that serves both your skin and your hairline in one bottle.",
+    label: "Face Ritual",
+    dose: "2–3 drops daily",
+    body: "Calms redness, repairs the barrier, locks in hydration — no greasy residue.",
+    image: homepageImages.benefits,
+    alt: "Applying the Daily Solace Fluid to the face",
   },
   {
-    label: "Absorbs in seconds",
-    body: "Olive Squalane mirrors your skin's natural sebum — no residue, no shine.",
-  },
-  {
-    label: "Barrier strength",
-    body: "Vitamin B3 rebuilds the lipid barrier on your face and along your follicles.",
-  },
-  {
-    label: "Anti-inflammatory",
-    body: "Black Seed Oil quiets redness, breakouts, and friction damage at the source.",
+    label: "Hairline Ritual",
+    dose: "1–2 drops weekly",
+    body: "Protects follicles from tension damage caused by tight styles, braids, and caps.",
+    image: homepageImages.story,
+    alt: "The Daily Solace Fluid ritual, prepared for hairline application",
   },
 ];
 
 export function BenefitsSection() {
   return (
     <section className="container" style={{ paddingTop: "clamp(1rem, 2vw, 1.25rem)" }}>
-      <div className="results-grid">
-        {/* Image card */}
-        <div className="card" style={{ position: "relative", minHeight: 280, overflow: "hidden" }}>
-          <Image
-            src={homepageImages.benefits}
-            alt="Sukoon Daily Solace Fluid in use"
-            fill
-            sizes="(max-width: 900px) 100vw, 40vw"
-            style={{ objectFit: "cover" }}
-          />
-        </div>
+      <div style={{ marginBottom: "1.25rem" }}>
+        <span className="eyebrow">The Ritual</span>
+        <h2 style={{
+          fontFamily: "var(--font-body)", fontWeight: 700,
+          fontSize: "clamp(1.375rem, 2.2vw, 1.75rem)",
+          letterSpacing: "-0.02em", color: "#111111", margin: "0.5rem 0 0",
+        }}>
+          One bottle. Two rituals.
+        </h2>
+      </div>
 
-        {/* Stat cards */}
-        <div className="results-stats">
-          {BENEFITS.map(b => (
-            <div key={b.label} className="card" style={{ padding: "clamp(1.25rem, 2.5vw, 1.75rem)" }}>
+      <div className="ritual-grid">
+        {RITUALS.map(r => (
+          <div key={r.label} className="card" style={{ overflow: "hidden" }}>
+            <div style={{ position: "relative", aspectRatio: "4 / 3" }}>
+              <Image
+                src={r.image}
+                alt={r.alt}
+                fill
+                sizes="(max-width: 900px) 100vw, 50vw"
+                style={{ objectFit: "cover" }}
+              />
+            </div>
+            <div style={{ padding: "clamp(1.5rem, 3vw, 2rem)" }}>
+              <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", gap: "0.75rem", marginBottom: "0.625rem" }}>
+                <h3 style={{
+                  fontFamily: "var(--font-body)", fontWeight: 700,
+                  fontSize: "1.25rem", letterSpacing: "-0.015em", color: "#111111", margin: 0,
+                }}>
+                  {r.label}
+                </h3>
+                <span className="badge">{r.dose}</span>
+              </div>
               <p style={{
-                fontFamily: "var(--font-body)", fontWeight: 700,
-                fontSize: "0.9375rem", color: "#111111", margin: "0 0 0.375rem",
-              }}>
-                {b.label}
-              </p>
-              <p style={{
-                fontFamily: "var(--font-body)", fontSize: "0.8125rem",
+                fontFamily: "var(--font-body)", fontSize: "0.9375rem",
                 lineHeight: 1.55, color: "#5C5C5C", margin: 0,
               }}>
-                {b.body}
+                {r.body}
               </p>
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
 
       <style>{`
-        .results-grid {
-          display: grid;
-          grid-template-columns: 5fr 7fr;
-          gap: clamp(1rem, 2vw, 1.25rem);
-        }
-        .results-stats {
+        .ritual-grid {
           display: grid;
           grid-template-columns: repeat(2, 1fr);
           gap: clamp(1rem, 2vw, 1.25rem);
         }
-        @media (max-width: 900px) {
-          .results-grid { grid-template-columns: 1fr; }
-          .results-grid > div:first-child { aspect-ratio: 16 / 9; min-height: 0; }
-        }
-        @media (max-width: 560px) {
-          .results-stats { grid-template-columns: 1fr; }
+        @media (max-width: 767px) {
+          .ritual-grid { grid-template-columns: 1fr; }
         }
       `}</style>
     </section>

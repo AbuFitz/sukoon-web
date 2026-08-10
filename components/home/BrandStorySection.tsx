@@ -36,17 +36,9 @@ export function BrandStorySection() {
           </h2>
           <p style={{
             fontFamily: "var(--font-body)", fontSize: "0.9375rem", lineHeight: 1.65,
-            color: "#5C5C5C", margin: "0 0 0.875rem", maxWidth: 440,
-          }}>
-            Most skincare is built around filler ingredients that dilute every
-            active and pad out the label. We took the opposite approach.
-          </p>
-          <p style={{
-            fontFamily: "var(--font-body)", fontSize: "0.9375rem", lineHeight: 1.65,
             color: "#5C5C5C", margin: "0 0 1.5rem", maxWidth: 440,
           }}>
-            What&apos;s left is a concentrated formula of five actives — each selected
-            because it genuinely works, not because it&apos;s cheap to include.
+            No fillers, no padding. Five actives, each earning its place.
           </p>
           <a href="/about" className="btn btn-outline" style={{ alignSelf: "flex-start" }}>
             Our Story →

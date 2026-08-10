@@ -27,6 +27,14 @@ export const featuredProductHandles = [
 
 export type FeaturedHandle = typeof featuredProductHandles[number];
 
+export type FeaturedProduct = {
+  handle: string;
+  title: string;
+  price: string;
+  variantId?: string;
+  availableForSale?: boolean;
+};
+
 export const productImageMap: Record<FeaturedHandle, string> = {
   "daily-solace-fluid-30ml": "https://images.unsplash.com/photo-1707539160277-e39464517645?w=900&q=85&fit=crop",
   "daily-solace-fluid-15ml": "https://images.unsplash.com/photo-1693004927824-f2623bbedc8b?w=900&q=85&fit=crop",

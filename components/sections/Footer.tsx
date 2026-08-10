@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useState } from "react";
 
 const SHOP = [
   { label: "Shop All",    href: "/shop" },
@@ -60,6 +61,53 @@ function FooterCol({ title, links }: { title: string; links: { label: string; hr
   );
 }
 
+function NewsletterRow() {
+  const [email, setEmail] = useState("");
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email) return;
+    setSubmitted(true);
+  };
+
+  return (
+    <div style={{
+      display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between",
+      gap: "1rem", borderBottom: `1px solid ${BORDER}`,
+      paddingBottom: "clamp(1.5rem, 3vw, 2rem)", marginBottom: "clamp(2rem, 4vw, 3rem)",
+    }}>
+      <div>
+        <p style={{ fontFamily: "var(--font-body)", fontSize: "0.6875rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: TEXT, margin: "0 0 0.25rem" }}>
+          Sukoon Circle
+        </p>
+        <p style={{ fontFamily: "var(--font-body)", fontSize: "0.875rem", color: MUTED, margin: 0 }}>
+          Formulation updates and early access. No spam.
+        </p>
+      </div>
+      {submitted ? (
+        <p style={{ fontFamily: "var(--font-body)", fontSize: "0.875rem", fontWeight: 700, color: TEXT, margin: 0 }}>
+          You&apos;re in.
+        </p>
+      ) : (
+        <form onSubmit={handleSubmit} style={{ display: "flex", gap: "0.625rem", flexWrap: "wrap" }}>
+          <input
+            type="email"
+            placeholder="your@email.com"
+            value={email}
+            onChange={e => setEmail(e.target.value)}
+            required
+            className="input"
+            style={{ flex: "1 1 200px", maxWidth: 260 }}
+            aria-label="Email address"
+          />
+          <button type="submit" className="btn btn-dark">Subscribe</button>
+        </form>
+      )}
+    </div>
+  );
+}
+
 export function Footer() {
   return (
     <footer aria-label="Site footer" style={{ padding: "0 clamp(0.75rem, 3vw, 1.5rem) clamp(0.75rem, 3vw, 1.5rem)" }}>
@@ -67,6 +115,7 @@ export function Footer() {
         maxWidth: 1360, margin: "0 auto",
         padding: "clamp(2rem, 4vw, 3rem) clamp(1.5rem, 4vw, 3rem)",
       }}>
+        <NewsletterRow />
         <div
           className="grid grid-cols-2 md:grid-cols-[1.4fr_1fr_1fr_1fr_1fr]"
           style={{ gap: "clamp(2rem, 4vw, 3rem)", paddingBottom: "clamp(2rem, 4vw, 3rem)" }}
