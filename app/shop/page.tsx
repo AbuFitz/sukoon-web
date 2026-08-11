@@ -24,9 +24,13 @@ export default async function ShopPage() {
     <>
       <SiteNav />
       <main style={{ paddingBottom: "clamp(1rem, 2vw, 1.25rem)" }}>
-        <ShopHero />
-        <ShopCollection variantIds={variantIds} />
-        <ShopTrustStrip />
+        <div className="container" style={{ paddingTop: "clamp(1rem, 2vw, 1.5rem)" }}>
+          <div style={{ backgroundColor: "#F5F7F8", borderRadius: "var(--radius-2xl)", overflow: "hidden" }}>
+            <ShopHero />
+            <ShopCollection variantIds={variantIds} />
+            <ShopTrustStrip />
+          </div>
+        </div>
       </main>
       <Footer />
     </>

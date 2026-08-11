@@ -9,12 +9,6 @@ import type { VariantInfo } from "@/lib/shopify";
 const TEXT   = "#0D0F10";
 const MUTED  = "#8A9296";
 
-const SORT_OPTIONS = [
-  { value: "featured",   label: "Featured" },
-  { value: "price-asc",  label: "Price: Low to High" },
-  { value: "price-desc", label: "Price: High to Low" },
-];
-
 function ProductCard({
   product,
   variantInfo,
@@ -39,10 +33,10 @@ function ProductCard({
   };
 
   return (
-    <article className="card" style={{ padding: "clamp(1rem, 2vw, 1.25rem)", display: "flex", flexDirection: "column" }}>
+    <article style={{ display: "flex", flexDirection: "column" }}>
       <a
         href={`/products/${product.slug}`}
-        style={{ display: "block", position: "relative", textDecoration: "none", marginBottom: "1rem" }}
+        style={{ display: "block", position: "relative", textDecoration: "none", marginBottom: "1.125rem" }}
       >
         {product.tag && (
           <span className="badge" style={{
@@ -52,10 +46,11 @@ function ProductCard({
             {product.tag}
           </span>
         )}
-        <div className="card-sm" style={{
+        <div style={{
           position: "relative",
-          aspectRatio: "4 / 5",
+          aspectRatio: "1 / 1",
           overflow: "hidden",
+          borderRadius: "var(--radius-2xl)",
           backgroundColor: "#ECEFF1",
         }}>
           <Image
@@ -63,7 +58,7 @@ function ProductCard({
             alt={product.name}
             fill
             priority={priority}
-            sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 31vw"
+            sizes="(max-width: 640px) 90vw, 40vw"
             className="img-hover"
             style={{ objectFit: "cover" }}
           />
@@ -74,15 +69,15 @@ function ProductCard({
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: "0.75rem" }}>
           <p style={{
             fontFamily: "var(--font-body)", fontWeight: 700,
-            fontSize: "0.9375rem", color: TEXT, margin: 0,
+            fontSize: "1rem", color: TEXT, margin: 0,
           }}>
             {product.name}
           </p>
-          <p style={{ fontFamily: "var(--font-body)", fontWeight: 600, fontSize: "0.9375rem", color: TEXT, margin: 0, whiteSpace: "nowrap" }}>
+          <p style={{ fontFamily: "var(--font-body)", fontWeight: 600, fontSize: "1rem", color: TEXT, margin: 0, whiteSpace: "nowrap" }}>
             {product.price}
           </p>
         </div>
-        <p style={{ fontFamily: "var(--font-body)", fontSize: "0.8125rem", color: MUTED, margin: "0.125rem 0 1rem" }}>
+        <p style={{ fontFamily: "var(--font-body)", fontSize: "0.8125rem", color: MUTED, margin: "0.125rem 0 1.125rem" }}>
           {product.size}
         </p>
       </a>
@@ -117,52 +112,13 @@ function ProductCard({
 }
 
 export function ShopCollection({ variantIds = {} }: { variantIds?: Record<string, VariantInfo> }) {
-  const [sort, setSort] = useState("featured");
-
-  const sorted = [...products].sort((a, b) => {
-    if (sort === "price-asc") return parseFloat(a.price.replace(/[^0-9.]/g, "")) - parseFloat(b.price.replace(/[^0-9.]/g, ""));
-    if (sort === "price-desc") return parseFloat(b.price.replace(/[^0-9.]/g, "")) - parseFloat(a.price.replace(/[^0-9.]/g, ""));
-    return 0;
-  });
-
   return (
-    <section className="container" style={{ paddingTop: "clamp(1rem, 2vw, 1.25rem)" }}>
-      {/* Controls */}
-      <div className="card" style={{
-        display: "flex", alignItems: "center", justifyContent: "space-between",
-        gap: "1rem", flexWrap: "wrap", marginBottom: "1.25rem",
-        padding: "0.875rem 1.5rem",
-      }}>
-        <p style={{ fontFamily: "var(--font-body)", fontSize: "0.875rem", color: MUTED, margin: 0 }}>
-          {products.length} products
-        </p>
-        <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-          <label htmlFor="shop-sort" style={{ fontFamily: "var(--font-body)", fontSize: "0.875rem", color: MUTED }}>
-            Sort:
-          </label>
-          <select
-            id="shop-sort"
-            value={sort}
-            onChange={e => setSort(e.target.value)}
-            style={{
-              fontFamily: "var(--font-body)", fontSize: "0.875rem", fontWeight: 600,
-              color: TEXT, background: "transparent",
-              border: "none", outline: "none", cursor: "pointer",
-            }}
-          >
-            {SORT_OPTIONS.map(o => (
-              <option key={o.value} value={o.value}>{o.label}</option>
-            ))}
-          </select>
-        </div>
-      </div>
-
-      {/* Grid */}
+    <div style={{ padding: "clamp(1.75rem, 3.5vw, 2.5rem)" }}>
       <div
-        className="grid grid-cols-2 lg:grid-cols-3"
-        style={{ gap: "clamp(1rem, 2vw, 1.25rem)" }}
+        className="grid grid-cols-2"
+        style={{ gap: "clamp(1.25rem, 3vw, 2rem)", maxWidth: 640 }}
       >
-        {sorted.map((p, i) => (
+        {products.map((p, i) => (
           <ProductCard
             key={p.slug}
             product={p}
@@ -171,6 +127,6 @@ export function ShopCollection({ variantIds = {} }: { variantIds?: Record<string
           />
         ))}
       </div>
-    </section>
+    </div>
   );
 }

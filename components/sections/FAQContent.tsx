@@ -2,6 +2,11 @@
 
 import { useState } from "react";
 
+const TEXT   = "#0D0F10";
+const MUTED  = "#8A9296";
+const BORDER = "#DCE1E3";
+const CANVAS = "#F5F7F8";
+
 const sections = [
   {
     heading: "The Product",
@@ -45,68 +50,77 @@ export function FAQContent() {
 
   return (
     <section aria-label="Frequently asked questions" className="container" style={{ paddingTop: "clamp(1rem, 2vw, 1.5rem)", paddingBottom: "clamp(1rem, 2vw, 1.25rem)" }}>
-      <div style={{ maxWidth: "820px", margin: "0 auto", display: "flex", flexDirection: "column", gap: "clamp(1rem, 2vw, 1.25rem)" }}>
+      <div style={{ maxWidth: "820px", margin: "0 auto" }}>
 
-        <div className="card" style={{ padding: "clamp(2rem, 5vw, 3rem)" }}>
-          <h1 style={{
-            fontFamily: "var(--font-body)", fontSize: "clamp(2rem, 4.5vw, 3rem)",
-            fontWeight: 700, letterSpacing: "-0.035em", lineHeight: 1.0, color: "#0D0F10",
-            margin: 0,
-          }}>
-            Honest answers.
-          </h1>
-        </div>
+        <h1 style={{
+          fontFamily: "var(--font-body)", fontSize: "clamp(2rem, 4.5vw, 3rem)",
+          fontWeight: 700, letterSpacing: "-0.035em", lineHeight: 1.0, color: TEXT,
+          margin: "0 0 clamp(1.5rem, 3vw, 2rem)",
+        }}>
+          Honest answers.
+        </h1>
 
-        {sections.map((sec) => (
-          <div key={sec.heading} className="card" style={{ padding: "clamp(1.5rem, 3vw, 2rem) clamp(1.5rem, 3vw, 2rem)" }}>
-            <span className="badge" style={{ marginBottom: "0.75rem" }}>{sec.heading}</span>
-            {sec.items.map((item, i) => {
-              const key = `${sec.heading}-${i}`;
-              const open = openKey === key;
-              return (
-                <div key={item.q} style={{ borderTop: "1px solid #DCE1E3" }}>
-                  <button
-                    onClick={() => setOpenKey(open ? null : key)}
-                    aria-expanded={open}
-                    style={{
-                      width: "100%", display: "flex", alignItems: "center", justifyContent: "space-between",
-                      gap: "1rem", background: "none", border: "none", cursor: "pointer", textAlign: "left",
-                      padding: "1.125rem 0",
-                      fontFamily: "var(--font-body)", fontSize: "0.9375rem", fontWeight: 700, color: "#0D0F10",
-                    }}
-                  >
-                    {item.q}
-                    <span aria-hidden style={{
-                      flexShrink: 0, fontSize: "1.125rem", color: "#8A9296",
-                      display: "inline-block",
-                      transform: open ? "rotate(45deg)" : "none", transition: "transform 0.25s ease",
-                    }}>+</span>
-                  </button>
-                  <div style={{
-                    maxHeight: open ? "400px" : "0px", overflow: "hidden",
-                    transition: "max-height 0.35s ease",
-                  }}>
-                    <p style={{
-                      fontFamily: "var(--font-body)", fontSize: "0.875rem", lineHeight: 1.7,
-                      color: "#4A5256", paddingBottom: "1.25rem", maxWidth: "660px", margin: 0,
+        <div style={{ backgroundColor: CANVAS, borderRadius: "var(--radius-2xl)", overflow: "hidden" }}>
+          {sections.map((sec, si) => (
+            <div key={sec.heading} style={{
+              padding: "clamp(1.5rem, 3vw, 2rem) clamp(1.5rem, 3vw, 2rem)",
+              borderTop: si > 0 ? `1px solid ${BORDER}` : "none",
+            }}>
+              <p style={{
+                fontFamily: "var(--font-body)", fontSize: "0.75rem", fontWeight: 700,
+                letterSpacing: "0.06em", textTransform: "uppercase", color: MUTED,
+                margin: "0 0 0.5rem",
+              }}>
+                {sec.heading}
+              </p>
+              {sec.items.map((item, i) => {
+                const key = `${sec.heading}-${i}`;
+                const open = openKey === key;
+                return (
+                  <div key={item.q} style={{ borderTop: `1px solid ${BORDER}` }}>
+                    <button
+                      onClick={() => setOpenKey(open ? null : key)}
+                      aria-expanded={open}
+                      style={{
+                        width: "100%", display: "flex", alignItems: "center", justifyContent: "space-between",
+                        gap: "1rem", background: "none", border: "none", cursor: "pointer", textAlign: "left",
+                        padding: "1.125rem 0",
+                        fontFamily: "var(--font-body)", fontSize: "0.9375rem", fontWeight: 700, color: TEXT,
+                      }}
+                    >
+                      {item.q}
+                      <span aria-hidden style={{
+                        flexShrink: 0, fontSize: "1.125rem", color: MUTED,
+                        display: "inline-block",
+                        transform: open ? "rotate(45deg)" : "none", transition: "transform 0.25s ease",
+                      }}>+</span>
+                    </button>
+                    <div style={{
+                      maxHeight: open ? "400px" : "0px", overflow: "hidden",
+                      transition: "max-height 0.35s ease",
                     }}>
-                      {item.a}
-                    </p>
+                      <p style={{
+                        fontFamily: "var(--font-body)", fontSize: "0.875rem", lineHeight: 1.7,
+                        color: "#4A5256", paddingBottom: "1.25rem", maxWidth: "660px", margin: 0,
+                      }}>
+                        {item.a}
+                      </p>
+                    </div>
                   </div>
-                </div>
-              );
-            })}
-          </div>
-        ))}
+                );
+              })}
+            </div>
+          ))}
 
-        <div className="card" style={{ padding: "clamp(1.5rem, 3vw, 2rem)", backgroundColor: "#E7EBED" }}>
-          <p style={{ fontFamily: "var(--font-body)", fontSize: "0.875rem", lineHeight: 1.75, color: "#0D0F10", margin: 0 }}>
-            Didn&rsquo;t find what you were looking for?{" "}
-            <a href="mailto:hello@sukoon.co.uk" style={{ color: "#0D0F10", fontWeight: 700, textDecoration: "underline", textUnderlineOffset: "2px" }}>
-              Get in touch
-            </a>{" "}
-            — we reply within one working day.
-          </p>
+          <div style={{ borderTop: `1px solid ${BORDER}`, padding: "clamp(1.5rem, 3vw, 2rem)" }}>
+            <p style={{ fontFamily: "var(--font-body)", fontSize: "0.875rem", lineHeight: 1.75, color: TEXT, margin: 0 }}>
+              Didn&rsquo;t find what you were looking for?{" "}
+              <a href="mailto:hello@sukoon.co.uk" style={{ color: TEXT, fontWeight: 700, textDecoration: "underline", textUnderlineOffset: "2px" }}>
+                Get in touch
+              </a>{" "}
+              — we reply within one working day.
+            </p>
+          </div>
         </div>
       </div>
     </section>
