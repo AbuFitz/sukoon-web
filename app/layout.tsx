@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import { CartProvider } from "@/lib/cart-context";
+import { CustomerProvider } from "@/lib/customer-context";
 import { CookieBanner } from "@/components/CookieBanner";
 import { ImageGuard } from "@/components/ImageGuard";
 import { TabAttention } from "@/components/TabAttention";
@@ -90,7 +91,9 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <body className="min-h-full">
         <ImageGuard />
         <TabAttention />
-        <CartProvider>{children}</CartProvider>
+        <CustomerProvider>
+          <CartProvider>{children}</CartProvider>
+        </CustomerProvider>
         <CookieBanner />
       </body>
     </html>

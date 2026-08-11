@@ -214,6 +214,90 @@ export async function getVariantIdMap(): Promise<Record<string, VariantInfo>> {
   return map;
 }
 
+// ─── Customer accounts (classic Storefront API email/password) ───────────────
+
+export type ShopifyCustomer = {
+  id: string;
+  firstName: string | null;
+  lastName: string | null;
+  email: string | null;
+};
+
+export type CustomerUserError = { code: string | null; field: string[] | null; message: string };
+
+const CUSTOMER_FRAGMENT = `
+  fragment CustomerFields on Customer {
+    id
+    firstName
+    lastName
+    email
+  }
+`;
+
+function firstUserError(errors: CustomerUserError[] | undefined, fallback: string): string | null {
+  if (!errors || errors.length === 0) return null;
+  return errors[0].message || fallback;
+}
+
+export async function customerSignIn(email: string, password: string): Promise<{ accessToken: string; expiresAt: string }> {
+  const data = await storefront<{
+    customerAccessTokenCreate: {
+      customerAccessToken: { accessToken: string; expiresAt: string } | null;
+      customerUserErrors: CustomerUserError[];
+    };
+  }>(`
+    mutation CustomerSignIn($input: CustomerAccessTokenCreateInput!) {
+      customerAccessTokenCreate(input: $input) {
+        customerAccessToken { accessToken expiresAt }
+        customerUserErrors { code field message }
+      }
+    }
+  `, { input: { email, password } });
+
+  const err = firstUserError(data.customerAccessTokenCreate.customerUserErrors, "Couldn't sign in.");
+  if (err) throw new Error(err);
+  const token = data.customerAccessTokenCreate.customerAccessToken;
+  if (!token) throw new Error("Couldn't sign in.");
+  return token;
+}
+
+export async function customerSignUp(email: string, password: string, firstName: string, lastName: string): Promise<void> {
+  const data = await storefront<{
+    customerCreate: { customer: { id: string } | null; customerUserErrors: CustomerUserError[] };
+  }>(`
+    mutation CustomerSignUp($input: CustomerCreateInput!) {
+      customerCreate(input: $input) {
+        customer { id }
+        customerUserErrors { code field message }
+      }
+    }
+  `, { input: { email, password, firstName, lastName } });
+
+  const err = firstUserError(data.customerCreate.customerUserErrors, "Couldn't create your account.");
+  if (err) throw new Error(err);
+}
+
+export async function customerSignOut(accessToken: string): Promise<void> {
+  await storefront(`
+    mutation CustomerSignOut($customerAccessToken: String!) {
+      customerAccessTokenDelete(customerAccessToken: $customerAccessToken) {
+        deletedAccessToken
+        userErrors { field message }
+      }
+    }
+  `, { customerAccessToken: accessToken });
+}
+
+export async function getCustomer(accessToken: string): Promise<ShopifyCustomer | null> {
+  const data = await storefront<{ customer: ShopifyCustomer | null }>(`
+    query GetCustomer($customerAccessToken: String!) {
+      customer(customerAccessToken: $customerAccessToken) { ...CustomerFields }
+    }
+    ${CUSTOMER_FRAGMENT}
+  `, { customerAccessToken: accessToken });
+  return data.customer;
+}
+
 // ─── Price helper ─────────────────────────────────────────────────────────────
 
 export function formatPrice(amount: string, currencyCode: string): string {
