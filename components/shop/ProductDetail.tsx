@@ -10,6 +10,7 @@ import { homepageImages, ingredients } from "@/lib/homepage";
 const TEXT   = "#0D0F10";
 const MUTED  = "#8A9296";
 const BORDER = "#DCE1E3";
+const CANVAS = "#F5F7F8";
 
 type Props = {
   handle: string;
@@ -27,6 +28,41 @@ const RITUAL_STEPS = [
   { n: "02", label: "Apply", body: "Press 2–3 drops in. No rubbing, no dragging." },
   { n: "03", label: "Repeat", body: "Morning and evening. A little goes a long way." },
 ];
+
+const BENEFITS = [
+  "Calms redness and strengthens the skin barrier",
+  "Protects the hairline from friction damage",
+  "Fragrance-free, vegan, and made in the UK",
+];
+
+function CheckIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={TEXT} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden style={{ flexShrink: 0 }}>
+      <circle cx="12" cy="12" r="9.25" />
+      <path d="M8 12.5l2.5 2.5 5.5-6" />
+    </svg>
+  );
+}
+
+function ChevronButton({ direction, onClick }: { direction: "prev" | "next"; onClick: () => void }) {
+  return (
+    <button
+      aria-label={direction === "prev" ? "Previous image" : "Next image"}
+      onClick={onClick}
+      style={{
+        position: "absolute", top: "50%", [direction === "prev" ? "left" : "right"]: "1rem",
+        transform: "translateY(-50%)", zIndex: 2,
+        width: 40, height: 40, borderRadius: "50%", border: "none", cursor: "pointer",
+        backgroundColor: "rgba(255,255,255,0.9)", color: TEXT,
+        display: "flex", alignItems: "center", justifyContent: "center",
+      }}
+    >
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+        {direction === "prev" ? <path d="M15 6l-6 6 6 6" /> : <path d="M9 6l6 6-6 6" />}
+      </svg>
+    </button>
+  );
+}
 
 function Accordion({ label, content, defaultOpen = false }: { label: string; content: string; defaultOpen?: boolean }) {
   const [open, setOpen] = useState(defaultOpen);
@@ -102,6 +138,8 @@ export function ProductDetail({ handle, title, size, price, description, imageSr
     { src: homepageImages.story, alt: "The Daily Solace Fluid ritual, dropper and dish" },
   ];
 
+  const showImage = (i: number) => setActiveImage((i + gallery.length) % gallery.length);
+
   const handleAdd = async () => {
     if (!variantId || loading || justAdded) return;
     await addToCart(variantId, qty);
@@ -111,197 +149,194 @@ export function ProductDetail({ handle, title, size, price, description, imageSr
 
   return (
     <div className="container" style={{ paddingTop: "clamp(1rem, 2vw, 1.5rem)" }}>
-      {/* Main grid */}
-      <div
-        className="product-grid"
-        style={{ display: "grid", gridTemplateColumns: "7fr 5fr", gap: "clamp(1rem, 2vw, 1.25rem)", alignItems: "start", marginBottom: "clamp(1rem, 2vw, 1.25rem)" }}
-      >
-        {/* Gallery */}
-        <div style={{ position: "sticky", top: 92 }}>
-          <div className="card" style={{ padding: "clamp(1rem, 2vw, 1.25rem)", marginBottom: "0.75rem" }}>
-            <div className="card-sm" style={{
-              position: "relative", width: "100%", aspectRatio: "4 / 5",
-              overflow: "hidden", backgroundColor: "#ECEFF1",
-            }}>
+      {/* One continuous surface: gallery + buy panel + ritual + ingredients */}
+      <div style={{ backgroundColor: CANVAS, borderRadius: "var(--radius-2xl)", overflow: "hidden", marginBottom: "clamp(1rem, 2vw, 1.25rem)" }}>
+        <div className="product-grid" style={{ display: "grid", gridTemplateColumns: "7fr 5fr" }}>
+          {/* Gallery */}
+          <div className="pdp-gallery" style={{ position: "sticky", top: 92, borderRight: `1px solid ${BORDER}` }}>
+            <div style={{ position: "relative", width: "100%", aspectRatio: "4 / 5", overflow: "hidden", backgroundColor: "#ECEFF1" }}>
               {tag && <span className="badge" style={{ position: "absolute", top: "1rem", left: "1rem", zIndex: 2, backgroundColor: TEXT, color: "#FFFFFF" }}>{tag}</span>}
               <Image
                 src={gallery[activeImage].src} alt={gallery[activeImage].alt} fill priority
                 sizes="(max-width: 1024px) 100vw, 55vw"
                 style={{ objectFit: "cover" }}
               />
-            </div>
-          </div>
-          <div className="pdp-thumb-row">
-            {gallery.map((g, i) => (
-              <button
-                key={g.src + i}
-                onClick={() => setActiveImage(i)}
-                aria-label={`Show image ${i + 1}`}
-                aria-current={i === activeImage}
-                className="card-sm"
-                style={{
-                  position: "relative", aspectRatio: "4 / 5", padding: 0, overflow: "hidden",
-                  border: i === activeImage ? `2px solid ${TEXT}` : "2px solid transparent",
-                  cursor: "pointer", backgroundColor: "#ECEFF1",
-                }}
-              >
-                <Image src={g.src} alt="" fill sizes="120px" style={{ objectFit: "cover" }} />
-              </button>
-            ))}
-          </div>
-        </div>
-
-        {/* Configurator card */}
-        <div className="card" style={{ padding: "clamp(1.5rem, 3vw, 2rem)" }}>
-          <p style={{
-            fontFamily: "var(--font-body)", fontSize: "0.875rem", fontWeight: 600, color: MUTED,
-            margin: "0 0 0.5rem",
-          }}>
-            {size}
-          </p>
-          <h1 style={{
-            fontFamily: "var(--font-body)", fontWeight: 700,
-            fontSize: "clamp(1.625rem, 2.4vw, 2.125rem)",
-            letterSpacing: "-0.03em", color: TEXT,
-            margin: "0 0 0.625rem", lineHeight: 1.05,
-          }}>
-            {title}
-          </h1>
-          <p style={{
-            fontFamily: "var(--font-body)", fontSize: "1.25rem", fontWeight: 700,
-            color: TEXT, margin: "0 0 0.875rem",
-          }}>
-            {price}
-          </p>
-          <p style={{
-            fontFamily: "var(--font-body)", fontSize: "0.9375rem", lineHeight: 1.6,
-            color: "#4A5256", margin: "0 0 1.5rem", maxWidth: 420,
-          }}>
-            {description}
-          </p>
-
-          {/* Size toggle — real navigation between the two sizes */}
-          {sizeOptions.length > 1 && (
-            <div className="toggle" role="tablist" aria-label="Select size" style={{ marginBottom: "1.25rem", width: "100%" }}>
-              {sizeOptions.map(opt => (
-                <Link
-                  key={opt.slug}
-                  href={`/products/${opt.slug}`}
-                  role="tab"
-                  aria-selected={opt.slug === handle}
-                  className="toggle-option"
-                  data-active={opt.slug === handle}
-                  style={{ flex: 1, textAlign: "center", textDecoration: "none", display: "block" }}
-                >
-                  {opt.size} — {opt.price}
-                </Link>
-              ))}
-            </div>
-          )}
-
-          {/* Qty selector */}
-          <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", marginBottom: "1rem" }}>
-            <span style={{ fontFamily: "var(--font-body)", fontSize: "0.875rem", color: MUTED }}>
-              Qty
-            </span>
-            <div className="toggle" style={{ padding: 4 }}>
-              <button
-                aria-label="Decrease quantity"
-                onClick={() => setQty(q => Math.max(1, q - 1))}
-                style={{
-                  width: 34, height: 34, background: "none", border: "none", borderRadius: 8,
-                  cursor: "pointer", color: TEXT, fontSize: "1.1rem",
-                  fontFamily: "var(--font-body)",
-                }}
-              >−</button>
-              <span style={{
-                width: 30, textAlign: "center",
-                fontFamily: "var(--font-body)", fontSize: "0.9375rem", fontWeight: 600, color: TEXT,
-              }}>
-                {qty}
-              </span>
-              <button
-                aria-label="Increase quantity"
-                onClick={() => setQty(q => q + 1)}
-                style={{
-                  width: 34, height: 34, background: "none", border: "none", borderRadius: 8,
-                  cursor: "pointer", color: TEXT, fontSize: "1.1rem",
-                  fontFamily: "var(--font-body)",
-                }}
-              >+</button>
+              {gallery.length > 1 && (
+                <>
+                  <ChevronButton direction="prev" onClick={() => showImage(activeImage - 1)} />
+                  <ChevronButton direction="next" onClick={() => showImage(activeImage + 1)} />
+                </>
+              )}
             </div>
           </div>
 
-          {/* Add to bag */}
-          <button
-            onClick={handleAdd}
-            disabled={!variantId || loading || justAdded}
-            className="btn btn-dark"
-            style={{
-              width: "100%", height: 52,
-              backgroundColor: justAdded ? "#ECEFF1" : "#0D0F10",
-              color: justAdded ? "#0D0F10" : "#FFFFFF",
-              borderColor: justAdded ? "#DCE1E3" : "#0D0F10",
-              cursor: !variantId ? "not-allowed" : "pointer",
-              opacity: !variantId ? 0.5 : 1,
-              marginBottom: "1.25rem",
-            }}
-          >
-            {justAdded ? "Added to bag" : loading ? "Adding…" : !variantId ? "Unavailable" : "Add to Bag"}
-          </button>
-
-          {/* Trust badges */}
-          <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem", marginBottom: "1.5rem" }}>
-            {["Free UK delivery", "30-day returns", "Made in the UK"].map(t => (
-              <span key={t} className="badge" style={{ backgroundColor: "#ECEFF1" }}>{t}</span>
-            ))}
-          </div>
-
-          {/* Key ingredients — at-a-glance, right where the buying decision happens */}
-          <div style={{ borderTop: `1px solid ${BORDER}`, paddingTop: "1.125rem", marginBottom: "0.25rem" }}>
-            <p style={{ fontFamily: "var(--font-body)", fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", color: MUTED, margin: "0 0 0.625rem" }}>
-              Key Actives
+          {/* Buy panel */}
+          <div style={{ padding: "clamp(1.75rem, 3.5vw, 2.5rem)" }}>
+            <p style={{
+              fontFamily: "var(--font-body)", fontSize: "0.875rem", fontWeight: 600, color: MUTED,
+              margin: "0 0 0.5rem",
+            }}>
+              {size}
             </p>
-            <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem" }}>
-              {ingredients.map(ing => (
-                <span key={ing.name} style={{
-                  fontFamily: "var(--font-body)", fontSize: "0.8125rem", fontWeight: 600,
-                  color: TEXT, backgroundColor: "#F4F6F7", border: `1px solid ${BORDER}`,
-                  borderRadius: "var(--radius-control)", padding: "0.375rem 0.625rem",
+            <h1 style={{
+              fontFamily: "var(--font-body)", fontWeight: 700,
+              fontSize: "clamp(1.75rem, 2.8vw, 2.375rem)",
+              letterSpacing: "-0.03em", color: TEXT,
+              margin: "0 0 0.75rem", lineHeight: 1.05,
+            }}>
+              {title}
+            </h1>
+            <p style={{
+              fontFamily: "var(--font-body)", fontSize: "1.375rem", fontWeight: 700,
+              color: TEXT, margin: "0 0 1.25rem",
+            }}>
+              {price}
+            </p>
+
+            <p style={{
+              fontFamily: "var(--font-body)", fontWeight: 700, fontSize: "1rem", lineHeight: 1.4,
+              color: TEXT, margin: "0 0 0.625rem",
+            }}>
+              One oil. Two rituals — face and hairline.
+            </p>
+            <p style={{
+              fontFamily: "var(--font-body)", fontSize: "0.9375rem", lineHeight: 1.6,
+              color: "#4A5256", margin: "0 0 1.375rem", maxWidth: 420,
+            }}>
+              {description}
+            </p>
+
+            <ul style={{ listStyle: "none", padding: 0, margin: "0 0 1.75rem", display: "flex", flexDirection: "column", gap: "0.625rem" }}>
+              {BENEFITS.map(b => (
+                <li key={b} style={{ display: "flex", alignItems: "center", gap: "0.625rem" }}>
+                  <CheckIcon />
+                  <span style={{ fontFamily: "var(--font-body)", fontSize: "0.9375rem", color: TEXT }}>{b}</span>
+                </li>
+              ))}
+            </ul>
+
+            {/* Size toggle — real navigation between the two sizes */}
+            {sizeOptions.length > 1 && (
+              <div className="toggle" role="tablist" aria-label="Select size" style={{ marginBottom: "1rem", width: "100%" }}>
+                {sizeOptions.map(opt => (
+                  <Link
+                    key={opt.slug}
+                    href={`/products/${opt.slug}`}
+                    role="tab"
+                    aria-selected={opt.slug === handle}
+                    className="toggle-option"
+                    data-active={opt.slug === handle}
+                    style={{ flex: 1, textAlign: "center", textDecoration: "none", display: "block" }}
+                  >
+                    {opt.size} — {opt.price}
+                  </Link>
+                ))}
+              </div>
+            )}
+
+            {/* Qty selector */}
+            <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", marginBottom: "1.25rem" }}>
+              <span style={{ fontFamily: "var(--font-body)", fontSize: "0.875rem", color: MUTED }}>
+                Qty
+              </span>
+              <div className="toggle" style={{ padding: 4 }}>
+                <button
+                  aria-label="Decrease quantity"
+                  onClick={() => setQty(q => Math.max(1, q - 1))}
+                  style={{
+                    width: 34, height: 34, background: "none", border: "none", borderRadius: 8,
+                    cursor: "pointer", color: TEXT, fontSize: "1.1rem",
+                    fontFamily: "var(--font-body)",
+                  }}
+                >−</button>
+                <span style={{
+                  width: 30, textAlign: "center",
+                  fontFamily: "var(--font-body)", fontSize: "0.9375rem", fontWeight: 600, color: TEXT,
                 }}>
-                  {ing.percent} {ing.name}
+                  {qty}
                 </span>
+                <button
+                  aria-label="Increase quantity"
+                  onClick={() => setQty(q => q + 1)}
+                  style={{
+                    width: 34, height: 34, background: "none", border: "none", borderRadius: 8,
+                    cursor: "pointer", color: TEXT, fontSize: "1.1rem",
+                    fontFamily: "var(--font-body)",
+                  }}
+                >+</button>
+              </div>
+            </div>
+
+            {/* Add to bag */}
+            <button
+              onClick={handleAdd}
+              disabled={!variantId || loading || justAdded}
+              className="btn btn-dark"
+              style={{
+                width: "100%", height: 54,
+                textTransform: "uppercase", letterSpacing: "0.08em", fontSize: "0.8125rem",
+                backgroundColor: justAdded ? "#ECEFF1" : "#0D0F10",
+                color: justAdded ? "#0D0F10" : "#FFFFFF",
+                borderColor: justAdded ? "#DCE1E3" : "#0D0F10",
+                cursor: !variantId ? "not-allowed" : "pointer",
+                opacity: !variantId ? 0.5 : 1,
+                marginBottom: "1.5rem",
+              }}
+            >
+              {justAdded ? "Added to bag" : loading ? "Adding…" : !variantId ? "Unavailable" : "Add to Cart"}
+            </button>
+
+            {/* Trust badges */}
+            <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem", marginBottom: "1.5rem" }}>
+              {["Free UK delivery", "30-day returns"].map(t => (
+                <span key={t} className="badge" style={{ backgroundColor: "#ECEFF1" }}>{t}</span>
               ))}
             </div>
-          </div>
 
-          {/* Shipping accordion */}
-          <div style={{ borderBottom: `1px solid ${BORDER}` }}>
-            <Accordion
-              label="Shipping & returns"
-              content="Free UK delivery on orders over £40. Standard delivery 3–5 working days. Returns accepted within 30 days of purchase for unopened items."
-            />
+            {/* Key ingredients — at-a-glance, right where the buying decision happens */}
+            <div style={{ borderTop: `1px solid ${BORDER}`, paddingTop: "1.125rem", marginBottom: "0.25rem" }}>
+              <p style={{ fontFamily: "var(--font-body)", fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", color: MUTED, margin: "0 0 0.625rem" }}>
+                Key Actives
+              </p>
+              <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem" }}>
+                {ingredients.map(ing => (
+                  <span key={ing.name} style={{
+                    fontFamily: "var(--font-body)", fontSize: "0.8125rem", fontWeight: 600,
+                    color: TEXT, backgroundColor: "#FFFFFF", border: `1px solid ${BORDER}`,
+                    borderRadius: "var(--radius-control)", padding: "0.375rem 0.625rem",
+                  }}>
+                    {ing.percent} {ing.name}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* Shipping accordion */}
+            <div style={{ borderBottom: `1px solid ${BORDER}` }}>
+              <Accordion
+                label="Shipping & returns"
+                content="Free UK delivery on orders over £40. Standard delivery 3–5 working days. Returns accepted within 30 days of purchase for unopened items."
+              />
+            </div>
           </div>
         </div>
-      </div>
 
-      {/* The Ritual — application steps */}
-      <div className="card ritual-steps" style={{ marginBottom: "clamp(1rem, 2vw, 1.25rem)", display: "grid", gridTemplateColumns: "repeat(3, 1fr)" }}>
-        {RITUAL_STEPS.map((s, i) => (
-          <div key={s.n} style={{
-            padding: "clamp(1.5rem, 3vw, 2rem)",
-            borderLeft: i > 0 ? `1px solid ${BORDER}` : "none",
-          }}>
-            <span style={{ fontFamily: "var(--font-body)", fontWeight: 700, fontSize: "0.8125rem", color: MUTED }}>{s.n}</span>
-            <p style={{ fontFamily: "var(--font-body)", fontWeight: 700, fontSize: "1.0625rem", color: TEXT, margin: "0.375rem 0 0.375rem" }}>{s.label}</p>
-            <p style={{ fontFamily: "var(--font-body)", fontSize: "0.8438rem", lineHeight: 1.5, color: "#4A5256", margin: 0 }}>{s.body}</p>
-          </div>
-        ))}
-      </div>
+        {/* The Ritual — application steps */}
+        <div className="ritual-steps" style={{ borderTop: `1px solid ${BORDER}`, display: "grid", gridTemplateColumns: "repeat(3, 1fr)" }}>
+          {RITUAL_STEPS.map((s, i) => (
+            <div key={s.n} style={{
+              padding: "clamp(1.5rem, 3vw, 2rem)",
+              borderLeft: i > 0 ? `1px solid ${BORDER}` : "none",
+            }}>
+              <span style={{ fontFamily: "var(--font-body)", fontWeight: 700, fontSize: "0.8125rem", color: MUTED }}>{s.n}</span>
+              <p style={{ fontFamily: "var(--font-body)", fontWeight: 700, fontSize: "1.0625rem", color: TEXT, margin: "0.375rem 0 0.375rem" }}>{s.label}</p>
+              <p style={{ fontFamily: "var(--font-body)", fontSize: "0.8438rem", lineHeight: 1.5, color: "#4A5256", margin: 0 }}>{s.body}</p>
+            </div>
+          ))}
+        </div>
 
-      {/* Active ingredients bento — unified, matching the homepage formula grid */}
-      <div style={{ marginBottom: "clamp(1rem, 2vw, 1.25rem)" }}>
-        <div className="pdp-ingredient-grid" style={{ border: `1px solid ${BORDER}`, borderRadius: "var(--radius-2xl)", overflow: "hidden" }}>
+        {/* Active ingredients bento — unified, matching the homepage formula grid */}
+        <div className="pdp-ingredient-grid" style={{ borderTop: `1px solid ${BORDER}` }}>
           {ingredients.map((ing, i) => (
             <div key={ing.name} className="pdp-ing-cell" data-i={i} style={{ padding: "clamp(1.25rem, 2.5vw, 1.75rem)" }}>
               <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", gap: "0.75rem", marginBottom: "0.5rem" }}>
@@ -357,11 +392,6 @@ export function ProductDetail({ handle, title, size, price, description, imageSr
       )}
 
       <style>{`
-        .pdp-thumb-row {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 0.625rem;
-        }
         .pdp-ingredient-grid {
           display: grid;
           grid-template-columns: repeat(3, 1fr);
@@ -370,7 +400,7 @@ export function ProductDetail({ handle, title, size, price, description, imageSr
         .pdp-ing-cell:not([data-i="2"]):not([data-i="4"]) { border-right: 1px solid ${BORDER}; }
         @media (max-width: 900px) {
           .product-grid { grid-template-columns: 1fr !important; }
-          .product-grid > div:first-child { position: static !important; }
+          .pdp-gallery { position: static !important; border-right: none !important; border-bottom: 1px solid ${BORDER}; }
           .pdp-ingredient-grid { grid-template-columns: repeat(2, 1fr); }
           .pdp-ing-cell[data-i="0"], .pdp-ing-cell[data-i="1"], .pdp-ing-cell[data-i="2"], .pdp-ing-cell[data-i="3"] { border-bottom: 1px solid ${BORDER}; }
           .pdp-ing-cell:not([data-i="2"]):not([data-i="4"]) { border-right: none; }
