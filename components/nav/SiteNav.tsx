@@ -12,7 +12,6 @@ const NAV_LINKS = [
   { label: "Shop",        href: "/shop" },
   { label: "Our Story",   href: "/about" },
   { label: "Ingredients", href: "/#ingredients" },
-  { label: "FAQ",         href: "/faq" },
 ];
 
 const TEXT   = "#0D0F10";
@@ -236,12 +235,6 @@ export function SiteNav() {
             </button>
           </div>
         </nav>
-
-        <div style={{ padding: "1rem 1.5rem", borderTop: `1px solid ${BORDER}` }}>
-          <p style={{ fontFamily: "var(--font-body)", fontSize: "0.625rem", fontWeight: 700, color: MUTED, letterSpacing: "0.14em", textTransform: "uppercase", margin: 0 }}>
-            Made in the UK
-          </p>
-        </div>
       </div>
     </>
   );
