@@ -154,7 +154,11 @@ export function ProductDetail({ handle, title, size, price, description, imageSr
         <div className="product-grid" style={{ display: "grid", gridTemplateColumns: "7fr 5fr" }}>
           {/* Gallery */}
           <div className="pdp-gallery" style={{ position: "sticky", top: 92, borderRight: `1px solid ${BORDER}` }}>
-            <div style={{ position: "relative", width: "100%", aspectRatio: "4 / 5", overflow: "hidden", backgroundColor: "#ECEFF1" }}>
+            <div style={{
+              position: "relative", width: "100%", aspectRatio: "1 / 1",
+              maxHeight: "clamp(360px, 56vh, 560px)",
+              overflow: "hidden", backgroundColor: "#ECEFF1",
+            }}>
               {tag && <span className="badge" style={{ position: "absolute", top: "1rem", left: "1rem", zIndex: 2, backgroundColor: TEXT, color: "#FFFFFF" }}>{tag}</span>}
               <Image
                 src={gallery[activeImage].src} alt={gallery[activeImage].alt} fill priority
