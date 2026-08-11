@@ -9,20 +9,20 @@ function Cell({ ing }: { ing: (typeof ingredients)[number] }) {
       <span style={{
         fontFamily: "var(--font-body)", fontWeight: 700,
         fontSize: "clamp(1.75rem, 3vw, 2.25rem)",
-        letterSpacing: "-0.03em", color: "#111111", flexShrink: 0,
+        letterSpacing: "-0.03em", color: "#0D0F10", flexShrink: 0,
       }}>
         {ing.percent}
       </span>
       <div>
         <p style={{
           fontFamily: "var(--font-body)", fontWeight: 700,
-          fontSize: "0.9375rem", color: "#111111", margin: "0 0 0.125rem",
+          fontSize: "0.9375rem", color: "#0D0F10", margin: "0 0 0.125rem",
         }}>
           {ing.name}
         </p>
         <p style={{
           fontFamily: "var(--font-body)", fontSize: "0.8125rem",
-          lineHeight: 1.45, color: "#5C5C5C", margin: 0,
+          lineHeight: 1.45, color: "#4A5256", margin: 0,
         }}>
           {ing.description}
         </p>
@@ -38,7 +38,7 @@ export function IngredientsSection() {
         <h2 style={{
           fontFamily: "var(--font-body)", fontWeight: 700,
           fontSize: "clamp(1.375rem, 2.2vw, 1.75rem)",
-          letterSpacing: "-0.02em", color: "#111111", margin: 0, lineHeight: 1.1,
+          letterSpacing: "-0.02em", color: "#0D0F10", margin: 0, lineHeight: 1.1,
         }}>
           Five ingredients. Nothing hidden.
         </h2>

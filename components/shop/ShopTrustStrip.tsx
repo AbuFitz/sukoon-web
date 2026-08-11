@@ -16,13 +16,13 @@ export function ShopTrustStrip() {
           <div key={item.title} className="card" style={{ padding: "1.25rem" }}>
             <p style={{
               fontFamily: "var(--font-body)", fontWeight: 700,
-              fontSize: "0.875rem", color: "#111111", margin: "0 0 0.25rem",
+              fontSize: "0.875rem", color: "#0D0F10", margin: "0 0 0.25rem",
             }}>
               {item.title}
             </p>
             <p style={{
               fontFamily: "var(--font-body)", fontSize: "0.8125rem", lineHeight: 1.4,
-              color: "#5C5C5C", margin: 0,
+              color: "#4A5256", margin: 0,
             }}>
               {item.body}
             </p>

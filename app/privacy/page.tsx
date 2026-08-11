@@ -10,14 +10,14 @@ const PROSE = {
   fontFamily: "var(--font-body)",
   fontSize: "0.9375rem",
   lineHeight: 1.7,
-  color: "#5C5C5C",
+  color: "#4A5256",
 };
 
 const H2 = {
   fontFamily: "var(--font-body)",
   fontSize: "clamp(1.25rem, 2.2vw, 1.5rem)",
   fontWeight: 600,
-  color: "#111111",
+  color: "#0D0F10",
   marginTop: "2.25rem",
   marginBottom: "0.75rem",
   lineHeight: 1.2,
@@ -31,10 +31,10 @@ export default function PrivacyPage() {
         <div className="card" style={{ maxWidth: "780px", margin: "0 auto", padding: "clamp(2rem, 5vw, 3rem)" }}>
           <h1 style={{
             fontFamily: "var(--font-body)", fontWeight: 600, fontSize: "clamp(1.875rem, 3.5vw, 2.75rem)",
-            letterSpacing: "-0.03em", color: "#111111",
+            letterSpacing: "-0.03em", color: "#0D0F10",
             marginBottom: "0.5rem",
           }}>Privacy Policy</h1>
-          <p style={{ ...PROSE, color: "#9A9A9A", marginBottom: "2.5rem", fontSize: "0.8125rem" }}>
+          <p style={{ ...PROSE, color: "#8A9296", marginBottom: "2.5rem", fontSize: "0.8125rem" }}>
             Last updated: July 2025
           </p>
 
@@ -47,7 +47,7 @@ export default function PrivacyPage() {
           <p style={PROSE}>We use your data to fulfil orders, communicate about your purchase, and — only with your consent — send you news about new products and offers. We do not sell, rent, or share your personal data with third parties for their marketing purposes.</p>
 
           <h2 style={H2}>Cookies</h2>
-          <p style={PROSE}>We use a small number of cookies to make the site work (session cookies) and, with your consent, analytics cookies to understand how the site is used. See our <a href="/cookies" style={{ color: "#111111", textUnderlineOffset: "3px" }}>Cookie Policy</a> for full details.</p>
+          <p style={PROSE}>We use a small number of cookies to make the site work (session cookies) and, with your consent, analytics cookies to understand how the site is used. See our <a href="/cookies" style={{ color: "#0D0F10", textUnderlineOffset: "3px" }}>Cookie Policy</a> for full details.</p>
 
           <h2 style={H2}>Your rights</h2>
           <p style={PROSE}>Under UK GDPR you have the right to access, correct, or delete your personal data, and to object to or restrict how it is processed. To exercise any of these rights, contact us at hello@sukoon.co.uk. You also have the right to lodge a complaint with the Information Commissioner&apos;s Office (ico.org.uk).</p>

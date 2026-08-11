@@ -18,9 +18,9 @@ export function TrustStrip() {
             style={{
               flex: 1,
               fontFamily: "var(--font-body)", fontSize: "0.875rem", fontWeight: 600,
-              color: "#111111", margin: 0, textAlign: "center",
+              color: "#0D0F10", margin: 0, textAlign: "center",
               padding: "0.5rem 0",
-              borderColor: "#E2E2E2",
+              borderColor: "#DCE1E3",
             }}
           >
             {item}

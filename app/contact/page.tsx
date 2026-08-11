@@ -4,16 +4,16 @@ import { useState } from "react";
 import { SiteNav } from "@/components/nav/SiteNav";
 import { Footer } from "@/components/sections/Footer";
 
-const INK   = "#111111";
-const MUTED = "#5C5C5C";
+const INK   = "#0D0F10";
+const MUTED = "#4A5256";
 
 const inputStyle = {
   width: "100%",
   fontFamily: "var(--font-body)",
   fontSize: "0.9375rem",
   color: INK,
-  backgroundColor: "#F5F5F5",
-  border: "1px solid #E2E2E2",
+  backgroundColor: "#F4F6F7",
+  border: "1px solid #DCE1E3",
   borderRadius: 8,
   padding: "0.875rem 1.25rem",
   outline: "none",

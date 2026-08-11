@@ -10,7 +10,7 @@ export function BrandStorySection() {
         overflow: "hidden",
       }}>
         {/* Image */}
-        <div style={{ position: "relative", backgroundColor: "#EFEFEF", minHeight: 320 }}>
+        <div style={{ position: "relative", backgroundColor: "#ECEFF1", minHeight: 320 }}>
           <Image
             src={homepageImages.story}
             alt="Sukoon Daily Solace Fluid application"
@@ -29,14 +29,14 @@ export function BrandStorySection() {
           <h2 style={{
             fontFamily: "var(--font-body)", fontWeight: 700,
             fontSize: "clamp(1.5rem, 2.6vw, 2.25rem)",
-            letterSpacing: "-0.025em", color: "#111111",
+            letterSpacing: "-0.025em", color: "#0D0F10",
             margin: "0 0 1rem", lineHeight: 1.1,
           }}>
             A concentrated formula, not a diluted one.
           </h2>
           <p style={{
             fontFamily: "var(--font-body)", fontSize: "0.9375rem", lineHeight: 1.65,
-            color: "#5C5C5C", margin: "0 0 1.5rem", maxWidth: 440,
+            color: "#4A5256", margin: "0 0 1.5rem", maxWidth: 440,
           }}>
             No fillers, no padding. Five actives, each earning its place.
           </p>

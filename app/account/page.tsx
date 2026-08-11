@@ -19,7 +19,7 @@ export default function AccountPage() {
               fontFamily: "var(--font-body)", fontWeight: 700,
               fontSize: "clamp(1.875rem, 4vw, 2.5rem)",
               lineHeight: 1.05, letterSpacing: "-0.03em",
-              color: "#111111", margin: 0,
+              color: "#0D0F10", margin: 0,
             }}>
               Welcome back.
             </h1>

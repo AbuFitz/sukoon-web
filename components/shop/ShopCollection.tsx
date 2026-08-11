@@ -6,8 +6,8 @@ import { products } from "@/lib/products";
 import { useCart } from "@/lib/cart-context";
 import type { VariantInfo } from "@/lib/shopify";
 
-const TEXT   = "#111111";
-const MUTED  = "#9A9A9A";
+const TEXT   = "#0D0F10";
+const MUTED  = "#8A9296";
 
 const SORT_OPTIONS = [
   { value: "featured",   label: "Featured" },
@@ -56,7 +56,7 @@ function ProductCard({
           position: "relative",
           aspectRatio: "4 / 5",
           overflow: "hidden",
-          backgroundColor: "#EFEFEF",
+          backgroundColor: "#ECEFF1",
         }}>
           <Image
             src={product.src}
@@ -90,7 +90,7 @@ function ProductCard({
       {variantId && !availableForSale ? (
         <button className="btn" disabled style={{
           width: "100%", marginTop: "auto",
-          backgroundColor: "#EFEFEF", color: MUTED, border: "1px solid #E2E2E2", cursor: "default",
+          backgroundColor: "#ECEFF1", color: MUTED, border: "1px solid #DCE1E3", cursor: "default",
         }}>
           Sold out
         </button>
@@ -102,9 +102,9 @@ function ProductCard({
           className="btn btn-dark"
           style={{
             width: "100%", marginTop: "auto",
-            backgroundColor: justAdded ? "#EFEFEF" : "#111111",
-            color: justAdded ? "#111111" : "#FFFFFF",
-            borderColor: justAdded ? "#E2E2E2" : "#111111",
+            backgroundColor: justAdded ? "#ECEFF1" : "#0D0F10",
+            color: justAdded ? "#0D0F10" : "#FFFFFF",
+            borderColor: justAdded ? "#DCE1E3" : "#0D0F10",
             opacity: !variantId ? 0.45 : 1,
             cursor: !variantId ? "default" : loading ? "wait" : "pointer",
           }}

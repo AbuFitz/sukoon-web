@@ -5,9 +5,9 @@ import { Panel } from "./Panel";
 import { useCart } from "@/lib/cart-context";
 import { formatPrice } from "@/lib/shopify";
 
-const TEXT   = "#111111";
-const MUTED  = "#9A9A9A";
-const BORDER = "#E2E2E2";
+const TEXT   = "#0D0F10";
+const MUTED  = "#8A9296";
+const BORDER = "#DCE1E3";
 
 function Stepper({ qty, onChange }: { qty: number; onChange: (qty: number) => void }) {
   return (
@@ -76,11 +76,11 @@ export function BagPanel({ open, onClose }: { open: boolean; onClose: () => void
           return (
             <div key={line.id} style={{ display: "flex", gap: "1rem" }}>
               {merchandise.image ? (
-                <div className="card-sm" style={{ position: "relative", width: 80, height: 96, flexShrink: 0, overflow: "hidden", backgroundColor: "#EFEFEF" }}>
+                <div className="card-sm" style={{ position: "relative", width: 80, height: 96, flexShrink: 0, overflow: "hidden", backgroundColor: "#ECEFF1" }}>
                   <Image src={merchandise.image.url} alt={merchandise.image.altText ?? merchandise.product.title} fill sizes="80px" style={{ objectFit: "cover" }} />
                 </div>
               ) : (
-                <div className="card-sm" style={{ width: 80, height: 96, flexShrink: 0, backgroundColor: "#EFEFEF" }} />
+                <div className="card-sm" style={{ width: 80, height: 96, flexShrink: 0, backgroundColor: "#ECEFF1" }} />
               )}
               <div style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
                 <div>

@@ -32,7 +32,7 @@ function ProductCard({ product }: { product: FeaturedProduct }) {
           aspectRatio: "4 / 5",
           overflow: "hidden",
           borderRadius: "var(--radius-2xl)",
-          backgroundColor: "#EFEFEF",
+          backgroundColor: "#ECEFF1",
           marginBottom: "1.125rem",
         }}>
           <Image
@@ -47,13 +47,13 @@ function ProductCard({ product }: { product: FeaturedProduct }) {
 
         <p style={{
           fontFamily: "var(--font-body)", fontWeight: 700,
-          fontSize: "1rem", color: "#111111", margin: "0 0 0.25rem",
+          fontSize: "1rem", color: "#0D0F10", margin: "0 0 0.25rem",
         }}>
           {product.title}
         </p>
         <p style={{
           fontFamily: "var(--font-body)", fontWeight: 800, fontSize: "1.0625rem",
-          letterSpacing: "-0.01em", color: "#111111", margin: "0 0 1rem",
+          letterSpacing: "-0.01em", color: "#0D0F10", margin: "0 0 1rem",
         }}>
           {product.price}
         </p>
@@ -66,9 +66,9 @@ function ProductCard({ product }: { product: FeaturedProduct }) {
         className="btn btn-dark"
         style={{
           width: "100%", marginTop: "auto",
-          backgroundColor: added ? "#EFEFEF" : "#111111",
-          color: added ? "#111111" : "#FFFFFF",
-          borderColor: added ? "#E2E2E2" : "#111111",
+          backgroundColor: added ? "#ECEFF1" : "#0D0F10",
+          color: added ? "#0D0F10" : "#FFFFFF",
+          borderColor: added ? "#DCE1E3" : "#0D0F10",
           opacity: !product.variantId ? 0.45 : 1,
           cursor: !product.variantId ? "default" : adding ? "wait" : "pointer",
         }}
@@ -86,7 +86,7 @@ export function CollectionSection({ products }: { products: FeaturedProduct[] })
         <h2 style={{
           fontFamily: "var(--font-body)", fontWeight: 700,
           fontSize: "clamp(1.375rem, 2.2vw, 1.75rem)",
-          letterSpacing: "-0.02em", color: "#111111", margin: 0,
+          letterSpacing: "-0.02em", color: "#0D0F10", margin: 0,
         }}>
           The Daily Solace Fluid
         </h2>

@@ -23,7 +23,7 @@ export function BenefitsSection() {
         <h2 style={{
           fontFamily: "var(--font-body)", fontWeight: 700,
           fontSize: "clamp(1.375rem, 2.2vw, 1.75rem)",
-          letterSpacing: "-0.02em", color: "#111111", margin: 0,
+          letterSpacing: "-0.02em", color: "#0D0F10", margin: 0,
         }}>
           One bottle. Two rituals.
         </h2>
@@ -46,13 +46,13 @@ export function BenefitsSection() {
             </div>
             <h3 style={{
               fontFamily: "var(--font-body)", fontWeight: 700,
-              fontSize: "1.1875rem", letterSpacing: "-0.015em", color: "#111111", margin: "0 0 0.375rem",
+              fontSize: "1.1875rem", letterSpacing: "-0.015em", color: "#0D0F10", margin: "0 0 0.375rem",
             }}>
               {r.label}
             </h3>
             <p style={{
               fontFamily: "var(--font-body)", fontSize: "0.9375rem",
-              lineHeight: 1.55, color: "#5C5C5C", margin: 0, maxWidth: 400,
+              lineHeight: 1.55, color: "#4A5256", margin: 0, maxWidth: 400,
             }}>
               {r.body}
             </p>

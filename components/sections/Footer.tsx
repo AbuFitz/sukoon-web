@@ -33,9 +33,9 @@ const LEGAL = [
   { label: "Cookies",     href: "/cookies" },
 ];
 
-const TEXT   = "#111111";
-const MUTED  = "#5C5C5C";
-const BORDER = "#E2E2E2";
+const TEXT   = "#0D0F10";
+const MUTED  = "#4A5256";
+const BORDER = "#DCE1E3";
 
 function FooterCol({ title, links }: { title: string; links: { label: string; href: string }[] }) {
   return (

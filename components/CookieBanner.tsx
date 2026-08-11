@@ -36,10 +36,10 @@ export function CookieBanner() {
       }}>
         <p style={{
           fontFamily: "var(--font-body)", fontSize: "0.875rem", lineHeight: 1.6,
-          color: "#5C5C5C", maxWidth: 420, flex: "1 1 260px", margin: 0,
+          color: "#4A5256", maxWidth: 420, flex: "1 1 260px", margin: 0,
         }}>
           We use cookies to improve your experience.{" "}
-          <a href="/cookies" style={{ color: "#111111", textDecoration: "underline", textUnderlineOffset: 2 }}>
+          <a href="/cookies" style={{ color: "#0D0F10", textDecoration: "underline", textUnderlineOffset: 2 }}>
             Cookie Policy
           </a>
           .

@@ -15,9 +15,9 @@ const NAV_LINKS = [
   { label: "FAQ",         href: "/faq" },
 ];
 
-const TEXT   = "#111111";
-const MUTED  = "#5C5C5C";
-const BORDER = "#E2E2E2";
+const TEXT   = "#0D0F10";
+const MUTED  = "#4A5256";
+const BORDER = "#DCE1E3";
 
 function SearchIcon() {
   return (
@@ -78,13 +78,13 @@ function IconPillBtn({
       onClick={onClick}
       style={{
         width: 40, height: 40, borderRadius: 8,
-        background: "#EFEFEF", border: "none", color: TEXT, cursor: "pointer",
+        background: "#ECEFF1", border: "none", color: TEXT, cursor: "pointer",
         display: "flex", alignItems: "center", justifyContent: "center",
         position: "relative", transition: "background-color 0.18s ease",
         flexShrink: 0,
       }}
-      onMouseEnter={e => { (e.currentTarget as HTMLElement).style.backgroundColor = "#EBEBEB"; }}
-      onMouseLeave={e => { (e.currentTarget as HTMLElement).style.backgroundColor = "#EFEFEF"; }}
+      onMouseEnter={e => { (e.currentTarget as HTMLElement).style.backgroundColor = "#E7EBED"; }}
+      onMouseLeave={e => { (e.currentTarget as HTMLElement).style.backgroundColor = "#ECEFF1"; }}
     >
       {children}
       {badge ? (
@@ -149,7 +149,7 @@ export function SiteNav() {
                     padding: "0.5rem 0.875rem", borderRadius: 8,
                     transition: "color 0.18s ease, background-color 0.18s ease",
                   }}
-                  onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.color = TEXT; el.style.backgroundColor = "#EFEFEF"; }}
+                  onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.color = TEXT; el.style.backgroundColor = "#ECEFF1"; }}
                   onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.color = MUTED; el.style.backgroundColor = "transparent"; }}
                 >
                   {l.label}
@@ -203,7 +203,7 @@ export function SiteNav() {
         }}>
           <Wordmark />
           <button aria-label="Close menu" onClick={() => setOpen(false)}
-            style={{ width: 36, height: 36, borderRadius: 8, background: "#EFEFEF", border: "none", color: TEXT, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", padding: 0 }}>
+            style={{ width: 36, height: 36, borderRadius: 8, background: "#ECEFF1", border: "none", color: TEXT, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", padding: 0 }}>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" aria-hidden>
               <line x1="5" y1="5" x2="19" y2="19" /><line x1="19" y1="5" x2="5" y2="19" />
             </svg>

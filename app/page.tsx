@@ -63,7 +63,7 @@ export default async function HomePage() {
       <SiteNav />
       <main style={{ paddingBottom: "clamp(1rem, 2vw, 1.25rem)" }}>
         <HeroSection />
-        <div style={{ backgroundColor: "#F9F8F6" }}>
+        <div style={{ backgroundColor: "#F5F7F8" }}>
           <CollectionSection products={featuredProducts} />
           <BenefitsSection />
           <IngredientsSection />

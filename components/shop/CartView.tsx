@@ -4,9 +4,9 @@ import Image from "next/image";
 import { useCart } from "@/lib/cart-context";
 import { formatPrice } from "@/lib/shopify";
 
-const TEXT   = "#111111";
-const MUTED  = "#9A9A9A";
-const BORDER = "#E2E2E2";
+const TEXT   = "#0D0F10";
+const MUTED  = "#8A9296";
+const BORDER = "#DCE1E3";
 
 function QtyButton({ label, onClick, children }: { label: string; onClick: () => void; children: React.ReactNode }) {
   return (
@@ -59,7 +59,7 @@ export function CartView() {
         </h1>
         <p style={{
           fontFamily: "var(--font-body)", fontSize: "1rem", lineHeight: 1.6,
-          color: "#5C5C5C", margin: "0 0 2rem",
+          color: "#4A5256", margin: "0 0 2rem",
         }}>
           Add The Daily Solace Fluid to begin your ritual.
         </p>
@@ -114,7 +114,7 @@ export function CartView() {
                 <div className="card-sm" style={{
                   position: "relative",
                   width: 84, height: 104, flexShrink: 0,
-                  backgroundColor: "#EFEFEF", overflow: "hidden",
+                  backgroundColor: "#ECEFF1", overflow: "hidden",
                 }}>
                   {merchandise.image ? (
                     <Image
@@ -139,7 +139,7 @@ export function CartView() {
                       {merchandise.title}
                     </p>
                   )}
-                  <p style={{ fontFamily: "var(--font-body)", fontSize: "0.8125rem", color: "#5C5C5C", margin: 0 }}>
+                  <p style={{ fontFamily: "var(--font-body)", fontSize: "0.8125rem", color: "#4A5256", margin: 0 }}>
                     {unitPrice} each
                   </p>
 
@@ -191,7 +191,7 @@ export function CartView() {
 
         {/* ── Order summary ── */}
         <div className="card" style={{
-          backgroundColor: "#EBEBEB",
+          backgroundColor: "#E7EBED",
           padding: "1.75rem",
           position: "sticky",
           top: 92,
@@ -206,7 +206,7 @@ export function CartView() {
 
           <div style={{ display: "flex", flexDirection: "column", gap: "0.875rem", marginBottom: "1.5rem" }}>
             <div style={{ display: "flex", justifyContent: "space-between" }}>
-              <span style={{ fontFamily: "var(--font-body)", fontSize: "0.875rem", color: "#5C5C5C" }}>
+              <span style={{ fontFamily: "var(--font-body)", fontSize: "0.875rem", color: "#4A5256" }}>
                 Subtotal ({cart!.totalQuantity} {cart!.totalQuantity === 1 ? "item" : "items"})
               </span>
               <span style={{ fontFamily: "var(--font-body)", fontSize: "0.875rem", fontWeight: 700, color: TEXT }}>
@@ -214,14 +214,14 @@ export function CartView() {
               </span>
             </div>
             <div style={{ display: "flex", justifyContent: "space-between" }}>
-              <span style={{ fontFamily: "var(--font-body)", fontSize: "0.875rem", color: "#5C5C5C" }}>Shipping</span>
+              <span style={{ fontFamily: "var(--font-body)", fontSize: "0.875rem", color: "#4A5256" }}>Shipping</span>
               <span style={{ fontFamily: "var(--font-body)", fontSize: "0.875rem", color: MUTED }}>
                 {parseFloat(subtotal.amount) >= 40 ? "Free" : "Calculated at checkout"}
               </span>
             </div>
           </div>
 
-          <div style={{ borderTop: `1px solid #E2E2E2`, paddingTop: "1.25rem", marginBottom: "1.5rem" }}>
+          <div style={{ borderTop: `1px solid #DCE1E3`, paddingTop: "1.25rem", marginBottom: "1.5rem" }}>
             <div style={{ display: "flex", justifyContent: "space-between" }}>
               <span style={{ fontFamily: "var(--font-body)", fontSize: "0.9375rem", fontWeight: 700, color: TEXT }}>Total</span>
               <span style={{ fontFamily: "var(--font-body)", fontSize: "0.9375rem", fontWeight: 700, color: TEXT }}>

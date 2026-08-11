@@ -1,19 +1,19 @@
 "use client";
 
-const INK   = "#111111";
-const MUTED = "#9A9A9A";
-const LINE  = "#E2E2E2";
+const INK   = "#0D0F10";
+const MUTED = "#8A9296";
+const LINE  = "#DCE1E3";
 
 const fieldStyle: React.CSSProperties = {
   width: "100%", padding: "0.875rem 1.25rem",
   fontFamily: "var(--font-body)", fontSize: "0.9375rem", color: INK,
-  border: `1px solid ${LINE}`, borderRadius: 8, outline: "none", backgroundColor: "#F5F5F5",
+  border: `1px solid ${LINE}`, borderRadius: 8, outline: "none", backgroundColor: "#F4F6F7",
 };
 
 export function AccountForm() {
   return (
     <>
-      <p style={{ fontFamily: "var(--font-body)", fontSize: "0.875rem", color: "#5C5C5C", lineHeight: 1.6, marginBottom: "1.75rem" }}>
+      <p style={{ fontFamily: "var(--font-body)", fontSize: "0.875rem", color: "#4A5256", lineHeight: 1.6, marginBottom: "1.75rem" }}>
         Sign in to track your order, save your details, and join the waitlist for early access.
       </p>
 

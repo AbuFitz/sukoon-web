@@ -7,9 +7,9 @@ import { useCart } from "@/lib/cart-context";
 import { products } from "@/lib/products";
 import { homepageImages, ingredients } from "@/lib/homepage";
 
-const TEXT   = "#111111";
-const MUTED  = "#9A9A9A";
-const BORDER = "#E2E2E2";
+const TEXT   = "#0D0F10";
+const MUTED  = "#8A9296";
+const BORDER = "#DCE1E3";
 
 type Props = {
   handle: string;
@@ -66,7 +66,7 @@ function Accordion({ label, content, defaultOpen = false }: { label: string; con
       {open && (
         <p style={{
           fontFamily: "var(--font-body)", fontSize: "0.9rem", lineHeight: 1.65,
-          color: "#5C5C5C", margin: "0 0 1.125rem", paddingRight: "1.5rem",
+          color: "#4A5256", margin: "0 0 1.125rem", paddingRight: "1.5rem",
         }}>
           {content}
         </p>
@@ -81,7 +81,7 @@ function RelatedCard({ product }: { product: typeof products[number] }) {
       <div className="card-sm" style={{
         position: "relative", aspectRatio: "4 / 5",
         overflow: "hidden",
-        backgroundColor: "#EFEFEF", marginBottom: "0.75rem",
+        backgroundColor: "#ECEFF1", marginBottom: "0.75rem",
       }}>
         <Image
           src={product.src} alt={product.name} fill
@@ -131,7 +131,7 @@ export function ProductDetail({ handle, title, size, price, description, imageSr
           <div className="card-sm" style={{
             position: "relative", aspectRatio: "4 / 5",
             maxHeight: "clamp(440px, 50vw, 600px)",
-            overflow: "hidden", backgroundColor: "#EFEFEF",
+            overflow: "hidden", backgroundColor: "#ECEFF1",
           }}>
             {tag && <span className="badge" style={{ position: "absolute", top: "1rem", left: "1rem", zIndex: 2, backgroundColor: TEXT, color: "#FFFFFF" }}>{tag}</span>}
             <Image
@@ -224,9 +224,9 @@ export function ProductDetail({ handle, title, size, price, description, imageSr
             className="btn btn-dark"
             style={{
               width: "100%", height: 52,
-              backgroundColor: justAdded ? "#EFEFEF" : "#111111",
-              color: justAdded ? "#111111" : "#FFFFFF",
-              borderColor: justAdded ? "#E2E2E2" : "#111111",
+              backgroundColor: justAdded ? "#ECEFF1" : "#0D0F10",
+              color: justAdded ? "#0D0F10" : "#FFFFFF",
+              borderColor: justAdded ? "#DCE1E3" : "#0D0F10",
               cursor: !variantId ? "not-allowed" : "pointer",
               opacity: !variantId ? 0.5 : 1,
               marginBottom: "1.25rem",
@@ -238,7 +238,7 @@ export function ProductDetail({ handle, title, size, price, description, imageSr
           {/* Trust badges */}
           <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem", marginBottom: "1.5rem" }}>
             {["Free UK delivery", "30-day returns", "Made in the UK"].map(t => (
-              <span key={t} className="badge" style={{ backgroundColor: "#EFEFEF" }}>{t}</span>
+              <span key={t} className="badge" style={{ backgroundColor: "#ECEFF1" }}>{t}</span>
             ))}
           </div>
 
@@ -261,14 +261,14 @@ export function ProductDetail({ handle, title, size, price, description, imageSr
                 <span className="badge">{ing.percent}</span>
               </div>
               <p style={{ fontFamily: "var(--font-body)", fontSize: "0.75rem", color: MUTED, margin: "0 0 0.5rem", fontStyle: "italic" }}>{ing.latin}</p>
-              <p style={{ fontFamily: "var(--font-body)", fontSize: "0.8125rem", lineHeight: 1.5, color: "#5C5C5C", margin: 0 }}>{ing.description}</p>
+              <p style={{ fontFamily: "var(--font-body)", fontSize: "0.8125rem", lineHeight: 1.5, color: "#4A5256", margin: 0 }}>{ing.description}</p>
             </div>
           ))}
         </div>
       </div>
 
       {/* Editorial break */}
-      <div className="card" style={{ position: "relative", aspectRatio: "21 / 9", backgroundColor: "#EFEFEF", overflow: "hidden", marginBottom: "clamp(1rem, 2vw, 1.25rem)" }}>
+      <div className="card" style={{ position: "relative", aspectRatio: "21 / 9", backgroundColor: "#ECEFF1", overflow: "hidden", marginBottom: "clamp(1rem, 2vw, 1.25rem)" }}>
         <Image
           src={homepageImages.benefits}
           alt="The Daily Solace Fluid in use"
